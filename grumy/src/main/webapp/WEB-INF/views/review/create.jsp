@@ -44,15 +44,7 @@
 </script>
 
 </head>
-<body>
-	<div class="w3-container">
-		<div class="w3-bar w3-green">
-			<a href="#" class="w3-bar-item w3-button">slowand</a> <a href="#"
-				class="w3-bar-item w3-button">outer</a> <a href="#"
-				class="w3-bar-item w3-button">top</a> <a href="#"
-				class="w3-bar-item w3-button w3-right">logout</a>
-		</div>
-	</div>
+<body  id="main">
 	<div class="container">
 		<h1 class="col-sm-offset-4 col-sm-10">REVIEW</h1><br>
 		<h6 class="col-sm-offset-2">REVIEW | 문의글 혹은 악의적인 비방글은 무통보 삭제된다는 점 유의해주세요^^</h6>

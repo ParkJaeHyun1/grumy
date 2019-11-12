@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<div id="footer" class="xans-element- xans-layout xans-layout-footer">
 			<!--
         module="instagramwidget_display_1" 는 위젯리스트중 적용하고자 하는 위젯의 코드로 변경하여 사용하시면 됩니다.
