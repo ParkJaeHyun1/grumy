@@ -93,9 +93,8 @@
 						<div class="position">
 							<ul>
 								<li class="xans-record-"><a href="/category/best-50/66/">BEST
-										50</a></li>
-								<li class="xans-record-"><a href="/category/slowmade/82/">#SLOWMADE</a></li>
-								<li class="xans-record-"><a href="/category/겨울시작/122/">겨울시작❄</a></li>
+										20</a></li>
+							
 								<li class="xans-record-"><a href="/category/outer/24/">OUTER</a></li>
 								<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
 								<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
@@ -103,11 +102,7 @@
 								<li class="xans-record-"><a href="/category/bottom/26/">BOTTOM</a></li>
 								<li class="xans-record-"><a href="/category/shoesbag/28/">SHOES/BAG</a></li>
 								<li class="xans-record-"><a href="/category/acc/68/">ACC</a></li>
-								<li class="xans-record-"><a href="/category/soom-pick/112/">soom
-										pick *.*</a></li>
-								<li class="xans-record-"><a href="/category/창고개방sale/111/">창고개방SALE</a></li>
-								<li class="xans-record-"><a href="/category/기획특가모음/108/">기획특가모음</a></li>
-								<li class="xans-record-"><a href="/category/monotone/86/">monotone♥</a></li>
+
 							</ul>
 						</div>
 					</div>
