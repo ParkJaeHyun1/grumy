@@ -6,8 +6,8 @@
 				<!-- 로고 -->
 				<div class="topArea">
 					<h1 class="xans-element- xans-layout xans-layout-logotop ">
-						<a href="/index.html"> <!--span>슬로우앤드</span--> <img
-							src="https://www.slowand.com/web/upload/category/logo/879dc6b6f36fbc7af37c96e4ff9ff6b5_8_top.jpg" />
+						<a  href="/index.html"> <!--span>슬로우앤드</span--> 
+						<img src="${pageContext.request.contextPath}/images/grumy.jpg" style="margin-top: 0px; width: 153px; height: 33px;padding-top: 20px"/>
 						</a>
 					</h1>
 
