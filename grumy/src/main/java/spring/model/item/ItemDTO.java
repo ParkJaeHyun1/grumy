@@ -12,12 +12,13 @@ public class ItemDTO {
 	private String color ;  
 	private String sizes ; 
 	private int count ; //상품 수량
+	private String type; //카테고리
 	public ItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ItemDTO(int no, String name, String image, String title, String description, String content, int price,
-			int salePrice, String color, String sizes, int count) {
+			int salePrice, String color, String sizes, int count, String type) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -30,6 +31,7 @@ public class ItemDTO {
 		this.color = color;
 		this.sizes = sizes;
 		this.count = count;
+		this.type = type;
 	}
 	@Override
 	public String toString() {
@@ -102,6 +104,12 @@ public class ItemDTO {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

@@ -91,7 +91,7 @@
 						<li class="xans-record-"><a href="/category/best-50/66/">BEST
 								20</a></li>
 
-						<li class="xans-record-"><a href="/category/outer/24/">OUTER</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/">OUTER</a></li>
 						<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
 						<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
 						<li class="xans-record-"><a href="/category/skirt/70/">SKIRT</a></li>
