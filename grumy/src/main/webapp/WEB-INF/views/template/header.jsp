@@ -45,7 +45,7 @@
 							<li class="xans-record-"><a href="/board/채용-공고/1002/">채용
 									공고<span></span>
 							</a></li>
-							<li class="xans-record-"><a href="/board/review/4/">REVIEW<span></span></a></li>
+							<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">REVIEW<span></span></a></li>
 						</ul>
 					</div>
 
