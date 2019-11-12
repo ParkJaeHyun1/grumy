@@ -12,10 +12,8 @@
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
  
- 	<definition name="/home" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/main.jsp" />
-	</definition>
-
+<definition name="/item/list" extends="main"> 
+        <put-attribute name="title" value="item 목록" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/item/list.jsp" /> 
+</definition>  
 </tiles-definitions>
