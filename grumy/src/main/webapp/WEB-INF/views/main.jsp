@@ -36,7 +36,7 @@
     {
      "@context": "http://schema.org",
      "@type": "Person",
-     "name": "슬로우앤드",
+     "name": "그루미",
      "url": "http://www.slowand.com",
      "sameAs": [
        "https://www.instagram.com/slow.and",
@@ -55,7 +55,7 @@
 					<link rel="canonical" href="http://slowand.com/" />
 					<link rel="alternate" href="http://m.slowand.com/" />
 					<meta property="og:url" content="http://slowand.com/" />
-					<meta property="og:title" content="슬로우앤드" />
+					<meta property="og:title" content="그루미" />
 					<meta property="og:description"
 						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
 					<meta property="og:site_name" content="슬로우앤드" />

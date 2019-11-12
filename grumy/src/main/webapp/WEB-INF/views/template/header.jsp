@@ -6,7 +6,7 @@
 				<!-- 로고 -->
 				<div class="topArea">
 					<h1 class="xans-element- xans-layout xans-layout-logotop ">
-						<a  href="/index.html"> <!--span>슬로우앤드</span--> 
+						<a  href="/index.html"> <!--span>그루미</span--> 
 						<img src="${pageContext.request.contextPath}/images/grumy.jpg" style="margin-top: 0px; width: 153px; height: 33px;padding-top: 20px"/>
 						</a>
 					</h1>
@@ -71,18 +71,6 @@
 						</div>
 					</form>
 				</div>
-
-
-
-				<!-- snap common script contact mail: support@snapvi.co.kr -->
-				<span id="solutiontype" style="display: none;">cafe24</span> <span
-					id="sfsnapfit_store_id" style="display: none">slowand</span>
-				<div>
-					<input id="sf_draw_type" type="hidden" value="pc" /><input
-						id="sf_store_name" type="hidden" value="slowand" />
-				</div>
-				<!-- snap common end -->
-
 
 				<!-- 메인 메뉴 -->
 				<ul class="gnb grid5">
