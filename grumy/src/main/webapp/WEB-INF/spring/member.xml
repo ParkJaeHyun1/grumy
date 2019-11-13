@@ -17,8 +17,6 @@
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
-
-	
 	<definition name="/create" extends="main">
 		<put-attribute name="title" value="회원가입"></put-attribute>
 		<put-attribute name="body"
