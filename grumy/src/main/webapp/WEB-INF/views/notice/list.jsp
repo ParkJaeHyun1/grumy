@@ -88,7 +88,7 @@
 				<p
 					class="xans-element- xans-board xans-board-empty-1002 xans-board-empty xans-board-1002 message displaynone "></p>
 			</div>
-			<form action="${pageContext.request.contextPath}/notice/list">
+			<form action="list">
 				<div
 					class="xans-element- xans-board xans-board-search-1002 xans-board-search xans-board-1002 ">
 					<fieldset class="boardSearch">
@@ -107,11 +107,10 @@
 				</div>
 			</form>
 
-			<div
-				class="xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate">
+		
 				${paging}
 			
-			</div>
+		
 
 
 		</div>
