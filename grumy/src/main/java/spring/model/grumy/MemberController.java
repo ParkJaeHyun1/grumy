@@ -13,7 +13,7 @@ public class MemberController {
 	@Autowired
 	private MemberMapper dao;
 	
-	@PostMapping("/member/create")
+	@GetMapping("/member/create")
 	public String create() {
 		
 		return "/create";
