@@ -27,9 +27,12 @@
 			<a href="#contents">본문 바로가기</a>
 		</p>
 	</div>
+<div id="wrap">
+    <!-- 상단카테고리 -->
+    
 
-	<div id="wrap">
-		<!-- 상단카테고리 -->
+
+
 
 		<script>
 			// 메인메뉴에 마우스오버시 하위메뉴 나타남
@@ -65,62 +68,67 @@
 				<h2>
 					<span>${type}</span><BR></BR>
 				</h2>
-							<c:forEach var="dto" items="${list}">
+				<c:forEach var="dto" items="${list}">
 					<c:forEach var="image" items="${dto.colorList}">
-                              <span style="background-color: #FFFFFF"
-                                 class="chips xans-record-"></span>
-                           </c:forEach>
-					
-										
+						<span style="background-color: #FFFFFF" class="chips xans-record-"></span>
+					</c:forEach>
+
+
 				</c:forEach>
 			</div>
-			
+
 			<ul class="prdList grid4">
 				<c:forEach var="dto" items="${list}">
-	               <li id="anchorBoxId_2065" class="xans-record-">
-                  <div class="thumbnail">
-                     <a
-                        href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
-                        name="anchorBoxName_2065"><img src="${pageContext.request.contextPath}/images/${dto.image}"
-                        id="eListPrdImage2065_4"
-                        alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
-                  </div>
-                  <div class="description">
-                     <strong class="name"><a
-                        href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
-                        class=""><span class="title displaynone"></span> <span
-                           style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
+					<li id="anchorBoxId_2065" class="xans-record-">
+						<div class="thumbnail">
+							<a
+								href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
+								name="anchorBoxName_2065"><img
+								src="${pageContext.request.contextPath}/images/${dto.image}"
+								id="eListPrdImage2065_4"
+								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
+						</div>
+						<div class="description">
+							<strong class="name"><a
+								href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
+								class=""><span class="title displaynone"></span> <span
+									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
 
-                     <div class="colorchip ">
-                        <div
-                           class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
-       
-                        </div>
-                     </div>
-                     <ul
-                        class="xans-element- xans-product xans-product-listitem-3 xans-product-listitem xans-product-3 spec">
-                        <c:if test="${not empty dto.price}">
-                        <li class=" xans-record-"><strong class="title displaynone"><span
-                              style="font-size: 12px; color: #999999;">소비자가</span> :</strong> <span
-                           style="font-size: 12px; color: #999999; text-decoration: line-through;">${dto.price}</span></li>
-                        </c:if>
-                        <li class=" xans-record-"><strong class="title displaynone"><span
-                              style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
-                              :</strong> <span
-                           style="font-size: 12px; color: #555555; font-weight: bold;">${dto.salePrice}</span><span
-                           id="span_product_tax_type_text" style=""> </span></li>
+							<div class="colorchip ">
+								<div
+									class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
 
-                     </ul>
-                  </div>
-               </li>
-            
-										
+								</div>
+							</div>
+							<ul
+								class="xans-element- xans-product xans-product-listitem-3 xans-product-listitem xans-product-3 spec">
+								<c:if test="${not empty dto.price}">
+									<li class=" xans-record-"><strong
+										class="title displaynone"><span
+											style="font-size: 12px; color: #999999;">소비자가</span> :</strong> <span
+										style="font-size: 12px; color: #999999; text-decoration: line-through;">${dto.price}</span></li>
+								</c:if>
+								<li class=" xans-record-"><strong class="title displaynone"><span
+										style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
+										:</strong> <span
+									style="font-size: 12px; color: #555555; font-weight: bold;">${dto.salePrice}</span><span
+									id="span_product_tax_type_text" style=""> </span></li>
+								
+								<li class=" xans-record-"><strong class="title displaynone"><span
+										style="font-size: 12px; color: #555555;">${dto.description}</span> :</strong> <span
+									style="font-size: 12px; color: #555555;"></span></li>
+							</ul>
+						</div>
+					</li>
+
+
 				</c:forEach>
 			</ul>
 		</div>
 
 		<script>
-					$('.ec-base-product .prdList > li').each(
+			$('.ec-base-product .prdList > li')
+					.each(
 							function() {
 								var sub = $(this).find('.description .name a')
 										.text().length;
@@ -133,7 +141,7 @@
 											jbExcerpt + '...');
 								}
 							});
-				</script>
+		</script>
 </body>
 </html>
 
