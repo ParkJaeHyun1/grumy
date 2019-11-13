@@ -56,7 +56,7 @@
 							공고<span></span>
 					</a></li>
 					<li class="xans-record-"><a
-						href="${pageContext.request.contextPath}/review/create">REVIEW<span></span></a></li>
+						href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
 				</ul>
 			</div>
 

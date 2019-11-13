@@ -13,9 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ReviewController {
 	
 	@RequestMapping("/review/create")
-	public String home(Locale locale, Model model) {
+	public String create(Locale locale, Model model) {
 	
 		
 		return "/review/create";
+	}
+	@RequestMapping("/review/list")
+	public String list(Locale locale, Model model) {
+	
+		
+		return "/review/list";
 	}
 }
