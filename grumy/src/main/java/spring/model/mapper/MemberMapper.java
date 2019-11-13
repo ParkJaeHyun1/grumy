@@ -1,6 +1,6 @@
 package spring.model.mapper;
 
-import spring.model.item.MemberDTO;
+import spring.model.member.MemberDTO;
 
 public interface MemberMapper {
 	int create(MemberDTO dto);

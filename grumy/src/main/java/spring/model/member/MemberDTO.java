@@ -1,4 +1,4 @@
-package spring.model.item;
+package spring.model.member;
 
 public class MemberDTO {
 	private String ID;

@@ -30,7 +30,7 @@
 			<div class="xans-element- xans-layout xans-layout-statelogoff ">
 				<a href="${pageContext.request.contextPath}/admin/main">관리자</a>
 				<a href="/member/login.html" class="log">LOGIN</a> <a
-					href="/member/join.html">JOIN</a> <a href="/myshop/order/list.html">ORDER</a>
+					href="/member/join">JOIN</a> <a href="/myshop/order/list.html">ORDER</a>
 				<a href="/order/cart">MY PAGE</a> <a class=" cart" href="/order/basket.html">CART</a>
 			</div>
 

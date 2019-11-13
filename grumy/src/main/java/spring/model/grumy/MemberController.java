@@ -13,10 +13,10 @@ public class MemberController {
 	@Autowired
 	private MemberMapper dao;
 	
-	@PostMapping("/member/create")
+	@PostMapping("/member/join")
 	public String create() {
 		
-		return "/create";
+		return "/join";
 	}
 	
 
