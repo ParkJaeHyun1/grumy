@@ -25,7 +25,6 @@
 				<value>/WEB-INF/spring/grumy.xml</value>
 				<value>/WEB-INF/spring/item.xml</value>
 				<value>/WEB-INF/spring/review.xml</value>
-				<value>/WEB-INF/spring/order.xml</value>
 				<value>/WEB-INF/spring/cart.xml</value>
 			</list>
 		</property>
