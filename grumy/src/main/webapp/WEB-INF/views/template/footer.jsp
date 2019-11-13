@@ -39,7 +39,7 @@
 						<ul
 							class="xans-element- xans-layout xans-layout-boardinfo fTop_box">
 							<h3>COMMUNITY</h3>
-							<li class="xans-record-"><a href="/board/notice/1/">NOTICE<span></span></a></li>
+							<li class="xans-record-"><a href="/notice/list">NOTICE<span></span></a></li>
 							<li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
 							<li class="xans-record-"><a href="/board/배송-문의/3001/">배송
 									문의<span></span>
