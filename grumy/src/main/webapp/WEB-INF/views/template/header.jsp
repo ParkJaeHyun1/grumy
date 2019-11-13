@@ -99,6 +99,7 @@
 						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom">BOTTOM</a></li>
 						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag">SHOES/BAG</a></li>
 						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc">ACC</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/admin/main">관리자</a></li>
 
 					</ul>
 				</div>
