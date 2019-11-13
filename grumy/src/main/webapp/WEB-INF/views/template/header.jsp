@@ -39,7 +39,7 @@
 			<div class="xans-element- xans-layout xans-layout-boardinfo">
 				<a style="cursor: pointer;">COMMUNITY</a>
 				<ul class="gnb_sub">
-					<li class="xans-record-"><a href="/board/notice/1/">NOTICE<span></span></a></li>
+					<li class="xans-record-"><a href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
 					<li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
 					<li class="xans-record-"><a href="/board/배송-문의/3001/">배송
 							문의<span></span>
