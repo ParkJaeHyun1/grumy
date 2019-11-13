@@ -1,16 +1,24 @@
 package spring.model.grumy;
 
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import spring.model.mapper.AdminMapper;
 
 @Controller
 public class AdminController {
-	@RequestMapping("/admin/main")
-	public String home() {
 	
+	@Autowired
+	private AdminMapper mapper;
+	
+	@RequestMapping("/admin/main")
+	public String home(HttpServletRequest request) {
+		
+		int wait = mapper.count(200);
+		request.setAttribute("stat", wait);
 		
 		return "/admin/main";
 	}
