@@ -8,14 +8,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="naver-site-verification"
 	content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
-<!--PG크로스브라우징필수내용 시작-->
 <meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
-<!--PG크로스브라우징필수내용 끝-->
-<!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
-<!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
-<!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+
 
 </head>
 <body id="main">
@@ -82,7 +78,7 @@
 					<li id="anchorBoxId_2065" class="xans-record-">
 						<div class="thumbnail">
 							<a
-								href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
+								href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
 								name="anchorBoxName_2065"><img
 								src="${pageContext.request.contextPath}/images/${dto.image}"
 								id="eListPrdImage2065_4"
@@ -90,7 +86,7 @@
 						</div>
 						<div class="description">
 							<strong class="name"><a
-								href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/category/1/display/4/"
+							href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
 
@@ -115,8 +111,8 @@
 									id="span_product_tax_type_text" style=""> </span></li>
 								
 								<li class=" xans-record-"><strong class="title displaynone"><span
-										style="font-size: 12px; color: #555555;">${dto.description}</span> :</strong> <span
-									style="font-size: 12px; color: #555555;"></span></li>
+										style="font-size: 12px; color: #555555;"></span> :</strong> <span
+									style="font-size: 12px; color: #555555;">${dto.description}</span></li>
 							</ul>
 						</div>
 					</li>
@@ -124,6 +120,7 @@
 
 				</c:forEach>
 			</ul>
+		</div>
 		</div>
 
 		<script>
