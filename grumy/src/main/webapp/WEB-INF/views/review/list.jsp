@@ -32,9 +32,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>전체 리뷰</title>
-<!--[if lt IE 9]>
-      <script src="//assets5.cre.ma/m/widgets/javascripts/html5shiv-printshiv.js"></script>
-    <![endif]-->
 <link rel="stylesheet" media="all"
 	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
 <style type="text/css">
@@ -118,6 +115,7 @@ span.star, span.camera, .sprite_comment {
 					</div>
 				</div>
 
+<!--경은 카테고리별 검색 -->
 				<div class="top_menu">
 					<ul class="top_menu__ul top_menu__ul--rpane">
 						<li class="top_menu__li top_menu__li--sort_container">
@@ -268,6 +266,8 @@ span.star, span.camera, .sprite_comment {
 									2017-09-19<br>
 								</div>
 						</a>
+						
+<!--경은 리뷰 공지글 -->
 							<div
 								class="review_notice__container_item_content
                    
@@ -469,281 +469,9 @@ span.star, span.camera, .sprite_comment {
 						</a>
 					</div>
 				</div>
-
-
-
-
-				<div class="reviews_index__review_options_search">
-
-					<div class="review_options_search js-review-options-search">
-
-						<ul class="review_options_search__option_types">
-
-							<li class="review_options_search__option_type"><a
-								class="review_options_search__option_type_link js-link-review-option-type">
-									<div class="review_options_search__option_type_name" title="키">키</div>
-									<div class="review_options_search__option_type_dropdown_button">
-										<i
-											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
-									</div>
-							</a>
-								<div
-									class="review_options_search__dropdown_menu js-dialog-iframe-height">
-
-									<ul class="review_options_search__values">
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="-140"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_0"> <label
-											for="review_option_type_1_0">139 cm 이하</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="140-145"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_1"> <label
-											for="review_option_type_1_1">140 - 144 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="145-150"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_2"> <label
-											for="review_option_type_1_2">145 - 149 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="150-155"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_3"> <label
-											for="review_option_type_1_3">150 - 154 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="155-160"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_4"> <label
-											for="review_option_type_1_4">155 - 159 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="160-165"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_5"> <label
-											for="review_option_type_1_5">160 - 164 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="165-170"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_6"> <label
-											for="review_option_type_1_6">165 - 169 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="170-175"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_7"> <label
-											for="review_option_type_1_7">170 - 174 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="175-180"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_8"> <label
-											for="review_option_type_1_8">175 - 179 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="180-185"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_9"> <label
-											for="review_option_type_1_9">180 - 184 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="185-190"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_10"> <label
-											for="review_option_type_1_10">185 - 189 cm</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_1" value="190"
-											class="checkbox-review-option-search"
-											id="review_option_type_1_11"> <label
-											for="review_option_type_1_11">190 cm 이상</label></li>
-
-									</ul>
-
-								</div></li>
-
-							<li class="review_options_search__option_type"><a
-								class="review_options_search__option_type_link js-link-review-option-type">
-									<div class="review_options_search__option_type_name"
-										title="몸무게">몸무게</div>
-									<div class="review_options_search__option_type_dropdown_button">
-										<i
-											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
-									</div>
-							</a>
-								<div
-									class="review_options_search__dropdown_menu js-dialog-iframe-height">
-
-									<ul class="review_options_search__values">
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="~44"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_0"> <label
-											for="review_option_type_2_0">~44</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="45~47"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_1"> <label
-											for="review_option_type_2_1">45~47</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="48~50"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_2"> <label
-											for="review_option_type_2_2">48~50</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="51~53"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_3"> <label
-											for="review_option_type_2_3">51~53</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="54~56"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_4"> <label
-											for="review_option_type_2_4">54~56</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="57~59"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_5"> <label
-											for="review_option_type_2_5">57~59</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="60~62"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_6"> <label
-											for="review_option_type_2_6">60~62</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="63~65"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_7"> <label
-											for="review_option_type_2_7">63~65</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="66~68"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_8"> <label
-											for="review_option_type_2_8">66~68</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="69~71"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_9"> <label
-											for="review_option_type_2_9">69~71</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="72~74"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_10"> <label
-											for="review_option_type_2_10">72~74</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="75~77"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_11"> <label
-											for="review_option_type_2_11">75~77</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="78~80"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_12"> <label
-											for="review_option_type_2_12">78~80</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="81~83"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_13"> <label
-											for="review_option_type_2_13">81~83</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="84~86"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_14"> <label
-											for="review_option_type_2_14">84~86</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="87~89"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_15"> <label
-											for="review_option_type_2_15">87~89</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_2" value="90~"
-											class="checkbox-review-option-search"
-											id="review_option_type_2_16"> <label
-											for="review_option_type_2_16">90~</label></li>
-
-									</ul>
-
-								</div></li>
-
-							<li class="review_options_search__option_type"><a
-								class="review_options_search__option_type_link js-link-review-option-type">
-									<div class="review_options_search__option_type_name"
-										title="평소사이즈">평소사이즈</div>
-									<div class="review_options_search__option_type_dropdown_button">
-										<i
-											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
-									</div>
-							</a>
-								<div
-									class="review_options_search__dropdown_menu js-dialog-iframe-height">
-
-									<ul class="review_options_search__values">
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_3" value="XS"
-											class="checkbox-review-option-search"
-											id="review_option_type_3_0"> <label
-											for="review_option_type_3_0">XS</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_3" value="S"
-											class="checkbox-review-option-search"
-											id="review_option_type_3_1"> <label
-											for="review_option_type_3_1">S</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_3" value="M"
-											class="checkbox-review-option-search"
-											id="review_option_type_3_2"> <label
-											for="review_option_type_3_2">M</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_3" value="L"
-											class="checkbox-review-option-search"
-											id="review_option_type_3_3"> <label
-											for="review_option_type_3_3">L</label></li>
-
-										<li class="review_options_search__value"><input
-											type="checkbox" name="option_3" value="XL"
-											class="checkbox-review-option-search"
-											id="review_option_type_3_4"> <label
-											for="review_option_type_3_4">XL</label></li>
-
-									</ul>
-
-								</div></li>
-
-						</ul>
-					</div>
-
-
-				</div>
-
-
-			</div>
+	</div>
+			
+			
 			<div id="google-translate-button" class="hidden"></div>
 			<div class="reviews_index__body">
 				<div class="page">
