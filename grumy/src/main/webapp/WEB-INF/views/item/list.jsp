@@ -25,31 +25,6 @@
 	</div>
 <div id="wrap">
     <!-- 상단카테고리 -->
-    
-
-
-
-
-		<script>
-			// 메인메뉴에 마우스오버시 하위메뉴 나타남
-			$(".gnb > li").mouseenter(function() {
-				//$(this).find(".gnb_sub").stop().slideDown(200);
-				$(this).find(".gnb_sub").stop().css('display', 'block');
-			});
-			$(".gnb > li").mouseleave(function() {
-				$(this).find(".gnb_sub").css("display", "none");
-			});
-
-			// 메인메뉴에 마우스오버시 하위메뉴 나타남 *커뮤니티 이동 양지수정*
-			$(".myList > .xans-layout-boardinfo").mouseenter(function() {
-				//$(this).find(".gnb_sub").stop().slideDown(200);
-				$(this).find(".gnb_sub").stop().css('display', 'block');
-			});
-			$(".myList > .xans-layout-boardinfo").mouseleave(function() {
-				$(this).find(".gnb_sub").css("display", "none");
-			});
-		</script>
-		<!-- //상단카테고리 -->
 
 
 		<!-- 카테고리 별 상품 list -->

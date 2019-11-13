@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="container">
 	<div id="contents">
@@ -8,11 +8,12 @@
 			class="xans-element- xans-board xans-board-listpackage-1002 xans-board-listpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title" style=text-align:center;>
+				<div class="title" style="text-align: center;">
 					<h2>
 						<font color="#555555">NOTICE</font>
 					</h2>
-					<br><br>
+					<br>
+					<br>
 					<!--h3>공지사항입니다.</h3-->
 				</div>
 				<p class="imgArea"></p>
@@ -55,65 +56,66 @@
                     $login_page_url = /member/login.html
                     $deny_access_url = /index.html
                 -->
-                <c:set var="dto" ></c:set>
-                	<c:choose>
-                		<c:when test="${empty list }">
-                			<tr>
-                				<td></td>
-                				<td>등록된 글이 없습니다.</td>
-                				<td></td>
-                				<td></td>
-                				
-                				
-                		</c:when>
-                		<c:otherwise>
-                			<c:forEach var="dto" items="${list}">
-                				<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-								<td>${dto.no}</td>
-								<td class="displaynone"></td>
-								<td class="subject left txtBreak"><strong> <a
-									href="javascript:read(${dto.no })" style="color: #555555;">
-										${dto.subject }</a> <span class="txtEm"></span></strong></td>
-								<td>${dto.writer }</td>
-								<td class=""><span class="txtNum">${dto.wdate }</span></td>
-							</tr>
-                			</c:forEach>
-                		</c:otherwise>
-                	</c:choose>
-                	
-						
-						
+						<c:set var="dto"></c:set>
+						<c:choose>
+							<c:when test="${empty list }">
+								<tr>
+									<td></td>
+									<td>등록된 글이 없습니다.</td>
+									<td></td>
+									<td></td>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="dto" items="${list}">
+									<tr style="background-color: #FFFFFF; color: #555555;"
+										class="xans-record-">
+										<td>${dto.no}</td>
+										<td class="displaynone"></td>
+										<td class="subject left txtBreak"><strong> <a
+												href="javascript:read(${dto.no })" style="color: #555555;">
+													${dto.subject }</a> <span class="txtEm"></span></strong></td>
+										<td>${dto.writer }</td>
+										<td class=""><span class="txtNum">${dto.wdate }</span></td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+
+
+
 					</tbody>
 				</table>
 				<p
 					class="xans-element- xans-board xans-board-empty-1002 xans-board-empty xans-board-1002 message displaynone "></p>
 			</div>
-			<form action="/notice/list">
+			<form action="${pageContext.request.contextPath}/notice/list">
 				<div
 					class="xans-element- xans-board xans-board-search-1002 xans-board-search xans-board-1002 ">
 					<fieldset class="boardSearch">
 						<p>
-							<select id="col" name="col" fw-filter=""
-								fw-label="" fw-msg="">
+							<select id="col" name="col" fw-filter="" fw-label="" fw-msg="">
 								<option value="subject"
 									<c:if test="${col == 'subject' }">selected</c:if>>제목</option>
 								<option value="content"
 									<c:if test="${col == 'content' }">selected</c:if>>내용</option>
 								<option value="writer"
 									<c:if test="${col == 'writer' }">selected</c:if>>글쓴이</option>
-							</select>
-							 <input id="word" name="word" type="text">
-							 <button class="yg_btn_28 yg_btn3">SEARCH</button>
+							</select> <input id="word" name="word" type="text">
+							<button class="yg_btn_28 yg_btn3">SEARCH</button>
 						</p>
 					</fieldset>
 				</div>
 			</form>
+
+			<div
+				class="xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate">
+				${paging}
 			
-			${paging}
+			</div>
+
 
 		</div>
-			
+
 
 	</div>
 	<hr class="layout">
