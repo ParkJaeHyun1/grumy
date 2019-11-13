@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container">
 	<div id="contents">
 
@@ -14,709 +16,972 @@
 앞으로 더 만족하실수 있는 상품으로 찾아뵐게요 ♡</h3-->
 				</div>
 				<p class="imgArea">
-					<img src="/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg">
+					<img
+						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg">
 				</p>
 			</div>
-			<!-- cre.ma / PC 리뷰 목록 & 초기화 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
-			<script>
-				(function(i, s, o, g, r, a, m, board_no) {
-					if (s.getElementById(g)) {
-						return
-					}
-					;
-					m = location.href.match(/board[\/][^\/]*[\/](\d+)[\/]/),
-							board_no = m ? decodeURIComponent(m[1].replace(
-									/\+/g, " ")) : '';
-					if (board_no == "4") {
-						document
-								.write("<div class='crema-products' data-widget-id='24'></div>");
-						document.write("<div class='crema-reviews'></div>");
-						a = s.createElement(o),
-								m = s.getElementsByTagName(o)[0];
-						a.id = g;
-						a.async = 1;
-						a.src = r;
-						m.parentNode.insertBefore(a, m);
-					}
-					m = new RegExp("[\?&]board_no=([^&#]*)")
-							.exec(location.search),
-							board_no = m ? decodeURIComponent(m[1].replace(
-									/\+/g, " ")) : '';
-					if (board_no == "4") {
-						document
-								.write("<div class='crema-products' data-widget-id='24'></div>");
-						document.write("<div class='crema-reviews'></div>");
-						a = s.createElement(o),
-								m = s.getElementsByTagName(o)[0];
-						a.id = g;
-						a.async = 1;
-						a.src = r;
-						m.parentNode.insertBefore(a, m);
-					}
-				})(window, document, 'script', 'crema-jssdk',
-						'//widgets.cre.ma/slowand.com/init.js');
-			</script>
-			<div class="crema-products crema-applied" data-widget-id="24">
-				<iframe id="crema-products-1" height="100%"
-					src="https://review5.cre.ma/slowand.com/products?iframe_id=crema-products-1&amp;widget_id=24&amp;app=0&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;iframe=1"
-					width="100%" scrolling="no" allowtransparency="true"
-					frameborder="0" name="crema-products-1-1573627260044"
-					style="visibility: visible; height: 715px;"></iframe>
-			</div>
 			<div class="crema-reviews crema-applied">
-				<iframe id="crema-reviews-1" height="100%"
-					src="https://review5.cre.ma/slowand.com/reviews?iframe_id=crema-reviews-1&amp;app=0&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;iframe=1"
-					width="100%" scrolling="no" allowtransparency="true"
-					frameborder="0" name="crema-reviews-1-1573627260036"
-					style="visibility: visible; height: 3215px;"></iframe>
-			</div>
-			<div class="boardSort crema-hide crema-applied"
-				style="display: none;">
-				<span
-					class="xans-element- xans-board xans-board-replysort-4 xans-board-replysort xans-board-4 "></span>
-			</div>
-			<div class="ec-base-table typeList gBorder crema-hide crema-applied"
-				style="display: none;">
-				<table border="1" summary="">
-					<caption>상품 게시판 목록</caption>
-					<colgroup
-						class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
-						<col style="width: 70px;">
-						<col style="width: 85px;">
-						<col style="width: 130px;" class="displaynone">
-						<col style="width: auto;">
-						<col style="width: 134px;">
-						<col style="width: 84px;" class="displaynone">
-						<col style="width: 60px;" class="displaynone">
-						<col style="width: 77px;" class="displaynone">
-						<col style="width: 80px;" class="">
-					</colgroup>
-					<thead
-						class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
-						<tr style="">
-							<th scope="col">NO</th>
-							<th scope="col">PRODUCT</th>
-							<th scope="col" class="displaynone">CATEGORY</th>
-							<th scope="col">SUBJECT</th>
-							<th scope="col">WRITER</th>
-							<th scope="col" class="displaynone">DATE</th>
-							<th scope="col" class="displaynone">VIEWED</th>
-							<th scope="col" class="displaynone">RECOMMEND</th>
-							<th scope="col" class="">POINT</th>
-						</tr>
-					</thead>
-					<tbody
-						class="xans-element- xans-board xans-board-notice-4 xans-board-notice xans-board-4 center">
-						<!--
-                $count = 
-                $product_name_cut = 20
-                $login_page_url = /member/login.html
-                $deny_access_url = /index.html
-            -->
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td></td>
-							<td class="thumb left"><a href="/product/$1/$2/"></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('12704','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name"></span> <strong> <a
-									href="/article/review/4/12704/" style="color: #555555;">[필독]
-										리뷰글 작성전에 꼭! 한번 읽어주세요 *.* </a> <img
-									src="/web/upload/icon_201611292036259700.gif" alt="HIT"
-									class="ec-common-rwd-image"><span class="txtEm"></span></strong></td>
-							<td>슬로우앤드</td>
-							<td class="displaynone"><span class="txtNum">2016-10-23</span></td>
-							<td class="displaynone"><span class="txtNum">3223</span></td>
-							<td class="displaynone"><span class="txtNum">5</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-					</tbody>
-					<tbody
-						class="xans-element- xans-board xans-board-list-4 xans-board-list xans-board-4 center">
-						<!--
-                $product_name_cut = 20
-                $login_page_url = /member/login.html
-                $deny_access_url = /index.html
-            -->
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12935</td>
-							<td class="thumb left"><a
-								href="/product/7천장돌파-slowmade-옥스포드-케이블니트-5-color/3383/"><img
-									src="//www.slowand.com/web/product/tiny/201908/e90d747b37ada249713c15f647c67c8f.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('777738','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[7천장돌파] #SLOWMADE. 옥스포드 케이블니트 - 5
-									color</span> <a href="/article/review/4/777738/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><span class="txtEm"></span></td>
-							<td>김송이</td>
-							<td class="displaynone"><span class="txtNum">2019-11-13</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12934</td>
-							<td class="thumb left"><a
-								href="/product/sale당일발송-slowmade-버밍엄-체크셔츠-mans-2-size/3430/"><img
-									src="//www.slowand.com/web/product/tiny/201908/9404e0c48375a3d4e7434c330dba16e2.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('777190','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[sale/당일발송] #SLOWMADE. 버밍엄 체크셔츠
-									(+MAN's) - 2 size</span> <a href="/article/review/4/777190/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_777190','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_777190','0','4');"><span
-								id="afile_777190" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>최은영</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">3</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12933</td>
-							<td class="thumb left"><a
-								href="/product/slowmade-먼데이-매트카키-데님팬츠-4-size/3591/"><img
-									src="//www.slowand.com/web/product/tiny/201911/a8877e7d352412a41f7a4cc8881b5e0f.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('776337','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">#SLOWMADE. 먼데이 매트카키 데님팬츠- 4 size</span> <a
-								href="/article/review/4/776337/" style="color: #555555;">상품
-									REVIEW ♡</a> <img src="/web/upload/icon_201611292036284200.gif"
-								alt="NEW" class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_776337','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_776337','0','4');"><span
-								id="afile_776337" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이지원</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">8</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12932</td>
-							<td class="thumb left"><a
-								href="/product/slowmade-먼데이-매트카키-데님팬츠-4-size/3591/"><img
-									src="//www.slowand.com/web/product/tiny/201911/a8877e7d352412a41f7a4cc8881b5e0f.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('776328','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">#SLOWMADE. 먼데이 매트카키 데님팬츠- 4 size</span> <a
-								href="/article/review/4/776328/" style="color: #555555;">상품
-									REVIEW ♡</a> <img src="/web/upload/icon_201611292036284200.gif"
-								alt="NEW" class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_776328','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_776328','0','4');"><span
-								id="afile_776328" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이지원</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">3</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12931</td>
-							<td class="thumb left"><a
-								href="/product/slowmade-먼데이-매트카키-데님팬츠-4-size/3591/"><img
-									src="//www.slowand.com/web/product/tiny/201911/a8877e7d352412a41f7a4cc8881b5e0f.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('776326','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">#SLOWMADE. 먼데이 매트카키 데님팬츠- 4 size</span> <a
-								href="/article/review/4/776326/" style="color: #555555;">상품
-									REVIEW ♡</a> <img src="/web/upload/icon_201611292036284200.gif"
-								alt="NEW" class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_776326','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_776326','0','4');"><span
-								id="afile_776326" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이지원</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">5</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12930</td>
-							<td class="thumb left"><a
-								href="/product/1천장돌파카키주문폭주-slowmade-코듀로이-야상점퍼-플리스내피-3-color/3564/"><img
-									src="//www.slowand.com/web/product/tiny/201911/8e79f3583f9d636c33c2c67449c817d6.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('775551','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[1천장돌파/'카키'주문폭주] #SLOWMADE. 코듀로이
-									야상점퍼 (플리스내피) - 3 color</span> <a href="/article/review/4/775551/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_775551','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_775551','0','4');"><span
-								id="afile_775551" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>예은</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">13</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point4.gif" alt="4점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12929</td>
-							<td class="thumb left"><a
-								href="/product/1천장돌파카키주문폭주-slowmade-코듀로이-야상점퍼-플리스내피-3-color/3564/"><img
-									src="//www.slowand.com/web/product/tiny/201911/8e79f3583f9d636c33c2c67449c817d6.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('775486','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[1천장돌파/'카키'주문폭주] #SLOWMADE. 코듀로이
-									야상점퍼 (플리스내피) - 3 color</span> <a href="/article/review/4/775486/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_775486','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_775486','0','4');"><span
-								id="afile_775486" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이여진</td>
-							<td class="displaynone"><span class="txtNum">2019-11-12</span></td>
-							<td class="displaynone"><span class="txtNum">4</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12928</td>
-							<td class="thumb left"><a
-								href="/product/slowmade-홀가먼트-터틀넥니트-wool-80-5-color/3582/"><img
-									src="//www.slowand.com/web/product/tiny/201911/5d615328187781f4620ca4d1ae8917e4.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('775170','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">#SLOWMADE. 홀가먼트 터틀넥니트 (wool 80%) -
-									5 color</span> <a href="/article/review/4/775170/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><span class="txtEm"></span></td>
-							<td>최수민</td>
-							<td class="displaynone"><span class="txtNum">2019-11-11</span></td>
-							<td class="displaynone"><span class="txtNum">9</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12927</td>
-							<td class="thumb left"><a
-								href="/product/2천장-돌파-lento-렌토-양기모후디-5-color/3578/"><img
-									src="//www.slowand.com/web/product/tiny/201911/c9314e6a147412a9ecb6d727d1aaa9f8.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('775008','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[2천장 돌파] #LENTO. 렌토 양기모후디 - 5
-									color</span> <a href="/article/review/4/775008/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036284200.gif" alt="NEW"
-								class="ec-common-rwd-image"><img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_775008','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_775008','0','4');"><span
-								id="afile_775008" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이달님</td>
-							<td class="displaynone"><span class="txtNum">2019-11-11</span></td>
-							<td class="displaynone"><span class="txtNum">10</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12926</td>
-							<td class="thumb left"><a
-								href="/product/1천장돌파slowmade-탄탄핏-윈터기모셔츠-8-color/3595/"><img
-									src="//www.slowand.com/web/product/tiny/201911/ff8ca55efc89eb68e9d2f347694703b7.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772646','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[1천장돌파]#SLOWMADE. 탄탄핏 윈터기모셔츠 - 8
-									color</span> <a href="/article/review/4/772646/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_772646','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_772646','0','4');"><span
-								id="afile_772646" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>김혜림</td>
-							<td class="displaynone"><span class="txtNum">2019-11-10</span></td>
-							<td class="displaynone"><span class="txtNum">40</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12925</td>
-							<td class="thumb left"><a
-								href="/product/1만장돌파-slowmade-여리핏-터틀넥티셔츠-7-color/2065/"><img
-									src="//www.slowand.com/web/product/tiny/201910/1d986bf28fd12e68b343244f1147588d.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772613','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7
-									color</span> <a href="/article/review/4/772613/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_772613','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_772613','0','4');"><span
-								id="afile_772613" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이자윤</td>
-							<td class="displaynone"><span class="txtNum">2019-11-10</span></td>
-							<td class="displaynone"><span class="txtNum">16</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12924</td>
-							<td class="thumb left"><a
-								href="/product/slowmade-커버-핀턱-기모슬랙스-2-color/3571/"><img
-									src="//www.slowand.com/web/product/tiny/201910/5925942350f3c019f551da929492fd39.gif"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772612','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">#SLOWMADE. 커버 핀턱 기모슬랙스 - 2 color</span> <a
-								href="/article/review/4/772612/" style="color: #555555;">상품
-									REVIEW ♡</a> <img src="/web/upload/icon_201611292036350400.png"
-								alt="파일첨부" class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_772612','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_772612','0','4');"><span
-								id="afile_772612" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>이자윤</td>
-							<td class="displaynone"><span class="txtNum">2019-11-10</span></td>
-							<td class="displaynone"><span class="txtNum">9</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12923</td>
-							<td class="thumb left"><a
-								href="/product/sale-slowmade-포멀-스트라이프셔츠-2-color/1888/"><img
-									src="//www.slowand.com/web/product/tiny/201903/4b8a5cb76cb40067a439799e38cea48e.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772508','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[sale] #SLOWMADE. 포멀 스트라이프셔츠 - 2
-									color</span> <a href="/article/review/4/772508/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_772508','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_772508','0','4');"><span
-								id="afile_772508" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>서주희</td>
-							<td class="displaynone"><span class="txtNum">2019-11-10</span></td>
-							<td class="displaynone"><span class="txtNum">4</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point3.gif" alt="3점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12922</td>
-							<td class="thumb left"><a
-								href="/product/sale-슬앤연말룩-끌로에-blouse-2-color/1135/"><img
-									src="//www.slowand.com/web/product/tiny/201812/62f958dfb6167e12b6fb18d9136726a2.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772507','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[sale] #슬앤연말룩. 끌로에 blouse - 2
-									color</span> <a href="/article/review/4/772507/"
-								style="color: #555555;">상품 REVIEW ♡</a> <img
-								src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
-								class="ec-common-rwd-image"
-								onmouseover="BOARD.load_attached_image('afile_772507','1','4');"
-								onmouseout="BOARD.load_attached_image('afile_772507','0','4');"><span
-								id="afile_772507" style="display: none;"></span><span
-								class="txtEm"></span></td>
-							<td>서주희</td>
-							<td class="displaynone"><span class="txtNum">2019-11-10</span></td>
-							<td class="displaynone"><span class="txtNum">4</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point3.gif" alt="3점"></td>
-						</tr>
-						<tr style="background-color: #FFFFFF; color: #555555;"
-							class="xans-record-">
-							<td>12921</td>
-							<td class="thumb left"><a
-								href="/product/2천장-돌파-slowmade-윈터-바버패딩-2-color2-size/2382/"><img
-									src="//www.slowand.com/web/product/tiny/201812/fb2d364f86790a3ab6540be52574bd46.jpg"
-									border="0" alt=""></a></td>
-							<td class="displaynone"></td>
-							<td class="subject left txtBreak"><span class="displaynone">
-									<a href="#none" onclick="BOARD.viewTarget('772439','4',this);"><img
-										src="//img.echosting.cafe24.com/skin/base/board/btn_unfold.gif"
-										alt="내용 보기"></a>
-							</span> <span class="prd_name">[2천장 돌파] #SLOWMADE. 윈터 바버패딩 - (2
-									color/2 size)</span> <a href="/article/review/4/772439/"
-								style="color: #555555;">상품 REVIEW ♡</a> <span class="txtEm"></span>
-							</td>
-							<td>김현지</td>
-							<td class="displaynone"><span class="txtNum">2019-11-09</span></td>
-							<td class="displaynone"><span class="txtNum">10</span></td>
-							<td class="displaynone"><span class="txtNum">0</span></td>
-							<td class=""><img
-								src="/web/upload/yangji_pc_crumb/ico_point5.gif" alt="5점"></td>
-						</tr>
-					</tbody>
-				</table>
-				<p
-					class="xans-element- xans-board xans-board-empty-4 xans-board-empty xans-board-4 message displaynone "></p>
-			</div>
-			<form id="boardSearchForm" name="" action="/board/review/4"
-				method="get" target="_top" enctype="multipart/form-data">
-				<input id="board_no" name="board_no" value="4" type="hidden">
-				<input id="page" name="page" value="1" type="hidden"> <input
-					id="board_sort" name="board_sort" value="" type="hidden">
-				<div
-					class="xans-element- xans-board xans-board-search-4 xans-board-search xans-board-4 crema-hide  crema-applied"
-					style="display: none;">
-					<fieldset class="boardSearch">
-						<legend>게시물 검색</legend>
-						<p class="category ">
-							<select id="product_category_depth1"
-								name="product_category_depth1" fw-filter="" fw-label=""
-								fw-msg="">
-								<option value="" selected="selected">대분류</option>
-								<option value="66">BEST 50</option>
-								<option value="82">#SLOWMADE</option>
-								<option value="122">겨울시작❄</option>
-								<option value="24">OUTER</option>
-								<option value="25">TOP</option>
-								<option value="27">DRESS</option>
-								<option value="70">SKIRT</option>
-								<option value="26">BOTTOM</option>
-								<option value="28">SHOES/BAG</option>
-								<option value="68">ACC</option>
-								<option value="112">soom pick *.*</option>
-								<option value="111">창고개방SALE</option>
-								<option value="108">기획특가모음</option>
-								<option value="86">monotone♥</option>
-							</select><select id="product_category_depth2"
-								name="product_category_depth2" fw-filter="" fw-label=""
-								fw-msg="">
-								<option value="" selected="selected">중분류</option>
-							</select><select id="product_category_depth3"
-								name="product_category_depth3" fw-filter="" fw-label=""
-								fw-msg="">
-								<option value="" selected="selected">소분류</option>
-							</select><select id="product_category_depth4"
-								name="product_category_depth4" fw-filter="" fw-label=""
-								fw-msg="">
-								<option value="" selected="selected">상세분류</option>
-							</select>
-						</p>
-						<p>
-							<select id="search_date" name="search_date" fw-filter=""
-								fw-label="" fw-msg="">
-								<option value="week">일주일</option>
-								<option value="month">한달</option>
-								<option value="month3">세달</option>
-								<option value="all">전체</option>
-							</select> <select id="search_key" name="search_key" fw-filter=""
-								fw-label="" fw-msg="">
-								<option value="subject">제목</option>
-								<option value="content">내용</option>
-								<option value="writer_name">글쓴이</option>
-								<option value="member_id">아이디</option>
-								<option value="nick_name">별명</option>
-								<option value="product">상품정보</option>
-							</select> <input id="search" name="search" fw-filter="" fw-label=""
-								fw-msg="" class="inputTypeText" placeholder="" value=""
-								type="text"> <a href="#none"
-								onclick="BOARD.form_submit('boardSearchForm');"
-								class="yg_btn_28 yg_btn3" alt="찾기">SEARCH</a>
-						</p>
-					</fieldset>
+				<html
+					class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths placeholder cssfilters svgfilters">
+<head>
+<style id="stndz-style"></style>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>전체 리뷰</title>
+<!--[if lt IE 9]>
+      <script src="//assets5.cre.ma/m/widgets/javascripts/html5shiv-printshiv.js"></script>
+    <![endif]-->
+<link rel="stylesheet" media="all"
+	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
+<style type="text/css">
+span.star, span.camera, .sprite_comment {
+	background-image:
+		url(https://assets5.cre.ma/p/slowand-com/brand_settings/00/00/00/00/01/sprite/1988520c3d2f19ba.png);
+}
+
+.mall-link-color {
+	color: #7a582f;
+}
+
+.review_comment_color {
+	color: #6db67e;
+}
+</style>
+<style type="text/css">
+.reviews_index_list_review__hide_message_container {
+	display: none;
+}
+</style>
+
+
+
+
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
+<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<script>
+	function fimg(id, w, h) {
+		var img = document.getElementById(id);
+		if (img && !img.complete) {
+			var width = img.width || img.offsetWidth;
+			img.style.height = Math.round(img.width / w * h) + "px";
+			img.onload = function() {
+				this.style.height = "";
+			}
+		}
+	}
+</script>
+</head>
+<body class="unknown unknown-78 windows_os reviews index widget_1 ko-KR"
+	lang="ko-KR" data-action="index" data-brand-code="slowand.com"
+	data-controller="reviews" data-enable-nonmember-evaluation="true"
+	data-facebook-app-id="339825122890117" data-facebook-sdk-version="v2.9"
+	data-gaq-account="UA-45818307-10" data-iframe-id="crema-reviews-1"
+	data-is-logged-in="true"
+	data-loader-url="//assets5.cre.ma/m/widgets/loader.gif"
+	data-login-alert="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"
+	data-mall-login-url="http://www.slowand.com/member/login.html"
+	data-no-popstate="false"
+	data-parent-url="https://www.slowand.com/board/review/4/"
+	data-rails-env="production" data-review-message-all-exposed="false"
+	data-shop-builder="cafe24" data-widget-id="1"
+	data-fixed-top-menu-height="0" data-device="pc">
+	<div class="watermark"></div>
+
+	<div id="i18n" style="display: none"
+		data-image-size-too-large="첨부한 이미지 파일이 너무 큽니다. 더 작은 이미지를 첨부해주세요."
+		data-close="닫기" data-error-403="접근 권한이 없습니다."
+		data-error-404="요청하신 페이지를 찾을 수 없습니다." data-error-422="요청이 거부되었습니다."
+		data-error-etc="요청을 처리하던 중 오류가 발생했습니다. 조속히 해결하겠습니다."
+		data-image-field-cant-add-photo-without-file-input="파일 선택창이 없어 사진을 추가할 수 없습니다."
+		data-image-field-cant-add-photo-without-file-reader="파일 미리 보기가 지원되는 브라우저가 아니어서 사진을 추가할 수 없습니다."
+		data-image-field-cant-add-photo-without-file="선택된 파일이 없어 사진을 추가할 수 없습니다."
+		data-image-field-cant-add-photo-with-file-type="선택된 파일이 이미지 형식이 아닙니다. (선택된 형식:%{file_type})"
+		data-image-field-cant-add-photo-with-file-name="이미지 형식의 파일만 첨부할 수 있습니다. (선택된 파일명:%{file_name})"
+		data-app-restrict-image-upload="파일 업로드를 하려면 모바일 기본브라우저에서 쇼핑몰 모바일웹(%{url})으로 접속해주세요."
+		data-review-already-posted="이미 리뷰를 작성한 상품입니다."
+		data-review-already-largest-image="현재 이미지가 원본 크기입니다."
+		data-require-update-app="원활한 사진첨부를 위해서 앱 업데이트가 필요합니다. 업데이트 하시겠습니까?"
+		data-input-prompt="값을 입력해주세요."></div>
+
+	<div id="content">
+		<div class="reviews_index reviews_index--list js-pagination-list ">
+			<div class="reviews_index__head">
+
+				<div class="reviews_index__title_bar">
+					<div class="reviews_index__title">
+						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
+					</div>
 				</div>
-			</form>
-			<div
-				class="xans-element- xans-board xans-board-buttonlist-4 xans-board-buttonlist xans-board-4  ec-base-button typeBG crema-hide  crema-applied"
-				style="display: none;">
-				<span class="gRight"> <a
-					href="/board/product/write.html?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4="
-					class="yg_btn_30 " alt="글쓰기">WRITE</a>
-				</span>
+
+				<div class="top_menu">
+					<ul class="top_menu__ul top_menu__ul--rpane">
+						<li class="top_menu__li top_menu__li--sort_container">
+							<div class="select2-container select2" id="s2id_sort">
+								<a href="javascript:void(0)" onclick="return false;"
+									class="select2-choice" tabindex="-1">
+									<div class="select2-chosen">최신순</div> <abbr
+									class="select2-search-choice-close"></abbr> <span
+									class="select2-arrow"><b></b></span><span
+									class="sprites-icon-drop-down select2__dropdown_icon"></span>
+								</a><input class="select2-focusser select2-offscreen" type="text"
+									id="s2id_autogen1">
+								<div class="select2-drop select2-display-none">
+									<div
+										class="select2-search select2-search-hidden select2-offscreen">
+										<input type="text" autocomplete="off" autocorrect="off"
+											autocapitalize="off" spellcheck="false" class="select2-input">
+									</div>
+									<ul class="select2-results">
+									</ul>
+								</div>
+							</div> <select name="sort" id="sort" class="select2 select2-offscreen"
+							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+							tabindex="-1">
+
+								<option value="10">추천순</option>
+
+								<option value="20" selected="selected">최신순</option>
+
+						</select>
+						</li>
+
+						<li class="top_menu__li top_menu__li--group_container "><a
+							class="top_menu__photo_reviews_link" data-remote="true"
+							href="/slowand.com/reviews?aloading=.page&amp;group=1&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">상품별
+								리뷰보기</a></li>
+
+						<li class="top_menu__li top_menu__search_container"><a
+							class="js-top-menu-submit"> <span
+								class="top_menu__search_icon sprites-search"></span>
+						</a>
+							<form class="js-menu-search"
+								action="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+								accept-charset="UTF-8" data-remote="true" method="get">
+								<input name="utf8" type="hidden" value="✓"> <input
+									type="text" name="query" id="query" value=""
+									placeholder="검색어 입력" autocomplete="off"
+									class="top_menu__query js-top-menu-query">
+							</form> <a class="top_menu__remove_query " data-remote="true"
+							href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
+								<span class="fa fa-times-circle top_menu__remove_query_icon"></span>
+						</a></li>
+
+					</ul>
+					<ul class="top_menu__ul top_menu__ul--lpane">
+						<li class="top_menu__li top_menu__li--categories_container">
+							<span class="top_menu__categories_container_title">카테고리별
+								보기</span>
+							<div class="select2-container select2" id="s2id_category">
+								<a href="javascript:void(0)" onclick="return false;"
+									class="select2-choice" tabindex="-1">
+									<div class="select2-chosen">카테고리를 선택해주세요</div> <abbr
+									class="select2-search-choice-close"></abbr> <span
+									class="select2-arrow"><b></b></span><span
+									class="sprites-icon-drop-down select2__dropdown_icon"></span>
+								</a><input class="select2-focusser select2-offscreen" type="text"
+									id="s2id_autogen2">
+								<div class="select2-drop select2-display-none">
+									<div
+										class="select2-search select2-search-hidden select2-offscreen">
+										<input type="text" autocomplete="off" autocorrect="off"
+											autocapitalize="off" spellcheck="false" class="select2-input">
+									</div>
+									<ul class="select2-results">
+									</ul>
+								</div>
+							</div> <select name="category" id="category"
+							class="select2 select2-offscreen"
+							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+							tabindex="-1">
+								<option value="">카테고리를 선택해주세요</option>
+
+								<option value="1">BEST 50</option>
+
+								<option value="2">TOP</option>
+
+								<option value="6">DRESS</option>
+
+								<option value="7">OUTER</option>
+
+								<option value="11">SKIRT</option>
+
+								<option value="14">BOTTOM</option>
+
+								<option value="17">SHOES/BAG</option>
+
+								<option value="20">ACC</option>
+
+								<option value="21">spring</option>
+
+								<option value="23">당일발송</option>
+
+								<option value="24">#SLOWMADE</option>
+
+								<option value="25">monotone♥</option>
+
+								<option value="30">ss</option>
+
+								<option value="31">(여름용)장마룩 best</option>
+
+								<option value="43">개인결제</option>
+
+								<option value="44">기획특가모음</option>
+
+								<option value="48">soom pick *.*</option>
+
+								<option value="58">겨울시작❄</option>
+
+						</select>
+						</li>
+					</ul>
+				</div>
+
+
+
+				<script
+					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
+				<link rel="stylesheet" media="all"
+					href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
+				<div class="review_notice">
+					<ul class="review_notice__top">
+						<li class="review_notice__top_item"><span
+							class="notice-count"><strong>1</strong>개의</span><span
+							class="notice-count-text">공지글이 있습니다.</span></li>
+					</ul>
+					<ul class="review_notice__container">
+
+						<li
+							class="review_notice__container_item
+                 
+                 ">
+							<a
+							class="js-link-expand-review-notice review_notice__review_expand_link">
+								<div class="review_notice__title">
+									<strong>::</strong>[필독] 리뷰글 작성전에 꼭! 한번 읽어주세요 *.*
+								</div>
+								<div class="review_notice__date">
+									2017-09-19<br>
+								</div>
+						</a>
+							<div
+								class="review_notice__container_item_content
+                   
+                     review_notice__container_item_content--collapsed
+                   
+                   js-brand-notice-content">
+								<div
+									class="review_notice__container_item_content_inner js-tui-viewer-area"
+									data-message="<p align=&quot;center&quot;><font face=&quot;Malgun Gothic&quot;>
+									상품을 구매해주신 분들의 '후기'를 위한 공간입니다.</font>
+									</p>
+									<p align=&quot;center&quot;>
+										<font face=&quot;MalgunGothic&quot;>교환/반품/문의 관련 게시글은
+											교환반품 게시판에 작성해주세요!</font>
+									</p>
+									<p align=&quot;center&quot;>
+										<font face=&quot;MalgunGothic&quot;><b><span
+												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
+													style="font-size:"10pt;&quot;><span
+														style="font-size:"18pt;&quot;><span
+															style="font-size:"10pt;&quot;><span
+																style="font-size:"14pt;&quot;>판매, 교환</span></span></span></span><span
+													style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
+														style="font-size:"10pt;&quot;><span
+															style="font-size:"18pt;&quot;><span
+																style="font-size:"10pt;&quot;><span
+																	style="font-size:"14pt;&quot;>, 반</span></span></span></span></span></span><span
+												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
+													style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
+														style="font-size:"10pt;&quot;><span
+															style="font-size:"18pt;&quot;><span
+																style="font-size:"10pt;&quot;><span
+																	style="font-size:"14pt;&quot;>품</span></span></span></span></span></span></b><span
+											style="font-size:"10pt;&quot;><span
+												style="font-size:"18pt;&quot;><span
+													style="font-size:"10pt;&quot;><span
+														style="font-size:"14pt;&quot;>예정인글 등 후기게시판의 </span></span></span></span></font>
+									</p>
+									<p align=&quot;center&quot;>
+										<font face=&quot;MalgunGothic&quot;><span
+											style="font-size:"10pt;&quot;><span
+												style="font-size:"18pt;&quot;><span
+													style="font-size:"10pt;&quot;><span
+														style="font-size:"14pt;&quot;>성격에 맞지 않는 글은 </span></span></span></span><b><span
+												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
+													style="font-size:"10pt;&quot;><span
+														style="font-size:"18pt;&quot;><span
+															style="font-size:"10pt;&quot;><span
+																style="font-size:"14pt;&quot;>무통보</span></span></span></span></span></b><span
+											style="font-size:"10pt;&quot;><span
+												style="font-size:"18pt;&quot;><span
+													style="font-family:"sans-serif;&quot;><span
+														style="font-family:"sans-serif;&quot;><span
+															style="font-size:"10pt;&quot;><span
+																style="font-size:"14pt;&quot;> 삭제됩니다:)</span></span></span></span></span></span></font>
+									</p>
+									<p align=&quot;center&quot;>
+										<font face=&quot;MalgunGothic&quot;><span
+											style="font-size:"10pt;&quot;><span
+												style="font-size:"18pt;&quot;><span
+													style="font-family:"sans-serif;&quot;><span
+														style="font-family:"sans-serif;&quot;><span
+															style="font-size:"10pt;&quot;><span
+																style="font-size:"14pt;&quot;><br></span></span></span></span></span></span></font>
+									</p>
+									<font face=&quot;MalgunGothic&quot;><span
+										style="font-size:"10pt;&quot;><span style="font-size:"18pt;&quot;><span
+												style="font-family:"sans-serif;&quot;><span
+													style="font-family:"sans-serif;&quot;><span
+														style="font-size:"10pt;&quot;><span
+															style="font-size:"14pt;&quot;><p
+																	align=&quot;center&quot;>
+																	<span style="font-size:"10pt;&quot;><span
+																		style="font-size:"18pt;&quot;><span
+																			style="font-family:"sans-serif; font-size: 10pt;&quot;><span
+																				style="font-family:"sans-serif; font-size: 12pt;&quot;><span
+																					style="font-size:"14pt;&quot;><span
+																						style="color:" rgb(99, 99, 99); font-family:sans-serif; font-size: 12pt;&quot;><font
+																							face=&quot;MalgunGothic&quot;>(주문건이 확인되지 않는 비회원 리뷰글은 자동 삭제됩니다.)</font></span></span></span></span></span></span><font
+																		face=&quot;MalgunGothic&quot;><br></font></p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>----------------------------------------------------------------------------------</font><font
+																		face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
+																<p align=&quot;center&quot;>
+																	<strong><font face=&quot;Malgun
+																		Gothic&quot; size=&quot;2&quot;>#적립금 지급 기준</font></strong>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;>- 글후기 (30자이상) : <strong>500원</strong></font></font></p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;><strong>-
+																	</strong>상품 미착용사진&amp;nbsp;후기&amp;nbsp;: <strong>500원</strong></font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;>- 착용사진+글후기 (30자이상) : <strong>1000원</strong></font></font></p>
+																<p align=&quot;center&quot;>
+																	<strong><font face=&quot;Malgun
+																		Gothic&quot; size=&quot;2&quot;></font></strong><font
+																		face=&quot;MalgunGothic&quot;><br></font></p>
+																<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;></font></font><p
+																	align=&quot;center&quot;>
+																	<strong><font face=&quot;Malgun
+																		Gothic&quot; size=&quot;2&quot;>#적립금 지급이 어려운 경우</font></strong>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		30자 미만에 글후기</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		수령한지 2주가 지난 상품</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		구매금액이 10000원 이하인 상품 </font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		반품/교환 예정인 상품</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		한가지 상품을 중복으로 작성해준 리뷰글</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
+																		비회원으로 작성 해주실 경우 </font><font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>----------------------------------------------------------------------------------</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;MalgunGothic&quot;><br></font><font
+																		face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>*
+																		리뷰게시판에는 상품에대한 후기 공유와 함께 적립금을 지급해드리는 공간으로써</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>상품에
+																		대한 문의글 답변 등, 피드백을 일일히 드릴 수 없습니다.</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>이점
+																		꼭 숙지하시고 피드백이 필요한 글은 꼭 배송후 교환 / 반품 게시판에 남겨주시면</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>빠른
+																		안내로 처리 도와드리겠습니다 ! *</font>
+																</p>
+																<p>
+																	<font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-<br></font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>많은
+																		분들께서 참고하여 구매를 해주시는 소중한 후기글인 만큼-</font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>&amp;nbsp;확인되지
+																		않은 카더라 내용의 비난성글이나 , </font>
+																</p>
+																<p align=&quot;center&quot;>
+																	<font size=&quot;2&quot;><font face=&quot;MalgunGothic&quot;>사업장에 방해가되는 허위사실 및 공격성 리뷰글은 무통보 삭제됨을 알립니다 :-) <span style=&quot;font-family: sans-serif;&quot;></span></font><span
+																		style="font-family:"sans-serif;&quot;></span></font>
+																</p></span>
+														<p align=&quot;center&quot;>
+																<br>
+															</p></span>
+													<p align=&quot;center&quot;>
+															<br>
+														</p></span>
+												<p align=&quot;center&quot;>
+														<br>
+													</p></span>
+											<p align=&quot;center&quot;>
+													<br>
+												</p></span>
+										<p align=&quot;center&quot;>
+												<br>
+											</p></span>
+									<p align=&quot;center&quot;>
+											<br>
+										</p></font>
+									<p align=&quot;center&quot;>
+										<br>
+									</p>
+									">
+								</div>
+							</div>
+						</li>
+
+					</ul>
+					<div class="review_notice__more">
+						<a class="js-review-notice-more-link mall-link-color"> <span
+							class="js-review-more-notice-count"> </span> <span
+							class="review_notice__collapse_link js-review-more-notice-close">
+								접기 </span>
+						</a>
+					</div>
+				</div>
+
+
+
+
+				<div class="reviews_index__review_options_search">
+
+					<div class="review_options_search js-review-options-search">
+
+						<ul class="review_options_search__option_types">
+
+							<li class="review_options_search__option_type"><a
+								class="review_options_search__option_type_link js-link-review-option-type">
+									<div class="review_options_search__option_type_name" title="키">키</div>
+									<div class="review_options_search__option_type_dropdown_button">
+										<i
+											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
+									</div>
+							</a>
+								<div
+									class="review_options_search__dropdown_menu js-dialog-iframe-height">
+
+									<ul class="review_options_search__values">
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="-140"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_0"> <label
+											for="review_option_type_1_0">139 cm 이하</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="140-145"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_1"> <label
+											for="review_option_type_1_1">140 - 144 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="145-150"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_2"> <label
+											for="review_option_type_1_2">145 - 149 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="150-155"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_3"> <label
+											for="review_option_type_1_3">150 - 154 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="155-160"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_4"> <label
+											for="review_option_type_1_4">155 - 159 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="160-165"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_5"> <label
+											for="review_option_type_1_5">160 - 164 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="165-170"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_6"> <label
+											for="review_option_type_1_6">165 - 169 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="170-175"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_7"> <label
+											for="review_option_type_1_7">170 - 174 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="175-180"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_8"> <label
+											for="review_option_type_1_8">175 - 179 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="180-185"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_9"> <label
+											for="review_option_type_1_9">180 - 184 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="185-190"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_10"> <label
+											for="review_option_type_1_10">185 - 189 cm</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_1" value="190"
+											class="checkbox-review-option-search"
+											id="review_option_type_1_11"> <label
+											for="review_option_type_1_11">190 cm 이상</label></li>
+
+									</ul>
+
+								</div></li>
+
+							<li class="review_options_search__option_type"><a
+								class="review_options_search__option_type_link js-link-review-option-type">
+									<div class="review_options_search__option_type_name"
+										title="몸무게">몸무게</div>
+									<div class="review_options_search__option_type_dropdown_button">
+										<i
+											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
+									</div>
+							</a>
+								<div
+									class="review_options_search__dropdown_menu js-dialog-iframe-height">
+
+									<ul class="review_options_search__values">
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="~44"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_0"> <label
+											for="review_option_type_2_0">~44</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="45~47"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_1"> <label
+											for="review_option_type_2_1">45~47</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="48~50"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_2"> <label
+											for="review_option_type_2_2">48~50</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="51~53"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_3"> <label
+											for="review_option_type_2_3">51~53</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="54~56"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_4"> <label
+											for="review_option_type_2_4">54~56</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="57~59"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_5"> <label
+											for="review_option_type_2_5">57~59</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="60~62"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_6"> <label
+											for="review_option_type_2_6">60~62</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="63~65"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_7"> <label
+											for="review_option_type_2_7">63~65</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="66~68"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_8"> <label
+											for="review_option_type_2_8">66~68</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="69~71"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_9"> <label
+											for="review_option_type_2_9">69~71</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="72~74"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_10"> <label
+											for="review_option_type_2_10">72~74</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="75~77"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_11"> <label
+											for="review_option_type_2_11">75~77</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="78~80"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_12"> <label
+											for="review_option_type_2_12">78~80</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="81~83"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_13"> <label
+											for="review_option_type_2_13">81~83</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="84~86"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_14"> <label
+											for="review_option_type_2_14">84~86</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="87~89"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_15"> <label
+											for="review_option_type_2_15">87~89</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_2" value="90~"
+											class="checkbox-review-option-search"
+											id="review_option_type_2_16"> <label
+											for="review_option_type_2_16">90~</label></li>
+
+									</ul>
+
+								</div></li>
+
+							<li class="review_options_search__option_type"><a
+								class="review_options_search__option_type_link js-link-review-option-type">
+									<div class="review_options_search__option_type_name"
+										title="평소사이즈">평소사이즈</div>
+									<div class="review_options_search__option_type_dropdown_button">
+										<i
+											class="review_options_search__option_type_icon sprites-icon-drop-down-s"></i>
+									</div>
+							</a>
+								<div
+									class="review_options_search__dropdown_menu js-dialog-iframe-height">
+
+									<ul class="review_options_search__values">
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_3" value="XS"
+											class="checkbox-review-option-search"
+											id="review_option_type_3_0"> <label
+											for="review_option_type_3_0">XS</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_3" value="S"
+											class="checkbox-review-option-search"
+											id="review_option_type_3_1"> <label
+											for="review_option_type_3_1">S</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_3" value="M"
+											class="checkbox-review-option-search"
+											id="review_option_type_3_2"> <label
+											for="review_option_type_3_2">M</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_3" value="L"
+											class="checkbox-review-option-search"
+											id="review_option_type_3_3"> <label
+											for="review_option_type_3_3">L</label></li>
+
+										<li class="review_options_search__value"><input
+											type="checkbox" name="option_3" value="XL"
+											class="checkbox-review-option-search"
+											id="review_option_type_3_4"> <label
+											for="review_option_type_3_4">XL</label></li>
+
+									</ul>
+
+								</div></li>
+
+						</ul>
+					</div>
+
+
+				</div>
+
+
+			</div>
+			<div id="google-translate-button" class="hidden"></div>
+			<div class="reviews_index__body">
+				<div class="page">
+					<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
+					<ul class="reviews_index__reviews reviews">
+					<c:forEach var="dto" items="${list}">
+						<li id="review_${dto.no}" class="review reviews_index_list_review ">
+							<a
+							class="reviews_index_list_review__product_image  js-link-iframe"
+							data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+							<img src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+							style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
+							,="" class=""
+							alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color" width="90"
+							height="90">
+
+						</a>
+							<div class="reviews_index_list_review__lcontents">
+								<div class="reviews_index_list_review__score">
+
+									<div class="reviews_index_list_review__title">
+										<div class="reviews_index_list_review__tags">
+
+
+											<span
+												class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
+												title="3일 이내 작성된 후기입니다">NEW</span>
+
+										</div>
+										<a
+											class="reviews_index_list_review__title_text js-link-iframe"
+											data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+											${dto.itemTitle} </a>
+									</div>
+									<div class="reviews_index_list_review__rating">
+
+										<div
+											class="reviews_index_list_review__rating_item js-like-result">
+											<span class="js-likes-html hidden"><strong
+												class="js-like-score-total">0</strong>명 중 <strong
+												class="js-like-score-plus">0</strong>명이 이 리뷰가 도움이 된다고 선택
+												했습니다</span>
+										</div>
+
+									</div>
+								</div>
+								<div class="reviews_index_list_review__content review_content">
+									<a
+										class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
+										<div class="reviews_index_list_review__message">
+											<span> ${dto.content}<span
+												class="mall-link-color see_more">... 더보기</span> <br>
+											</span>
+										</div>
+										<div class="reviews_index_list_review__foot">
+											<div class="reviews_index_list_review__actions">
+												<span
+													class="reviews_index_list_review__comments_link mall-link-color">
+													<span class="comments-count">0</span> 개의 댓글이 있습니다
+												</span>
+											</div>
+										</div>
+									</a>
+									<div
+										class="reviews_index_list_review__content_inner review_content__expanded">
+
+										<div class="reviews_index_list_review__message">
+
+											<div class="review_options">
+
+												<div class="review_option">
+													<div class="review_option__title">키</div>
+													<div class="review_option__content">167cm</div>
+												</div>
+
+												<div class="review_option">
+													<div class="review_option__title">몸무게</div>
+													<div class="review_option__content">57~59</div>
+												</div>
+
+												<div class="review_option">
+													<div class="review_option__title">평소사이즈</div>
+													<div class="review_option__content">L</div>
+												</div>
+
+
+												<div class="review_option">
+													<div class="review_option__title">선택한 옵션</div>
+													<div class="review_option__content">
+
+														<span class="review_option__product_option"> <span
+															class="review_option__product_option_key">COLOR:</span> <span
+															class="review_option__product_option_value">${dto.itemOption}</span>
+														</span>
+
+													</div>
+												</div>
+
+											</div>
+
+
+											<div class="reviews_index_list_review__message_expanded">
+												${dto.content}
+												</div>
+
+										</div>
+										<div class="reviews_index_list_review__foot">
+											<div class="reviews_index_list_review__actions">
+												<a
+													class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
+													접기</a>
+												<div class="reviews_index_list_review__divider">|</div>
+												<div class="review_like_action js-like-action "
+													data-like-action-class="review_like_action"
+													data-url="/slowand.com/reviews/249672/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
+													<div class="review_like_action__label">이 리뷰가 도움이
+														되었나요?</div>
+													<div class="review_like_action__buttons">
+														<a
+															class="review_like_action__button review_like_action__button--like js-link-like">네</a>
+														<a
+															class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
+													</div>
+													<div class="review_like_action__score">
+														<div class="review_like_action__score_arrow"></div>
+														<span
+															class="review_like_action__score_text js-like-score-text">0</span>
+													</div>
+												</div>
+
+
+
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="reviews_index_list_review__rcontents">
+								<div class="reviews_index_list_review__info_container">
+									<span class="reviews_index_list_review__name">${dto.id}</span>
+
+
+								</div>
+
+							</div>
+
+						</li>
+					</c:forEach>
+
+					</ul>
+				</div>
+
+			</div>
+			<div class="reviews_index__foot">
+				<div class="pagination">
+					<a
+						class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
+
+					<a class="pagination__button pagination__button--active" href="#">1</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">2</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=3&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">3</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=4&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">4</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=5&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">5</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=6&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">6</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=7&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">7</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=8&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">8</a>
+
+					<a class="pagination__button" data-remote="true"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=9&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">9</a>
+
+					<a class="pagination__button pagination__button--next"
+						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+						data-remote="true">&gt;</a>
+
+				</div>
+
+
+
+
 			</div>
 		</div>
 
-		<div
-			class="xans-element- xans-board xans-board-paging-4 xans-board-paging xans-board-4 ec-base-paginate crema-hide crema-applied"
-			style="display: none;">
-			<a
-				href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=1"><img
-				src="/web/upload/yangji_pc_crumb/btn_page_prev.gif" alt="이전 페이지"></a>
-			<ol>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=1"
-					class="this">1</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=2"
-					class="other">2</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=3"
-					class="other">3</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=4"
-					class="other">4</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=5"
-					class="other">5</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=6"
-					class="other">6</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=7"
-					class="other">7</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=8"
-					class="other">8</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=9"
-					class="other">9</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=10"
-					class="other">10</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=11"
-					class="other">11</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=12"
-					class="other">12</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=13"
-					class="other">13</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=14"
-					class="other">14</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=15"
-					class="other">15</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=16"
-					class="other">16</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=17"
-					class="other">17</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=18"
-					class="other">18</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=19"
-					class="other">19</a></li>
-				<li class="xans-record-"><a
-					href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=20"
-					class="other">20</a></li>
-			</ol>
-			<a
-				href="?board_no=4&amp;product_category_depth1=&amp;product_category_depth2=&amp;product_category_depth3=&amp;product_category_depth4=&amp;page=2"><img
-				src="/web/upload/yangji_pc_crumb/btn_page_next.gif" alt="다음 페이지"></a>
+	</div>
+	<div class="tui-tooltip" style="display: none;">
+		<div class="arrow"></div>
+		<span class="text"></span>
+	</div>
+	<script
+		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
+	<!--[if IE 7]>
+      <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
+    <![endif]-->
+	<script>
+//<![CDATA[
+
+      var ajax_setup_args = {cache: true, dataType: "script", accepts: {
+        script: "text/javascript, application/javascript"
+      }};
+      $.ajaxSetup(ajax_setup_args);
+      
+
+//]]>
+</script>
+	<script>
+//<![CDATA[
+
+//]]>
+</script>
+
+	<form id="form-upload-image" class="hidden" data-type="json"
+		enctype="multipart/form-data"
+		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+		accept-charset="UTF-8" data-remote="true" method="post">
+		<input name="utf8" type="hidden" value="✓">
+		<div id="upload-fields-container"></div>
+	</form>
+
+</body>
+				</html>
+			</div>
 		</div>
 
-		<!-- 관리자 전용 메뉴 -->
-
-		<!-- //관리자 전용 메뉴 -->
 	</div>
 	<hr class="layout">
 </div>

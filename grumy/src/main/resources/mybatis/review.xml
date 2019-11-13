@@ -5,5 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.reviewMapper">
 	
-
+<select id="list" resultType="reviewDTO">
+select r.no as no, r.id as id, r.itemNo as itemNo, r.itemOption as itemOption, r.content as content, r.picture as picture, i.image as itemPicture,i.title as itemTitle
+from item i, review r
+where r.itemNo = i.no
+</select>
 </mapper>

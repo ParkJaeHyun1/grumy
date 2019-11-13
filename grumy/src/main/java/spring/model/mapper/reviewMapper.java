@@ -1,5 +1,9 @@
 package spring.model.mapper;
 
-public interface reviewMapper {
+import java.util.ArrayList;
 
+import spring.model.review.reviewDTO;
+
+public interface reviewMapper {
+	ArrayList<reviewDTO> list();
 }
