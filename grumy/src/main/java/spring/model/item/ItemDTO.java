@@ -1,5 +1,7 @@
 package spring.model.item;
 
+import java.util.ArrayList;
+
 public class ItemDTO {
 	private int no; 
 	private String name; 
@@ -13,12 +15,13 @@ public class ItemDTO {
 	private String sizes ; 
 	private int count ; //상품 수량
 	private String type; //카테고리
+	private String[] colorList;
 	public ItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ItemDTO(int no, String name, String image, String title, String description, String content, int price,
-			int salePrice, String color, String sizes, int count, String type) {
+			int salePrice, String color, String sizes, int count, String type, String[] colorList) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -32,6 +35,7 @@ public class ItemDTO {
 		this.sizes = sizes;
 		this.count = count;
 		this.type = type;
+		this.colorList = colorList;
 	}
 	@Override
 	public String toString() {
@@ -110,6 +114,12 @@ public class ItemDTO {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String[] getColorList() {
+		return colorList;
+	}
+	public void setColorList(String[] colorList) {
+		this.colorList = colorList;
 	}
 	
 }

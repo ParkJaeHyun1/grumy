@@ -93,13 +93,13 @@
 						<li class="xans-record-"><a href="/category/best-50/66/">BEST
 								20</a></li>
 
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/">OUTER</a></li>
-						<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
-						<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
-						<li class="xans-record-"><a href="/category/skirt/70/">SKIRT</a></li>
-						<li class="xans-record-"><a href="/category/bottom/26/">BOTTOM</a></li>
-						<li class="xans-record-"><a href="/category/shoesbag/28/">SHOES/BAG</a></li>
-						<li class="xans-record-"><a href="/category/acc/68/">ACC</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=outer">OUTER</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=top">TOP</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=skirt">SKIRT</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom">BOTTOM</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag">SHOES/BAG</a></li>
+						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc">ACC</a></li>
 
 					</ul>
 				</div>

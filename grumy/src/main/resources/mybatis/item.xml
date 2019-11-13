@@ -5,5 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.itemMapper">
 	
-
+<select id="list" parameterType="String" resultType="ItemDTO">
+select no, name, image, title, description, content, price,salePrice, color, sizes, count, type
+from item
+where type = #{type}
+</select>
 </mapper>

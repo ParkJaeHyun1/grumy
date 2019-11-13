@@ -148,3 +148,18 @@
 				</div>
 			</div>
 		</div>
+					<script>
+    $(document).ready(function() {
+        $('.pageTop').click(function(event) {
+           event.preventDefault();                  
+           $('html, body').animate({scrollTop: 0}, 400);
+        });
+        $('.pageBottom').click(function(event) {
+           event.preventDefault();                  
+           $('html, body').animate({scrollTop: $(document).height() + $(window).height()},400);
+        });
+    });
+    
+    $(".inner_b .address i.bizLink a").text("[Go Checking]");
+</script>     
+		
