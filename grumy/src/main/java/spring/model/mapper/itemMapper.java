@@ -9,4 +9,6 @@ import spring.model.item.ItemDTO;
 
 public interface itemMapper {
 	ArrayList<ItemDTO> list(String type);
+
+	ItemDTO read(int no);
 }
