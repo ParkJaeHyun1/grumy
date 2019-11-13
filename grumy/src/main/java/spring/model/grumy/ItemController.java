@@ -34,8 +34,6 @@ public class ItemController {
 		type = type.toUpperCase();
 		request.setAttribute("type", type);
 		request.setAttribute("list",list);
-
-		System.out.println("리스트:"+list.get(0).getTitle());
 		return "/item/list";
 	}
 }
