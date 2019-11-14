@@ -15,13 +15,15 @@ function read(no){
 			class="xans-element- xans-board xans-board-readpackage-1002 xans-board-readpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title">
+				<div class="title" style=text-align:center>
 					<h2>
 						<font color="#555555">NOTICE</font>
 					</h2>
+					
 					<!--h3>공지사항입니다.</h3-->
 				</div>
 			</div>
+			<br><br>
 			<!-- 글 내용-->
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">

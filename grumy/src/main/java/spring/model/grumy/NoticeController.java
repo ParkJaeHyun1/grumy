@@ -40,10 +40,6 @@ public class NoticeController {
 								(String)map.get("NEXT_SUBJECT")
 								};
 		
-		System.out.println(subjectArr[0]);
-		System.out.println(subjectArr[1]);
-		System.out.println(noArr[0]);
-		System.out.println(noArr[1]);
 		
 		
 		model.addAttribute("dto",dto);
