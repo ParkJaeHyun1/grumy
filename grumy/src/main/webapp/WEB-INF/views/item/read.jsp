@@ -1,18 +1,42 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><!--PG크로스브라우징필수내용 시작--><meta http-equiv="Cache-Control" content="no-cache"/><meta http-equiv="Expires" content="0"/><meta http-equiv="Pragma" content="no-cache"/><!--PG크로스브라우징필수내용 끝--><!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.--><!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.--><!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. --><script type="text/javascript" src="/ec-js/common.js"></script><!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. --><script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/yangji/js/jquery.bxslider.min.js"></script><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="naver-site-verification"
+	content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
+<!--PG크로스브라우징필수내용 시작-->
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<!--PG크로스브라우징필수내용 끝-->
+<!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+<!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
+<!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
+<script type="text/javascript"
+	src="https://www.slowand.com/ec-js/common.js"></script>
+<!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://www.slowand.com/yangji/js/jquery.bxslider.min.js"></script>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script-->
 <link rel="canonical" href="http://www.slowand.com">
-<link rel="alternate" href="http://www.m.slowand.com/">
+	<link rel="alternate" href="http://www.m.slowand.com/">
 
-<meta name="google-site-verification" content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
-<meta name="naver-site-verification" content="cdc66033ac54c3c0175fba92d71c46317e5c78e1"/>
+		<meta name="google-site-verification"
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
+		<meta name="naver-site-verification"
+			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
-<script type="application/ld+json">
+		<script type="application/ld+json">
     {
      "@context": "http://schema.org",
      "@type": "Person",
-     "name": "슬로우앤드",
+     "name": "그루미",
      "url": "http://www.slowand.com",
      "sameAs": [
        "https://www.instagram.com/slow.and",
@@ -21,32 +45,43 @@
     }
 </script>
 
-<meta name="author" content="슬로우앤드 - 천천히 그리고,">
-<meta name="keywords" content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등"/>
-<meta name="description" content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
 
-<meta name="viewport" content="width=device-width">
-<link rel="canonical" href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
-<link rel="alternate" href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
-<meta property="og:url" content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
-<meta property="og:title" content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />
-<meta property="og:description" content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
-<meta property="og:site_name" content="슬로우앤드" />
-<meta property="og:type" content="product" />
-<meta property="og:image" content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
-<meta property="product:price:amount" content="29800" />
-<meta property="product:price:currency" content="KRW" />
-<meta property="product:sale_price:amount" content="29800" />
-<meta property="product:sale_price:currency" content="KRW" />
-<link rel="shortcut icon" href="/web/upload/favicon_20170717165926.ico" />
-<script type="text/javascript" src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
-<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
+			<meta name="keywords"
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
+			<meta name="description"
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
 
-            <script type='text/javascript'>
-                var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
-            </script>
-            
-<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
+				<meta name="viewport" content="width=device-width">
+					<link rel="canonical"
+						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+					<link rel="alternate"
+						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+					<meta property="og:url"
+						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+					<meta property="og:title"
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />
+					<meta property="og:description"
+						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
+					<meta property="og:site_name" content="슬로우앤드" />
+					<meta property="og:type" content="product" />
+					<meta property="og:image"
+						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
+					<meta property="product:price:amount" content="29800" />
+					<meta property="product:price:currency" content="KRW" />
+					<meta property="product:sale_price:amount" content="29800" />
+					<meta property="product:sale_price:currency" content="KRW" />
+					<link rel="shortcut icon"
+						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
+					<script type="text/javascript"
+						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
+					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+
+					<script type='text/javascript'>
+      var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
+</script>
+
+					<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
             var oBankInfo = "";
             $.ajax({
                 type: "GET",
@@ -57,7 +92,8 @@
                     oBankInfo = oResponse;
                 }
              });
-             return oBankInfo; }};</script><script type="text/javascript">            var EC_ROOT_DOMAIN = "cafe24.com";
+             return oBankInfo; }};</script>
+					<script type="text/javascript">            var EC_ROOT_DOMAIN = "cafe24.com";
             var EC_I18N_LOG_STATUS = "F";
             var EC_GLOBAL_INFO = (function() {
                 var oData = {"base_domain":"anne2173.cafe24.com","root_domain":"cafe24.com","is_global":false,"country_code":"KR","language_code":"ko_KR","admin_language_code":"ko_KR"};
@@ -88,8 +124,9 @@
                     }
                 };
             })();</script>
-            <script type="text/javascript" src="//slowand.com/ind-script/moment.php?convert=T"></script>
-            <script type="text/javascript">            
+					<script type="text/javascript"
+						src="//slowand.com/ind-script/moment.php?convert=T"></script>
+					<script type="text/javascript">            
             	var EC_GLOBAL_DATETIME = (function() {
                 var oConstants = {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"};
                 var oOptions = {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"};
@@ -313,114 +350,34 @@
                 };
             })();</script>
 
-<link rel="stylesheet" type="text/css" href="/ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
-<link rel="stylesheet" type="text/css" href="/ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
+					<link rel="stylesheet" type="text/css"
+						href="/ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
+					<link rel="stylesheet" type="text/css"
+						href="/ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
 
-<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
-<meta name="path_role" content="PRODUCT_DETAIL" />
-<meta name="author" content="슬로우앤드" />
-<meta name="description" content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
-<meta name="keywords" content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
-<meta name="design_html_path" content="/product/detail.html" /></head><body id="cmn"><div id="skipNavigation">
-    <p><a href="#category">전체상품목록 바로가기</a></p>
-    <p><a href="#contents">본문 바로가기</a></p>
-</div>
+					<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
+					<meta name="path_role" content="PRODUCT_DETAIL" />
+					<meta name="author" content="슬로우앤드" />
+					<meta name="description"
+						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
+					<meta name="keywords"
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
+					<meta name="design_html_path" content="/product/detail.html" />
+</head>
+<body id="cmn">
+	<div id="skipNavigation">
+		<p>
+			<a href="#category">전체상품목록 바로가기</a>
+		</p>
+		<p>
+			<a href="#contents">본문 바로가기</a>
+		</p>
+	</div>
 
-<div id="wrap">    
-    <!-- 상단카테고리 -->
-    
+	<div id="wrap">
+		<!-- 상단카테고리 -->
 
-<div id="header">
-    
-   
-    <div id="headerBottom">
-        
-        <!-- 로고 -->
-        <div class="topArea">
-            <h1 class="xans-element- xans-layout xans-layout-logotop "><a href="/index.html"><!--span>슬로우앤드</span--><img src="/web/upload/category/logo/879dc6b6f36fbc7af37c96e4ff9ff6b5_8_top.jpg"/></a>
-</h1>
-            
-        </div><!-- // 로고 -->
-        
-        <div class="myList">
-    
-            <div class="xans-element- xans-layout xans-layout-statelogoff "><a href="/member/login.html" class="log">LOGIN</a>
-<a href="/member/join.html">JOIN</a>
-<a href="/myshop/order/list.html">ORDER</a>
-<a href="/myshop/index.html">MY PAGE</a>
-<a class=" cart" href="/order/basket.html">CART</a>
-</div>
-                        
-            <div class="xans-element- xans-layout xans-layout-boardinfo"><a style="cursor:pointer;">COMMUNITY</a>
-<ul class="gnb_sub">
-<li class="xans-record-"><a href="/board/notice/1/">NOTICE<span></span></a></li>
-                    <li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-문의/3001/">배송 문의<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-전-변경취소/101/">배송 전 변경/취소<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-후-교환반품/5/">배송 후 교환/반품<span></span></a></li>
-<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
-<li class="xans-record-"><a href="/board/채용-공고/1002/">채용 공고<span></span></a></li>
-<li class="xans-record-"><a href="/board/review/4/">REVIEW<span></span></a></li>
-                </ul>
-</div>
-            
-            <form id="searchBarForm" name="" action="/product/search.html" method="get" target="_self" enctype="multipart/form-data" >
-<input id="banner_action" name="banner_action" value="" type="hidden"  /><div class="xans-element- xans-layout xans-layout-searchheader "><!--
-                    $product_page=/product/detail.html
-                    $category_page=/product/list.html
-                -->
-<fieldset>
-<legend>검색</legend>
-                    <input id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg="" class="inputTypeText" placeholder="" onmousedown="SEARCH_BANNER.clickSearchForm(this)" value="" type="text"  /><input type="image" src="/web/upload/yangji_pc_crumb/btn_search.png" alt="검색" onclick="SEARCH_BANNER.submitSearchBanner(this); return false;"/>
-                 </fieldset>
-</div>
-</form>     
-        </div>
-        
-        
-        
-<!-- snap common script contact mail: support@snapvi.co.kr -->
-    <span id="solutiontype" style="display:none;">cafe24</span>
-    <span id="sfsnapfit_store_id" style="display:none">slowand</span>
-    <div><input id="sf_draw_type" type="hidden" value="pc"/><input id="sf_store_name" type="hidden" value="slowand"/></div>
-	<!-- snap common end -->
-        
-        
-        <!-- 메인 메뉴 -->
-        <ul class="gnb grid5"><!--li><a href="/shopinfo/company.html">BRAND</a></li>
-            <li><a href="/yangji/lookbook.html?cate_no=50">LOOKBOOK</a></li--><div class="xans-element- xans-layout xans-layout-category main_cate"><div class="position">
-                    <ul>
-<li class="xans-record-"><a href="/category/best-50/66/">BEST 50</a></li>
-                        <li class="xans-record-"><a href="/category/slowmade/82/">#SLOWMADE</a></li>
-                        <li class="xans-record-"><a href="/category/겨울시작/122/">겨울시작❄</a></li>
-<li class="xans-record-"><a href="/category/outer/24/">OUTER</a></li>
-<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
-<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
-<li class="xans-record-"><a href="/category/skirt/70/">SKIRT</a></li>
-<li class="xans-record-"><a href="/category/bottom/26/">BOTTOM</a></li>
-<li class="xans-record-"><a href="/category/shoesbag/28/">SHOES/BAG</a></li>
-<li class="xans-record-"><a href="/category/acc/68/">ACC</a></li>
-<li class="xans-record-"><a href="/category/soom-pick/112/">soom pick *.*</a></li>
-<li class="xans-record-"><a href="/category/창고개방sale/111/">창고개방SALE</a></li>
-<li class="xans-record-"><a href="/category/기획특가모음/108/">기획특가모음</a></li>
-<li class="xans-record-"><a href="/category/monotone/86/">monotone♥</a></li>
-                    </ul>
-</div>
-</div>
-            <!--li module="Layout_BoardInfo"><a href="/board/free/list.html?board_no=1">COMMUNITY</a>
-                <ul class="gnb_sub">
-                    <li><a href="{$link_board_list}">{$board_name}<span></span></a></li>
-                    <li><a href="{$link_board_list}">{$board_name}<span></span></a></li>
-                </ul>
-            </li-->
-        </ul><!-- // 메인 메뉴 --><!--div class="link">
-            <a module="Layout_bookmark" href="/link/bookmark.html" target="_blank" onclick="winPop(this.href); return false;"><span>즐겨찾기</span></a>
-            <a module="Layout_shortcut" href="/link/shortcut.html" target="_blank" onclick="winPop(this.href); return false;">바로가기</a>
-        </div--></div>
-
-</div>
-
-<script>
+		<script>
     // 메인메뉴에 마우스오버시 하위메뉴 나타남
     $(".gnb > li").mouseenter(function(){
         //$(this).find(".gnb_sub").stop().slideDown(200);
@@ -439,164 +396,274 @@
         $(this).find(".gnb_sub").css("display","none");
     }); 
 </script>
-    <!-- //상단카테고리 -->
-    
-    <div id="container">
-        <div id="contents">
-            
-<!--
+		<!-- //상단카테고리 -->
+
+		<div id="container">
+			<div id="contents">
+
+				<!--
     $category_page = /product/list.html
     $project_page = /product/project.html
     $jointbuy_page = /product/jointbuy.html
 -->
 
-<!-- 상단 제품 정보  -->
-<div class="xans-element- xans-product xans-product-detail"><div class="detailArea ">
-        <!-- 이미지 영역 -->
-        <div class="xans-element- xans-product xans-product-image imgArea "><div class="keyImg">
-                <div class="thumbnail">
-                    <a href="/product/image_zoom2.html?product_no=3596&cate_no=24&display_group=2" alt="P0000FII" onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
-                        <img src="//slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage "/>                    </a>
-                    <div id="zoom_wrap"></div>                    
-                    <div class="color displaynone">
-                                            </div>   
-                </div>
-            </div>
-<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
-<div class="xans-element- xans-product xans-product-addimage listImg"><ul>
-<li class="xans-record-"><img src="//slowand.com/web/product/small/201911/4ea4f1ef5b1ebf6b8498831b8ef4b233.gif"  class="ThumbImage" alt="" /></li>
-                                    </ul>
-</div>
-<!-- //참고 -->
-<div class="likeButton displaynone">
-                <button type="button"><span class="title">좋아요</span><span class="count"></span></button>
-            </div>
-</div>
-<!-- //이미지 영역 -->
+				<!-- 상단 제품 정보  -->
+				<div class="xans-element- xans-product xans-product-detail">
+					<div class="detailArea ">
+						<!-- 이미지 영역 -->
+						<div
+							class="xans-element- xans-product xans-product-image imgArea ">
+							<div class="keyImg">
+								<div class="thumbnail">
+									<a
+										href="/product/image_zoom2.html?product_no=3596&cate_no=24&display_group=2"
+										alt="P0000FII"
+										onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
+										<img
+										src="//slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif"
+										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage " />
+									</a>
+									<div id="zoom_wrap"></div>
+									<div class="color displaynone"></div>
+								</div>
+							</div>
+							<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
+							<div
+								class="xans-element- xans-product xans-product-addimage listImg">
+								<ul>
+									<li class="xans-record-"><img
+										src="//slowand.com/web/product/small/201911/4ea4f1ef5b1ebf6b8498831b8ef4b233.gif"
+										class="ThumbImage" alt="" /></li>
+								</ul>
+							</div>
+							<!-- //참고 -->
+							<div class="likeButton displaynone">
+								<button type="button">
+									<span class="title">좋아요</span><span class="count"></span>
+								</button>
+							</div>
+						</div>
+						<!-- //이미지 영역 -->
 
-        <!-- 상세정보 내역 -->
-        <div class="infoArea">            
-            <div class="headingArea">
-                <span class="icon"><img src="/web/upload/icon_201707201539045000.jpg"  class="icon_img" alt="추천" /><img src="/web/upload/icon_201707201607164100.png"  class="icon_img" alt="New" /><img src="/web/upload/custom_2.gif" /><img src="/web/upload/custom_3.gif" /></span>
-                <h2>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</h2>           
-                <span class="delivery displaynone">(해외배송 가능상품)</span>                
-                <!-- 공급사 바로가기버튼 영역 -->
-                <div class="supply displaynone">
-                    <span></span>
-                    <a href="#none" onclick=""><img src="" alt="공급사 바로가기"/></a>
-                </div>
-                <!-- //공급사 바로가기버튼 영역 -->
-            </div>
+						<!-- 상세정보 내역 -->
+						<div class="infoArea">
+							<div class="headingArea">
+								<span class="icon"><img
+									src="//slowand.com/web/upload/icon_201707201539045000.jpg"
+									class="icon_img" alt="추천" /><img
+									src="//slowand.com/web/upload/icon_201707201607164100.png"
+									class="icon_img" alt="New" /><img
+									src="//slowand.com/web/upload/custom_2.gif" /><img
+									src="//slowand.com/web/upload/custom_3.gif" /></span>
+								<h2>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</h2>
+								<span class="delivery displaynone">(해외배송 가능상품)</span>
+								<!-- 공급사 바로가기버튼 영역 -->
+								<div class="supply displaynone">
+									<span></span> <a href="#none" onclick=""><img src=""
+										alt="공급사 바로가기" /></a>
+								</div>
+								<!-- //공급사 바로가기버튼 영역 -->
+							</div>
 
-            <div class="xans-element- xans-product xans-product-detaildesign"><!--
+							<div class="xans-element- xans-product xans-product-detaildesign">
+								<!--
                     출력 갯수 지정 변수, 없으면 설정된 전체가 나옵니다.
                     count = 10
                 -->
-<table border="1" summary="">
-<caption> 기본 정보</caption>
-                    <tbody>
-<tr style="display:none;" class=" xans-record-">
-<td scope="row"><span style="font-size:16px;color:#555555;">상품명</span><p><span style="font-size:16px;color:#555555;">#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</span></p>
-</td>                            
-                        </tr>
-<tr class=" xans-record-">
-<td scope="row" class="list"><span style="font-size:12px;color:#555555;">CUSTOM PRICE</span><p><span style="font-size:12px;color:#555555;"><span id="span_product_price_custom"><strike>34,900원</strike></span></span></p>
-</td>                            
-                        </tr>
-<tr class=" xans-record-">
-<td scope="row" class="list"><span style="font-size:12px;color:#555555;">PRICE</span><p><span style="font-size:12px;color:#555555;"><strong id="span_product_price_text">29,800원 </strong><input id="product_price" name="product_price" value="" type="hidden"  /></span></p>
-</td>                            
-                        </tr>
-<tr class=" xans-record-">
-<td scope="row" class="list"><span style="font-size:12px;color:#555555;">DETAILS</span><p><span style="font-size:12px;color:#555555;">맨투맨,후디에 이어 요청많았던 후드집업♥
-<br>양기모로 한겨울 미리미리 준비하기 :) 
-<br>도톰하고 폭닥한 특양기모원단으로
-<br>가볍게 티 위에만 걸쳐도 포근해요 *.*
-<br>(니켈칩/3중재봉/아일렛디테일)</span></p>
-</td>                            
-                        </tr>
-<tr class=" xans-record-">
-<td scope="row" class="list"><span style="font-size:12px;color:#555555;">수량</span><p><span style="font-size:12px;color:#555555;"><span id='NewProductQuantityDummy' ><span class="quantity"><input id="quantity" name="quantity_name" style="width: 30px;height: 18px;border: 1px solid #BCBCBC;" value="" type="text"  /><img src="//img.echosting.cafe24.com/design/skin/mono/product/btn_basketUp.gif"  class="QuantityUp" alt="수량증가" /><img src="//img.echosting.cafe24.com/design/skin/mono/product/btn_basketDown.gif"  class="QuantityDown" alt="수량감소" /></span></span></span></p>
-</td>                            
-                        </tr>
-</tbody>
-</table>
-</div>
-            
-            
-            <div class="displaynone social">
-                <p>  </p>
-<ul class="xans-element- xans-product xans-product-customsns "><li></li>
-</ul>
-</div>     
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr style="display: none;" class=" xans-record-">
+											<td scope="row"><span
+												style="font-size: 16px; color: #555555;">상품명</span>
+												<p>
+													<span style="font-size: 16px; color: #555555;">#SLOWMADE.
+														윈터즈 양기모 후드집업 - 5 color</span>
+												</p></td>
+										</tr>
+										<tr class=" xans-record-">
+											<td scope="row" class="list"><span
+												style="font-size: 12px; color: #555555;">CUSTOM PRICE</span>
+												<p>
+													<span style="font-size: 12px; color: #555555;"><span
+														id="span_product_price_custom"><strike>34,900원</strike></span></span>
+												</p></td>
+										</tr>
+										<tr class=" xans-record-">
+											<td scope="row" class="list"><span
+												style="font-size: 12px; color: #555555;">PRICE</span>
+												<p>
+													<span style="font-size: 12px; color: #555555;"><strong
+														id="span_product_price_text">29,800원 </strong><input
+														id="product_price" name="product_price" value=""
+														type="hidden" /></span>
+												</p></td>
+										</tr>
+										<tr class=" xans-record-">
+											<td scope="row" class="list"><span
+												style="font-size: 12px; color: #555555;">DETAILS</span>
+												<p>
+													<span style="font-size: 12px; color: #555555;">맨투맨,후디에
+														이어 요청많았던 후드집업♥ <br>양기모로 한겨울 미리미리 준비하기 :) <br>도톰하고
+																폭닥한 특양기모원단으로 <br>가볍게 티 위에만 걸쳐도 포근해요 *.* <br>(니켈칩/3중재봉/아일렛디테일)
 
-            <p class="displaynone"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/txt_naver.gif" alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다."/></p>
-            <!-- //상세정보 내역 -->
-            
-            <div class="infoAreaIn">
-                <div class="fixedIn">
-                    <div class="fixed_button">
-                        <div class="open">옵션 선택 열기<svg xmlns="//www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24"><path d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"></path></svg>
-</div>
-                        <div class="close">옵션 선택 닫기<svg xmlns="//www.w3.org/2000/svg" width="14" height="14" viewbox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg>
-</div>                        
-                    </div>                    
-                    <h2>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</h2>
-                    <p class="fixed_tit">옵션을 선택해주세요</p>
-                    <p class="fixed_tit">옵션을 선택하시면 아래에 상품이 추가됩니다</p>
-                    <div class="fixed_cont">                        
-                        <table border="1" summary="">
-<caption>상품 옵션</caption>
-                            <tbody class="xans-element- xans-product xans-product-option xans-record-"><!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. --><tr class="xans-element- xans-product xans-product-option xans-record-"><th scope="row">COLOR</th>
-<td><ul  option_product_no="3596" option_select_element="ec-option-select-finder" option_sort_no="1" option_type="T" item_listing_type="S" option_title="COLOR" product_type="product_option" product_option_area="product_option_3596_0" option_style="button" ec-dev-id="product_option_id1" ec-dev-name="option1" ec-dev-class="ProductOption0" class="ec-product-button" required="true" ><li class="" option_value="아이보리" link_image="" title="아이보리"><a href="#none"><span>아이보리</span></a></li><li class="" option_value="크림베이지" link_image="" title="크림베이지"><a href="#none"><span>크림베이지</span></a></li><li class="" option_value="코코아브라운" link_image="" title="코코아브라운"><a href="#none"><span>코코아브라운</span></a></li><li class="" option_value="딥그레이" link_image="" title="딥그레이"><a href="#none"><span>딥그레이</span></a></li><li class="" option_value="블랙" link_image="" title="블랙"><a href="#none"><span>블랙</span></a></li></ul><p class="value">[필수] <span class="ec-shop-front-product-option-desc-trigger" data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span></p>
-</td>
-</tr>
-<tr class="displaynone" id="">
-<td colspan="2" class="selectButton"><a href="#none" onclick=""><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_manual_select.gif" alt="옵션 선택"/></a></td>
-                                </tr><!-- //참고 -->
-</tbody>
-</table>
-<div class="guideArea">
-                            <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                            <p class="info ">(최소주문수량 1개 이상<span class=""> / 최대주문수량 20개 이하</span>)</p>
-                            <!-- //참고 -->
-                            <span class="sizeGuide displaynone"><a href="#none" class="size_guide_info" product_no="3596">사이즈 가이드</a></span>
-                        </div>                    
-                        
-                        <!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
-                        <!-- //참고 -->
-                    </div>
-<!-- //fixed_cont -->
-                                        
-                    <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                    <div id="totalProducts" class=" fixed_cont">                        
-                        <!--p class="ec-base-help txtWarn txt11 displaynone"> 수량을 선택해주세요.</p>
+
+
+
+
+																
+													</span>
+												</p></td>
+										</tr>
+										<tr class=" xans-record-">
+											<td scope="row" class="list"><span
+												style="font-size: 12px; color: #555555;">수량</span>
+												<p>
+													<span style="font-size: 12px; color: #555555;"><span
+														id='NewProductQuantityDummy'><span class="quantity"><input
+																id="quantity" name="quantity_name"
+																style="width: 30px; height: 18px; border: 1px solid #BCBCBC;"
+																value="" type="text" /><img
+																src="//img.echosting.cafe24.com/design/skin/mono/product/btn_basketUp.gif"
+																class="QuantityUp" alt="수량증가" /><img
+																src="//img.echosting.cafe24.com/design/skin/mono/product/btn_basketDown.gif"
+																class="QuantityDown" alt="수량감소" /></span></span></span>
+												</p></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+
+							<div class="displaynone social">
+								<p></p>
+								<ul class="xans-element- xans-product xans-product-customsns ">
+									<li></li>
+								</ul>
+							</div>
+
+							<p class="displaynone">
+								<img
+									src="//img.echosting.cafe24.com/skin/base_ko_KR/product/txt_naver.gif"
+									alt="개인결제창을 통한 결제 시 네이버 마일리지 적립 및 사용이 가능합니다." />
+							</p>
+							<!-- //상세정보 내역 -->
+
+							<div class="infoAreaIn">
+								<div class="fixedIn">
+									<div class="fixed_button">
+										<div class="open">
+											옵션 선택 열기
+											<svg xmlns="//www.w3.org/2000/svg" width="14" height="14"
+												viewbox="0 0 24 24"> <path
+												d="M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z"></path></svg>
+										</div>
+										<div class="close">
+											옵션 선택 닫기
+											<svg xmlns="//www.w3.org/2000/svg" width="14" height="14"
+												viewbox="0 0 24 24"> <path
+												d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"></path></svg>
+										</div>
+									</div>
+									<h2>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</h2>
+									<p class="fixed_tit">옵션을 선택해주세요</p>
+									<p class="fixed_tit">옵션을 선택하시면 아래에 상품이 추가됩니다</p>
+									<div class="fixed_cont">
+										<table border="1" summary="">
+											<caption>상품 옵션</caption>
+											<tbody
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+												<tr
+													class="xans-element- xans-product xans-product-option xans-record-">
+													<th scope="row">COLOR</th>
+													<td><ul option_product_no="3596"
+															option_select_element="ec-option-select-finder"
+															option_sort_no="1" option_type="T" item_listing_type="S"
+															option_title="COLOR" product_type="product_option"
+															product_option_area="product_option_3596_0"
+															option_style="button" ec-dev-id="product_option_id1"
+															ec-dev-name="option1" ec-dev-class="ProductOption0"
+															class="ec-product-button" required="true">
+															<li class="" option_value="아이보리" link_image=""
+																title="아이보리"><a href="#none"><span>아이보리</span></a></li>
+															<li class="" option_value="크림베이지" link_image=""
+																title="크림베이지"><a href="#none"><span>크림베이지</span></a></li>
+															<li class="" option_value="코코아브라운" link_image=""
+																title="코코아브라운"><a href="#none"><span>코코아브라운</span></a></li>
+															<li class="" option_value="딥그레이" link_image=""
+																title="딥그레이"><a href="#none"><span>딥그레이</span></a></li>
+															<li class="" option_value="블랙" link_image="" title="블랙"><a
+																href="#none"><span>블랙</span></a></li>
+														</ul>
+														<p class="value">
+															[필수] <span
+																class="ec-shop-front-product-option-desc-trigger"
+																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
+														</p></td>
+												</tr>
+												<tr class="displaynone" id="">
+													<td colspan="2" class="selectButton"><a href="#none"
+														onclick=""><img
+															src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_manual_select.gif"
+															alt="옵션 선택" /></a></td>
+												</tr>
+												<!-- //참고 -->
+											</tbody>
+										</table>
+										<div class="guideArea">
+											<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+											<p class="info ">
+												(최소주문수량 1개 이상<span class=""> / 최대주문수량 20개 이하</span>)
+											</p>
+											<!-- //참고 -->
+											<span class="sizeGuide displaynone"><a href="#none"
+												class="size_guide_info" product_no="3596">사이즈 가이드</a></span>
+										</div>
+
+										<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
+										<!-- //참고 -->
+									</div>
+									<!-- //fixed_cont -->
+
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
+									<div id="totalProducts" class=" fixed_cont">
+										<!--p class="ec-base-help txtWarn txt11 displaynone"> 수량을 선택해주세요.</p>
                         <p class="ec-base-help txtWarn txt11 "> 위 옵션선택 박스를 선택하시면 아래에 상품이 추가됩니다.</p-->
-                        <table border="1" summary="">
-<caption>상품 목록</caption>
-                            <colgroup>
-<col style="width:284px;"/>
-<col style="width:80px;"/>
-<col style="width:110px;"/>
-</colgroup>
-<thead><tr>
-<th scope="col">상품명</th>
-                                    <th scope="col">상품수</th>
-                                    <th scope="col">가격</th>
-                                </tr></thead>
-<tbody class="displaynone"><tr>
-<td>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</td>
-                                    <td>
-                                        <span class="quantity">
-                                            <input id="quantity" name="quantity_name" style="" value="0" type="text"  />                                            <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif" alt="수량증가" class="QuantityUp up"/></a>
-                                            <a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif" alt="수량감소" class="QuantityDown down"/></a>
-                                        </span>
-                                    </td>
-                                    <td class="right">
-<span class="quantity_price">29800</span> <span class="mileage displaynone">(<img src=""/>  <span class="mileage_price"></span>)</span>
-</td>
-                                </tr></tbody>
-<!-- 참고 : 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다.--><tbody><!-- tr>
+										<table border="1" summary="">
+											<caption>상품 목록</caption>
+											<colgroup>
+												<col style="width: 284px;" />
+												<col style="width: 80px;" />
+												<col style="width: 110px;" />
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col">상품명</th>
+													<th scope="col">상품수</th>
+													<th scope="col">가격</th>
+												</tr>
+											</thead>
+											<tbody class="displaynone">
+												<tr>
+													<td>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color</td>
+													<td><span class="quantity"> <input
+															id="quantity" name="quantity_name" style="" value="0"
+															type="text" /> <a href="#none"><img
+																src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_up.gif"
+																alt="수량증가" class="QuantityUp up" /></a> <a href="#none"><img
+																src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_count_down.gif"
+																alt="수량감소" class="QuantityDown down" /></a>
+													</span></td>
+													<td class="right"><span class="quantity_price">29800</span>
+														<span class="mileage displaynone">(<img src="" />
+															<span class="mileage_price"></span>)
+													</span></td>
+												</tr>
+											</tbody>
+											<!-- 참고 : 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다.-->
+											<tbody>
+												<!-- tr>
                                     <td>
                                         <p class="product">
                                             $상품명<br />
@@ -615,37 +682,51 @@
                                         <span>$가격</span>
                                         <span class="mileage">(<img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/product/ico_pay_point.gif" /> &nbsp;<span class="mileage_price">$적립금</span>)</span>
                                     </td>
-                                </tr --></tbody>
-<!-- //참고 --><tfoot><tr>
-<td colspan="3">
-                                        <strong>TOTAL PRICE</strong> (qty) <span class="total"><strong><em>0</em></strong> (0 items)</span>
-                                        <p class="ec-base-help txt11 displaynone EC-price-warning">할인가가 적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p>
-                                    </td>
-                                </tr></tfoot>
-</table>
-</div>
-<!-- //참고 -->
-                                        
-                    <div class="xans-element- xans-product xans-product-action"><div class="fixed_cont_btn">
-                            <div class="ec-base-button">
-                                <a id="cartBtn" href="#none" class=" cart" onclick="product_submit(2, '/exec/front/order/basket/', this)" alt="장바구니 담기">ADD TO CART</a>
-                                <a id="wishBtn" href="#none" class="first " onclick="product_submit(1, '/exec/front/order/basket/', this)"><span alt="바로구매하기" id="btnBuy">BUY NOW</span><span alt="예약주문" class="displaynone" id="btnReserve">예약주문</span></a>
-                                <a class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a>
-                                <a href="#none" onclick="add_wishlist(this, true);" class="" alt="관심상품등록">WISH LIST</a>
-                            </div>
-                        </div>
-<!-- @import(/yangji/sns_banner.html)-->
-<!-- // 네이버톡톡, 플러스친구 배너 -->
-<!-- cre.ma / 작은썸네일 리뷰 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
-<div data-product-code="3596" data-widget-id="14" style="margin-bottom: 20px;" class="crema-product-reviews "></div>
-<div class="board_cnt ">
-                            <ul>
-<li><a href="#prdReview">REVIEW <span class="crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-                                <li><a href="#prdQnA">Q &amp; A<span> 36</span></a></li>
-                            </ul>
-</div>
-<!-- Enliple Shop Log Tracker v3.5 start -->
-<script type="text/javascript">
+                                </tr -->
+											</tbody>
+											<!-- //참고 -->
+											<tfoot>
+												<tr>
+													<td colspan="3"><strong>TOTAL PRICE</strong> (qty) <span
+														class="total"><strong><em>0</em></strong> (0 items)</span>
+														<p class="ec-base-help txt11 displaynone EC-price-warning">할인가가
+															적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p></td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+									<!-- //참고 -->
+
+									<div class="xans-element- xans-product xans-product-action">
+										<div class="fixed_cont_btn">
+											<div class="ec-base-button">
+												<a id="cartBtn" href="#none" class=" cart"
+													onclick="product_submit(2, '/exec/front/order/basket/', this)"
+													alt="장바구니 담기">ADD TO CART</a> <a id="wishBtn" href="#none"
+													class="first "
+													onclick="product_submit(1, '/exec/front/order/basket/', this)"><span
+													alt="바로구매하기" id="btnBuy">BUY NOW</span><span alt="예약주문"
+													class="displaynone" id="btnReserve">예약주문</span></a> <a
+													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a> <a
+													href="#none" onclick="add_wishlist(this, true);" class=""
+													alt="관심상품등록">WISH LIST</a>
+											</div>
+										</div>
+										<!-- @import(/yangji/sns_banner.html)-->
+										<!-- // 네이버톡톡, 플러스친구 배너 -->
+										<!-- cre.ma / 작은썸네일 리뷰 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+										<div data-product-code="3596" data-widget-id="14"
+											style="margin-bottom: 20px;" class="crema-product-reviews "></div>
+										<div class="board_cnt ">
+											<ul>
+												<li><a href="#prdReview">REVIEW <span
+														class="crema-product-reviews-count"
+														data-product-code="3596">0</span></a></li>
+												<li><a href="#prdQnA">Q &amp; A<span> 36</span></a></li>
+											</ul>
+										</div>
+										<!-- Enliple Shop Log Tracker v3.5 start -->
+										<script type="text/javascript">
 <!--
 function mobRfShop(){
   var sh = new EN();      
@@ -677,440 +758,735 @@ function mobRfShop(){
 } 
 //-->
 </script>
-<script src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js" defer="defer" onload="mobRfShop()"></script>
-<!-- Enliple Shop Log Tracker v3.5 end  -->
-<!-- 네이버 체크아웃 구매 버튼 -->
-<div id="NaverChk_Button"></div>
-<!-- //네이버 체크아웃 구매 버튼 -->
-                
-                                            
-</div>
-<!-- //참고 -->
-                </div>
-<!-- //fixedIn -->
-            </div>
-<!-- //infoAreaIn -->
-        </div>
-<!-- //infoArea -->
-    </div>
-<!-- //detailArea -->
-<div class="eventArea displaynone ">        
-        <div class="event"></div>
-    </div>
-</div>
-<!-- //상단 제품 정보 -->
+										<script
+											src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js"
+											defer="defer" onload="mobRfShop()"></script>
+										<!-- Enliple Shop Log Tracker v3.5 end  -->
+										<!-- 네이버 체크아웃 구매 버튼 -->
+										<div id="NaverChk_Button"></div>
+										<!-- //네이버 체크아웃 구매 버튼 -->
 
-<div id="fixed"></div> <!-- offset().top 값을 위한 임의의 ID-->
 
-<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
-<div style="visibility:hidden; opacity:0;" class="xans-element- xans-product xans-product-addproduct productSet"><div class="recommend">
-        <h3>RECOMMENDED ITEM<span>이 상품과 함께 가장 많이 본 상품</span>
-</h3>
-        
-    </div>
-<div class="recommend_inner">
-        <div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/2천장돌파주문폭주-slowmade-윈터즈-양기모맨투맨-8-color/3572/"><img src="//slowand.com/web/product/medium/201910/9cde6a180c11aee24faf923ac5b68992.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>[2천장돌파/주문폭주] #SLOWMADE. 윈터즈 양기모맨투맨 - 8 color</td>
-                        </tr>
-<tr class="">
-<td class="price ">22,000원</td>
-                        </tr>
-<tr class="displaynone">
-<td class="sale"></td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-        <div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/2천장-돌파-lento-렌토-양기모후디-5-color/3578/"><img src="//slowand.com/web/product/medium/201911/bf1c6dc344da5af12832d661bb577dfe.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>[2천장 돌파] #LENTO. 렌토 양기모후디 - 5 color</td>
-                        </tr>
-<tr class="">
-<td class="price ">28,000원</td>
-                        </tr>
-<tr class="displaynone">
-<td class="sale"></td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-<div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/당일발송-slowmade-스탠다드-후드집업-4-color/2809/"><img src="//slowand.com/web/product/medium/201903/e829b403b5d907df3d48d8d481203a75.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>[당일발송] #SLOWMADE. 스탠다드 후드집업 - 4 color</td>
-                        </tr>
-<tr class="">
-<td class="price ">27,000원</td>
-                        </tr>
-<tr class="displaynone">
-<td class="sale"></td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-<div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/sale당일발송-slowmade-피그먼트-워싱후드집업-2-color/3462/"><img src="//slowand.com/web/product/medium/201909/64f452be91c7e8d9ffa3d123bbaa0585.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>[sale/당일발송] #SLOWMADE. 피그먼트 워싱후드집업 - 2 color</td>
-                        </tr>
-<tr class="">
-<td class="price del"><strike>34,900원</strike><strike></strike></td>
-                        </tr>
-<tr class="">
-<td class="sale">28,000원</td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-<div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/slowmade-바이데이-니트스커트-3-color/3577/"><img src="//slowand.com/web/product/medium/201911/bc28d86fd75c7b0cab92370923ae96de.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>#SLOWMADE. 바이데이 니트스커트 - 3 color</td>
-                        </tr>
-<tr class="">
-<td class="price ">26,000원</td>
-                        </tr>
-<tr class="displaynone">
-<td class="sale"></td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-<div class="product xans-record-">
-            <div class="seperate">
-                <table border="1" summary="">
-<caption>기본 정보</caption>
-                    <tbody>
-<tr>
-<td class="thumbnail"><a href="/product/paris-레터링-티셔츠-5-color/3477/"><img src="//slowand.com/web/product/medium/201909/f5c8b6dfb76bb2de6428469fc3b20380.gif" alt=""/></a></td>
-                        </tr>
-<tr>
-<td>paris 레터링 티셔츠 - 5 color</td>
-                        </tr>
-<tr class="">
-<td class="price ">15,000원</td>
-                        </tr>
-<tr class="displaynone">
-<td class="sale"></td>
-                        </tr>
-</tbody>
-</table>
-</div>
-        </div>
-    </div>
-</div>
-<!-- //추가 구성 상품 -->
+									</div>
+									<!-- //참고 -->
+								</div>
+								<!-- //fixedIn -->
+							</div>
+							<!-- //infoAreaIn -->
+						</div>
+						<!-- //infoArea -->
+					</div>
+					<!-- //detailArea -->
+					<div class="eventArea displaynone ">
+						<div class="event"></div>
+					</div>
+				</div>
+				<!-- //상단 제품 정보 -->
 
-<div class="xans-element- xans-product xans-product-additional "><!-- 상품상세정보 -->
-<div id="prdDetail" class="ec-base-tab grid5">
-        <ul class="menu">
-<li class="selected"><a href="#prdDetail">DETAIL INFO</a></li>
-            <li><a href="#prdRelated">WITH ITEM</a></li>
-            <li><a href="#prdInfo">CHECK UP</a></li>
-            <li><a href="#prdReview">REVIEW <span class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-            <li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>            
-        </ul>
-<!-- 쿠폰 다운로드 --><div class="xans-element- xans-coupon xans-coupon-productdetail"><!--
-                $coupon_down_result_url = /coupon/coupon_down_result.html
-            -->
-<div class="couponSkinArea">
-                <!--
-                    진열 방식에따라 아래의 ul class 변경
-                    1열 : ul class="grid1"
-                    2열 : ul class="grid2"
-                    3열 : ul class="grid3"
-                    4열 : ul class="grid4"
-                -->
-                <ul class="grid4">
-<li class="xans-record-">
-                        <div class="coupon " style="background-image:url('//slowand.com/web/product/coupon/shop1_user_background.gif')">
-                            <div class="detail" onclick="COUPON.viewInfo('4202810000000000607', this)">
-                                <strong class="title" style="color:#736d6b;">1+1 두개 구매시 무료배송쿠폰♥(후...</strong>
-                                <p class="discount" style="color:#222;"><span>기본배송비할인</span></p>
-                                <p class="period" style="color:#b4b4b4;">(2019-11-06 ~ 2020-12-31)</p>
-                            </div>                            
-                        </div>
-                        <div class="button"><a href="/exec/front/newcoupon/IssueDownload?coupon_no=4202810000000000607&opener_url=https%3A%2F%2Fslowand.com%2Fproduct%2Fslowmade-%25EC%259C%2588%25ED%2584%25B0%25EC%25A6%2588-%25EC%2596%2591%25EA%25B8%25B0%25EB%25AA%25A8-%25ED%259B%2584%25EB%2593%259C%25EC%25A7%2591%25EC%2597%2585-5-color%2F3596%2Fcategory%2F24%2Fdisplay%2F2%2F" style="background-image:url('//img.echosting.cafe24.com/design/skin/admin/ko_KR/btn_coupondown_skin4.png');" alt="다운받기"><!--span>쿠폰 다운받기</span--></a></div>
-                    </li>
-                                    </ul>
-</div>
-<div class="title">        
-                <p class="button"><a href="#none" id="btn_all_coupondown" class="yg_btn_140" alt="전체쿠폰다운받기">전체쿠폰 다운받기</a></p>
-            </div>
-</div>
-<!-- //쿠폰 다운로드 -->
-        
-        <div class="cont">
-            <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-14 xans-bannermanage2-display xans-bannermanage2-14"><div class=""><a href="" alt="" ></a></div>
-<div class=""><a href="" alt="" ></a></div>
-<div class=""><a href="" alt="" ></a></div>
-</div>
-            <p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img style="font-size: 9pt;" alt="" src="/web/upload/NNEditor/20191101/666656_shop1_200048.jpg"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: 돋움,dotum;"><span style="font-size: 16pt;"><strong>[ 11월 말 ]</strong></span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191112/제작상품 재오픈_shop1_093741.jpg"><p>&nbsp;</p><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 18pt;"></span></b></span></span></p><p align="center"><b>&nbsp;</b></p><p align="center"></p><b><p align="center" style="text-align: center;"><br></p></b><p align="center" style="text-align: center;"><b><img alt="" src="/web/upload/NNEditor/20191108/1_shop1_201304.jpg"></b></p><p align="center"><b>&nbsp;</b></p><p align="center"><br></p><b><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/3_shop1_201312.jpg"></p><p align="center">&nbsp;</p><p align="center"><br></p></b><p align="center"></p><b><p align="center" style="text-align: center;"><br></p></b><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 18pt;"><img alt="" src="/web/upload/NNEditor/20191108/06_토크_shop1_183330.png"></span></b></span></span><br></p><b><p align="center" style="text-align: center;"><br></p></b><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b>#made by SLOWAND! 맨투맨, 후드에 이어</b></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><strong>드디어 보여드리는 후드집업 <span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">'ᴗ'</span></span></strong></span></span></p><p align="center" style="text-align: center;"><span style="font-size: 12pt;">﻿</span><br></p><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><p align="center" style="text-align: center;"><br></p></span></span><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">11월이 시작되면서 보여드리고 있는</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">양기모 시리즈들 맨투맨-후드가 모두</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">정말 많은 사랑을 받고 있어요 !</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">아무래도 추운 겨울에 따지게 되는 것</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">보온성 1순위, 편안한것 2순위 ㅎㅎ</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">꼭 가지고 있어야 하는 기본템이지 않을까 싶어요.</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">이번엔 후드,맨투맨과 다르게</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">오픈이 되는 지퍼형식으로</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">티셔츠나 얇은 이너 위에 가볍게 걸칠 수 있는</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">아우터용 후드집업입니다.</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">코트 속에 모자 빼어 입으면 귀여운 룩 연출도 가능하고</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">(대신 양기모가 도톰한 편이라 박시한 코트와 코디하시길 추천드려요)</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">아우터 챙기기 애매한 간절기나, 집에서 편안한 옷 입고 있다</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">잠깐 나갈 때 폭 감싸 입고 나갈 수도 있고 *.*</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">얇아서 핏이 죽는원단이 아닌</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">&nbsp;도톰해서 봉봉 사는 핏이 매력적인 제품으로</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">간절기 시즌엔 자켓보다도 따뜻하게 착용하실 수 있을거에요.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><font color="#636363" face="Arial"></font><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">후드집업 컬러는 슬앤의 다른 옷들과도</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">여러 스타일링이 가능하도록 베이직한 컬러들을 담아 제작했어요.</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">맨투맨과 후드에서는 포인트 컬러가 있었다면</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">집업에서는 레이어드 스타일링이 가능하도록 차분하게 제작했습니다.</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center"></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/776_shop1_201931.jpg"></p><p align="center" style="text-align: center;">&nbsp;<p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 12pt;"># Fabric [ Cotton 80% + Polyester 20% ]</span></b></span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">업데이트 되자마자 정말 많은 사랑을 받고있는</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">윈터즈 양기모맨투맨과 같은 재질입니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">도톰하고 폭닥하고, 가격대비 질이 좋다는 말씀을</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">벌써부터 후기에 많이 해주실만큼 따뜻한 소재감이에요.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">겉면에도 자연스러운 기모기가 미세히 느껴지지만</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">&nbsp;도톰한 기모는 안쪽에 가공되어 있습니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">* <span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">뜨거운 고온과 , 기계 탈수 건조 시</span></span></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">원단의 줄어듦 현상이 발생할 수 있어요.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">세탁은 미지근한 물과, 자연 건조로 가볍게 말려주세요 :)</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><br></span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/2_shop1_201337.jpg"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 12pt;"># Detail</span></b></span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*힙에 걸쳐지며 편안하게 착용하기 좋은</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">늦가을-겨울용 양기모 후드집업입니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*또 다른 이너를 두툼하게 껴입기 좋은</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">폭닥한 핏으로 여유가 있어 편안하게 착용돼요</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*가볍게 내려온 어깨핏으로 자연스러운 핏을 연출해주고</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*손등을 충분히 덮어주는 소매기장으로 더욱 따뜻하게 착용돼요</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*원단 컬러별로 동일한 컬러의 염료로 스트링을 염색해 제작했어요</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">덕분에 이질감은 떨어지고 더욱 심플하게 착용됩니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*스트링 마감은 플라스틱이 아닌</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">풀어질 일 없는 튼튼한 니켈 마감으로 퀄리티 높여 제작했어요</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">덕분에 저렴해 보이지 않고 더욱 탄탄하게 착용됩니다.</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 18pt;"></span></b></span></span></p><p align="center"><b>&nbsp;</b></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><span style="font-size: 18pt;"><img alt="" src="/web/upload/NNEditor/20191108/001_shop1_183340.jpg"></span></b></span></span><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">슬로우앤드의 새로운 양기모 집업을 기다려오신 분</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">아우터로 착용해도 밋밋함없는 도톰한 기모집업을 찾고 계신 분</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">평소 편안한 캐주얼 룩을 즐겨입으시는 분</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">넉넉하되 기장은 루즈하지 않은 폭닥핏 집업을 찾고 계신 분</span></span></p><p align="center" style="text-align: center;"><span style="font-size: 14pt;">﻿</span><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><u>COLOR</u></b></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">아이보리,크림베이지,코코아브라운,딥그레이,블랙</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><u>FABRIC</u></b> 면80+폴리20&nbsp;</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><u>SIZE(F)</u></b></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">어깨60/가슴63/암홀25.5/팔기장54/팔단면18.5/밑단48/총장59</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);"><b><u>MODEL SIZE &amp; FITTING</u></b></span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">162 cm / 47 kg</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-size: 16pt;">﻿</span><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*함께 코디한 운동화를 제외한 with item에 없는 상품은</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">모두 업데이트 예정 상품입니다:)</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/colorviewHood_shop1_191806.jpg"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/1212_shop1_165444_shop1_191812.jpg"></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_아이보리+생지일자데님-복사_01_shop1_192052.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_아이보리+생지일자데님-복사_02_shop1_192053_shop1_201437.jpg"></p><p align="center">&nbsp;</p><p align="center">&nbsp;</p><p align="center"></p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_아이보리+생지일자데님-복사_03_shop1_192053.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_아이보리+생지일자데님-복사_04_shop1_192053.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_아이보리+생지일자데님-복사_05_shop1_192054.jpg"></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모1_01_shop1_191909.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모1_02_shop1_191910.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모1_03_shop1_191910.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모1_04_shop1_191910.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모2_01_shop1_191911.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_코코아브라운-+-딱딱반팔티_연베이지-+-모어크림팬츠-기모2_02_shop1_191911.jpg"></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_01_shop1_191901.jpg"></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_02_shop1_191901.jpg"></p><p align="center" style="text-align: center;">&nbsp;</p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_03_shop1_191902.jpg"></p><p align="center" style="text-align: center;">&nbsp;</p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_04_shop1_191902.jpg"></p><p align="center" style="text-align: center;">&nbsp;</p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_05_shop1_191902.jpg"></p><p align="center" style="text-align: center;">&nbsp;</p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/%EB%A0%8C%ED%86%A0%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85_%ED%81%AC%EB%A6%BC%EB%B2%A0%EC%9D%B4%EC%A7%80+%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8_%EB%B2%A0%EC%9D%B4%EC%A7%80_06_shop1_191903.jpg"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_딥그레이-+-니트팬츠_블랙-+-제작레깅스-복사_01_shop1_192144.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_딥그레이-+-니트팬츠_블랙-+-제작레깅스-복사_02_shop1_192145.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_딥그레이-+-니트팬츠_블랙-+-제작레깅스-복사_03_shop1_192145.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_딥그레이-+-니트팬츠_블랙-+-제작레깅스-복사_04_shop1_192146.jpg"></p><p align="center"><br></p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/44_shop1_202452.jpg"></p><p align="center">&nbsp;<p align="center"><img alt="" src="/web/upload/NNEditor/20191108/33_shop1_202453.jpg"></p><p align="center">&nbsp;<p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_블랙+딱딱반팔티_그레이+흑청스키니-롱M-복사_01_shop1_192146.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_블랙+딱딱반팔티_그레이+흑청스키니-롱M-복사_02_shop1_192146.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/렌토후드집업_블랙+딱딱반팔티_그레이+흑청스키니-롱M-복사_03_shop1_192146.jpg"></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><img alt="" src="/web/upload/NNEditor/20191108/01양기모후드집업_01_shop1_183351.jpg"></p><p align="center">&nbsp;</p><p align="center"><img alt="" src="/web/upload/NNEditor/20191108/01양기모후드집업_02_shop1_183351.jpg"></p><p align="center">&nbsp;</p><p align="center"><br></p><p align="center"></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">1. 사이즈는 단면 기준이며 바닥에 놓고 안내선과 동일하게 측정합니다.&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">2. 사이즈는 측정 방법에 따라서 1~3cm 오차가 발생할 수 있습니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">3. 모니터의 해상도에 따라 실제 색상과 차이가 있을 수 있습니다.&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">4. 야외 촬영이나 실내 촬영의 경우 조명이나,&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">야외 환경으로 인해 제품 색상이 정확하지 않을 수 있습니다</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">상세 컷이 실제 상품 컬러와 가장 동일합니다.&nbsp;</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*니트, 신축성이 좋은 원단을 사용한 상품은 사이즈 오차 범위가 클 수 있습니다.&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*동일 제품이라도 제작할 때마다 사이즈 편차가 생길 수 있으며&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">컬러마다 염색으로 인해 사이즈가 다를 수 있습니다.&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*같은 패턴, 사이즈, 공정으로 제작되더라도&nbsp;</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">완벽하게 똑같은 사이즈로 제작되기 어려운 점 양해 부탁드립니다.</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">&nbsp;</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">*옷의 봉제 라인을 따라 무늬가 일정하지 않을 수 있습니다</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">수작업으로 제작되는 상품이 아니기 때문에 단가라무늬나 체크패턴 등</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">포켓이나 시접 부분의 패턴이 수직,수평으로 정확하게 무늬가</span></span></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">일정하지 않을 수 있어요 이 점 불량이 아닌 점 구매 시 참고하여주세요.</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><span style="font-family: sans-serif;"><span style="color: rgb(99, 99, 99);">&nbsp;[자세한 사항은 notice의 공지사항을 참고 부탁드립니다]</span></span></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center" style="text-align: center;"><br></p><p align="center">			<br></p>            <div class="xans-element- xans-bannermanage2 xans-bannermanage2-display-15 xans-bannermanage2-display xans-bannermanage2-15"><div class="xans-record-"><a href="" alt="3" ><img class='banner_image' width='984' height='793' title='3'  rel='58-15' src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2018/08/13/7f46fda85ca7509ca83ac6c1f79c607e.jpg' /></a></div>
-<div class="xans-record-"><a href="" alt="4" ><img class='banner_image' width='984' height='793' title='4'  rel='59-15' src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/1a646a9bf0f90195cb66d88c238baf2b.jpg' /></a></div>
-<div class="xans-record-"><a href="" alt="22" ><img class='banner_image' width='984' height='793' title='22'  rel='60-15' src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/84b3b60e4c0e6b82589f63c613f651ad.jpg' /></a></div>
-</div>
-        </div>
-    </div>
-<!-- //상품상세정보 -->
-</div>
+				<div id="fixed"></div>
+				<!-- offset().top 값을 위한 임의의 ID-->
 
-<div id="fixed_off"></div> <!-- offset().top 값을 위한 임의의 ID-->
+				<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
+				<div style="visibility: hidden; opacity: 0;"
+					class="xans-element- xans-product xans-product-addproduct productSet">
+					<div class="recommend">
+						<h3>
+							RECOMMENDED ITEM<span>이 상품과 함께 가장 많이 본 상품</span>
+						</h3>
 
-<div class="xans-element- xans-product xans-product-additional"><div id="prdRelated" class="ec-base-tab grid5">
-        
-        <ul class="menu">
-<li><a href="#prdDetail">DETAIL INFO</a></li>
-            <li class="selected"><a href="#prdRelated">WITH ITEM</a></li>
-            <li><a href="#prdInfo">CHECK UP</a></li>
-            <li class=""><a href="#prdReview">REVIEW <span class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-            <li class=""><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>        
-        </ul><div class="xans-element- xans-product xans-product-relation xans-record-"><h3>WITH ITEM</h3>
-<ul class="xans-element- xans-product xans-product-relationlist typeCheckRelation grid5"><li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3577&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201911/bc28d86fd75c7b0cab92370923ae96de.gif" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3577|70|1|1|%23SLOWMADE.%20%EB%B0%94%EC%9D%B4%EB%8D%B0%EC%9D%B4%20%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8%20-%203%20color|26000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3577&cate_no=24&display_group=2">#SLOWMADE. 바이데이 니트스커트 - 3 color</a></p>
-                            <p class="price ">26,000원</p>
-                            <p class="displaynone">26,000원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+					</div>
+					<div class="recommend_inner">
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/2천장돌파주문폭주-slowmade-윈터즈-양기모맨투맨-8-color/3572/"><img
+													src="//slowand.com/web/product/medium/201910/9cde6a180c11aee24faf923ac5b68992.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>[2천장돌파/주문폭주] #SLOWMADE. 윈터즈 양기모맨투맨 - 8 color</td>
+										</tr>
+										<tr class="">
+											<td class="price ">22,000원</td>
+										</tr>
+										<tr class="displaynone">
+											<td class="sale"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/2천장-돌파-lento-렌토-양기모후디-5-color/3578/"><img
+													src="//slowand.com/web/product/medium/201911/bf1c6dc344da5af12832d661bb577dfe.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>[2천장 돌파] #LENTO. 렌토 양기모후디 - 5 color</td>
+										</tr>
+										<tr class="">
+											<td class="price ">28,000원</td>
+										</tr>
+										<tr class="displaynone">
+											<td class="sale"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/당일발송-slowmade-스탠다드-후드집업-4-color/2809/"><img
+													src="//slowand.com/web/product/medium/201903/e829b403b5d907df3d48d8d481203a75.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>[당일발송] #SLOWMADE. 스탠다드 후드집업 - 4 color</td>
+										</tr>
+										<tr class="">
+											<td class="price ">27,000원</td>
+										</tr>
+										<tr class="displaynone">
+											<td class="sale"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/sale당일발송-slowmade-피그먼트-워싱후드집업-2-color/3462/"><img
+													src="//slowand.com/web/product/medium/201909/64f452be91c7e8d9ffa3d123bbaa0585.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>[sale/당일발송] #SLOWMADE. 피그먼트 워싱후드집업 - 2 color</td>
+										</tr>
+										<tr class="">
+											<td class="price del"><strike>34,900원</strike><strike></strike></td>
+										</tr>
+										<tr class="">
+											<td class="sale">28,000원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/slowmade-바이데이-니트스커트-3-color/3577/"><img
+													src="//slowand.com/web/product/medium/201911/bc28d86fd75c7b0cab92370923ae96de.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>#SLOWMADE. 바이데이 니트스커트 - 3 color</td>
+										</tr>
+										<tr class="">
+											<td class="price ">26,000원</td>
+										</tr>
+										<tr class="displaynone">
+											<td class="sale"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="product xans-record-">
+							<div class="seperate">
+								<table border="1" summary="">
+									<caption>기본 정보</caption>
+									<tbody>
+										<tr>
+											<td class="thumbnail"><a
+												href="/product/paris-레터링-티셔츠-5-color/3477/"><img
+													src="//slowand.com/web/product/medium/201909/f5c8b6dfb76bb2de6428469fc3b20380.gif"
+													alt="" /></a></td>
+										</tr>
+										<tr>
+											<td>paris 레터링 티셔츠 - 5 color</td>
+										</tr>
+										<tr class="">
+											<td class="price ">15,000원</td>
+										</tr>
+										<tr class="displaynone">
+											<td class="sale"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //추가 구성 상품 -->
+
+				<div class="xans-element- xans-product xans-product-additional ">
+					<!-- 상품상세정보 -->
+					<div id="prdDetail" class="ec-base-tab grid5">
+						<ul class="menu">
+							<li class="selected"><a href="#prdDetail">DETAIL INFO</a></li>
+							<li><a href="#prdRelated">WITH ITEM</a></li>
+							<li><a href="#prdInfo">CHECK UP</a></li>
+							<li><a href="#prdReview">REVIEW <span
+									class="cnt crema-product-reviews-count"
+									data-product-code="3596">0</span></a></li>
+							<li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+						</ul>
+
+
+						<div class="cont">
+							<div
+								class="xans-element- xans-bannermanage2 xans-bannermanage2-display-14 xans-bannermanage2-display xans-bannermanage2-14">
+								<div class="">
+									<a href="" alt=""></a>
+								</div>
+								<div class="">
+									<a href="" alt=""></a>
+								</div>
+								<div class="">
+									<a href="" alt=""></a>
+								</div>
+							</div>
+
+							<p align="center" style="text-align: center;">
+								<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<img style="font-size: 9pt;" alt=""
+									src="//slowand.com/web/upload/NNEditor/20191101/666656_shop1_200048.jpg">
+							</p>
+							<p align="center" style="text-align: center;">
+								<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<span style="font-family: 돋움, dotum;"><span
+									style="font-size: 16pt;"><strong>[ 11월 말 ]</strong></span></span>
+							</p>
+							<p align="center" style="text-align: center;">
+								<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<img alt=""
+									src="/web/upload/NNEditor/20191112/제작상품 재오픈_shop1_093741.jpg"><p>&nbsp;</p>
+									<br>
+							</p>
+							<p align="center" style="text-align: center;">
+								<span style="font-family: sans-serif;"><span
+									style="color: rgb(99, 99, 99);"><b><span
+											style="font-size: 18pt;"></span></b></span></span>
+							</p>
+							<p align="center">
+								<b>&nbsp;</b>
+							</p>
+							<p align="center"></p>
+							<b><p align="center" style="text-align: center;">
+									<br>
+								</p></b>
+							<p align="center" style="text-align: center;">
+								<b><img alt=""
+									src="//slowand.com/web/upload/NNEditor/20191108/1_shop1_201304.jpg"></b>
+							</p>
+
+							<div class="xans-record-">
+								<a href="" alt="4"><img class='banner_image' width='984'
+									height='793' title='4' rel='59-15'
+									src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/1a646a9bf0f90195cb66d88c238baf2b.jpg' /></a>
+							</div>
+							<div class="xans-record-">
+								<a href="" alt="22"><img class='banner_image' width='984'
+									height='793' title='22' rel='60-15'
+									src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/84b3b60e4c0e6b82589f63c613f651ad.jpg' /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //상품상세정보 -->
+			</div>
+
+			<div id="fixed_off"></div>
+			<!-- offset().top 값을 위한 임의의 ID-->
+
+			<div class="xans-element- xans-product xans-product-additional">
+				<div id="prdRelated" class="ec-base-tab grid5">
+
+					<ul class="menu">
+						<li><a href="#prdDetail">DETAIL INFO</a></li>
+						<li class="selected"><a href="#prdRelated">WITH ITEM</a></li>
+						<li><a href="#prdInfo">CHECK UP</a></li>
+						<li class=""><a href="#prdReview">REVIEW <span
+								class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
+						<li class=""><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+					</ul>
+					<div
+						class="xans-element- xans-product xans-product-relation xans-record-">
+						<h3>WITH ITEM</h3>
+						<ul
+							class="xans-element- xans-product xans-product-relationlist typeCheckRelation grid5">
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3577&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201911/bc28d86fd75c7b0cab92370923ae96de.gif"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3577|70|1|1|%23SLOWMADE.%20%EB%B0%94%EC%9D%B4%EB%8D%B0%EC%9D%B4%20%EB%8B%88%ED%8A%B8%EC%8A%A4%EC%BB%A4%ED%8A%B8%20-%203%20color|26000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3577&cate_no=24&display_group=2">#SLOWMADE.
+												바이데이 니트스커트 - 3 color</a>
+										</p>
+										<p class="price ">26,000원</p>
+										<p class="displaynone">26,000원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                         뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3577[]" id="option_3577_0" product_no="3577" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><option value="그레이"  link_image="">그레이</option><option value="피칸브라운"  link_image="">피칸브라운</option><option value="블랙"  link_image="">블랙</option></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3577" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3577" product_code="P0000FHP" option_type="T" product_max="20" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-<li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3604&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201911/30b36c0813ad7a502f05afa6f9fdd4f8.gif" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3604|66|1|1|%ED%8F%AC%EB%B9%84%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%88%ED%8A%B8%EB%A8%B8%ED%94%8C%EB%9F%AC%20-%204%20color|15000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3604&cate_no=24&display_group=2">포비 소프트 니트머플러 - 4 color</a></p>
-                            <p class="price strike">15,000원</p>
-                            <p class="">14,300원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3577[]" id="option_3577_0"
+													product_no="3577" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<option value="그레이" link_image="">그레이</option>
+														<option value="피칸브라운" link_image="">피칸브라운</option>
+														<option value="블랙" link_image="">블랙</option></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3577" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3577" product_code="P0000FHP" option_type="T"
+													product_max="20" product_min="1" buy_unit="1"
+													maxlength="10" value="1" type="text" /><img
+													class="RelationQuantityUp" alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3604&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201911/30b36c0813ad7a502f05afa6f9fdd4f8.gif"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3604|66|1|1|%ED%8F%AC%EB%B9%84%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%8B%88%ED%8A%B8%EB%A8%B8%ED%94%8C%EB%9F%AC%20-%204%20color|15000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3604&cate_no=24&display_group=2">포비
+												소프트 니트머플러 - 4 color</a>
+										</p>
+										<p class="price strike">15,000원</p>
+										<p class="">14,300원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                    뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3604[]" id="option_3604_0" product_no="3604" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><optgroup label="COLOR"><option value="P0000FIQ000A"  link_image="">연베이지</option><option value="P0000FIQ000B"  link_image="">코코아</option><option value="P0000FIQ000C"  link_image="">딥그레이</option><option value="P0000FIQ000D"  link_image="">블랙</option></optgroup></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3604" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3604" product_code="P0000FIQ" option_type="T" product_max="0" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-<li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3477&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201909/f5c8b6dfb76bb2de6428469fc3b20380.gif" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3477|25|1|1|paris%20%EB%A0%88%ED%84%B0%EB%A7%81%20%ED%8B%B0%EC%85%94%EC%B8%A0%20-%205%20color|15000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3477&cate_no=24&display_group=2">paris 레터링 티셔츠 - 5 color</a></p>
-                            <p class="price ">15,000원</p>
-                            <p class="displaynone">15,000원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3604[]" id="option_3604_0"
+													product_no="3604" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<optgroup label="COLOR">
+															<option value="P0000FIQ000A" link_image="">연베이지</option>
+															<option value="P0000FIQ000B" link_image="">코코아</option>
+															<option value="P0000FIQ000C" link_image="">딥그레이</option>
+															<option value="P0000FIQ000D" link_image="">블랙</option>
+														</optgroup></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3604" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3604" product_code="P0000FIQ" option_type="T"
+													product_max="0" product_min="1" buy_unit="1" maxlength="10"
+													value="1" type="text" /><img class="RelationQuantityUp"
+													alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3477&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201909/f5c8b6dfb76bb2de6428469fc3b20380.gif"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3477|25|1|1|paris%20%EB%A0%88%ED%84%B0%EB%A7%81%20%ED%8B%B0%EC%85%94%EC%B8%A0%20-%205%20color|15000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3477&cate_no=24&display_group=2">paris
+												레터링 티셔츠 - 5 color</a>
+										</p>
+										<p class="price ">15,000원</p>
+										<p class="displaynone">15,000원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                    뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3477[]" id="option_3477_0" product_no="3477" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><optgroup label="COLOR"><option value="P0000FDT000A"  link_image="">화이트 [품절] </option><option value="P0000FDT000B"  link_image="">소프트베이지</option><option value="P0000FDT000C"  link_image="">브릭카멜</option><option value="P0000FDT000D"  link_image="">딥그린</option><option value="P0000FDT000E"  link_image="">블랙 [품절] </option></optgroup></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3477" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3477" product_code="P0000FDT" option_type="T" product_max="0" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-<li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3588&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201911/9bd6d656634c71b5302b2531a4b29cf1.gif" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3588|68|1|1|%EC%95%84%EC%9B%8C%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%AC%B4%EC%A7%80%EB%A8%B8%ED%94%8C%EB%9F%AC%20-%206%20color|15000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3588&cate_no=24&display_group=2">아워 소프트 무지머플러 - 6 color</a></p>
-                            <p class="price ">15,000원</p>
-                            <p class="displaynone">15,000원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3477[]" id="option_3477_0"
+													product_no="3477" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<optgroup label="COLOR">
+															<option value="P0000FDT000A" link_image="">화이트
+																[품절]</option>
+															<option value="P0000FDT000B" link_image="">소프트베이지</option>
+															<option value="P0000FDT000C" link_image="">브릭카멜</option>
+															<option value="P0000FDT000D" link_image="">딥그린</option>
+															<option value="P0000FDT000E" link_image="">블랙
+																[품절]</option>
+														</optgroup></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3477" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3477" product_code="P0000FDT" option_type="T"
+													product_max="0" product_min="1" buy_unit="1" maxlength="10"
+													value="1" type="text" /><img class="RelationQuantityUp"
+													alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3588&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201911/9bd6d656634c71b5302b2531a4b29cf1.gif"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3588|68|1|1|%EC%95%84%EC%9B%8C%20%EC%86%8C%ED%94%84%ED%8A%B8%20%EB%AC%B4%EC%A7%80%EB%A8%B8%ED%94%8C%EB%9F%AC%20-%206%20color|15000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3588&cate_no=24&display_group=2">아워
+												소프트 무지머플러 - 6 color</a>
+										</p>
+										<p class="price ">15,000원</p>
+										<p class="displaynone">15,000원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                    뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3588[]" id="option_3588_0" product_no="3588" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><optgroup label="COLOR"><option value="P0000FIA000A"  link_image="">아이보리</option><option value="P0000FIA000B"  link_image="">베이지</option><option value="P0000FIA000C"  link_image="">소프트카키</option><option value="P0000FIA000D"  link_image="">올리브</option><option value="P0000FIA000E"  link_image="">그레이</option><option value="P0000FIA000F"  link_image="">블랙</option></optgroup></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3588" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3588" product_code="P0000FIA" option_type="T" product_max="0" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-<li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3589&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201911/89db2b5309ecb5ca1d5d3242e78c6d37.jpg" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3589|28|1|1|%5B%EA%B8%B0%ED%9A%8D%ED%8A%B9%EA%B0%80%5D%20%EC%85%80%EB%A6%AC%20matt%20flat%20-7%20color|27000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3589&cate_no=24&display_group=2">[기획특가] 셀리 matt flat -7 color</a></p>
-                            <p class="price ">27,000원</p>
-                            <p class="displaynone">27,000원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3588[]" id="option_3588_0"
+													product_no="3588" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<optgroup label="COLOR">
+															<option value="P0000FIA000A" link_image="">아이보리</option>
+															<option value="P0000FIA000B" link_image="">베이지</option>
+															<option value="P0000FIA000C" link_image="">소프트카키</option>
+															<option value="P0000FIA000D" link_image="">올리브</option>
+															<option value="P0000FIA000E" link_image="">그레이</option>
+															<option value="P0000FIA000F" link_image="">블랙</option>
+														</optgroup></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3588" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3588" product_code="P0000FIA" option_type="T"
+													product_max="0" product_min="1" buy_unit="1" maxlength="10"
+													value="1" type="text" /><img class="RelationQuantityUp"
+													alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3589&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201911/89db2b5309ecb5ca1d5d3242e78c6d37.jpg"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3589|28|1|1|%5B%EA%B8%B0%ED%9A%8D%ED%8A%B9%EA%B0%80%5D%20%EC%85%80%EB%A6%AC%20matt%20flat%20-7%20color|27000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3589&cate_no=24&display_group=2">[기획특가]
+												셀리 matt flat -7 color</a>
+										</p>
+										<p class="price ">27,000원</p>
+										<p class="displaynone">27,000원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                    뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3589[]" id="option_3589_0" product_no="3589" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><option value="아이보리"  link_image="">아이보리</option><option value="베이지"  link_image="">베이지</option><option value="그레이지"  link_image="">그레이지</option><option value="매트블루"  link_image="">매트블루</option><option value="다크그린"  link_image="">다크그린</option><option value="다크와인"  link_image="">다크와인</option><option value="블랙"  link_image="">블랙</option></select>                                    </td>
-</tr>
-<tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">SIZE</th--><td>
-                                         <select name="option_3589[]" id="option_3589_1" product_no="3589" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><option value="230"  link_image="">230</option><option value="235"  link_image="">235</option><option value="240"  link_image="">240</option><option value="245"  link_image="">245</option><option value="250"  link_image="">250</option></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3589" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3589" product_code="P0000FIB" option_type="T" product_max="0" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-<li class="xans-record-">            
-                    <div class="infoBox">
-                        <div class="prdImg"><a href="/product/detail.html?product_no=3375&cate_no=24&display_group=2">
-                        <img src="//slowand.com/web/product/medium/201908/23c26285d3a5b663c788380ad49406a5.gif" alt="" class="thumb"/></a></div>
-                        <div class="info">
-                            <input name="basket_info[]" value="3375|68|1|1|%5B%EC%9D%BC%EC%8B%9C%ED%92%88%EC%A0%88%5D%20neat%20square%20watch%20-%20rose%20gold|28000.00|T|F|F|F" type="checkbox"  />                            <p class="prdName"><a href="/product/detail.html?product_no=3375&cate_no=24&display_group=2">[일시품절] neat square watch - rose gold</a></p>
-                            <p class="price ">28,000원</p>
-                            <p class="displaynone">28,000원</p>
-                        </div>
-                    </div>
-                    <div class="prdOption">
-                        <!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3589[]" id="option_3589_0"
+													product_no="3589" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<option value="아이보리" link_image="">아이보리</option>
+														<option value="베이지" link_image="">베이지</option>
+														<option value="그레이지" link_image="">그레이지</option>
+														<option value="매트블루" link_image="">매트블루</option>
+														<option value="다크그린" link_image="">다크그린</option>
+														<option value="다크와인" link_image="">다크와인</option>
+														<option value="블랙" link_image="">블랙</option></select></td>
+											</tr>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">SIZE</th-->
+												<td><select name="option_3589[]" id="option_3589_1"
+													product_no="3589" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<option value="230" link_image="">230</option>
+														<option value="235" link_image="">235</option>
+														<option value="240" link_image="">240</option>
+														<option value="245" link_image="">245</option>
+														<option value="250" link_image="">250</option></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3589" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3589" product_code="P0000FIB" option_type="T"
+													product_max="0" product_min="1" buy_unit="1" maxlength="10"
+													value="1" type="text" /><img class="RelationQuantityUp"
+													alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+							<li class="xans-record-">
+								<div class="infoBox">
+									<div class="prdImg">
+										<a
+											href="/product/detail.html?product_no=3375&cate_no=24&display_group=2">
+											<img
+											src="//slowand.com/web/product/medium/201908/23c26285d3a5b663c788380ad49406a5.gif"
+											alt="" class="thumb" />
+										</a>
+									</div>
+									<div class="info">
+										<input name="basket_info[]"
+											value="3375|68|1|1|%5B%EC%9D%BC%EC%8B%9C%ED%92%88%EC%A0%88%5D%20neat%20square%20watch%20-%20rose%20gold|28000.00|T|F|F|F"
+											type="checkbox" />
+										<p class="prdName">
+											<a
+												href="/product/detail.html?product_no=3375&cate_no=24&display_group=2">[일시품절]
+												neat square watch - rose gold</a>
+										</p>
+										<p class="price ">28,000원</p>
+										<p class="displaynone">28,000원</p>
+									</div>
+								</div>
+								<div class="prdOption">
+									<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다.
                    뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-                        <table border="1" summary="">
-<caption></caption>
-                            <colgroup>
-<!--col style="width:90px;"--><col style="width:auto;"/>
-</colgroup>
-<tbody><tr class="xans-element- xans-product xans-product-option xans-record-"><!--th scope="row">COLOR</th--><td>
-                                         <select name="option_3375[]" id="option_3375_0" product_no="3375" class="RelationOptData" required="true" ><option value="*"  link_image="">옵션선택</option><option value="**"  link_image="">-------------------</option><optgroup label="COLOR"><option value="P0000EZV000B"  link_image="">로즈골드</option></optgroup></select>                                    </td>
-</tr>
-<tr class="quantity">
-<!--th scope="row">수량</th--><td>
-                                        <input id="quantity_3375" name ="quantity1[]" class="RelationQuantity" style="ime-mode:disabled;" product_no="3375" product_code="P0000EZV" option_type="T" product_max="0" product_min="1" buy_unit="1" maxlength="10" value="1" type="text"  /><img class="RelationQuantityUp" alt="up" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg" width="33" height="29"/><img class="RelationQuantityDown" alt="down" src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg" width="33" height="29"/>
-                                     </td>
-                                </tr>
-</tbody>
-</table>
-<!-- //참고 -->
-</div>
-                </li>
-</ul>
-<div class="btnArea">
-                <button type="button" class="btnBasic yg_btn_140 yg_btn4" onclick="product_submit(1, '/exec/front/order/basket/')">BUY NOW</button>
-                <button type="button" class="btnBasic yg_btn_140 yg_btn4" onclick="product_submit(2, '/exec/front/order/basket/')">ADD TO CART</button>
-            </div>
-</div>
-    </div>
-<!-- 상품구매안내 -->
-<div id="prdInfo" class="ec-base-tab grid5">
-        <ul class="menu">
-<li><a href="#prdDetail">DETAIL INFO</a></li>
-            <li><a href="#prdRelated">WITH ITEM</a></li>
-            <li class="selected"><a href="#prdInfo">CHECK UP</a></li>
-            <li class=""><a href="#prdReview">REVIEW <span class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-            <li class=""><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
-            
-        </ul>
-<div style="text-align:center;"><img src="/web/upload/yangji_pc_crumb/how_to.jpg"/></div>        
-        <!--div class="faq">
+									<table border="1" summary="">
+										<caption></caption>
+										<colgroup>
+											<!--col style="width:90px;"-->
+											<col style="width: auto;" />
+										</colgroup>
+										<tbody>
+											<tr
+												class="xans-element- xans-product xans-product-option xans-record-">
+												<!--th scope="row">COLOR</th-->
+												<td><select name="option_3375[]" id="option_3375_0"
+													product_no="3375" class="RelationOptData" required="true"><option
+															value="*" link_image="">옵션선택</option>
+														<option value="**" link_image="">-------------------</option>
+														<optgroup label="COLOR">
+															<option value="P0000EZV000B" link_image="">로즈골드</option>
+														</optgroup></select></td>
+											</tr>
+											<tr class="quantity">
+												<!--th scope="row">수량</th-->
+												<td><input id="quantity_3375" name="quantity1[]"
+													class="RelationQuantity" style="ime-mode: disabled;"
+													product_no="3375" product_code="P0000EZV" option_type="T"
+													product_max="0" product_min="1" buy_unit="1" maxlength="10"
+													value="1" type="text" /><img class="RelationQuantityUp"
+													alt="up"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_up.jpg"
+													width="33" height="29" /><img class="RelationQuantityDown"
+													alt="down"
+													src="//img.echosting.cafe24.com/skin/mobile_ko_KR/order/ico_quantity_down.jpg"
+													width="33" height="29" /></td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //참고 -->
+								</div>
+							</li>
+						</ul>
+						<div class="btnArea">
+							<button type="button" class="btnBasic yg_btn_140 yg_btn4"
+								onclick="product_submit(1, '/exec/front/order/basket/')">BUY
+								NOW</button>
+							<button type="button" class="btnBasic yg_btn_140 yg_btn4"
+								onclick="product_submit(2, '/exec/front/order/basket/')">ADD
+								TO CART</button>
+						</div>
+					</div>
+				</div>
+				<!-- 상품구매안내 -->
+				<div id="prdInfo" class="ec-base-tab grid5">
+					<ul class="menu">
+						<li><a href="#prdDetail">DETAIL INFO</a></li>
+						<li><a href="#prdRelated">WITH ITEM</a></li>
+						<li class="selected"><a href="#prdInfo">CHECK UP</a></li>
+						<li class=""><a href="#prdReview">REVIEW <span
+								class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
+						<li class=""><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+
+					</ul>
+					<div style="text-align: center;">
+						<img src="/web/upload/yangji_pc_crumb/how_to.jpg" />
+					</div>
+					<!--div class="faq">
             <div class="notice">※ 상품 구매 전 아래의 내용들을 꼭 확인 부탁드립니다</div>
             <div>
                 <div class="title">
@@ -1153,149 +1529,218 @@ function mobRfShop(){
         </div>
     </div><!-- //상품구매안내 -->
 
-    <!-- 상품사용후기 -->
-    <div id="prdReview" class="ec-base-tab grid5">
-        <ul class="menu">
-<li><a href="#prdDetail">DETAIL INFO</a></li>
-            <li><a href="#prdRelated">WITH ITEM</a></li>
-            <li><a href="#prdInfo">CHECK UP</a></li>
-            <li class="selected"><a href="#prdReview">REVIEW <span class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-            <li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>            
-        </ul>
-<div class="board">
-            <h3>REVIEW</h3>
-            
-            <!-- cre.ma / 상품 리뷰 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
-            <style>#prdReview .nodata {display: none;}</style>
-<div class="crema-product-reviews" data-product-code="3596"></div>
+					<!-- 상품사용후기 -->
+					<div id="prdReview" class="ec-base-tab grid5">
+						<ul class="menu">
+							<li><a href="#prdDetail">DETAIL INFO</a></li>
+							<li><a href="#prdRelated">WITH ITEM</a></li>
+							<li><a href="#prdInfo">CHECK UP</a></li>
+							<li class="selected"><a href="#prdReview">REVIEW <span
+									class="cnt crema-product-reviews-count"
+									data-product-code="3596">0</span></a></li>
+							<li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+						</ul>
+						<div class="board">
+							<h3>REVIEW</h3>
 
-            <p class="nodata">게시물이 없습니다</p>
-            <p class="ec-base-button typeBorder crema-hide">
-                <span class="gRight">
-                    <a href="/board/product/write.html?board_no=4&product_no=3596&cate_no=24&display_group=2" class="yg_btn yg_btn4" alt="상품문의하기">WRITE</a>
-                    <a href="/board/product/list.html?board_no=4" class="yg_btn yg_btn4" alt="모두 보기">VIEW ALL</a>
-                </span>
-            </p>
+							<!-- cre.ma / 상품 리뷰 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+							<style>
+#prdReview .nodata {
+	display: none;
+}
+</style>
+							<div class="crema-product-reviews" data-product-code="3596"></div>
 
-                    </div>
-    </div>
-<!-- //상품사용후기 -->
+							<p class="nodata">게시물이 없습니다</p>
+							<p class="ec-base-button typeBorder crema-hide">
+								<span class="gRight"> <a
+									href="/board/product/write.html?board_no=4&product_no=3596&cate_no=24&display_group=2"
+									class="yg_btn yg_btn4" alt="상품문의하기">WRITE</a> <a
+									href="/board/product/list.html?board_no=4"
+									class="yg_btn yg_btn4" alt="모두 보기">VIEW ALL</a>
+								</span>
+							</p>
 
-    <!-- 상품 Q&A -->
-    <div id="prdQnA" class="ec-base-tab grid5">
-        <ul class="menu">
-<li><a href="#prdDetail">DETAIL INFO</a></li>
-            <li><a href="#prdRelated">WITH ITEM</a></li>
-            <li><a href="#prdInfo">CHECK UP</a></li>
-            <li><a href="#prdReview">REVIEW <span class="cnt crema-product-reviews-count" data-product-code="3596">0</span></a></li>
-            <li class="selected"><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>            
-        </ul>
-<div class="board">
-            <h3>Q&amp;A</h3>            
+						</div>
+					</div>
+					<!-- //상품사용후기 -->
 
-            <div class="xans-element- xans-product xans-product-qna"><a name="use_qna"></a>
-<p class="noAccess displaynone">글읽기 권한이 없습니다.</p>
-<div class="minor displaynone">
-                    <p><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif" alt=""/>  <strong>"19세 미만의 미성년자"</strong>는 출입을 금합니다!</p>
-                    <p class="button"><a href="/intro/board.html"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_adult_certification.gif" alt="성인인증 하기"/></a></p>
-                </div>
-<div class="ec-base-table typeList">
-                    <table border="1" summary="" class="">
-<caption>상품 Q&amp;A</caption>
-                        <colgroup>
-<col style="width:70px;"/>
-<!--col style="width:134px;" /--><col style="width:auto"/>
-<col style="width:100px;"/>
-<col style="width:100px;"/>
-<col style="width:80px;"/>
-</colgroup>
-<thead><tr>
-<th scope="col">번호</th>
-                                <!--th scope="col">카테고리</th-->
-                                <th scope="col">제목</th>
-                                <th scope="col">작성자</th>
-                                <th scope="col">작성일</th>
-                                <th scope="col">조회</th>
-                            </tr></thead>
-<tbody class="center">
-<tr class="xans-record-">
-<td>36</td>
-                                <!--td></td-->
-                                <td class="subject left txtBreak"><img src="/web/upload/icon_201611292036328500.png"  alt="비밀글" class="ec-common-rwd-image" /> <a href="/article/상품-문의/6/777326/?no=777326&board_no=6&spread_flag=T">문의합니다 ♡</a> <img src="/web/upload/icon_201611292036284200.gif"  alt="NEW" class="ec-common-rwd-image" /><span class="txtWarn"></span>
-</td>
-                                <td> 손****</td>
-                                <td class="txtInfo txt11">2019-11-13</td>
-                                <td class="txtInfo txt11">1</td>
-                            </tr>
-<tr class="xans-record-">
-<td>35</td>
-                                <!--td></td-->
-                                <td class="subject left txtBreak"><img src="/web/upload/icon_201611292036328500.png"  alt="비밀글" class="ec-common-rwd-image" /> <a href="/article/상품-문의/6/777305/?no=777305&board_no=6&spread_flag=T">문의합니다 ♡</a> <img src="/web/upload/icon_201611292036284200.gif"  alt="NEW" class="ec-common-rwd-image" /><span class="txtWarn"></span>
-</td>
-                                <td> 서****</td>
-                                <td class="txtInfo txt11">2019-11-13</td>
-                                <td class="txtInfo txt11">1</td>
-                            </tr>
-<tr class="xans-record-">
-<td>34</td>
-                                <!--td></td-->
-                                <td class="subject left txtBreak"><img src="/web/upload/icon_201611292036328500.png"  alt="비밀글" class="ec-common-rwd-image" /> <a href="/article/상품-문의/6/777106/?no=777106&board_no=6&spread_flag=T">문의합니다 ♡</a> <img src="/web/upload/icon_201611292036284200.gif"  alt="NEW" class="ec-common-rwd-image" /><span class="txtWarn"></span>
-</td>
-                                <td> 장****</td>
-                                <td class="txtInfo txt11">2019-11-12</td>
-                                <td class="txtInfo txt11">2</td>
-                            </tr>
-<tr class="xans-record-">
-<td>33</td>
-                                <!--td></td-->
-                                <td class="subject left txtBreak">&nbsp;&nbsp;&nbsp;<img src="/web/upload/icon_201611292036394700.gif"  alt="답변" class="ec-common-rwd-image" /> <img src="/web/upload/icon_201611292036328500.png"  alt="비밀글" class="ec-common-rwd-image" /> <a href="/article/상품-문의/6/778293/?no=778293&board_no=6&spread_flag=T">답변합니다  ♡</a> <img src="/web/upload/icon_201611292036284200.gif"  alt="NEW" class="ec-common-rwd-image" /><span class="txtWarn"></span>
-</td>
-                                <td> 슬로우앤드_PARK</td>
-                                <td class="txtInfo txt11">2019-11-13</td>
-                                <td class="txtInfo txt11">0</td>
-                            </tr>
-<tr class="xans-record-">
-<td>32</td>
-                                <!--td></td-->
-                                <td class="subject left txtBreak"><img src="/web/upload/icon_201611292036328500.png"  alt="비밀글" class="ec-common-rwd-image" /> <a href="/article/상품-문의/6/776991/?no=776991&board_no=6&spread_flag=T">문의합니다 ♡</a> <img src="/web/upload/icon_201611292036284200.gif"  alt="NEW" class="ec-common-rwd-image" /><img src="/web/upload/icon_201611292036350400.png"  alt="파일첨부" class="ec-common-rwd-image" /><span class="txtWarn"></span>
-</td>
-                                <td> 정****</td>
-                                <td class="txtInfo txt11">2019-11-12</td>
-                                <td class="txtInfo txt11">1</td>
-                            </tr>
-</tbody>
-</table>
-</div>
-</div>
+					<!-- 상품 Q&A -->
+					<div id="prdQnA" class="ec-base-tab grid5">
+						<ul class="menu">
+							<li><a href="#prdDetail">DETAIL INFO</a></li>
+							<li><a href="#prdRelated">WITH ITEM</a></li>
+							<li><a href="#prdInfo">CHECK UP</a></li>
+							<li><a href="#prdReview">REVIEW <span
+									class="cnt crema-product-reviews-count"
+									data-product-code="3596">0</span></a></li>
+							<li class="selected"><a href="#prdQnA">Q&amp;A <span
+									class="cnt">36</span></a></li>
+						</ul>
+						<div class="board">
+							<h3>Q&amp;A</h3>
 
-            <p class="ec-base-button typeBorder">
-                <span class="gRight">
-                    <a href="/board/product/write.html?board_no=6&product_no=3596&cate_no=24&display_group=2" class="yg_btn yg_btn4" alt="상품문의하기">WRITE</a>
-                    <a href="/board/product/list.html?board_no=6" class="yg_btn yg_btn4" alt="모두 보기">VIEW ALL</a>
-                </span>
-            </p>
+							<div class="xans-element- xans-product xans-product-qna">
+								<a name="use_qna"></a>
+								<p class="noAccess displaynone">글읽기 권한이 없습니다.</p>
+								<div class="minor displaynone">
+									<p>
+										<img
+											src="//img.echosting.cafe24.com/skin/base_ko_KR/product/ico_under19.gif"
+											alt="" /> <strong>"19세 미만의 미성년자"</strong>는 출입을 금합니다!
+									</p>
+									<p class="button">
+										<a href="/intro/board.html"><img
+											src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_adult_certification.gif"
+											alt="성인인증 하기" /></a>
+									</p>
+								</div>
+								<div class="ec-base-table typeList">
+									<table border="1" summary="" class="">
+										<caption>상품 Q&amp;A</caption>
+										<colgroup>
+											<col style="width: 70px;" />
+											<!--col style="width:134px;" /-->
+											<col style="width: auto" />
+											<col style="width: 100px;" />
+											<col style="width: 100px;" />
+											<col style="width: 80px;" />
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">번호</th>
+												<!--th scope="col">카테고리</th-->
+												<th scope="col">제목</th>
+												<th scope="col">작성자</th>
+												<th scope="col">작성일</th>
+												<th scope="col">조회</th>
+											</tr>
+										</thead>
+										<tbody class="center">
+											<tr class="xans-record-">
+												<td>36</td>
+												<!--td></td-->
+												<td class="subject left txtBreak"><img
+													src="/web/upload/icon_201611292036328500.png" alt="비밀글"
+													class="ec-common-rwd-image" /> <a
+													href="/article/상품-문의/6/777326/?no=777326&board_no=6&spread_flag=T">문의합니다
+														♡</a> <img src="/web/upload/icon_201611292036284200.gif"
+													alt="NEW" class="ec-common-rwd-image" /><span
+													class="txtWarn"></span></td>
+												<td>손****</td>
+												<td class="txtInfo txt11">2019-11-13</td>
+												<td class="txtInfo txt11">1</td>
+											</tr>
+											<tr class="xans-record-">
+												<td>35</td>
+												<!--td></td-->
+												<td class="subject left txtBreak"><img
+													src="/web/upload/icon_201611292036328500.png" alt="비밀글"
+													class="ec-common-rwd-image" /> <a
+													href="/article/상품-문의/6/777305/?no=777305&board_no=6&spread_flag=T">문의합니다
+														♡</a> <img src="/web/upload/icon_201611292036284200.gif"
+													alt="NEW" class="ec-common-rwd-image" /><span
+													class="txtWarn"></span></td>
+												<td>서****</td>
+												<td class="txtInfo txt11">2019-11-13</td>
+												<td class="txtInfo txt11">1</td>
+											</tr>
+											<tr class="xans-record-">
+												<td>34</td>
+												<!--td></td-->
+												<td class="subject left txtBreak"><img
+													src="/web/upload/icon_201611292036328500.png" alt="비밀글"
+													class="ec-common-rwd-image" /> <a
+													href="/article/상품-문의/6/777106/?no=777106&board_no=6&spread_flag=T">문의합니다
+														♡</a> <img src="/web/upload/icon_201611292036284200.gif"
+													alt="NEW" class="ec-common-rwd-image" /><span
+													class="txtWarn"></span></td>
+												<td>장****</td>
+												<td class="txtInfo txt11">2019-11-12</td>
+												<td class="txtInfo txt11">2</td>
+											</tr>
+											<tr class="xans-record-">
+												<td>33</td>
+												<!--td></td-->
+												<td class="subject left txtBreak">&nbsp;&nbsp;&nbsp;<img
+													src="/web/upload/icon_201611292036394700.gif" alt="답변"
+													class="ec-common-rwd-image" /> <img
+													src="/web/upload/icon_201611292036328500.png" alt="비밀글"
+													class="ec-common-rwd-image" /> <a
+													href="/article/상품-문의/6/778293/?no=778293&board_no=6&spread_flag=T">답변합니다
+														♡</a> <img
+													src="https://slowand.com//web/upload/icon_201611292036284200.gif"
+													alt="NEW" class="ec-common-rwd-image" /><span
+													class="txtWarn"></span>
+												</td>
+												<td>슬로우앤드_PARK</td>
+												<td class="txtInfo txt11">2019-11-13</td>
+												<td class="txtInfo txt11">0</td>
+											</tr>
+											<tr class="xans-record-">
+												<td>32</td>
+												<!--td></td-->
+												<td class="subject left txtBreak"><img
+													src="/web/upload/icon_201611292036328500.png" alt="비밀글"
+													class="ec-common-rwd-image" /> <a
+													href="/article/상품-문의/6/776991/?no=776991&board_no=6&spread_flag=T">문의합니다
+														♡</a> <img src="/web/upload/icon_201611292036284200.gif"
+													alt="NEW" class="ec-common-rwd-image" /><img
+													src="/web/upload/icon_201611292036350400.png" alt="파일첨부"
+													class="ec-common-rwd-image" /><span class="txtWarn"></span>
+												</td>
+												<td>정****</td>
+												<td class="txtInfo txt11">2019-11-12</td>
+												<td class="txtInfo txt11">1</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
 
-            <div class="xans-element- xans-product xans-product-qnapaging ec-base-paginate typeSub"><a href="#none" class="first"><img src="/web/upload/yangji_pc_crumb/btn_page_first.gif" alt="첫 페이지"/></a>
-<a href="#none"><img src="/web/upload/yangji_pc_crumb/btn_page_prev.gif" alt="이전 페이지"/></a>
-<ol>
-<li class="xans-record-"><a href="?page_6=1#use_qna" class="this">1</a></li>
-                    <li class="xans-record-"><a href="?page_6=2#use_qna" class="other">2</a></li>
-                    <li class="xans-record-"><a href="?page_6=3#use_qna" class="other">3</a></li>
-                    <li class="xans-record-"><a href="?page_6=4#use_qna" class="other">4</a></li>
-                    <li class="xans-record-"><a href="?page_6=5#use_qna" class="other">5</a></li>
-                </ol>
-<a href="?page_6=2#use_qna"><img src="/web/upload/yangji_pc_crumb/btn_page_next.gif" alt="다음 페이지"/></a>
-<a href="?page_6=8#use_qna" class="last"><img src="/web/upload/yangji_pc_crumb/btn_page_last.gif" alt="마지막 페이지"/></a>
-</div>
-        </div>
-    </div>
-<!-- //상품Q&A -->
-</div>
-<script>
+							<p class="ec-base-button typeBorder">
+								<span class="gRight"> <a
+									href="/board/product/write.html?board_no=6&product_no=3596&cate_no=24&display_group=2"
+									class="yg_btn yg_btn4" alt="상품문의하기">WRITE</a> <a
+									href="/board/product/list.html?board_no=6"
+									class="yg_btn yg_btn4" alt="모두 보기">VIEW ALL</a>
+								</span>
+							</p>
+
+							<div
+								class="xans-element- xans-product xans-product-qnapaging ec-base-paginate typeSub">
+								<a href="#none" class="first"><img
+									src="/web/upload/yangji_pc_crumb/btn_page_first.gif"
+									alt="첫 페이지" /></a> <a href="#none"><img
+									src="/web/upload/yangji_pc_crumb/btn_page_prev.gif"
+									alt="이전 페이지" /></a>
+								<ol>
+									<li class="xans-record-"><a href="?page_6=1#use_qna"
+										class="this">1</a></li>
+									<li class="xans-record-"><a href="?page_6=2#use_qna"
+										class="other">2</a></li>
+									<li class="xans-record-"><a href="?page_6=3#use_qna"
+										class="other">3</a></li>
+									<li class="xans-record-"><a href="?page_6=4#use_qna"
+										class="other">4</a></li>
+									<li class="xans-record-"><a href="?page_6=5#use_qna"
+										class="other">5</a></li>
+								</ol>
+								<a href="?page_6=2#use_qna"><img
+									src="/web/upload/yangji_pc_crumb/btn_page_next.gif"
+									alt="다음 페이지" /></a> <a href="?page_6=8#use_qna" class="last"><img
+									src="/web/upload/yangji_pc_crumb/btn_page_last.gif"
+									alt="마지막 페이지" /></a>
+							</div>
+						</div>
+					</div>
+					<!-- //상품Q&A -->
+				</div>
+				<script>
     // 추가이미지 맞추기
     $('.xans-product-detail .imgArea .listImg li:first-child').remove();
 </script>
-<script>
+				<script>
     $(window).ready(function(){
         var fix = $("#fixed").offset().top;
         //var windowWidth = $(window).width();
@@ -1330,7 +1775,7 @@ function mobRfShop(){
         }
     });
 </script>
-<script> 
+				<script> 
 	var recommend = $('.recommend_inner').bxSlider({
       minSlides: 5,
       maxSlides: 5,
@@ -1357,112 +1802,170 @@ function mobRfShop(){
       recommend.startAuto();
     });
 </script>
-<style>
+				<style>
 .ec-base-tab[class*="grid"] .menu li a span.cnt {
-    width: 18px;
+	width: 18px;
 }
 </style>
-<!-- cre.ma / 팝업을 띄우는 코드 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) --><div class="crema-popup"></div>
-<!-- cre.ma / PC 리뷰 초기화 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
-<script>(function(i,s,o,g,r,a,m){if(s.getElementById(g)){return};a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.id=g;a.async=1;a.src=r;m.parentNode.insertBefore(a,m)})(window,document,'script','crema-jssdk','//widgets.cre.ma/slowand.com/init.js');</script>
-<!---- snapq start contact mail: support@snapvi.co.kr  --->
-<div id="sf_isdetail_page" style="display:none">1</div>
-<script async type="text/javascript" src="//snapfit.co.kr/js/sf_init_snapq_detail.js" defer='true' charset="utf-8"></script>
-<!---- snapq end --->
-</div>
-<hr class="layout"/></div><hr class="layout"/><!-- 하단 --><div id="footer" class="xans-element- xans-layout xans-layout-footer"><!--
+				<!-- cre.ma / 팝업을 띄우는 코드 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+				<div class="crema-popup"></div>
+				<!-- cre.ma / PC 리뷰 초기화 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+				<script>(function(i,s,o,g,r,a,m){if(s.getElementById(g)){return};a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.id=g;a.async=1;a.src=r;m.parentNode.insertBefore(a,m)})(window,document,'script','crema-jssdk','//widgets.cre.ma/slowand.com/init.js');</script>
+				<!---- snapq start contact mail: support@snapvi.co.kr  --->
+				<div id="sf_isdetail_page" style="display: none">1</div>
+				<script async type="text/javascript"
+					src="//snapfit.co.kr/js/sf_init_snapq_detail.js" defer='true'
+					charset="utf-8"></script>
+				<!---- snapq end --->
+			</div>
+			<hr class="layout" />
+		</div>
+		<hr class="layout" />
+		<!-- 하단 -->
+		<div id="footer" class="xans-element- xans-layout xans-layout-footer">
+			<!--
         module="instagramwidget_display_1" 는 위젯리스트중 적용하고자 하는 위젯의 코드로 변경하여 사용하시면 됩니다.
     -->
-<div id="footerTop">
-        <div class="footerTop_inner">
-            
-            <div class="inner ">
-                <ul class="fTop_box">
-<h3>DELIVERY</h3>
-                    <!--li><a href="/shopinfo/company.html">BRAND STORY</a></li>
-                    <!--li><a href="/yangji/lookbook.html?cate_no=50">LOOKBOOK</a></li-->
-                    <li style="margin-top:20px;"><a href="https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp" target="_blank">DELIVERY</a></li>
-                </ul><ul class="xans-element- xans-layout xans-layout-category fTop_box"><h3>SHOP</h3>
-<li class="xans-record-"><a href="/category/best-50/66/">BEST 50</a></li>
-<li class="xans-record-"><a href="/category/slowmade/82/">#SLOWMADE</a></li>
-<li class="xans-record-"><a href="/category/겨울시작/122/">겨울시작❄</a></li>
-<li class="xans-record-"><a href="/category/outer/24/">OUTER</a></li>
-<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
-<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
-<li class="xans-record-"><a href="/category/skirt/70/">SKIRT</a></li>
-<li class="xans-record-"><a href="/category/bottom/26/">BOTTOM</a></li>
-<li class="xans-record-"><a href="/category/shoesbag/28/">SHOES/BAG</a></li>
-<li class="xans-record-"><a href="/category/acc/68/">ACC</a></li>
-<li class="xans-record-"><a href="/category/soom-pick/112/">soom pick *.*</a></li>
-<li class="xans-record-"><a href="/category/창고개방sale/111/">창고개방SALE</a></li>
-<li class="xans-record-"><a href="/category/기획특가모음/108/">기획특가모음</a></li>
-<li class="xans-record-"><a href="/category/monotone/86/">monotone♥</a></li>
-</ul>
-<ul class="xans-element- xans-layout xans-layout-boardinfo fTop_box"><h3>COMMUNITY</h3>
-<li class="xans-record-"><a href="/board/notice/1/">NOTICE<span></span></a></li>
-<li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-문의/3001/">배송 문의<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-전-변경취소/101/">배송 전 변경/취소<span></span></a></li>
-<li class="xans-record-"><a href="/board/배송-후-교환반품/5/">배송 후 교환/반품<span></span></a></li>
-<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
-<li class="xans-record-"><a href="/board/채용-공고/1002/">채용 공고<span></span></a></li>
-<li class="xans-record-"><a href="/board/review/4/">REVIEW<span></span></a></li>
-</ul>
-<ul class="fTop_box">
-<h3>CS CENTER</h3>
-                    <li>Tel</li>
-                    <li style="font-size:30px;">070-7705-5595</li>
-                    <li>am 10:00 - pm 17:00<br>BREAK TIME : pm 12;00 - pm 13:00<br>(sat / sun / holiday OFF) </li>
-                </ul>
-<ul class="fTop_box bank_info">
-<h3>BANK INFO</h3>
-                    <li>
-<i>기업은행</i>029-081822-04-039</li>
-                    <li class="holder">(주)앤드모어</li>
-                </ul>
-<ul class="snsLink fTop_box">
-<li><a href="https://www.facebook.com/slowandmore" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_facebook.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_facebook_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_facebook.png"'/></a></li>
-                    <!--li><a href="https://blog.naver.com" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_blog.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_blog_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_blog.png"'/></a></li>
-                    <li><a href="https://www.twitter.com" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_twitter.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_twitter_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_twitter.png"'/></a></li-->
-                    <li><a href="https://www.instagram.com/slow.and" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_instagram.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_instagram_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_instagram.png"'/></a></li>
-                    <!--li><a href="https://story.kakao.com/ch/kakaostory" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_story.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_story_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_story.png"'/></a></li-->
-                </ul>
-</div>
-                
-            <div class="inner_b ">
-                <h2>COMPANY INFO</h2>
-                <p class="address">
-                    <span><i>COMPANY</i>(주) 앤드모어</span><span><i>CEO</i>김수민</span><span><i>TEL</i>070-7705-5595</span><span><i>BUSINESS LICENSE</i>390-86-00737</span><br/><span><i>MAIL ORDER LICENSE</i>제 2018-서울동대문-0658호 <i class="bizLink"><a href="#none" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=3908600737', 'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a></i></span><span><i>COMPANY E-MAIL</i><a href="mailto:slowand@naver.com">김재형 slowand@naver.com</a></span><br/><span><i>ADDRESS</i>02622 서울특별시 동대문구 답십리동 530-16 평화빌딩 4층 슬로우앤드</span><br/><span><i>RETURN &amp; EXCHANGE</i> 서울특별시 중랑구 망우로 271(상봉동,중랑우체국)</span>
-                </p> 
-            </div>
-            
-            <ul class="inner_h">
-<li><a href="//www.ftc.go.kr/" target="_blank"><img src="/web/upload/yangji_pc_crumb/footer_ico_1.png" alt="공정거래위원회"/></a></li>
-                <li><a href="//www.cafe24.com/" target="_blank"><img src="/web/upload/yangji_pc_crumb/footer_ico_2.png" alt="hosting by cafe24 심플렉스인터넷(주)"/></a></li>
-                <li><img src="/web/upload/yangji_pc_crumb/footer_ico_3.png" alt="SSL 결제보안"/></li>
-                <li><a href="https://www.hometax.go.kr/ui/pp/agitx_index.html" target="_blank"><img src="/web/upload/yangji_pc_crumb/footer_ico_4.png" alt="현금영수증"/></a></li>
-                <li><a href="//www.allthegate.com/hyosung/paysafe/escrow_check.jsp?service_id=CG_anne21&amp;biz_no=3908600737" target="_blank"><img src="/web/upload/yangji_pc_crumb/bottom_nicepay.png" alt="나이스페이 구매안전 서비스 가입사실 확인"/></a></li>
-            </ul>
-<div class="inner_s">
-                <ul class="utilMenu">
-<li><a href="/member/agreement.html">AGREEMENT</a></li>
-                    <li class="pr"><a href="/member/privacy.html">PRIVACY POLICY</a></li>
-                    <li><a href="/shopinfo/guide.html">SHOPPING GUIDE</a></li>        
-                </ul>
-<p class="copyright">Copyright © <strong>슬로우앤드</strong> All rights reserved. Designed by DESIGN-YANGJI</p>    
-            </div>
-        </div>
-        
-        <div>
-            <p class="pageMove">            
-                <a class="pageTop" href="#header" title="화면 최상단으로 이동하기" alt="맨위로"><i class="fa fa-angle-up fa-2x"></i></a>
-                <a class="pageBottom" href="#copyright" title="화면 최하단으로 이동하기" alt="맨아래로"><i class="fa fa-angle-down fa-2x"></i></a>
-            </p>
-        </div>    
-    </div>
-</div>
+			<div id="footerTop">
+				<div class="footerTop_inner">
 
-<script>
+					<div class="inner ">
+						<ul class="fTop_box">
+							<h3>DELIVERY</h3>
+							<!--li><a href="/shopinfo/company.html">BRAND STORY</a></li>
+                    <!--li><a href="/yangji/lookbook.html?cate_no=50">LOOKBOOK</a></li-->
+							<li style="margin-top: 20px;"><a
+								href="https://service.epost.go.kr/iservice/usr/trace/usrtrc001k01.jsp"
+								target="_blank">DELIVERY</a></li>
+						</ul>
+						<ul
+							class="xans-element- xans-layout xans-layout-category fTop_box">
+							<h3>SHOP</h3>
+							<li class="xans-record-"><a href="/category/best-50/66/">BEST
+									50</a></li>
+							<li class="xans-record-"><a href="/category/slowmade/82/">#SLOWMADE</a></li>
+							<li class="xans-record-"><a href="/category/겨울시작/122/">겨울시작❄</a></li>
+							<li class="xans-record-"><a href="/category/outer/24/">OUTER</a></li>
+							<li class="xans-record-"><a href="/category/top/25/">TOP</a></li>
+							<li class="xans-record-"><a href="/category/dress/27/">DRESS</a></li>
+							<li class="xans-record-"><a href="/category/skirt/70/">SKIRT</a></li>
+							<li class="xans-record-"><a href="/category/bottom/26/">BOTTOM</a></li>
+							<li class="xans-record-"><a href="/category/shoesbag/28/">SHOES/BAG</a></li>
+							<li class="xans-record-"><a href="/category/acc/68/">ACC</a></li>
+							<li class="xans-record-"><a href="/category/soom-pick/112/">soom
+									pick *.*</a></li>
+							<li class="xans-record-"><a href="/category/창고개방sale/111/">창고개방SALE</a></li>
+							<li class="xans-record-"><a href="/category/기획특가모음/108/">기획특가모음</a></li>
+							<li class="xans-record-"><a href="/category/monotone/86/">monotone♥</a></li>
+						</ul>
+						<ul
+							class="xans-element- xans-layout xans-layout-boardinfo fTop_box">
+							<h3>COMMUNITY</h3>
+							<li class="xans-record-"><a href="/board/notice/1/">NOTICE<span></span></a></li>
+							<li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
+							<li class="xans-record-"><a href="/board/배송-문의/3001/">배송
+									문의<span></span>
+							</a></li>
+							<li class="xans-record-"><a href="/board/배송-전-변경취소/101/">배송
+									전 변경/취소<span></span>
+							</a></li>
+							<li class="xans-record-"><a href="/board/배송-후-교환반품/5/">배송
+									후 교환/반품<span></span>
+							</a></li>
+							<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
+							<li class="xans-record-"><a href="/board/채용-공고/1002/">채용
+									공고<span></span>
+							</a></li>
+							<li class="xans-record-"><a href="/board/review/4/">REVIEW<span></span></a></li>
+						</ul>
+						<ul class="fTop_box">
+							<h3>CS CENTER</h3>
+							<li>Tel</li>
+							<li style="font-size: 30px;">070-7705-5595</li>
+							<li>am 10:00 - pm 17:00<br>BREAK TIME : pm 12;00 - pm
+									13:00<br>(sat / sun / holiday OFF) </li>
+						</ul>
+						<ul class="fTop_box bank_info">
+							<h3>BANK INFO</h3>
+							<li><i>기업은행</i>029-081822-04-039</li>
+							<li class="holder">(주)앤드모어</li>
+						</ul>
+						<ul class="snsLink fTop_box">
+							<li><a href="https://www.facebook.com/slowandmore"
+								target="_blank"><img
+									src="/web/upload/yangji_pc_crumb/icon_facebook.png"
+									onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_facebook_on.png"'
+									onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_facebook.png"' /></a></li>
+							<!--li><a href="https://blog.naver.com" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_blog.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_blog_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_blog.png"'/></a></li>
+                    <li><a href="https://www.twitter.com" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_twitter.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_twitter_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_twitter.png"'/></a></li-->
+							<li><a href="https://www.instagram.com/slow.and"
+								target="_blank"><img
+									src="/web/upload/yangji_pc_crumb/icon_instagram.png"
+									onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_instagram_on.png"'
+									onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_instagram.png"' /></a></li>
+							<!--li><a href="https://story.kakao.com/ch/kakaostory" target="_blank"><img src="/web/upload/yangji_pc_crumb/icon_story.png" onmouseover='this.src="/web/upload/yangji_pc_crumb/icon_story_on.png"' onmouseout='this.src="/web/upload/yangji_pc_crumb/icon_story.png"'/></a></li-->
+						</ul>
+					</div>
+
+					<div class="inner_b ">
+						<h2>COMPANY INFO</h2>
+						<p class="address">
+							<span><i>COMPANY</i>(주) 앤드모어</span><span><i>CEO</i>김수민</span><span><i>TEL</i>070-7705-5595</span><span><i>BUSINESS
+									LICENSE</i>390-86-00737</span><br /> <span><i>MAIL ORDER
+									LICENSE</i>제 2018-서울동대문-0658호 <i class="bizLink"><a
+									href="#none"
+									onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=3908600737', 'bizCommPop', 'width=750, height=950;');return false;">[사업자정보확인]</a></i></span><span><i>COMPANY
+									E-MAIL</i><a href="mailto:slowand@naver.com">김재형
+									slowand@naver.com</a></span><br /> <span><i>ADDRESS</i>02622 서울특별시
+								동대문구 답십리동 530-16 평화빌딩 4층 슬로우앤드</span><br /> <span><i>RETURN
+									&amp; EXCHANGE</i> 서울특별시 중랑구 망우로 271(상봉동,중랑우체국)</span>
+						</p>
+					</div>
+
+					<ul class="inner_h">
+						<li><a href="//www.ftc.go.kr/" target="_blank"><img
+								src="/web/upload/yangji_pc_crumb/footer_ico_1.png" alt="공정거래위원회" /></a></li>
+						<li><a href="//www.cafe24.com/" target="_blank"><img
+								src="/web/upload/yangji_pc_crumb/footer_ico_2.png"
+								alt="hosting by cafe24 심플렉스인터넷(주)" /></a></li>
+						<li><img src="/web/upload/yangji_pc_crumb/footer_ico_3.png"
+							alt="SSL 결제보안" /></li>
+						<li><a
+							href="https://www.hometax.go.kr/ui/pp/agitx_index.html"
+							target="_blank"><img
+								src="/web/upload/yangji_pc_crumb/footer_ico_4.png" alt="현금영수증" /></a></li>
+						<li><a
+							href="//www.allthegate.com/hyosung/paysafe/escrow_check.jsp?service_id=CG_anne21&amp;biz_no=3908600737"
+							target="_blank"><img
+								src="/web/upload/yangji_pc_crumb/bottom_nicepay.png"
+								alt="나이스페이 구매안전 서비스 가입사실 확인" /></a></li>
+					</ul>
+					<div class="inner_s">
+						<ul class="utilMenu">
+							<li><a href="/member/agreement.html">AGREEMENT</a></li>
+							<li class="pr"><a href="/member/privacy.html">PRIVACY
+									POLICY</a></li>
+							<li><a href="/shopinfo/guide.html">SHOPPING GUIDE</a></li>
+						</ul>
+						<p class="copyright">
+							Copyright © <strong>슬로우앤드</strong> All rights reserved. Designed
+							by DESIGN-YANGJI
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="pageMove">
+						<a class="pageTop" href="#header" title="화면 최상단으로 이동하기" alt="맨위로"><i
+							class="fa fa-angle-up fa-2x"></i></a> <a class="pageBottom"
+							href="#copyright" title="화면 최하단으로 이동하기" alt="맨아래로"><i
+							class="fa fa-angle-down fa-2x"></i></a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<script>
     $(document).ready(function() {
         $('.pageTop').click(function(event) {
            event.preventDefault();                  
@@ -1475,10 +1978,10 @@ function mobRfShop(){
     });
     
     $(".inner_b .address i.bizLink a").text("[Go Checking]");
-</script>     
-    <!-- //하단 -->
-    
-    <!--div id="quick">
+</script>
+		<!-- //하단 -->
+
+		<!--div id="quick">
         <div module="Layout_orderBasketcount">
             
             <!--strong>장바구니</strong> <span><a href="/order/basket.html">{$basket_count}</a>개</span>
@@ -1501,32 +2004,43 @@ function mobRfShop(){
         <p class="pageTop"><a href="#header" title="화면 최상단으로 이동하기"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/btn_top1.gif" alt="맨위로" /></a></p>
 
         <p class="banner"><a href="#none"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/img_banner2.jpg" alt="" /></a></p>
-    </div-->    
-</div><hr class="layout"/><!-- 참고: 결제를 위한 필수 영역 --><div id="progressPaybar" style="display:none;">
-    <div id="progressPaybarBackground" class="layerProgress"></div>
-    <div id="progressPaybarView">
-        <div class="box">
-            <p class="graph">
-                <span><img src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif" alt="현재 결제가 진행중입니다."/></span>
-                <span><img src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif" alt=""/></span>
-            </p>
-            <p class="txt">
-                본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br/>
-                주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
-            </p>
-        </div>
-    </div>
-</div>
-<!-- //참고 -->
+    </div-->
+	</div>
+	<hr class="layout" />
+	<!-- 참고: 결제를 위한 필수 영역 -->
+	<div id="progressPaybar" style="display: none;">
+		<div id="progressPaybarBackground" class="layerProgress"></div>
+		<div id="progressPaybarView">
+			<div class="box">
+				<p class="graph">
+					<span><img
+						src="//img.echosting.cafe24.com/skin/base_ko_KR/layout/txt_progress.gif"
+						alt="현재 결제가 진행중입니다." /></span> <span><img
+						src="//img.echosting.cafe24.com/skin/base/layout/img_loading.gif"
+						alt="" /></span>
+				</p>
+				<p class="txt">
+					본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br /> 주문이 되지 않으니 결제
+					완료 될 때 까지 닫지 마시기 바랍니다.
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- //참고 -->
 
 
-    
-    
-</div><div id="multi_option" style="display:none;"></div>
-<form id="frm_image_zoom" style="display:none;"></form>
-<script type="text/javascript">var sAuthSSLDomain = "login2.cafe24ssl.com";</script><script type="text/javascript" src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script><script type="text/javascript" src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.plugin.js"></script>
 
-                <script>
+
+	</div>
+	<div id="multi_option" style="display: none;"></div>
+	<form id="frm_image_zoom" style="display: none;"></form>
+	<script type="text/javascript">var sAuthSSLDomain = "login2.cafe24ssl.com";</script>
+	<script type="text/javascript"
+		src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script>
+	<script type="text/javascript"
+		src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.plugin.js"></script>
+
+	<script>
                 try {
                     // Account ID 적용
                     if (!wcs_add) var wcs_add = {};
@@ -1548,15 +2062,15 @@ function mobRfShop(){
                     wcs_do();
                 } catch (e) {};
                 </script>
-            
 
-<!-- External Script Start -->
 
-<!-- fap -->
-<!-- CMC script -->
-<div id="fap_common_top_script" style="display:none;">
-  <!-- Facebook Pixel Code -->
-<script>
+	<!-- External Script Start -->
+
+	<!-- fap -->
+	<!-- CMC script -->
+	<div id="fap_common_top_script" style="display: none;">
+		<!-- Facebook Pixel Code -->
+		<script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -1568,14 +2082,16 @@ function mobRfShop(){
   fbq('init', '183242402324052');
   fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=183242402324052&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
-</div>
-<!-- CMC script --> <!-- CMC script -->
-<div id="fap_product_detail_script" style="display:none;">
-  <script>
+		<noscript>
+			<img height="1" width="1" style="display: none"
+				src="https://www.facebook.com/tr?id=183242402324052&ev=PageView&noscript=1" />
+		</noscript>
+		<!-- End Facebook Pixel Code -->
+	</div>
+	<!-- CMC script -->
+	<!-- CMC script -->
+	<div id="fap_product_detail_script" style="display: none;">
+		<script>
 fbq('track', 'ViewContent', {
   content_name: '#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color',
   content_category: '24',
@@ -1585,17 +2101,23 @@ fbq('track', 'ViewContent', {
   currency: 'KRW'
  });
 </script>
-</div>
-<!-- CMC script --> 
-<!-- External Script End -->
+	</div>
+	<!-- CMC script -->
+	<!-- External Script End -->
 
-<script type="text/javascript" src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085" charset="utf-8"></script>
+	<script type="text/javascript"
+		src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
+		charset="utf-8"></script>
 
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=tVTNbtswDH4BX_scQooedm6B3oYBLfoAtETHjCVRpaS02dOPzoIiWeukhhfoIID4fiT-mZ4DmtWtmE4g4BvLYAQzV7FoNtnQ6kdsNvnGnMNVSmAHs3mtKLvDtWru9Jwwk_BayWaL0bGY7AaTUbZkMU-4W-jw9k6BXwsdQ3MSiqW7DHRsa8BYHlnCA8ci7D3KZV4nCjbvEDUpsaAkwTKTVzAkDwW_JkFK5ie35NE8HeeAQ-BoaiE_ixfYVQ3lN0rzDLsabSG1VJyrtjSBZaHCmUd4as3L3_45lvDwe-cZ3CxSqAVG31_t2FdTxZkgJ_a7jrz_bkUddlB9GVOQA0i5hxj_tbw4K_iuPRTB50Ogade0Jy3VscwDLVZxpJOSNaN5qRJCprheqhKwgIMC0914zyDupK4abdoxOk167jmdcB73FX7YT97L2cGboGYEsf2s_ivQdfpDmrtuk69r0uWyBU-aG12sh2R9BBYLjnWILn8WVoWkzYHXc-jRJ7ziD3qIzl_TQNcQaV2vpq8rq_yH93u2oFt8YFX6Aw&type=js&k=1cdc6a5d44f089ef48186b1d398adf2e5a882d4e&t=1571605827"></script>
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=rdTBUsMgEAbgB9Crz8HoG7SpOp3p2I5R7yvZtjTA4gLW-PRi7Ggc66GBQyZDkv_LspCILRkUl1csHNOGwQhGT5Elip0Xr6BVA4H4fOcvxJ9HwTlRb8mJ-0HmhskGUUHADXG3UD4cD2v1LB6VA9n-ileRGa3shE_wmWMlMSMvD6OzNbGB7EpKMTEofRwZdn_dd1JSdGQPp5PX4Q73YvcSkbsUHZlPx1LbdlR26YJK1V-_BYYe6sf9sCbdUAyl2dX_W2Y8OjewKY7OlHcaOhXQFKTniauV3WisUaP8vFS-cE7wFHyLWcv3rVZkTF6ZA8r6ItBU2aYINIMARaCnr7-xGv8Zr5iaKMPcrulkolbveBtVg5kvz1jrH2QiC7ThgQLoSdPUoHMnle4Hkq034_beQrUopkx7j1yB3OJ4JaO9g_xhWon5AA&type=js&k=f519657ca6ed489b14241cedf5df9dab54591f1b&t=1571000610"></script>
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=rZXBbsIwDIZfYNc9R7S9AaVCQoLB2kk7m9RrQ5M4clIq3n6Z6DQ4QNV0h0ZVpP9z_MexRUMGxcsrC8dUMxgBzomyIScK9NSxRHH0YsVkg9gzVZ0MIscASouss5XGuGkoKLJPR_8spuDesI-7J4V9AN0Ov0vqbJiOghPyVmmEGieLM1XnEGBDdVIK8RuMWZImlo1yMzm5YpQh686TOQNgbVJ8uD1EGUi2Mxk7l1wYf5BVvNZ_ARUoMaW2biCLqlrbL0q9mShXP6mATiUUqCHJjEH_biFVuiRj7jrIV6pFF5qy3NyPswUbK_QmUo8Hfe8FXrObYHQ8RHQR_aQA4M9WXtZknUFzQE6W77hClo9qcASQgW8xzCc4VhJnMoaiSKbETu_IzslltOGP6HN05FV6_E_lm43y8wDy8cAbIfBITxuRX1riB8UB_Dt4vwE&type=js&k=f225e7df2a80165137842b4ee6b7303ab9119144&t=1573420409"></script>
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=rZRJctswEEUPQG1zDohzuIyziBdy2RWfoNlokDAxGYNUvH0o2S57lzKkDcEF_uPrXyDYbDWxsvLMeTt50AycYw9gYCL2l4JNHom9BAZhNfj23D16Tn73En6wnPQdGRIy5uchLBQPsF7h8McDp-z0rxSthijxgnme7Skb9ZBUlE_WJZePWA9yoSdvecL42yaTX-1BHklJs1iTjbicjXsZovVrroyDOHurqDiCkhw2VP5EFvi3wu6tx29lwmmHoNTX8xhJu0s08IWBMVSVfX3e2_d1M4qy7wEG7No9YCW6cuQgeF0SVmysKxLQ1WWLYoBxrJqqGbDty0FsS9Mx8XM_Yot83wkOXSOaej_W2LbDQFXVN-1_P_FpSVikQD58Gro0KonFHLXa1KngFORkWFikac76emtH0UdLH2sh9dbJDbmejpJONwS-GsimKVhtimyEIPGMvrxc44ZW66-_WPZ072avSeJS3Kixd6Y-X0xhtu55ls5JM105cAjqdnIIkabtgtmI_wA&type=js&k=a4e05f011b7d8d2bd6928d526fb56fb570e72150&t=1573579803"></script>
-<script type="text/javascript">
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=tVTNbtswDH4BX_scQooedm6B3oYBLfoAtETHjCVRpaS02dOPzoIiWeukhhfoIID4fiT-mZ4DmtWtmE4g4BvLYAQzV7FoNtnQ6kdsNvnGnMNVSmAHs3mtKLvDtWru9Jwwk_BayWaL0bGY7AaTUbZkMU-4W-jw9k6BXwsdQ3MSiqW7DHRsa8BYHlnCA8ci7D3KZV4nCjbvEDUpsaAkwTKTVzAkDwW_JkFK5ie35NE8HeeAQ-BoaiE_ixfYVQ3lN0rzDLsabSG1VJyrtjSBZaHCmUd4as3L3_45lvDwe-cZ3CxSqAVG31_t2FdTxZkgJ_a7jrz_bkUddlB9GVOQA0i5hxj_tbw4K_iuPRTB50Ogade0Jy3VscwDLVZxpJOSNaN5qRJCprheqhKwgIMC0914zyDupK4abdoxOk167jmdcB73FX7YT97L2cGboGYEsf2s_ivQdfpDmrtuk69r0uWyBU-aG12sh2R9BBYLjnWILn8WVoWkzYHXc-jRJ7ziD3qIzl_TQNcQaV2vpq8rq_yH93u2oFt8YFX6Aw&type=js&k=1cdc6a5d44f089ef48186b1d398adf2e5a882d4e&t=1571605827"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=rdTBUsMgEAbgB9Crz8HoG7SpOp3p2I5R7yvZtjTA4gLW-PRi7Ggc66GBQyZDkv_LspCILRkUl1csHNOGwQhGT5Elip0Xr6BVA4H4fOcvxJ9HwTlRb8mJ-0HmhskGUUHADXG3UD4cD2v1LB6VA9n-ileRGa3shE_wmWMlMSMvD6OzNbGB7EpKMTEofRwZdn_dd1JSdGQPp5PX4Q73YvcSkbsUHZlPx1LbdlR26YJK1V-_BYYe6sf9sCbdUAyl2dX_W2Y8OjewKY7OlHcaOhXQFKTniauV3WisUaP8vFS-cE7wFHyLWcv3rVZkTF6ZA8r6ItBU2aYINIMARaCnr7-xGv8Zr5iaKMPcrulkolbveBtVg5kvz1jrH2QiC7ThgQLoSdPUoHMnle4Hkq034_beQrUopkx7j1yB3OJ4JaO9g_xhWon5AA&type=js&k=f519657ca6ed489b14241cedf5df9dab54591f1b&t=1571000610"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=rZXBbsIwDIZfYNc9R7S9AaVCQoLB2kk7m9RrQ5M4clIq3n6Z6DQ4QNV0h0ZVpP9z_MexRUMGxcsrC8dUMxgBzomyIScK9NSxRHH0YsVkg9gzVZ0MIscASouss5XGuGkoKLJPR_8spuDesI-7J4V9AN0Ov0vqbJiOghPyVmmEGieLM1XnEGBDdVIK8RuMWZImlo1yMzm5YpQh686TOQNgbVJ8uD1EGUi2Mxk7l1wYf5BVvNZ_ARUoMaW2biCLqlrbL0q9mShXP6mATiUUqCHJjEH_biFVuiRj7jrIV6pFF5qy3NyPswUbK_QmUo8Hfe8FXrObYHQ8RHQR_aQA4M9WXtZknUFzQE6W77hClo9qcASQgW8xzCc4VhJnMoaiSKbETu_IzslltOGP6HN05FV6_E_lm43y8wDy8cAbIfBITxuRX1riB8UB_Dt4vwE&type=js&k=f225e7df2a80165137842b4ee6b7303ab9119144&t=1573420409"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=rZRJctswEEUPQG1zDohzuIyziBdy2RWfoNlokDAxGYNUvH0o2S57lzKkDcEF_uPrXyDYbDWxsvLMeTt50AycYw9gYCL2l4JNHom9BAZhNfj23D16Tn73En6wnPQdGRIy5uchLBQPsF7h8McDp-z0rxSthijxgnme7Skb9ZBUlE_WJZePWA9yoSdvecL42yaTX-1BHklJs1iTjbicjXsZovVrroyDOHurqDiCkhw2VP5EFvi3wu6tx29lwmmHoNTX8xhJu0s08IWBMVSVfX3e2_d1M4qy7wEG7No9YCW6cuQgeF0SVmysKxLQ1WWLYoBxrJqqGbDty0FsS9Mx8XM_Yot83wkOXSOaej_W2LbDQFXVN-1_P_FpSVikQD58Gro0KonFHLXa1KngFORkWFikac76emtH0UdLH2sh9dbJDbmejpJONwS-GsimKVhtimyEIPGMvrxc44ZW66-_WPZ072avSeJS3Kixd6Y-X0xhtu55ls5JM105cAjqdnIIkabtgtmI_wA&type=js&k=a4e05f011b7d8d2bd6928d526fb56fb570e72150&t=1573579803"></script>
+	<script type="text/javascript">
 var EC_MOBILE = false;
 var EC_MOBILE_DEVICE = false;
 var EC_MOBILE_USE = true;
@@ -1690,7 +2212,11 @@ var EC_ASYNC_LIVELINKON_ID = '';
 var EC_FRONT_JS_CONFIG_MANAGE = {"sSmartBannerScriptUrl":"https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206","sMallId":"anne2173","sDefaultAppDomain":"https:\/\/app4you.cafe24.com","sWebLogEventFlag":"F","FW_MANIFEST_CACHE_REVISION":1911061085,"IS_WEB_VIEW":"F"};
 var EC_FRONT_JS_CONFIG_MEMBER = {"sAuthUrl":"https:\/\/i-pin.cafe24.com\/certify\/1.0\/?action=auth"};
 var EC_FRONT_JS_CONFIG_SHOP = {"bDirectBuyOrderForm":false,"bECUseItemSalePrice":false,"sCouponDownloadPage":"\/coupon\/coupon_productdetail.html","aOptionColorchip":{"#FEFFEF":"","#EBE7E2":"","#4F422E":"","#494B4D":"","#000000":""}};
-</script></body></html><!-- Enliple Common Tracker v3.5 [공용] start --><script type="text/javascript">
+</script>
+</body>
+</html>
+<!-- Enliple Common Tracker v3.5 [공용] start -->
+<script type="text/javascript">
 <!--
 	function mobRf(){
         var rf = new EN();
@@ -1699,4 +2225,8 @@ var EC_FRONT_JS_CONFIG_SHOP = {"bDirectBuyOrderForm":false,"bECUseItemSalePrice"
         rf.sendRf();
     }
 //-->
-</script><script src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js" defer="defer" onload="mobRf()"></script><!-- Enliple Common Tracker v3.5 [공용] end -->
+</script>
+<script
+	src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js"
+	defer="defer" onload="mobRf()"></script>
+<!-- Enliple Common Tracker v3.5 [공용] end -->

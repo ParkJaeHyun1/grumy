@@ -11,10 +11,10 @@ from item
 where type = #{type}
 </select>
 
-	<select id="read" parameterType="int" resultType="ItemDTO">
+<select id="read" parameterType="int" resultType="ItemDTO">
 		select no, name, image, title, description, content, price,salePrice, color, sizes, count, type
 		from item
 		where no = #{no}                                           
-	</select>
+</select>
 
 </mapper>
