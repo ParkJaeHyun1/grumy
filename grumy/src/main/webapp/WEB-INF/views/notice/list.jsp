@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+function read(no){
+	var url = "read";
+	url += "?no="+no;
+	
+	location.href=url;
+}
+</script>
 
 <div id="container">
 	<div id="contents">

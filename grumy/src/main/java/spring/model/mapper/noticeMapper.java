@@ -9,5 +9,7 @@ public interface noticeMapper {
 	
 	List<NoticeDTO> list(Map map);	
 	int total(Map map);
+	NoticeDTO read(int no);
+	Map noread(int no);
 
 }

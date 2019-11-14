@@ -5,6 +5,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.noticeMapper">
 
+<select id="noread" parameterType="int" resultType="Map">
+select *
+from(
+	select
+	no,subject,
+	lag(no,1) over (order by no ) pre_no,
+	lag(subject,1) over (order by no ) pre_subject,
+	lead(no,1) over (order by no ) next_no,
+	lead(subject,1) over (order by no ) next_subject
+	from(
+    	select no,subject
+	    from notice
+		)
+	)
+where no = #{no}
+	</select>
+<select id="read" parameterType="int" resultType="NoticeDTO">
+select subject,writer,content,wdate
+from notice
+where no = #{no}
+</select>
+
 <select id="total" parameterType="Map" resultType="int">
 select count(*) from notice
 	<where>
