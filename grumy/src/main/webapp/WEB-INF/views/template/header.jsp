@@ -31,7 +31,7 @@
 				<a href="${pageContext.request.contextPath}/admin/main">관리자</a>
 				<a href="/member/login.html" class="log">LOGIN</a> <a
 					href="${pageContext.request.contextPath}/member/create">JOIN</a> <a href="/myshop/order/list.html">ORDER</a>
-				<a href="/order/cart">MY PAGE</a> <a class=" cart" href="/order/basket.html">CART</a>
+				<a href="/order/cart">MY PAGE</a> <a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
 			</div>
 
 
