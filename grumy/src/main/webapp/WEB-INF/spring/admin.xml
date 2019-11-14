@@ -22,5 +22,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/moneyWait.jsp" />
 	</definition>
+ 	<definition name="/admin/newOrder" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/newOrder.jsp" />
+	</definition>
 
 </tiles-definitions>

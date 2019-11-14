@@ -1,16 +1,16 @@
 package spring.model.admin;
 
-public class TestDTO {
+public class AdminDTO {
 	private int no;
 	private String name;
 	private int stat;
-	public TestDTO(int no, String name, int stat) {
+	public AdminDTO(int no, String name, int stat) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.stat = stat;
 	}
-	public TestDTO() {
+	public AdminDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

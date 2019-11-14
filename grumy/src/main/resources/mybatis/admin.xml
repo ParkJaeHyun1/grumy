@@ -7,11 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="count" parameterType="int" resultType="int">
 		select count(stat) from admintest where stat = #{stat}
 	</select>
-	
-	
-	<select id="checkRefnum" parameterType="int" resultType="int">
-		select count(refnum)
-		from bbs
-		where refnum = #{bbsno}
+	<select id="list" parameterType="int" resultType="AdminDTO">
+		select * from admintest where stat = #{stat}
 	</select>
 </mapper>

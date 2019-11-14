@@ -70,7 +70,7 @@
 												ui-sref="main.naverpay_sale_unpayment" class="text-number"
 												ng-bind="::vm.paymentInfo.paymentWaitCases"
 												data-nclicks-code="ord.paymentwait"
-												href="${root }/admin/mwait">${stat}</a>
+												href="${root }/admin/mwait">${wait}</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
@@ -80,22 +80,12 @@
 												<a ng-if="::vm.isDesktop"
 												ui-sref="main.naverpay_sale_delivery" class="text-number"
 												ng-bind="::vm.paymentInfo.newOrderCases"
-												data-nclicks-code="ord.new" href="#/naverpay/sale/delivery">0</a>
+												data-nclicks-code="ord.new" 
+												href="${root }/admin/newOrder">${nOrder}</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
-										<li><span class="info-title">오늘출발</span> <span
-											class="number-area">
-												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery({summaryInfoType : 'TODAY_DISPATCH'})"
-												class="text-number"
-												ng-bind="::vm.paymentInfo.todayDispatchCases"
-												data-nclicks-code="ord.departtoday"
-												href="#/naverpay/sale/delivery?summaryInfoType=TODAY_DISPATCH">0</a>
-											<!----> <!---->
-												<span>건</span>
-										</span></li>
+										<span>&nbsp</span>
 									</ul>
 								</div>
 								<!---->
@@ -833,22 +823,7 @@
 											class="customer visible-xs" data-nclicks-code="qna.buyer"><p
 													class="text-number">0</p>
 												<span>고객문의</span></a></li>
-										<li role="tab"
-											ng-attr-aria-selected="{{vm.tab === 'talk' &amp;&amp; 'true' || 'false'}}"
-											aria-selected="false">
-											<!---->
-											<a href="" ng-click="vm.tab = 'talk'"
-											ng-if="!vm.talkAccountId" class="talk disconnected hidden-xs"
-											data-nclicks-code="qna.talk"><span class="sr-only">톡톡
-													미연동 상태</span><span>톡톡문의</span></a>
-										<!----> <!---->
-											<a href="" ng-click="vm.goBusinessServiceManagementMenu()"
-											ng-if="!vm.talkAccountId"
-											class="talk disconnected visible-xs"
-											data-nclicks-code="qna.talk"><span class="sr-only">톡톡
-													미연동 상태</span><span>톡톡문의</span></a>
-										<!----> <!----> <!---->
-										</li>
+										
 									</ul>
 									<!---->
 									<div class="inquiry-content hidden-xs"
