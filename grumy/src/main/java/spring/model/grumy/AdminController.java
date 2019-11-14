@@ -17,9 +17,13 @@ public class AdminController {
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {
 		
-		int wait = mapper.count(200);
+		int wait = mapper.count(100);
 		request.setAttribute("stat", wait);
 		
 		return "/admin/main";
+	}
+	@RequestMapping("/admin/mwait")
+	public String mwait() {
+		return "/admin/mwait";
 	}
 }

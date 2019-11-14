@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="util"  uri="/ELFunctions" %>
+<c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,15 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-	<h3>관리자 페이지 입니다</h3>
-	<div id="seller-content" class="seller-sub-frame">
+	<div id="container">
+			<div id="contents">
+			
+		<h3>관리자 페이지 입니다</h3>
+		<div id="seller-content" class="seller-sub-frame">
 		<!---->
 		<!---->
 		<!---->
@@ -64,13 +64,13 @@
 									</div>
 									<ul class="panel-list">
 										<li><span class="info-title">입금대기</span> <span
-											class="number-area">
+											class="number-area aa">
 												<!---->
 												<a ng-if="::vm.isDesktop"
 												ui-sref="main.naverpay_sale_unpayment" class="text-number"
 												ng-bind="::vm.paymentInfo.paymentWaitCases"
 												data-nclicks-code="ord.paymentwait"
-												href="#/naverpay/sale/unpayment">0</a>
+												href="${root }/admin/mwait">${stat}</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
@@ -93,17 +93,6 @@
 												ng-bind="::vm.paymentInfo.todayDispatchCases"
 												data-nclicks-code="ord.departtoday"
 												href="#/naverpay/sale/delivery?summaryInfoType=TODAY_DISPATCH">0</a>
-											<!----> <!---->
-												<span>건</span>
-										</span></li>
-										<li><span class="info-title">예약구매</span> <span
-											class="number-area">
-												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery({summaryInfoType : 'PRE_ORDER'})"
-												class="text-number" ng-bind="::vm.paymentInfo.preOrderCases"
-												data-nclicks-code="ord.preord"
-												href="#/naverpay/sale/delivery?summaryInfoType=PRE_ORDER">0</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
@@ -139,8 +128,8 @@
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
-										<li><span class="info-title">배송중</span> <span
-											class="number-area">
+										<li ><span class="info-title">배송중</span> <span
+											class="number-area" >
 												<!---->
 												<a ng-if="::vm.isDesktop"
 												ui-sref="main.naverpay_sale_delivery_situation({summaryInfoType : 'DELIVERING'})"
@@ -161,7 +150,6 @@
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
-										<span>&nbsp;</span>
 									</ul>
 								</div>
 								<!---->
@@ -215,7 +203,6 @@
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
-										<span>&nbsp;</span>
 									</ul>
 								</div>
 								<!---->
@@ -271,7 +258,6 @@
 											<!----> <!---->
 												<span>원</span>
 										</span></li>
-										<span>&nbsp;</span>
 									</ul>
 								</div>
 								<!---->
@@ -1002,6 +988,8 @@
 			</div>
 		</div>
 		</ui-view>
+	</div>
+	</div>
 	</div>
 </body>
 </html>
