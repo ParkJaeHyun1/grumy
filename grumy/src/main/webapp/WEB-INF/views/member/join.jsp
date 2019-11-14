@@ -495,7 +495,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</table>
 </div>
 
-<h3>전체 동의</h3>
+
 <div class="join_agree">
 	<div class="ec-base-box typeThinBg gStrong">
 		<p>
@@ -505,10 +505,16 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 					이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong></label>
 		</p>
 	</div>
-
+<div class ="container">
 	<div class="ec-base-box typeThinBg agreeArea width_50">
+	
 		<h3>[필수] 이용약관 동의</h3>
+		<textarea rows="20" cols="100" id="content" name="content" class="form-control">
 		<div class="content">
+		<div class="form-group">
+   
+    <div class="col-sm-8">
+    <textarea rows="20" cols="100" id="content" name="content" class="form-control">
 			<p>
 				제1조(목적)<br>이 약관은 (전자상거래 사업자)가 운영하는 슬로우앤드(이하 “몰”이라 한다)에서
 					제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및
@@ -753,21 +759,20 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 							이용자의 피해구제신청이 있는 경우에는 공정거래위원회 또는 시•도지사가 의뢰하는 분쟁조정기관의 조정에 따를 수
 							있습니다.
 			</p>
-			<p>
-				제24조(재판권 및 준거법)<br>① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소
-					당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소
-					당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.<br>②
-						“몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.<br>
-			</p>
+			
+		제24조(재판권 및 준거법)
+		① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소
+		당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.<br>②
+	    “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
+			
 			부 칙(시행일) 이 약관은 년 월 일부터 시행합니다.
-			<div>
-				<br>
-			</div>
 
-		<div>
-			<br>
+		
 		</div>
+		
 	</div>
+	</div>
+	</textarea>
 	<p class="check">
 		<span>이용약관에 동의하십니까?</span> <input id="agree_service_check0"
 			name="agree_service_check[]" fw-filter="/1/" fw-label="이용약관 동의"
