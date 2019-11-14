@@ -7,14 +7,14 @@
 			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
 			<div
 				class="xans-element- xans-board xans-board-title-4 xans-board-title xans-board-4 ">
-				<div class="title">
-					<h2>
+				<div class="title" style="text-align: center">
+					<h1>
 						<font color="#555555">REVIEW</font>
-					</h2>
+					</h1>
 
 				</div>
 				<p class="imgArea">
-					<img
+					<img style="display: block; margin: 0px auto;"
 						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg">
 				</p>
 			</div>
@@ -32,6 +32,10 @@
 <title>전체 리뷰</title>
 <link rel="stylesheet" media="all"
 	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
+
+<link rel="stylesheet" type="text/css"
+	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
+
 <style type="text/css">
 span.star, span.camera, .sprite_comment {
 	background-image:
@@ -51,9 +55,6 @@ span.star, span.camera, .sprite_comment {
 	display: none;
 }
 </style>
-
-
-
 
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
@@ -102,317 +103,231 @@ span.star, span.camera, .sprite_comment {
 		data-review-already-largest-image="현재 이미지가 원본 크기입니다."
 		data-require-update-app="원활한 사진첨부를 위해서 앱 업데이트가 필요합니다. 업데이트 하시겠습니까?"
 		data-input-prompt="값을 입력해주세요."></div>
-		<!--경은 카테고리별 검색 -->
-				<div class="top_menu">
-					<ul class="top_menu__ul top_menu__ul--rpane">
-						<li class="top_menu__li top_menu__li--sort_container">
-							<div class="select2-container select2" id="s2id_sort">
-								<a href="javascript:void(0)" onclick="return false;"
-									class="select2-choice" tabindex="-1">
-									<div class="select2-chosen">최신순</div> <abbr
-									class="select2-search-choice-close"></abbr> <span
-									class="select2-arrow"><b></b></span><span
-									class="sprites-icon-drop-down select2__dropdown_icon"></span>
-								</a><input class="select2-focusser select2-offscreen" type="text"
-									id="s2id_autogen1">
-								<div class="select2-drop select2-display-none">
-									<div
-										class="select2-search select2-search-hidden select2-offscreen">
-										<input type="text" autocomplete="off" autocorrect="off"
-											autocapitalize="off" spellcheck="false" class="select2-input">
-									</div>
-									<ul class="select2-results">
-									</ul>
-								</div>
-							</div> 
-							<select name="sort" id="sort" class="select2 select2-offscreen"
-							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-							tabindex="-1">
 
-								<option value="10">추천순</option>
+	<div id="content">
+		<div class="reviews_index reviews_index--list js-pagination-list ">
+			<div class="reviews_index__head">
 
-								<option value="20" selected="selected">최신순</option>
-
-						</select>
-						</li>
-
-						<li class="top_menu__li top_menu__li--group_container "><a
-							class="top_menu__photo_reviews_link" data-remote="true"
-							href="/slowand.com/reviews?aloading=.page&amp;group=1&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">상품별
-								리뷰보기</a></li>
-
-						<li class="top_menu__li top_menu__search_container"><a
-							class="js-top-menu-submit"> <span
-								class="top_menu__search_icon sprites-search"></span>
-						</a>
-						
-							<form class="js-menu-search"
-								action="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-								accept-charset="UTF-8" data-remote="true" method="get">
-								<input name="utf8" type="hidden" value="✓"> <input
-									type="text" name="query" id="query" value=""
-									placeholder="검색어 입력" autocomplete="off"
-									class="top_menu__query js-top-menu-query">
-							</form> <a class="top_menu__remove_query " data-remote="true"
-							href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-								<span class="fa fa-times-circle top_menu__remove_query_icon"></span>
-						</a></li>
-
-					</ul>
-					
-					<ul class="top_menu__ul top_menu__ul--lpane">
-						<li class="top_menu__li top_menu__li--categories_container">
-							<span class="top_menu__categories_container_title">카테고리별
-								보기</span>
-							<div class="select2-container select2" id="s2id_category">
-								<a href="javascript:void(0)" onclick="return false;"
-									class="select2-choice" tabindex="-1">
-									<div class="select2-chosen">카테고리를 선택해주세요</div> <abbr
-									class="select2-search-choice-close"></abbr> <span
-									class="select2-arrow"><b></b></span><span
-									class="sprites-icon-drop-down select2__dropdown_icon"></span>
-								</a><input class="select2-focusser select2-offscreen" type="text"
-									id="s2id_autogen2">
-								<div class="select2-drop select2-display-none">
-									<div
-										class="select2-search select2-search-hidden select2-offscreen">
-										<input type="text" autocomplete="off" autocorrect="off"
-											autocapitalize="off" spellcheck="false" class="select2-input">
-									</div>
-									<ul class="select2-results">
-									</ul>
-								</div>
-							</div> 
-							<select name="category" id="category"
-							class="select2 select2-offscreen"
-							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-							tabindex="-1">
-								<option value="">카테고리를 선택해주세요</option>
-
-								<option value="1">BEST 50</option>
-
-								<option value="2">TOP</option>
-
-								<option value="6">DRESS</option>
-
-								<option value="7">OUTER</option>
-
-								<option value="11">SKIRT</option>
-
-								<option value="14">BOTTOM</option>
-
-								<option value="17">SHOES/BAG</option>
-
-								<option value="20">ACC</option>
-
-								<option value="21">spring</option>
-
-								<option value="23">당일발송</option>
-
-								<option value="24">#SLOWMADE</option>
-
-								<option value="25">monotone♥</option>
-
-								<option value="30">ss</option>
-
-								<option value="31">(여름용)장마룩 best</option>
-
-								<option value="43">개인결제</option>
-
-								<option value="44">기획특가모음</option>
-
-								<option value="48">soom pick *.*</option>
-
-								<option value="58">겨울시작❄</option>
-
-						</select>
-						</li>
-					</ul>
+				<div class="reviews_index__title_bar">
+					<div class="reviews_index__title">
+						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
+					</div>
 				</div>
-		
-		
-		
-	<div class="reviews_index reviews_index--list js-pagination-list ">
-		<div class="reviews_index__head">
-
-			<div class="reviews_index__title_bar">
-				<div class="reviews_index__title">
-					<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
-				</div>
-			</div>
-			<script src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
-			<link rel="stylesheet" media="all"
-				href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
 
 
-			<!--경은 리뷰 공지글 -->
 
 
-			<div id="google-translate-button" class="hidden"></div>
-			<div class="reviews_index__body">
-				<div class="page">
-					<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
-					<ul class="reviews_index__reviews reviews">
 
-						<c:forEach var="dto" items="${list}">
-							<li id="review_${dto.no}"
-								class="review reviews_index_list_review "><a
-								class="reviews_index_list_review__product_image  js-link-iframe"
-								data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
-									<img
-									src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-									style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
-									,="" class=""
-									alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color"
-									width="90" height="90">
-
-							</a>
-								<div class="reviews_index_list_review__lcontents">
-									<div class="reviews_index_list_review__score">
-
-										<div class="reviews_index_list_review__title">
-											<div class="reviews_index_list_review__tags">
+				<script
+					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
+				<link rel="stylesheet" media="all"
+					href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
 
 
-												<span
-													class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
-													title="3일 이내 작성된 후기입니다">NEW</span>
 
-											</div>
-											<a
-												class="reviews_index_list_review__title_text js-link-iframe"
-												data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
-												${dto.itemTitle} </a>
-										</div>
 
-									</div>
-									<div class="reviews_index_list_review__content review_content">
-										<a
-											class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
-											<div class="reviews_index_list_review__message">
-												<span> ${dto.content}<span
-													class="mall-link-color see_more">... 더보기</span> <br>
-												</span>
-											</div>
-											<div class="reviews_index_list_review__foot">
-												<div class="reviews_index_list_review__actions">
+				<div id="google-translate-button" class="hidden"></div>
+				<div class="reviews_index__body">
+					<div class="page">
+						<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
+						<ul class="reviews_index__reviews reviews">
+							<c:forEach var="dto" items="${list}">
+								<li id="review_${dto.no}"
+									class="review reviews_index_list_review "><a
+									class="reviews_index_list_review__product_image  js-link-iframe"
+									data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+										<img
+										src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+										style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
+										,="" class=""
+										alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color"
+										width="90" height="90">
+
+								</a>
+									<div class="reviews_index_list_review__lcontents">
+										<div class="reviews_index_list_review__score">
+
+											<div class="reviews_index_list_review__title">
+												<div class="reviews_index_list_review__tags">
+
+
 													<span
-														class="reviews_index_list_review__comments_link mall-link-color">
-														<span class="comments-count">0</span> 개의 댓글이 있습니다
+														class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
+														title="3일 이내 작성된 후기입니다">NEW</span>
+
+												</div>
+												<a
+													class="reviews_index_list_review__title_text js-link-iframe"
+													data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+													${dto.itemTitle} </a>
+											</div>
+											<div class="reviews_index_list_review__rating">
+
+												<div
+													class="reviews_index_list_review__rating_item js-like-result">
+													<span class="js-likes-html hidden"><strong
+														class="js-like-score-total">0</strong>명 중 <strong
+														class="js-like-score-plus">0</strong>명이 이 리뷰가 도움이 된다고 선택
+														했습니다</span>
+												</div>
+
+											</div>
+										</div>
+										<div class="reviews_index_list_review__content review_content">
+											<a
+												class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
+												<div class="reviews_index_list_review__message">
+													<span> ${dto.content}<span
+														class="mall-link-color see_more">... 더보기</span> <br>
 													</span>
 												</div>
-											</div>
-										</a>
-										<div
-											class="reviews_index_list_review__content_inner review_content__expanded">
-
-											<div class="reviews_index_list_review__message">
-
-												<div class="review_options">
-
-													<div class="review_option">
-														<div class="review_option__title">키</div>
-														<div class="review_option__content">${dto.cm}</div>
+												<div class="reviews_index_list_review__foot">
+													<div class="reviews_index_list_review__actions">
+														<span
+															class="reviews_index_list_review__comments_link mall-link-color">
+															<span class="comments-count">0</span> 개의 댓글이 있습니다
+														</span>
 													</div>
+												</div>
+											</a>
+											<div
+												class="reviews_index_list_review__content_inner review_content__expanded">
 
-													<div class="review_option">
-														<div class="review_option__title">몸무게</div>
-														<div class="review_option__content">${dto.kg}</div>
-													</div>
+												<div class="reviews_index_list_review__message">
 
-													<div class="review_option">
-														<div class="review_option__title">평소사이즈</div>
-														<div class="review_option__content">${dto.mysize}</div>
-													</div>
+													<div class="review_options">
 
-
-													<div class="review_option">
-														<div class="review_option__title">선택한 옵션</div>
-														<div class="review_option__content">
-
-															<span class="review_option__product_option"> <span
-																class="review_option__product_option_key">COLOR:</span>
-																<span class="review_option__product_option_value">${dto.itemOption}</span>
-															</span>
-
+														<div class="review_option">
+															<div class="review_option__title">키</div>
+															<div class="review_option__content">${dto.cm }</div>
 														</div>
+
+														<div class="review_option">
+															<div class="review_option__title">몸무게</div>
+															<div class="review_option__content">${dto.kg }</div>
+														</div>
+
+														<div class="review_option">
+															<div class="review_option__title">평소사이즈</div>
+															<div class="review_option__content">${dto.mysize }</div>
+														</div>
+
+
+														<div class="review_option">
+															<div class="review_option__title">선택한 옵션</div>
+															<div class="review_option__content">
+
+																<span class="review_option__product_option"> <span
+																	class="review_option__product_option_key">COLOR:</span>
+																	<span class="review_option__product_option_value">${dto.itemOption}</span>
+																</span>
+
+															</div>
+														</div>
+
 													</div>
+
+
+													<div class="reviews_index_list_review__message_expanded">
+														${dto.content}</div>
 
 												</div>
+												<div class="reviews_index_list_review__foot">
+													<div class="reviews_index_list_review__actions">
+														<a
+															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
+															접기</a>
+														<div class="reviews_index_list_review__divider">|</div>
+														<div class="review_like_action js-like-action "
+															data-like-action-class="review_like_action"
+															data-url="/slowand.com/reviews/249672/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
+															<div class="review_like_action__label">이 리뷰가 도움이
+																되었나요?</div>
+															<div class="review_like_action__buttons">
+																<a
+																	class="review_like_action__button review_like_action__button--like js-link-like">네</a>
+																<a
+																	class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
+															</div>
+															<div class="review_like_action__score">
+																<div class="review_like_action__score_arrow"></div>
+																<span
+																	class="review_like_action__score_text js-like-score-text">0</span>
+															</div>
+														</div>
 
 
-												<div class="reviews_index_list_review__message_expanded">
-													${dto.content}</div>
 
-											</div>
-											<div class="reviews_index_list_review__foot">
-												<div class="reviews_index_list_review__actions">
-													<a
-														class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
-														접기</a>
+													</div>
+
+
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
+									<div class="reviews_index_list_review__rcontents">
+										<div class="reviews_index_list_review__info_container">
+											<span class="reviews_index_list_review__name">${dto.id}</span>
+											<img
+												src="${pageContext.request.contextPath}/images/review1.jpg"
+												class="js-review-image" width="90px" height="90px"
+												style="opacity: 1;">
 
-								<div class="reviews_index_list_review__rcontents">
-									<div class="reviews_index_list_review__info_container">
-										<span class="reviews_index_list_review__name">${dto.id}</span>
 
+										</div>
 
-									</div>
+									</div></li>
+							</c:forEach>
 
-								</div></li>
-						</c:forEach>
+						</ul>
+					</div>
 
-					</ul>
 				</div>
-
+			
+				
+<!-- 				푸터 -->
+				
 			</div>
 
-
 		</div>
-
-
-
-	</div>
-	<div class="tui-tooltip" style="display: none;">
-		<div class="arrow"></div>
-		<span class="text"></span>
-	</div>
-	<script
-		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
-	<!--[if IE 7]>
+		<div class="tui-tooltip" style="display: none;">
+			<div class="arrow"></div>
+			<span class="text"></span>
+		</div>
+		
+<!-- 		더보기기능 -->
+		<script
+			src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
+		<!--[if IE 7]>
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
     <![endif]-->
-	<script>
-		//<![CDATA[
+		<script>
+			//<![CDATA[
 
-		var ajax_setup_args = {
-			cache : true,
-			dataType : "script",
-			accepts : {
-				script : "text/javascript, application/javascript"
-			}
-		};
-		$.ajaxSetup(ajax_setup_args);
+			var ajax_setup_args = {
+				cache : true,
+				dataType : "script",
+				accepts : {
+					script : "text/javascript, application/javascript"
+				}
+			};
+			$.ajaxSetup(ajax_setup_args);
 
-		//]]>
-	</script>
-	<script>
-		//<![CDATA[
+			//]]>
+		</script>
+		<script>
+			//<![CDATA[
 
-		//]]>
-	</script>
+			//]]>
+		</script>
 
-	<form id="form-upload-image" class="hidden" data-type="json"
-		enctype="multipart/form-data"
-		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-		accept-charset="UTF-8" data-remote="true" method="post">
-		<input name="utf8" type="hidden" value="✓">
-		<div id="upload-fields-container"></div>
-	</form>
+		<form id="form-upload-image" class="hidden" data-type="json"
+			enctype="multipart/form-data"
+			action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+			accept-charset="UTF-8" data-remote="true" method="post">
+			<input name="utf8" type="hidden" value="✓">
+			<div id="upload-fields-container"></div>
+		</form>
 </body>
 				</html>
 			</div>
