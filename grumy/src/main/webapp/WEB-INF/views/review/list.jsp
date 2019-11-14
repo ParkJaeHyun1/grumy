@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container">
 	<div id="contents">
-
 		<div
 			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
 			<div
@@ -11,7 +10,6 @@
 					<h1>
 						<font color="#555555">REVIEW</font>
 					</h1>
-
 				</div>
 				<p class="imgArea">
 					<img style="display: block; margin: 0px auto;"
@@ -28,14 +26,11 @@
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <title>전체 리뷰</title>
 <link rel="stylesheet" media="all"
 	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
-
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
-
 <style type="text/css">
 span.star, span.camera, .sprite_comment {
 	background-image:
@@ -55,7 +50,6 @@ span.star, span.camera, .sprite_comment {
 	display: none;
 }
 </style>
-
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script async="" src="//www.google-analytics.com/analytics.js"></script>
@@ -86,51 +80,24 @@ span.star, span.camera, .sprite_comment {
 	data-rails-env="production" data-review-message-all-exposed="false"
 	data-shop-builder="cafe24" data-widget-id="1"
 	data-fixed-top-menu-height="0" data-device="pc">
-	<div class="watermark"></div>
-
-	<div id="i18n" style="display: none"
-		data-image-size-too-large="첨부한 이미지 파일이 너무 큽니다. 더 작은 이미지를 첨부해주세요."
-		data-close="닫기" data-error-403="접근 권한이 없습니다."
-		data-error-404="요청하신 페이지를 찾을 수 없습니다." data-error-422="요청이 거부되었습니다."
-		data-error-etc="요청을 처리하던 중 오류가 발생했습니다. 조속히 해결하겠습니다."
-		data-image-field-cant-add-photo-without-file-input="파일 선택창이 없어 사진을 추가할 수 없습니다."
-		data-image-field-cant-add-photo-without-file-reader="파일 미리 보기가 지원되는 브라우저가 아니어서 사진을 추가할 수 없습니다."
-		data-image-field-cant-add-photo-without-file="선택된 파일이 없어 사진을 추가할 수 없습니다."
-		data-image-field-cant-add-photo-with-file-type="선택된 파일이 이미지 형식이 아닙니다. (선택된 형식:%{file_type})"
-		data-image-field-cant-add-photo-with-file-name="이미지 형식의 파일만 첨부할 수 있습니다. (선택된 파일명:%{file_name})"
-		data-app-restrict-image-upload="파일 업로드를 하려면 모바일 기본브라우저에서 쇼핑몰 모바일웹(%{url})으로 접속해주세요."
-		data-review-already-posted="이미 리뷰를 작성한 상품입니다."
-		data-review-already-largest-image="현재 이미지가 원본 크기입니다."
-		data-require-update-app="원활한 사진첨부를 위해서 앱 업데이트가 필요합니다. 업데이트 하시겠습니까?"
-		data-input-prompt="값을 입력해주세요."></div>
-
 	<div id="content">
 		<div class="reviews_index reviews_index--list js-pagination-list ">
 			<div class="reviews_index__head">
-
 				<div class="reviews_index__title_bar">
 					<div class="reviews_index__title">
 						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
 					</div>
 				</div>
-
-
-
-
-
 				<script
 					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
 				<link rel="stylesheet" media="all"
 					href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
-
-
-
-
 				<div id="google-translate-button" class="hidden"></div>
 				<div class="reviews_index__body">
 					<div class="page">
 						<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
 						<ul class="reviews_index__reviews reviews">
+
 							<c:forEach var="dto" items="${list}">
 								<li id="review_${dto.no}"
 									class="review reviews_index_list_review "><a
@@ -142,35 +109,19 @@ span.star, span.camera, .sprite_comment {
 										,="" class=""
 										alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color"
 										width="90" height="90">
-
 								</a>
 									<div class="reviews_index_list_review__lcontents">
 										<div class="reviews_index_list_review__score">
-
 											<div class="reviews_index_list_review__title">
 												<div class="reviews_index_list_review__tags">
-
-
 													<span
 														class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
 														title="3일 이내 작성된 후기입니다">NEW</span>
-
 												</div>
 												<a
 													class="reviews_index_list_review__title_text js-link-iframe"
 													data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
 													${dto.itemTitle} </a>
-											</div>
-											<div class="reviews_index_list_review__rating">
-
-												<div
-													class="reviews_index_list_review__rating_item js-like-result">
-													<span class="js-likes-html hidden"><strong
-														class="js-like-score-total">0</strong>명 중 <strong
-														class="js-like-score-plus">0</strong>명이 이 리뷰가 도움이 된다고 선택
-														했습니다</span>
-												</div>
-
 											</div>
 										</div>
 										<div class="reviews_index_list_review__content review_content">
@@ -192,75 +143,39 @@ span.star, span.camera, .sprite_comment {
 											</a>
 											<div
 												class="reviews_index_list_review__content_inner review_content__expanded">
-
 												<div class="reviews_index_list_review__message">
-
 													<div class="review_options">
-
 														<div class="review_option">
 															<div class="review_option__title">키</div>
 															<div class="review_option__content">${dto.cm }</div>
 														</div>
-
 														<div class="review_option">
 															<div class="review_option__title">몸무게</div>
 															<div class="review_option__content">${dto.kg }</div>
 														</div>
-
 														<div class="review_option">
 															<div class="review_option__title">평소사이즈</div>
 															<div class="review_option__content">${dto.mysize }</div>
 														</div>
-
-
 														<div class="review_option">
 															<div class="review_option__title">선택한 옵션</div>
 															<div class="review_option__content">
-
 																<span class="review_option__product_option"> <span
 																	class="review_option__product_option_key">COLOR:</span>
 																	<span class="review_option__product_option_value">${dto.itemOption}</span>
 																</span>
-
 															</div>
 														</div>
-
 													</div>
-
-
 													<div class="reviews_index_list_review__message_expanded">
 														${dto.content}</div>
-
 												</div>
 												<div class="reviews_index_list_review__foot">
 													<div class="reviews_index_list_review__actions">
 														<a
 															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
 															접기</a>
-														<div class="reviews_index_list_review__divider">|</div>
-														<div class="review_like_action js-like-action "
-															data-like-action-class="review_like_action"
-															data-url="/slowand.com/reviews/249672/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-															<div class="review_like_action__label">이 리뷰가 도움이
-																되었나요?</div>
-															<div class="review_like_action__buttons">
-																<a
-																	class="review_like_action__button review_like_action__button--like js-link-like">네</a>
-																<a
-																	class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
-															</div>
-															<div class="review_like_action__score">
-																<div class="review_like_action__score_arrow"></div>
-																<span
-																	class="review_like_action__score_text js-like-score-text">0</span>
-															</div>
-														</div>
-
-
-
 													</div>
-
-
 												</div>
 											</div>
 										</div>
@@ -272,30 +187,20 @@ span.star, span.camera, .sprite_comment {
 												src="${pageContext.request.contextPath}/images/review1.jpg"
 												class="js-review-image" width="90px" height="90px"
 												style="opacity: 1;">
-
-
 										</div>
-
 									</div></li>
 							</c:forEach>
-
 						</ul>
 					</div>
-
 				</div>
-			
-				
-<!-- 				푸터 -->
-				
+				<!-- 				푸터 -->
 			</div>
-
 		</div>
 		<div class="tui-tooltip" style="display: none;">
 			<div class="arrow"></div>
 			<span class="text"></span>
 		</div>
-		
-<!-- 		더보기기능 -->
+		<!-- 		더보기기능 -->
 		<script
 			src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
 		<!--[if IE 7]>
@@ -303,7 +208,6 @@ span.star, span.camera, .sprite_comment {
     <![endif]-->
 		<script>
 			//<![CDATA[
-
 			var ajax_setup_args = {
 				cache : true,
 				dataType : "script",
@@ -312,15 +216,12 @@ span.star, span.camera, .sprite_comment {
 				}
 			};
 			$.ajaxSetup(ajax_setup_args);
-
 			//]]>
 		</script>
 		<script>
 			//<![CDATA[
-
 			//]]>
 		</script>
-
 		<form id="form-upload-image" class="hidden" data-type="json"
 			enctype="multipart/form-data"
 			action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
@@ -332,7 +233,6 @@ span.star, span.camera, .sprite_comment {
 				</html>
 			</div>
 		</div>
-
 	</div>
 	<hr class="layout">
 </div>
