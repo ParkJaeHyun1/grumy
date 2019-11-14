@@ -11,9 +11,7 @@
 					<h2>
 						<font color="#555555">REVIEW</font>
 					</h2>
-					<!--h3>슬로우앤드에 소중한 후기 남겨주셔서 정말 감사합니다!
-글 후기에 500원, 사진 후기는 1000원 적립금을 지급해드리고 있답니다 :D
-앞으로 더 만족하실수 있는 상품으로 찾아뵐게요 ♡</h3-->
+
 				</div>
 				<p class="imgArea">
 					<img
@@ -104,181 +102,7 @@ span.star, span.camera, .sprite_comment {
 		data-review-already-largest-image="현재 이미지가 원본 크기입니다."
 		data-require-update-app="원활한 사진첨부를 위해서 앱 업데이트가 필요합니다. 업데이트 하시겠습니까?"
 		data-input-prompt="값을 입력해주세요."></div>
-
-	<div id="content">
-	
-<!-- 	경은 이미지 있는 게시물 누르면 뜨는 창 -->
-	<div class="show_photo_review fullscreen_popup review" tabindex="-1" style="opacity: 1;">
-  <div class="fullscreen_popup__background ie_png_fix"></div>
-  <div id="photo-popup-container" class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-    <div id="photo-popup-content" class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content" style="width: 606.148px; margin-top: 70px;">
-      <div class="show_photo_review__photos_container">
-        
-          <div data-width="1024" data-height="1365" data-index="1" data-count="2" id="photo-container-1" class="show_photo_review__photo_container selected js-ie-opacity-fix" style="padding: 0px; max-height: 846px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/00/58/image1/2da97b4a46fde314.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1365" alt="S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요." style="max-width: 1024px;">
-          </div>
-        
-          <div data-width="1024" data-height="1365" data-index="2" data-count="2" id="photo-container-2" class="show_photo_review__photo_container  js-ie-opacity-fix" style="max-height: 846px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/00/58/image2/daf9001eb5963ab0.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1365" alt="S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요.">
-          </div>
-        
-        <div class="show_photo_review__images_count_indicator show_photo_review__image_count_2">
-          
-            <div class="show_photo_review__indicator_dot
-                     show_photo_review__indicator_dot--index_1
-                     js-indicator-dot
-                     js-index-1
-                     selected"></div>
-          
-            <div class="show_photo_review__indicator_dot
-                     show_photo_review__indicator_dot--index_2
-                     js-indicator-dot
-                     js-index-2
-                     "></div>
-          
-        </div>
-        
-          <div id="image-prev" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--prev">
-            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-left"></i>
-          </div>
-          <div id="image-next" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--next">
-            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-right"></i>
-          </div>
-        
-      </div>
-      <div id="review-contents-container" class="show_photo_review__review_contents_container js-ie-opacity-fix">
-        <div id="info-container" class="show_photo_review__info_container">
-          <div class="show_photo_review__info ">
-            <div class="show_photo_review__product_thumbnail">
-              
-                <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2351">
-                  <img src="//assets5.cre.ma/p/slowand-com/products/00/00/00/29/33/image/extra_small_9ca7c09e7a6abff1.jpg" alt="[베스트 재입고!] #SLOWMADE. 인생수트세트 Winter (스커트) - 2 color" width="70" height="70" class="show_photo_review__link_to_product">
-                </a>
-              
-              
-              
-              
- 
-            </div>
-            <div class="show_photo_review__product_info">
-              
-              <div class="show_photo_review__product_name">
-                <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2351">[베스트 재입고!] #SLOWMADE. 인생수트세트 Winter (스커트) - 2 color</a>
-              </div>
-              <div class="show_photo_review__product_score">
-                
-              </div>
-              <div class="show_photo_review__user_name">hlch****</div>
-            </div>
-            <div class="show_photo_review__like_result js-like-result js-ie-opacity-fix">
-              <div class="show_photo_review__review_like_info js-likes-html hidden">
-                이 리뷰에 대해 <br><strong class="js-like-score-total">0</strong>명 중 <strong class="js-like-score-plus">0</strong>명이 도움이 된다 선택 했습니다
-              </div>
-              <div class="show_photo_review__review_like_info js-no-likes-html ">
-                이 리뷰에 대해 <br>아직 도움이 된다고 평가한 사람이 없습니다.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="message-container" class="js-ie-opacity-fix show_photo_review__message" style="height: 637px;">
-          <div class="show_photo_review__message_contents">
-            
-  <div class="review_options">
-    
-      <div class="review_option">
-        <div class="review_option__title">키</div>
-        <div class="review_option__content">154cm</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">몸무게</div>
-        <div class="review_option__content">~44</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">평소사이즈</div>
-        <div class="review_option__content">XS</div>
-      </div>
-    
-    
-      <div class="review_option">
-        <div class="review_option__title">선택한 옵션</div>
-        <div class="review_option__content">
-          
-            <span class="review_option__product_option">
-              <span class="review_option__product_option_key">COLOR:</span>
-              <span class="review_option__product_option_value">챠콜브라운</span>
-            </span>
-          
-            <span class="review_option__product_option">
-              <span class="review_option__product_option_key">SIZE:</span>
-              <span class="review_option__product_option_value">S</span>
-            </span>
-          
-        </div>
-      </div>
-    
-  </div>
-
-
-            <div class="show_photo_review__all_messages js-ie-opacity-fix">
-              <div class="show_photo_review__review_message">
-                S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요. 좀 두꺼울 줄 알았는데 그렇게 두껍지만은 않더라고요. 겨울용 두툼한 니트 같은 건 넣어 입을 후 없을 것 같아요.
-                
-
-              </div>
-              
-            </div>
-            <div class="show_photo_review__feedback_container">
-              <div class="review_like_action js-like-action " data-like-action-class="review_like_action" data-url="/slowand.com/reviews/250058/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-  <div class="review_like_action__label">이 리뷰가 도움이 되었나요?</div>
-  <div class="review_like_action__buttons">
-    <a class="review_like_action__button review_like_action__button--like js-link-like">네</a>
-    <a class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
-  </div>
-  <div class="review_like_action__score">
-    <div class="review_like_action__score_arrow"></div>
-    <span class="review_like_action__score_text js-like-score-text">0</span>
-  </div>
-</div>
-
-              
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="popup_review_navigation">
-  <a href="/slowand.com/reviews/250059?app=0&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=1&amp;prev_next=true&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--prev js-review-navigation-prev">
-    <i class="sprites-navigator-left"></i>
-  </a>
-  <a href="/slowand.com/reviews/250057?app=0&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=1&amp;prev_next=true&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--next js-review-navigation-next">
-    <i class="sprites-navigator-right"></i>
-  </a>
-</div>
-
-    </div>
-  </div>
-  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 25px; right: 80px;">
-    <div class="sprites-circle-close-button ie_png_fix"></div>
-  </div>
-
-  <div class="crema_review_watermark">
-    <span class="crema_review_watermark__span crema_review_watermark__span--mall_name">슬로우앤드</span><span class="crema_review_watermark__span">with</span><span class="crema_review_watermark__span crema_review_watermark__span--crema_name">CREMA REVIEW</span>
-  </div>
-</div>
-	
-	
-		<div class="reviews_index reviews_index--list js-pagination-list ">
-			<div class="reviews_index__head">
-
-				<div class="reviews_index__title_bar">
-					<div class="reviews_index__title">
-						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
-					</div>
-				</div>
-
-<!--경은 카테고리별 검색 -->
+		<!--경은 카테고리별 검색 -->
 				<div class="top_menu">
 					<ul class="top_menu__ul top_menu__ul--rpane">
 						<li class="top_menu__li top_menu__li--sort_container">
@@ -300,7 +124,8 @@ span.star, span.camera, .sprite_comment {
 									<ul class="select2-results">
 									</ul>
 								</div>
-							</div> <select name="sort" id="sort" class="select2 select2-offscreen"
+							</div> 
+							<select name="sort" id="sort" class="select2 select2-offscreen"
 							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
 							tabindex="-1">
 
@@ -320,6 +145,7 @@ span.star, span.camera, .sprite_comment {
 							class="js-top-menu-submit"> <span
 								class="top_menu__search_icon sprites-search"></span>
 						</a>
+						
 							<form class="js-menu-search"
 								action="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
 								accept-charset="UTF-8" data-remote="true" method="get">
@@ -333,6 +159,7 @@ span.star, span.camera, .sprite_comment {
 						</a></li>
 
 					</ul>
+					
 					<ul class="top_menu__ul top_menu__ul--lpane">
 						<li class="top_menu__li top_menu__li--categories_container">
 							<span class="top_menu__categories_container_title">카테고리별
@@ -355,7 +182,8 @@ span.star, span.camera, .sprite_comment {
 									<ul class="select2-results">
 									</ul>
 								</div>
-							</div> <select name="category" id="category"
+							</div> 
+							<select name="category" id="category"
 							class="select2 select2-offscreen"
 							data-url="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
 							tabindex="-1">
@@ -401,437 +229,152 @@ span.star, span.camera, .sprite_comment {
 						</li>
 					</ul>
 				</div>
+		
+		
+		
+	<div class="reviews_index reviews_index--list js-pagination-list ">
+		<div class="reviews_index__head">
 
-
-
-				<script
-					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
-				<link rel="stylesheet" media="all"
-					href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
-				<div class="review_notice">
-					<ul class="review_notice__top">
-						<li class="review_notice__top_item"><span
-							class="notice-count"><strong>1</strong>개의</span><span
-							class="notice-count-text">공지글이 있습니다.</span></li>
-					</ul>
-					<ul class="review_notice__container">
-
-						<li
-							class="review_notice__container_item
-                 
-                 ">
-							<a
-							class="js-link-expand-review-notice review_notice__review_expand_link">
-								<div class="review_notice__title">
-									<strong>::</strong>[필독] 리뷰글 작성전에 꼭! 한번 읽어주세요 *.*
-								</div>
-								<div class="review_notice__date">
-									2017-09-19<br>
-								</div>
-						</a>
-						
-<!--경은 리뷰 공지글 -->
-							<div
-								class="review_notice__container_item_content
-                   
-                     review_notice__container_item_content--collapsed
-                   
-                   js-brand-notice-content">
-								<div
-									class="review_notice__container_item_content_inner js-tui-viewer-area"
-									data-message="<p align=&quot;center&quot;><font face=&quot;Malgun Gothic&quot;>
-									상품을 구매해주신 분들의 '후기'를 위한 공간입니다.</font>
-									</p>
-									<p align=&quot;center&quot;>
-										<font face=&quot;MalgunGothic&quot;>교환/반품/문의 관련 게시글은
-											교환반품 게시판에 작성해주세요!</font>
-									</p>
-									<p align=&quot;center&quot;>
-										<font face=&quot;MalgunGothic&quot;><b><span
-												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
-													style="font-size:"10pt;&quot;><span
-														style="font-size:"18pt;&quot;><span
-															style="font-size:"10pt;&quot;><span
-																style="font-size:"14pt;&quot;>판매, 교환</span></span></span></span><span
-													style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
-														style="font-size:"10pt;&quot;><span
-															style="font-size:"18pt;&quot;><span
-																style="font-size:"10pt;&quot;><span
-																	style="font-size:"14pt;&quot;>, 반</span></span></span></span></span></span><span
-												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
-													style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
-														style="font-size:"10pt;&quot;><span
-															style="font-size:"18pt;&quot;><span
-																style="font-size:"10pt;&quot;><span
-																	style="font-size:"14pt;&quot;>품</span></span></span></span></span></span></b><span
-											style="font-size:"10pt;&quot;><span
-												style="font-size:"18pt;&quot;><span
-													style="font-size:"10pt;&quot;><span
-														style="font-size:"14pt;&quot;>예정인글 등 후기게시판의 </span></span></span></span></font>
-									</p>
-									<p align=&quot;center&quot;>
-										<font face=&quot;MalgunGothic&quot;><span
-											style="font-size:"10pt;&quot;><span
-												style="font-size:"18pt;&quot;><span
-													style="font-size:"10pt;&quot;><span
-														style="font-size:"14pt;&quot;>성격에 맞지 않는 글은 </span></span></span></span><b><span
-												style="color:" rgb(0, 0, 0); background-color:rgb(255, 207, 231);&quot;><span
-													style="font-size:"10pt;&quot;><span
-														style="font-size:"18pt;&quot;><span
-															style="font-size:"10pt;&quot;><span
-																style="font-size:"14pt;&quot;>무통보</span></span></span></span></span></b><span
-											style="font-size:"10pt;&quot;><span
-												style="font-size:"18pt;&quot;><span
-													style="font-family:"sans-serif;&quot;><span
-														style="font-family:"sans-serif;&quot;><span
-															style="font-size:"10pt;&quot;><span
-																style="font-size:"14pt;&quot;> 삭제됩니다:)</span></span></span></span></span></span></font>
-									</p>
-									<p align=&quot;center&quot;>
-										<font face=&quot;MalgunGothic&quot;><span
-											style="font-size:"10pt;&quot;><span
-												style="font-size:"18pt;&quot;><span
-													style="font-family:"sans-serif;&quot;><span
-														style="font-family:"sans-serif;&quot;><span
-															style="font-size:"10pt;&quot;><span
-																style="font-size:"14pt;&quot;><br></span></span></span></span></span></span></font>
-									</p>
-									<font face=&quot;MalgunGothic&quot;><span
-										style="font-size:"10pt;&quot;><span style="font-size:"18pt;&quot;><span
-												style="font-family:"sans-serif;&quot;><span
-													style="font-family:"sans-serif;&quot;><span
-														style="font-size:"10pt;&quot;><span
-															style="font-size:"14pt;&quot;><p
-																	align=&quot;center&quot;>
-																	<span style="font-size:"10pt;&quot;><span
-																		style="font-size:"18pt;&quot;><span
-																			style="font-family:"sans-serif; font-size: 10pt;&quot;><span
-																				style="font-family:"sans-serif; font-size: 12pt;&quot;><span
-																					style="font-size:"14pt;&quot;><span
-																						style="color:" rgb(99, 99, 99); font-family:sans-serif; font-size: 12pt;&quot;><font
-																							face=&quot;MalgunGothic&quot;>(주문건이 확인되지 않는 비회원 리뷰글은 자동 삭제됩니다.)</font></span></span></span></span></span></span><font
-																		face=&quot;MalgunGothic&quot;><br></font></p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>----------------------------------------------------------------------------------</font><font
-																		face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
-																<p align=&quot;center&quot;>
-																	<strong><font face=&quot;Malgun
-																		Gothic&quot; size=&quot;2&quot;>#적립금 지급 기준</font></strong>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;>- 글후기 (30자이상) : <strong>500원</strong></font></font></p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;><strong>-
-																	</strong>상품 미착용사진&amp;nbsp;후기&amp;nbsp;: <strong>500원</strong></font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;>- 착용사진+글후기 (30자이상) : <strong>1000원</strong></font></font></p>
-																<p align=&quot;center&quot;>
-																	<strong><font face=&quot;Malgun
-																		Gothic&quot; size=&quot;2&quot;></font></strong><font
-																		face=&quot;MalgunGothic&quot;><br></font></p>
-																<font face=&quot;MalgunGothic&quot;><font size=&quot;2&quot;></font></font><p
-																	align=&quot;center&quot;>
-																	<strong><font face=&quot;Malgun
-																		Gothic&quot; size=&quot;2&quot;>#적립금 지급이 어려운 경우</font></strong>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		30자 미만에 글후기</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		수령한지 2주가 지난 상품</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		구매금액이 10000원 이하인 상품 </font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		반품/교환 예정인 상품</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		한가지 상품을 중복으로 작성해준 리뷰글</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-
-																		비회원으로 작성 해주실 경우 </font><font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>----------------------------------------------------------------------------------</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;MalgunGothic&quot;><br></font><font
-																		face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>*
-																		리뷰게시판에는 상품에대한 후기 공유와 함께 적립금을 지급해드리는 공간으로써</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>상품에
-																		대한 문의글 답변 등, 피드백을 일일히 드릴 수 없습니다.</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>이점
-																		꼭 숙지하시고 피드백이 필요한 글은 꼭 배송후 교환 / 반품 게시판에 남겨주시면</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>빠른
-																		안내로 처리 도와드리겠습니다 ! *</font>
-																</p>
-																<p>
-																	<font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;MalgunGothic&quot;><br><font size=&quot;2&quot;></font></font></p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>-<br></font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>많은
-																		분들께서 참고하여 구매를 해주시는 소중한 후기글인 만큼-</font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font face=&quot;Malgun Gothic&quot; size=&quot;2&quot;>&amp;nbsp;확인되지
-																		않은 카더라 내용의 비난성글이나 , </font>
-																</p>
-																<p align=&quot;center&quot;>
-																	<font size=&quot;2&quot;><font face=&quot;MalgunGothic&quot;>사업장에 방해가되는 허위사실 및 공격성 리뷰글은 무통보 삭제됨을 알립니다 :-) <span style=&quot;font-family: sans-serif;&quot;></span></font><span
-																		style="font-family:"sans-serif;&quot;></span></font>
-																</p></span>
-														<p align=&quot;center&quot;>
-																<br>
-															</p></span>
-													<p align=&quot;center&quot;>
-															<br>
-														</p></span>
-												<p align=&quot;center&quot;>
-														<br>
-													</p></span>
-											<p align=&quot;center&quot;>
-													<br>
-												</p></span>
-										<p align=&quot;center&quot;>
-												<br>
-											</p></span>
-									<p align=&quot;center&quot;>
-											<br>
-										</p></font>
-									<p align=&quot;center&quot;>
-										<br>
-									</p>
-									">
-								</div>
-							</div>
-						</li>
-
-					</ul>
-					<div class="review_notice__more">
-						<a class="js-review-notice-more-link mall-link-color"> <span
-							class="js-review-more-notice-count"> </span> <span
-							class="review_notice__collapse_link js-review-more-notice-close">
-								접기 </span>
-						</a>
-					</div>
+			<div class="reviews_index__title_bar">
+				<div class="reviews_index__title">
+					<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
 				</div>
-	</div>
-			
-			
+			</div>
+			<script src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
+			<link rel="stylesheet" media="all"
+				href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
+
+
+			<!--경은 리뷰 공지글 -->
+
+
 			<div id="google-translate-button" class="hidden"></div>
 			<div class="reviews_index__body">
 				<div class="page">
 					<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
 					<ul class="reviews_index__reviews reviews">
-					<c:forEach var="dto" items="${list}">
-						<li id="review_${dto.no}" class="review reviews_index_list_review ">
-							<a
-							class="reviews_index_list_review__product_image  js-link-iframe"
-							data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
-							<img src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-							style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
-							,="" class=""
-							alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color" width="90"
-							height="90">
 
-						</a>
-							<div class="reviews_index_list_review__lcontents">
-								<div class="reviews_index_list_review__score">
+						<c:forEach var="dto" items="${list}">
+							<li id="review_${dto.no}"
+								class="review reviews_index_list_review "><a
+								class="reviews_index_list_review__product_image  js-link-iframe"
+								data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+									<img
+									src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+									style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
+									,="" class=""
+									alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color"
+									width="90" height="90">
 
-									<div class="reviews_index_list_review__title">
-										<div class="reviews_index_list_review__tags">
+							</a>
+								<div class="reviews_index_list_review__lcontents">
+									<div class="reviews_index_list_review__score">
+
+										<div class="reviews_index_list_review__title">
+											<div class="reviews_index_list_review__tags">
 
 
-											<span
-												class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
-												title="3일 이내 작성된 후기입니다">NEW</span>
-
-										</div>
-										<a
-											class="reviews_index_list_review__title_text js-link-iframe"
-											data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
-											${dto.itemTitle} </a>
-									</div>
-									<div class="reviews_index_list_review__rating">
-
-										<div
-											class="reviews_index_list_review__rating_item js-like-result">
-											<span class="js-likes-html hidden"><strong
-												class="js-like-score-total">0</strong>명 중 <strong
-												class="js-like-score-plus">0</strong>명이 이 리뷰가 도움이 된다고 선택
-												했습니다</span>
-										</div>
-
-									</div>
-								</div>
-								<div class="reviews_index_list_review__content review_content">
-									<a
-										class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
-										<div class="reviews_index_list_review__message">
-											<span> ${dto.content}<span
-												class="mall-link-color see_more">... 더보기</span> <br>
-											</span>
-										</div>
-										<div class="reviews_index_list_review__foot">
-											<div class="reviews_index_list_review__actions">
 												<span
-													class="reviews_index_list_review__comments_link mall-link-color">
-													<span class="comments-count">0</span> 개의 댓글이 있습니다
+													class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
+													title="3일 이내 작성된 후기입니다">NEW</span>
+
+											</div>
+											<a
+												class="reviews_index_list_review__title_text js-link-iframe"
+												data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+												${dto.itemTitle} </a>
+										</div>
+
+									</div>
+									<div class="reviews_index_list_review__content review_content">
+										<a
+											class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
+											<div class="reviews_index_list_review__message">
+												<span> ${dto.content}<span
+													class="mall-link-color see_more">... 더보기</span> <br>
 												</span>
 											</div>
-										</div>
-									</a>
-									<div
-										class="reviews_index_list_review__content_inner review_content__expanded">
-
-										<div class="reviews_index_list_review__message">
-
-											<div class="review_options">
-
-												<div class="review_option">
-													<div class="review_option__title">키</div>
-													<div class="review_option__content">167cm</div>
+											<div class="reviews_index_list_review__foot">
+												<div class="reviews_index_list_review__actions">
+													<span
+														class="reviews_index_list_review__comments_link mall-link-color">
+														<span class="comments-count">0</span> 개의 댓글이 있습니다
+													</span>
 												</div>
+											</div>
+										</a>
+										<div
+											class="reviews_index_list_review__content_inner review_content__expanded">
 
-												<div class="review_option">
-													<div class="review_option__title">몸무게</div>
-													<div class="review_option__content">57~59</div>
-												</div>
+											<div class="reviews_index_list_review__message">
 
-												<div class="review_option">
-													<div class="review_option__title">평소사이즈</div>
-													<div class="review_option__content">L</div>
-												</div>
+												<div class="review_options">
 
-
-												<div class="review_option">
-													<div class="review_option__title">선택한 옵션</div>
-													<div class="review_option__content">
-
-														<span class="review_option__product_option"> <span
-															class="review_option__product_option_key">COLOR:</span> <span
-															class="review_option__product_option_value">${dto.itemOption}</span>
-														</span>
-
+													<div class="review_option">
+														<div class="review_option__title">키</div>
+														<div class="review_option__content">${dto.cm}</div>
 													</div>
+
+													<div class="review_option">
+														<div class="review_option__title">몸무게</div>
+														<div class="review_option__content">${dto.kg}</div>
+													</div>
+
+													<div class="review_option">
+														<div class="review_option__title">평소사이즈</div>
+														<div class="review_option__content">${dto.mysize}</div>
+													</div>
+
+
+													<div class="review_option">
+														<div class="review_option__title">선택한 옵션</div>
+														<div class="review_option__content">
+
+															<span class="review_option__product_option"> <span
+																class="review_option__product_option_key">COLOR:</span>
+																<span class="review_option__product_option_value">${dto.itemOption}</span>
+															</span>
+
+														</div>
+													</div>
+
 												</div>
+
+
+												<div class="reviews_index_list_review__message_expanded">
+													${dto.content}</div>
 
 											</div>
-
-
-											<div class="reviews_index_list_review__message_expanded">
-												${dto.content}
+											<div class="reviews_index_list_review__foot">
+												<div class="reviews_index_list_review__actions">
+													<a
+														class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
+														접기</a>
 												</div>
-
-										</div>
-										<div class="reviews_index_list_review__foot">
-											<div class="reviews_index_list_review__actions">
-												<a
-													class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
-													접기</a>
-												<div class="reviews_index_list_review__divider">|</div>
-												<div class="review_like_action js-like-action "
-													data-like-action-class="review_like_action"
-													data-url="/slowand.com/reviews/249672/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-													<div class="review_like_action__label">이 리뷰가 도움이
-														되었나요?</div>
-													<div class="review_like_action__buttons">
-														<a
-															class="review_like_action__button review_like_action__button--like js-link-like">네</a>
-														<a
-															class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
-													</div>
-													<div class="review_like_action__score">
-														<div class="review_like_action__score_arrow"></div>
-														<span
-															class="review_like_action__score_text js-like-score-text">0</span>
-													</div>
-												</div>
-
-
-
 											</div>
-
-
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="reviews_index_list_review__rcontents">
-								<div class="reviews_index_list_review__info_container">
-									<span class="reviews_index_list_review__name">${dto.id}</span>
+
+								<div class="reviews_index_list_review__rcontents">
+									<div class="reviews_index_list_review__info_container">
+										<span class="reviews_index_list_review__name">${dto.id}</span>
 
 
-								</div>
+									</div>
 
-							</div>
-
-						</li>
-					</c:forEach>
+								</div></li>
+						</c:forEach>
 
 					</ul>
 				</div>
 
 			</div>
-			<div class="reviews_index__foot">
-				<div class="pagination">
-					<a
-						class="pagination__button pagination__button--prev pagination__button--disabled">&lt;</a>
-
-					<a class="pagination__button pagination__button--active" href="#">1</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">2</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=3&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">3</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=4&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">4</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=5&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">5</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=6&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">6</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=7&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">7</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=8&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">8</a>
-
-					<a class="pagination__button" data-remote="true"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=9&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">9</a>
-
-					<a class="pagination__button pagination__button--next"
-						href="/slowand.com/reviews?aloading=.page&amp;app=0&amp;iframe=1&amp;iframe_id=crema-reviews-1&amp;page=2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fboard%2Freview%2F4%2F&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-						data-remote="true">&gt;</a>
-
-				</div>
 
 
-
-
-			</div>
 		</div>
+
+
 
 	</div>
 	<div class="tui-tooltip" style="display: none;">
@@ -844,21 +387,24 @@ span.star, span.camera, .sprite_comment {
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
     <![endif]-->
 	<script>
-//<![CDATA[
+		//<![CDATA[
 
-      var ajax_setup_args = {cache: true, dataType: "script", accepts: {
-        script: "text/javascript, application/javascript"
-      }};
-      $.ajaxSetup(ajax_setup_args);
-      
+		var ajax_setup_args = {
+			cache : true,
+			dataType : "script",
+			accepts : {
+				script : "text/javascript, application/javascript"
+			}
+		};
+		$.ajaxSetup(ajax_setup_args);
 
-//]]>
-</script>
+		//]]>
+	</script>
 	<script>
-//<![CDATA[
+		//<![CDATA[
 
-//]]>
-</script>
+		//]]>
+	</script>
 
 	<form id="form-upload-image" class="hidden" data-type="json"
 		enctype="multipart/form-data"
@@ -867,7 +413,6 @@ span.star, span.camera, .sprite_comment {
 		<input name="utf8" type="hidden" value="✓">
 		<div id="upload-fields-container"></div>
 	</form>
-
 </body>
 				</html>
 			</div>
