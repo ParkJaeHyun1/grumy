@@ -106,6 +106,169 @@ span.star, span.camera, .sprite_comment {
 		data-input-prompt="값을 입력해주세요."></div>
 
 	<div id="content">
+	
+<!-- 	경은 이미지 있는 게시물 누르면 뜨는 창 -->
+	<div class="show_photo_review fullscreen_popup review" tabindex="-1" style="opacity: 1;">
+  <div class="fullscreen_popup__background ie_png_fix"></div>
+  <div id="photo-popup-container" class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+    <div id="photo-popup-content" class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content" style="width: 606.148px; margin-top: 70px;">
+      <div class="show_photo_review__photos_container">
+        
+          <div data-width="1024" data-height="1365" data-index="1" data-count="2" id="photo-container-1" class="show_photo_review__photo_container selected js-ie-opacity-fix" style="padding: 0px; max-height: 846px; overflow: hidden;">
+            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/00/58/image1/2da97b4a46fde314.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1365" alt="S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요." style="max-width: 1024px;">
+          </div>
+        
+          <div data-width="1024" data-height="1365" data-index="2" data-count="2" id="photo-container-2" class="show_photo_review__photo_container  js-ie-opacity-fix" style="max-height: 846px; overflow: hidden;">
+            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/00/58/image2/daf9001eb5963ab0.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1365" alt="S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요.">
+          </div>
+        
+        <div class="show_photo_review__images_count_indicator show_photo_review__image_count_2">
+          
+            <div class="show_photo_review__indicator_dot
+                     show_photo_review__indicator_dot--index_1
+                     js-indicator-dot
+                     js-index-1
+                     selected"></div>
+          
+            <div class="show_photo_review__indicator_dot
+                     show_photo_review__indicator_dot--index_2
+                     js-indicator-dot
+                     js-index-2
+                     "></div>
+          
+        </div>
+        
+          <div id="image-prev" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--prev">
+            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-left"></i>
+          </div>
+          <div id="image-next" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--next">
+            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-right"></i>
+          </div>
+        
+      </div>
+      <div id="review-contents-container" class="show_photo_review__review_contents_container js-ie-opacity-fix">
+        <div id="info-container" class="show_photo_review__info_container">
+          <div class="show_photo_review__info ">
+            <div class="show_photo_review__product_thumbnail">
+              
+                <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2351">
+                  <img src="//assets5.cre.ma/p/slowand-com/products/00/00/00/29/33/image/extra_small_9ca7c09e7a6abff1.jpg" alt="[베스트 재입고!] #SLOWMADE. 인생수트세트 Winter (스커트) - 2 color" width="70" height="70" class="show_photo_review__link_to_product">
+                </a>
+              
+              
+              
+              
+ 
+            </div>
+            <div class="show_photo_review__product_info">
+              
+              <div class="show_photo_review__product_name">
+                <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2351">[베스트 재입고!] #SLOWMADE. 인생수트세트 Winter (스커트) - 2 color</a>
+              </div>
+              <div class="show_photo_review__product_score">
+                
+              </div>
+              <div class="show_photo_review__user_name">hlch****</div>
+            </div>
+            <div class="show_photo_review__like_result js-like-result js-ie-opacity-fix">
+              <div class="show_photo_review__review_like_info js-likes-html hidden">
+                이 리뷰에 대해 <br><strong class="js-like-score-total">0</strong>명 중 <strong class="js-like-score-plus">0</strong>명이 도움이 된다 선택 했습니다
+              </div>
+              <div class="show_photo_review__review_like_info js-no-likes-html ">
+                이 리뷰에 대해 <br>아직 도움이 된다고 평가한 사람이 없습니다.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="message-container" class="js-ie-opacity-fix show_photo_review__message" style="height: 637px;">
+          <div class="show_photo_review__message_contents">
+            
+  <div class="review_options">
+    
+      <div class="review_option">
+        <div class="review_option__title">키</div>
+        <div class="review_option__content">154cm</div>
+      </div>
+    
+      <div class="review_option">
+        <div class="review_option__title">몸무게</div>
+        <div class="review_option__content">~44</div>
+      </div>
+    
+      <div class="review_option">
+        <div class="review_option__title">평소사이즈</div>
+        <div class="review_option__content">XS</div>
+      </div>
+    
+    
+      <div class="review_option">
+        <div class="review_option__title">선택한 옵션</div>
+        <div class="review_option__content">
+          
+            <span class="review_option__product_option">
+              <span class="review_option__product_option_key">COLOR:</span>
+              <span class="review_option__product_option_value">챠콜브라운</span>
+            </span>
+          
+            <span class="review_option__product_option">
+              <span class="review_option__product_option_key">SIZE:</span>
+              <span class="review_option__product_option_value">S</span>
+            </span>
+          
+        </div>
+      </div>
+    
+  </div>
+
+
+            <div class="show_photo_review__all_messages js-ie-opacity-fix">
+              <div class="show_photo_review__review_message">
+                S 샀는데 키가 작아서 저한테는 기장이 좀 길게 느껴졌어요. 핏 예쁘고 원단도 예뻐요. 좀 두꺼울 줄 알았는데 그렇게 두껍지만은 않더라고요. 겨울용 두툼한 니트 같은 건 넣어 입을 후 없을 것 같아요.
+                
+
+              </div>
+              
+            </div>
+            <div class="show_photo_review__feedback_container">
+              <div class="review_like_action js-like-action " data-like-action-class="review_like_action" data-url="/slowand.com/reviews/250058/like?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
+  <div class="review_like_action__label">이 리뷰가 도움이 되었나요?</div>
+  <div class="review_like_action__buttons">
+    <a class="review_like_action__button review_like_action__button--like js-link-like">네</a>
+    <a class="review_like_action__button review_like_action__button--unlike js-link-unlike">아니요</a>
+  </div>
+  <div class="review_like_action__score">
+    <div class="review_like_action__score_arrow"></div>
+    <span class="review_like_action__score_text js-like-score-text">0</span>
+  </div>
+</div>
+
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup_review_navigation">
+  <a href="/slowand.com/reviews/250059?app=0&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=1&amp;prev_next=true&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--prev js-review-navigation-prev">
+    <i class="sprites-navigator-left"></i>
+  </a>
+  <a href="/slowand.com/reviews/250057?app=0&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=1&amp;prev_next=true&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--next js-review-navigation-next">
+    <i class="sprites-navigator-right"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 25px; right: 80px;">
+    <div class="sprites-circle-close-button ie_png_fix"></div>
+  </div>
+
+  <div class="crema_review_watermark">
+    <span class="crema_review_watermark__span crema_review_watermark__span--mall_name">슬로우앤드</span><span class="crema_review_watermark__span">with</span><span class="crema_review_watermark__span crema_review_watermark__span--crema_name">CREMA REVIEW</span>
+  </div>
+</div>
+	
+	
 		<div class="reviews_index reviews_index--list js-pagination-list ">
 			<div class="reviews_index__head">
 
