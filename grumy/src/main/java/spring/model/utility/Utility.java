@@ -3,7 +3,7 @@ package spring.model.utility;
 public class Utility {
 
 	public static String paging(int totalRecord, int nowPage, int recordPerPage, String col, String word) {
-		int pagePerBlock = 5; // ���� ������ ��
+		int pagePerBlock = 10; // ���� ������ ��
 		int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage));
 		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));
 		int nowGrp = (int) (Math.ceil((double) nowPage / pagePerBlock));
@@ -11,34 +11,35 @@ public class Utility {
 		int endPage = (nowGrp * pagePerBlock);
 
 		StringBuffer str = new StringBuffer();
-		str.append("<div style='text-align:center'>");
-		str.append("<ul class='pagination'> ");
+
+		str.append("<div class=\"xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate\">");
 		int _nowPage = (nowGrp - 1) * pagePerBlock; // 10�� ���� �������� �̵�
 		if (nowGrp >= 2) {
-			str.append("<li><a href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>'<'</A></li>");
+			str.append("<a href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_prev.gif\" alt=\"이전 페이지\"></A>");
 		}
-
+		str.append("<ol>");
+		
+				
 		for (int i = startPage; i <= endPage; i++) {
 			if (i > totalPage) {
 				break;
 			}
 
 			if (nowPage == i) {
-				str.append("<li class='active'><a href=#>" + i + "</a></li>");
+				str.append("<li class='active'><a href=# class=\"this\">" + i + "</a></li>");
 			} else {
-				str.append("<li><a href='./list.do?col=" + col + "&word=" + word + "&nowPage=" + i + "'>" + i
+				str.append("<li class=\"xans-record-\"><a href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + i + "' class=\"other\">" + i
 						+ "</A></li>");
 			}
 		}
-
+		str.append("</ol>");
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10�� ���� �������� �̵�
 		if (nowGrp < totalGrp) {
 			str.append(
-					"<li><A href='./list.do?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'>'>'</A></li>");
+					"<A href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_next.gif\" alt=\"다음 페이지\"></A>");
 		}
-		str.append("</ul>");
-		str.append("</div>");
 
+		str.append("</div>");
 		return str.toString();
 	}
 

@@ -33,7 +33,7 @@ public class NoticeController {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
 		
-		int recordPerPage = 15; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 3; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
