@@ -29,6 +29,8 @@ href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
 <link rel="stylesheet" type="text/css"
 href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
+
+
 <!--  다음 주소 찾기  -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -72,10 +74,10 @@ function sample6_execDaumPostcode() {
                 }
  
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById('postcode1').value = data.zonecode;
+                document.getElementById("addr1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("addr2").focus();
             }
         }).open();
     }
@@ -113,16 +115,7 @@ function inCheck(f){
 		f.mname.focus();
 		return false;
 	}
-	if(f.phone.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.phone.focus();
-		return false;
-	}
-	if(f.email.value.length==0){
-		alert("email을 입력하세요");
-		f.email.focus();
-		return false;
-	}
+	
 	if(f.postcode1.value.length==0){
 		alert("주소를 입력하세요")
 		f.postcode1.focus();
@@ -138,7 +131,16 @@ function inCheck(f){
 		f.addr2.focus();
 		return false;
 	}
-
+	if(f.phone.value.length==0){
+		alert("전화번호를 입력하세요");
+		f.phone.focus();
+		return false;
+	}
+	if(f.email.value.length==0){
+		alert("email을 입력하세요");
+		f.email.focus();
+		return false;
+	}
 }
 </script>
 
@@ -171,7 +173,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 </script>
 	<!-- //상단카테고리 -->
 <form id="joinForm" name="joinForm" action="createproc"
-	method="post" enctype="multipart/form-data">
+	onsubmit="return inCheck(this)" method="post" enctype="multipart/form-data">
 <div id="container">
 	<div id="contents">
 		<div class="titleArea">
@@ -245,7 +247,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<td>
 		<input id="postcode1" name="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
 		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
-		<a href="#none" onclick="idCheck(document.joinForm.id.value)" id="postBtn" class="yg_btn_24 yg_btn3" alt="우편번호">우편번호</a><br />
+		<button type="button" class="yg_btn_140"
+				 onclick="sample6_execDaumPostcode()">주소 검색</button>
+		<br />
 		<input id="addr1" name="addr1" fw-filter="" fw-label="주소"
 		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소<br /> 
 		<input id="addr2" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
@@ -305,7 +309,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 	
 	<div class ="container">
-	<div class="col-sm-8">
+	<div class="col-sm-8" style="margin-top: 130px;text-align: center;">
 		<h3>[필수] 이용약관 동의</h3>
 	<textarea rows="20" cols="150" id="content" name="content" class="form-control">
    
@@ -536,25 +540,21 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	
 	부 칙(시행일) 이 약관은 년 월 일부터 시행합니다.
 	</textarea>
-	<div class="ec-base-box typeThinBg gStrong">
 	<p>
-	<span class="ec-base-chk">
-	<input type="checkbox" id="sAgreeAllChecked">
-	</span>
-	<label for="sAgreeAllChecked">
-	<strong>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong>
-	</label>
 	</p>
+	<div class="col-sm-offset-2 col-sm-5">
+    <input id="agree" type="checkbox" name="agree" value="1" >
+    <label for="agree"><strong> 약관에 동의합니다 </strong></label>
+	</div>
+	
+	</div>
+	</div>
+	
+	<div class="ec-base-button">
+	<button type="submit" class="yg_btn_140">회원가입</button>
+	<button type="reset" class="yg_btn_140 yg_btn3" onclick="CheckingJoinInfoLayerClose()">닫기</button>
 	</div>
 
-	</div>
-	</div>
-<div class="ec-base-button">
-	<a href="${pageContext.request.contextPath}/member/preproc" class="yg_btn_140" alt="회원가입"
-		id="join">회원가입</a> 
-	<a href="#none" class="yg_btn_140 yg_btn3" alt="닫기"
-		onclick="CheckingJoinInfoLayerClose()">닫기</a>
-</div>
 </div>	
 </div>
 </form>
