@@ -198,14 +198,17 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 <div class="join_agree">
 	<div class="ec-base-box typeThinBg gStrong">
-		<p>
-			<span class="ec-base-chk"><input type="checkbox"
-				id="sAgreeAllChecked"><em class="checkbox"></em></span><label
-				for="sAgreeAllChecked"><strong>이용약관 및 개인정보수집 및
-					이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong></label>
-		</p>
+	<p>
+	<span class="ec-base-chk">
+	<input type="checkbox" id="sAgreeAllChecked">
+	<em class="checkbox"></em>
+	</span>
+	<label for="sAgreeAllChecked">
+	<strong>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong>
+	</label>
+	</p>
 	</div>
-<div class ="container">
+	<div class ="container">
 	<div class="ec-base-box typeThinBg agreeArea width_50">
 	<div class="col-sm-8">
 		<h3>[필수] 이용약관 동의</h3>
@@ -544,6 +547,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			</li>
 		</ul>
 	</div>
+</div>
 </div>
 
 
