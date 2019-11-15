@@ -82,8 +82,16 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
+<!-- 셀렉트 값 input에 넣기 -->
 <script type="text/javascript">
-
+$(function(){
+	var idval=$('#email2');
+	$('#email3').change(function(){
+		var element = $(this).find('option:selected');
+		var myTag = element.attr('value');
+		idval.val(myTag);
+	});
+});
 </script>
 <!-- 필수 입력창 확인  -->
 <script type="text/javascript">
@@ -305,11 +313,10 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<td>
 		<input id="email1" name="email1" fw-filter="isFill" 
 		fw-label="이메일" fw-alone="N" fw-msg="" class="mailId" value=""
-		type="text" />@
+		type="text" />@ 
 		<input id="email2" name="email2" fw-filter="isFill" 
 		fw-label="이메일" fw-alone="N" fw-msg=""
-		class="mailAddress" readonly="readonly" value="" type="text" 
-		value=""/>
+		class="mailAddress" value="" type="text" />
 		<select id="email3" fw-filter="isFill" fw-label="이메일" fw-alone="N"
 		fw-msg="">
 			<option value="" selected="selected">- 이메일 선택 -</option>
@@ -322,7 +329,6 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			<option value="korea.com">korea.com</option>
 			<option value="dreamwiz.com">dreamwiz.com</option>
 			<option value="gmail.com">gmail.com</option>
-			<option value="etc">직접입력</option>
 		</select> 
 		<span id="emailMsg"></span>
 		</td>
