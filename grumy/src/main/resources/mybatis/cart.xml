@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.CartMapper">
 	
 <select id="list" parameterType="String" resultType="CartDTO">
-select no, userID, itemNo, count
-from cart
-where userID = #{userID}
+select c.no, c.userID, c.itemNo, c.count,c.itemSize,c.itemColor,i.image as itemPicture,i.title as itemTitle,i.price as itemPrice
+from cart c, item i
+where userID = #{userID} and c.itemNo = i.no
 </select>
 
 
