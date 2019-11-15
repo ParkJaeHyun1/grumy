@@ -114,6 +114,9 @@ function read(no){
 					</fieldset>
 				</div>
 			</form>
+						<p  align="right">
+						<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">등록</button>
+						</p>
 
 		
 				${paging}

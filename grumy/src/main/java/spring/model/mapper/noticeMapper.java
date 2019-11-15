@@ -13,5 +13,7 @@ public interface noticeMapper {
 	Map noread(int no);
 	int create(NoticeDTO dto);
 	int update(NoticeDTO dto);
+	int passcheck(Map map);
+	int delete(int no);
 
 }

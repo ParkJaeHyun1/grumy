@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
@@ -10,7 +10,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style=text-align:center>
 					<h2>
-						<font color="#555555">NOTICE 수정</font>
+						<font color="#555555">NOTICE 등록</font>
 					</h2>
 					
 					<!--h3>공지사항입니다.</h3-->
@@ -18,9 +18,8 @@
 			</div>
 			<br><br>
 			<!-- 글 내용-->
-			<form action="update" method="post" id="frm"
+			<form action="create" method="post" id="frm"
 				onsubmit="return input(this)" >
-				<input type="hidden" name="no" value="${param.no}">
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">
 					<colgroup>
@@ -31,15 +30,15 @@
 						<tr>
 							<th scope="row">SUBJECT</th>
 							
-							<td><input type="text" id="subject" name="subject" value="${dto.subject }"></td>
+							<td><input type="text" id="subject" name="subject" value=""></td>
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
-							<td>${dto.writer }</td>
+							<td><span name="writer">grumy</span></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<textarea rows="20" cols="150" name="content" id="content">${dto.content}</textarea>
+								<textarea rows="20" cols="150" name="content" id="content"></textarea>
 							</td>
 						</tr>
 						<tr>
