@@ -23,8 +23,8 @@
 			<a href="#contents">본문 바로가기</a>
 		</p>
 	</div>
-<div id="wrap">
-    <!-- 상단카테고리 -->
+	<div id="wrap">
+		<!-- 상단카테고리 -->
 
 
 		<!-- 카테고리 별 상품 list -->
@@ -39,13 +39,13 @@
 				<h2>
 					<span>${type}</span><BR></BR>
 				</h2>
-				<c:forEach var="dto" items="${list}">
-					<c:forEach var="image" items="${dto.colorList}">
-						<span style="background-color: #FFFFFF" class="chips xans-record-"></span>
-					</c:forEach>
+				<%-- 				<c:forEach var="dto" items="${list}"> --%>
+				<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
+				<!-- 						<span style="background-color: #FFFFFF" class="chips xans-record-"></span> -->
+				<%-- 					</c:forEach> --%>
 
 
-				</c:forEach>
+				<%-- 				</c:forEach> --%>
 			</div>
 
 			<ul class="prdList grid4">
@@ -61,7 +61,7 @@
 						</div>
 						<div class="description">
 							<strong class="name"><a
-							href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
+								href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
 
@@ -73,18 +73,36 @@
 							</div>
 							<ul
 								class="xans-element- xans-product xans-product-listitem-3 xans-product-listitem xans-product-3 spec">
-								<c:if test="${not empty dto.price}">
+
+
+								<c:if test="${dto.salePrice > 0}">
 									<li class=" xans-record-"><strong
 										class="title displaynone"><span
 											style="font-size: 12px; color: #999999;">소비자가</span> :</strong> <span
 										style="font-size: 12px; color: #999999; text-decoration: line-through;">${dto.price}</span></li>
 								</c:if>
-								<li class=" xans-record-"><strong class="title displaynone"><span
-										style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
-										:</strong> <span
-									style="font-size: 12px; color: #555555; font-weight: bold;">${dto.salePrice}</span><span
-									id="span_product_tax_type_text" style=""> </span></li>
-								
+								<c:if test="${dto.salePrice > 0}">
+									<li class=" xans-record-"><strong
+										class="title displaynone"><span
+											style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
+											:</strong> <span
+										style="font-size: 12px; color: #555555; font-weight: bold;">
+
+											${dto.price-dto.salePrice}</span><span
+										id="span_product_tax_type_text" style=""> </span></li>
+								</c:if>
+
+								<c:if test="${dto.salePrice == 0}">
+									<li class=" xans-record-"><strong
+										class="title displaynone"><span
+											style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
+											:</strong> <span
+										style="font-size: 12px; color: #555555; font-weight: bold;">
+
+											${dto.price}</span><span id="span_product_tax_type_text" style="">
+									</span></li>
+								</c:if>
+
 								<li class=" xans-record-"><strong class="title displaynone"><span
 										style="font-size: 12px; color: #555555;"></span> :</strong> <span
 									style="font-size: 12px; color: #555555;">${dto.description}</span></li>
@@ -96,24 +114,24 @@
 				</c:forEach>
 			</ul>
 		</div>
-		</div>
+	</div>
 
-		<script>
-			$('.ec-base-product .prdList > li')
-					.each(
-							function() {
-								var sub = $(this).find('.description .name a')
-										.text().length;
-								var sub_count = 31;
-								if (sub >= sub_count) {
-									var jbExcerpt = $(this).find(
-											'.description .name a').text()
-											.substring(0, sub_count);
-									$(this).find('.description .name a').text(
-											jbExcerpt + '...');
-								}
-							});
-		</script>
+	<script>
+		$('.ec-base-product .prdList > li')
+				.each(
+						function() {
+							var sub = $(this).find('.description .name a')
+									.text().length;
+							var sub_count = 31;
+							if (sub >= sub_count) {
+								var jbExcerpt = $(this).find(
+										'.description .name a').text()
+										.substring(0, sub_count);
+								$(this).find('.description .name a').text(
+										jbExcerpt + '...');
+							}
+						});
+	</script>
 </body>
 </html>
 
