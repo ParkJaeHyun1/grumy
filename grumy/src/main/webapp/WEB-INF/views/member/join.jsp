@@ -82,6 +82,9 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
+<script type="text/javascript">
+
+</script>
 <!-- 필수 입력창 확인  -->
 <script type="text/javascript">
 function inCheck(f){
@@ -151,6 +154,11 @@ function inCheck(f){
 		f.email.focus();
 		return false;
 	}
+	if(f.agree.value==0){
+		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
+		f.agree.focus();
+	}
+    
 }
 </script>
 
