@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 
@@ -17,7 +18,9 @@
 			</div>
 			<br><br>
 			<!-- 글 내용-->
-			<form action="update" method="post">
+			<form action="update" method="post" id="frm"
+				onsubmit="return input(this)" >
+				<input type="hidden" name="no" value="${param.no}">
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">
 					<colgroup>
@@ -28,7 +31,7 @@
 						<tr>
 							<th scope="row">SUBJECT</th>
 							
-							<td><input type="text" name="subject" value="${dto.subject }"></td>
+							<td><input type="text" id="subject" name="subject" value="${dto.subject }"></td>
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
@@ -41,13 +44,13 @@
 						</tr>
 						<tr>
 							<th scope="row">PASSWORD</th>
-							<td><input type="password" name="passwd"></td>
+							<td><input type="password" id="passwd" name="passwd"></td>
 						</tr>
 					</tbody>
 				</table>
 					<p align="right">
-						<button class="yg_btn_30 yg_btn4" >저장</button>
-						<button class="yg_btn_30 yg_btn4" onclick="">취소</button>
+						<button type="submit" class="yg_btn_30 yg_btn4" id="save">저장</button>
+						<button type="button" class="yg_btn_30 yg_btn4" onclick="history.back()">취소</button>
 					</p>
 			</div>
 			</form>
@@ -58,3 +61,56 @@
 
 </div>
 
+<script type="text/javascript">
+var oEditors = [];
+$(function(){
+      nhn.husky.EZCreator.createInIFrame({
+          oAppRef: oEditors,
+          elPlaceHolder: "content", //textarea에서 지정한 id와 일치해야 합니다. 
+          //SmartEditor2Skin.html 파일이 존재하는 경로
+          sSkinURI: "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",  
+          htParams : {
+              // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseToolbar : true,             
+              // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseVerticalResizer : true,     
+              // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+              bUseModeChanger : false,         
+              fOnBeforeUnload : function(){
+                   
+              }
+          }, 
+          fOnAppLoad : function(){
+              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+              oEditors.getById["content"].exec("PASTE_HTML", [" "]);
+          },
+          fCreator: "createSEditor2"
+      });
+      
+      //저장버튼 클릭시 form 전송
+      $("#save").click(function(){
+          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+          $("#frm").submit();
+      });    
+});
+
+
+function input(f){
+	if(f.subject.value==''){
+		alert("제목을 입력하세요");
+		f.subject.focus();
+		return false;
+	}
+	if(f.content.value==''){
+		alert("내용을 입력하세요");
+		f.content.focus();
+		return false;
+	}
+	if(f.passwd.value==''){
+		alert("비밀번호를 입력하세요");
+		f.passwd.focus();
+		return false;
+	}
+}
+
+</script>

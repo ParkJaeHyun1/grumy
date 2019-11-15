@@ -1,9 +1,11 @@
 package spring.model.mapper;
 
+import java.util.ArrayList;
+
 import spring.model.cart.CartDTO;
 
 
 public interface CartMapper {
 
-	CartDTO list(String userID);
+	ArrayList<CartDTO> list(String userID);
 }

@@ -7,6 +7,7 @@ public class NoticeDTO {
 	private String content;
 	private String writer;
 	private String wdate;
+	
 	public NoticeDTO() {
 		super();
 		// TODO Auto-generated constructor stub

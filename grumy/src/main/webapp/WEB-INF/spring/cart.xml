@@ -13,7 +13,7 @@
 	</definition>
  
 <definition name="/cart/list" extends="main"> 
-        <put-attribute name="title" value="item 목록" ></put-attribute> 
+        <put-attribute name="title" value="그루미" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/cart/list.jsp" /> 
 </definition>  
 

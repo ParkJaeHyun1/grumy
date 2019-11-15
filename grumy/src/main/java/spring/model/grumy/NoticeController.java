@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.mapper.noticeMapper;
@@ -21,6 +22,30 @@ import spring.model.utility.Utility;
 public class NoticeController {
 	@Autowired
 	noticeMapper mapper;
+	
+	@PostMapping("/notice/create")
+	public String create(NoticeDTO dto) {
+		
+		int flag = mapper.create(dto);
+		
+		if(flag == 1) {
+			return "redirect:/notice/list";
+		}else {
+			return null;
+		}
+		
+		
+	}
+	
+	@PostMapping("/notice/update")
+	public String update(NoticeDTO dto) {
+		System.out.println(dto.getContent());
+		System.out.println(dto.getSubject());
+		
+		int flag = mapper.update(dto);
+		
+		return "redirect:/notice/list";
+	}
 	
 	@GetMapping("/notice/create")
 	public String create() {
@@ -39,10 +64,17 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/notice/delete")
-	public String delete() {
+	public String delete(Model model,int no) {
+		
+		int flag = mapper.delete(no);
+		
+		if(flag==1) {
+			return "redirect:/notice/list";
+		}else {
+			return null;
+		}
 		
 		
-		return "/notice/delete";
 	}
 	
 	@GetMapping("/notice/read")

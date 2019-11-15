@@ -25,6 +25,15 @@ public class ReviewController {
 	@Autowired
 	private reviewMapper mapper;
 	
+	@RequestMapping("/review/read")
+	public String read(Locale locale, Model model, int no) {
+		reviewDTO dto = mapper.read(no);
+		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
+		model.addAttribute("dto", dto);
+		
+		return "/review/read";
+	}
+	
 	@RequestMapping("/review/create")
 	public String create(Locale locale, Model model) {
 	
