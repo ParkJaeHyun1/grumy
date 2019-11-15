@@ -162,6 +162,7 @@ function inCheck(f){
 	if(f.agree.value==1){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		f.agree.focus();
+		retunr false;
 	}
     
 }
