@@ -36,10 +36,10 @@ public class ItemController {
 	public String list(HttpServletRequest request) {
 		String type = request.getParameter("type");
 		ArrayList<ItemDTO> list = mapper.list(type);
-		for (ItemDTO item : list) {
-			String[] colors = item.getColor().split("/");
-			item.setColorList(colors);
-		}
+//		for (ItemDTO item : list) {
+//			String[] colors = item.getColor().split("/");
+//			item.setColorList(colors);
+//		}
 		if (type.equals("shoesbag"))
 			type = "shoes/bag";
 		type = type.toUpperCase();
