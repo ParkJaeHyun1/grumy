@@ -373,8 +373,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			<h3>회원 가입</h3>
 		</div>
 
-		<form id="joinForm" name="joinForm" action="${pageContext.request.contextPath}/member/preproc"
-			method="post" target="_self" enctype="multipart/form-data">
+		<form id="joinForm" name="joinForm" action="createproc"
+			method="post"  onsubmit="#" enctype="multipart/form-data">
 
 			<div class="ec-base-table typeWrite">
 				<table border="1" summary="">
