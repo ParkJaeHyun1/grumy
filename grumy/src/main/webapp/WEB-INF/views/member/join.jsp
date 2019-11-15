@@ -75,117 +75,126 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	method="post" enctype="multipart/form-data">
 	<h3>기본정보</h3>
 	<p class="required ">
-	<img src="${pageContext.request.contextPath }/member/image/check.png" alt="필수" />
+	<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" />
 	필수입력사항
 	</p>
 <div class="ec-base-table typeWrite" style="margin-top: -11px;">
 <table border="1" summary="">
 	<caption>회원 기본정보</caption>
 	<colgroup>
-<col style="width: 150px;" />
-<col style="width: auto;" />
-</colgroup>
+	<col style="width: 150px;" />
+	<col style="width: auto;" />
+	</colgroup>
 <tbody>
 	<tr>
-		<th scope="row">아이디 <img
-			src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td><input id="member_id" name="member_id"
+		<th scope="row">아이디 
+		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<td>
+		<input id="member_id" name="member_id"
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
 			fw-label="아이디" fw-msg="" class="inputTypeText" placeholder=""
-			value="" type="text" /> <span id="idMsg"></span> (영문소문자/숫자,
-			4~16자)</td>
+			value="" type="text" />
+			<span id="idMsg"></span> 
+			(영문소문자/숫자,4~16자)
+		</td>
 	</tr>
 	<tr>
-		<th scope="row">비밀번호 <img
-			src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td><input id="passwd" name="passwd"
+		<th scope="row">비밀번호 
+		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<td>
+		<input id="passwd" name="passwd"
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
 			autocomplete="off" maxlength="16" 0="disabled" value=""
-			type="password" /> (영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)</td>
+			type="password" /> 
+		(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+		</td>
 	</tr>
 	<tr>
-		<th scope="row">비밀번호 확인 <img
-			src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td><input id="user_passwd_confirm"
+		<th scope="row">비밀번호 확인 
+		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<td>
+		<input id="user_passwd_confirm"
 			name="user_passwd_confirm" fw-filter="isFill&isMatch[passwd]"
 			fw-label="비밀번호 확인" fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off"
-			maxlength="16" 0="disabled" value="" type="password" /> <span
-			id="pwConfirmMsg"></span></td>
+			maxlength="16" 0="disabled" value="" type="password" /> 
+		<span id="pwConfirmMsg"></span>
+		</td>
 	</tr>
-	
 	<tr>
-		<th scope="row" id="nameTitle">이름 <img
-			src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td><span id="nameContents"><input id="name"
-				name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
-				fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
-				value="" type="text" /></span> <span id="under14Msg"
-			class="displaynone">14세 미만 사용자는 법정대리인 동의가 필요합니다.</span></td>
+		<th scope="row" id="nameTitle">이름 
+		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<td>
+		<span id="nameContents">
+		<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
+		fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
+		value="" type="text" />
+		</span> 
+		</td>
 	</tr>
-	
-	
-<tr class="">
-	<th scope="row">주소 <img
-		src="/web/upload/yangji_pc_crumb/req_check.png"
-		class="displaynone" alt="필수" /></th>
-	<td><input id="postcode1" name="postcode1"
-		fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
-		class="inputTypeText" placeholder="" readonly="readonly"
-		maxlength="14" value="" type="text" /> <a href="#none"
-		onclick="" id="postBtn" class="yg_btn_24 yg_btn3" alt="우편번호">우편번호</a><br />
-					<input id="addr1" name="addr1" fw-filter="" fw-label="주소"
-					fw-msg="" class="inputTypeText" placeholder=""
-					readonly="readonly" value="" type="text" /> 기본주소<br /> <input
-					id="addr2" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
-					class="inputTypeText" placeholder="" value="" type="text" />
-					나머지주소 (선택입력가능)</td>
-			</tr>
+	<tr class="">
+		<th scope="row">주소 
+		<img src="/${pageContext.request.contextPath}/images/check.png"
+		 class="displaynone" alt="필수" />
+		</th>
+		<td>
+		<input id="postcode1" name="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
+		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
+		<a href="#none" onclick="" id="postBtn" class="yg_btn_24 yg_btn3" alt="우편번호">우편번호</a><br />
+		<input id="addr1" name="addr1" fw-filter="" fw-label="주소"
+		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소<br /> 
+		<input id="addr2" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
+		class="inputTypeText" placeholder="" value="" type="text" />
+	        나머지주소 (선택입력가능)
+	 	</td>
+	 </tr>
 		
-			<tr class="">
-				<th scope="row">전화번호 <img
-					src="/web/upload/yangji_pc_crumb/req_check.png"
-					class="displaynone" alt="필수" /></th>
-				<td><select id="mobile1" name="mobile[]"
-					fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="018">018</option>
-						<option value="019">019</option>
-				</select>-<input id="mobile2" name="mobile[]" maxlength="4"
-					fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg=""
-					value="" type="text" />-<input id="mobile3" name="mobile[]"
-					maxlength="4" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-					fw-msg="" value="" type="text" /></td>
-			</tr>
-			<tr>
-				<th scope="row">이메일 <img
-					src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-				<td><input id="email1" name="email1" fw-filter="isFill"
-					fw-label="이메일" fw-alone="N" fw-msg="" class="mailId" value=""
-					type="text" />@<input id="email2" name="email2"
-					fw-filter="isFill" fw-label="이메일" fw-alone="N" fw-msg=""
-					class="mailAddress" readonly="readonly" value="" type="text" /><select
-					id="email3" fw-filter="isFill" fw-label="이메일" fw-alone="N"
-					fw-msg="">
-						<option value="" selected="selected">- 이메일 선택 -</option>
-						<option value="naver.com">naver.com</option>
-						<option value="daum.net">daum.net</option>
-						<option value="nate.com">nate.com</option>
-						<option value="hotmail.com">hotmail.com</option>
-						<option value="yahoo.com">yahoo.com</option>
-						<option value="empas.com">empas.com</option>
-						<option value="korea.com">korea.com</option>
-						<option value="dreamwiz.com">dreamwiz.com</option>
-						<option value="gmail.com">gmail.com</option>
-						<option value="etc">직접입력</option>
-				</select> <span id="emailMsg"></span></td>
-			</tr>
+	<tr class="">
+		<th scope="row">전화번호 
+		<img src="${pageContext.request.contextPath}/images/check.png" class="displaynone" alt="필수" />
+		</th>
+		<td>
+		<input id="mobile1" name="mobile[]" maxlength="3" 
+		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" value="" type="text" />-
+		<input id="mobile2" name="mobile[]" maxlength="4" 
+		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg=""
+		value="" type="text" />-
+		<input id="mobile3" name="mobile[]" maxlength="4" 
+		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" value="" type="text" />
+		</td>
+		</tr>
+		<tr>
+		<th scope="row">이메일 
+		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" />
+		</th>
+		<td>
+		<input id="email1" name="email1" fw-filter="isFill" 
+		fw-label="이메일" fw-alone="N" fw-msg="" class="mailId" value=""
+		type="text" />@
+		<input id="email2" name="email2" fw-filter="isFill" 
+		fw-label="이메일" fw-alone="N" fw-msg=""
+		class="mailAddress" readonly="readonly" value="" type="text" />
+		<select id="email3" fw-filter="isFill" fw-label="이메일" fw-alone="N"
+		fw-msg="">
+			<option value="" selected="selected">- 이메일 선택 -</option>
+			<option value="naver.com">naver.com</option>
+			<option value="daum.net">daum.net</option>
+			<option value="nate.com">nate.com</option>
+			<option value="hotmail.com">hotmail.com</option>
+			<option value="yahoo.com">yahoo.com</option>
+			<option value="empas.com">empas.com</option>
+			<option value="korea.com">korea.com</option>
+			<option value="dreamwiz.com">dreamwiz.com</option>
+			<option value="gmail.com">gmail.com</option>
+			<option value="etc">직접입력</option>
+		</select> 
+		<span id="emailMsg"></span>
+		</td>
+		</tr>
 		</tbody>
 	</table>
 </div>
-
 
 <div class="join_agree">
 	<div class="ec-base-box typeThinBg gStrong">
