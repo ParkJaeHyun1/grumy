@@ -7,6 +7,12 @@ function read(no){
 	
 	location.href = url;
 }
+function update(no){
+	var url = "update";
+	url += "?no="+no;
+	
+	location.href = url;
+}
 </script>
 <div id="container">
 	<div id="contents">
@@ -53,7 +59,7 @@ function read(no){
 						</tr>
 						<tr>
 							<td><div class="ec-base-button ">
-									<span class="gLeft"> <a href="list"
+									<span class="gleft"> <a href="list"
 										class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 								</div></td>
@@ -63,30 +69,34 @@ function read(no){
 							<c:choose>
 								<c:when test="${empty noArr[0] }">
 								<tr>
-									<td><strong>NEXT</strong></td>
+									<td>NEXT</td>
 									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
 								</tr>
 								</c:when>
 								<c:when test="${empty noArr[1] }">
 								<tr>
-									<td><strong>PREV</strong></td>
+									<td>PREV</td>
 									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
 								</tr>
 								</c:when>
 								<c:otherwise>
 								<tr>
-									<td><strong>PREV</strong></td>
+									<td>PREV</td>
 									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
 								</tr>
 								<tr>
-									<td><strong>NEXT</strong></td>
+									<td>NEXT</td>
 									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
 								</tr>
 								</c:otherwise>
 							</c:choose>
-						
-					</tbody>
+						</tbody>
 				</table>
+				<div class="ec-base-button ">
+									<p  align="right">
+									<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.no})">수정</button>
+									</p>
+								</div>
 			</div>
 
 		</div>
