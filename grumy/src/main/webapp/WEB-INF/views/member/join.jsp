@@ -25,16 +25,107 @@ href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <script type="text/javascript"
 	src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-<script type='text/javascript'>
-       var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
- </script>
-
-
-
 <link rel="stylesheet" type="text/css" 
 href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
 <link rel="stylesheet" type="text/css"
 href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
+<!--  다음 주소 찾기  -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                  //  document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                   // document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
+<!-- 필수 입력창 확인  -->
+<script type="text/javascript">
+function inCheck(f){
+	if(f.member_id.value.length==0){
+		alert("아이디를 입력하세요");
+		f.id.focus();
+		return false;
+	}
+	
+	if(f.passwd.value.length==0){
+		alert("비밀번호를 입력하세요");
+		f.passwd.focus();
+		return false;
+	}
+	if(f.user_passwd_confirm.value.length==0){
+		alert("비밀번호 확인울 입력하세요");
+		f.repasswd.focus();
+		return false;
+	}
+
+	if(f.passwd.value != f.user_passwd_confirm.value){
+		alert("비밀번호가 일치하지 않습니다.");
+		f.passwd.value="";
+		f.user_passwd_confirm.value="";
+		f.passwd.focus();
+		return false;
+	}
+	
+	if(f.name.value.length==0){
+		alert("이름을 입력하세요");
+		f.mname.focus();
+		return false;
+	}
+	if(f.phone.value.length==0){
+		alert("전화번호를 입력하세요");
+		f.phone.focus();
+		return false;
+	}
+	if(f.email.value.length==0){
+		alert("email을 입력하세요");
+		f.email.focus();
+		return false;
+	}
+
+}
+</script>
 
 <title>grumy</title>
 		
@@ -64,18 +155,18 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 }); 
 </script>
 	<!-- //상단카테고리 -->
-
+<form id="joinForm" name="joinForm" action="createproc"
+	method="post" enctype="multipart/form-data">
 <div id="container">
 	<div id="contents">
 		<div class="titleArea">
 			<h2>JOIN</h2>
 			<h3>회원 가입</h3>
 		</div>
-<form id="joinForm" name="joinForm" action="createproc"
-	method="post" enctype="multipart/form-data">
+
 	<h3>기본정보</h3>
 	<p class="required ">
-	<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" />
+	<img src="" alt="필수" />
 	필수입력사항
 	</p>
 <div class="ec-base-table typeWrite" style="margin-top: -11px;">
@@ -88,7 +179,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 <tbody>
 	<tr>
 		<th scope="row">아이디 
-		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<img src="" alt="필수" /></th>
 		<td>
 		<input id="member_id" name="member_id"
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
@@ -100,7 +191,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row">비밀번호 
-		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<img src="" alt="필수" /></th>
 		<td>
 		<input id="passwd" name="passwd"
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
@@ -111,7 +202,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row">비밀번호 확인 
-		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<img src="" alt="필수" /></th>
 		<td>
 		<input id="user_passwd_confirm"
 			name="user_passwd_confirm" fw-filter="isFill&isMatch[passwd]"
@@ -122,7 +213,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row" id="nameTitle">이름 
-		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" /></th>
+		<img src="" alt="필수" /></th>
 		<td>
 		<span id="nameContents">
 		<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
@@ -133,7 +224,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr class="">
 		<th scope="row">주소 
-		<img src="/${pageContext.request.contextPath}/images/check.png"
+		<img src="/"
 		 class="displaynone" alt="필수" />
 		</th>
 		<td>
@@ -150,7 +241,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		
 	<tr class="">
 		<th scope="row">전화번호 
-		<img src="${pageContext.request.contextPath}/images/check.png" class="displaynone" alt="필수" />
+		<img src="" class="displaynone" alt="필수" />
 		</th>
 		<td>
 		<input id="mobile1" name="mobile[]" maxlength="3" 
@@ -166,7 +257,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		</tr>
 		<tr>
 		<th scope="row">이메일 
-		<img src="${pageContext.request.contextPath}/images/check.png" alt="필수" />
+		<img src="" alt="필수" />
 		</th>
 		<td>
 		<input id="email1" name="email1" fw-filter="isFill" 
@@ -196,23 +287,12 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</table>
 </div>
 
-<div class="join_agree">
-	<div class="ec-base-box typeThinBg gStrong">
-	<p>
-	<span class="ec-base-chk">
-	<input type="checkbox" id="sAgreeAllChecked">
-	<em class="checkbox"></em>
-	</span>
-	<label for="sAgreeAllChecked">
-	<strong>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong>
-	</label>
-	</p>
-	</div>
+
+	
 	<div class ="container">
-	<div class="ec-base-box typeThinBg agreeArea width_50">
 	<div class="col-sm-8">
 		<h3>[필수] 이용약관 동의</h3>
-	<textarea rows="20" cols="100" id="content" name="content" class="form-control">
+	<textarea rows="20" cols="150" id="content" name="content" class="form-control">
    
 		
 제1조(목적)
@@ -255,20 +335,21 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 제6조(회원가입) 
 ① 이용자는 “몰”이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.
-② “몰”은 제1항과 같이 회원으로 가입할
-				것을 신청한 이용자 중 다음 각 호에 해당하지 않는 한 회원으로 등록합니다. 1.
-					가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조제3항에 의한
-					회원자격 상실 후 3년이 경과한 자로서 “몰”의 회원재가입 승낙을 얻은 경우에는 예외로 한다.<br>&nbsp;
-						2. 등록 내용에 허위, 기재누락, 오기가 있는 경우<br>&nbsp; 3. 기타 회원으로 등록하는
-							것이 “몰”의 기술상 현저히 지장이 있다고 판단되는 경우<br>③ 회원가입계약의 성립 시기는
-								“몰”의 승낙이 회원에게 도달한 시점으로 합니다.<br>④ 회원은 회원가입 시 등록한 사항에
-									변경이 있는 경우, 상당한 기간 이내에 “몰”에 대하여 회원정보 수정 등의 방법으로 그 변경사항을
-									알려야 합니다.
-	</p>
-	<p>
-		제7조(회원 탈퇴 및 자격 상실 등) <br>① 회원은 “몰”에 언제든지 탈퇴를 요청할 수 있으며 “몰”은
-			즉시 회원탈퇴를 처리합니다.<br>② 회원이 다음 각 호의 사유에 해당하는 경우, “몰”은 회원자격을
-				제한 및 정지시킬 수 있습니다.<br>&nbsp; 1. 가입 신청 시에 허위 내용을 등록한 경우<br>&nbsp;
+② “몰”은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각 호에 해당하지 않는 한 회원으로 등록합니다. 
+1.가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 
+다만 제7조제3항에 의한 회원자격 상실 후 3년이 경과한 자로서 “몰”의 회원재가입 승낙을 얻은 경우에는 예외로 한다.
+2. 등록 내용에 허위, 기재누락, 오기가 있는 경우 
+3. 기타 회원으로 등록하는 것이 “몰”의 기술상 현저히 지장이 있다고 판단되는 경우
+③ 회원가입계약의 성립 시기는 “몰”의 승낙이 회원에게 도달한 시점으로 합니다.
+④ 회원은 회원가입 시 등록한 사항에 변경이 있는 경우, 상당한 기간 이내에 “몰”에 대하여 회원정보 수정 등의 방법으로 그 변경사항을 알려야 합니다.
+	
+		
+제7조(회원 탈퇴 및 자격 상실 등) 
+① 회원은 “몰”에 언제든지 탈퇴를 요청할 수 있으며 “몰”은
+			즉시 회원탈퇴를 처리합니다.<br>
+② 회원이 다음 각 호의 사유에 해당하는 경우, “몰”은 회원자격을
+				제한 및 정지시킬 수 있습니다.<br>&nbsp; 
+1. 가입 신청 시에 허위 내용을 등록한 경우<br>&nbsp;
 						2. “몰”을 이용하여 구입한 재화 등의 대금, 기타 “몰”이용에 관련하여 회원이 부담하는 채무를 기일에
 						지급하지 않는 경우<br>&nbsp; 3. 다른 사람의 “몰” 이용을 방해하거나 그 정보를 도용하는
 							등 전자상거래 질서를 위협하는 경우<br>&nbsp; 4. “몰”을 이용하여 법령 또는 이 약관이
@@ -439,130 +520,33 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
    “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
 	
 	부 칙(시행일) 이 약관은 년 월 일부터 시행합니다.
-
 	</textarea>
-	<p class="check">
-		<span>이용약관에 동의하십니까?</span> <input id="agree_service_check0"
-			name="agree_service_check[]" fw-filter="/1/" fw-label="이용약관 동의"
-			fw-msg="이용약관에 동의 하세요" value="1" type="checkbox" /><label
-			for="agree_service_check0">동의함</label>
+	<div class="ec-base-box typeThinBg gStrong">
+	<p>
+	<span class="ec-base-chk">
+	<input type="checkbox" id="sAgreeAllChecked">
+	</span>
+	<label for="sAgreeAllChecked">
+	<strong>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</strong>
+	</label>
 	</p>
-</div>
-
-<div class="ec-base-box typeThinBg agreeArea width_50">
-	<h3>[필수] 개인정보 수집 및 이용 동의</h3>
-	<div class="content">
-		<p>
-			<span><span style="color: rgb(255, 255, 255);">**
-						본 양식은 쇼핑몰 운영에 도움을 드리고자 샘플로 제공되는 서식으로 쇼핑몰 운영형태에 따른 수정이 필요합니다.
-						쇼핑몰에 적용하시기 전, 쇼핑몰 운영 사항 등을 확인하시고 적절한 내용을 반영하여 사용하시기 바랍니다. **</span></span>
-			</p>
-			<p>1. 개인정보 수집목적 및 이용목적</p>
-			<p>가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</p>
-			<p>콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융
-				서비스</p>
-			<p>나. 회원 관리</p>
-			<p>회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 ,
-				가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등
-				민원처리 , 고지사항 전달</p>
-			<p>2. 수집하는 개인정보 항목 : 이름 , 생년월일 , 성별 , 로그인ID , 비밀번호 , 자택 전화번호
-				, 휴대전화번호 , 이메일 , 14세미만 가입자의 경우 법정대리인의 정보</p>
-			<p>3. 개인정보의 보유기간 및 이용기간</p>
-			<p>원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의
-				정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.</p>
-			<p>가. 회사 내부 방침에 의한 정보 보유 사유</p>
-			<p>o 부정거래 방지 및 쇼핑몰 운영방침에 따른 보관 : 1년</p>
-			<p>나. 관련 법령에 의한 정보보유 사유</p>
-			<p>o 계약 또는 청약철회 등에 관한 기록</p>
-			<p>-보존이유 : 전자상거래등에서의소비자보호에관한법률</p>
-			<p>-보존기간 : 5년</p>
-			<p>o 대금 결제 및 재화 등의 공급에 관한 기록</p>
-			<p>-보존이유: 전자상거래등에서의소비자보호에관한법률</p>
-			<p>-보존기간 : 5년</p>
-			<p>o 소비자 불만 또는 분쟁처리에 관한 기록</p>
-			<p>-보존이유 : 전자상거래등에서의소비자보호에관한법률</p>
-			<p>-보존기간 : 3년</p>
-			<p>o 로그 기록</p>
-			<p>-보존이유: 통신비밀보호법</p>
-			<p>-보존기간 : 3개월</p>
-			<p>※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.</p>
-		</div>
-		<p class="check">
-			<span>개인정보 수집 및 이용에 동의하십니까?</span> <input
-				id="agree_privacy_check0" name="agree_privacy_check[]"
-				fw-filter="/1/" fw-label="개인정보 수집 및 이용 방침"
-				fw-msg="개인정보 수집 및 이용 방침에 동의하세요" value="1" type="checkbox" /><label
-				for="agree_privacy_check0">동의함</label>
-		</p>
 	</div>
 
-	<div class="ec-base-box typeThinBg agreeArea displaynone">
-		<h3>[선택] 개인정보 제3자 제공 동의</h3>
-		<div class="content">
-			아래 내용의 동의 여부는 회원가입에 영향을 미치지 않습니다. 단, 동의 거부시 서비스 이용에 제한이 있을 수
-			있습니다.<br /> <br /> - 제공 받는 자 :<br /> <br /> - 제공 항목 :<br />
-			<br /> - 제공 목적 :<br /> <br /> - 보유 및 이용기간 :<br />
-		</div>
-		<p class="check">
-			<span>개인정보 제3자 제공에 동의하십니까?</span> <input
-				id="agree_information_check0" name="agree_information_check[]"
-				fw-filter="" fw-label="개인정보 제3자 제공 동의" fw-msg=""
-				class="ec-base-chk" value="1" type="checkbox" /><label
-				for="agree_information_check0">동의함</label>
-		</p>
 	</div>
-
-	<div class="ec-base-box typeThinBg agreeArea displaynone">
-		<h3>[선택] 개인정보 처리 위탁 동의</h3>
-		<div class="content">
-			아래 내용의 동의 여부는 회원가입에 영향을 미치지 않습니다. 단, 동의 거부시 서비스 이용에 제한이 있을 수
-			있습니다.<br /> <br /> - 위탁받는 자(수탁업체) :<br /> <br /> - 위탁업무의 내용:<br />
-		</div>
-		<p class="check">
-			<span>개인정보 처리 위탁에 동의하십니까?</span> <input
-				id="agree_consignment_check0" name="agree_consignment_check[]"
-				fw-filter="" fw-label="개인정보 처리 위탁 동의" fw-msg="" value="1"
-				type="checkbox" /><label for="agree_consignment_check0">동의함</label>
-		</p>
 	</div>
-
-	<div class="ec-base-box typeThinBg agreeArea ">
-		<h3>[선택] 쇼핑정보 수신 동의</h3>
-		<div class="content">
-			<p>할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한 쇼핑정보를 SMS와 이메일로
-				받아보실 수 있습니다.</p>
-			<p>단, 주문/거래 정보 및 주요 정책과 관련된 내용은 수신동의 여부와 관계없이 발송됩니다.</p>
-			<p>선택 약관에 동의하지 않으셔도 회원가입은 가능하며, 회원가입 후 회원정보수정 페이지에서 언제든지
-				수신여부를 변경하실 수 있습니다.</p>
-		</div>
-		<ul class="check">
-			<li class=""><span>SMS 수신을 동의하십니까?</span> <label for=is_sms0><input
-					id="is_sms0" name="is_sms" fw-filter="isFill" fw-label="is_sms"
-					fw-msg="" class="ec-base-chk" value="T" type="checkbox" />동의함</label>
-			</li>
-			<li class=""><span>이메일 수신을 동의하십니까?</span> <label
-				for=is_news_mail0><input id="is_news_mail0"
-					name="is_news_mail" fw-filter="isFill" fw-label="is_news_mail"
-					fw-msg="" class="ec-base-chk" value="T" type="checkbox" />동의함</label>
-			</li>
-		</ul>
-	</div>
-</div>
-</div>
-
-
 <div class="ec-base-button">
 	<a href="${pageContext.request.contextPath}/member/preproc" class="yg_btn_140" alt="회원가입"
 		id="join">회원가입</a> 
 	<a href="#none" class="yg_btn_140 yg_btn3" alt="닫기"
 		onclick="CheckingJoinInfoLayerClose()">닫기</a>
 </div>
+</div>	
+</div>
+</form>
 
-	</div>
-	</form>
-</div>
+
 <hr class="layout" />
-</div>
+
 <hr class="layout" />
 <!-- 하단 -->
 <div id="footer" class="xans-element- xans-layout xans-layout-footer">
@@ -598,26 +582,16 @@ $(".inner_b .address i.bizLink a").text("[Go Checking]");
 	
 
 <hr class="layout" />
-
 <!-- //참고 -->
-
-
-
-
-<script type="text/javascript">var sAuthSSLDomain = "login2.cafe24ssl.com";</script>
+<script type="text/javascript">
+var sAuthSSLDomain = "login2.cafe24ssl.com";</script>
 <script type="text/javascript"
 	src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script>
 <script type="text/javascript"
 	src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.plugin.js"></script>
-
-
-
-
-
 <script type="text/javascript"
 	src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
 	charset="utf-8"></script>
-
 <script type="text/javascript"
 	src="/ind-script/optimizer.php?filename=tZXNbtswDMdfwNc9h5Bhh51boKcNAzb0AWiJtplQokpJbbOnH5N1Q7PNSQ0v8EEAwd-fEr_sJonoNu_VDQoRn0R3TrFIU49uWxxtPqZuW965c36NMvid2z401P3Lsek-2HdCZpXR4BP9kpVSHS47BvEtYqp3ovFWUlVhRr3MDWrO7hmSvSVV1KxYF3IVY2ao-G8IcnafpSdG9_UV7yVGSa5V4kVclNDMVJ4oLws4tOQrWUjzC83XLoquVDhzCabe3f8s-2sJhu97FgiLoNgqHOJ-6Qvq41xxZuAsvB-I-a0VDThA43pIQYmg9QZS-jPkxRbHZ-uhBFxeDF0_0hFaq-NFdrRaJZBNSrGMlrVKCIXSuFYlYoUAFea78UZAw0ldzdr1B-s89G2SfMLcHSt8e5y8-7ODN4MWBPXTov6rMAz2Qlq6JTO3kWy5PAKT5Ub0V7J-G1YLHuqQQvlb2BSyNQdeL8KEnPGKL5ggBb5mAFtDZHW9mr6trPof7s_iwbb4Ti6vv5m-estA2b9vFN1_olIN_gE&type=js&k=81cead6b99ffa3a78f6503851e2d2fd76af38afb&t=1571605827"></script>
 <script type="text/javascript"
