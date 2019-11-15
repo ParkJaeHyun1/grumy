@@ -21,7 +21,7 @@ public class MemberDTO {
 	}
 
 	public void setID(String iD) {
-		ID = iD;
+		this.ID = iD;
 	}
 
 	public String getPW() {
@@ -29,15 +29,15 @@ public class MemberDTO {
 	}
 
 	public void setPW(String pW) {
-		PW = pW;
+		this.PW = pW;
 	}
 
 	public String getNAME() {
 		return NAME;
 	}
 
-	public void setNAME(String nAME) {
-		NAME = nAME;
+	public void setNAME(String NAME) {
+		this.NAME = NAME;
 	}
 
 	public String getBIRTH() {
@@ -45,7 +45,7 @@ public class MemberDTO {
 	}
 
 	public void setBIRTH(String bIRTH) {
-		BIRTH = bIRTH;
+		this.BIRTH = bIRTH;
 	}
 
 	public String getEMAIL() {
@@ -53,7 +53,7 @@ public class MemberDTO {
 	}
 
 	public void setEMAIL(String eMAIL) {
-		EMAIL = eMAIL;
+		this.EMAIL = eMAIL;
 	}
 
 	public String getPHONE() {
@@ -61,7 +61,7 @@ public class MemberDTO {
 	}
 
 	public void setPHONE(String pHONE) {
-		PHONE = pHONE;
+		this.PHONE = pHONE;
 	}
 
 	public String getOADDRESS() {
@@ -69,7 +69,7 @@ public class MemberDTO {
 	}
 
 	public void setOADDRESS(String oADDRESS) {
-		OADDRESS = oADDRESS;
+		this.OADDRESS = oADDRESS;
 	}
 
 	public String getADDRESS() {
@@ -77,15 +77,15 @@ public class MemberDTO {
 	}
 
 	public void setADDRESS(String aDDRESS) {
-		ADDRESS = aDDRESS;
+		this.ADDRESS = aDDRESS;
 	}
 
 	public String getDETAILADDRESS() {
 		return DETAILADDRESS;
 	}
 
-	public void setDETAILADDRESS(String dETAILADDRESS) {
-		DETAILADDRESS = dETAILADDRESS;
+	public void setDETAILADDRESS(String DETAILADDRESS) {
+		this.DETAILADDRESS = DETAILADDRESS;
 	}
 
 	public String getAccount() {
@@ -109,7 +109,7 @@ public class MemberDTO {
 	}
 
 	public void setPOINT(int pOINT) {
-		POINT = pOINT;
+		this.POINT = pOINT;
 	}
 
 	public String getGRADE() {
@@ -117,7 +117,7 @@ public class MemberDTO {
 	}
 
 	public void setGRADE(String gRADE) {
-		GRADE = gRADE;
+		this.GRADE = gRADE;
 	}
 
 
