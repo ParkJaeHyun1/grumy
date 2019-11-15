@@ -1,59 +1,50 @@
 package spring.model.item;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ItemDTO {
 	private int no; 
-	private String name; 
 	private String image ;
 	private String title ; 
 	private String description ; // 리스트 content
 	private String content ; //상세페이지
 	private int price ; 
 	private int salePrice ;
-	private String color ;  
-	private String sizes ; 
-	private int count ; //상품 수량
+	private String[] itemColor ;  
+	private String[] itemSize ; 
+	private int[] count ; //상품 수량
 	private String type; //카테고리
-	private String[] colorList;
 	public ItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public ItemDTO(int no, String name, String image, String title, String description, String content, int price,
-			int salePrice, String color, String sizes, int count, String type, String[] colorList) {
+	public ItemDTO(int no, String image, String title, String description, String content, int price, int salePrice,
+			String[] itemColor, String[] itemSize, int[] count, String type) {
 		super();
 		this.no = no;
-		this.name = name;
 		this.image = image;
 		this.title = title;
 		this.description = description;
 		this.content = content;
 		this.price = price;
 		this.salePrice = salePrice;
-		this.color = color;
-		this.sizes = sizes;
+		this.itemColor = itemColor;
+		this.itemSize = itemSize;
 		this.count = count;
 		this.type = type;
-		this.colorList = colorList;
 	}
 	@Override
 	public String toString() {
-		return "ItemDTO [no=" + no + ", name=" + name + ", image=" + image + ", title=" + title + ", description="
-				+ description + ", content=" + content + ", price=" + price + ", salePrice=" + salePrice + ", color="
-				+ color + ", sizes=" + sizes + ", count=" + count + "]";
+		return "ItemDTO [no=" + no + ", image=" + image + ", title=" + title + ", description=" + description
+				+ ", content=" + content + ", price=" + price + ", salePrice=" + salePrice + ", itemColor="
+				+ Arrays.toString(itemColor) + ", itemSize=" + Arrays.toString(itemSize) + ", count="
+				+ Arrays.toString(count) + ", type=" + type + "]";
 	}
 	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
 		this.no = no;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public String getImage() {
 		return image;
@@ -91,22 +82,22 @@ public class ItemDTO {
 	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
 	}
-	public String getColor() {
-		return color;
+	public String[] getItemColor() {
+		return itemColor;
 	}
-	public void setColor(String color) {
-		this.color = color;
+	public void setItemColor(String[] itemColor) {
+		this.itemColor = itemColor;
 	}
-	public String getSizes() {
-		return sizes;
+	public String[] getItemSize() {
+		return itemSize;
 	}
-	public void setSizes(String sizes) {
-		this.sizes = sizes;
+	public void setItemSize(String[] itemSize) {
+		this.itemSize = itemSize;
 	}
-	public int getCount() {
+	public int[] getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(int[] count) {
 		this.count = count;
 	}
 	public String getType() {
@@ -115,11 +106,7 @@ public class ItemDTO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String[] getColorList() {
-		return colorList;
-	}
-	public void setColorList(String[] colorList) {
-		this.colorList = colorList;
-	}
+	
+	
 	
 }
