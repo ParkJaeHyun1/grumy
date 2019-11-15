@@ -19,324 +19,24 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
 <link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-<link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">
-
-
-
-		<script type="application/ld+json">
-    {
-     "@context": "http://schema.org",
-     "@type": "Person",
-     "name": "슬로우앤드",
-     "url": "http://www.slowand.com",
-     "sameAs": [
-       "https://www.instagram.com/slow.and",
-       "https://www.facebook.com/slowandmore",
-     ]
-    }
-</script>
-<meta name="author" content="슬로우앤드 - 천천히 그리고,">
-	<meta name="keywords"
-		content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
-	<meta name="description"
-		content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
-
-		<meta name="viewport" content="width=device-width">
-			<link rel="canonical" href="http://slowand.com/member/join.html" />
-			<link rel="alternate" href="http://m.slowand.com/member/join.html" />
-			<meta property="og:url" content="http://slowand.com/member/join.html" />
-			<meta property="og:title" content="슬로우앤드" />
-			<meta property="og:description"
-				content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
-			<meta property="og:site_name" content="슬로우앤드" />
-			<meta property="og:type" content="website" />
-			<link rel="shortcut icon"
-				href="/web/upload/favicon_20170717165926.ico" />
-			<script type="text/javascript"
-				src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
-			<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-
-			<script type='text/javascript'>
-       var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
-   </script>
-
-<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
-   var oBankInfo = "";
-   $.ajax({
-       type: "GET",
-       url: "/exec/front/Shop/Bankinfo",
-       dataType: "json",
-       async: false,
-       success: function(oResponse) {
-           oBankInfo = oResponse;
-       }
-    });
-    return oBankInfo; }};</script>
-<script type="text/javascript">            var EC_ROOT_DOMAIN = "cafe24.com";
-   var EC_I18N_LOG_STATUS = "F";
-   var EC_GLOBAL_INFO = (function() {
-       var oData = {"base_domain":"anne2173.cafe24.com","root_domain":"cafe24.com","is_global":false,"country_code":"KR","language_code":"ko_KR","admin_language_code":"ko_KR"};
-       
-       return {
-           getBaseDomain: function() {
-               return oData['base_domain'];
-           },
-
-           getRootDomain: function() {
-               return oData['root_domain'];
-           },
-
-           isGlobal: function() {
-               return oData['is_global'];
-           },
-
-           getCountryCode: function() {
-               return oData['country_code'];
-           },
-
-           getLanguageCode: function() {
-               return oData['language_code'];
-           },
-           
-           getAdminLanguageCode: function() {
-               return oData['admin_language_code'];
-           }
-       };
-   })();</script>
+href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+<link rel="shortcut icon"
+	href="/web/upload/favicon_20170717165926.ico" />
 <script type="text/javascript"
-	src="//slowand.com/ind-script/moment.php?convert=T"></script>
-<script type="text/javascript">            
-		var EC_GLOBAL_DATETIME = (function() {
-                var oConstants = {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"};
-                var oOptions = {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"};
-                var oPolicies = [];
-                var sOverrideTimezone = '';
-                var sMomentNamespace = 'EC_GLOBAL_MOMENT';
-                
-                var fMomentLoaded = function() {
-                    var bMomentLoaded = !!window[sMomentNamespace];
-                    var bMomentTZLoaded = false;
-                    if (bMomentLoaded) {
-                        bMomentTZLoaded = !!window[sMomentNamespace].tz;
-                    }
-                    
-                    return bMomentLoaded && bMomentTZLoaded;
-                };
-                
-                var fMomentWrapper = function() {
-                    return window[sMomentNamespace];
-                };
-                
-                var fShallowMerge = function(oTarget, oSource) {
-                    oSource = oSource || {};
-                    for (var sKey in oSource) {
-                        if (oSource.hasOwnProperty(sKey)) {
-                            oTarget[sKey] = oSource[sKey];
-                        }
-                    }
-                    
-                    return oTarget;
-                };
-var                
-                var getFormatFromFlag = function(oOptions, iFlag, bOpposite) {
-                    if (bOpposite) {
-                        switch (iFlag) {
-                            case 1:
-                                return oOptions[oConstants.IN_DATE_FORMAT];
-                            case 2:
-                                return oOptions[oConstants.IN_TIME_FORMAT];
-                            default:
-                                return oOptions[oConstants.IN_FORMAT];    
-                        }
-                    }
-                    
-                    switch (iFlag) {
-                        case 1:
-                            return oOptions[oConstants.OUT_DATE_FORMAT];
-                        case 2:
-                            return oOptions[oConstants.OUT_TIME_FORMAT];
-                        default:
-                            return oOptions[oConstants.OUT_FORMAT];
-                    }
-         };
-                              
-                return {
-                    const: oConstants,
-                    
-                    init: function(fCallback) {
-                        if (fMomentLoaded()) { 
-              if (typeof fCallback === 'function') {
-                         fCallback();
-                            }
-                            
-                            return;
-                        }
-                        
-                        var oScript = document.createElement('script');
-                        oScript.type = 'text/javascript';
-                        oScript.async = true;
-                        oScript.src = '/ind-script/moment.php?convert=T';
-                        oScript.onload = oScript.onreadystatechange = function () {
-                            fMomentWrapper().defaultFormat = oOptions[oConstants.OUT_FORMAT];
-                            fMomentWrapper().tz.setDefault(oOptions[oConstants.IN_ZONE]);
-                            
-                            if (typeof fCallback === 'function') {
-                                fCallback();
-                            }
-                        };
-                        
-                        var oFirstScript = document.getElementsByTagName('script')[0];
-                        oFirstScript.parentNode.insertBefore(oScript, oFirstScript);
-                    },
-                    
-                    initPromise: function() {
-                        if (!window.Promise) {
-                            return;
-                        }
-                        
-                        return new Promise(function(resolve) {
-                            this.init(resolve);
-                        }.bind(this));
-                    },
-                    
-                    isLoaded: function() {
-                        return fMomentLoaded();
-                    },
-                                    
-                    setOptions: function(oNewOptions) {
-                         if (typeof oNewOptions === 'object') {
-                             for (var sKey in oNewOptions) {
-                                 if (oNewOptions.hasOwnProperty(sKey) && oOptions.hasOwnProperty(sKey)) {
-                                     oOptions[sKey] = oNewOptions[sKey];
-                                 }
-                             }
-                         }
-                         
-                         return this;
-                    },
-                    
-                    now: function(mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return Math.floor(new Date().getTime() / 1000);
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()()
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    format: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()
-                            .tz(sTime, oFormatOptions.inZone)
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    parse: function(sTime, mOptions) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oParseOptions = this.getOptions(mOptions);
-                        return fMomentWrapper().tz((sTime || new Date()), oParseOptions.inZone).tz(oParseOptions.outZone);
-                    },
-                    
-                    getOptions: function(mOptions, iFlag) {
-                        mOptions = mOptions || {};
-                      
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        if (typeof mOptions === 'string' && oPolicies[mOptions]) {
-                            oMergedOptions = fShallowMerge(oMergedOptions, oPolicies[mOptions]);
-                        } else if (typeof mOptions === 'object') {
-                            oMergedOptions = fShallowMerge(oMergedOptions, mOptions);
-                        }
-                        
-                        if (sOverrideTimezone) {
-                            if ((typeof mOptions === 'string' && mOptions === 'shop') || (typeof mOptions === 'object' && !mOptions[oConstants.OUT_ZONE])) {
-                                oMergedOptions[oConstants.OUT_ZONE] = sOverrideTimezone;
-                            }
-                        }
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    getRevertOptions: function(mOptions) {
-                        var oCurrentOptions = this.getOptions(mOptions);
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        oMergedOptions[oConstants.IN_ZONE] = oCurrentOptions[oConstants.OUT_ZONE];
-                        oMergedOptions[oConstants.IN_FORMAT] = oCurrentOptions[oConstants.OUT_FORMAT];
-                        oMergedOptions[oConstants.IN_DATE_FORMAT] = oCurrentOptions[oConstants.OUT_DATE_FORMAT];
-                        oMergedOptions[oConstants.IN_TIME_FORMAT] = oCurrentOptions[oConstants.OUT_TIME_FORMAT];
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    today: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            throw new Error('MomentJS didnt initialize');
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        var oRevertOptions = this.getRevertOptions(mOptions);
-                        var oToday;
-                        if (!sTime || sTime === 'now') {
-                            oToday = this.parse('', mOptions);
-                        } else {
-                            iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                            oToday = fMomentWrapper().tz(sTime, getFormatFromFlag(oRevertOptions, iFlag, true), oRevertOptions[oConstants.IN_ZONE]);
-                            if (oToday.isValid() === false) {
-                                var oStandardDateRegex = new RegExp(oConstants.STANDARD_DATE_REGEX.replace(/\//g, ''));
-                                if (oStandardDateRegex.test(sTime) === true) {
-                                    oToday = fMomentWrapper().tz(sTime, oRevertOptions[oConstants.IN_ZONE]);
-                                } else {
-                                    oToday = fMomentWrapper()();
-                                }
-                            }
-                        }
-                        
-                        var oStartOfDay = oToday.clone().startOf('day');
-                        var oEndOfDay = oToday.clone().endOf('day');
-                        
-                        var sStartOfDayInSeoul = oStartOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        var sEndOfDayInSeoul = oEndOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        
-                        return [sStartOfDayInSeoul, sEndOfDayInSeoul];
-                    },
-                    
-                    parseFromFormat: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                        
-                        var oRevertOptions = {};
-                        if (typeof mOptions === 'string') {
-                            oRevertOptions = this.getRevertOptions(mOptions);
-                        } else {
-                            oRevertOptions = this.getOptions(mOptions);
-                        }
-                        
-                        return fMomentWrapper()(sTime, getFormatFromFlag(oRevertOptions, iFlag, true));
-                    }
-                };
-            })();</script>
+	src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type='text/javascript'>
+       var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
+ </script>
 
-			<link rel="stylesheet" type="text/css"
-				href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
-			<link rel="stylesheet" type="text/css"
-				href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
 
-			<title>grumy</title>
+
+<link rel="stylesheet" type="text/css" 
+href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
+<link rel="stylesheet" type="text/css"
+href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
+
+<title>grumy</title>
 		
 </head>
 <body id="cmn">
@@ -367,28 +67,17 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 <div id="container">
 	<div id="contents">
-
 		<div class="titleArea">
 			<h2>JOIN</h2>
 			<h3>회원 가입</h3>
 		</div>
-
-		<form id="joinForm" name="joinForm" action="createproc"
-			method="post"  onsubmit="#" enctype="multipart/form-data">
-
-			<div class="ec-base-table typeWrite">
-				<table border="1" summary="">
-					<caption>회원가입</caption>
-					<colgroup>
-						<col style="width: 150px;" />
-<col style="width: auto;" />
-</colgroup>
-
-<h3 class=" ">기본정보</h3>
-<p class="required ">
-	<img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
+<form id="joinForm" name="joinForm" action="createproc"
+	method="post" enctype="multipart/form-data">
+	<h3>기본정보</h3>
+	<p class="required ">
+	<img src="${pageContext.request.contextPath }/member/image/check.png" alt="필수" />
 	필수입력사항
-</p>
+	</p>
 <div class="ec-base-table typeWrite" style="margin-top: -11px;">
 <table border="1" summary="">
 	<caption>회원 기본정보</caption>
@@ -512,7 +201,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	<div class="col-sm-8">
 		<h3>[필수] 이용약관 동의</h3>
 	<textarea rows="20" cols="100" id="content" name="content" class="form-control">
-   <div id="content">
+   
 		
 제1조(목적)
 				
