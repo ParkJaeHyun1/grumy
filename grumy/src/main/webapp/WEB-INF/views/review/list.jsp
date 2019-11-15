@@ -117,38 +117,17 @@ span.star, span.camera, .sprite_comment {
 						data-fixed-margin="5"
 						data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
 						style="transform: translate3d(0px, 0px, 0px);">
-
-						<li
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-							style="width: 63px; margin-right: 5px;"><a
-							data-url="${pageContext.request.contextPath}/review/create"
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
-								<img src="${pageContext.request.contextPath}/images/review1.jpg"
-								alt="" width="63" height="63">
-						</a></li>
-
-						<li
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-next"
-							style="width: 63px; margin-right: 5px;"><a
-							data-url="/slowand.com/reviews/250227/photo_review_popup?app=0&amp;filter=20&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;page=1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;parent_widget_id=2&amp;photo_index=1&amp;product_code=3605&amp;product_id=8916&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;sort=10&amp;user_id=52768&amp;widget_env=100"
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
-								<img
-								src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/02/27/image1/thumbnail_277f25b6d4ebfb75.jpg"
-								alt="" width="63" height="63">
-						</a></li>
-
-						<li
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide"
-							style="width: 63px; margin-right: 5px;"><a
-							data-url="/slowand.com/reviews/250293/photo_review_popup?app=0&amp;filter=20&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;page=1&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;parent_widget_id=2&amp;photo_index=2&amp;product_code=3605&amp;product_id=8916&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;sort=10&amp;user_id=52768&amp;widget_env=100"
-							class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
-								<img
-								src="//assets5.cre.ma/p/slowand-com/reviews/00/00/25/02/93/image2/thumbnail_da9b300388b520f8.jpg"
-								alt="" width="63" height="63">
-						</a></li>
-
-
-
+						<c:forEach var="dto" items="${list}">
+							<li id="review_${dto.no}"
+								class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
+								style="width: 63px; margin-right: 5px;"><a
+								data-url="${pageContext.request.contextPath}/review/create"
+								class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
+									<img
+									src="${pageContext.request.contextPath}/images/${dto.picture}"
+									alt="" width="63" height="63">
+							</a></li>
+						</c:forEach>
 
 					</ul>
 					<span class="swiper-notification" aria-live="assertive"
@@ -167,11 +146,13 @@ span.star, span.camera, .sprite_comment {
 					<i class="sprites-right-arrow-rectangle"></i>
 				</div>
 			</div>
+
+
 		</div>
 	</div>
 
 
-
+	<div id="content">
 		<div class="reviews_index reviews_index--list js-pagination-list ">
 			<div class="reviews_index__head">
 				<div class="reviews_index__title_bar">
@@ -275,7 +256,7 @@ span.star, span.camera, .sprite_comment {
 										<div class="reviews_index_list_review__info_container">
 											<span class="reviews_index_list_review__name">${dto.id}</span>
 											<img
-												src="${pageContext.request.contextPath}/images/review1.jpg"
+												src="${pageContext.request.contextPath}/images/${dto.picture}"
 												class="js-review-image" width="90px" height="90px"
 												style="opacity: 1;">
 										</div>
@@ -287,7 +268,6 @@ span.star, span.camera, .sprite_comment {
 				<!-- 				푸터 -->
 			</div>
 		</div>
-		
 		<div class="tui-tooltip" style="display: none;">
 			<div class="arrow"></div>
 			<span class="text"></span>

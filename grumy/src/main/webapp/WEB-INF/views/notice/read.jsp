@@ -13,6 +13,22 @@ function update(no){
 	
 	location.href = url;
 }
+function delete1(no) {
+
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+		 var url = "delete";
+	 	url += "?no="+no;
+		 
+	     location.href=url;
+
+	 }else{   //취소
+
+	     return false;
+
+	 }
+
+	}
 </script>
 <div id="container">
 	<div id="contents">
@@ -95,6 +111,7 @@ function update(no){
 				<div class="ec-base-button ">
 									<p  align="right">
 									<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.no})">수정</button>
+									<button class="yg_btn_30 yg_btn4" id="delete" onclick="javascript:delete1(${param.no})">삭제</button>
 									</p>
 								</div>
 			</div>
