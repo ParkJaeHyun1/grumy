@@ -850,7 +850,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 
 <div class="ec-base-button">
-	<a href="#none" class="yg_btn_140" alt="회원가입"
+	<a href="${pageContext.request.contextPath}/member/preproc" class="yg_btn_140" alt="회원가입"
 		id="join">회원가입</a> 
 	<a href="#none" class="yg_btn_140 yg_btn3" alt="닫기"
 		onclick="CheckingJoinInfoLayerClose()">닫기</a>
