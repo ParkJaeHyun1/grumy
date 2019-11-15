@@ -22,6 +22,29 @@ public class NoticeController {
 	@Autowired
 	noticeMapper mapper;
 	
+	@GetMapping("/notice/create")
+	public String create() {
+		
+		return "/notice/create";
+	}
+	
+	@GetMapping("/notice/update")
+	public String update(int no,Model model) {
+		NoticeDTO dto = mapper.read(no);
+		
+		model.addAttribute("dto",dto);
+		
+		
+		return "/notice/update";
+	}
+	
+	@GetMapping("/notice/delete")
+	public String delete() {
+		
+		
+		return "/notice/delete";
+	}
+	
 	@GetMapping("/notice/read")
 	public String read(int no, Model model) {
 		NoticeDTO dto = mapper.read(no);
