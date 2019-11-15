@@ -87,7 +87,7 @@ function sample6_execDaumPostcode() {
 function inCheck(f){
 	if(f.member_id.value.length==0){
 		alert("아이디를 입력하세요");
-		f.id.focus();
+		f.member_id.focus();
 		return false;
 	}
 	
@@ -98,7 +98,7 @@ function inCheck(f){
 	}
 	if(f.user_passwd_confirm.value.length==0){
 		alert("비밀번호 확인울 입력하세요");
-		f.repasswd.focus();
+		f.user_passwd_confirm.focus();
 		return false;
 	}
 
@@ -110,7 +110,7 @@ function inCheck(f){
 		return false;
 	}
 	
-	if(f.name.value.length==0){
+	if(f.mname.value.length==0){
 		alert("이름을 입력하세요");
 		f.mname.focus();
 		return false;
@@ -131,9 +131,19 @@ function inCheck(f){
 		f.addr2.focus();
 		return false;
 	}
-	if(f.phone.value.length==0){
+	if(f.mobile1.value.length==0){
 		alert("전화번호를 입력하세요");
-		f.phone.focus();
+		f.mobile1.focus();
+		return false;
+	}
+	if(f.mobile2.value.length==0){
+		alert("전화번호를 입력하세요");
+		f.mobile2.focus();
+		return false;
+	}
+	if(f.mobile3.value.length==0){
+		alert("전화번호를 입력하세요");
+		f.mobile3.focus();
 		return false;
 	}
 	if(f.email.value.length==0){
