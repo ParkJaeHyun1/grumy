@@ -113,9 +113,9 @@ function inCheck(f){
 		return false;
 	}
 	
-	if(f.mname.value.length==0){
+	if(f.name.value.length==0){
 		alert("이름을 입력하세요");
-		f.mname.focus();
+		f.name.focus();
 		return false;
 	}
 	
@@ -149,12 +149,17 @@ function inCheck(f){
 		f.mobile3.focus();
 		return false;
 	}
-	if(f.email.value.length==0){
+	if(f.email1.value.length==0){
 		alert("email을 입력하세요");
-		f.email.focus();
+		f.email1.focus();
 		return false;
 	}
-	if(f.agree.value==0){
+	if(f.email3.value.length==0){
+		alert("email을 입력하세요");
+		f.email3.focus();
+		return false;
+	}
+	if(f.agree.value==1){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		f.agree.focus();
 	}
@@ -302,7 +307,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		type="text" />@
 		<input id="email2" name="email2" fw-filter="isFill" 
 		fw-label="이메일" fw-alone="N" fw-msg=""
-		class="mailAddress" readonly="readonly" value="" type="text" />
+		class="mailAddress" readonly="readonly" value="" type="text" 
+		value=""/>
 		<select id="email3" fw-filter="isFill" fw-label="이메일" fw-alone="N"
 		fw-msg="">
 			<option value="" selected="selected">- 이메일 선택 -</option>
@@ -327,8 +333,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 	
 	<div class ="container">
-	<div class="col-sm-8" style="margin-top: 130px;text-align: center;">
-		<h3>[필수] 이용약관 동의</h3>
+	<div class="col-sm-8" style="margin-top: 80px; text-align: center;">
+		<h2>[필수] 이용약관 동의</h2>
+		<br/><br/><br/>
 	<textarea rows="20" cols="150" id="content" name="content" class="form-control">
    
 		
@@ -560,7 +567,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</textarea>
 	<p>
 	</p>
-	<div class="col-sm-offset-2 col-sm-5">
+	<div class="col-sm-offset-2 col-sm-5" style="margin-top:20px;">
     <input id="agree" type="checkbox" name="agree" value="1" >
     <label for="agree"><strong> 약관에 동의합니다 </strong></label>
 	</div>
