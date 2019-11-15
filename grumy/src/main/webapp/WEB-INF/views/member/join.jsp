@@ -123,6 +123,21 @@ function inCheck(f){
 		f.email.focus();
 		return false;
 	}
+	if(f.postcode1.value.length==0){
+		alert("주소를 입력하세요")
+		f.postcode1.focus();
+		return false;
+	}
+	if(f.addr1.value.length==0){
+		alert("주소를 입력하세요")
+		f.addr1.focus();
+		return false;
+	}
+	if(f.addr2.value.length==0){
+		alert("주소를 입력하세요")
+		f.addr2.focus();
+		return false;
+	}
 
 }
 </script>
@@ -230,7 +245,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<td>
 		<input id="postcode1" name="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
 		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
-		<a href="#none" onclick="" id="postBtn" class="yg_btn_24 yg_btn3" alt="우편번호">우편번호</a><br />
+		<a href="#none" onclick="idCheck(document.joinForm.id.value)" id="postBtn" class="yg_btn_24 yg_btn3" alt="우편번호">우편번호</a><br />
 		<input id="addr1" name="addr1" fw-filter="" fw-label="주소"
 		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소<br /> 
 		<input id="addr2" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
