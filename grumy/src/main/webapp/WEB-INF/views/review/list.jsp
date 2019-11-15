@@ -255,10 +255,17 @@ span.star, span.camera, .sprite_comment {
 									<div class="reviews_index_list_review__rcontents">
 										<div class="reviews_index_list_review__info_container">
 											<span class="reviews_index_list_review__name">${dto.id}</span>
-											<img
-												src="${pageContext.request.contextPath}/images/${dto.picture}"
-												class="js-review-image" width="90px" height="90px"
-												style="opacity: 1;">
+											<c:choose>
+												<c:when test="${empty dto.picture}">
+												</c:when>
+												<c:otherwise>
+													<img
+														src="${pageContext.request.contextPath}/images/${dto.picture}"
+														class="js-review-image" width="90px" height="90px"
+														style="opacity: 1;">
+												</c:otherwise>
+
+											</c:choose>
 										</div>
 									</div></li>
 							</c:forEach>
