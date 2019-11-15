@@ -52,8 +52,7 @@
 							후 교환/반품<span></span>
 					</a></li>
 					<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">채용
-							공고<span></span>
+					<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span>
 					</a></li>
 					<li class="xans-record-"><a
 						href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
