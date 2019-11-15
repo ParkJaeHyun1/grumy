@@ -14,8 +14,6 @@ import spring.model.member.MemberDTO;
 @Controller
 public class MemberController {
 
-	@Autowired
-	private MemberDTO dto;
 
 	@Autowired
 	private MemberMapper dao;
