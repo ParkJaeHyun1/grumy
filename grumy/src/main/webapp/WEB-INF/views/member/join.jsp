@@ -159,10 +159,10 @@ function inCheck(f){
 		f.email3.focus();
 		return false;
 	}
-	if(f.agree.value==1){
+	if(f.agree.checked==false){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
-		f.agree.focus();
-		retunr false;
+		return false;
+		
 	}
     
 }
