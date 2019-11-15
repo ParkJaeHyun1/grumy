@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="spring.model.mapper.itemMapper">
+<mapper namespace="spring.model.mapper.MemberMapper">
 	
 <insert id="create" parameterType="MemberDTO">
 
