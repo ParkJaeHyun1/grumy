@@ -87,13 +87,13 @@
 							</thead>
 							<tfoot class="right">
 								<tr>
-									<td colspan="10"><span class="gLeft">[기본배송]</span> 상품구매금액
+									<td colspan="10"><span class="gLeft">[기본배송]</span> ,9구매금액
 										182,600 <span class="displaynone">()</span><span
 										class="displaynone"> </span><span class="displaynone">
 											+ 부가세 <span class="displaynone"> </span>
 									</span> + 배송비 0 (무료)<span class="displaynone"> </span> <span class="">
 											- 상품할인금액 2,700 </span> = 합계 : <strong class="txtEm gIndent10"><span
-											class="txt18">179,900</span>원</strong> <span class="displaynone">
+											class="txt18">${len}으아아앙?</span>원</strong> <span class="displaynone">
 									</span></td>
 								</tr>
 							</tfoot>

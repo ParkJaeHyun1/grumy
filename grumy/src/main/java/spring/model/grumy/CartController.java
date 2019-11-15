@@ -21,9 +21,12 @@ public class CartController {
 	
 	@RequestMapping("/cart/list")
 	public String list(HttpServletRequest request, HttpSession session) {
+		System.out.println("컨트롤러시작함!");
 		//String userID = (String)session.getAttribute("id");
 		String userID = "tester"; 
 		ArrayList<CartDTO> list = mapper.list(userID);
+		System.out.println("하아아아아아아앙:"+list.size());
+		request.setAttribute("len",list.size());
 		request.setAttribute("list",list);
 		return "/cart/list";
 	}
