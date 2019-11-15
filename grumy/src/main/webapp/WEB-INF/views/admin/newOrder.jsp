@@ -18,21 +18,22 @@ text-align:center;
 </style>
 <script>
 $(document).ready(function() {
-	$("#ready").click(function() {
-		var formData = $("#multiForm").serialize();
-	  	$.ajax({
-	   	type : "POST",
-	   	url : "${root }/admin/newOrder",
-	   	cache : false,
-	   	data : formData,
-	   	success : function(data){
-	   		alert("success");
-	   	},
-	   	error : function(data){
-	   		alert("fail");
-	   	}
-	  	});
-	});
+        var param = "no="+no;
+	      $.ajax({
+	          type : 'post',
+	          url : "${root }/admin/newOrder",
+	          data : JSON.stringify($('form[name="aa"]').serializeComponent()),
+	          dataType: 'json',
+	          contentType : "application/text; charset=utf-8",
+	          success : function(data) {
+	            alert("aasd");
+	          },
+	          error : function(xhr, status, er) {
+	             if (error) {
+	                error(er);
+	             }
+	          }
+	       });
 });
 
 </script>
@@ -44,7 +45,7 @@ $(document).ready(function() {
 	<div id="contents">
 		<h2>신규 주문</h2>
 		<br>
-		<form class="form-inline" method="post">
+		<form class="form-inline" method="post" name="aa">
 			<table>
 				<tr>
 					<th width="10%">No.</th>
@@ -53,7 +54,7 @@ $(document).ready(function() {
 				</tr>
 				<c:forEach items="${list}" var="dto">
 				<tr>
-					<td name>${dto.no}</td>
+					<td>${dto.no}</td>
 					<td>${dto.name}</td>
 					<td><input id="ready" type="submit" value="배송 준비"/> </td>
 				</tr>

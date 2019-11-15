@@ -52,4 +52,11 @@ public class AdminController {
 	
 		return "/admin/newOrder";
 	}
+	@RequestMapping("/admin/sendReady")
+	public String sReady() {
+		
+	
+		
+		return "/admin/sendReady";
+	}
 }

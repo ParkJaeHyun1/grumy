@@ -114,7 +114,7 @@
 												class="text-number"
 												ng-bind="::vm.paymentInfo.deliveryPreparingCases"
 												data-nclicks-code="del.wait"
-												href="#/naverpay/sale/delivery?summaryInfoType=DELIVERY_READY">0</a>
+												href="${root }/admin/sendReady">ready</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
@@ -125,7 +125,7 @@
 												ui-sref="main.naverpay_sale_delivery_situation({summaryInfoType : 'DELIVERING'})"
 												class="text-number" ng-bind="::vm.delivery.deliveringCases"
 												data-nclicks-code="del.ing"
-												href="#/naverpay/sale/delivery/situation?summaryInfoType=DELIVERING">0</a>
+												href="${root }/admin/sending">ing</a>
 											<!----> <!---->
 												<span>건</span>
 										</span></li>
