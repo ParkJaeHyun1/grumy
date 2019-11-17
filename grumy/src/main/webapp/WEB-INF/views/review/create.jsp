@@ -1,5 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<div id="container">
+	<div id="contents">
+		<div
+			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
+			<html
+				class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths placeholder cssfilters svgfilters">
+
+
 <head>
 <style id="stndz-style"></style>
 <meta charset="UTF-8">
@@ -8,13 +16,12 @@
 	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>전체 리뷰</title>
+<title>리뷰 등록</title>
 <link rel="stylesheet" media="all"
 	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
 
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
-
 <style type="text/css">
 span.star, span.camera, .sprite_comment {
 	background-image:
@@ -51,16 +58,6 @@ span.star, span.camera, .sprite_comment {
 	}
 </script>
 </head>
-<!-- 				review create -->
-<div
-	class="xans-element- xans-board xans-board-title-4 xans-board-title xans-board-4 ">
-	<div class="title" style="text-align: center">
-		<h1>
-			<font color="#555555">REVIEW</font>
-		</h1>
-	</div>
-
-</div>
 <div class="products_reviews_form ">
 	<div class="products_reviews_form__head">
 		<div class="products_reviews_form__title">
@@ -68,9 +65,8 @@ span.star, span.camera, .sprite_comment {
 				class="weak">문의글 혹은 악의적인 비방글은 무통보 삭제된다는 점 유의해주세요^^</span>
 		</div>
 		<div class="products_reviews_form__button js-link-iframe"
-			href="${pageContext.request.contextPath}/review/list">후기게시판</div>
+			data-url="http://www.slowand.com/board/riview/4/">후기게시판</div>
 	</div>
-	
 	<div class="products_reviews_form__body">
 		<form class="review_form js-form-review review_form--new_review "
 			id="new_review" autocomplete="off" novalidate="novalidate"
@@ -87,6 +83,65 @@ span.star, span.camera, .sprite_comment {
 				<div class="review_form__option_fields anim"
 					style="margin-top: 0px; opacity: 1; display: block;">
 					<div class="review_option_fields">
+
+						<div class="review_option_field">
+							<input type="hidden" value="4"
+								name="review[options_attributes][0][review_option_type_id]"
+								id="review_options_attributes_0_review_option_type_id">
+							<div class="review_option_field__title" title="사이즈 어때요?">
+								사이즈 어때요?</div>
+							<div class="review_option_field__content">
+								<div
+									class="select2-container review_option_field__value review_option_field__value--select2 select2"
+									id="s2id_review_options_attributes_0_value">
+									<a href="javascript:void(0)" onclick="return false;"
+										class="select2-choice" tabindex="-1">
+										<div class="select2-chosen">-사이즈 어때요? 선택-</div>
+										<abbr class="select2-search-choice-close"></abbr> <span
+										class="select2-arrow"><b></b></span><span
+										class="sprites-icon-drop-down select2__dropdown_icon"></span>
+									</a><input class="select2-focusser select2-offscreen" type="text"
+										id="s2id_autogen1">
+									<div class="select2-drop select2-display-none">
+										<div
+											class="select2-search select2-search-hidden select2-offscreen">
+											<input type="text" autocomplete="off" autocorrect="off"
+												autocapitalize="off" spellcheck="false"
+												class="select2-input">
+										</div>
+										<ul class="select2-results">
+										</ul>
+									</div>
+								</div>
+								<select
+									class="review_option_field__value review_option_field__value--select2 select2  select2-offscreen"
+									data-message="사이즈 어때요?을 입력해주세요."
+									name="review[options_attributes][0][value]"
+									id="review_options_attributes_0_value" tabindex="-1"><option
+										value="">-사이즈 어때요? 선택-</option>
+									<option value="많이 작아요">많이 작아요</option>
+									<option value="조금 작아요">조금 작아요</option>
+									<option value="잘 맞아요">잘 맞아요</option>
+									<option value="조금 커요">조금 커요</option>
+									<option value="많이 커요">많이 커요</option></select>
+							</div>
+						</div>
+
+						<div class="review_option_field">
+							<input type="hidden" value="5"
+								name="review[options_attributes][1][review_option_type_id]"
+								id="review_options_attributes_1_review_option_type_id">
+							<div class="review_option_field__title" title="사이즈 한줄평">
+								사이즈 한줄평</div>
+							<div class="review_option_field__content">
+								<input
+									class="review_option_field__value review_option_field__value--input "
+									data-message="사이즈 한줄평을 입력해주세요." type="text"
+									name="review[options_attributes][1][value]"
+									id="review_options_attributes_1_value">
+							</div>
+						</div>
+
 						<div class="review_option_field">
 							<input type="hidden" value="1"
 								name="review[options_attributes][2][review_option_type_id]"
@@ -114,8 +169,8 @@ span.star, span.camera, .sprite_comment {
 									id="s2id_review_options_attributes_3_value">
 									<a href="javascript:void(0)" onclick="return false;"
 										class="select2-choice" tabindex="-1">
-										<div class="select2-chosen">51~53</div> <abbr
-										class="select2-search-choice-close"></abbr> <span
+										<div class="select2-chosen">51~53</div>
+										<abbr class="select2-search-choice-close"></abbr> <span
 										class="select2-arrow"><b></b></span><span
 										class="sprites-icon-drop-down select2__dropdown_icon"></span>
 									</a><input class="select2-focusser select2-offscreen" type="text"
@@ -169,8 +224,8 @@ span.star, span.camera, .sprite_comment {
 									id="s2id_review_options_attributes_4_value">
 									<a href="javascript:void(0)" onclick="return false;"
 										class="select2-choice" tabindex="-1">
-										<div class="select2-chosen">M</div> <abbr
-										class="select2-search-choice-close"></abbr> <span
+										<div class="select2-chosen">M</div>
+										<abbr class="select2-search-choice-close"></abbr> <span
 										class="select2-arrow"><b></b></span><span
 										class="sprites-icon-drop-down select2__dropdown_icon"></span>
 									</a><input class="select2-focusser select2-offscreen" type="text"
@@ -204,13 +259,12 @@ span.star, span.camera, .sprite_comment {
 				</div>
 				<textarea
 					class="review_form__message js-input-block autogrow js-review-form-count-limit js-new-review-form"
-					placeholder="후기를 입력해 주세요" maxlength="2000" cols="5000"
+					placeholder="" maxlength="2000" cols="5000"
 					data-login-required="true" data-up-counter="true"
 					data-minimum-message-length="30"
 					data-minimum-message-length-warning="글자수를 30자 이상 작성하셔야만 적립금이 지급됩니다. 그래도 작성하시겠습니까?"
 					data-minimum-message-length-error="30자 보다 길게 써야 합니다."
 					name="review[message]" id="review_message"></textarea>
-
 				<div class="js-limit-counter review_form__limit_counter">0</div>
 				<div class="review_form__input_photos js-review-input-photos">
 					<div class="review_form__review_photos">
@@ -268,7 +322,8 @@ span.star, span.camera, .sprite_comment {
 										class="star"></span><span class="star"></span><span
 										class="star"></span><span class="text">아주 좋아요</span>
 								</div>
-							</div> <abbr class="select2-search-choice-close"></abbr> <span
+							</div>
+							<abbr class="select2-search-choice-close"></abbr> <span
 							class="select2-arrow"><b></b></span><span
 							class="sprites-icon-drop-down select2__dropdown_icon"></span>
 						</a><input class="select2-focusser select2-offscreen" type="text"
@@ -294,8 +349,7 @@ span.star, span.camera, .sprite_comment {
 						<option value="2">그냥 그래요</option>
 						<option value="1">별로에요</option></select>
 				</div>
-
-				<input type="hidden" value="2571" name="review[product_id]"
+				<input type="hidden" value="8597" name="review[product_id]"
 					id="review_product_id"> <input type="hidden" value="24"
 					name="review[review_source]" id="review_review_source"> <input
 					type="hidden" value="0" name="review[social_media_type]"
@@ -307,12 +361,33 @@ span.star, span.camera, .sprite_comment {
 					<span class="review_form__submit_title_icon fa fa-check-circle-o"></span>
 					<span class="review_form__post_review_label">리뷰 등록하기</span>
 				</button>
+
 			</div>
 			<script type="text/x-jquery-tmpl" id="new-image-field">
- </script>
+    <li class="image_field js-image-field">
+  <div class="image_field__wrap">
+    <img class="image_field__size_support" alt="" src="//assets5.cre.ma/m/widgets/transparent.png" />
+    <div class="image_field__input_image_container js-image-field-input-image-container on-list">
+      <span class="image_field__sprites_icon_camera sprites-icon-camera inline"></span>
+      <div class="image_field__add_image_caption">사진 추가</div>
+    </div>
+      <input type="file" name="review[images][]" class="image_field__input_file js-input-file" accept="image/*" multiple="multiple" data-upload-image-url="https://review5.cre.ma/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100" />
+      <div class="image_field__preview_container js-image-field-preview-container hidden">
+        <img class="image_field__preview js-image-field-preview" alt="preview" src="//assets5.cre.ma/m/widgets/transparent.png" />
+        <div class="image_field__remove_preview js-remove-preview">
+          <div class="image_field__remove_preview_text remove">삭제</div>
+        </div>
+      </div>
+  </div>
+</li>
+
+  </script>
 		</form>
+
 	</div>
 </div>
-
-
-
+			</html>
+		</div>
+	</div>
+	<hr class="layout">
+</div>
