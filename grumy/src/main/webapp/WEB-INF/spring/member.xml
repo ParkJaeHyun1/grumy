@@ -28,6 +28,12 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/preproc.jsp" />
 	</definition>
+	
+	<definition name="/login" extends="main">
+		<put-attribute name="title" value="회원가입확인"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/login.jsp" />
+	</definition>
 
 
 </tiles-definitions>
