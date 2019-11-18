@@ -74,31 +74,21 @@ function sample6_execDaumPostcode() {
                 }
  
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode1').value = data.zonecode;
-                document.getElementById("addr1").value = addr;
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("addr2").focus();
+                document.getElementById("detailaddress").focus();
             }
         }).open();
     }
 </script>
-<!-- 셀렉트 값 input에 넣기 -->
-<script type="text/javascript">
-$(function(){
-	var idval=$('#email2');
-	$('#email3').change(function(){
-		var element = $(this).find('option:selected');
-		var myTag = element.attr('value');
-		idval.val(myTag);
-	});
-});
-</script>
+
 <!-- 필수 입력창 확인  -->
 <script type="text/javascript">
 function inCheck(f){
-	if(f.member_id.value.length==0){
+	if(f.id.value.length==0){
 		alert("아이디를 입력하세요");
-		f.member_id.focus();
+		f.id.focus();
 		return false;
 	}
 	
@@ -127,46 +117,33 @@ function inCheck(f){
 		return false;
 	}
 	
-	if(f.postcode1.value.length==0){
+	if(f.postcode.value.length==0){
 		alert("주소를 입력하세요")
-		f.postcode1.focus();
+		f.postcode.focus();
 		return false;
 	}
-	if(f.addr1.value.length==0){
+	if(f.address.value.length==0){
 		alert("주소를 입력하세요")
-		f.addr1.focus();
+		f.address.focus();
 		return false;
 	}
-	if(f.addr2.value.length==0){
+	if(f.detailaddress.value.length==0){
 		alert("주소를 입력하세요")
-		f.addr2.focus();
+		f.detailaddress.focus();
 		return false;
 	}
-	if(f.mobile1.value.length==0){
+	if(f.phone.value.length==0){
 		alert("전화번호를 입력하세요");
-		f.mobile1.focus();
+		f.phone.focus();
 		return false;
 	}
-	if(f.mobile2.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.mobile2.focus();
-		return false;
-	}
-	if(f.mobile3.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.mobile3.focus();
-		return false;
-	}
-	if(f.email1.value.length==0){
+
+	if(f.email.value.length==0){
 		alert("email을 입력하세요");
-		f.email1.focus();
+		f.email.focus();
 		return false;
 	}
-	if(f.email3.value.length==0){
-		alert("email을 입력하세요");
-		f.email3.focus();
-		return false;
-	}
+
 	if(f.agree.checked==false){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		return false;
@@ -179,10 +156,10 @@ function inCheck(f){
 function idCheck(id){
     if(id== ''){
      alert("아이디를 입력하세요");
-       document.joinForm.memeber_id.focus();
+       document.joinForm.id.focus();
     }else{
      var url = "idcheck";
-     var param = "memeber_id=" + memeber_id;
+     var param = "id=" + id;
      $.get(url, param, function(data, textStatus){
         
         $("#idcheck").text(data.str);
@@ -247,14 +224,14 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<th scope="row">아이디 
 		<img src="" alt="필수" /></th>
 		<td>
-		<input id="member_id" name="member_id"
+		<input id="id" name="id"
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
-			fw-label="아이디" fw-msg="" class="inputTypeText" placeholder=""
+			fw-label="아이디" fw-msg="" maxlength="16" class="inputTypeText" placeholder=""
 			value="" type="text" />
 			<span id="idMsg"></span> 
 			(영문소문자/숫자,4~16자)
 			<button type="button" class="yg_btn_140 yg_btn3"
-				 onclick="idCheck(document.joinForm.member_id.value)">ID 중복확인</button>
+				 onclick="idCheck(document.joinForm.id.value)">ID 중복확인</button>
 			<div id="idcheck"></div>
 		</td>
 	</tr>
@@ -262,7 +239,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<th scope="row">비밀번호 
 		<img src="" alt="필수" /></th>
 		<td>
-		<input id="passwd" name="passwd"
+		<input id="passwd" name="passwd" 
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
 			autocomplete="off" maxlength="16" 0="disabled" value=""
 			type="password" /> 
@@ -297,14 +274,14 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		 class="displaynone" alt="필수" />
 		</th>
 		<td>
-		<input id="postcode1" name="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
+		<input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
 		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
 		<button type="button" class="yg_btn_140 yg_btn3"
 				 onclick="sample6_execDaumPostcode()">주소 검색</button>
 		<br />
-		<input id="addr1" name="addr1" fw-filter="" fw-label="주소"
+		<input id="address" name="address" fw-filter="" fw-label="주소"
 		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소<br /> 
-		<input id="addr2" name="addr2" fw-filter="" fw-label="주소" fw-msg=""
+		<input id="detailaddress" name="detailaddress" fw-filter="" fw-label="주소" fw-msg=""
 		class="inputTypeText" placeholder="" value="" type="text" />
 	        나머지주소 (선택입력가능)
 	 	</td>
@@ -315,15 +292,10 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="" class="displaynone" alt="필수" />
 		</th>
 		<td>
-		<input id="mobile1" name="mobile[]" maxlength="3" 
-		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" value="" type="text" />-
-		<input id="mobile2" name="mobile[]" maxlength="4" 
-		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg=""
-		value="" type="text" />-
-		<input id="mobile3" name="mobile[]" maxlength="4" 
+		<input id="phone" name="phone" maxlength="11" 
 		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
 		fw-msg="" value="" type="text" />
+		(-)는 제외하고 입력하세요.
 		</td>
 		</tr>
 		<tr>
@@ -331,28 +303,21 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="" alt="필수" />
 		</th>
 		<td>
-		<input id="email1" name="email1" fw-filter="isFill" 
-		fw-label="이메일" fw-alone="N" fw-msg="" class="mailId" value=""
-		type="text" />@ 
-		<input id="email2" name="email2" fw-filter="isFill" 
-		fw-label="이메일" fw-alone="N" fw-msg=""
-		class="mailAddress" value="" type="text" />
-		<select id="email3" fw-filter="isFill" fw-label="이메일" fw-alone="N"
-		fw-msg="">
-			<option value="" selected="selected">- 이메일 선택 -</option>
-			<option value="naver.com">naver.com</option>
-			<option value="daum.net">daum.net</option>
-			<option value="nate.com">nate.com</option>
-			<option value="hotmail.com">hotmail.com</option>
-			<option value="yahoo.com">yahoo.com</option>
-			<option value="empas.com">empas.com</option>
-			<option value="korea.com">korea.com</option>
-			<option value="dreamwiz.com">dreamwiz.com</option>
-			<option value="gmail.com">gmail.com</option>
-		</select> 
-		<span id="emailMsg"></span>
+		<input id="email" name="email" fw-filter="isFill" 
+		fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
+		type="text" />
 		</td>
 		</tr>
+		<tr>
+		<th scope="row">생년월일
+		</th>
+		<td>
+		<input id="birth" name="birth" 
+			fw-filter="" fw-label="생년월일" fw-msg=""
+			autocomplete="off" maxlength="8" 0="disabled" value=""
+			type="text" /> ex) 2000년 1월 1일 → 20000101
+		</td>
+		
 		</tbody>
 	</table>
 </div>

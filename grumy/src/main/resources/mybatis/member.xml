@@ -8,11 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create" parameterType="MemberDTO">
 	insert into member(
 	id,passwd,name,postcode,address
-	,detailaddress,phone,email,grade
+	,detailaddress,phone,email,birth,point,grade
 	)
 	values(
 	#{id},#{passwd},#{name},#{postcode},#{address}
-	,#{detailaddress},#{phone},#{email},'신규회원'
+	,#{detailaddress},#{phone},#{email},#{birth},0,'H'
 	)
 </insert>
 
