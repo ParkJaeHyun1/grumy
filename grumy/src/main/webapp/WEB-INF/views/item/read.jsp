@@ -361,7 +361,7 @@
 					<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
 					<meta name="path_role" content="PRODUCT_DETAIL" />
 					<meta name="author" content="슬로우앤드" />
-					<meta name="description" content="${dto.description }" />
+					<meta name="description" content="" />
 					<meta name="keywords"
 						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
 					<meta name="design_html_path"
@@ -509,12 +509,7 @@
 											<td scope="row" class="list"><span
 												style="font-size: 12px; color: #555555;">DETAILS</span>
 												<p>
-													<span style="font-size: 12px; color: #555555;">맨투맨,후디에
-														이어 요청많았던 후드집업♥ <br>양기모로 한겨울 미리미리 준비하기 :) <br>도톰하고
-																폭닥한 특양기모원단으로 <br>가볍게 티 위에만 걸쳐도 포근해요 *.* <br>(니켈칩/3중재봉/아일렛디테일)
-
-																
-													</span>
+													<span style="font-size: 12px; color: #555555;">${dto.description}</span>
 												</p></td>
 										</tr>
 									</tbody>
@@ -564,7 +559,8 @@
 												<tr
 													class="xans-element- xans-product xans-product-option xans-record-">
 													<th scope="row">COLOR</th>
-													<td><ul option_product_no="3596"
+													<td>
+													<ul option_product_no="3596"
 															option_select_element="ec-option-select-finder"
 															option_sort_no="1" option_type="T" item_listing_type="S"
 															option_title="COLOR" product_type="product_option"
@@ -572,17 +568,17 @@
 															option_style="button" ec-dev-id="product_option_id1"
 															ec-dev-name="option1" ec-dev-class="ProductOption0"
 															class="ec-product-button" required="true">
-															<li class="" option_value="아이보리" link_image=""
-																title="아이보리"><a href="#none"><span>아이보리</span></a></li>
-															<li class="" option_value="크림베이지" link_image=""
-																title="크림베이지"><a href="#none"><span>크림베이지</span></a></li>
-															<li class="" option_value="코코아브라운" link_image=""
-																title="코코아브라운"><a href="#none"><span>코코아브라운</span></a></li>
-															<li class="" option_value="딥그레이" link_image=""
-																title="딥그레이"><a href="#none"><span>딥그레이</span></a></li>
-															<li class="" option_value="블랙" link_image="" title="블랙"><a
-																href="#none"><span>블랙</span></a></li>
+															
+															<c:forEach var="color" items="${dto.colorList}">
+																<li class="" option_value="컬러" link_image="" title="아이보리">
+																<a href="">
+																<span>${color}</span></a>
+																</li>
+															</c:forEach>															
 														</ul>
+														
+														
+														
 														<p class="value">
 															[필수] <span
 																class="ec-shop-front-product-option-desc-trigger"
@@ -1099,7 +1095,6 @@
 							<h3>REVIEW</h3>
 
 							<!-- 리뷰 -->
-					
 							<!-- //리뷰 -->
 						</div>
 					</div>

@@ -17,4 +17,21 @@ where type = #{type}
 		where no = #{no}                                           
 </select>
 
+<select id="color" parameterType="Map" resultType="String">
+		select distinct(itemColor)
+		from item i, itemOption o
+		where i.no = o.itemNo and i.no =#{no}
+</select>
+
+<select id="size" parameterType="Map" resultType="String">
+		select itemSize
+		from item i, itemOption o
+		where i.no = o.itemNo and i.no =#{no} and o.itemColor = #{color}
+</select>
+
+<select id="count" parameterType="Map" resultType="int">
+		select o.count
+		from item i, itemOption o
+		where i.no = o.itemNo and i.no =#{no} and o.itemColor = #{color} and o.itemSize = #{itemSize}
+</select>
 </mapper>

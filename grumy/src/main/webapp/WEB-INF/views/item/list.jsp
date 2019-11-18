@@ -60,7 +60,8 @@
 								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
 						</div>
 						<div class="description">
-							<strong class="name"><a
+							<strong class="name">
+							<a
 								href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
