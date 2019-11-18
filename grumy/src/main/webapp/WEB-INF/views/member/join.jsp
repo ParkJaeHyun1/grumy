@@ -176,8 +176,8 @@ function inCheck(f){
 }
 </script>
 <script type="text/javascript">
-function idCheck(memeber_id){
-    if(member_id == ''){
+function idCheck(id){
+    if(id== ''){
      alert("아이디를 입력하세요");
        document.joinForm.memeber_id.focus();
     }else{
@@ -190,23 +190,6 @@ function idCheck(memeber_id){
      
     }
  } 
-function emailCheck(email){
-    if(email == ''){
-     alert("이메일을 입력하세요");
-       document.joinForm.email.focus();
-    }else{
-     var url = "emailcheck";
-     var param = "email=" + email;
-     $.get(url, param, function(data, textStatus){
-        
-        $("#emailcheck").text(data.str);
-     });
-     
-    }
- } 
-
-
-
 
 </script>
 
