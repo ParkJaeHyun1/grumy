@@ -175,6 +175,40 @@ function inCheck(f){
     
 }
 </script>
+<script type="text/javascript">
+function idCheck(memeber_id){
+    if(member_id == ''){
+     alert("아이디를 입력하세요");
+       document.joinForm.memeber_id.focus();
+    }else{
+     var url = "idcheck";
+     var param = "memeber_id=" + memeber_id;
+     $.get(url, param, function(data, textStatus){
+        
+        $("#idcheck").text(data.str);
+     });
+     
+    }
+ } 
+function emailCheck(email){
+    if(email == ''){
+     alert("이메일을 입력하세요");
+       document.joinForm.email.focus();
+    }else{
+     var url = "emailcheck";
+     var param = "email=" + email;
+     $.get(url, param, function(data, textStatus){
+        
+        $("#emailcheck").text(data.str);
+     });
+     
+    }
+ } 
+
+
+
+
+</script>
 
 <title>grumy</title>
 		
@@ -236,6 +270,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			value="" type="text" />
 			<span id="idMsg"></span> 
 			(영문소문자/숫자,4~16자)
+			<button type="button" class="yg_btn_140 yg_btn3"
+				 onclick="idCheck(document.joinForm.member_id.value)">ID 중복확인</button>
+			<div id="idcheck"></div>
 		</td>
 	</tr>
 	<tr>
@@ -279,7 +316,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<td>
 		<input id="postcode1" name="postcode1" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
 		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
-		<button type="button" class="yg_btn_140"
+		<button type="button" class="yg_btn_140 yg_btn3"
 				 onclick="sample6_execDaumPostcode()">주소 검색</button>
 		<br />
 		<input id="addr1" name="addr1" fw-filter="" fw-label="주소"

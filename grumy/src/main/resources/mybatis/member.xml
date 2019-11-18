@@ -15,6 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	,#{detailaddress},#{phone},#{email},'신규회원'
 	)
 </insert>
+
+	<select id="duplicateEmail" parameterType="String" resultType="int">
+		select count(email) from member
+		where email = #{email}
+	</select>
 	
 
 </mapper>
