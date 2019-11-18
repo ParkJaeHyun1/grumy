@@ -42,6 +42,8 @@ public class Utility {
 		str.append("</div>");
 		return str.toString();
 	}
+	
+	
 
 	public static String checkNull(String str) {
 		if (str == null) {

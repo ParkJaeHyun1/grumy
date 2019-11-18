@@ -41,7 +41,7 @@
 				<a style="cursor: pointer;">COMMUNITY</a>
 				<ul class="gnb_sub">
 					<li class="xans-record-"><a href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
-					<li class="xans-record-"><a href="/board/상품-문의/6/">상품 문의<span></span></a></li>
+					<li class="xans-record-"><a href="${pageContext.request.contextPath}/community/list">상품 문의<span></span></a></li>
 					<li class="xans-record-"><a href="/board/배송-문의/3001/">배송
 							문의<span></span>
 					</a></li>

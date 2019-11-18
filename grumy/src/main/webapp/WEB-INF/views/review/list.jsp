@@ -97,7 +97,7 @@ span.star, span.camera, .sprite_comment {
 					<div
 						class="products_reviews_summary_thumbnail_small_without_score__summary_count_text">
 
-						<span class="count">2</span>개의 포토리뷰가 있습니다
+						<span class="count">${pcount }</span>개의 포토리뷰가 있습니다
 					</div>
 					<a
 						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews
@@ -118,6 +118,10 @@ span.star, span.camera, .sprite_comment {
 						data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
 						style="transform: translate3d(0px, 0px, 0px);">
 						<c:forEach var="dto" items="${list}">
+						<c:choose>
+												<c:when test="${empty dto.picture}">
+												</c:when>
+												<c:otherwise>
 							<li id="review_${dto.no}"
 								class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
 								style="width: 63px; margin-right: 5px;"><a
@@ -127,6 +131,9 @@ span.star, span.camera, .sprite_comment {
 									src="${pageContext.request.contextPath}/images/${dto.picture}"
 									alt="" width="63" height="63">
 							</a></li>
+							</c:otherwise>
+
+											</c:choose>
 						</c:forEach>
 
 					</ul>
@@ -255,6 +262,7 @@ span.star, span.camera, .sprite_comment {
 									<div class="reviews_index_list_review__rcontents">
 										<div class="reviews_index_list_review__info_container">
 											<span class="reviews_index_list_review__name">${dto.id}</span>
+											
 											<c:choose>
 												<c:when test="${empty dto.picture}">
 												</c:when>
@@ -275,6 +283,7 @@ span.star, span.camera, .sprite_comment {
 				<!-- 				푸터 -->
 			</div>
 		</div>
+				${paging }
 		<div class="tui-tooltip" style="display: none;">
 			<div class="arrow"></div>
 			<span class="text"></span>
@@ -311,6 +320,7 @@ span.star, span.camera, .sprite_comment {
 </body>
 				</html>
 			</div>
+	
 		</div>
 	</div>
 	<hr class="layout">
