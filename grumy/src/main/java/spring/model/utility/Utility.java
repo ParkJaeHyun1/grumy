@@ -15,7 +15,7 @@ public class Utility {
 		str.append("<div class=\"xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate\">");
 		int _nowPage = (nowGrp - 1) * pagePerBlock; // 10�� ���� �������� �̵�
 		if (nowGrp >= 2) {
-			str.append("<a href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_prev.gif\" alt=\"이전 페이지\"></A>");
+			str.append("<a href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_prev.gif\" alt=\"이전 페이지\"></A>");
 		}
 		str.append("<ol>");
 		
@@ -28,7 +28,7 @@ public class Utility {
 			if (nowPage == i) {
 				str.append("<li class='active'><a href=# class=\"this\">" + i + "</a></li>");
 			} else {
-				str.append("<li class=\"xans-record-\"><a href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + i + "' class=\"other\">" + i
+				str.append("<li class=\"xans-record-\"><a href='./list?col=" + col + "&word=" + word + "&nowPage=" + i + "' class=\"other\">" + i
 						+ "</A></li>");
 			}
 		}
@@ -36,7 +36,7 @@ public class Utility {
 		_nowPage = (nowGrp * pagePerBlock) + 1; // 10�� ���� �������� �̵�
 		if (nowGrp < totalGrp) {
 			str.append(
-					"<A href='/grumy/notice/list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_next.gif\" alt=\"다음 페이지\"></A>");
+					"<A href='./list?col=" + col + "&word=" + word + "&nowPage=" + _nowPage + "'><img src=\"/grumy/images/page_next.gif\" alt=\"다음 페이지\"></A>");
 		}
 
 		str.append("</div>");

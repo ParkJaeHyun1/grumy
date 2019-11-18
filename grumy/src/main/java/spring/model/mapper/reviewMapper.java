@@ -6,7 +6,7 @@ import java.util.Map;
 import spring.model.review.reviewDTO;
 
 public interface reviewMapper {
-	ArrayList<reviewDTO> list();
+	ArrayList<reviewDTO> list(Map map);
 	reviewDTO read(int no);
 	int pcount();
 	int total(Map map);

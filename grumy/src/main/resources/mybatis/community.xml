@@ -4,31 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spring.model.mapper.communityMapper">
-<select id="list" parameterType="Map" resultType="NoticeDTO">
-select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
-	from (
-			select no,subject,writer,wdate,rownum r
-			from (
-				select no,subject,writer,wdate
-				from notice
-				<where>
-					<choose>
-						<when test="col == 'subject'">
-						subject like '%'||#{word}||'%'
-						</when>
-						<when test="col == 'content'">
-						content like '%'||#{word}||'%'
-						</when>
-						<when test="col == 'writer'">
-						writer like '%'||#{word}||'%'
-						</when>
-					</choose>
-				</where>
-				order by no desc
-				)
+
+	<select id="list" parameterType="Map" resultType="communityDTO">
+		select no, id, itemno, content,passwd,image
+		from (
+		
+		select no, id, itemno, content,passwd,image
+		from community
+		
+		order by no desc
+		
 		)
-<![CDATA[
-where r>=#{sno} and r<=#{eno}
-]]>
-</select>
+
+	</select>
 </mapper>

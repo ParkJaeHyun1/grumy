@@ -11,10 +11,10 @@
 						<font color="#555555">REVIEW</font>
 					</h1>
 				</div>
-				<p class="imgArea">
-					<img style="display: block; margin: 0px auto;"
-						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg">
-				</p>
+<!-- 				<p class="imgArea"> -->
+<!-- 					<img style="display: block; margin: 0px auto;" -->
+<!-- 						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg"> -->
+<!-- 				</p> -->
 			</div>
 			<div class="crema-reviews crema-applied">
 				<html
@@ -283,7 +283,7 @@ span.star, span.camera, .sprite_comment {
 				<!-- 				푸터 -->
 			</div>
 		</div>
-				${paging }
+				
 		<div class="tui-tooltip" style="display: none;">
 			<div class="arrow"></div>
 			<span class="text"></span>
@@ -322,6 +322,7 @@ span.star, span.camera, .sprite_comment {
 			</div>
 	
 		</div>
+		${paging }
 	</div>
 	<hr class="layout">
 </div>

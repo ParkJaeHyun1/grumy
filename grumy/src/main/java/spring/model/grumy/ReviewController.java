@@ -47,8 +47,8 @@ public class ReviewController {
 	}
 	@RequestMapping("/review/list")
 	public String list(HttpServletRequest request) {
-		ArrayList<reviewDTO> list = mapper.list();
-		System.out.println("씨발!:"+list.size());
+		
+		
 		int pcount = mapper.pcount();
 		
 		String word = Utility.checkNull(request.getParameter("word"));
@@ -61,7 +61,7 @@ public class ReviewController {
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		
+
 		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
@@ -74,6 +74,10 @@ public class ReviewController {
 		map.put("word", word);
 		map.put("sno",sno);
 		map.put("eno",eno);
+
+		
+		ArrayList<reviewDTO> list = mapper.list(map);
+		System.out.println("씨발!:"+list.size());
 		
 		int total = mapper.total(map);
 		
