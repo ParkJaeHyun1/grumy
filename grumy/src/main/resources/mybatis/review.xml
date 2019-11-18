@@ -20,4 +20,27 @@ i.image as itemPicture,i.title as itemTitle, r.cm as cm, r.kg as kg, r.mysize as
 from item i, review r
 where r.itemNo = r.itemNo                                          
 	</select>
+	
+	<select id="pcount" resultType="int">
+	select count(*) as pcount 
+	from review
+where picture is not null
+	</select>
+	
+	<select id="total" parameterType="Map" resultType="int">
+select count(*) from review
+	<where>
+         	<choose>
+         		<when test="col=='content'">
+         		content like '%'||#{word}||'%'
+         		</when>
+         		<when test="col=='title'">
+         		title like '%'||#{word}||'%'
+         		</when>
+         		<when test="col=='id'">
+         		id like '%'||#{word}||'%'
+         		</when>
+         	</choose>
+         </where>
+</select>
 </mapper>
