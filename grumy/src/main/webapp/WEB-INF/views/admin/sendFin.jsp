@@ -12,7 +12,7 @@
 <body>
 <div id="container">
 	<div id="contents">
-	<h3>hi2</h3>
+	<h3>hi3</h3>
 	</div>
 </div>
 </body>

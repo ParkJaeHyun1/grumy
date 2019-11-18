@@ -16,27 +16,7 @@ h2{
 text-align:center;
 }
 </style>
-<script>
-$(document).ready(function() {
-        var param = "no="+no;
-	      $.ajax({
-	          type : 'post',
-	          url : "${root }/admin/newOrder",
-	          data : JSON.stringify($('form[name="aa"]').serializeComponent()),
-	          dataType: 'json',
-	          contentType : "application/text; charset=utf-8",
-	          success : function(data) {
-	            alert("aasd");
-	          },
-	          error : function(xhr, status, er) {
-	             if (error) {
-	                error(er);
-	             }
-	          }
-	       });
-});
 
-</script>
 </head>
 <body>
 <div id="container">
@@ -45,7 +25,7 @@ $(document).ready(function() {
 	<div id="contents">
 		<h2>신규 주문</h2>
 		<br>
-		<form class="form-inline" method="post" name="aa">
+		<form id="frm" method="post" action="${root }/admin/newOrder">
 			<table>
 				<tr>
 					<th width="10%">No.</th>
@@ -54,7 +34,7 @@ $(document).ready(function() {
 				</tr>
 				<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>${dto.no}</td>
+					<td>${dto.no} <input type="hidden" name="no" value="${dto.no }"/></td>
 					<td>${dto.name}</td>
 					<td><input id="ready" type="submit" value="배송 준비"/> </td>
 				</tr>
