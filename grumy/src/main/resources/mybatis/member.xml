@@ -4,10 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spring.model.mapper.MemberMapper">
-	
+	 
 <insert id="create" parameterType="MemberDTO">
-
+	insert into member(
+	id,passwd,name,postcode,address
+	,detailaddress,phone,email,grade
+	)
+	values(
+	#{id},#{passwd},#{name},#{postcode},#{address}
+	,#{detailaddress},#{phone},#{email},'신규회원'
+	)
 </insert>
-
+	
 
 </mapper>
