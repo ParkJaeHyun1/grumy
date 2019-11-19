@@ -10,9 +10,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
+<script type="text/javascript">
+function read(no){
+	var url = "read";
+	url += "?no="+no;
+	
+	location.href="../notice/"+url;
+}
+</script>
 </head>
-<body>
+<body style="background-color:#EFF8FB">
 	<div id="container">
 			<div id="contents">
 			
@@ -22,24 +29,24 @@
 		<!---->
 		<!---->
 		<ui-view>
-		<div class="seller-dashboard">
+		
 			<!---->
 			<ui-view name="important-notice"><!---->
-			<div class="alert seller-notice-alert has-icon"
-				ng-if="::vm.importantNotice">
+			<div>
 				<!---->
 				<!---->
-				<a class="no-decoration"
-					ui-sref="main.centernotice.detail({noticeId: vm.importantNotice.id})"
-					ng-if="::vm.importantNotice.exposeMethodType !== 'LINK'"
-					data-nclicks-code="bell.notice"
-					href="#/center-notice/detail/100005457"><span
-					class="round-ico-area"><i class="fn fn-alert2"
-						aria-hidden="true"></i></span> <span class="notice-title">[시스템]
-						11월 14일 정산 대금 및 충전금 출금 계좌이체 지연 예정 안내</span> <span class="notice-date"
-					ng-bind="::vm.importantNotice.regDate">2019.11.13.</span></a>
+				<div class="panel panel-dashboard panel-deposit">
+								<!---->
+								<div class="panel-body"
+									ng-if="vm.paymentInfo &amp;&amp; vm.paymentInfo.$resolved"
+									style="border:1px solid">
+				<a href="javascript:read(${noticetr.no })" style="color: #555555;">
+					<div><span style="font-size:20px;">${noticetr.subject }</span>&nbsp&nbsp <span>${noticetr.wdate }</span></div>
+				</a>
+				</div>
+				</div>
 				<!---->
-			</div>
+			
 			<!----><!----></ui-view>
 			<div class="seller-sub-content">
 				<div style="position: relative">
@@ -53,17 +60,10 @@
 								<!---->
 								<div class="panel-body"
 									ng-if="vm.paymentInfo &amp;&amp; vm.paymentInfo.$resolved"
-									style="">
-									<div class="panel-icon-area">
-										<span class="square-ico-area"><i
-											class="seller-icon icon-deposit" aria-hidden="true"></i></span> <a
-											href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.refreshAndGetSalesInfo('payment')"
-											data-nclicks-code="ord.ref"><i class="fn fn-refresh"
-											aria-hidden="true"></i> <span class="sr-only">새로고침</span></a>
-									</div>
-									<ul class="panel-list">
-										<li><span class="info-title">입금대기</span> <span
+									style="border:1px solid">
+									
+									<ul class="panel-list" >
+										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
 												<!---->
 												<a ng-if="::vm.isDesktop"
@@ -96,15 +96,8 @@
 							<div class="panel panel-dashboard panel-delivery">
 								<!---->
 								<div class="panel-body"
-									ng-if="vm.delivery &amp;&amp; vm.delivery.$resolved" style="">
-									<div class="panel-icon-area">
-										<span class="square-ico-area"><i
-											class="seller-icon icon-delivery" aria-hidden="true"></i></span> <a
-											href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.refreshAndGetSalesInfo('delivery')"
-											data-nclicks-code="del.ref"><i class="fn fn-refresh"
-											aria-hidden="true"></i> <span class="sr-only">새로고침</span></a>
-									</div>
+									ng-if="vm.delivery &amp;&amp; vm.delivery.$resolved" style="border:1px solid">
+									
 									<ul class="panel-list">
 										<li><span class="info-title">배송준비</span> <span
 											class="number-area">
@@ -131,7 +124,7 @@
 										</span></li>
 										<li><span class="info-title">배송완료</span> <span
 											class="number-area">
-												<!---->
+												<!---->`
 												<a ng-if="::vm.isDesktop"
 												ui-sref="main.naverpay_sale_delivery_situation({summaryInfoType : 'DELIVERED'})"
 												class="text-number" ng-bind="::vm.delivery.deliveredCases"
@@ -150,15 +143,8 @@
 							<div class="panel panel-dashboard panel-return">
 								<!---->
 								<div class="panel-body"
-									ng-if="vm.claim &amp;&amp; vm.claim.$resolved" style="">
-									<div class="panel-icon-area">
-										<span class="square-ico-area"><i
-											class="seller-icon icon-return" aria-hidden="true"></i></span> <a
-											href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.refreshAndGetSalesInfo('claim')"
-											data-nclicks-code="claim.ref"><i class="fn fn-refresh"
-											aria-hidden="true"></i> <span class="sr-only">새로고침</span></a>
-									</div>
+									ng-if="vm.claim &amp;&amp; vm.claim.$resolved" style="border:1px solid">
+									
 									<ul class="panel-list">
 										<li><span class="info-title">취소요청</span> <span
 											class="number-area">
@@ -207,15 +193,8 @@
 								<!---->
 								<div class="panel-body"
 									ng-if="vm.settlement &amp;&amp; vm.settlement.$resolved"
-									style="">
-									<div class="panel-icon-area">
-										<span class="square-ico-area"><i
-											class="seller-icon icon-settlement" aria-hidden="true"></i></span> <a
-											href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.getSettlementInfo()" data-nclicks-code="set.ref"><i
-											class="fn fn-refresh" aria-hidden="true"></i> <span
-											class="sr-only">새로고침</span></a>
-									</div>
+									style="border:1px solid">
+									
 									<ul class="panel-list">
 										<li><span class="info-title">오늘정산</span> <span
 											class="number-area">
@@ -257,8 +236,8 @@
 						</ui-view>
 						<!---->
 						<ui-view name="naverpay-saleschart-new"><!---->
-						<div class="col-lg-6 col-md-12 col-sm-12" ng-if="!vm.isMobile">
-							<div class="panel panel-dashboard panel-stats">
+						<div class="col-lg-6 col-md-12 col-sm-12" ng-if="!vm.isMobile" >
+							<div class="panel panel-dashboard panel-stats" style="border:1px solid">
 								<div class="panel-heading">
 									<div class="pull-left">
 										<h3 class="panel-title">스토어 매출 통계</h3>
@@ -787,17 +766,12 @@
 						<!---->
 						<ui-view name="inquery">
 						<div class="col-lg-3 col-md-6 col-sm-6">
-							<div class="panel panel-dashboard panel-inquiry">
+							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid">
 								<div class="panel-heading">
 									<div class="pull-left">
 										<h3 class="panel-title">미답변 문의</h3>
 									</div>
-									<div class="pull-right">
-										<a href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.getInquiries(true)" data-nclicks-code="qna.ref"><i
-											class="fn fn-refresh" aria-hidden="true"></i> <span
-											class="sr-only">새로고침</span></a>
-									</div>
+									
 								</div>
 								<div class="panel-body">
 									<ul class="panel-tap" role="tablist">
@@ -864,92 +838,49 @@
 						<!---->
 						<ui-view name="notice">
 						<div class="col-lg-3 col-md-6 col-sm-6">
-							<div class="panel panel-dashboard panel-notice">
+							<div class="panel panel-dashboard panel-notice" style="border:1px solid">
 								<!---->
 								<div class="panel-heading">
 									<div class="pull-left">
 										<h3 class="panel-title">
 											<a ui-sref="main.centernotice.list"
-												data-nclicks-code="notice.move" href="#/center-notice/list/">공지사항
+												data-nclicks-code="notice.move" href="${root }/notice/list"><b>공지사항</b>
 												<i class="fn-shopping fn-shopping-forward2 text-muted"
 												aria-hidden="true"></i>
 											</a>
 										</h3>
 									</div>
-									<div class="pull-right">
-										<a href="" role="button" class="btn-refresh font-icon-button"
-											ng-click="vm.getNotices()" data-nclicks-code="notice.ref"><i
-											class="fn fn-refresh" aria-hidden="true"></i> <span
-											class="sr-only">새로고침</span></a>
-									</div>
 								</div>
 								<div class="panel-body">
 									<!---->
-									<ul class="panel-list" ng-if="::vm.notices" style="">
-										<!---->
-										<li ng-repeat="notice in ::vm.notices track by notice.id">
-											<!---->
-											<!---->
-											<a role="button"
-											ui-sref="main.centernotice.detail({noticeId: notice.id})"
-											ng-if="::notice.exposeMethodType !== 'LINK'"
-											data-nclicks-code="notice.cont"
-											ng-class="{'dimmed-area': notice.readMarkYn}"
-											href="#/center-notice/detail/100005457"><div class="flex">
-													<div class="flex title align-items-center">
-														<p class="text-overflow mg-top-reset">
-															<!---->
-															<span ng-if="::notice.exposeOnTop"><span
-																class="label label-danger label-outline">중요</span> [시스템]
-															</span>
-															<!---->
-															<!---->
-															&nbsp;11월 14일 정산 대금 및 충전금 출금 계좌이체 지연 예정 안내
-														</p>
-														<!---->
-														<span ng-if="::notice.newYn"
-															class="label label-new label-new-xs mg-left-sm mg-right-reset"
-															aria-label="new">N</span>
-														<!---->
-													</div>
-													<div class="flex date text-number"
-														ng-bind="::notice.regDate | NcpMomentFormat: 'MM.DD.'">11.13.</div>
-												</div></a>
-										<!---->
-										</li>
-										<!---->
-										<li ng-repeat="notice in ::vm.notices track by notice.id">
-											<!---->
-											<!---->
-											<a role="button"
-											ui-sref="main.centernotice.detail({noticeId: notice.id})"
-											ng-if="::notice.exposeMethodType !== 'LINK'"
-											data-nclicks-code="notice.cont"
-											ng-class="{'dimmed-area': notice.readMarkYn}"
-											href="#/center-notice/detail/100005445"><div class="flex">
-													<div class="flex title align-items-center">
-														<p class="text-overflow mg-top-reset">
-															<!---->
-															<span ng-if="::notice.exposeOnTop"><span
-																class="label label-danger label-outline">중요</span> [일반]
-															</span>
-															<!---->
-															<!---->
-															&nbsp;네이버 파트너스퀘어 종로 – 메이커스 스페이스의 공간 이용 패널을 모집합니다.
-														</p>
-														<!---->
-														<span ng-if="::notice.newYn"
-															class="label label-new label-new-xs mg-left-sm mg-right-reset"
-															aria-label="new">N</span>
-														<!---->
-													</div>
-													<div class="flex date text-number"
-														ng-bind="::notice.regDate | NcpMomentFormat: 'MM.DD.'">11.12.</div>
-												</div></a>
-										<!---->
-										</li>
-													
-									</ul>
+
+					<!-- ================================================== -->
+						<ul class="panel-list">
+						<c:choose>
+							<c:when test="${empty noticel }">
+								
+									<li>등록된 글이 없습니다.</li>
+
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="dto" items="${noticel}">
+									<a href="javascript:read(${dto.no })" style="color: #555555;">
+									<li>
+										<span>${dto.subject }</span>
+									</li>
+									
+									<li style="text-align:right">
+									<span>${dto.wdate }</span>
+									</li>
+									</a>
+									
+								</c:forEach>
+								<br>
+								<a href="${root }/notice/list" style="text-align:right"><li>더보기</li></a>
+							</c:otherwise>
+						</c:choose>
+						</ul>
+
 									<!---->
 								</div>
 								<!---->

@@ -1,5 +1,6 @@
 package spring.model.grumy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,12 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.admin.AdminDTO;
 import spring.model.mapper.AdminMapper;
+import spring.model.notice.NoticeDTO;
 
 @Controller
 public class AdminController {
@@ -30,6 +29,16 @@ public class AdminController {
 		int sReady = mapper.count(300);	//배송준비
 		int sIng = mapper.count(400);	//배송중
 		int sFin = mapper.count(500);	//배송완료
+		
+		
+		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
+		NoticeDTO noticetr = noticet.get(0);
+		
+		ArrayList<NoticeDTO> noticel = mapper.noticel(3);
+		
+		
+		request.setAttribute("noticetr", noticetr);
+		request.setAttribute("noticel", noticel);
 		request.setAttribute("wait", wait);
 		request.setAttribute("nOrder", nOrder);
 		request.setAttribute("sReady", sReady);

@@ -10,6 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" parameterType="int" resultType="AdminDTO">
 		select * from admintest where stat = #{stat}
 	</select>
+	
+	<select id="noticel" parameterType="int" resultType="NoticeDTO">
+		select no, subject, to_char(wdate, 'mm-dd') wdate from notice
+		
+		<![CDATA[
+		where rownum <= #{rownum} order by no desc
+		]]>
+	</select>
+	
 	<!-- 
 		<update id="updateStat" parameterType="Map">
 		update admintest  
