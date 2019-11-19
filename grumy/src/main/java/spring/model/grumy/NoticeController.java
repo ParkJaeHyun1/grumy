@@ -25,7 +25,8 @@ public class NoticeController {
 	
 	@PostMapping("/notice/create")
 	public String create(NoticeDTO dto) {
-		
+	
+
 		int flag = mapper.create(dto);
 		
 		if(flag == 1) {

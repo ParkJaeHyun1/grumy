@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 
@@ -11,7 +10,7 @@
 			class="xans-element- xans-board xans-board-readpackage-1002 xans-board-readpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title" style=text-align:center>
+				<div class="title"  style=text-align:center>
 					<h2>
 						<font color="#555555">NOTICE 등록</font>
 					</h2>
@@ -40,19 +39,16 @@
 							<td><span name="writer">grumy</span></td>
 						</tr>
 						<tr>
-							<td colspan="2" style="text-align: center">
-								<textarea rows="20" cols="150" name="content" id="content"></textarea>
+							<td colspan="2" style=align:center>
+								<textarea rows="20" cols="190" name="content" id="content"></textarea>
 							</td>
-						</tr>
-						<tr>
-							<th scope="row">PASSWORD</th>
-							<td><input type="password" id="passwd" name="passwd"></td>
 						</tr>
 					</tbody>
 				</table>
+				<br>
 					<p align="right">
-						<button type="submit" class="yg_btn_30 yg_btn4" id="save">저장</button>
-						<button type="button" class="yg_btn_30 yg_btn4" onclick="history.back()">취소</button>
+						<button type="submit" class="yg_btn_30 yg_btn4" id="save">OK</button>
+						<button type="button" class="yg_btn_30 yg_btn4" onclick="history.back()">CANCEL</button>
 					</p>
 			</div>
 			</form>
@@ -95,8 +91,6 @@ $(function(){
           $("#frm").submit();
       });    
 });
-
-
 function input(f){
 	if(f.subject.value==''){
 		alert("제목을 입력하세요");
@@ -106,11 +100,6 @@ function input(f){
 	if(f.content.value==''){
 		alert("내용을 입력하세요");
 		f.content.focus();
-		return false;
-	}
-	if(f.passwd.value==''){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
 		return false;
 	}
 }

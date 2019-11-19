@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.model.mapper.deliveryMapper">
+
+<select id="noread" parameterType="int" resultType="Map">
+select *
+from(
+	select
+	no,subject,
+	lag(no,1) over (order by no ) pre_no,
+	lag(subject,1) over (order by no ) pre_subject,
+	lead(no,1) over (order by no ) next_no,
+	lead(subject,1) over (order by no ) next_subject
+	from(
+    	select no,subject
+	    from delivery
+		)
+	)
+where no = #{no}
+	</select>
+	
+<select id="read" parameterType="int" resultType="DeliveryDTO">
+select no,subject,writer,content,wdate,file1
+from delivery
+where no = #{no}
+</select>
+
+
+
+
+<delete id="delete" parameterType="int">
+delete from delivery
+where no = #{no}
+</delete>
+
+<insert id="create" parameterType="DeliveryDTO">
+insert into delivery(no,subject,content,writer,wdate,passwd,file1)
+values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},#{writer},sysdate,#{passwd},#{file1})
+</insert>
+
+<select id="total" parameterType="Map" resultType="int">
+select count(*) from delivery
+	<where>
+         	<choose>
+         		<when test="col=='subject'">
+         		subject like '%'||#{word}||'%'
+         		</when>
+         		<when test="col=='content'">
+         		content like '%'||#{word}||'%'
+         		</when>
+         		<when test="col=='writer'">
+         		writer like '%'||#{word}||'%'
+         		</when>
+         	</choose>
+         </where>
+</select>
+
+<select id="list" parameterType="Map" resultType="DeliveryDTO">
+select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
+	from (
+			select no,subject,writer,wdate,rownum r
+			from (
+				select no,subject,writer,wdate
+				from delivery
+				<where>
+					<choose>
+						<when test="col == 'subject'">
+						subject like '%'||#{word}||'%'
+						</when>
+						<when test="col == 'content'">
+						content like '%'||#{word}||'%'
+						</when>
+						<when test="col == 'writer'">
+						writer like '%'||#{word}||'%'
+						</when>
+					</choose>
+				</where>
+				order by no desc
+				)
+		)
+<![CDATA[
+where r>=#{sno} and r<=#{eno}
+]]>
+</select>
+</mapper>

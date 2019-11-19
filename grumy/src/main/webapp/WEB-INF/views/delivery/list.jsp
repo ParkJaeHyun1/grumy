@@ -9,7 +9,6 @@ function read(no){
 	location.href=url;
 }
 </script>
-
 <div id="container">
 	<div id="contents">
 
@@ -17,13 +16,13 @@ function read(no){
 			class="xans-element- xans-board xans-board-listpackage-1002 xans-board-listpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title" style="text-align: center;">
+				<div class="title" style=text-align:center>
 					<h2>
-						<font color="#555555">NOTICE</font>
+						<font color="#555555">배송 문의</font>
 					</h2>
 					<br>
 					<br>
-					<!--h3>공지사항입니다.</h3-->
+
 				</div>
 				<p class="imgArea"></p>
 			</div>
@@ -49,13 +48,9 @@ function read(no){
 						class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 						<tr style="">
 							<th scope="col">NO</th>
-							<th scope="col" class="displaynone">CATEGORY</th>
 							<th scope="col">SUBJECT</th>
 							<th scope="col">WRITER</th>
 							<th scope="col" class="">DATE</th>
-							<th scope="col" class="displaynone">VIEWED</th>
-							<th scope="col" class="displaynone">RECOMMEND</th>
-							<th scope="col" class="displaynone">POINT</th>
 						</tr>
 					</thead>
 					<tbody
