@@ -21,12 +21,15 @@ public class CartController {
 	
 	@RequestMapping("/cart/list")
 	public String list(HttpServletRequest request, HttpSession session) {
-		System.out.println("컨트롤러시작함!");
+		int totalPrice=0;
 		//String userID = (String)session.getAttribute("id");
-		String userID = "tester"; 
-		ArrayList<CartDTO> list = mapper.list(userID);
-		System.out.println("하아아아아아아앙:"+list.size());
-		request.setAttribute("len",list.size());
+		String id = "tester"; 
+		ArrayList<CartDTO> list = mapper.list(id);
+		
+		for(CartDTO dto: list )
+			totalPrice += ((dto.getItemPrice()-dto.getItemSalePrice())*dto.getCount());
+		System.out.println("총가격:"+totalPrice);
+		request.setAttribute("totalPrice",totalPrice);
 		request.setAttribute("list",list);
 		return "/cart/list";
 	}

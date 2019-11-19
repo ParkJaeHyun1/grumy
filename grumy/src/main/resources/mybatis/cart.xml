@@ -4,12 +4,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spring.model.mapper.CartMapper">
-	
-<select id="list" parameterType="String" resultType="CartDTO">
-select c.no, c.userID, c.itemNo, c.count,c.itemSize,c.itemColor,i.image as itemPicture,i.title as itemTitle,i.price as itemPrice
-from cart c, item i
-where userID = #{userID} and c.itemNo = i.no
-</select>
+
+	<select id="list" parameterType="String" resultType="CartDTO">
+		select c.cartNo, c.id, c.itemOptionNo,
+		c.count,o.itemSize,o.itemColor,i.itemNo,i.image as itemPicture,i.title
+		as itemTitle,i.price as itemPrice,i.salePrice as itemSalePrice
+		from cart c, item i, itemOption o
+		where id = #{id} and c.itemOptionNo = o.itemOptionNo and o.itemNo =
+		i.itemNo
+	</select>
 
 
+	<delete id="delete" parameterType="List">
+		delete from cart
+		where cartNo in 
+		<foreach item="item" collection="list" open="("	separator="," close=")">
+			#{item.value}
+		</foreach>
+	</delete>
 </mapper>
