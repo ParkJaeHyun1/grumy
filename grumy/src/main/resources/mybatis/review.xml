@@ -19,7 +19,9 @@ VALUES((SELECT NVL(MAX(no), 0) + 1 as no FROM review),'tester1',#{itemNo},'white
 		r.content as content, r.picture as picture,i.image as itemPicture,i.title as
 		itemTitle, r.height as height, r.weight as weight, r.mysize as mysize,r.star as star,rownum rnum
 		from item i, review r
-		where r.itemNo = i.itemno)
+		
+		where r.itemNo = i.itemno
+		)
 <![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 	</select>
 

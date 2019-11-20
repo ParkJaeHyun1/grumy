@@ -268,7 +268,8 @@ span.star, span.camera, .sprite_comment {
 												</c:when>
 												<c:otherwise>
 													<img
-														src="${pageContext.request.contextPath}/images/${dto.picture}"
+														src="${pageContext.request.contextPath}/storage/${dto.picture}"
+														
 														class="js-review-image" width="90px" height="90px"
 														style="opacity: 1;">
 												</c:otherwise>
