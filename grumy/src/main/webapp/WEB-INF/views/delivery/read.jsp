@@ -3,32 +3,32 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-function read(no){
-	var url = "read";
-	url += "?no="+no;
-	
-	location.href = url;
-}
-function update(no){
-	var url = "update";
-	url += "?no="+no;
-	
-	location.href = url;
-}
-function delete1(no) {
+	function read(no) {
+		var url = "read";
+		url += "?no=" + no;
 
-	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+		location.href = url;
+	}
+	function update(no) {
+		var url = "update";
+		url += "?no=" + no;
 
-		 var url = "delete";
-	 	url += "?no="+no;
-		 
-	     location.href=url;
+		location.href = url;
+	}
+	function delete1(no) {
 
-	 }else{   //취소
+		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
-	     return false;
+			var url = "delete";
+			url += "?no=" + no;
 
-	 }
+			location.href = url;
+
+		} else { //취소
+
+			return false;
+
+		}
 
 	}
 </script>
@@ -48,8 +48,7 @@ function delete1(no) {
 					<!--h3>공지사항입니다.</h3-->
 				</div>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 			<!-- 글 내용-->
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">
@@ -67,26 +66,30 @@ function delete1(no) {
 							<td>${dto.writer }</td>
 						</tr>
 						<tr>
-							<td colspan="2" style="text-align: center">
+							<td colspan="2">
 								<ul class="etcArea">
 									<li class="displaynone">
 									<li class="" style="text-align: right"><span>DATE</span> <span
 										class="txtNum">${dto.wdate }</span></li>
 
 								</ul>
-								<div class="detail">${dto.content }</div>
-								<img width="200px" height="150px" class="img-thumbnail" 
-							src="${pageContext.request.contextPath}/storage/Chrysanthemum.jpg">
+								<div class="detail">${dto.content }</div> <img width="200px"
+								height="150px" class="img-thumbnail"
+								src="${pageContext.request.contextPath}/storage/Chrysanthemum.jpg">
 							</td>
 						</tr>
 						<tr>
-							<td><div class="ec-base-button ">
-									<span class="gleft"> <a href="list"
-										class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
+							<td colspan="2"><div class="ec-base-button ">
+									<span class="gLeft">
+									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
+									</span>
+									 <span class="gRight">
+									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 
 								</div></td>
-							<td></td>
+							
 						</tr>
 
 						<c:choose>
@@ -115,14 +118,7 @@ function delete1(no) {
 						</c:choose>
 					</tbody>
 				</table>
-				<div class="ec-base-button ">
-					<p align="right">
-						<button class="yg_btn_30 yg_btn4"
-							onclick="javascript:update(${param.no})">MODIFY</button>
-						<button class="yg_btn_30 yg_btn4" id="delete"
-							onclick="javascript:delete1(${param.no})">DELETE</button>
-					</p>
-				</div>
+
 			</div>
 
 		</div>

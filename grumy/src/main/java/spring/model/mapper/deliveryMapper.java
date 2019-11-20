@@ -11,5 +11,6 @@ public interface deliveryMapper {
 	int create(DeliveryDTO dto);
 	DeliveryDTO read(int no);
 	Map noread(int no);
+	int delete(int no);
 
 }

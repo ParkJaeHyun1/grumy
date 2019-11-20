@@ -25,7 +25,18 @@ public class DeliveryController {
 	@Autowired
 	deliveryMapper mapper;
 	
-	@RequestMapping("/delivery/read")
+	@GetMapping("/delivery/delete")
+	public String delete(int no) {
+		int flag = mapper.delete(no);
+		
+		if(flag==1) {
+			return "redirect:/delivery/list";
+		}else {
+			return null;
+		}
+	}
+	
+	@GetMapping("/delivery/read")
 		public String read(int no, Model model) {
 			DeliveryDTO dto = mapper.read(no);
 			
@@ -50,7 +61,7 @@ public class DeliveryController {
 			model.addAttribute("subjectArr",subjectArr);
 					
 			
-			return "/notice/read";
+			return "/delivery/read";
 		}
 	
 	
