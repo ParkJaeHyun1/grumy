@@ -75,7 +75,7 @@
 								</ul>
 								<div class="detail">${dto.content }</div> <img width="200px"
 								height="150px" class="img-thumbnail"
-								src="${pageContext.request.contextPath}/storage/Chrysanthemum.jpg">
+								src="${pageContext.request.contextPath}/storage/${dto.file1}">
 							</td>
 						</tr>
 						<tr>
