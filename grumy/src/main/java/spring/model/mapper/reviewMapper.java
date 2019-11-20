@@ -10,5 +10,5 @@ public interface reviewMapper {
 	reviewDTO read(int no);
 	int pcount();
 	int total(Map map);
-
+	int create(reviewDTO dto);
 }

@@ -1,5 +1,7 @@
 package spring.model.review;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class reviewDTO {
 	private int no;
 	private String id;
@@ -7,12 +9,19 @@ public class reviewDTO {
 	private String itemOption;
 	private String content;
 	private String picture;
+	private MultipartFile filenameMF ;
+	private String filesize;
 	private String itemPicture;
 	private String itemTitle;
-	private String cm;
-	private String kg;
+	private String height;
+	private String weight;
 	private String mysize;
-
+	private String star;
+	
+	public reviewDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getNo() {
 		return no;
@@ -24,26 +33,6 @@ public class reviewDTO {
 
 	public String getId() {
 		return id;
-	}
-
-	public reviewDTO() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public reviewDTO(int no, String id, int itemNo, String itemOption, String content, String picture,
-			String itemPicture, String itemTitle, String cm, String kg, String mysize) {
-		super();
-		this.no = no;
-		this.id = id;
-		this.itemNo = itemNo;
-		this.itemOption = itemOption;
-		this.content = content;
-		this.picture = picture;
-		this.itemPicture = itemPicture;
-		this.itemTitle = itemTitle;
-		this.kg = kg;
-		this.cm = cm;
-		this.mysize = mysize;
 	}
 
 	public void setId(String id) {
@@ -82,6 +71,22 @@ public class reviewDTO {
 		this.picture = picture;
 	}
 
+	public MultipartFile getFilenameMF() {
+		return filenameMF;
+	}
+
+	public void setFilenameMF(MultipartFile filenameMF) {
+		this.filenameMF = filenameMF;
+	}
+
+	public String getFilesize() {
+		return filesize;
+	}
+
+	public void setFilesize(String filesize) {
+		this.filesize = filesize;
+	}
+
 	public String getItemPicture() {
 		return itemPicture;
 	}
@@ -98,6 +103,22 @@ public class reviewDTO {
 		this.itemTitle = itemTitle;
 	}
 
+	public String getHeight() {
+		return height;
+	}
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
 	public String getMysize() {
 		return mysize;
 	}
@@ -106,19 +127,20 @@ public class reviewDTO {
 		this.mysize = mysize;
 	}
 
-	public String getKg() {
-		return kg;
+	public String getStar() {
+		return star;
 	}
 
-	public void setKg(String kg) {
-		this.kg = kg;
+	public void setStar(String star) {
+		this.star = star;
 	}
 
-	public String getCm() {
-		return cm;
+	@Override
+	public String toString() {
+		return "reviewDTO [no=" + no + ", id=" + id + ", itemNo=" + itemNo + ", itemOption=" + itemOption + ", content="
+				+ content + ", picture=" + picture + ", filenameMF=" + filenameMF + ", filesize=" + filesize
+				+ ", itemPicture=" + itemPicture + ", itemTitle=" + itemTitle + ", height=" + height + ", weight="
+				+ weight + ", mysize=" + mysize + ", star=" + star + "]";
 	}
 
-	public void setCm(String cm) {
-		this.cm = cm;
-	}
 }

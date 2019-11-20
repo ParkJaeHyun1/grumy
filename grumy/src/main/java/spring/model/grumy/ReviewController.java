@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,6 +31,33 @@ public class ReviewController {
 	
 	@Autowired
 	private reviewMapper mapper;
+	
+	@PostMapping("/review/create")
+	public String create(reviewDTO dto, HttpServletRequest request) {
+		String basePath = request.getRealPath("/storage");
+
+		int filesize = (int) dto.getFilenameMF().getSize();
+
+		if (filesize > 0) {
+			dto.setFilesize(filesize + "");
+			dto.setPicture(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
+		}
+
+		int flag = mapper.create(dto);
+		
+		if(flag == 1) {
+			return "redirect:/review/list";
+		}else {
+			return null;
+		}
+		
+		
+	}
+	@GetMapping("/review/create")
+	public String create() {
+		
+		return "/review/create";
+	}
 	
 	@RequestMapping("/review/read")
 	public String read(Locale locale, Model model, int no) {

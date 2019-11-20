@@ -5,16 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.reviewMapper">
 
+<insert id="create" parameterType="reviewDTO">
+INSERT INTO review(no, id, itemNo, itemOption,content,picture,height,weight,mysize,star) 
+VALUES((SELECT NVL(MAX(no), 0) + 1 as no FROM review),'tester1',#{itemNo},'white',#{content},#{picture, jdbcType=VARCHAR},#{height},#{weight},#{mysize},#{star})
+</insert>
+
 	<select id="list" resultType="reviewDTO">
 		select no, id, itemNo, itemOption, content, picture,itemPicture,
-		itemTitle, cm, kg, mysize
+		itemTitle, height, weight, mysize,star
 		from(
 		select r.no as no, r.id as id, r.itemNo as itemNo, r.itemOption as
 		itemOption,
 		r.content as content, r.picture as picture,i.image as itemPicture,i.title as
-		itemTitle, r.cm as cm, r.kg as kg, r.mysize as mysize,rownum rnum
+		itemTitle, r.height as height, r.weight as weight, r.mysize as mysize,r.star as star,rownum rnum
 		from item i, review r
-		where r.itemNo = i.no)
+		where r.itemNo = i.itemno)
 <![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 	</select>
 
@@ -22,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select r.no as
 		no, r.id as id, r.itemNo as itemNo, r.itemOption as itemOption,
 		r.content as content, r.picture as picture,
-		i.image as itemPicture,i.title as itemTitle, r.cm as cm, r.kg as kg, r.mysize
-		as mysize
+		i.image as itemPicture,i.title as itemTitle, r.height as height, r.weight as weight, r.mysize
+		as mysize,r.mysize as mysize
 		from item i, review r
 		where r.itemNo = r.itemNo
 	</select>

@@ -226,11 +226,11 @@ span.star, span.camera, .sprite_comment {
 													<div class="review_options">
 														<div class="review_option">
 															<div class="review_option__title">키</div>
-															<div class="review_option__content">${dto.cm }</div>
+															<div class="review_option__content">${dto.height }</div>
 														</div>
 														<div class="review_option">
 															<div class="review_option__title">몸무게</div>
-															<div class="review_option__content">${dto.kg }</div>
+															<div class="review_option__content">${dto.weight }</div>
 														</div>
 														<div class="review_option">
 															<div class="review_option__title">평소사이즈</div>
