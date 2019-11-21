@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class ItemDTO {
-	private int no; 
+	private int itemNo; 
 	private String image ;
 	private String title ; 
 	private String description ; // 리스트 content
@@ -14,19 +14,20 @@ public class ItemDTO {
 	private int salePrice ;
 	private String type; //카테고리
 	//itemOption table
-	private int optionNo;
-	private int itemNo;
+	private int itemOptionNo;
 	private ArrayList<String> colorList;
+
 	private Map<String, ArrayList<String>> sizeMap;
 	private Map<String,Integer> countMap;
-	
-	
-	
-	public ItemDTO(int no, String image, String title, String description, String content, int price, int salePrice,
-			String type, int optionNo, int itemNo, ArrayList<String> colorList, Map<String, ArrayList<String>> sizeMap,
+	public ItemDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public ItemDTO(int itemNo, String image, String title, String description, String content, int price, int salePrice,
+			String type, int itemOptionNo, ArrayList<String> colorList, Map<String, ArrayList<String>> sizeMap,
 			Map<String, Integer> countMap) {
 		super();
-		this.no = no;
+		this.itemNo = itemNo;
 		this.image = image;
 		this.title = title;
 		this.description = description;
@@ -34,20 +35,23 @@ public class ItemDTO {
 		this.price = price;
 		this.salePrice = salePrice;
 		this.type = type;
-		this.optionNo = optionNo;
-		this.itemNo = itemNo;
+		this.itemOptionNo = itemOptionNo;
 		this.colorList = colorList;
 		this.sizeMap = sizeMap;
 		this.countMap = countMap;
 	}
-	public ItemDTO() {
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "ItemDTO [itemNo=" + itemNo + ", image=" + image + ", title=" + title + ", description=" + description
+				+ ", content=" + content + ", price=" + price + ", salePrice=" + salePrice + ", type=" + type
+				+ ", itemOptionNo=" + itemOptionNo + ", colorList=" + colorList + ", sizeMap=" + sizeMap + ", countMap="
+				+ countMap + "]";
 	}
-	public int getNo() {
-		return no;
+	public int getItemNo() {
+		return itemNo;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
 	}
 	public String getImage() {
 		return image;
@@ -91,17 +95,11 @@ public class ItemDTO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getOptionNo() {
-		return optionNo;
+	public int getItemOptionNo() {
+		return itemOptionNo;
 	}
-	public void setOptionNo(int optionNo) {
-		this.optionNo = optionNo;
-	}
-	public int getItemNo() {
-		return itemNo;
-	}
-	public void setItemNo(int itemNo) {
-		this.itemNo = itemNo;
+	public void setItemOptionNo(int itemOptionNo) {
+		this.itemOptionNo = itemOptionNo;
 	}
 	public ArrayList<String> getColorList() {
 		return colorList;
@@ -118,11 +116,9 @@ public class ItemDTO {
 	public Map<String, Integer> getCountMap() {
 		return countMap;
 	}
-	public void setCountMap(Map<String,Integer> countMap) {
+	public void setCountMap(Map<String, Integer> countMap) {
 		this.countMap = countMap;
 	}
 	
-	
 
-	
 }

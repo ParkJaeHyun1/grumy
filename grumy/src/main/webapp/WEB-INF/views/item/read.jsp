@@ -419,11 +419,11 @@
 							<div class="keyImg">
 								<div class="thumbnail">
 									<a
-										href="http://slowand.com/product/image_zoom2.html?product_no=3596&cate_no=24&display_group=2"
+										href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 										alt="P0000FII"
 										onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
 										<img
-										src="https://slowand.com//web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif"
+										src="${pageContext.request.contextPath}/images/${dto.image}"
 										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage " />
 									</a>
 									<div id="zoom_wrap"></div>

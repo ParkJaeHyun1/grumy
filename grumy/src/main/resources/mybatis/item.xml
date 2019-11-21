@@ -5,33 +5,57 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.itemMapper">
 	
-<select id="list" parameterType="String" resultType="ItemDTO">
-select no, image, title, description, content, price,salePrice, type
-from item
-where type = #{type}
+<select id="list" parameterType="Map" resultType="ItemDTO">
+		select itemNo, image, title, description, content, price,salePrice, type
+		from(
+		select itemNo, image, title, description, content, price,salePrice, type, rownum rnum
+		from item
+		where type = #{type})
+<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 </select>
 
 <select id="read" parameterType="int" resultType="ItemDTO">
-		select no, image, title, description, content, price,salePrice, type
+		select itemNo, image, title, description, content, price,salePrice, type
 		from item
-		where no = #{no}                                           
+		where itemNo = #{itemNo}                                           
 </select>
 
 <select id="color" parameterType="Map" resultType="String">
 		select distinct(itemColor)
 		from item i, itemOption o
-		where i.no = o.itemNo and i.no =#{no}
+		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo}
 </select>
 
 <select id="size" parameterType="Map" resultType="String">
 		select itemSize
 		from item i, itemOption o
-		where i.no = o.itemNo and i.no =#{no} and o.itemColor = #{color}
+		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo} and o.itemColor = #{color}
 </select>
 
 <select id="count" parameterType="Map" resultType="int">
 		select o.count
 		from item i, itemOption o
-		where i.no = o.itemNo and i.no =#{no} and o.itemColor = #{color} and o.itemSize = #{itemSize}
+		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
 </select>
+
+<select id="total" parameterType="Map" resultType="int">
+		select count(*) from item
+		<where>
+		type = #{type} 
+			<choose>
+				<when test="col=='content'">
+					and content like '%'||#{word}||'%'
+				</when>
+				<when test="col=='title'">
+					and title like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					and id like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	
+
 </mapper>

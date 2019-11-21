@@ -37,7 +37,7 @@
     -->
 			<div class="title">
 				<h2>
-					<span>${type}</span><BR></BR>
+					<span>${title}</span><BR></BR>
 				</h2>
 				<%-- 				<c:forEach var="dto" items="${list}"> --%>
 				<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
@@ -53,7 +53,7 @@
 					<li id="anchorBoxId_2065" class="xans-record-">
 						<div class="thumbnail">
 							<a
-								href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
+								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								name="anchorBoxName_2065"><img
 								src="${pageContext.request.contextPath}/images/${dto.image}"
 								id="eListPrdImage2065_4"
@@ -62,7 +62,7 @@
 						<div class="description">
 							<strong class="name">
 							<a
-								href="${pageContext.request.contextPath}/item/read?no=${dto.no}"
+								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
 
@@ -133,6 +133,8 @@
 							}
 						});
 	</script>
+	
+	${paging }
 </body>
 </html>
 

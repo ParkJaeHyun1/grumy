@@ -8,10 +8,12 @@ import spring.model.item.ItemDTO;
 
 
 public interface itemMapper {
-	ArrayList<ItemDTO> list(String type);
+	ArrayList<ItemDTO> list(Map<String, String> map);
 
 	ItemDTO read(int no);
 	ArrayList<String> color(Map<String, String> map);
 	ArrayList<String> size(Map<String, String> map);
 	int count(Map<String, String> map);
+	int total(Map map);
+
 }
