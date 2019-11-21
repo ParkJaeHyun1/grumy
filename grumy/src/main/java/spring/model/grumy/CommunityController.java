@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.community.communityDTO;
+import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.communityMapper;
 import spring.model.utility.Utility;
 
@@ -20,6 +23,36 @@ public class CommunityController {
 	
 	@Autowired
 	private communityMapper mapper;
+	
+	@PostMapping("/community/create")
+	public String create(communityDTO dto,HttpServletRequest request) {
+		
+		String basePath = request.getRealPath("/storage");
+		
+		int filesize = (int)dto.getFilenameMF().getSize();
+		
+		if (filesize > 0) {
+			dto.setFilesize(filesize+"");
+			dto.setPicture(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
+			
+		}
+		
+		
+		int flag = mapper.create(dto);
+		
+		if (flag == 1) {
+			return "redirect:list";
+		}
+		else {
+			return "error";
+		}
+	}
+	
+	@GetMapping("/community/create")
+	public String create() {
+		
+		return "/community/create";
+	}
 	
 @RequestMapping("/community/list")
 	public String list(HttpServletRequest request,communityDTO dto) {

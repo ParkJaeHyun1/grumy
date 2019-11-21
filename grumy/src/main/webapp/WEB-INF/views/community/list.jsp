@@ -17,21 +17,17 @@
 			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
 			<div
 				class="xans-element- xans-board xans-board-title-4 xans-board-title xans-board-4 ">
-				<div class="title">
+				<div class="title" style="text-align: center">
 					<h2>
 						<font color="333333">상품 문의</font>
 					</h2>
 				</div>
-				<p class="imgArea"></p>
+
 			</div>
 
-			<div class="boardSort crema-hide">
-				<span
-					class="xans-element- xans-board xans-board-replysort-4 xans-board-replysort xans-board-4 "></span>
-			</div>
+
 			<div class="ec-base-table typeList gBorder crema-hide">
 				<table border="1" summary="">
-
 					<thead
 						class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
 						<tr style="">
@@ -40,17 +36,10 @@
 							<th scope="col">SUBJECT</th>
 							<th scope="col">WRITER</th>
 							<th scope="col" class="">DATE</th>
-
-						</tr>
+</tr>
 					</thead>
 					<tbody
 						class="xans-element- xans-board xans-board-notice-4 xans-board-notice xans-board-4 center">
-						<!--
-                $count = 
-                $product_name_cut = 20
-                $login_page_url = /member/login.html
-                $deny_access_url = /index.html
-            -->
 						<tr style="background-color: #FFFFFF; color: #555555;"
 							class="xans-record-">
 							<td></td>

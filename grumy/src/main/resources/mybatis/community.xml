@@ -6,7 +6,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.communityMapper">
 
 	<select id="list" parameterType="Map" resultType="communityDTO">
-		select * from community
+		select no,id,wdate,itemNo,itemPicture,itemTitle
+		from (select c.no as no,c.id as id,c.wdate as wdate,c.itemNo as itemNo,
+		i.image as itemPicture,i.title as itemTitle
+		from item i, community c
+		
 
-	</select>
+where c.itemNo = i.itemno)
+</select>
+
+<insert id="create" parameterType="communityDTO">
+INSERT INTO community(no, id, content,itemNo,picture,filesize,passwd,wdate)
+ VALUES((SELECT NVL(MAX(no), 0) + 1 as no FROM community),
+#{id},#{content},#{itemNo},#{picture, jdbcType=VARCHAR},#{filesize, jdbcType=VARCHAR},
+#{passwd},sysdate)
+
+</insert>
 </mapper>
