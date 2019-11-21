@@ -12,11 +12,13 @@ public class CartDTO {
 	private int itemPrice;
 	private String itemSize;
 	private String itemColor;
+	private int itemCount;
 	
-	
-	
+	public CartDTO() {
+		super();
+	}
 	public CartDTO(int cartNo, String id, int itemOptionNo, int itemNo, int count, String itemPicture,
-			int itemSalePrice, String itemTitle, int itemPrice, String itemSize, String itemColor) {
+			int itemSalePrice, String itemTitle, int itemPrice, String itemSize, String itemColor, int itemCount) {
 		super();
 		this.cartNo = cartNo;
 		this.id = id;
@@ -29,9 +31,7 @@ public class CartDTO {
 		this.itemPrice = itemPrice;
 		this.itemSize = itemSize;
 		this.itemColor = itemColor;
-	}
-	public CartDTO() {
-		// TODO Auto-generated constructor stub
+		this.itemCount = itemCount;
 	}
 	public int getCartNo() {
 		return cartNo;
@@ -99,6 +99,15 @@ public class CartDTO {
 	public void setItemColor(String itemColor) {
 		this.itemColor = itemColor;
 	}
+	public int getItemCount() {
+		return itemCount;
+	}
+	public void setItemCount(int itemCount) {
+		this.itemCount = itemCount;
+	}
+	
+	
+	
 	
 
 }

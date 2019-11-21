@@ -30,14 +30,51 @@ var deliveryPrice;
 var deliveryPriceStr;
 var list={};
 <c:forEach items="${list}" var="item">
-list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count}};
+list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count},itemCount:${item.itemCount}};
 </c:forEach>
 
-var list2={a:1,b:2,c:{c1:11,c2:22,c3:33}};
-
+function itemCountUp(cartNo){
+	updateItemCount(cartNo,list['cartNo'+cartNo].count+1);
+}
+function itemCountDown(cartNo){
+	updateItemCount(cartNo,list['cartNo'+cartNo].count-1);
+}
+function itemCountModify(cartNo,cnt){
+	updateItemCount(cartNo,cnt);
+}
+function updateItemCount(cartNo,cnt){
+	if(!$.isNumeric(cnt) || cnt<1){
+		alert('수량은 1 이상이어야 합니다');
+		$('#cart_item_count_'+cartNo).val(list['cartNo'+cartNo].count);
+		return false;
+	}else if(cnt>list['cartNo'+cartNo].itemCount){
+		alert('최대 주문수량은 '+ list['cartNo'+cartNo].itemCount +'개 입니다.');
+		$('#cart_item_count_'+cartNo).val(list['cartNo'+cartNo].count);
+		return false;
+	}
+	updateItemCountAjax(cartNo,cnt);
+	return true;
+}
+function updateItemCountAjax(cartNo,cnt){
+	alert('asd111f');
+	$.ajax({
+		type : 'update',
+		url : "./update",
+		data : {cartNo:cartNo,count:cnt},
+		contentType : "application/json; charset=utf-8",
+		success : function(result, status, xhr) {
+			alert('성공');
+			list['cartNo'+cartNo].count = cnt;
+			setView();
+		},
+		error : function(xhr, status, er) {
+			alert('에러:'+status);
+		}
+	});
+}
 function deleteCartAjax(cartNoList){
 	$.ajax({
-		type : 'delete',
+		type : 'put',
 		url : "./delete",
 		data : JSON.stringify(cartNoList),
 		contentType : "application/json; charset=utf-8",
@@ -55,15 +92,25 @@ function deleteCartAjax(cartNoList){
 	});
 }
 function deleteCartAll(){
-	var cartNoList = [cartNo];
+	if(!confirm("장바구니를 비우시겠습니까?"))
+		return;
+	
+	var cartNoList = new Array();
+	$.each(list, function(index, item){
+		cartNoList.push(item.cartNo);
+	});
 	deleteCartAjax(cartNoList);
 }
 function deleteCart(cartNo){
+	if(!confirm("선택하신 상품을 삭제하시겠습니까??"))
+		return;
 	var cartNoList = [cartNo];
 	deleteCartAjax(cartNoList);
 }
 
 function deleteCartList(){
+	if(!confirm("선택하신 상품을 삭제하시겠습니까??"))
+		return;
 	var cartNoList = new Array();
 	$.each(list, function(index, item){
 		if($('#cart_checkBox_'+item.cartNo).is(":checked"))
@@ -78,10 +125,10 @@ function deleteCartList(){
 function setView(){
 	purchasePrice = 0;
 	$.each(list, function(index, item){
-		$('#cart_item_count_'+item.cartNo).value = item.count;
+		$('#cart_item_count_'+item.cartNo).val(item.count);
 		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
-		$('#cart_item_total_price_2'+item.cartNo).html((item.itemPrice*item.count)+'원');
+		$('#cart_item_total_price_'+item.cartNo).html((item.itemPrice*item.count)+'원');
 		purchasePrice = purchasePrice + (item.itemPrice*item.count);
 	});
 
@@ -109,10 +156,10 @@ function setView(){
 <body id="cmn">
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>
-		</p>
+			<a href="#category">전체상품목록 바로가기</a>     
+		</p>   
 		<p>
-			<a href="#contents">본문 바로가기</a>                        
+			<a href="#contents">본문 바로가기</a>                              
 		</p>
 	</div>
 
@@ -137,7 +184,7 @@ function setView(){
 						</div>
 
 						<!-- 일반상품 (기본배송) -->
-						<table border="1" summary=""
+						<table border="1" summary=""      
 							class="xans-element- xans-order xans-order-normnormal xans-record-">
 							<caption>기본배송</caption>
 							<colgroup>
@@ -283,17 +330,17 @@ function setView(){
 
 											</div></td>
 										<td>
-										<span class=""> <span class="ec-base-qty"><input
-													id="cart_item_count_${dto.cartNo}" name="quantity_name_0" size="2"
+										<span class=""> <span class="ec-base-qty">
+										<input	id="cart_item_count_${dto.cartNo}" name="cart_item_count_${dto.cartNo}" size="2"
 													value="${dto.count}" type="text" /><a href="javascript:;"
-													onclick="Basket.addQuantityShortcut('quantity_id_0', 0);"><img
+													onclick="itemCountUp(${dto.cartNo});"><img
 														src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
 														alt="수량증가" class="up" /></a><a href="javascript:;"
-													onclick="Basket.outQuantityShortcut('quantity_id_0', 0);"><img
+													onclick="itemCountDown(${dto.cartNo});"><img
 														src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
 														alt="수량감소" class="down" /></a></span> <a href="javascript:;"
-												class="yg_btn_24 yg_btn3" onclick="Basket.modifyQuantity()"
-												alt="변경">변경</a>
+												class="yg_btn_24 yg_btn3" onclick="itemCountModify(${dto.cartNo},cart_item_count_${dto.cartNo}.value);"
+												alt="변경">변경</a>                    
 										</span> <span class="displaynone">2</span>
 										</td>
 										<td>
