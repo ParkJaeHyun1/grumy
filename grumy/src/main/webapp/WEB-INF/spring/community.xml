@@ -23,4 +23,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/create.jsp" />
 	</definition>
+	
+	<definition name="/community/read" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/community/read.jsp" />
+	</definition>
 	</tiles-definitions>

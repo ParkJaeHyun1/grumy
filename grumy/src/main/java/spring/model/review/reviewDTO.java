@@ -3,32 +3,52 @@ package spring.model.review;
 import org.springframework.web.multipart.MultipartFile;
 
 public class reviewDTO {
-	private int no;
+	private int reviewNo;
 	private String id;
-	private int itemNo;
-	private String itemOption;
 	private String content;
 	private String picture;
 	private MultipartFile filenameMF ;
-	private String filesize;
 	private String itemPicture;
 	private String itemTitle;
 	private String height;
 	private String weight;
-	private String mysize;
+	private String mySize;
 	private String star;
+	private String itemColor;
+	private String itemSize;
+	private int itemNo;
 	
 	public reviewDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getNo() {
-		return no;
+	public reviewDTO(int reviewNo, String id, String content, String picture, MultipartFile filenameMF,
+			String itemPicture, String itemTitle, String height, String weight, String mySize, String star,
+			String itemColor, String itemSize, int itemNo) {
+		super();
+		this.reviewNo = reviewNo;
+		this.id = id;
+		this.content = content;
+		this.picture = picture;
+		this.filenameMF = filenameMF;
+		this.itemPicture = itemPicture;
+		this.itemTitle = itemTitle;
+		this.height = height;
+		this.weight = weight;
+		this.mySize = mySize;
+		this.star = star;
+		this.itemColor = itemColor;
+		this.itemSize = itemSize;
+		this.itemNo = itemNo;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public int getReviewNo() {
+		return reviewNo;
+	}
+
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
 	}
 
 	public String getId() {
@@ -37,22 +57,6 @@ public class reviewDTO {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public int getItemNo() {
-		return itemNo;
-	}
-
-	public void setItemNo(int itemNo) {
-		this.itemNo = itemNo;
-	}
-
-	public String getItemOption() {
-		return itemOption;
-	}
-
-	public void setItemOption(String itemOption) {
-		this.itemOption = itemOption;
 	}
 
 	public String getContent() {
@@ -77,14 +81,6 @@ public class reviewDTO {
 
 	public void setFilenameMF(MultipartFile filenameMF) {
 		this.filenameMF = filenameMF;
-	}
-
-	public String getFilesize() {
-		return filesize;
-	}
-
-	public void setFilesize(String filesize) {
-		this.filesize = filesize;
 	}
 
 	public String getItemPicture() {
@@ -119,12 +115,12 @@ public class reviewDTO {
 		this.weight = weight;
 	}
 
-	public String getMysize() {
-		return mysize;
+	public String getMySize() {
+		return mySize;
 	}
 
-	public void setMysize(String mysize) {
-		this.mysize = mysize;
+	public void setMySize(String mySize) {
+		this.mySize = mySize;
 	}
 
 	public String getStar() {
@@ -135,12 +131,29 @@ public class reviewDTO {
 		this.star = star;
 	}
 
-	@Override
-	public String toString() {
-		return "reviewDTO [no=" + no + ", id=" + id + ", itemNo=" + itemNo + ", itemOption=" + itemOption + ", content="
-				+ content + ", picture=" + picture + ", filenameMF=" + filenameMF + ", filesize=" + filesize
-				+ ", itemPicture=" + itemPicture + ", itemTitle=" + itemTitle + ", height=" + height + ", weight="
-				+ weight + ", mysize=" + mysize + ", star=" + star + "]";
+	public String getItemColor() {
+		return itemColor;
 	}
 
+	public void setItemColor(String itemColor) {
+		this.itemColor = itemColor;
+	}
+
+	public String getItemSize() {
+		return itemSize;
+	}
+
+	public void setItemSize(String itemSize) {
+		this.itemSize = itemSize;
+	}
+
+	public int getItemNo() {
+		return itemNo;
+	}
+
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
+	}
+	
+	
 }

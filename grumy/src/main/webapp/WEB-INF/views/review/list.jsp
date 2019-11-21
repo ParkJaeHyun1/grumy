@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div id="container">
 	<div id="contents">
 		<div
@@ -11,10 +12,10 @@
 						<font color="#555555">REVIEW</font>
 					</h1>
 				</div>
-<!-- 				<p class="imgArea"> -->
-<!-- 					<img style="display: block; margin: 0px auto;" -->
-<!-- 						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg"> -->
-<!-- 				</p> -->
+				<!-- 				<p class="imgArea"> -->
+				<!-- 					<img style="display: block; margin: 0px auto;" -->
+				<!-- 						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg"> -->
+				<!-- 				</p> -->
 			</div>
 			<div class="crema-reviews crema-applied">
 				<html
@@ -63,6 +64,13 @@ span.star, span.camera, .sprite_comment {
 				this.style.height = "";
 			}
 		}
+	}
+
+	function read(no) {
+		var url = "read";
+		url += "?itemNo=" + no;
+
+		location.href = "../item/" + url;
 	}
 </script>
 </head>
@@ -118,22 +126,22 @@ span.star, span.camera, .sprite_comment {
 						data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
 						style="transform: translate3d(0px, 0px, 0px);">
 						<c:forEach var="dto" items="${list}">
-						<c:choose>
-												<c:when test="${empty dto.picture}">
-												</c:when>
-												<c:otherwise>
-							<li id="review_${dto.no}"
-								class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-								style="width: 63px; margin-right: 5px;"><a
-								data-url="${pageContext.request.contextPath}/review/create"
-								class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
-									<img
-									src="${pageContext.request.contextPath}/images/${dto.picture}"
-									alt="" width="63" height="63">
-							</a></li>
-							</c:otherwise>
+							<c:choose>
+								<c:when test="${empty dto.picture}">
+								</c:when>
+								<c:otherwise>
+									<li id="review_${dto.reviewNo}"
+										class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
+										style="width: 63px; margin-right: 5px;"><a
+										data-url="${pageContext.request.contextPath}/review/create"
+										class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
+											<img
+											src="${pageContext.request.contextPath}/images/${dto.picture}"
+											alt="" width="63" height="63">
+									</a></li>
+								</c:otherwise>
 
-											</c:choose>
+							</c:choose>
 						</c:forEach>
 
 					</ul>
@@ -178,16 +186,13 @@ span.star, span.camera, .sprite_comment {
 						<ul class="reviews_index__reviews reviews">
 
 							<c:forEach var="dto" items="${list}">
-								<li id="review_${dto.no}"
+								<li id="review_${dto.reviewNo}"
 									class="review reviews_index_list_review "><a
 									class="reviews_index_list_review__product_image  js-link-iframe"
-									data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
-										<img
+									href="javascript:read(${dto.reviewNo})"> <!-- 여기야 --> <img
 										src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
 										style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
-										,="" class=""
-										alt="[sale/당일발송] #SLOWMADE. 탄탄핏 피그먼트 워싱맨투맨 - 6 color"
-										width="90" height="90">
+										class="" width="90" height="90">
 								</a>
 									<div class="reviews_index_list_review__lcontents">
 										<div class="reviews_index_list_review__score">
@@ -197,9 +202,10 @@ span.star, span.camera, .sprite_comment {
 														class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
 														title="3일 이내 작성된 후기입니다">NEW</span>
 												</div>
+												<!-- 여기야 -->
 												<a
 													class="reviews_index_list_review__title_text js-link-iframe"
-													data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2949">
+													href="javascript:read(${dto.reviewNo})">
 													${dto.itemTitle} </a>
 											</div>
 										</div>
@@ -234,15 +240,23 @@ span.star, span.camera, .sprite_comment {
 														</div>
 														<div class="review_option">
 															<div class="review_option__title">평소사이즈</div>
-															<div class="review_option__content">${dto.mysize }</div>
+															<div class="review_option__content">${dto.mySize }</div>
 														</div>
 														<div class="review_option">
 															<div class="review_option__title">선택한 옵션</div>
 															<div class="review_option__content">
-																<span class="review_option__product_option"> <span
-																	class="review_option__product_option_key">COLOR:</span>
-																	<span class="review_option__product_option_value">${dto.itemOption}</span>
-																</span>
+																<c:if test="${not empty dto.itemColor}">
+																	<span class="review_option__product_option"> <span
+																		class="review_option__product_option_key">COLOR:</span>
+																		<span class="review_option__product_option_value">${dto.itemColor}</span>
+																	</span>
+																</c:if>
+																<c:if test="${not empty dto.itemSize}">
+																	<span class="review_option__product_option"> <span
+																		class="review_option__product_option_key">SIZE:</span>
+																		<span class="review_option__product_option_value">${dto.itemSize}</span>
+																	</span>
+																</c:if>
 															</div>
 														</div>
 													</div>
@@ -262,14 +276,13 @@ span.star, span.camera, .sprite_comment {
 									<div class="reviews_index_list_review__rcontents">
 										<div class="reviews_index_list_review__info_container">
 											<span class="reviews_index_list_review__name">${dto.id}</span>
-											
+
 											<c:choose>
 												<c:when test="${empty dto.picture}">
 												</c:when>
 												<c:otherwise>
 													<img
 														src="${pageContext.request.contextPath}/storage/${dto.picture}"
-														
 														class="js-review-image" width="90px" height="90px"
 														style="opacity: 1;">
 												</c:otherwise>
@@ -284,7 +297,7 @@ span.star, span.camera, .sprite_comment {
 				<!-- 				푸터 -->
 			</div>
 		</div>
-				
+
 		<div class="tui-tooltip" style="display: none;">
 			<div class="arrow"></div>
 			<span class="text"></span>
@@ -321,7 +334,7 @@ span.star, span.camera, .sprite_comment {
 </body>
 				</html>
 			</div>
-	
+
 		</div>
 		${paging }
 	</div>

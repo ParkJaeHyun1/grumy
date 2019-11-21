@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
@@ -38,16 +39,14 @@ function delete1(no) {
 			class="xans-element- xans-board xans-board-readpackage-1002 xans-board-readpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title" style=text-align:center>
+				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">NOTICE</font>
+						<font color="#555555">COMMUNITY</font>
 					</h2>
-					
-					<!--h3>공지사항입니다.</h3-->
 				</div>
 			</div>
-			<br><br>
-			<!-- 글 내용-->
+			<br>
+			<br>
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">
 					<colgroup>
@@ -57,11 +56,11 @@ function delete1(no) {
 					<tbody>
 						<tr>
 							<th scope="row">SUBJECT</th>
-							<td>${dto.subject}</td>
+							<td>문의합니다 ♡</td>
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
-							<td>${dto.writer }</td>
+							<td>${dto.id }</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
@@ -69,52 +68,22 @@ function delete1(no) {
 									<li class="displaynone">
 									<li class="" style="text-align: right"><span>DATE</span> <span
 										class="txtNum">${dto.wdate }</span></li>
-
 								</ul>
 								<div class="detail">${dto.content }</div>
 							</td>
 						</tr>
-						<tr>
-							<td><div class="ec-base-button ">
-									<span class="gleft"> <a href="list"
-										class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
-									</span>
-								</div></td>
-							<td></td>
-						</tr>
-						
-							<c:choose>
-								<c:when test="${empty noArr[0] }">
-								<tr>
-									<td>NEXT</td>
-									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-								</tr>
-								</c:when>
-								<c:when test="${empty noArr[1] }">
-								<tr>
-									<td>PREV</td>
-									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-								</tr>
-								</c:when>
-								<c:otherwise>
-								<tr>
-									<td>PREV</td>
-									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-								</tr>
-								<tr>
-									<td>NEXT</td>
-									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-								</tr>
-								</c:otherwise>
-							</c:choose>
-						</tbody>
+
+					</tbody>
 				</table>
 				<div class="ec-base-button ">
-									<p  align="right">
-									<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.no})">MODIFY</button>
-									<button class="yg_btn_30 yg_btn4" id="delete" onclick="javascript:delete1(${param.no})">DELETE</button>
-									</p>
-								</div>
+					<p align="right">
+						<button class="yg_btn_30 yg_btn4" onclick="location.href='list'">LIST</button>
+						<button class="yg_btn_30 yg_btn4"
+							onclick="javascript:update(${param.no})">MODIFY</button>
+						<button class="yg_btn_30 yg_btn4" id="delete"
+							onclick="javascript:delete1(${param.no})">DELETE</button>
+					</p>
+				</div>
 			</div>
 
 		</div>

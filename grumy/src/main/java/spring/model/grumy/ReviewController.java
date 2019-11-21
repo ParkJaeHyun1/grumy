@@ -39,7 +39,6 @@ public class ReviewController {
 		int filesize = (int) dto.getFilenameMF().getSize();
 
 		if (filesize > 0) {
-			dto.setFilesize(filesize + "");
 			dto.setPicture(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
 		}
 

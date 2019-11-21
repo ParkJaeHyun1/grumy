@@ -5,14 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
-	<select id="list" parameterType="Map" resultType="communityDTO">
-		select no,id,wdate,itemNo,itemPicture,itemTitle
-		from (select c.no as no,c.id as id,c.wdate as wdate,c.itemNo as itemNo,
-		i.image as itemPicture,i.title as itemTitle
-		from item i, community c
-		
+<select id="read" parameterType="int" resultType="communityDTO">
+select no,content,id,wdate,picture
+from community
+where no = #{no}
+</select>
 
-where c.itemNo = i.itemno)
+	<select id="list" parameterType="Map" resultType="communityDTO">
+		select no,id,wdate,itemNo,itemPicture,itemTitle, passwd
+		from (select c.no as no,c.id as id,c.wdate as wdate,c.itemNo as itemNo,
+		i.image as itemPicture,i.title as itemTitle, c.passwd as passwd
+		from item i, community c
+		where c.itemNo = i.itemno)
 </select>
 
 <insert id="create" parameterType="communityDTO">

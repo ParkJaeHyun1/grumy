@@ -21,7 +21,7 @@
 			</div>
 			<form id="boardWriteForm" name="frm" action="create" method="post"
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="tester_yke">
+				<input type="hidden" name="id" value="유경은">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -29,29 +29,25 @@
 							<col style="width: auto;">
 						</colgroup>
 						<tbody>
-							<tr>
-								<th scope="row">SUBJECT</th>
-								<td><select id="subject" name="subject">
-										<option value="문의합니다  ♡">문의합니다 ♡</option>
-								</select></td>
-							</tr>
+							
 							<tr>
 							<th scope="row">상품번호</th>
 							
 							<td><input type="text" id="itemNo" name="itemNo" value=""></td>
 						</tr>
-						<th scope="row">아이디</th>
-							
-							<td><input type="text" id="id" name="id" value="tester"></td>
-						</tr>
-							<tr>
-								<td colspan="2"><textarea rows="20" cols="190"
-										name="content" id="content">이곳은 상품문의를 위한 게시판입니다!<br><br> 
+						<tr>
+						<td colspan="2">
+						<p>이곳은 상품문의를 위한 게시판입니다!<br><br> 
 										주문건취소/주소지변경/상품변경<br>당일발송 상품 단독 구매 후 출고요청 <br>
 										부분배송비 입금후 가능한 상품 당일 출고요청/합배송요청에 대한 내용은 꼭 !<br> 
 										'배송 전 변경/취소' 게시판 또는 고객센터(070-7705-5595)로 당일 12시 이전 요청 해주세요!<br>
 										각 게시판에 맞는 문의 부탁드리겠습니다 좋은하루되세요 감사합니다 :-)<br><br>
-										----------------------------------------------------------------------<br>
+										----------------------------------------------------------------------<br></p>
+						</td>
+						</tr>
+							<tr>
+								<td colspan="2"><textarea rows="20" cols="190"
+										name="content" id="content">
 										</textarea></td>
 							</tr>
 						</tbody>

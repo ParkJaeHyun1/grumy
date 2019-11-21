@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -128,4 +132,31 @@ public class Utility {
 
 		return str;
 	}
+	
+	public static List<String> getDay(){
+		List<String> list = new ArrayList<String>();
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		for(int i=0;i<3;i++) {
+		list.add(sd.format(cal.getTime())); //오늘날짜 YYYY~형태로 가져옴
+		cal.add(Calendar.DATE, -1);
+		}
+		
+		return list;
+		
+	}
+	
+	public static boolean compareDay(String wdate) {
+		boolean flag = false;
+		List<String> list = getDay();
+		if(wdate.equals(list.get(0))
+				|| wdate.equals(list.get(1))
+				|| wdate.equals(list.get(2))) {
+			flag = true;
+		}
+		
+		
+		return flag;
+	}
+
 }

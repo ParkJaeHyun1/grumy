@@ -1,5 +1,6 @@
 package spring.model.grumy;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.community.communityDTO;
-import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.communityMapper;
 import spring.model.utility.Utility;
 
@@ -23,6 +24,24 @@ public class CommunityController {
 	
 	@Autowired
 	private communityMapper mapper;
+	
+	@GetMapping("/community/read")
+	public String read(int no, Model model) {
+		communityDTO dto = mapper.read(no);
+		
+		String content = dto.getContent().replaceAll("\r\n", "<br>");
+		
+		dto.setContent(content);
+		
+		
+		
+		
+		model.addAttribute("dto",dto);
+				
+		
+		return "/community/read";
+	}
+
 	
 	@PostMapping("/community/create")
 	public String create(communityDTO dto,HttpServletRequest request) {

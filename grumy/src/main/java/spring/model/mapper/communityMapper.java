@@ -6,7 +6,9 @@ import java.util.Map;
 import spring.model.community.communityDTO;
 
 
+
 public interface communityMapper {
 	ArrayList<communityDTO> list(Map map);
 	int create(communityDTO dto);
+	communityDTO read(int no);
 }

@@ -9,7 +9,7 @@
 <description>EL에서 함수실행</description> 
 
 <tlib-version>1.0</tlib-version> 
-
+<short-name>ELfunctions</short-name>
 <uri>/ELFunctions</uri> 
 
 <function>
@@ -18,7 +18,7 @@
 	<name>newImg</name>
 	
 	<function-class>
-		spring.utility.board.Utility
+		spring.model.utility.Utility
 	</function-class>
 	
 	<function-signature>
