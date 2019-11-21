@@ -560,7 +560,7 @@
 													class="xans-element- xans-product xans-product-option xans-record-">
 													<th scope="row">COLOR</th>
 													<td>
-													<ul option_product_no="3596"
+														<ul option_product_no="3596"
 															option_select_element="ec-option-select-finder"
 															option_sort_no="1" option_type="T" item_listing_type="S"
 															option_title="COLOR" product_type="product_option"
@@ -568,22 +568,22 @@
 															option_style="button" ec-dev-id="product_option_id1"
 															ec-dev-name="option1" ec-dev-class="ProductOption0"
 															class="ec-product-button" required="true">
-															
+
 															<c:forEach var="color" items="${dto.colorList}">
-																<li class="" option_value="컬러" link_image="" title="아이보리">
-																<a href="">
-																<span>${color}</span></a>
+																<li class="" option_value="컬러" link_image=""
+																	title="아이보리"><a href=""> <span>${color}</span></a>
 																</li>
-															</c:forEach>															
+															</c:forEach>
 														</ul>
-														
-														
-														
+
+
+
 														<p class="value">
 															[필수] <span
 																class="ec-shop-front-product-option-desc-trigger"
 																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
-														</p></td>
+														</p>
+													</td>
 												</tr>
 												<tr class="displaynone" id="">
 													<td colspan="2" class="selectButton"><a href="#none"
@@ -591,6 +591,43 @@
 															src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_manual_select.gif"
 															alt="옵션 선택" /></a></td>
 												</tr>
+
+												<tr
+													class="xans-element- xans-product xans-product-option xans-record-">
+													<th scope="row">SIZE</th>
+													<td><ul option_product_no="3607"
+															option_select_element="ec-option-select-finder"
+															option_sort_no="2" option_type="T" item_listing_type="S"
+															option_title="SIZE" product_type="product_option"
+															product_option_area="product_option_3607_0"
+															option_style="button" ec-dev-id="product_option_id2"
+															ec-dev-name="option2" ec-dev-class="ProductOption0"
+															class="ec-product-button" required="true">
+															<li class="ec-product-able" option_value="S"
+																link_image="" title="S"><a href="#none"><span>S</span></a></li>
+															<li class="ec-product-disabled" option_value="M"
+																link_image="" title="M"><a href="#none"><span>M</span></a></li>
+															<li class="ec-product-disabled" option_value="L"
+																link_image="" title="L"><a href="#none"><span>L</span></a></li>
+														</ul>
+														<p class="value">
+															[필수] <span
+																class="ec-shop-front-product-option-desc-trigger"
+																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
+														</p> <select
+														product_option_area_select="product_option_3607_0"
+														id="product_option_id2" name="option2" option_title="SIZE"
+														option_type="T" item_listing_type="S"
+														class="ProductOption0" style="display: none;"
+														required="true"><option value="*">empty</option>
+															<option value="S">S</option>
+															<option value="M">M</option>
+															<option value="L">L</option></select></td>
+												</tr>
+
+
+
+
 												<!-- //참고 -->
 											</tbody>
 										</table>

@@ -71,7 +71,7 @@ public class ItemController {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
 
-		int recordPerPage = 1; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 40; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;

@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="color" parameterType="Map" resultType="String">
 		select distinct(itemColor)
 		from item i, itemOption o
-		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo}
+		where i.itemNo = o.itemNo and i.itemNo =#{itemNo}
 </select>
 
 <select id="size" parameterType="Map" resultType="String">
