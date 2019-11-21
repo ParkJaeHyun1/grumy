@@ -20,7 +20,6 @@ public class CartRestController {
 	private CartMapper mapper;
 	@DeleteMapping("/cart/delete")
 	public ResponseEntity<String> remove(@RequestBody ArrayList<Integer> cartNoList) {
-		System.out.println("출력:"+cartNoList);
 
 		return mapper.delete(cartNoList) > 0
 				? new ResponseEntity<String>("success", HttpStatus.OK)

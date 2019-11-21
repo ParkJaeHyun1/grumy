@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
@@ -24,22 +25,85 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=rY7LDQIxDEQLWK7UYfGR6AMqCIlJDIkdxQ5ou2dZOoBcRhqN5ulBkoKAfuqKTcEx4353OkDt10x-SlYyaMApoFJk0AfxEbwqFAk9I2Q3SzeobanezuiRbbPsWxgDLj0baZJ6SVQrcRwJ98LP5U_C1f_OnR3HO634hC5gG6roDKO0eYjeTcT-0XO1KhCrudhceVGIaOu0--aH_AY&type=css&k=4fc1b7e0a4b924b7880ecdc4f7582ec0e2727268&t=1566806466" />
 <script>
+var purchasePrice;
+var deliveryPrice;
+var deliveryPriceStr;
+var list={};
+<c:forEach items="${list}" var="item">
+list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count}};
+</c:forEach>
 
-function deleteCart(cartNo){
-	var cartNoList = [1,2];
+var list2={a:1,b:2,c:{c1:11,c2:22,c3:33}};
+
+function deleteCartAjax(cartNoList){
 	$.ajax({
 		type : 'delete',
 		url : "./delete",
-		data : cartNoList,
-		contentType : "application/text; charset=utf-8",
+		data : JSON.stringify(cartNoList),
+		contentType : "application/json; charset=utf-8",
 		success : function(result, status, xhr) {
-			alert('성공:'+result);
+			$.each(cartNoList, function(index, item){
+				$('#cart_'+item).remove();
+				delete list['cartNo'+item];
+			});
+			setView();
+			
 		},
 		error : function(xhr, status, er) {
 			alert('에러:'+status);
 		}
 	});
 }
+function deleteCartAll(){
+	var cartNoList = [cartNo];
+	deleteCartAjax(cartNoList);
+}
+function deleteCart(cartNo){
+	var cartNoList = [cartNo];
+	deleteCartAjax(cartNoList);
+}
+
+function deleteCartList(){
+	var cartNoList = new Array();
+	$.each(list, function(index, item){
+		if($('#cart_checkBox_'+item.cartNo).is(":checked"))
+			cartNoList.push(item.cartNo);
+	});
+
+	if(cartNoList.length>0)
+		deleteCartAjax(cartNoList);
+
+}
+
+function setView(){
+	purchasePrice = 0;
+	$.each(list, function(index, item){
+		$('#cart_item_count_'+item.cartNo).value = item.count;
+		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
+		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
+		$('#cart_item_total_price_2'+item.cartNo).html((item.itemPrice*item.count)+'원');
+		purchasePrice = purchasePrice + (item.itemPrice*item.count);
+	});
+
+	if(purchasePrice>=50000){
+		deliveryPrice = 0;
+		deliveryPriceStr = '무료';
+	}else{
+		deliveryPrice = 2500;  
+		deliveryPriceStr = '2500원';
+	}
+	$.each(list, function(index, item){
+		$('#cart_item_delivery_charge_'+item.cartNo).html(deliveryPriceStr);
+	});
+	$('#purchase_price1').html(purchasePrice);
+	$('#purchase_price2').html(purchasePrice);
+	$('#delivery_charge1').html(deliveryPrice);
+	$('#delivery_charge2').html(deliveryPrice);
+	$('#total_price1').html(purchasePrice+deliveryPrice);
+	$('#total_price2').html(purchasePrice+deliveryPrice);
+	$('#item_count').html(Object.keys(list).length);
+}
+
 </script>
 </head>
 <body id="cmn">
@@ -48,7 +112,7 @@ function deleteCart(cartNo){
 			<a href="#category">전체상품목록 바로가기</a>
 		</p>
 		<p>
-			<a href="#contents">본문 바로가기</a>
+			<a href="#contents">본문 바로가기</a>                        
 		</p>
 	</div>
 
@@ -60,16 +124,16 @@ function deleteCart(cartNo){
 
 
 				<div class="titleArea">
-					<h2>CART</h2>
-					<h3>장바구니</h3>
+					<h2>CART</h2>        
+					<h3>장바구니</h3>         
 				</div>
 
-				<!-- 장바구니 모듈 Package -->
+				<!-- 장바구니 모듈 Package -->        
 				<div class="xans-element- xans-order xans-order-basketpackage ">
-					<!-- 일반상품 -->
-					<div class="orderListArea ec-base-table typeList gBorder">
+					<!-- 일반상품 -->             
+					<div class="orderListArea ec-base-table typeList gBorder">        
 						<div class="xans-element- xans-order xans-order-normtitle title ">
-							<h3>상품 (3)</h3>
+							<h3>상품 (<span id ="item_count">${fn:length(list)}</span>)</h3>
 						</div>
 
 						<!-- 일반상품 (기본배송) -->
@@ -85,7 +149,7 @@ function deleteCart(cartNo){
 								<col style="width: 88px" />
 								<col style="width: 88px" />
 								<col style="width: 75px" />
-								<col style="width: 88px" />
+								<col style="width: 88px" />    
 								<col style="width: 110px" />
 							</colgroup>
 							<thead>
@@ -104,30 +168,48 @@ function deleteCart(cartNo){
 									<th scope="col">ORDER</th>
 								</tr>
 							</thead>
-							<tfoot class="right">
+							<c:if test="${fn:length(list)>0}">
+								<tfoot class="right">
 								<tr>
 									<td colspan="10"><span class="gLeft">[기본배송]</span> 구매금액
-										${totalPrice}<span class="displaynone">()</span><span
+										<span id="purchase_price1">${totalPrice}</span><span class="displaynone">()</span><span
 										class="displaynone"> </span><span class="displaynone">
 											+ 부가세 <span class="displaynone"> </span>
-									</span> + 배송비 0 (무료)<span class="displaynone"> </span> = 합계 : <strong
-										class="txtEm gIndent10"><span class="txt18">${totalPrice}</span>원</strong>
+									</span> + 배송비<span id="delivery_charge1">
+									 <c:choose>
+										<c:when test="${totalPrice >= 50000}">
+											0
+                                        </c:when>
+										<c:otherwise>
+       										 2500
+    									</c:otherwise>
+									</c:choose></span><span class="displaynone"> </span> = 합계 : <strong
+										class="txtEm gIndent10"><span class="txt18" id="total_price1"><c:choose>
+														<c:when test="${totalPrice >= 50000}">
+												${totalPrice}
+                                                </c:when>
+														<c:otherwise>
+       											${totalPrice+2500}
+    											</c:otherwise>
+													</c:choose></span>원</strong>
 										<span class="displaynone"> </span></td>
 								</tr>
 							</tfoot>
+							</c:if>
 							<tbody class="xans-element- xans-order xans-order-list center">
 								<c:forEach var="dto" items="${list}">
 									<tr class="xans-record-" id="cart_${dto.cartNo}">
-										<td><input type="checkbox"
+										<td>
+										<input type="checkbox"
 											id="cart_checkBox_${dto.cartNo}"
 											name="basket_product_normal_type_normal" /></td>
-										<td class="thumb gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}"><img
+										<td class="thumb gClearLine">
+										<a	href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}"><img
 												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
 												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 												alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
-										<td class="left gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}">${dto.itemTitle}
+										<td class="left gClearLine">
+										<a	href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}">${dto.itemTitle}
 												<img src="https://www.slowand.com//web/upload/custom_3.gif"
 												alt="" />
 										</a><span class="displaynone"><br />(영문명 : )</span>
@@ -188,19 +270,21 @@ function deleteCart(cartNo){
 															alt="닫기" /></a>
 													</div> <!-- //참고 --></li>
 											</ul></td>
-										<td><c:if
+										<td>
+										<c:if
 												test="${(not empty dto.itemSalePrice)&&dto.itemSalePrice != 0}">
 												<div class="discount">
 													${dto.itemPrice}원
 													<p class="displaynone"></p>
 												</div>
 											</c:if>
-											<div class="">
+											<div id="cart_item_price_${dto.cartNo}">
 												${dto.itemPrice-dto.itemSalePrice}원
-												<p class=""></p>
+
 											</div></td>
-										<td><span class=""> <span class="ec-base-qty"><input
-													id="quantity_id_0" name="quantity_name_0" size="2"
+										<td>
+										<span class=""> <span class="ec-base-qty"><input
+													id="cart_item_count_${dto.cartNo}" name="quantity_name_0" size="2"
 													value="${dto.count}" type="text" /><a href="javascript:;"
 													onclick="Basket.addQuantityShortcut('quantity_id_0', 0);"><img
 														src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
@@ -210,43 +294,59 @@ function deleteCart(cartNo){
 														alt="수량감소" class="down" /></a></span> <a href="javascript:;"
 												class="yg_btn_24 yg_btn3" onclick="Basket.modifyQuantity()"
 												alt="변경">변경</a>
-										</span> <span class="displaynone">2</span></td>
-										<td><span class="txtInfo"> <input
-												id="product_mileage_cash_3615_000A"
-												name="product_mileage_cash" value="1060" type="hidden">
-													<img
-													src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif">
-														<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br>
-															<input id="product_mileage_card_3615_000A"
-															name="product_mileage_card" value="530" type="hidden">
-																<img
-																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif">
-																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></td>
-										<td><div class="txtInfo">
+										</span> <span class="displaynone">2</span>
+										</td>
+										<td>
+											<span class="txtInfo">
+											<div>
+											
+											<input	id="product_mileage_cash_3615_000A"	name="product_mileage_cash" value="1060" type="hidden"/>
+											<img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif"/>
+											<span id = "cart_item_point1_${dto.cartNo}">
+											<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br>
+											</span>
+											</div>
+											<div>
+											<input id="product_mileage_card_3615_000A"	name="product_mileage_card" value="530" type="hidden"/>
+											<img src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif"/>
+											<span id = "cart_item_point2_${dto.cartNo}">
+											<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br>
+											</span>
+											</div>
+											</span>
+										</td>
+										<td>
+										<div class="txtInfo">
 												기본배송<br />
-											</div></td>
+											</div>
+											</td>
 										<td rowspan="1" class="">
 											<p class="displaynone">
 												0원<span class="displaynone"><br /></span><br />
-											</p> <c:choose>
+											</p>
+											<span id = "cart_item_delivery_charge_${dto.cartNo}">
+											 <c:choose>
 												<c:when test="${totalPrice >= 50000}">
 												무료
                                                 </c:when>
 
 												<c:otherwise>
-       											 2500
+       											 2500원
     											</c:otherwise>
 											</c:choose>
-
+											</span>
 										</td>
-										<td>${dto.count*(dto.itemPrice-dto.itemSalePrice)}원
-											<div class="displaynone"></div>
+										<td id>
+										<div id="cart_item_total_price_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}원</div>
+											<div class="displaynone" div id="cart_item_total_price_data_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}</div>
 										</td>
-										<td class="button"><a href="javascript:;"
+										<td class="button">
+										<a href="javascript:;"
 											class="yg_btn_100" onclick="Basket.orderBasketItem(0);"
 											alt="주문하기">BUY IT NOW</a> <a href="javascript:;"
 											class="yg_btn_100 yg_btn3"
-											onclick="Basket.deleteBasketItem(0);" alt="삭제">DELETE</a></td>
+											onclick="deleteCart(${dto.cartNo});" alt="삭제">DELETE</a>
+											</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -260,9 +360,9 @@ function deleteCart(cartNo){
 					<div
 						class="xans-element- xans-order xans-order-selectorder ec-base-button ">
 						<span class="gLeft"><a href="#none"
-							class="yg_btn_24 yg_btn5" onclick="deleteCart(1)"
-							alt="삭제하기">삭제하기</a> </span> <span class="gRight"> <a href="#none"
-							class="yg_btn_24 yg_btn3" onclick="Basket.emptyBasket()"
+							class="yg_btn_24 yg_btn5" onclick="deleteCartList()" alt="삭제하기">삭제하기</a>
+						</span> <span class="gRight"> <a href="#none"
+							class="yg_btn_24 yg_btn3" onclick="deleteCartAll();"
 							alt="장바구니비우기">장바구니 비우기</a>
 						</span>
 					</div>
@@ -287,7 +387,7 @@ function deleteCart(cartNo){
 							<tbody class="center">
 								<tr>
 									<td><div class="box txt16">
-											<strong><span class="txt23">${totalPrice}</span>원</strong> <span
+											<strong><span class="txt23" id="purchase_price2">${totalPrice}</span>원</strong> <span
 												class="txt14 displaynone"></span>
 										</div></td>
 									<td class="displaynone"><div class="box txt16">
@@ -297,7 +397,8 @@ function deleteCart(cartNo){
 									<td>
 										<div class="box shipping txt16">
 											<strong class="txt23">+ </strong><strong><span
-												class="txt23"> <c:choose>
+												class="txt23" id="delivery_charge2">
+												 <c:choose>
 														<c:when test="${totalPrice >= 50000}">
 												0
                                                 </c:when>
@@ -350,7 +451,7 @@ function deleteCart(cartNo){
 										</div></td>
 									<td><div class="box txtEm txt16">
 											<strong class="txt23">= </strong><strong><span
-												class="txt23"> <c:choose>
+												class="txt23" id="total_price2"> <c:choose>
 														<c:when test="${totalPrice >= 50000}">
 												${totalPrice}
                                                 </c:when>
