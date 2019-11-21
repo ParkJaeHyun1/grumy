@@ -801,14 +801,16 @@
 											<div class="ec-base-button">
 												<a id="cartBtn" href="#none" class=" cart"
 													onclick="product_submit(2, '/exec/front/order/basket/', this)"
-													alt="장바구니 담기">ADD TO CART</a> <a id="wishBtn" href="#none"
+													alt="장바구니 담기">ADD TO CART</a> 
+												
+												<a id="wishBtn" style="width:100% " href="#none"
 													class="first "
 													onclick="product_submit(1, '/exec/front/order/basket/', this)"><span
-													alt="바로구매하기" id="btnBuy">BUY NOW</span><span alt="예약주문"
-													class="displaynone" id="btnReserve">예약주문</span></a> <a
-													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a> <a
-													href="#none" onclick="add_wishlist(this, true);" class=""
-													alt="관심상품등록">WISH LIST</a>
+													alt="바로구매하기" id="btnBuy">BUY NOW</span>
+													
+												<span alt="예약주문"
+													class="displaynone" id="cartBtn">예약주문</span></a> <a
+													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a>
 											</div>
 										</div>
 										<!-- @import(/yangji/sns_banner.html)-->
