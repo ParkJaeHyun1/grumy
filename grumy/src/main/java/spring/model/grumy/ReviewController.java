@@ -103,7 +103,6 @@ public class ReviewController {
 		map.put("sno",sno);
 		map.put("eno",eno);
 
-		
 		ArrayList<reviewDTO> list = mapper.list(map);
 		System.out.println("씨발!:"+list.size());
 		

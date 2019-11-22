@@ -12,12 +12,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
-		select no, subject, to_char(wdate, 'mm.dd.') wdate from notice
-		
+		select no, subject, wdate from (
+		select no, subject, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)
 		<![CDATA[
-		where rownum <= #{rownum} order by no desc
+		where rownum <=#{rownum}
 		]]>
 	</select>
+
+	<select id="deliveryl" parameterType="int" resultType="DeliveryDTO">
+		select no, subject, wdate from (
+		select no, subject, to_char(wdate, 'mm.dd.') wdate from delivery order by no desc)
+		<![CDATA[
+		where rownum <=#{rownum}
+		]]>
+	</select>
+	
 	
 	<!-- 
 		<update id="updateStat" parameterType="Map">

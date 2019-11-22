@@ -321,13 +321,41 @@ $(function () {
 								<div class="panel-body">
 									
 									<ul class="nav nav-tabs" role="tablist" id="myTab">
-									  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-									  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+									  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">배송문의</a></li>
+									  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">상품문의</a></li>
 									</ul>
 									
 									<div class="tab-content">
-									  <div role="tabpanel" class="tab-pane active" id="home">123</div>
-									  <div role="tabpanel" class="tab-pane" id="profile">456</div>
+									  <div role="tabpanel" class="tab-pane active" id="home">
+									  <ul class="panel-list">
+									  	<br>
+											<c:choose>
+												<c:when test="${empty deliveryl }">
+													
+														<li>등록된 답변이 없습니다.</li>
+					
+												</c:when>
+												<c:otherwise>
+													<c:forEach var="dto" items="${deliveryl}">
+														<a href="javascript:read(${dto.no })" style="color: #555555;">
+														<li>
+															<span>${dto.subject }</span>
+														</li>
+														
+														<li style="text-align:right">
+														<span>${dto.wdate }</span>
+														</li>
+														</a>
+														
+													</c:forEach>
+													<br>
+													<a href="${root }/delivery/list" style="text-align:right"><li>더보기</li></a>
+												</c:otherwise>
+											</c:choose>
+										</ul>
+									  
+									  </div>
+									  <div role="tabpanel" class="tab-pane" id="profile">유경자가 제대로 안해서 못함</div>
 									</div>
 									<!---->
 									<div class="inquiry-content hidden-xs"
@@ -336,29 +364,10 @@ $(function () {
 											<!---->
 										</ul>
 										<!---->
-										<div class="result-info" ng-if="::!vm.productInquiries">
-											<i
-												class="fn-shopping fn-65 fn-shopping-caution1 icon-color-big"
-												aria-hidden="true"></i>
-											<p class="text-sub title">등록된 상품문의가 없습니다.</p>
-										</div>
-										<!---->
+								
 									</div>
 									<!---->
-									<!---->
-									<div class="btn-inquiry-area hidden-xs"
-										ng-if="vm.tab === 'prod'" style="">
-										<a ui-sref="main.contents.comment"
-											class="btn btn-default btn-block"
-											data-nclicks-code="qna.prdmove" href="#/comment/">문의 관리<i
-											class="fn-shopping fn-shopping-forward2 fn-auto-size text-muted"
-											aria-hidden="true"></i></a>
-									</div>
-									<!---->
-									<!---->
-									<!---->
-									<!---->
-									<!---->
+									
 									<!---->
 								</div>
 								<!---->
