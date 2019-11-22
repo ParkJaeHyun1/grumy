@@ -10,8 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
 <script type="text/javascript">
 function read(no){
 	var url = "read";
@@ -19,6 +24,10 @@ function read(no){
 	
 	location.href="../notice/"+url;
 }
+
+$(function () {
+	  $('#myTab a:first').tab('show')
+})
 </script>
 </head>
 <body style="background-color:#EFF8FB">
@@ -310,31 +319,16 @@ function read(no){
 									
 								</div>
 								<div class="panel-body">
-									<ul class="panel-tap" role="tablist">
-										<li role="tab"
-											ng-attr-aria-selected="{{vm.tab === 'prod' &amp;&amp; 'true' || 'false'}}"
-											aria-selected="true"><a href=""
-											ng-click="vm.changeTab('prod', false)"
-											class="product hidden-xs" data-nclicks-code="qna.prd"><p
-													class="text-number">0</p>
-												<span>상품문의</span></a> <a href=""
-											ng-click="vm.changeTab('prod', true)"
-											class="product visible-xs" data-nclicks-code="qna.prd"><p
-													class="text-number">0</p>
-												<span>상품문의</span></a></li>
-										<li role="tab"
-											ng-attr-aria-selected="{{vm.tab === 'cust' &amp;&amp; 'true' || 'false'}}"
-											aria-selected="false"><a href=""
-											ng-click="vm.changeTab('cust', false)"
-											class="customer hidden-xs" data-nclicks-code="qna.buyer"><p
-													class="text-number">0</p>
-												<span>고객문의</span></a> <a href=""
-											ng-click="vm.changeTab('cust', true)"
-											class="customer visible-xs" data-nclicks-code="qna.buyer"><p
-													class="text-number">0</p>
-												<span>고객문의</span></a></li>
-										
+									
+									<ul class="nav nav-tabs" role="tablist" id="myTab">
+									  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+									  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
 									</ul>
+									
+									<div class="tab-content">
+									  <div role="tabpanel" class="tab-pane active" id="home">123</div>
+									  <div role="tabpanel" class="tab-pane" id="profile">456</div>
+									</div>
 									<!---->
 									<div class="inquiry-content hidden-xs"
 										ng-if="vm.tab === 'prod'" style="">

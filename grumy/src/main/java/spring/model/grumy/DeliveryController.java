@@ -42,7 +42,7 @@ public class DeliveryController {
 		if(flag==1) {
 			
 			request.setAttribute("no", no);
-			return "redirect:/delivery/read";
+			return "redirect:/delivery/read?no="+no;
 		}else {
 			return null;
 		}
