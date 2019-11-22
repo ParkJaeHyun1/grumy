@@ -111,7 +111,7 @@ value="/intro/adult_certification.html?returnUrl=" type="hidden">
 	<br>
     <br>
     <br>   
-   	<br>
+   
 	<ul class="find">
 	<a href="${pageContext.request.contextPath}/member/find_id" class="yg_btn yg_btn4">아이디 찾기</a>
 	<a href="${pageContext.request.contextPath}/member/find_passwd" class="yg_btn yg_btn4">비밀번호 찾기</a>
