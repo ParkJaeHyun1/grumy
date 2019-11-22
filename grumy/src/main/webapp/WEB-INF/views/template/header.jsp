@@ -2,7 +2,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <!--  헤더 시작 -->
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
@@ -30,16 +29,26 @@
 
 		<div class="myList">
 
-			<div class="xans-element- xans-layout xans-layout-statelogoff ">
+
+	<c:choose>
+		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
+		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
 				<a href="${pageContext.request.contextPath}/admin/main">관리자</a>
+				<a href="/myshop/order/list">회원목록</a>
+				<a href="/order/cart">회원정보 관리</a> 
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="xans-element- xans-layout xans-layout-statelogoff ">
 				<a href="${pageContext.request.contextPath}/member/login" class="log">LOGIN</a> 
 				<a href="${pageContext.request.contextPath}/member/create">JOIN</a> 
 				<a href="/myshop/order/list.html">ORDER</a>
 				<a href="/order/cart">MY PAGE</a> 
 				<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
 			</div>
-
-
+		</c:otherwise>
+	</c:choose>	
+			
 			<!-- cre.ma / 로그인 회원 정보 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
 
 			<div class="xans-element- xans-layout xans-layout-boardinfo">
