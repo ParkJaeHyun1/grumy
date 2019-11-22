@@ -39,18 +39,15 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<textarea rows="20" cols="150" name="content" id="content">${dto.content}</textarea>
+								<textarea rows="20" cols="190" name="content" id="content">${dto.content}</textarea>
 							</td>
-						</tr>
-						<tr>
-							<th scope="row">PASSWORD</th>
-							<td><input type="password" id="passwd" name="passwd"></td>
 						</tr>
 					</tbody>
 				</table>
+				<br>
 					<p align="right">
-						<button type="submit" class="yg_btn_30 yg_btn4" id="save">저장</button>
-						<button type="button" class="yg_btn_30 yg_btn4" onclick="history.back()">취소</button>
+						<button type="submit" class="yg_btn_30 yg_btn4" id="save">OK</button>
+						<button type="button" class="yg_btn_30 yg_btn4" onclick="history.back()">CANCEL</button>
 					</p>
 			</div>
 			</form>

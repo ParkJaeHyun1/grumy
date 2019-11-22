@@ -11,12 +11,14 @@ public class DeliveryDTO {
 	private String passwd;
 	private String file1;
 	private MultipartFile fileMF;
+	private int ref;
+	private int indent;
 	public DeliveryDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd, String file1,
-			MultipartFile fileMF) {
+			MultipartFile fileMF, int ref, int indent) {
 		super();
 		this.no = no;
 		this.subject = subject;
@@ -26,11 +28,14 @@ public class DeliveryDTO {
 		this.passwd = passwd;
 		this.file1 = file1;
 		this.fileMF = fileMF;
+		this.ref = ref;
+		this.indent = indent;
 	}
 	@Override
 	public String toString() {
 		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
-				+ ", wdate=" + wdate + ", passwd=" + passwd + ", file1=" + file1 + ", fileMF=" + fileMF + "]";
+				+ ", wdate=" + wdate + ", passwd=" + passwd + ", file1=" + file1 + ", fileMF=" + fileMF + ", ref=" + ref
+				+ ", indent=" + indent + "]";
 	}
 	public int getNo() {
 		return no;
@@ -80,5 +85,19 @@ public class DeliveryDTO {
 	public void setFileMF(MultipartFile fileMF) {
 		this.fileMF = fileMF;
 	}
+	public int getRef() {
+		return ref;
+	}
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+	public int getIndent() {
+		return indent;
+	}
+	public void setIndent(int indent) {
+		this.indent = indent;
+	}
+	
+	
 	
 	}

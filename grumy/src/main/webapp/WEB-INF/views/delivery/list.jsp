@@ -1,13 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="size" value="${fn:length(list) }"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-function passcheck(no){
-	var url = "passcheck";
-	url += "?no="+no;
-	
-	location.href=url;
-}
+	function read(no) {
+		var url = "read";
+		url += "?no=" + no;
+
+		location.href = url;
+	}
 </script>
 <div id="container">
 	<div id="contents">
@@ -16,12 +19,11 @@ function passcheck(no){
 			class="xans-element- xans-board xans-board-listpackage-1002 xans-board-listpackage xans-board-1002 ">
 			<div
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
-				<div class="title" style=text-align:center>
+				<div class="title" style="text-align: center">
 					<h2>
 						<font color="#555555">배송 문의</font>
 					</h2>
-					<br>
-					<br>
+					<br> <br>
 
 				</div>
 				<p class="imgArea"></p>
@@ -69,14 +71,19 @@ function passcheck(no){
 									<td></td>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="dto" items="${list}">
+								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${dto.no}</td>
+										<td>${total-status.index}</td>
 										<td class="displaynone"></td>
 										<td class="subject left txtBreak"><strong> <a
-												href="javascript:passcheck(${dto.no })" style="color: #555555;">
-													${dto.subject }</a> <span class="txtEm"></span></strong></td>
+												href="javascript:read(${dto.no })" style="color: #555555;">
+													<c:if test="${dto.indent>0 }">
+														&nbsp;<img
+															src="${pageContext.request.contextPath }/images/re.gif" />
+													</c:if> <img
+													src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
+												<span class="txtEm"></span></strong></td>
 										<td>${dto.writer }</td>
 										<td class=""><span class="txtNum">${dto.wdate }</span></td>
 									</tr>
@@ -109,14 +116,14 @@ function passcheck(no){
 					</fieldset>
 				</div>
 			</form>
-						<p  align="right">
-						<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
-						</p>
+			<p align="right">
+				<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
+			</p>
 
-		
-				${paging}
-			
-		
+
+			${paging}
+
+
 
 
 		</div>

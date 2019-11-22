@@ -144,6 +144,7 @@ public class NoticeController {
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
+		request.setAttribute("total", total);
 		
 		
 		return "/notice/list";

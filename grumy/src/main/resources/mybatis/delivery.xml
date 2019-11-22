@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.deliveryMapper">
 
-<select id="passcheck" parameterType="int" resultType="String">
-	select passwd from delivery
-	where no = #{no}
-</select>
+<insert id="create_reply" parameterType="DeliveryDTO">
+insert into delivery(no,subject,writer,content,file1,wdate,ref,indent)
+values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{content},#{file1,jdbcType=VARCHAR},sysdate,#{no},1)
+</insert>
 
 <update id="update" parameterType="int">
 	update delivery 
@@ -50,8 +50,9 @@ where no = #{no}
 </delete>
 
 <insert id="create" parameterType="DeliveryDTO">
-insert into delivery(no,subject,content,writer,wdate,passwd,file1)
-values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},#{writer},sysdate,#{passwd},#{file1,jdbcType=VARCHAR})
+insert into delivery(no,subject,content,writer,wdate,passwd,file1,ref)
+values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
+#{writer},sysdate,#{passwd},#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery))
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
@@ -72,11 +73,11 @@ select count(*) from delivery
 </select>
 
 <select id="list" parameterType="Map" resultType="DeliveryDTO">
-select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
+select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate,indent
 	from (
-			select no,subject,writer,wdate,rownum r
+			select no,subject,writer,wdate,indent,rownum r
 			from (
-				select no,subject,writer,wdate
+				select no,subject,writer,wdate,indent
 				from delivery
 				<where>
 					<choose>
@@ -91,7 +92,7 @@ select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
 						</when>
 					</choose>
 				</where>
-				order by no desc
+				order by ref desc
 				)
 		)
 <![CDATA[

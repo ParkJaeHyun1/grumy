@@ -19,9 +19,11 @@
 				</div>
 			</div>
 			<form id="boardWriteForm" name="frm"
-				action="create" method="post" 
+				action="create_reply" method="post" 
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="ㅋㅋ">
+				
+				<input type="hidden" name="no" value="${param.no }">
+				<input type="hidden" name="writer" value="grumy">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -32,24 +34,16 @@
 							<tr>
 								<th scope="row">SUBJECT</th>
 								<td><select id="subject" name="subject">
-										<option>문의합니다 ♡</option>
+										<option>답변합니다 ♡</option>
 								</select></td>
 							</tr>
 							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
-										name="content" id="content">배송전 상품 변경/취소/환불 처리는 '배송전 변경/취소' 게시판에 꼭 남겨주세요!<br><br>
-																	*원단공장&거래처에서 겨울원단 시즌오프로 갑작스러운 지연/품절이 불가피하게<br> 
-																	생길 수 있는점 너그럽게 양해부탁드리겠습니다ㅠ.ㅠ!<br>
-																	---------------------------------------------<br>
-																	주문번호:
-										</textarea></td>
+										name="content" id="content">
+								<br><br><br><br><br>	${dto.content }	</textarea></td>
 							</tr>
 						</tbody>
 						<tbody class="">
-							<tr>
-								<th scope="row">FILE 01</th>
-								<td><input name="fileMF" type="file"></td>
-							</tr>
 						</tbody>
 						<tbody>
 							<tr class="">

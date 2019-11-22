@@ -27,36 +27,21 @@ public class DeliveryController {
 	@Autowired
 	deliveryMapper mapper;
 	
-	@PostMapping("/delivery/passcheck")
-	public String passcheck(int no,HttpServletRequest request) {
+	@PostMapping("/delivery/create_reply")
+	public String create_reply(DeliveryDTO dto) {
+		mapper.create_reply(dto);
 		
-		int flag = 0;
-		
-		String passwd = mapper.passcheck(no);
-		
-		if(request.getParameter("passwd").equals(passwd)) {
-			flag = 1;
-			
-		}
-
-		if(flag==1) {
-			
-			request.setAttribute("no", no);
-			return "redirect:/delivery/read?no="+no;
-		}else {
-			return null;
-		}
-		
-		
-		
+		return "redirect:/delivery/list";
 	}
 	
-	@GetMapping("/delivery/passcheck")
-	public String passcheck() {
+	@GetMapping("/delivery/create_reply")
+	public String create_reply(int no,HttpServletRequest request) {
+		DeliveryDTO dto = mapper.read(no);
 		
-		return "/delivery/passcheck";
+		request.setAttribute("dto", dto);
+		
+		return "/delivery/create_reply";
 	}
-	
 	
 	@PostMapping("/delivery/update")
 	public String update(DeliveryDTO dto,HttpServletRequest request) {
@@ -98,8 +83,8 @@ public class DeliveryController {
 		}
 	}
 	
-	@RequestMapping(value="/delivery/read",method = RequestMethod.GET)
-		public String read(@RequestParam(value="no") int no, Model model) {
+	@GetMapping("/delivery/read")
+		public String read(int no, Model model) {
 			DeliveryDTO dto = mapper.read(no);
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");
@@ -193,6 +178,7 @@ public class DeliveryController {
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
+		request.setAttribute("total", total);
 		
 		return "/delivery/list";
 	}
