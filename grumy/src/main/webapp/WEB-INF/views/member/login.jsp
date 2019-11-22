@@ -34,6 +34,12 @@ href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r
 
 <script type="text/javascript" id="AuthSSLContainer" charset="utf-8" src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?auth_mode=decryptClient&amp;auth_callbackName=openAgreementLayerStep2&amp;auth_string=&amp;dummy=1574068258771"></script>
 
+<style type="">
+	.inputTypeText{
+		width: 200px;
+		heigh: 50px;
+		}
+</style>
 </head>
 <body id="cmn">        
         
@@ -57,7 +63,7 @@ href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r
     }); 
 </script>
     <!-- //상단카테고리 -->
-    
+
 <div id="container">
   <div id="contents">
             
@@ -67,7 +73,7 @@ href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r
 	</div>
 
 <form id="member_form_9781456108" name="" 
-action="/exec/front/Member/login/" method="post" 
+action="${pageContext.request.contextPath }/member/login" method="post" 
 target="_self" enctype="multipart/form-data">
 
 <input id="returnUrl" name="returnUrl" value="https://slowand.com/" 
@@ -89,18 +95,18 @@ value="/intro/adult_certification.html?returnUrl=" type="hidden">
     
     <label class="id ePlaceholder" title="ID">
     <input id="id" name="id" fw-filter="isFill" fw-label="아이디" fw-msg="" 
-    class="inputTypeText" placeholder="ID" value="" type="text">
+    class="inputTypeText" placeholder="ID" value='${c_id_val }' type="text">
     </label>
     <br>
     <label class="password ePlaceholder" title="PASSWORD">
-    <input id="passwd" name="passwd" 
+    <input id="passwd" name="passwd" class="inputTypeText"
     fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="패스워드" fw-msg="" autocomplete="off" 
     value="" type="password" placeholder="PASSWORD">
     </label>            
     <br>
-    <a href="#none" class="yg_btn_140 yg_btn3 yg_btn5" 
-    onclick="" 
-    alt="로그인" style="background:#a18266">로그인</a>
+    <a href="#" class="yg_btn_140 yg_btn3 yg_btn5" 
+    onclick="document.getElementById('member_form_9781456108').submit();"
+	alt="로그인" style="background:#a18266">로그인</a>
     
 	<br>
     <br>

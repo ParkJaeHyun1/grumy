@@ -100,22 +100,14 @@ public class MemberController {
 				response.addCookie(cookie);
 			}
 
-			if (map.get("rurl") != null && !map.get("rurl").equals("")) {
-				model.addAttribute("bbsno", map.get("bbsno"));
-				model.addAttribute("nPage", map.get("nPage"));
-				model.addAttribute("nowPage", map.get("nowPage"));
-				model.addAttribute("col", map.get("col"));
-				model.addAttribute("word", map.get("word"));
-
-				return "redirect:" + map.get("rurl");
-			} else {
-				return "redirect:/";
-			}
+		
+			
 		} else {
 			request.setAttribute("str", "아이디 또는 비밀번호를 잘못 입력하셨거나 <br>회원이 아닙니다. 회원가입 하세요.");
-			return "/preproc";
+			return "preproc:/";
 		}
-
+		
+		return "redirect:/";
 	}
 
 	@GetMapping("/member/login")
