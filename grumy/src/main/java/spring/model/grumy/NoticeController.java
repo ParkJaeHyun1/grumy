@@ -40,10 +40,8 @@ public class NoticeController {
 	
 	@PostMapping("/notice/update")
 	public String update(NoticeDTO dto) {
-		System.out.println(dto.getContent());
-		System.out.println(dto.getSubject());
 		
-		int flag = mapper.update(dto);
+		mapper.update(dto);
 		
 		return "redirect:/notice/list";
 	}

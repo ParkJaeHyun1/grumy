@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.deliveryMapper;
@@ -25,6 +27,66 @@ public class DeliveryController {
 	@Autowired
 	deliveryMapper mapper;
 	
+	@PostMapping("/delivery/passcheck")
+	public String passcheck(int no,HttpServletRequest request) {
+		
+		int flag = 0;
+		
+		String passwd = mapper.passcheck(no);
+		
+		if(request.getParameter("passwd").equals(passwd)) {
+			flag = 1;
+			
+		}
+
+		if(flag==1) {
+			
+			request.setAttribute("no", no);
+			return "redirect:/delivery/read";
+		}else {
+			return null;
+		}
+		
+		
+		
+	}
+	
+	@GetMapping("/delivery/passcheck")
+	public String passcheck() {
+		
+		return "/delivery/passcheck";
+	}
+	
+	
+	@PostMapping("/delivery/update")
+	public String update(DeliveryDTO dto,HttpServletRequest request) {
+		
+		String basePath = request.getRealPath("/storage");
+		
+		int filesize = (int)dto.getFileMF().getSize();
+		
+		if (filesize > 0) {
+			dto.setFile1(Utility.saveFileSpring(dto.getFileMF(), basePath));
+			
+		}
+		int flag = mapper.update(dto);
+		
+		if(flag ==1)
+			return "redirect:/delivery/list";
+		else
+			return null;
+		
+	}
+	
+	@GetMapping("/delivery/update")
+	public String update(Integer no,Model model) {
+		DeliveryDTO dto = mapper.read(no);
+		
+		model.addAttribute("dto",dto);
+		
+		return "/delivery/update";
+	}
+	
 	@GetMapping("/delivery/delete")
 	public String delete(int no) {
 		int flag = mapper.delete(no);
@@ -36,8 +98,8 @@ public class DeliveryController {
 		}
 	}
 	
-	@GetMapping("/delivery/read")
-		public String read(int no, Model model) {
+	@RequestMapping(value="/delivery/read",method = RequestMethod.GET)
+		public String read(@RequestParam(value="no") int no, Model model) {
 			DeliveryDTO dto = mapper.read(no);
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");
@@ -67,16 +129,14 @@ public class DeliveryController {
 	
 	@PostMapping("/delivery/create")
 	public String create(DeliveryDTO dto,HttpServletRequest request) {
-		
-		String basePath = request.getRealPath("/storage");
-		
+		 String basePath = request.getRealPath("/storage"); 
+
 		int filesize = (int)dto.getFileMF().getSize();
 		
 		if (filesize > 0) {
 			dto.setFile1(Utility.saveFileSpring(dto.getFileMF(), basePath));
 			
-		}
-		
+		}		
 		
 		int flag = mapper.create(dto);
 		

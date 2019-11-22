@@ -12,5 +12,7 @@ public interface deliveryMapper {
 	DeliveryDTO read(int no);
 	Map noread(int no);
 	int delete(int no);
+	int update(DeliveryDTO dto);
+	String passcheck(int no);
 
 }

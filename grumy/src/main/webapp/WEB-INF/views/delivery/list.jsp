@@ -2,8 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-function read(no){
-	var url = "read";
+function passcheck(no){
+	var url = "passcheck";
 	url += "?no="+no;
 	
 	location.href=url;
@@ -75,7 +75,7 @@ function read(no){
 										<td>${dto.no}</td>
 										<td class="displaynone"></td>
 										<td class="subject left txtBreak"><strong> <a
-												href="javascript:read(${dto.no })" style="color: #555555;">
+												href="javascript:passcheck(${dto.no })" style="color: #555555;">
 													${dto.subject }</a> <span class="txtEm"></span></strong></td>
 										<td>${dto.writer }</td>
 										<td class=""><span class="txtNum">${dto.wdate }</span></td>
