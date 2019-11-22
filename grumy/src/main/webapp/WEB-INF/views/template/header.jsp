@@ -1,5 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath }"/>
+
+<c:choose>
+	<c:when test="${not empty sessionScope.id && sessionScope.grade =='A'}">
+		<c:set var="str">관리자 페이지 입니다.</c:set>
+	</c:when>
+	<c:when test="${not empty sessionScope.id && sessionScope.grade !='A'}">
+		<c:set var="str">안녕하세요! ${sessionScope.id }님</c:set>
+	</c:when>
+	<c:otherwise>
+		<c:set var="str">기본 페이지 입니다.</c:set> 
+	</c:otherwise>
+</c:choose>
 <!--  헤더 시작 -->
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
