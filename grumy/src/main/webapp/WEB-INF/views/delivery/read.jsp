@@ -9,6 +9,12 @@
 
 		location.href = url;
 	}
+	function create_reply(no) {
+		var url = "create_reply";
+		url += "?no=" + no;
+
+		location.href = url;
+	}
 	function update(no) {
 		var url = "update";
 		url += "?no=" + no;
@@ -88,6 +94,7 @@
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 									 <span class="gRight">
+									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
 									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
 									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>

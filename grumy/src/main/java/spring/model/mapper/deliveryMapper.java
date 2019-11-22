@@ -13,6 +13,6 @@ public interface deliveryMapper {
 	Map noread(int no);
 	int delete(int no);
 	int update(DeliveryDTO dto);
-	String passcheck(int no);
+	int create_reply(DeliveryDTO dto);
 
 }

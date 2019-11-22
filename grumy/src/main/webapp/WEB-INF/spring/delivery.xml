@@ -26,8 +26,8 @@
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/delivery/update.jsp" />
 	</definition>
- 	<definition name="/delivery/passcheck" extends="main">
+ 	<definition name="/delivery/create_reply" extends="main">
 		<put-attribute name="title"	value="그루미"/>
-		<put-attribute name="body" value="/WEB-INF/views/delivery/passcheck.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/delivery/create_reply.jsp" />
 	</definition>
 </tiles-definitions>

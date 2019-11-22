@@ -74,10 +74,10 @@ function read(no){
 									<td></td>
 							</c:when>
 							<c:otherwise>
-								<c:forEach var="dto" items="${list}">
+								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${dto.no}</td>
+										<td>${total-status.index}</td>
 										<td class="displaynone"></td>
 										<td class="subject left txtBreak"><strong> <a
 												href="javascript:read(${dto.no })" style="color: #555555;">

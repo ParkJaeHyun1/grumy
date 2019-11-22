@@ -19,32 +19,21 @@
 					<!--h3>배송문의 Q&A 입니다 :)</h3-->
 				</div>
 			</div>
-			<form id="boardSecureForm" name="frm"
-				action="passcheck" method="post" 
-				enctype="multipart/form-data">
-				<input id="no" name="no" value="${param.no}" type="hidden">
 				<div
 					class="xans-element- xans-board xans-board-secure-1002 xans-board-secure xans-board-1002 ">
 					<div class="secret">
 						<fieldset >
-							<legend>비밀글보기</legend>
 							<p class="info">
-								이 글은 비밀글입니다. <strong class="txtEm">비밀번호를 입력하여 주세요.</strong><br>관리자는
-								확인버튼만 누르시면 됩니다.
+								글 작성자가 아닙니다.<br> <strong class="txtEm">글을 읽을 수 없습니다.</strong><br>
+								
 							</p>
 							<br><br>
-							<p class="password">
-								<label for="secure_password">PASSWORD</label> <input
-									id="passwd" name="passwd" fw-filter=""
-									fw-label="비밀번호" fw-msg="" value="" type="password">
-							</p>
 							<br><br>
 							<button class="yg_btn_80 yg_btn3" type="button" onclick="location.href='list'">LIST</button>
-							<button class="yg_btn_80 yg_btn5" type="submit">OK</button>		
+							<button class="yg_btn_80 yg_btn5" type="button" onclick="history.back()">BACK</button>		
 						</fieldset>
 					</div>
 				</div>
-			</form>
 		</div>
 	</div>
 	<hr class="layout">
