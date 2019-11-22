@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.admin.AdminDTO;
+import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.AdminMapper;
 import spring.model.notice.NoticeDTO;
 
@@ -34,11 +35,13 @@ public class AdminController {
 		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		NoticeDTO noticetr = noticet.get(0);
 		
-		ArrayList<NoticeDTO> noticel = mapper.noticel(3);
+		ArrayList<NoticeDTO> noticel = mapper.noticel(5);
+		ArrayList<DeliveryDTO> deliveryl = mapper.deliveryl(5);
 		
 		
 		request.setAttribute("noticetr", noticetr);
 		request.setAttribute("noticel", noticel);
+		request.setAttribute("deliveryl", deliveryl);
 		request.setAttribute("wait", wait);
 		request.setAttribute("nOrder", nOrder);
 		request.setAttribute("sReady", sReady);
