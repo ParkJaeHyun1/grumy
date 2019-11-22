@@ -30,6 +30,7 @@ from(
 	from(
     	select no,subject
 	    from delivery
+	    where indent = 0
 		)
 	)
 where no = #{no}
@@ -50,9 +51,9 @@ where no = #{no}
 </delete>
 
 <insert id="create" parameterType="DeliveryDTO">
-insert into delivery(no,subject,content,writer,wdate,passwd,file1,ref)
+insert into delivery(no,subject,content,writer,wdate,file1,ref)
 values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
-#{writer},sysdate,#{passwd},#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery))
+#{writer},sysdate,#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery))
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
