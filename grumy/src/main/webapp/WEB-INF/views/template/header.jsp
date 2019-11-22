@@ -33,9 +33,16 @@
 	<c:choose>
 		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/admin/main">관리자</a>
-				<a href="/myshop/order/list">회원목록</a>
-				<a href="/order/cart">회원정보 관리</a> 
+				<a href="${pageContext.request.contextPath}/admin/main">admin</a>
+				<a href="${pageContext.request.contextPath}/member/list">list</a>
+				<a href="${pageContext.request.contextPath}/member/logout">logout</a> 
+			</div>
+		</c:when>
+		<c:when test="${not empty sessionScope.id && sessionScope.grade =='H' }">
+		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
+				<a href="${pageContext.request.contextPath}/member/myprofile">myprofile</a> 
+				<a href="${pageContext.request.contextPath}/memeber/update">profilemodify</a>
+				<a href="${pageContext.request.contextPath}/memeber/logout">logout</a> 
 			</div>
 		</c:when>
 		<c:otherwise>
