@@ -101,7 +101,7 @@ value="/intro/adult_certification.html?returnUrl=" type="hidden">
     <a href="#none" class="yg_btn_140 yg_btn3 yg_btn5" 
     onclick="" 
     alt="로그인" style="background:#a18266">로그인</a>
-   
+    
 	<br>
     <br>
     <br>   
