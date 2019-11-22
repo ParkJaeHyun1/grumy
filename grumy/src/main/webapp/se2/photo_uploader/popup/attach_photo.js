@@ -544,11 +544,11 @@
     }
     
 	window.onload = function(){
-/*  		checkDragAndDropAPI();
+  		checkDragAndDropAPI();
   		
   		if(bSupportDragAndDropAPI){
-  			$Element("pop_container").hide();
-  			$Element("pop_container2").show();
+  			$Element("pop_container2").hide();
+  			$Element("pop_container").show();
   			
   			welTextGuide.removeClass("nobg");
   			welTextGuide.className("bg");
@@ -558,12 +558,7 @@
   			$Element("pop_container").hide();
   			$Element("pop_container2").show();
   			callFileUploader();
-  		}*/
-  		
-  		$Element("pop_container").hide();
-			$Element("pop_container2").show();
-			callFileUploader();
-			
+  		}
   		fnUploadImage = $Fn(uploadImage,this);
   		$Fn(closeWindow,this).attach(welBtnCancel.$value(), "click");
 	};
