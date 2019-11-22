@@ -598,8 +598,7 @@ function setView(){
 					<!-- 주문 버튼 -->
 					<div
 						class="xans-element- xans-order xans-order-totalorder ec-base-button justify">
-						<a href="#none" onclick="Basket.orderAll(this)"
-							link-order="/order/orderform.html?basket_type=all_buy"
+						<a href="${pageContext.request.contextPath}/order/order" 	link-order="/order/orderform.html?basket_type=all_buy"
 							link-login="/member/login.html" alt="전체상품주문" class=" yg_btn_140 ">전체상품주문</a>
 						<a href="#none" onclick="Basket.orderSelectBasket(this)"
 							link-order="/order/orderform.html?basket_type=all_buy"
