@@ -56,11 +56,11 @@ function updateItemCount(cartNo,cnt){
 	return true;
 }
 function updateItemCountAjax(cartNo,cnt){
-	alert('asd111f');
+	alert('3333');
 	$.ajax({
-		type : 'update',
+		type : 'put',
 		url : "./update",
-		data : {cartNo:cartNo,count:cnt},
+		data :  JSON.stringify({"cartNo":cartNo,"count":cnt}),
 		contentType : "application/json; charset=utf-8",
 		success : function(result, status, xhr) {
 			alert('성공');
@@ -74,7 +74,7 @@ function updateItemCountAjax(cartNo,cnt){
 }
 function deleteCartAjax(cartNoList){
 	$.ajax({
-		type : 'put',
+		type : 'delete',
 		url : "./delete",
 		data : JSON.stringify(cartNoList),
 		contentType : "application/json; charset=utf-8",
@@ -156,7 +156,7 @@ function setView(){
 <body id="cmn">
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>     
+			<a href="#category">전체상품목록 바로가기</a>                       
 		</p>   
 		<p>
 			<a href="#contents">본문 바로가기</a>                              
@@ -170,7 +170,7 @@ function setView(){
 			<div id="contents">
 
 
-				<div class="titleArea">
+				<div class="titleArea">      
 					<h2>CART</h2>        
 					<h3>장바구니</h3>         
 				</div>

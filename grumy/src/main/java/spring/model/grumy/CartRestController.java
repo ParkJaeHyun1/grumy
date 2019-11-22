@@ -31,11 +31,7 @@ public class CartRestController {
 	}
 	
 	@PutMapping("/cart/update")
-	public ResponseEntity<String> update(@RequestBody int cartNo, @RequestBody int count) {
-		System.out.println("레스트컨트롤러");
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("cartNo",cartNo);
-		map.put("count",count);
+	public ResponseEntity<String> update(@RequestBody Map<String, Integer> map) {
 		return mapper.update(map) > 0
 				? new ResponseEntity<String>("success", HttpStatus.OK)
 						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
