@@ -11,4 +11,5 @@ public interface reviewMapper {
 	int pcount();
 	int total(Map map);
 	int create(reviewDTO dto);
+	ArrayList<reviewDTO> itemReviewlist(Map map);
 }
