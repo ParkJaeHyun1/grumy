@@ -134,5 +134,52 @@ public class MemberController {
 
 		return "/login";
 	}
+	
+	@PostMapping("/member/findpw")
+	public String findpw(String name, String id, Model model) {
+		Map map = new HashMap();
+		map.put("name", name);
+		map.put("id", id);
+
+		String passwd = dao.findpw(map);
+
+		model.addAttribute("passwd", passwd);
+
+		return "member/findpwproc";
+	}
+
+	@GetMapping("/member/findpw")
+	public String findpw() {
+
+		return "member/findpwform";
+	}
+
+	@PostMapping("/member/findid")
+	public String findid(String name, String email, Model model) {
+		Map map = new HashMap();
+		map.put("mname", name);
+		map.put("email", email);
+
+		String id = dao.findid(map);
+
+		model.addAttribute("id", id);
+
+		return "member/findidproc";
+	}
+
+	@GetMapping("/member/findid")
+	public String findid() {
+
+		return "member/findidform";
+	}
+
+	@GetMapping("/member/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+
+		return "redirect:/";
+
+	}
+
 
 }
