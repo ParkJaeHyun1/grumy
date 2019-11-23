@@ -17,7 +17,6 @@ public interface MemberMapper {
 	MemberDTO read(String id);
 	int total(Map map);
 	int update(MemberDTO dto);
-	int updateFile(Map map);
 	int updatePasswd(Map map);
 	
 }
