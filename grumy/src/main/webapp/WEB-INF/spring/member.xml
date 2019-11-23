@@ -23,12 +23,6 @@
 			value="/WEB-INF/views/member/join.jsp" />
 	</definition>
 	
-	<definition name="/login" extends="main">
-		<put-attribute name="title" value="회원가입"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/member/meme.jsp" />
-	</definition>
-	
 	<definition name="/preproc" extends="main">
 		<put-attribute name="title" value="회원가입확인"></put-attribute>
 		<put-attribute name="body"
@@ -41,5 +35,35 @@
 			value="/WEB-INF/views/member/login.jsp" />
 	</definition>
 
+	<definition name="/delete" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/deleteform.jsp" />
+	</definition>
+	
+	<definition name="/updatepw" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/updatepw.jsp" />
+	</definition>
 
+	<definition name="/list" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/list.jsp" />
+	</definition>
+	
+	<definition name="/read" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/read.jsp" />
+	</definition>
+	
+	<definition name="/update" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/updatepw.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
