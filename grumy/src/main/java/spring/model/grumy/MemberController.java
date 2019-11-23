@@ -1,6 +1,7 @@
 package spring.model.grumy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -13,11 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.mapper.MemberMapper;
 import spring.model.member.MemberDTO;
+import spring.model.utility.Utility;
 
 @Controller
 public class MemberController {
@@ -180,6 +183,115 @@ public class MemberController {
 		return "redirect:/";
 
 	}
+	
+	@PostMapping("member/updatePw")
+	public String updatePw(MemberDTO dto, Model model) {
+		Map map = new HashMap();
+		map.put("id", dto.getId());
+		map.put("passwd", dto.getPasswd());
 
+		dao.updatePasswd(map);
+
+		model.addAttribute("id", dto.getId());
+
+		return "redirect:/member/read";
+	}
+
+	@GetMapping("member/updatePw")
+	public String updatePw() {
+
+		return "/updatePw";
+	}
+	
+	@PostMapping("member/delete")
+	public String delete(String id,HttpServletRequest request, HttpSession session) {
+		
+		int flag = dao.delete(id);
+
+		if (flag == 1) {
+			session.invalidate();
+			return "redirect:/";
+		} else {
+			return "error";
+		}
+	}
+
+	@GetMapping("/member/delete")
+	public String delete() {
+
+		return "/delete";
+	}
+
+	@PostMapping("/member/update")
+	public String update(MemberDTO dto, Model model) {
+		int flag = dao.update(dto);
+
+		if (flag == 1) {
+
+			model.addAttribute("id", dto.getId());
+			return "redirect:/member/read";
+
+		} else {
+			return "error";
+		}
+
+	}
+
+	@GetMapping("/member/update")
+	public String update(String id, Model model) {
+		MemberDTO dto = dao.read(id);
+
+		model.addAttribute("dto", dto);
+
+		return "/update";
+	}
+
+	@RequestMapping("/member/read")
+	public String read(String id, Model model) {
+
+		MemberDTO dto = dao.read(id);
+
+		model.addAttribute("dto", dto);
+
+		return "/read";
+	}
+
+	@RequestMapping("/admin/list")
+	public String list(HttpServletRequest request) {
+		String col = Utility.checkNull(request.getParameter("col"));
+		String word = Utility.checkNull(request.getParameter("word"));
+
+		if (col.equals("total"))
+			word = "";
+
+		int nowPage = 1;
+		int recordPerpage = 3;
+
+		if (request.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int sno = ((nowPage - 1) * recordPerpage) + 1;
+		int eno = nowPage * recordPerpage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno", sno);
+		map.put("eno", eno);
+
+		List<MemberDTO> list = dao.list(map);
+
+		int total = dao.total(map);
+		String paging = Utility.paging(total, nowPage, recordPerpage, col, word);
+
+		request.setAttribute("list", list);
+		request.setAttribute("paging", paging);
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("nowPage", nowPage);
+
+		return "/list";
+	}
 
 }
