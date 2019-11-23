@@ -16,5 +16,4 @@
         <put-attribute name="title" value="그루미" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/order/order.jsp" /> 
 </definition>  
-
 </tiles-definitions>
