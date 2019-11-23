@@ -15,12 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	,#{detailaddress},#{phone},#{email},#{birth},0,'H'
 	)
 </insert>
-
-
  
 <select id="duplicateId" parameterType="String" resultType="int">
-		select count(id) from member
-		where id = #{id}
+	select count(id) from member
+	where id = #{id}
 </select>
 
 <select id="loginCheck" parameterType="Map" resultType="int">
@@ -34,34 +32,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="read" parameterType="String" resultType="MemberDTO">
-select id,name,postcode,address,detailaddress,
-phone,email,birth,point,grade,
-from member
-where id = #{id}
+	select id,name,postcode,address,detailaddress,
+	phone,email,birth,point,grade,
+	from member
+	where id = #{id}
 </select>
 
 <select id="findpw" parameterType="Map" resultType="String">
-select passwd from member
-where name = #{name} and id = #{id}
+	select passwd from member
+	where name = #{name} and id = #{id}
 </select>
 
 <select id="findid" parameterType="Map" resultType="String">
-select id from member
-where name = #{name} and email = #{email}
+	select id from member
+	where name = #{name} and email = #{email}
 </select>
 
 <update id="updatePasswd" parameterType="Map">
-update member
-set passwd = #{passwd}
-where id = #{id}
+	update member
+	set passwd = #{passwd}
+	where id = #{id}
 </update>
 
 <update id="update" parameterType="MemberDTO">
-update member
-set phone = #{phone}, email = #{email}, postcode = #{postcode} , address = #{address}, 
-detailaddress = #{detailaddress}, birth=#{birth}
-where id = #{id}
-
+	update member
+	set phone = #{phone}, email = #{email}, postcode = #{postcode} , address = #{address}, 
+	detailaddress = #{detailaddress}, birth=#{birth}
+	where id = #{id}
 </update>
 
 <delete id="delete" parameterType="String">
@@ -70,19 +67,19 @@ where id = #{id}
 </delete>
 
 <select id="list" parameterType="Map" resultType="MemberDTO">
+	select id, name, postcode, address, detailaddress, 
+	phone, email, birth, point, r
+	from(
 		select id, name, postcode, address, detailaddress, 
-		phone, email, birth, point, r
+		phone, email, birth, point, 
+		rownum r
 		from(
-			select id, name, postcode, address, detailaddress, 
-			phone, email, birth, point, 
-			rownum r
-			from(
-				select id, name, postcode, address, detailaddress
-				from member
+			select id, name, postcode, address, detailaddress
+			from member
 		<where>
 			<choose>
 				<when test="col=='name'">
-					mname like '%'||#{word}||'%'
+					name like '%'||#{word}||'%'
 				</when>
 				<when test="col=='id'">
 					id like '%'||#{word}||'%'
@@ -102,7 +99,7 @@ WHERE r >= #{sno} AND r <= #{eno}
 </select>
 
 <select id="total" parameterType="Map" resultType="int">
-		select count(*) from member
+	select count(*) from member
 		<where>
 			<choose>
 				<when test="col=='name'">
@@ -117,7 +114,5 @@ WHERE r >= #{sno} AND r <= #{eno}
 			</choose>
 		</where>
 </select>
-
-
 
 </mapper>
