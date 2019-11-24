@@ -32,18 +32,6 @@
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
-		<script type="application/ld+json">
-    {
-     "@context": "http://schema.org",
-     "@type": "Person",
-     "name": "그루미",
-     "url": "http://www.slowand.com",
-     "sameAs": [
-       "https://www.instagram.com/slow.and",
-       "https://www.facebook.com/slowandmore",
-     ]
-    }
-</script>
 
 		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
@@ -60,8 +48,6 @@
 						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="website" />
-					<link rel="shortcut icon"
-						href="https://www.slowand.com/web/upload/favicon_20170717165926.ico" />
 					<script type="text/javascript"
 						src="https://www.slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
@@ -87,7 +73,7 @@
 <body id="main">
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>
+			<a href="#category">전체상품목록 바로가기</a>      
 		</p>
 		<p>
 			<a href="#contents">본문 바로가기</a>
@@ -123,7 +109,7 @@
 			<div
 				class="xans-element- xans-photoslide2 xans-photoslide2-slide-1 xans-photoslide2-slide xans-photoslide2-1 photoslide_inner main_slider ">
 
-				<div class="slider-wrapper theme-default">
+				<div class="slider-wrapper theme-default">        
 					<div class="ribbon"></div>
 					<div id="nivoSlider1" rel="1" class="nivoSlider"
 						style="background: url(//app-storage-008.cafe24.com/photoslide2/anne2173/2019/11/05/b7c3e23fad0b75ac6bd2c0161ddc26f1.jpg) no-repeat; position: relative; overflow: hidden; width: 2000px; height: 800px;">

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!--  헤더 시작 -->
 <link rel="stylesheet" type="text/css"
@@ -9,6 +9,9 @@
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=rc49DsIwDAXgvWXlHBY_EjszEz1B6litaWpHcYLU25MiTkC7-cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlEAS3aMmgyVO6O5sooxbJe9ox1Yj5SUhb4J_WO2P8XiFsaqCmLijt-fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d883c5&t=1543392667" />
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+<link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -18,8 +21,8 @@
 		<!-- 로고 -->
 		<div class="topArea">
 			<h1 class="xans-element- xans-layout xans-layout-logotop ">
-				<a href="${pageContext.request.contextPath}"> <!--span>그루미</span--> <img
-					src="${pageContext.request.contextPath}/images/grumy.jpg"
+				<a href="${pageContext.request.contextPath}"> <!--span>그루미</span-->
+					<img src="${pageContext.request.contextPath}/images/grumy.jpg"
 					style="margin-top: 0px; width: 153px; height: 33px; padding-top: 20px" />
 				</a>
 			</h1>
@@ -30,41 +33,46 @@
 		<div class="myList">
 
 
-	<c:choose>
-		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
-		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/admin/main">admin</a>
-				<a href="${pageContext.request.contextPath}/member/list">list</a>
-				<a href="${pageContext.request.contextPath}/member/logout">logout</a> 
-			</div>
-		</c:when>
-		<c:when test="${not empty sessionScope.id && sessionScope.grade =='H' }">
-		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/member/myprofile">myprofile</a> 
-				<a href="${pageContext.request.contextPath}/memeber/update">profilemodify</a>
-				<a href="${pageContext.request.contextPath}/memeber/logout">logout</a> 
-			</div>
-		</c:when>
-		<c:otherwise>
-			<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/member/login" class="log">LOGIN</a> 
-				<a href="${pageContext.request.contextPath}/member/create">JOIN</a> 
-				<a href="/myshop/order/list.html">ORDER</a>
-				<a href="/order/cart">MY PAGE</a> 
-				<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
-			</div>
-		</c:otherwise>
-	</c:choose>	
-			
+			<c:choose>
+				<c:when
+					test="${not empty sessionScope.id && sessionScope.grade =='A' }">
+					<div class="xans-element- xans-layout xans-layout-statelogoff ">
+						<a href="${pageContext.request.contextPath}/admin/main">admin</a>
+						<a href="${pageContext.request.contextPath}/member/list">list</a>
+						<a href="${pageContext.request.contextPath}/member/logout">logout</a>
+					</div>
+				</c:when>
+				<c:when
+					test="${not empty sessionScope.id && sessionScope.grade =='H' }">
+					<div class="xans-element- xans-layout xans-layout-statelogoff ">
+						<a href="${pageContext.request.contextPath}/member/myprofile">myprofile</a>
+						<a href="${pageContext.request.contextPath}/memeber/update">profilemodify</a>
+						<a href="${pageContext.request.contextPath}/memeber/logout">logout</a>     
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="xans-element- xans-layout xans-layout-statelogoff ">
+						<a href="${pageContext.request.contextPath}/member/login"
+							class="log">LOGIN</a> <a
+							href="${pageContext.request.contextPath}/member/create">JOIN</a>
+						<a href="/myshop/order/list.html">ORDER</a> <a href="/order/cart">MY
+							PAGE</a> <a class=" cart"
+							href="${pageContext.request.contextPath}/cart/list">CART</a>
+					</div>
+				</c:otherwise>
+			</c:choose>
+
 			<!-- cre.ma / 로그인 회원 정보 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
 
 			<div class="xans-element- xans-layout xans-layout-boardinfo">
 				<a style="cursor: pointer;">COMMUNITY</a>
 				<ul class="gnb_sub">
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/community/list">상품 문의<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/delivery/list">배송
-							문의<span></span>
+					<li class="xans-record-"><a
+						href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
+					<li class="xans-record-"><a
+						href="${pageContext.request.contextPath}/community/list">상품 문의<span></span></a></li>
+					<li class="xans-record-"><a
+						href="${pageContext.request.contextPath}/delivery/list">배송 문의<span></span>
 					</a></li>
 					<li class="xans-record-"><a href="/board/배송-전-변경취소/101/">배송
 							전 변경/취소<span></span>
@@ -73,7 +81,9 @@
 							후 교환/반품<span></span>
 					</a></li>
 					<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span>
+					<li class="xans-record-"><a
+						href="${pageContext.request.contextPath}/review/create">REVIEW
+							등록<span></span>
 					</a></li>
 					<li class="xans-record-"><a
 						href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
@@ -81,7 +91,7 @@
 			</div>
 
 			<form id="searchBarForm" name="" action="/product/search.html"
-				method="get" target="_self" enctype="multipart/form-data">
+				method="get" target="_self" enctype="multipart/form-data">      
 				<input id="banner_action" name="banner_action" value=""
 					type="hidden" />
 				<div class="xans-element- xans-layout xans-layout-searchheader ">
@@ -98,7 +108,7 @@
 							src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png"
 							alt="검색"
 							onclick="SEARCH_BANNER.submitSearchBanner(this); return false;" />
-					</fieldset>
+					</fieldset>      
 				</div>
 			</form>
 		</div>
@@ -131,14 +141,21 @@
 						<li class="xans-record-"><a href="/category/best-50/66/">BEST
 								20</a></li>
 
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=outer">OUTER</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=top">TOP</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=skirt">SKIRT</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom">BOTTOM</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag">SHOES/BAG</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc">ACC</a></li>
-						
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=outer">OUTER</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=top">TOP</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=skirt">SKIRT</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=bottom">BOTTOM</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=shoesbag">SHOES/BAG</a></li>
+						<li class="xans-record-"><a
+							href="${pageContext.request.contextPath}/item/list/?type=acc">ACC</a></li>
+
 
 					</ul>
 				</div>
