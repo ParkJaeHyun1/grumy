@@ -24,6 +24,7 @@
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZTBTsMwDIbv2648h7WBxJ0zBySewElNmzWJS-yI9e0JLYehXVCXHGPZn-PfyQ8DB4LjKcGUuE8YIJFwTpbAisBH4qhgOQSOhxJ4gP_kk90J-6yO487wZWNhVt3a1ONMaVupovF0VUp2n4WSAMZIp-PzI0zZeGf3gwYP0tG-I3F9BBldfFqggbvsCcIsA09gMI6GedzOLNNw1gISZ5cG5b7lQDdjbr8rp47ST4eR9A3tiH1VDb6cDN6JVtTg5k3eC1wDDbaUXQOoMnt1UwPyQL4Ftny_LtsW-k7Yu4hKLVRG04B642zVwH-8tqIIvoW4Jctux84Y-7NbTbx4eBXQ-TNTmg_mIt519zjrFfMVlauA3jFKFU_-Xchi-S-L41vOq4Lf&type=css&k=c0f95a0f58b7cf2f6513da1766995ca0a16ccb94&t=1547093551" />
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=rY7LDQIxDEQLWK7UYfGR6AMqCIlJDIkdxQ5ou2dZOoBcRhqN5ulBkoKAfuqKTcEx4353OkDt10x-SlYyaMApoFJk0AfxEbwqFAk9I2Q3SzeobanezuiRbbPsWxgDLj0baZJ6SVQrcRwJ98LP5U_C1f_OnR3HO634hC5gG6roDKO0eYjeTcT-0XO1KhCrudhceVGIaOu0--aH_AY&type=css&k=4fc1b7e0a4b924b7880ecdc4f7582ec0e2727268&t=1566806466" />
+
 <script>
 $(document).ready(function(){
 
