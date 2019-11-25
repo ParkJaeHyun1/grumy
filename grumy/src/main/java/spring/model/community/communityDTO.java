@@ -3,7 +3,7 @@ package spring.model.community;
 import org.springframework.web.multipart.MultipartFile;
 
 public class communityDTO {
-	private int no               ;
+	private int communityNo      ;
 	private String id            ;
 	private String content       ;
 	private String itemNo        ;
@@ -13,19 +13,14 @@ public class communityDTO {
 	private String filesize      ;
 	private String wdate;
 	private MultipartFile filenameMF ;
-	private String passwd        ;
-	
-	public communityDTO() {
-		super();
-		// TODO Auto-generated constructor stub
+	private int ref;
+	private int indent;
+	public int getCommunityNo() {
+		return communityNo;
 	}
 
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
+	public void setCommunityNo(int communityNo) {
+		this.communityNo = communityNo;
 	}
 
 	public String getId() {
@@ -84,6 +79,14 @@ public class communityDTO {
 		this.filesize = filesize;
 	}
 
+	public String getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+
 	public MultipartFile getFilenameMF() {
 		return filenameMF;
 	}
@@ -92,25 +95,34 @@ public class communityDTO {
 		this.filenameMF = filenameMF;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public int getRef() {
+		return ref;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setRef(int ref) {
+		this.ref = ref;
 	}
 
-	@Override
-	public String toString() {
-		return "communityDTO [no=" + no + ", id=" + id + ", content=" + content + ", itemNo=" + itemNo
-				+ ", itemPicture=" + itemPicture + ", itemTitle=" + itemTitle + ", picture=" + picture + ", filesize="
-				+ filesize + ", filenameMF=" + filenameMF + ", passwd=" + passwd+ ", wdate=" + wdate + "]";
+	public int getIndent() {
+		return indent;
 	}
 
-	public communityDTO(int no, String id, String content, String itemNo, String itemPicture, String itemTitle,
-			String picture, String filesize, MultipartFile filenameMF, String passwd,String wdate) {
+	public void setIndent(int indent) {
+		this.indent = indent;
+	}
+
+	public int getAnsnum() {
+		return ansnum;
+	}
+
+	public void setAnsnum(int ansnum) {
+		this.ansnum = ansnum;
+	}
+
+	public communityDTO(int communityNo, String id, String content, String itemNo, String itemPicture, String itemTitle,
+			String picture, String filesize, String wdate, MultipartFile filenameMF, int ref, int indent, int ansnum) {
 		super();
-		this.no = no;
+		this.communityNo = communityNo;
 		this.id = id;
 		this.content = content;
 		this.itemNo = itemNo;
@@ -118,17 +130,19 @@ public class communityDTO {
 		this.itemTitle = itemTitle;
 		this.picture = picture;
 		this.filesize = filesize;
-		this.filenameMF = filenameMF;
-		this.passwd = passwd;
-		this.wdate=wdate;
-	}
-
-	public String getWdate() {
-		return wdate;
-	}
-
-	public void setWdate(String wdate) {
 		this.wdate = wdate;
+		this.filenameMF = filenameMF;
+		this.ref = ref;
+		this.indent = indent;
+		this.ansnum = ansnum;
 	}
+
+	private int ansnum;
+	
+	public communityDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 }

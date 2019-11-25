@@ -3,24 +3,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-function read(no){
-	var url = "read";
-	url += "?no="+no;
-	
-	location.href = url;
-}
-function update(no){
+function update(communityNo){
 	var url = "update";
-	url += "?no="+no;
+	url += "?communityNo="+communityNo;
 	
 	location.href = url;
 }
-function delete1(no) {
+function delete1(communityNo) {
 
 	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 
 		 var url = "delete";
-	 	url += "?no="+no;
+	 	url += "?communityNo="+communityNo;
 		 
 	     location.href=url;
 
@@ -70,6 +64,11 @@ function delete1(no) {
 										class="txtNum">${dto.wdate }</span></li>
 								</ul>
 								<div class="detail">${dto.content }</div>
+								<c:if test="${not empty dto.picture }">
+								<img width="200px"
+								height="150px" class="img-thumbnail"
+								src="${pageContext.request.contextPath}/storage/${dto.picture}">
+								</c:if>
 							</td>
 						</tr>
 
@@ -78,10 +77,8 @@ function delete1(no) {
 				<div class="ec-base-button ">
 					<p align="right">
 						<button class="yg_btn_30 yg_btn4" onclick="location.href='list'">LIST</button>
-						<button class="yg_btn_30 yg_btn4"
-							onclick="javascript:update(${param.no})">MODIFY</button>
-						<button class="yg_btn_30 yg_btn4" id="delete"
-							onclick="javascript:delete1(${param.no})">DELETE</button>
+						<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.communityNo})">MODIFY</button>
+						<button class="yg_btn_30 yg_btn4" id="delete" onclick="javascript:delete1(${param.communityNo})">DELETE</button>
 					</p>
 				</div>
 			</div>
