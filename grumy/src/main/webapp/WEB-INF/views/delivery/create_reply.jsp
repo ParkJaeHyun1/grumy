@@ -23,7 +23,8 @@
 				enctype="multipart/form-data">
 				
 				<input type="hidden" name="no" value="${param.no }">
-				<input type="hidden" name="writer" value="grumy">
+				<input type="hidden" name="writer" value="${name}">
+				<input type="hidden" name="writer" value="${sessionScope.id}">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>

@@ -5,9 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.deliveryMapper">
 
+<select id="getname" parameterType="String" resultType="String">
+select name from member
+where id = #{id}
+</select>
+
 <insert id="create_reply" parameterType="DeliveryDTO">
-insert into delivery(no,subject,writer,content,file1,wdate,ref,indent)
-values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{content},#{file1,jdbcType=VARCHAR},sysdate,#{no},1)
+insert into delivery(no,subject,writer,id,content,file1,wdate,ref,indent)
+values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{id},#{content},#{file1,jdbcType=VARCHAR},sysdate,#{no},1)
 </insert>
 
 <update id="update" parameterType="int">
@@ -37,7 +42,7 @@ where no = #{no}
 	</select>
 	
 <select id="read" parameterType="int" resultType="DeliveryDTO">
-select no,subject,writer,content,wdate,file1
+select no,subject,writer,content,wdate,file1,indent,id
 from delivery
 where no = #{no}
 </select>
@@ -51,9 +56,9 @@ where no = #{no}
 </delete>
 
 <insert id="create" parameterType="DeliveryDTO">
-insert into delivery(no,subject,content,writer,wdate,file1,ref)
+insert into delivery(no,subject,content,writer,wdate,file1,ref,id)
 values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
-#{writer},sysdate,#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery))
+#{writer},sysdate,#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery),#{id})
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">

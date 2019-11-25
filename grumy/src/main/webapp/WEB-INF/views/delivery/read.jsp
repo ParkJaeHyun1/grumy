@@ -94,7 +94,9 @@
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 									 <span class="gRight">
+									 <c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
 									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+									 </c:if>
 									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
 									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
@@ -103,30 +105,31 @@
 							
 						</tr>
 
-						<c:choose>
-							<c:when test="${empty noArr[0] }">
-								<tr>
-									<td>NEXT</td>
-									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-								</tr>
-							</c:when>
-							<c:when test="${empty noArr[1] }">
-								<tr>
-									<td>PREV</td>
-									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr>
-									<td>PREV</td>
-									<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-								</tr>
-								<tr>
-									<td>NEXT</td>
-									<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-								</tr>
-							</c:otherwise>
-						</c:choose>
+							<c:choose>
+								<c:when test="${empty noArr[0] }">
+									<tr>
+										<td>NEXT</td>
+										<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
+									</tr>
+								</c:when>
+								<c:when test="${empty noArr[1] }">
+									<tr>
+										<td>PREV</td>
+										<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td>PREV</td>
+										<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
+									</tr>
+									<tr>
+										<td>NEXT</td>
+										<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
+
 					</tbody>
 				</table>
 

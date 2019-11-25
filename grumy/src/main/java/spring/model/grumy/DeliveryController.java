@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +29,12 @@ public class DeliveryController {
 	deliveryMapper mapper;
 	
 	@PostMapping("/delivery/create_reply")
-	public String create_reply(DeliveryDTO dto) {
+	public String create_reply(DeliveryDTO dto,HttpSession session,HttpServletRequest request) {
 		mapper.create_reply(dto);
+		String id = (String) session.getAttribute("id");
+		
+		
+		request.setAttribute("name", mapper.getname(id));
 		
 		return "redirect:/delivery/list";
 	}
@@ -83,16 +88,54 @@ public class DeliveryController {
 		}
 	}
 	
+	@GetMapping("/delivery/read_reply")
+	public String read_reply(int no,HttpSession session,Model model){
+		String id = (String)session.getAttribute("id"); 
+
+		if( id ==null) {
+			id =  "";
+		}
+	
+		DeliveryDTO dto = mapper.read(no);
+		
+		
+		if(id.equals("admin")||id.equals(dto.getId())) {
+			
+		
+		String content = dto.getContent().replaceAll("\r\n", "<br>");
+		
+		dto.setContent(content);
+		
+
+		model.addAttribute("dto",dto);
+		
+		return "/delivery/read_reply";
+		}else {
+			return "/delivery/error";
+		}
+	}
+	
+	
 	@GetMapping("/delivery/read")
-		public String read(int no, Model model) {
+		public String read(int no, Model model,HttpSession session) {
+			String id = (String)session.getAttribute("id"); 
+
+			if( id ==null) {
+				id =  "";
+			}
+		
 			DeliveryDTO dto = mapper.read(no);
+			
+			
+			if(id.equals("admin")||id.equals(dto.getId())) {
+				
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");
 			
 			dto.setContent(content);
 			
-			Map map = mapper.noread(no); 
-			
+
+			Map map = mapper.noread(no);
 			BigDecimal [] noArr = {(BigDecimal)map.get("PRE_NO"),
 									(BigDecimal)map.get("NEXT_NO")
 									};
@@ -100,15 +143,14 @@ public class DeliveryController {
 			String [] subjectArr= {(String)map.get("PRE_SUBJECT"),
 									(String)map.get("NEXT_SUBJECT")
 									};
-			
-			
-			
-			model.addAttribute("dto",dto);
 			model.addAttribute("noArr",noArr);
-			model.addAttribute("subjectArr",subjectArr);
-					
+			model.addAttribute("subjectArr",subjectArr);			
+			model.addAttribute("dto",dto);
 			
 			return "/delivery/read";
+			}else {
+				return "/delivery/error";
+			}
 		}
 	
 	
@@ -134,7 +176,12 @@ public class DeliveryController {
 	}
 	
 	@GetMapping("/delivery/create")
-	public String create() {
+	public String create(HttpSession session,HttpServletRequest request) {
+		String id = (String) session.getAttribute("id");
+		
+		
+		
+		request.setAttribute("name", mapper.getname(id));
 		
 		return "/delivery/create";
 	}

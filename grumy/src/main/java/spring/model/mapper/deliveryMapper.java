@@ -14,5 +14,6 @@ public interface deliveryMapper {
 	int delete(int no);
 	int update(DeliveryDTO dto);
 	int create_reply(DeliveryDTO dto);
+	String getname(String id);
 
 }

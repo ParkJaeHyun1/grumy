@@ -114,9 +114,12 @@ function read(no){
 					</fieldset>
 				</div>
 			</form>
+			
+			<c:if test="${sessionScope.id=='admin' && sessionScope.grade=='A' }">
 						<p  align="right">
 						<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
 						</p>
+			</c:if>
 
 		
 				${paging}

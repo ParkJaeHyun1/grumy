@@ -13,12 +13,109 @@ public class DeliveryDTO {
 	private MultipartFile fileMF;
 	private int ref;
 	private int indent;
+	private String id;
 	public DeliveryDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getWriter() {
+		return writer;
+	}
+
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(String wdate) {
+		this.wdate = wdate;
+	}
+
+	public String getPasswd() {
+		return passwd;
+	}
+
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
+
+	public String getFile1() {
+		return file1;
+	}
+
+	public void setFile1(String file1) {
+		this.file1 = file1;
+	}
+
+	public MultipartFile getFileMF() {
+		return fileMF;
+	}
+
+	public void setFileMF(MultipartFile fileMF) {
+		this.fileMF = fileMF;
+	}
+
+	public int getRef() {
+		return ref;
+	}
+
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+
+	public int getIndent() {
+		return indent;
+	}
+
+	public void setIndent(int indent) {
+		this.indent = indent;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
+				+ ", wdate=" + wdate + ", passwd=" + passwd + ", file1=" + file1 + ", fileMF=" + fileMF + ", ref=" + ref
+				+ ", indent=" + indent + ", id=" + id + "]";
+	}
+
 	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd, String file1,
-			MultipartFile fileMF, int ref, int indent) {
+			MultipartFile fileMF, int ref, int indent, String id) {
 		super();
 		this.no = no;
 		this.subject = subject;
@@ -30,74 +127,8 @@ public class DeliveryDTO {
 		this.fileMF = fileMF;
 		this.ref = ref;
 		this.indent = indent;
+		this.id = id;
 	}
-	@Override
-	public String toString() {
-		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
-				+ ", wdate=" + wdate + ", passwd=" + passwd + ", file1=" + file1 + ", fileMF=" + fileMF + ", ref=" + ref
-				+ ", indent=" + indent + "]";
-	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getWdate() {
-		return wdate;
-	}
-	public void setWdate(String wdate) {
-		this.wdate = wdate;
-	}
-	public String getPasswd() {
-		return passwd;
-	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
-	public String getFile1() {
-		return file1;
-	}
-	public void setFile1(String file1) {
-		this.file1 = file1;
-	}
-	public MultipartFile getFileMF() {
-		return fileMF;
-	}
-	public void setFileMF(MultipartFile fileMF) {
-		this.fileMF = fileMF;
-	}
-	public int getRef() {
-		return ref;
-	}
-	public void setRef(int ref) {
-		this.ref = ref;
-	}
-	public int getIndent() {
-		return indent;
-	}
-	public void setIndent(int indent) {
-		this.indent = indent;
-	}
-	
-	
+
 	
 	}

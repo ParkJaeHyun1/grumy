@@ -109,12 +109,14 @@ function delete1(no) {
 							</c:choose>
 						</tbody>
 				</table>
+				<c:if test="${sessionScope.id=='admin' && sessionScope.grade=='A' }">
 				<div class="ec-base-button ">
-									<p  align="right">
-									<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.no})">MODIFY</button>
-									<button class="yg_btn_30 yg_btn4" id="delete" onclick="javascript:delete1(${param.no})">DELETE</button>
-									</p>
-								</div>
+								<p  align="right">
+								<button class="yg_btn_30 yg_btn4" onclick="javascript:update(${param.no})">MODIFY</button>
+								<button class="yg_btn_30 yg_btn4" id="delete" onclick="javascript:delete1(${param.no})">DELETE</button>
+								</p>
+				</div>
+				</c:if>
 			</div>
 
 		</div>

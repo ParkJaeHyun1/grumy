@@ -11,6 +11,12 @@
 
 		location.href = url;
 	}
+	function read_reply(no) {
+		var url = "read_reply";
+		url += "?no=" + no;
+
+		location.href = url;
+	}
 </script>
 <div id="container">
 	<div id="contents">
@@ -76,13 +82,21 @@
 										class="xans-record-">
 										<td>${total-status.index}</td>
 										<td class="displaynone"></td>
-										<td class="subject left txtBreak"><strong> <a
-												href="javascript:read(${dto.no })" style="color: #555555;">
-													<c:if test="${dto.indent>0 }">
+										<td class="subject left txtBreak"><strong>
+										<c:choose>
+											<c:when test="${dto.indent==0 }">
+											<a href="javascript:read(${dto.no })" style="color: #555555;">
+												<img src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
+											</c:when>
+											<c:otherwise>
+											<a href="javascript:read_reply(${dto.no })" style="color: #555555;">
 														&nbsp;<img
 															src="${pageContext.request.contextPath }/images/re.gif" />
-													</c:if> <img
+													<img
 													src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
+											</c:otherwise>
+										
+										</c:choose>
 												<span class="txtEm"></span></strong></td>
 										<td>${dto.writer }</td>
 										<td class=""><span class="txtNum">${dto.wdate }</span></td>
@@ -116,10 +130,11 @@
 					</fieldset>
 				</div>
 			</form>
+			<c:if test="${not empty sessionScope.id }">
 			<p align="right">
 				<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
 			</p>
-
+			</c:if>
 
 			${paging}
 

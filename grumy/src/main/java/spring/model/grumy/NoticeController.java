@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +55,7 @@ public class NoticeController {
 	
 	@GetMapping("/notice/update")
 	public String update(int no,Model model) {
+		
 		NoticeDTO dto = mapper.read(no);
 		
 		model.addAttribute("dto",dto);

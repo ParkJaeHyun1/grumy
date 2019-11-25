@@ -21,7 +21,8 @@
 			<form id="boardWriteForm" name="frm"
 				action="create" method="post" 
 				enctype="multipart/form-data">
-				<input type="hidden" name="writer" value="ㅋㅋ">
+				<input type="hidden" name="writer" value="${name }">
+				<input type="hidden" name="id" value="${sessionScope.id }">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>

@@ -30,4 +30,12 @@
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/delivery/create_reply.jsp" />
 	</definition>
+ 	<definition name="/delivery/read_reply" extends="main">
+		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="body" value="/WEB-INF/views/delivery/read_reply.jsp" />
+	</definition>
+ 	<definition name="/delivery/error" extends="main">
+		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="body" value="/WEB-INF/views/delivery/error.jsp" />
+	</definition>
 </tiles-definitions>
