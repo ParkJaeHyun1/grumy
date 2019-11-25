@@ -57,26 +57,7 @@
 								<td><input name="filenameMF" type="file"></td>
 							</tr>
 						</tbody>
-						<tbody>
-							
-							<tr class="">
-								<th scope="row">SECRET</th>
-								<td><input id="secure0" name="secure" fw-filter="isFill"
-									fw-label="비밀글설정" fw-msg="" value="secure0" type="radio">
-									<label for="secure0">공개글</label> 
-									<input id="secure1" name="secure"
-									fw-filter="isFill" fw-label="비밀글설정" fw-msg="" value="secure1"
-									type="radio" checked="checked">
-									<label for="secure1">비밀글</label></td>
-							</tr>
-						
-							<tr class="" id="passwdhide">
-								<th scope="row">PASSWORD</th>
-								<td><input id="passwd" name="passwd" fw-filter="isFill"
-									fw-label="비밀번호" fw-msg="" value="" type="password"></td>
-							</tr>
-
-						</tbody>
+					
 					</table>
 				</div>
 				<div class="ec-base-button ">
@@ -94,21 +75,7 @@
 
 	</div>
 	<script type="text/javascript">
-	 $(document).ready(function() {
- $("input[name='secure']:radio").change(function () {
-         
-         var secure = this.value;
-          if(secure == "secure0"){//공개글이면
-             
-             $( "#passwdhide" ).hide();
-            
-          }else if(secure == "secure1"){
-    
-             $( "#passwdhide" ).show();
-          }
-         
-         });
-	 });
+	
 		var oEditors = [];
 		$(function() {
 			nhn.husky.EZCreator

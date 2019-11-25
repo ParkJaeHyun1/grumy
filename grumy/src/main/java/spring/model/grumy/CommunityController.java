@@ -26,8 +26,8 @@ public class CommunityController {
 	private communityMapper mapper;
 	
 	@GetMapping("/community/read")
-	public String read(int no, Model model) {
-		communityDTO dto = mapper.read(no);
+	public String read(int communityNo, Model model) {
+		communityDTO dto = mapper.read(communityNo);
 		
 		String content = dto.getContent().replaceAll("\r\n", "<br>");
 		

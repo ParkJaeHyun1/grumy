@@ -4,9 +4,9 @@
 <%@ taglib prefix="util" uri="/ELFunctions"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-	function read(no) {
+	function read(communityNo) {
 		var url = "read";
-		url += "?no=" + no;
+		url += "?communityNo=" + communityNo;
 
 		location.href = url;
 	}
@@ -84,25 +84,22 @@
 								<c:forEach var="dto" items="${list}">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${dto.no}</td>
+										<td>${dto.communityNo}</td>
 										<td class="thumb left"><a><img
 												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
 												width="63.75px" height="63.75px" border="0" alt=""></a></td>
 
 										<td class="subject left txtBreak"><span class="prd_name"
-											style="color: #aaa;">${dto.itemTitle}</span><br> <c:choose>
-												<c:when test="${empty dto.passwd}">
-													<a href="javascript:read(${dto.no })"
-														style="color: #555555;">문의합니다 ♡</a>
-												</c:when>
-												<c:otherwise>
+											style="color: #aaa;">${dto.itemTitle}</span><br> 
+											
+												
 													<img
 														src="${pageContext.request.contextPath}/images/icon_1.png"
 														alt="비밀글">
-													<a href="javascript:read(${dto.no })" style="color: #aaa;">문의합니다
+													<a href="javascript:read(${dto.communityNo })" style="color: #aaa;">문의합니다
 														♡</a>
-												</c:otherwise>
-											</c:choose> <span class="txtEm"></span> <c:if
+												
+											 <span class="txtEm"></span> <c:if
 												test="${util:newImg(dto.wdate) }">
 												<img
 													src="${pageContext.request.contextPath}/images/icon_4.gif">
