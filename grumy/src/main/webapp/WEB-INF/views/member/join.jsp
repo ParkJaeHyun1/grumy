@@ -266,7 +266,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
 		value="" type="text" />
 		</span> 
-		</td>
+		</td> 
 	</tr>
 	<tr class="">
 		<th scope="row">주소 
