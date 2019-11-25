@@ -227,20 +227,23 @@ public class MemberController {
 	@PostMapping("/member/update")
 	public String update(MemberDTO dto, Model model) {
 		int flag = dao.update(dto);
-
+		
 		if (flag == 1) {
 
 			model.addAttribute("id", dto.getId());
+			
 			return "redirect:/member/read";
-
 		} else {
+			
 			return "error";
 		}
 
 	}
 
 	@GetMapping("/member/update")
-	public String update(String id, Model model) {
+	public String update(Model model,HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		
 		MemberDTO dto = dao.read(id);
 
 		model.addAttribute("dto", dto);

@@ -273,7 +273,7 @@ alt="필수">
 <td>
 <input id="phone" name="phone" maxlength="11" 
 fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-fw-msg="" value="${dto.phone }" type="text" />
+fw-msg="" value="0${dto.phone }" type="text" />
 (-)는 제외하고 입력하세요.
 </td>
 </tr>
@@ -317,29 +317,7 @@ onclick="" alt="회원탈퇴">회원탈퇴</a>
 </span>
 </div>
 </form>
-<div class="layerLeave ec-base-layer" id="eLeaveLayer">
-   <div class="header">
-            <h3>회원탈퇴</h3>
-   </div>
-   <div class="content">
-   <div class="ec-base-box typeMember">
-   <div class="information">
-<strong class="title">혜택 내역</strong>
-<div class="description">
-<ul>
-<li id="eLeaveLayerMileageText">탈퇴시 보유하고 있는 적립금은 모두 삭제됩니다.</li>
-<li>현재 적립금 : <strong id="eLeaveLayerMileage" class="txtEm">0</strong>
-</li>
-<li id="eLeaveLayerDepositTextarea">현재 예치금 : 
-<strong id="eLeaveLayerDeposit" class="txtEm">0</strong>
-</li>
-</ul>
-	</div>
-	</div>
-	</div>
-</table>
-</div>
-</div>
+
         
 	<div class="ec-base-button">
 <a href="#" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
