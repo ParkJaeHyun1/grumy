@@ -28,6 +28,8 @@ public class MemberController {
 
 	@Autowired
 	private MemberMapper dao;
+	
+
 
 	@GetMapping("/member/create")
 	public String create() {

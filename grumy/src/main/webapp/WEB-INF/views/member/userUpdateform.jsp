@@ -535,9 +535,12 @@ placeholder="" maxlength="30" value="" type="text">
 </td>
 </tr>
 <tr class="displaynone">
-<th scope="row"> <img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수"></th>
-                <td></td>
-            </tr>
+<th scope="row"> 
+<img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수">
+</th>
+<td>
+</td>
+</tr>
 
 
 <tr class="displaynone">

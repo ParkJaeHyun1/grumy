@@ -45,9 +45,9 @@
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='H' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/myprofile">myprofile</a>
-						<a href="${pageContext.request.contextPath}/memeber/update">profilemodify</a>
-						<a href="${pageContext.request.contextPath}/memeber/logout">logout</a>     
+						<a href="${pageContext.request.contextPath}/member/read">myprofile</a>
+						<a href="${pageContext.request.contextPath}/member/update?id=${sessionScope.id}">profilemodify</a>
+						<a href="${pageContext.request.contextPath}/member/logout">logout</a>     
 					</div>
 				</c:when>
 				<c:otherwise>
