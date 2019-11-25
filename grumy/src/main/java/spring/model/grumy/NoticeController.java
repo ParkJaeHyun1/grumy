@@ -133,7 +133,7 @@ public class NoticeController {
 		map.put("sno",sno);
 		map.put("eno",eno);
 		
-		
+		List<NoticeDTO> list_ = mapper.list_();
 		List<NoticeDTO> list = mapper.list(map);
 		
 		int total = mapper.total(map);
@@ -145,6 +145,7 @@ public class NoticeController {
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("list", list);
+		request.setAttribute("list_", list_);
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		
