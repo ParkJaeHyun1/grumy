@@ -1,0 +1,37 @@
+package spring.model.grumy;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import spring.model.mapper.reviewMapper;
+import spring.model.review.reviewDTO;
+
+@RestController
+public class itemRestController {
+	@Autowired
+	private reviewMapper mapper;
+	@GetMapping("/item/reply/list/{itemNo}/{nowPage}")
+	public ResponseEntity<List<reviewDTO>> getList(@PathVariable("itemNo") int itemNo,@PathVariable("nowPage") int nowPage){
+
+		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
+		
+		//디비에서 가져올 순번
+		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+		int eno = nowPage * recordPerPage;
+		Map map = new HashMap();
+		map.put("sno", sno);
+		map.put("eno", eno);
+		map.put("itemNo", itemNo);
+		
+		return new ResponseEntity<List<reviewDTO>>(mapper.itemReviewlist(map),HttpStatus.OK);
+		
+	}
+}
