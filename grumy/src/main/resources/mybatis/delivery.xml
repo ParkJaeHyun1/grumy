@@ -78,6 +78,9 @@ select count(*) from delivery
          </where>
 </select>
 
+
+
+
 <select id="list" parameterType="Map" resultType="DeliveryDTO">
 select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate,indent
 	from (

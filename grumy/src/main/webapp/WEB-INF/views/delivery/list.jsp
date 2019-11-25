@@ -81,7 +81,7 @@
 								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${total-status.index}</td>
+										<td>${total-status.index-((nowPage-1)*10)}</td>
 										<td class="displaynone"></td>
 										<td class="subject left txtBreak"><strong>
 										<c:choose>

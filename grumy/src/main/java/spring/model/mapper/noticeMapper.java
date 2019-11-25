@@ -15,5 +15,6 @@ public interface noticeMapper {
 	int update(NoticeDTO dto);
 	int passcheck(Map map);
 	int delete(int no);
+	List<NoticeDTO> list_();
 
 }

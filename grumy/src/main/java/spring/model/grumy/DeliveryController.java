@@ -211,9 +211,11 @@ public class DeliveryController {
 		map.put("eno",eno);
 		
 		
+		
 		List<DeliveryDTO> list = mapper.list(map); 
 		
 		int total = mapper.total(map);
+		
 
 		
 		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);

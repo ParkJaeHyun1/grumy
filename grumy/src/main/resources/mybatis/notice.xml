@@ -63,9 +63,22 @@ select count(*) from notice
          </where>
 </select>
 
+<select id="list_" resultType="DeliveryDTO">
+select no,subject,writer,to_char(wdate,'YYYY-MM-DD HH24:MI:SS')wdate
+	from(
+		select no,subject,writer,wdate,rownum r
+		from(
+			select no,subject,writer,wdate
+			from notice
+			where lev = 'S'
+			order by no desc
+			)
+		)
+</select>
+
 	
 <select id="list" parameterType="Map" resultType="NoticeDTO">
-select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
+select no,subject,writer,to_char(wdate,'YYYY-MM-DD HH24:MI:SS')wdate
 	from (
 			select no,subject,writer,wdate,rownum r
 			from (
@@ -83,6 +96,7 @@ select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate
 						writer like '%'||#{word}||'%'
 						</when>
 					</choose>
+					lev = 'A'
 				</where>
 				order by no desc
 				)

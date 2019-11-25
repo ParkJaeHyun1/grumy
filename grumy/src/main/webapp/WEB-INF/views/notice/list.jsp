@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-function read(no){
-	var url = "read";
-	url += "?no="+no;
-	
-	location.href=url;
-}
+	function read(no) {
+		var url = "read";
+		url += "?no=" + no;
+
+		location.href = url;
+	}
 </script>
 
 <div id="container">
@@ -21,8 +22,7 @@ function read(no){
 					<h2>
 						<font color="#555555">NOTICE</font>
 					</h2>
-					<br>
-					<br>
+					<br> <br>
 					<!--h3>공지사항입니다.</h3-->
 				</div>
 				<p class="imgArea"></p>
@@ -74,10 +74,24 @@ function read(no){
 									<td></td>
 							</c:when>
 							<c:otherwise>
+								<c:if test="${nowPage==1 }">
+									<c:forEach var="dto" items="${list_ }"> 
+										<tr style="background-color: #FAFAFA; color: #555555;"
+											class="xans-record-">
+											<td></td>
+											<td class="displaynone"></td>
+											<td class="subject left txtBreak"><strong> <a
+													href="javascript:read(${dto.no })" style="color: #555555;">
+														${dto.subject }</a> <span class="txtEm"></span></strong></td>
+											<td>${dto.writer }</td>
+											<td class=""><span class="txtNum">${dto.wdate }</span></td>
+										</tr>
+									</c:forEach>
+								</c:if>
 								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${total-status.index}</td>
+										<td>${total-status.index-((nowPage-1)*10)}</td>
 										<td class="displaynone"></td>
 										<td class="subject left txtBreak"><strong> <a
 												href="javascript:read(${dto.no })" style="color: #555555;">
@@ -114,17 +128,17 @@ function read(no){
 					</fieldset>
 				</div>
 			</form>
-			
+
 			<c:if test="${sessionScope.id=='admin' && sessionScope.grade=='A' }">
-						<p  align="right">
-						<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
-						</p>
+				<p align="right">
+					<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
+				</p>
 			</c:if>
 
-		
-				${paging}
-			
-		
+
+			${paging}
+
+
 
 
 		</div>
