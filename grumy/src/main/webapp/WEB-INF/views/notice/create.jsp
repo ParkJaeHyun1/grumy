@@ -43,6 +43,15 @@
 								<textarea rows="20" cols="190" name="content" id="content"></textarea>
 							</td>
 						</tr>
+						<tr>
+							<th scope="row">LEV.</th>
+							<td>
+								<select name="lev" id="lev">
+									<option>A</option>
+									<option>S</option>
+								</select>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<br>

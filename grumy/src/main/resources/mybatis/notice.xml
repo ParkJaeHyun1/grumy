@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.noticeMapper">
 
 <insert id="create" parameterType="NoticeDTO">
-insert into notice(no,subject,content,wdate,writer,viewcnt)
-values((select nvl(max(no),0)+1 from notice),#{subject},#{content},sysdate,'ㅋㅋ',0)
+insert into notice(no,subject,content,wdate,writer,viewcnt,lev)
+values((select nvl(max(no),0)+1 from notice),#{subject},#{content},sysdate,'ㅋㅋ',0,#{lev})
 </insert>
 
 <delete id="delete" parameterType="int">
