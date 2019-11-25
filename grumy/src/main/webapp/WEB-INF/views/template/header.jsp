@@ -43,16 +43,18 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 	<c:choose>
 		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/admin/main">admin</a>
-				<a href="${pageContext.request.contextPath}/member/list">list</a>
-				<a href="${pageContext.request.contextPath}/member/logout">logout</a> 
+				<a href="${pageContext.request.contextPath}/admin/main">ADMIN PAGE</a>
+				<a href="${pageContext.request.contextPath}/member/list">LIST</a>
+				<a href="${pageContext.request.contextPath}/member/logout">LOG OUT</a> 
 			</div>
 		</c:when>
 		<c:when test="${not empty sessionScope.id && sessionScope.grade =='H' }">
 		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/member/myprofile">myprofile</a> 
-				<a href="${pageContext.request.contextPath}/memeber/update">profilemodify</a>
-				<a href="${pageContext.request.contextPath}/memeber/logout">logout</a> 
+				<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> 
+				<a href="${pageContext.request.contextPath}/member/create">JOIN</a> 
+				<a href="/myshop/order/list.html">ORDER</a>
+				<a href="/order/cart">MY PAGE</a> 
+				<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
 			</div>
 		</c:when>
 		<c:otherwise>
