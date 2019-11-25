@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="read" parameterType="String" resultType="MemberDTO">
 	select id,name,postcode,address,detailaddress,
-	phone,email
+	phone,email,birth,point,grade
 	from member
 	where id = #{id,jdbcType=VARCHAR}
 </select>

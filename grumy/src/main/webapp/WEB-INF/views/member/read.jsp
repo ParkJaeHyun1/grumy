@@ -5,124 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
-
-<!--  다음 주소 찾기  -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
-function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                  //  document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                   // document.getElementById("sample6_extraAddress").value = '';
-                }
- 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailaddress").focus();
-            }
-        }).open();
-    }
-</script>
-
-<!-- 필수 입력창 확인  -->
-<script type="text/javascript">
-function inCheck(f){
-	if(f.id.value.length==0){
-		alert("아이디를 입력하세요");
-		f.id.focus();
-		return false;
-	}
-	
-	if(f.passwd.value.length==0){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
-		return false;
-	}
-	if(f.user_passwd_confirm.value.length==0){
-		alert("비밀번호 확인울 입력하세요");
-		f.user_passwd_confirm.focus();
-		return false;
-	}
-
-	if(f.passwd.value != f.user_passwd_confirm.value){
-		alert("비밀번호가 일치하지 않습니다.");
-		f.passwd.value="";
-		f.user_passwd_confirm.value="";
-		f.passwd.focus();
-		return false;
-	}
-	
-	if(f.name.value.length==0){
-		alert("이름을 입력하세요");
-		f.name.focus();
-		return false;
-	}
-	
-	if(f.postcode.value.length==0){
-		alert("주소를 입력하세요")
-		f.postcode.focus();
-		return false;
-	}
-	if(f.address.value.length==0){
-		alert("주소를 입력하세요")
-		f.address.focus();
-		return false;
-	}
-	if(f.detailaddress.value.length==0){
-		alert("주소를 입력하세요")
-		f.detailaddress.focus();
-		return false;
-	}
-	if(f.phone.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.phone.focus();
-		return false;
-	}
-
-	if(f.email.value.length==0){
-		alert("email을 입력하세요");
-		f.email.focus();
-		return false;
-	}
-
-
-    
-}
-</script>
 <!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
 <!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
 <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
@@ -202,12 +84,11 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?token=YXV0aF9tb2RlJ
 
 
 <div class="titleArea">
-    <h2>EDIT PROFILE</h2>
-    <h3>회원 정보 수정</h3>
+    <h2>PROFILE</h2>
+    <h3>회원 정보</h3>
 </div>
 
 <h3 class=" ">기본정보</h3>
-<p class="required "><img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수"> 필수입력사항</p>
 <div class="ec-base-table typeWrite">
         <table border="1" summary="">
 <caption>회원 기본정보</caption>
@@ -222,84 +103,52 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?token=YXV0aF9tb2RlJ
 </th>
 </tr>
 <tr>
-<th scope="row">비밀번호 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="" alt="필수">
-</th>
-<td>
-<input id="passwd" name="passwd" fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="비밀번호" fw-msg="" autocomplete="off" maxlength="16" 0="disabled" value="" type="password"> 
-(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
-</td>
-</tr>
-<tr class="">
-<th scope="row">비밀번호 확인 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수">
-</th>
-<td>
-<input id="user_passwd_confirm" name="user_passwd_confirm" fw-filter="isFill&amp;isMatch[passwd]" fw-label="비밀번호 확인" fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off" maxlength="16" 
-0="disabled" value="" type="password"> 
-<span id="pwConfirmMsg">
-</span>
-</td>
-</tr>
 <th scope="row" id="">이름 
 </th>
 <td>${dto.name }</td>
 </tr>
-
 <tr class="">
-<th scope="row">주소 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수">
+<th scope="row">우편번호 
 </th>
-<td>
-<input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" 
-fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder="" 
-readonly="readonly" maxlength="14" value="" type="text">                    
-<a href="#none" onclick="" id="postBtn" 
-class="yg_btn_28 yg_btn5" alt="우편번호">우편번호</a>
-<br>
-<input id="address" name="address" fw-filter="" fw-label="주소" 
-fw-msg="" class="inputTypeText" placeholder="" 
-readonly="readonly" value="" type="text"> 기본주소<br>
-<input id="detailaddress" name="detailaddress" fw-filter="" 
-fw-label="주소" fw-msg="" class="inputTypeText" placeholder="" 
-value="" type="text"> 
-나머지주소 (선택입력가능)
+<td>${dto.postcode }<br>
+${dto.address }<br>
+${dto.detailaddress }
 </td>
 </tr>
 
 <tr class="">
 <th scope="row">휴대전화 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" 
-alt="필수">
 </th>
 <td>
-<input id="phone" name="phone" maxlength="11" 
-fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-fw-msg="" value="" type="text" />
-(-)는 제외하고 입력하세요.
+0${dto.phone }
 </td>
 </tr>
                
 <tr>
 <th scope="row">이메일 
-<img src="" alt="필수" />
 </th>
 <td>
-<input id="email" name="email" fw-filter="isFill" 
-fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
-type="text" />
+${dto.email }
 </td>
 </tr>
+
 <tr>
 <th scope="row">생년월일
 </th>
 <td>
-<input id="birth" name="birth" 
-fw-filter="" fw-label="생년월일" fw-msg=""
-autocomplete="off" maxlength="8" 0="disabled" value=""
-type="text" /> ex) 2000년 1월 1일 → 20000101
+${dto.birth }
 </td>
+</tr>
+
+<tr>
+<th scope="row">포인트
+</th>
+<td>
+${dto.point }
+</td>
+</tr>
 		
+
 
 </tbody>
 </table> 
@@ -311,13 +160,11 @@ type="text" /> ex) 2000년 1월 1일 → 20000101
 
         
 	<div class="ec-base-button">
-<a href="#none" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원탈퇴</a>
-<a href="#none" onclick="$('#eLeaveLayer').hide();" 
+<a href="${pageContext.request.contextPath}/delete" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원탈퇴</a>
+<a href="${pageContext.request.contextPath}/home" 
 class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 	</div>
-<a href="#none" class="close" onclick="$('#eLeaveLayer').hide();">
-<img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="닫기">
-</a>
+
 
 </div>
 </div>

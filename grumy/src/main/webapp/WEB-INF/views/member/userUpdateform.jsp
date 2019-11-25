@@ -160,10 +160,7 @@ function inCheck(f){
 		alert("email을 입력하세요");
 		f.email.focus();
 		return false;
-	}
-
-
-    
+	}    
 }
 </script>
 
@@ -218,23 +215,18 @@ target="_self" enctype="multipart/form-data">
 <tbody>
 
 
-<tr>
+	<tr>
 		<th scope="row">아이디 
-		<label class="control-label col-sm-2" for="id">
-		<img src="" alt="필수" />
 		</th>
 		<td>
-				<div class="col-sm-3">
-					${dto.id }
-				</div>
+			<div class="col-sm-3">
+				${dto.id }
+			</div>
 		</td>
 	</tr>
-	<tr>
-
-
 <tr>
 <th scope="row" id="nameTitle">이름 
-<img src="" alt="필수" /></th>
+</th>
 <td>
 <span id="nameContents">
 <input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
@@ -245,15 +237,13 @@ value="${dto.name }" type="text" />
 </tr>
 
 <tr class="">
-<th scope="row">주소 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수">
-</th>
+<th scope="row" id="address">주소 
 <td>
 <input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" 
 fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder="" 
 readonly="readonly" maxlength="14" value="${dto.postcode }" type="text">                    
 <a href="#" onclick="sample6_execDaumPostcode()" id="postBtn" 
-class="yg_btn_28 yg_btn5" alt="우편번호">우편번호</a>
+class="yg_btn_28 yg_btn5" alt="우편번호">주소검색</a>
 <br>
 <input id="address" name="address" fw-filter="" fw-label="주소" 
 fw-msg="" class="inputTypeText" placeholder="" 
@@ -280,7 +270,6 @@ fw-msg="" value="0${dto.phone }" type="text" />
                
 <tr>
 <th scope="row">이메일 
-<img src="" alt="필수" />
 </th>
 <td>
 <input id="email" name="email" fw-filter="isFill" 
@@ -310,23 +299,17 @@ type="text" /> ex) 2000년 1월 1일 → 20000101
 <div class="ec-base-button justify">
 <a href="#" class="yg_btn_140 yg_btn1 yg_btn_border_444" 
 onclick="document.getElementById('update').submit();" alt="회원정보수정">회원정보수정</a>
-<a href="/index.html" class="yg_btn_140 yg_btn4" alt="취소">취소</a>
-<span class="gRight">
-<a href="#none" class="yg_btn_140 yg_btn3" 
-onclick="" alt="회원탈퇴">회원탈퇴</a>
-</span>
+<a href="/home" class="yg_btn_140 yg_btn4" alt="취소">취소</a>
+
 </div>
 </form>
 
         
 	<div class="ec-base-button">
-<a href="#" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
-<a href="#" onclick="$('#eLeaveLayer').hide();" 
+<a href="${pageContext.request.contextPath}/updatepw" id="eLeaveLayerBtn" class="yg_btn_30" alt="패스워드변경">비밀번호변경</a>
+<a href="${pageContext.request.contextPath}/home"  
 class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 	</div>
-<a href="#none" class="close" onclick="$('#eLeaveLayer').hide();">
-<img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="닫기">
-</a>
 
 </div>
 </div>

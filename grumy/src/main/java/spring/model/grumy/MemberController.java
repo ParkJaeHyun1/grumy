@@ -252,8 +252,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("/member/read")
-	public String read(String id, Model model) {
-
+	public String read(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("id");
+		
 		MemberDTO dto = dao.read(id);
 
 		model.addAttribute("dto", dto);
