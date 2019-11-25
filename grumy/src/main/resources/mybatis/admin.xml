@@ -21,7 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="deliveryl" parameterType="int" resultType="DeliveryDTO">
 		select no, subject, wdate from (
-		select no, subject, to_char(wdate, 'mm.dd.') wdate from delivery order by no desc)
+		select no, subject, to_char(wdate, 'mm.dd.') wdate from delivery where indent = 0 order by no desc)
+		<![CDATA[
+		where rownum <=#{rownum}
+		]]>
+	</select>
+
+	<select id="communityl" parameterType="int" resultType="communityDTO">
+		select communityno, content, wdate from (
+		select communityno, content, to_char(wdate, 'mm.dd.') wdate from community order by communityno desc)
 		<![CDATA[
 		where rownum <=#{rownum}
 		]]>

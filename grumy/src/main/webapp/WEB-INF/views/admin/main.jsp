@@ -15,19 +15,53 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
+<link rel="stylesheet" type="text/css"
+	href="https://www.slowand.com/ind-script/optimizer.php?filename=rc49DsIwDAXgvWXlHBY_EjszEz1B6litaWpHcYLU25MiTkC7-cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlEAS3aMmgyVO6O5sooxbJe9ox1Yj5SUhb4J_WO2P8XiFsaqCmLijt-fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d883c5&t=1543392667" />
 
 
 <script type="text/javascript">
-function read(no){
+function readn(no){
 	var url = "read";
 	url += "?no="+no;
 	
 	location.href="../notice/"+url;
 }
+function readd(no){
+	var url = "read";
+	url += "?no="+no;
+	
+	location.href="../delivery/"+url;
+}
 
 $(function () {
 	  $('#myTab a:first').tab('show')
 })
+</script>
+	<script>
+	var a = ${wait}
+$(document).ready(function(){
+	new Chart(document.getElementById("line-chart"), {
+	  type: 'line',
+	  data: {
+	    labels: ['a','b','c','d','e','f','g','h','i','j'],
+	    datasets: [{ 
+	        data: [a,2,3,4,5,6,7,10,15,30],
+	        label: "Africa",
+	        borderColor: "#3e95cd",
+	        fill: false
+	      }
+	    ]
+	  },
+	  options: {
+	    title: {
+	      display: true,
+	      text: 'World population per region (in millions)'
+	    }
+	  }
+	});
+});
 </script>
 </head>
 <body style="background-color:#EFF8FB">
@@ -311,10 +345,10 @@ $(function () {
 						<!---->
 						<ui-view name="inquery">
 						<div class="col-lg-3 col-md-6 col-sm-6">
-							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid">
+							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid;">
 								<div class="panel-heading">
 									<div class="pull-left">
-										<h3 class="panel-title">미답변 문의</h3>
+										<h3 class="panel-title"><b>미답변 문의</b></h3>
 									</div>
 									
 								</div>
@@ -326,7 +360,7 @@ $(function () {
 									</ul>
 									
 									<div class="tab-content">
-									  <div role="tabpanel" class="tab-pane active" id="home">
+									  <div role="tabpanel" class="tab-pane active" id="home" style="height:270px;">
 									  <ul class="panel-list">
 									  	<br>
 											<c:choose>
@@ -337,7 +371,7 @@ $(function () {
 												</c:when>
 												<c:otherwise>
 													<c:forEach var="dto" items="${deliveryl}">
-														<a href="javascript:read(${dto.no })" style="color: #555555;">
+														<a href="javascript:readd(${dto.no })" style="color: #555555;">
 														<li>
 															<span>${dto.subject }</span>
 														</li>
@@ -355,7 +389,35 @@ $(function () {
 										</ul>
 									  
 									  </div>
-									  <div role="tabpanel" class="tab-pane" id="profile">유경자가 제대로 안해서 못함</div>
+									  <div role="tabpanel" class="tab-pane" id="profile" style="height:270px;">
+									  <ul class="panel-list">
+									  	<br>
+											<c:choose>
+												<c:when test="${empty communityl }">
+													
+														<li>등록된 답변이 없습니다.</li>
+					
+												</c:when>
+												<c:otherwise>
+													<c:forEach var="dto" items="${communityl}">
+														<a href="javascript:readd(${dto.communityNo })" style="color: #555555;">
+														<li>
+															<span>${dto.content }</span>
+														</li>
+														
+														<li style="text-align:right">
+														<span>${dto.wdate }</span>
+														</li>
+														</a>
+														
+													</c:forEach>
+													<br>
+													<a href="${root }/community/list" style="text-align:right"><li>더보기</li></a>
+												</c:otherwise>
+											</c:choose>
+										</ul>
+									  
+									  </div>
 									</div>
 									<!---->
 									<div class="inquiry-content hidden-xs"
@@ -390,7 +452,7 @@ $(function () {
 										</h3>
 									</div>
 								</div>
-								<div class="panel-body">
+								<div class="panel-body" style="height:340px;">
 									<!---->
 
 					<!-- ================================================== -->
@@ -403,7 +465,7 @@ $(function () {
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="dto" items="${noticel}">
-									<a href="javascript:read(${dto.no })" style="color: #555555;">
+									<a href="javascript:readn(${dto.no })" style="color: #555555;">
 									<li>
 										<span>${dto.subject }</span>
 									</li>
@@ -437,27 +499,5 @@ $(function () {
 	</div>
 	</div>
 	
-	<script>
-new Chart(document.getElementById("line-chart"), {
-  type: 'line',
-  data: {
-    labels: ['a','b','c','d','e','f','g','h','i','j'],
-    datasets: [{ 
-        data: [1,2,3,4,5,6,7,10,15,30],
-        label: "Africa",
-        borderColor: "#3e95cd",
-        fill: false
-      }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'World population per region (in millions)'
-    }
-  }
-});
-
-</script>
 </body>
 </html>
