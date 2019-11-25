@@ -207,6 +207,7 @@ function inCheck(f){
 <form id="update" name="" 
 action="${pageContext.request.contextPath }/member/update" method="post" 
 target="_self" enctype="multipart/form-data">
+<input type="hidden" name="id" value="${dto.id }">
 <div class="ec-base-table typeWrite">
         <table border="1" summary="">
 <caption>회원 기본정보</caption>
@@ -217,6 +218,19 @@ target="_self" enctype="multipart/form-data">
 <tbody>
 
 
+<tr>
+		<th scope="row">아이디 
+		<label class="control-label col-sm-2" for="id">
+		<img src="" alt="필수" />
+		</th>
+		<td>
+				<div class="col-sm-3">
+					${dto.id }
+				</div>
+		</td>
+	</tr>
+	<tr>
+
 
 <tr>
 <th scope="row" id="nameTitle">이름 
@@ -225,9 +239,10 @@ target="_self" enctype="multipart/form-data">
 <span id="nameContents">
 <input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
 fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
-value="" type="text" />
+value="${dto.name }" type="text" />
 </span> 
-</td></tr>
+</td>
+</tr>
 
 <tr class="">
 <th scope="row">주소 
@@ -236,16 +251,16 @@ value="" type="text" />
 <td>
 <input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" 
 fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder="" 
-readonly="readonly" maxlength="14" value="" type="text">                    
+readonly="readonly" maxlength="14" value="${dto.postcode }" type="text">                    
 <a href="#" onclick="sample6_execDaumPostcode()" id="postBtn" 
 class="yg_btn_28 yg_btn5" alt="우편번호">우편번호</a>
 <br>
 <input id="address" name="address" fw-filter="" fw-label="주소" 
 fw-msg="" class="inputTypeText" placeholder="" 
-readonly="readonly" value="" type="text"> 기본주소<br>
+readonly="readonly" value="${dto.address }" type="text"> 기본주소<br>
 <input id="detailaddress" name="detailaddress" fw-filter="" 
 fw-label="주소" fw-msg="" class="inputTypeText" placeholder="" 
-value="" type="text"> 
+value="${dto.detailaddress }" type="text"> 
 나머지주소 (선택입력가능)
 </td>
 </tr>
@@ -258,7 +273,7 @@ alt="필수">
 <td>
 <input id="phone" name="phone" maxlength="11" 
 fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-fw-msg="" value="" type="text" />
+fw-msg="" value="${dto.phone }" type="text" />
 (-)는 제외하고 입력하세요.
 </td>
 </tr>
@@ -269,7 +284,7 @@ fw-msg="" value="" type="text" />
 </th>
 <td>
 <input id="email" name="email" fw-filter="isFill" 
-fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
+fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value="${dto.email }"
 type="text" />
 </td>
 </tr>
@@ -279,10 +294,12 @@ type="text" />
 <td>
 <input id="birth" name="birth" 
 fw-filter="" fw-label="생년월일" fw-msg=""
-autocomplete="off" maxlength="8" 0="disabled" value=""
+autocomplete="off" maxlength="8" 0="disabled" value="${dto.birth }"
 type="text" /> ex) 2000년 1월 1일 → 20000101
 </td>
-		
+</tr>		
+
+
 
 </tbody>
 </table> 
