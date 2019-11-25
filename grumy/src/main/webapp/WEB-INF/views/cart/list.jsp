@@ -284,7 +284,7 @@ function setView(){
 											name="cartNoList" value="${dto.cartNo}" />
 										<td><input type="checkbox"
 											id="cart_checkBox_${dto.cartNo}"
-											name="cart_checkbox" /></td>
+											name="cartNo"  value="${dto.cartNo}"/></td>
 										<td class="thumb gClearLine"><a
 											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}"><img
 												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"

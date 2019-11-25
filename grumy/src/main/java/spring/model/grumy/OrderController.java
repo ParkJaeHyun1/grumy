@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
 
 	@RequestMapping("/order/order")
-	public String list(HttpServletRequest request, HttpSession session, int[] cartNoList) {
+	public String list(HttpServletRequest request, HttpSession session, int[] cartNo) {
 		System.out.println("1111");
-		for(int i: cartNoList)
-			System.out.println("ë²ˆí˜¸:"+ i);
+		for(int i: cartNo)
+			System.out.println("¹øÈ£:"+ i);
 		return "/order/order";
 	}
 }
