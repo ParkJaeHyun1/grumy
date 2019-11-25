@@ -30,7 +30,7 @@ public class CartController {
 			totalPrice += ((dto.getItemPrice()-dto.getItemSalePrice())*dto.getCount());
 		request.setAttribute("totalPrice",totalPrice);
 		request.setAttribute("list",list);
-		System.out.println("길이:"+list.size());
+
 		return "/cart/list";
 	}
 }

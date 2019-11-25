@@ -40,9 +40,17 @@ var deliveryPrice;
 var deliveryPriceStr;
 var list={};
 <c:forEach items="${list}" var="item">
-list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count},itemCount:${item.itemCount}};
+	list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count},itemCount:${item.itemCount}};
 </c:forEach>
-
+function orderAll(){
+	$.each(list, function(index, item){ 
+		$('#cart_checkBox_'+item.cartNo).prop('checked',true);
+	});
+	$('#orderForm').submit();
+}
+function orderSeleted(){
+	$('#orderForm').submit();
+}
 function itemCountUp(cartNo){
 	updateItemCount(cartNo,list['cartNo'+cartNo].count+1);
 }
@@ -66,14 +74,12 @@ function updateItemCount(cartNo,cnt){
 	return true;
 }
 function updateItemCountAjax(cartNo,cnt){
-	alert('3333');
 	$.ajax({
 		type : 'put',
 		url : "./update",
 		data :  JSON.stringify({"cartNo":cartNo,"count":cnt}),
 		contentType : "application/json; charset=utf-8",
 		success : function(result, status, xhr) {
-			alert('성공');
 			list['cartNo'+cartNo].count = cnt;
 			setView();
 		},
@@ -89,7 +95,7 @@ function deleteCartAjax(cartNoList){
 		data : JSON.stringify(cartNoList),
 		contentType : "application/json; charset=utf-8",
 		success : function(result, status, xhr) {
-			$.each(cartNoList, function(index, item){
+			$.each(b , function(index, item){
 				$('#cart_'+item).remove();
 				delete list['cartNo'+item];
 			});
@@ -132,7 +138,6 @@ function deleteCartList(){
 
 }
 function setAllCheckBox(){
-
 	var ischecked = $('#chb').is(":checked");
 	
 	$.each(list, function(index, item){ 
@@ -204,6 +209,7 @@ function setView(){
 
 				<!-- 장바구니 모듈 Package -->
 				<div class="xans-element- xans-order xans-order-basketpackage " id="display_item_list"	style="display: none">
+				<form action="../order/order" class="form-horizontal" method="post" id="orderForm" enctype="application/x-www-form-urlencoded;charset=UTF-8">
 					<!-- 일반상품 -->
 					<div class="orderListArea ec-base-table typeList gBorder">
 						<div class="xans-element- xans-order xans-order-normtitle title ">
@@ -274,9 +280,11 @@ function setView(){
 							<tbody class="xans-element- xans-order xans-order-list center">
 								<c:forEach var="dto" items="${list}">                   
 									<tr class="xans-record-" id="cart_${dto.cartNo}">
+										<input type="hidden" id="cartNoList"
+											name="cartNoList" value="${dto.cartNo}" />
 										<td><input type="checkbox"
 											id="cart_checkBox_${dto.cartNo}"
-											name="basket_product_normal_type_normal" /></td>
+											name="cart_checkbox" /></td>
 										<td class="thumb gClearLine"><a
 											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}"><img
 												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
@@ -570,16 +578,13 @@ function setView(){
 					<!-- 주문 버튼 -->
 					<div
 						class="xans-element- xans-order xans-order-totalorder ec-base-button justify">
-						<a href="#none" onclick="BootPay.request()"
-							link-order="/order/orderform.html?basket_type=all_buy"
-							link-login="/member/login.html" alt="전체상품주문" class=" yg_btn_140 ">전체상품주문</a>
-						<a href="${pageContext.request.contextPath}/order/order"
-							link-order="/order/orderform.html?basket_type=all_buy"
-							link-login="/member/login.html" alt="선택상품주문"
+						<a href="#none" onclick="orderAll()" alt="전체상품주문" class=" yg_btn_140 ">전체상품주문</a>
+						<a href="#" onclick="orderSeleted()" alt="선택상품주문"
 							class="yg_btn_140 yg_btn5 ">선택상품주문</a> </span>
 						<!-- 네이버 체크아웃 구매 버튼  -->
 						<div id="NaverChk_Button"></div>
 					</div>
+				</form>
 				</div>
 				<!-- //장바구니 모듈 Package -->
 

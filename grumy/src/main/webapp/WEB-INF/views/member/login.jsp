@@ -88,7 +88,7 @@ value="/intro/adult_certification.html?returnUrl=" type="hidden">
    
 <div class="login">        
 	
-	<fieldset style=text-align:center;>
+	<fieldset style=text-align:center;>    
 	
 	<legend>회원로그인</legend>
 
