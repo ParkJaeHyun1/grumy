@@ -24,7 +24,7 @@
 				
 				<input type="hidden" name="no" value="${param.no }">
 				<input type="hidden" name="writer" value="${name}">
-				<input type="hidden" name="writer" value="${sessionScope.id}">
+				<input type="hidden" name="id" value="${sessionScope.id}">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -48,7 +48,7 @@
 						</tbody>
 						<tbody>
 							<tr class="">
-								<th scope="row">SECRET</th>
+								<th scope="row">SECRET${name }</th>
 								<td><input id="secure1" name="secure"
 									fw-filter="isFill" fw-label="비밀글설정" fw-msg="" value="T"
 									type="radio" checked="checked"><label for="secure1">비밀글</label></td>

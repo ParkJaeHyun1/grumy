@@ -29,20 +29,20 @@ public class DeliveryController {
 	deliveryMapper mapper;
 	
 	@PostMapping("/delivery/create_reply")
-	public String create_reply(DeliveryDTO dto,HttpSession session,HttpServletRequest request) {
+	public String create_reply(DeliveryDTO dto) {
 		mapper.create_reply(dto);
-		String id = (String) session.getAttribute("id");
-		
-		
-		request.setAttribute("name", mapper.getname(id));
+
 		
 		return "redirect:/delivery/list";
 	}
 	
 	@GetMapping("/delivery/create_reply")
-	public String create_reply(int no,HttpServletRequest request) {
+	public String create_reply(int no,HttpServletRequest request,HttpSession session) {
 		DeliveryDTO dto = mapper.read(no);
+		String id = (String) session.getAttribute("id");
 		
+		
+		request.setAttribute("name", mapper.getname(id));
 		request.setAttribute("dto", dto);
 		
 		return "/delivery/create_reply";
@@ -178,8 +178,6 @@ public class DeliveryController {
 	@GetMapping("/delivery/create")
 	public String create(HttpSession session,HttpServletRequest request) {
 		String id = (String) session.getAttribute("id");
-		
-		
 		
 		request.setAttribute("name", mapper.getname(id));
 		

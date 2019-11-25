@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="util" uri="/ELFunctions" %>
 <c:set var="size" value="${fn:length(list) }"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
@@ -87,6 +88,9 @@
 											<c:when test="${dto.indent==0 }">
 											<a href="javascript:read(${dto.no })" style="color: #555555;">
 												<img src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
+												<c:if test="${util:newImg(dto.wdate) }">
+													<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
+													</c:if>
 											</c:when>
 											<c:otherwise>
 											<a href="javascript:read_reply(${dto.no })" style="color: #555555;">
@@ -94,6 +98,9 @@
 															src="${pageContext.request.contextPath }/images/re.gif" />
 													<img
 													src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
+													<c:if test="${util:newImg(dto.wdate) }">
+													<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
+													</c:if>
 											</c:otherwise>
 										
 										</c:choose>
