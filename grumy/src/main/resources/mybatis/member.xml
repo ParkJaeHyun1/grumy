@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	update member
 	set name=#{name}, postcode = #{postcode} , address = #{address}, 
 	detailaddress = #{detailaddress}, 
-	phone = #{phone,jdbcType=INTEGER}, email = #{email}, birth=#{birth}
+	phone = #{phone}, email = #{email}, birth=#{birth}
 	where id = #{id}
 </update>
 

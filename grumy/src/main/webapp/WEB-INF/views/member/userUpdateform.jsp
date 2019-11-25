@@ -196,18 +196,17 @@ function inCheck(f){
     <div id="container">
         <div id="contents">
             
-
-
-
-
-
 <div class="titleArea">
     <h2>EDIT PROFILE</h2>
     <h3>회원 정보 수정</h3>
 </div>
 
 <h3 class=" ">기본정보</h3>
-<p class="required "><img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수"> 필수입력사항</p>
+<p class="required ">
+<img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수"> 필수입력사항</p>
+<form id="update" name="" 
+action="${pageContext.request.contextPath }/member/update" method="post" 
+target="_self" enctype="multipart/form-data">
 <div class="ec-base-table typeWrite">
         <table border="1" summary="">
 <caption>회원 기본정보</caption>
@@ -216,35 +215,19 @@ function inCheck(f){
 <col style="width:auto;">
 </colgroup>
 <tbody>
+
+
+
 <tr>
-<th scope="row">아이디 
-<td>${dto.id }</td> 
-</th>
-</tr>
-<tr>
-<th scope="row">비밀번호 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="" alt="필수">
-</th>
+<th scope="row" id="nameTitle">이름 
+<img src="" alt="필수" /></th>
 <td>
-<input id="passwd" name="passwd" fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="비밀번호" fw-msg="" autocomplete="off" maxlength="16" 0="disabled" value="" type="password"> 
-(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
-</td>
-</tr>
-<tr class="">
-<th scope="row">비밀번호 확인 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수">
-</th>
-<td>
-<input id="user_passwd_confirm" name="user_passwd_confirm" fw-filter="isFill&amp;isMatch[passwd]" fw-label="비밀번호 확인" fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off" maxlength="16" 
-0="disabled" value="" type="password"> 
-<span id="pwConfirmMsg">
-</span>
-</td>
-</tr>
-<th scope="row" id="">이름 
-</th>
-<td>${dto.name }</td>
-</tr>
+<span id="nameContents">
+<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
+fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
+value="" type="text" />
+</span> 
+</td></tr>
 
 <tr class="">
 <th scope="row">주소 
@@ -254,7 +237,7 @@ function inCheck(f){
 <input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" 
 fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder="" 
 readonly="readonly" maxlength="14" value="" type="text">                    
-<a href="#none" onclick="" id="postBtn" 
+<a href="#" onclick="sample6_execDaumPostcode()" id="postBtn" 
 class="yg_btn_28 yg_btn5" alt="우편번호">우편번호</a>
 <br>
 <input id="address" name="address" fw-filter="" fw-label="주소" 
@@ -305,55 +288,18 @@ type="text" /> ex) 2000년 1월 1일 → 20000101
 </table> 
 </div>
 
-<div class="displaynone">
-        <h3>개인정보 제3자 제공 동의(선택)</h3>
-<div class="ec-base-box typeThinBg agreeArea">
-<div class="content">
-                아래 내용의 동의 여부는 회원가입에 영향을 미치지 않습니다. 단, 동의 거부시 서비스 이용에 제한이 있을 수 있습니다.<br>
-<br>
-- 제공 받는 자 :<br>
-<br>
-- 제공 항목 :<br>
-<br>
-- 제공 목적 :<br>
-<br>
-- 보유 및 이용기간 :<br>
-</div>
-<p class="check"><span>개인정보 제3자 제공에 동의하십니까?</span> 
-<input id="agree_information_check0" name="agree_information_check[]" fw-filter="" fw-label="개인정보 제3자 제공 동의" fw-msg="" value="1" type="checkbox">
-<label for="agree_information_check0">동의함</label>
-</p>
-</div>
-</div>
-<div class="displaynone">
-        <h3>개인정보 처리 위탁 동의(선택)</h3>
-<div class="ec-base-box typeThinBg agreeArea">
-<div class="content">
-                아래 내용의 동의 여부는 회원가입에 영향을 미치지 않습니다. 단, 동의 거부시 서비스 이용에 제한이 있을 수 있습니다.<br>
-<br>
-- 위탁받는 자(수탁업체) :<br>
-<br>
-- 위탁업무의 내용:<br>
-</div>
-	<p class="check"><span>개인정보 처리 위탁에 동의하십니까?</span> 
-<input id="agree_consignment_check0" name="agree_consignment_check[]" 
-fw-filter="" fw-label="개인정보 처리 위탁 동의" fw-msg="" 
-value="1" type="checkbox">
-<label for="agree_consignment_check0">동의함</label>
-	</p>
-</div>
-</div>
+
 
 <div class="ec-base-button justify">
-<a href="#none" class="yg_btn_140 yg_btn1 yg_btn_border_444" 
-onclick="" alt="회원정보수정">회원정보수정</a>
+<a href="#" class="yg_btn_140 yg_btn1 yg_btn_border_444" 
+onclick="document.getElementById('update').submit();" alt="회원정보수정">회원정보수정</a>
 <a href="/index.html" class="yg_btn_140 yg_btn4" alt="취소">취소</a>
 <span class="gRight">
 <a href="#none" class="yg_btn_140 yg_btn3" 
 onclick="" alt="회원탈퇴">회원탈퇴</a>
 </span>
 </div>
-
+</form>
 <div class="layerLeave ec-base-layer" id="eLeaveLayer">
    <div class="header">
             <h3>회원탈퇴</h3>
@@ -379,8 +325,8 @@ onclick="" alt="회원탈퇴">회원탈퇴</a>
 </div>
         
 	<div class="ec-base-button">
-<a href="#none" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
-<a href="#none" onclick="$('#eLeaveLayer').hide();" 
+<a href="#" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
+<a href="#" onclick="$('#eLeaveLayer').hide();" 
 class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 	</div>
 <a href="#none" class="close" onclick="$('#eLeaveLayer').hide();">
