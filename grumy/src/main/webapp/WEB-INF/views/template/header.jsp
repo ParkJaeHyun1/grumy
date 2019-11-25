@@ -78,12 +78,6 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 					<li class="xans-record-"><a href="${pageContext.request.contextPath}/delivery/list">배송
 							문의<span></span>
 					</a></li>
-					<li class="xans-record-"><a href="/board/배송-전-변경취소/101/">배송
-							전 변경/취소<span></span>
-					</a></li>
-					<li class="xans-record-"><a href="/board/배송-후-교환반품/5/">배송
-							후 교환/반품<span></span>
-					</a></li>
 					<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
 					<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span>
 					</a></li>
@@ -146,30 +140,125 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<div class="xans-element- xans-layout xans-layout-category main_cate">
 				<div class="position">
 					<ul>
-						<li class="xans-record-"><a href="/category/best-50/66/">BEST
-								20</a></li>
+ <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=best">BEST
+                        20</a></li>
 
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=outer">OUTER</a></li>
-						<li class="xans-record- on"><a
-							href="${pageContext.request.contextPath}/item/list/?type=top" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=outer" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu
+
+('OUTER')">OUTER</a>
+<div class="sub-category" id="sub_menu_OUTER" style="display:none" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu('OUTER')">
+<ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">핸드메이드<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">코트/자켓<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">가디건<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">점퍼<span></span></a></li>
+                     </ul>
+</div>
+</li>
+                  
+    
+                  <li class="xans-record- on"><a
+                     href="${pageContext.request.contextPath}/item/list/?type=top" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
 
 ('TOP')">TOP</a>
-							<div class="sub-category" id="sub_menu_TOP" style="display:none" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
+                     <div class="sub-category" id="sub_menu_TOP" style="display:none" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
 
 ('TOP')">
-							<ul class="gnb_sub">                                                  
-								<li class="xans-record-"><a
-									href="${pageContext.request.contextPath}/review/list">맨투맨<span></span></a></li>         
-								<li class="xans-record-"><a
-									href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
-							</ul>
-							</div>
-							</li> 
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=skirt">SKIRT</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom">BOTTOM</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag">SHOES/BAG</a></li>
-						<li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc">ACC</a></li>
+                     <ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">니트/가디건<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">맨투맨/후드/티셔츠<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">셔츠/블라우스<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">슬리브리스<span></span></a></li>
+                     </ul>
+                     </div>
+                     </li> 
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=skirt" onmouseenter="blockSubMenu('SKIRT')" onmouseleave="noneSubMenu
+
+('SKIRT')">SKIRT</a>
+                     <div class="sub-category" id="sub_menu_SKIRT" style="display:none" onmouseenter="blockSubMenu('SKIRT')" onmouseleave="noneSubMenu
+
+('SKIRT')">
+                     <ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">미니<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">미디/롱<span></span></a></li>
+
+                     </ul>
+                     </div>
+                  </li>
+                  
+                  
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom" onmouseenter="blockSubMenu('BOTTOM')" onmouseleave="noneSubMenu
+
+('BOTTOM')">BOTTOM</a>
+                     <div class="sub-category" id="sub_menu_BOTTOM" style="display:none" onmouseenter="blockSubMenu('BOTTOM')" onmouseleave="noneSubMenu
+
+('BOTTOM')">
+                     <ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">데님<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">면바지/슬랙스<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">쇼츠<span></span></a></li>
+
+                     </ul>
+                     </div>
+                      
+                  </li>
+                  
+                 
+                  
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
+
+('SHOESBAG')">SHOES/BAG</a>
+                   <div class="sub-category" id="sub_menu_SHOESBAG" style="display:none" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
+
+('SHOESBAG')">
+                     <ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">슈즈<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">백<span></span></a></li>
+
+                     </ul>
+                     </div>
+                  </li>
+                  
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc" onmouseenter="blockSubMenu('ACC')" onmouseleave="noneSubMenu
+
+('ACC')">ACC</a>
+                   <div class="sub-category" id="sub_menu_ACC" style="display:none" onmouseenter="blockSubMenu('ACC')" onmouseleave="noneSubMenu
+
+('ACC')">
+                     <ul class="gnb_sub">                                                  
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">쥬얼리<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">모자<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">벨트<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">양말<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">홈웨어<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">etc<span></span></a></li>
+
+                     </ul>
+                     </div>
+
+						</li>
 						
 
 					</ul>
