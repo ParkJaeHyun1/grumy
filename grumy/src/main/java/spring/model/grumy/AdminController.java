@@ -83,8 +83,7 @@ public class AdminController {
 		List<AdminDTO> list = mapper.list(300);
 		
 		request.setAttribute("list", list);
-	
-		
+			
 		return "/admin/sendReady";
 	}
 	@RequestMapping("/admin/sending")
@@ -92,8 +91,7 @@ public class AdminController {
 		List<AdminDTO> list = mapper.list(200);
 		
 		request.setAttribute("list", list);
-		
-		
+				
 		return "/admin/sending";
 	}
 	@RequestMapping("/admin/sendFin")
@@ -101,8 +99,7 @@ public class AdminController {
 		List<AdminDTO> list = mapper.list(200);
 		
 		request.setAttribute("list", list);
-		
-		
+			
 		return "/admin/sendFin";
 	}
 }

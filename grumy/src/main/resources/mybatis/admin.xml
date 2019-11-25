@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(stat) from admintest where stat = #{stat}
 	</select>
 	<select id="list" parameterType="int" resultType="AdminDTO">
-		select * from admintest where stat = #{stat}
+		select * from admintest where stat = #{stat} order by no desc
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
