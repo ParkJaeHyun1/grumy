@@ -12,7 +12,48 @@
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
 
+<script>
 
+function itemCountUp(itemOptionNo){
+	updateItemCount(itemOptionNo,count+1);
+}
+function itemCountDown(itemOptionNo){
+	updateItemCount(itemOptionNo,count-1);
+}
+function itemCountModify(itemOptionNo,cnt){
+	updateItemCount(itemOptionNo,cnt);
+}
+function updateItemCount(itemOptionNo,cnt){
+	if(!$.isNumeric(cnt) || cnt<1){
+		alert('품절 표시를 해주세요');
+		$('#item_count_'+itemOptionNo).val(count);
+		return false;
+	}else if(cnt>list['itemOptionNo'+itemOptionNo].itemCount){
+		alert('재고가 부족합니다.');
+		$('#item_count_'+itemOptionNo).val(count);
+		return false;
+	}
+	updateItemCountAjax(itemOptionNo,cnt);
+	return true;
+}
+function updateItemCountAjax(itemOptionNo,cnt){
+	alert('3333');
+	$.ajax({
+		type : 'put',
+		url : "./update",
+		data :  JSON.stringify({"itemOptionNo":itemOptionNo,"count":cnt}),
+		contentType : "application/json; charset=utf-8",
+		success : function(result, status, xhr) {
+			alert('성공');
+			count = cnt;
+			setView();
+		},
+		error : function(xhr, status, er) {
+			alert('에러:'+status);
+		}
+	});
+}
+</script>
 </head>
 <body id="main">
 	<div id="skipNavigation">
@@ -35,32 +76,32 @@
             ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
-    <div id="contents">
-			<div class="title">
-				<h2>
-					<span>${parentType}</span><BR></BR>
-				</h2>
-				<%-- 				<c:forEach var="dto" items="${list}"> --%>
-				<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
-				<!-- 						<span style="background-color: #FFFFFF" class="chips xans-record-"></span> -->
-				<%-- 					</c:forEach> --%>
+			<div id="contents">
+				<div class="title">
+					<h2>
+						<span>${parentType}</span><BR></BR>
+					</h2>
+					<%-- 				<c:forEach var="dto" items="${list}"> --%>
+					<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
+					<!-- 						<span style="background-color: #FFFFFF" class="chips xans-record-"></span> -->
+					<%-- 					</c:forEach> --%>
 
 
-				<%-- 				</c:forEach> --%>
+					<%-- 				</c:forEach> --%>
+				</div>
+
+
+				<ul class="menuCategory">
+					<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
+					<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
+					<%-- <a href=""><span class="count displaynone">${subType}</span></a> --%>
+					<!-- </li> -->
+					<%-- </c:forEach> --%>
+
+					<!-- //참고 -->
+				</ul>
 			</div>
-		
 
-			<ul class="menuCategory">
-<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
-<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
-<%-- <a href=""><span class="count displaynone">${subType}</span></a> --%>
-<!-- </li> -->
-<%-- </c:forEach> --%>
-
-<!-- //참고 -->
-        </ul>
-        </div>
-			
 
 			<ul class="prdList grid4">
 				<c:forEach var="dto" items="${list}">
@@ -74,15 +115,27 @@
 								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
 						</div>
 						<div class="description">
-							<strong class="name">
-							<a
+							<strong class="name"> <a
 								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
-							</strong>
-								
-								
-								
+							</strong> 
+							
+							<input id="item_count_${dto.itemOptionNo}"
+								name="item_count_${dto.itemOptionNo}" size="2"
+								value="${dto.count}" type="text" /><a href="javascript:;"
+								onclick="itemCountUp(${dto.itemOptionNo});"><img
+								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+								alt="수량증가" class="up" /></a><a href="javascript:;"
+								onclick="itemCountDown(${dto.itemOptionNo});"><img
+								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+								alt="수량감소" class="down" /></a> <a href="javascript:;"
+								class="yg_btn_24 yg_btn3"
+								onclick="itemCountModify(${dto.itemOptionNo},item_count_${dto.itemOptionNo}.value);"
+								alt="변경">재고 변경</a>
+
+
+
 							<div class="colorchip">
 								<div
 									class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
@@ -150,7 +203,7 @@
 							}
 						});
 	</script>
-	
+
 	${paging }
 </body>
 </html>

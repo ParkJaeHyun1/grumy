@@ -46,7 +46,7 @@ public class itemRestController {
 	}
 
 	@DeleteMapping("/item/delete")
-	public ResponseEntity<String> remove(@RequestBody ArrayList<Integer> itemNoList) {
+	public ResponseEntity<String> remove(@RequestBody int itemNoList) {
 
 		return imapper.delete(itemNoList) > 0
 				? new ResponseEntity<String>("success", HttpStatus.OK)
@@ -55,7 +55,7 @@ public class itemRestController {
 	}
 	
 	@PutMapping("/item/update")
-	public ResponseEntity<String> update(@RequestBody Map<String, Integer> map) {
+	public ResponseEntity<String> update(@RequestBody int map) {
 		return imapper.update(map) > 0
 				? new ResponseEntity<String>("success", HttpStatus.OK)
 						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);

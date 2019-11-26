@@ -16,7 +16,10 @@ public interface itemMapper {
 	ArrayList<String> size(Map<String, String> map);
 	int count(Map<String, String> map);
 	int total(Map map);
-	int delete(ArrayList<Integer> itemNoList);
-	int update(Map<String,Integer> map);
+	
+	
+	int delete(int itemNo);
+	int update(int itemOptionNo);
+	
 
 }

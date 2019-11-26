@@ -65,21 +65,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
-	<delete id="delete" parameterType="List">
+	<delete id="delete" parameterType="int">
 		delete from itemOption
-		where itemNo in
-		<foreach item="item" collection="list" open="(" separator=","
-			close=")">
-			#{item.value}
-		</foreach>
+		where itemNo = #{itemNo}
 	</delete>
 
-	<update id="update" parameterType="Map">
+	<update id="update" parameterType="int">
 		update itemOption
 		<set>
 			count = #{count}
 		</set>
-		where itemNo = #{itemNo}
+		where itemOptionNo = #{itemOptionNo}
 	</update>
 
 </mapper>
+
+
