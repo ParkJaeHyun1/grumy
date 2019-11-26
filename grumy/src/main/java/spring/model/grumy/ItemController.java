@@ -28,7 +28,7 @@ public class ItemController {
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 		model.addAttribute("dto", dto);
 		
-		Map<String, ArrayList<String>> sizeMap =  new HashMap<String, ArrayList<String>>();
+		Map<String, ArrayList<String>> sizeMap = new HashMap<String, ArrayList<String>>();
 		Map<String,Integer> countMap = new HashMap<String,Integer>();
 		Map<String, String> map = new HashMap<String, String>();	
 		map.put("itemNo", String.valueOf(itemNo));
@@ -59,6 +59,7 @@ public class ItemController {
 	@RequestMapping("/item/list")
 	public String list(HttpServletRequest request) {
 		
+		ItemDTO dto = new ItemDTO(); 
 		String word = ItemUtility.checkNull(request.getParameter("word"));
 		String col = ItemUtility.checkNull(request.getParameter("col"));
 		String type = request.getParameter("type");
@@ -87,7 +88,11 @@ public class ItemController {
 		map.put("type", type);
 		
 		ArrayList<ItemDTO> list = mapper.list(map);
+		//ArrayList<String> typeList = mapper.subtype(map);
+		
+		
 		System.out.println("사이즈:"+list.size());
+
 //		for (ItemDTO item : list) {
 //			String[] colors = item.getColor().split("/");
 //			item.setColorList(colors);
@@ -97,11 +102,13 @@ public class ItemController {
 		
 		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, word,type);
 		
-		if (type.equals("shoesbag"))
-			titleType = "shoes/bag";
-		titleType = type.toUpperCase();
+		titleType = type;
+		if (titleType.equals("SHOESBAG"))
+			titleType = "SHOES/BAG";
 		
-		request.setAttribute("title", titleType);
+		
+		//request.setAttribute("subType", typeList);
+		request.setAttribute("parentType", titleType);
 		request.setAttribute("type", type);
 		request.setAttribute("list", list);
 		request.setAttribute("col", col);

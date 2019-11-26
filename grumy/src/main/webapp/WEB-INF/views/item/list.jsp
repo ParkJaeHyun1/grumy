@@ -35,9 +35,10 @@
             ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
+    <div id="contents">
 			<div class="title">
 				<h2>
-					<span>${title}</span><BR></BR>
+					<span>${parentType}</span><BR></BR>
 				</h2>
 				<%-- 				<c:forEach var="dto" items="${list}"> --%>
 				<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
@@ -47,6 +48,19 @@
 
 				<%-- 				</c:forEach> --%>
 			</div>
+		
+
+			<ul class="menuCategory">
+<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
+<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
+<%-- <a href=""><span class="count displaynone">${subType}</span></a> --%>
+<!-- </li> -->
+<%-- </c:forEach> --%>
+
+<!-- //참고 -->
+        </ul>
+        </div>
+			
 
 			<ul class="prdList grid4">
 				<c:forEach var="dto" items="${list}">
@@ -64,9 +78,12 @@
 							<a
 								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								class=""><span class="title displaynone"></span> <span
-									style="font-size: 12px; color: #555555;">${dto.title}</span></a></strong>
-
-							<div class="colorchip ">
+									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
+							</strong>
+								
+								
+								
+							<div class="colorchip">
 								<div
 									class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
 

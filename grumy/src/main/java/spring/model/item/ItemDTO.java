@@ -13,19 +13,22 @@ public class ItemDTO {
 	private int price ; 
 	private int salePrice ;
 	private String type; //카테고리
+	
 	//itemOption table
 	private int itemOptionNo;
 	private ArrayList<String> colorList;
-
+	private ArrayList<String> typeList; //부제목
+	
 	private Map<String, ArrayList<String>> sizeMap;
 	private Map<String,Integer> countMap;
+	private int count;
 	public ItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public ItemDTO(int itemNo, String image, String title, String description, String content, int price, int salePrice,
 			String type, int itemOptionNo, ArrayList<String> colorList, Map<String, ArrayList<String>> sizeMap,
-			Map<String, Integer> countMap) {
+			Map<String, Integer> countMap, ArrayList<String> typeList, int count) {
 		super();
 		this.itemNo = itemNo;
 		this.image = image;
@@ -37,14 +40,17 @@ public class ItemDTO {
 		this.type = type;
 		this.itemOptionNo = itemOptionNo;
 		this.colorList = colorList;
+		this.typeList = typeList;
 		this.sizeMap = sizeMap;
 		this.countMap = countMap;
+		this.count = count;
+		
 	}
 	@Override
 	public String toString() {
 		return "ItemDTO [itemNo=" + itemNo + ", image=" + image + ", title=" + title + ", description=" + description
 				+ ", content=" + content + ", price=" + price + ", salePrice=" + salePrice + ", type=" + type
-				+ ", itemOptionNo=" + itemOptionNo + ", colorList=" + colorList + ", sizeMap=" + sizeMap + ", countMap="
+				+ ", itemOptionNo=" + itemOptionNo + ", colorList=" + colorList + ", count="+count+", sizeMap=" + sizeMap + ", colorList=\" + colorList + \", countMap="
 				+ countMap + "]";
 	}
 	public int getItemNo() {
@@ -118,6 +124,18 @@ public class ItemDTO {
 	}
 	public void setCountMap(Map<String, Integer> countMap) {
 		this.countMap = countMap;
+	}
+	public ArrayList<String> getTypeList() {
+		return typeList;
+	}
+	public void setTypeList(ArrayList<String> typeList) {
+		this.typeList = typeList;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 

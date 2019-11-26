@@ -140,10 +140,9 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<div class="xans-element- xans-layout xans-layout-category main_cate">
 				<div class="position">
 					<ul>
- <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=best">BEST
-                        20</a></li>
+ <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=BEST20">BEST20</a></li>
 
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=outer" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=OUTER" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu
 
 ('OUTER')">OUTER</a>
 <div class="sub-category" id="sub_menu_OUTER" style="display:none" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu('OUTER')">
@@ -162,7 +161,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                   
     
                   <li class="xans-record- on"><a
-                     href="${pageContext.request.contextPath}/item/list/?type=top" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
+                     href="${pageContext.request.contextPath}/item/list/?type=TOP" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
 
 ('TOP')">TOP</a>
                      <div class="sub-category" id="sub_menu_TOP" style="display:none" onmouseenter="blockSubMenu('TOP')" onmouseleave="noneSubMenu
@@ -180,8 +179,8 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                      </ul>
                      </div>
                      </li> 
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=dress">DRESS</a></li>
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=skirt" onmouseenter="blockSubMenu('SKIRT')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=DRESS">DRESS</a></li>
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=SKIRT" onmouseenter="blockSubMenu('SKIRT')" onmouseleave="noneSubMenu
 
 ('SKIRT')">SKIRT</a>
                      <div class="sub-category" id="sub_menu_SKIRT" style="display:none" onmouseenter="blockSubMenu('SKIRT')" onmouseleave="noneSubMenu
@@ -198,7 +197,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                   </li>
                   
                   
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=bottom" onmouseenter="blockSubMenu('BOTTOM')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=BOTTOM" onmouseenter="blockSubMenu('BOTTOM')" onmouseleave="noneSubMenu
 
 ('BOTTOM')">BOTTOM</a>
                      <div class="sub-category" id="sub_menu_BOTTOM" style="display:none" onmouseenter="blockSubMenu('BOTTOM')" onmouseleave="noneSubMenu
@@ -219,7 +218,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                   
                  
                   
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=shoesbag" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=SHOESBAG" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
 
 ('SHOESBAG')">SHOES/BAG</a>
                    <div class="sub-category" id="sub_menu_SHOESBAG" style="display:none" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
@@ -235,7 +234,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                      </div>
                   </li>
                   
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=acc" onmouseenter="blockSubMenu('ACC')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=ACC" onmouseenter="blockSubMenu('ACC')" onmouseleave="noneSubMenu
 
 ('ACC')">ACC</a>
                    <div class="sub-category" id="sub_menu_ACC" style="display:none" onmouseenter="blockSubMenu('ACC')" onmouseleave="noneSubMenu

@@ -38,6 +38,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
 </select>
 
+
+<select id="subtype" parameterType="Map" resultType="String">
+		select distinct(subType)
+		from itemType t, item i
+		where t.parentType = i.type and t.parentType=#{parentType}
+</select>
+
+
+
 <select id="total" parameterType="Map" resultType="int">
 		select count(*) from item
 		<where>
@@ -56,6 +65,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
-	
+	<delete id="delete" parameterType="List">
+		delete from itemOption
+		where itemNo in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item.value}
+		</foreach>
+	</delete>
+
+	<update id="update" parameterType="Map">
+		update itemOption
+		<set>
+			count = #{count}
+		</set>
+		where itemNo = #{itemNo}
+	</update>
 
 </mapper>
