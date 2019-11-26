@@ -8,10 +8,7 @@
 <!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
 <!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
 <!-- 스마트디자인에서는 JQuery 1.4.4 버전이 내장되어있습니다. 추가로 호출하면 충돌이 생길 수 있습니다. -->
-<script src="https://connect.facebook.net/signals/config/183242402324052?v=2.9.13&amp;r=stable" async="">
-</script>
-<script async="" src="https://connect.facebook.net/en_US/fbevents.js">
-</script>
+
 <script type="text/javascript" src="/ec-js/common.js">
 </script>
 <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
@@ -31,9 +28,9 @@
 <link rel="canonical" href="http://slowand.com/member/modify">
 <link rel="alternate" href="http://m.slowand.com/member/modify">
 
-<link rel="shortcut icon" href="/web/upload/favicon_20170717165926.ico">
+<link rel="shortcut icon" href="//slowand.com//web/upload/favicon_20170717165926.ico">
 
-<script type="text/javascript" src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51">
+<script type="text/javascript" src="//slowand.com//app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51">
 </script>
 <script type="text/javascript" src="//wcs.naver.net/wcslog.js">
 </script>
@@ -41,8 +38,8 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/ind-script/optimizer.php?filename=tZSxbgMhDIb3XNY-h5WkUvfOndonMODekQC-YlMlb1-UZEh0S3V3jCD8IX_gHwaOBLt9hjFznzFCJuGSLYEVge_MScFyjJy2deMF_nOe7EY4FPWcNobPMwuL6txLA14ozytVNIEeSsl2RSgLYEq0370dYCwmeNsNGgOIo86R-D6BnHx6vUIjuxIIIkVDGcroUIl-KWng_qmjxWxyXufzqiUuCgbF2yu8eqgLmuhbyp38n6XA20aDzotvAFXmoH5sQB4otMDWUXHFtvA7Yu9THYcWltE0oE5SaDXwUy6uKCG0kFtP2fnYC6b-6G-BW_N2FdDxp1C-bM1ZgndL0uqB-YHKq4C-MMkqOX9_EM61xXeUE6nlssTglH0f9k-ydAP_AQ&amp;type=css&amp;k=d10885102131af326f4b320a0f26c1908e505ea4&amp;t=1547093551">
-<link rel="stylesheet" type="text/css" href="/ind-script/optimizer.php?filename=rZHbDcIwDEUHKL_MYfGQGIQJ3MQkpokd1Qmo29OWDSA__vH10bkyRM0E5IZmNBugCJ1PtwuUNiZ2Q6w5gXkaPBkHAZtYruDMIKtviSDhoq1CbqmyRS33yKWwhMOaOUIfuFN5rfesUtzv3AUlPHnHR0JPc1dFrBR0XrroPVTrP3pYigGLVQwz5jf7QHVfnb6zS_G8bO-GEWUaVaeezIwsG-8D&amp;type=css&amp;k=f53659961fbe6a5f77148b697e8faa567b7da93b&amp;t=1566806466">
+<link rel="stylesheet" type="text/css" href="//slowand.com//ind-script/optimizer.php?filename=tZSxbgMhDIb3XNY-h5WkUvfOndonMODekQC-YlMlb1-UZEh0S3V3jCD8IX_gHwaOBLt9hjFznzFCJuGSLYEVge_MScFyjJy2deMF_nOe7EY4FPWcNobPMwuL6txLA14ozytVNIEeSsl2RSgLYEq0370dYCwmeNsNGgOIo86R-D6BnHx6vUIjuxIIIkVDGcroUIl-KWng_qmjxWxyXufzqiUuCgbF2yu8eqgLmuhbyp38n6XA20aDzotvAFXmoH5sQB4otMDWUXHFtvA7Yu9THYcWltE0oE5SaDXwUy6uKCG0kFtP2fnYC6b-6G-BW_N2FdDxp1C-bM1ZgndL0uqB-YHKq4C-MMkqOX9_EM61xXeUE6nlssTglH0f9k-ydAP_AQ&amp;type=css&amp;k=d10885102131af326f4b320a0f26c1908e505ea4&amp;t=1547093551">
+<link rel="stylesheet" type="text/css" href="//slowand.com//ind-script/optimizer.php?filename=rZHbDcIwDEUHKL_MYfGQGIQJ3MQkpokd1Qmo29OWDSA__vH10bkyRM0E5IZmNBugCJ1PtwuUNiZ2Q6w5gXkaPBkHAZtYruDMIKtviSDhoq1CbqmyRS33yKWwhMOaOUIfuFN5rfesUtzv3AUlPHnHR0JPc1dFrBR0XrroPVTrP3pYigGLVQwz5jf7QHVfnb6zS_G8bO-GEWUaVaeezIwsG-8D&amp;type=css&amp;k=f53659961fbe6a5f77148b697e8faa567b7da93b&amp;t=1566806466">
 
 <title>grumy</title>
 <script type="text/javascript" 
@@ -100,6 +97,8 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
+
+
 
 <!-- 필수 입력창 확인  -->
 <script type="text/javascript">
@@ -160,15 +159,34 @@ function inCheck(f){
 		alert("email을 입력하세요");
 		f.email.focus();
 		return false;
-	}    
+	}
+	
+	
 }
 </script>
+
 
 </head>
 <body id="cmn">
 
+<div id="wrap">    
+    <!-- 상단카테고리 -->
+    
 
-            
+<div id="header">
+ 
+<!-- snap common script contact mail: support@snapvi.co.kr -->
+<span id="solutiontype" style="display:none;">cafe24</span>
+<span id="sfsnapfit_store_id" style="display:none">grumy</span>
+<div>
+<input id="sf_draw_type" type="hidden" value="pc">
+<input id="sf_store_name" type="hidden" value="slowand">
+</div>
+<div style="display: none" class="xans-element- xans-layout xans-layout-statelogon "><span id="sf_user_name" class="xans-member-var-id" style="display:none;">yke3075</span>
+</div>
+</div>
+</div>
+
 <script>
     // 메인메뉴에 마우스오버시 하위메뉴 나타남
     $(".gnb > li").mouseenter(function(){
@@ -191,20 +209,112 @@ function inCheck(f){
     <!-- //상단카테고리 -->
     
     <div id="container">
+
         <div id="contents">
+		
+<form action="update" class="form-horizontal" method="post" 
+name='frm' onsubmit="return inCheck(this)">
+
+<input type="hidden" name="id" value="${dto.id }">
+
+<div class="mypage_top_outer">
+<p class="xans-element- xans-myshop xans-myshop-asyncbenefit mypage_top ">
+<strong>
+<span><span class="xans-member-var-name">${dto.name }</span></span>
+</strong>
+ 님은 현재 
+ <c:choose>
+	<c:when test="${dto.grade == 'H' }">
+<strong>
+<span class="xans-member-var-group_name">일반 회원</span>
+<span class="myshop_benefit_ship_free_message"></span>
+</strong>
+	</c:when>
+	<c:when test="${dto.grade == 'A' }">
+<strong>
+<span class="xans-member-var-group_name">관리자</span>
+<span class="myshop_benefit_ship_free_message"></span>
+</strong>
+	</c:when>
+	<c:when test="${dto.grade == 'S' }">
+<strong>
+<span class="xans-member-var-group_name">VIP</span>
+<span class="myshop_benefit_ship_free_message"></span>
+</strong>
+	</c:when>
+</c:choose>
+  입니다.
+</p>
+
+<div class="xans-element- xans-myshop xans-myshop-bankbook ">
+<ul>
+
             
+<li>
+<strong class="title">
+<a href="/myshop/mileage/historyList.html">POINT</a>
+</strong>
+<strong class="data">
+<a href="/myshop/mileage/historyList.html">${dto.point }원</a>
+</strong>
+</li>
+
+<li class="etc ">
+<strong class="title">
+<a href="/myshop/coupon/coupon.html">COUPON</a></strong>
+<strong class="data">
+<a href="/myshop/coupon/coupon.html">5<span>개</span></a>
+</strong>
+<a href="${pageContext.request.contextPath}/myshop/coupon/coupon.html"></a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="myshopMain" class="xans-element- xans-myshop xans-myshop-main">
+<div class="shopMain order">
+<a href="/myshop/order/list.html">주문내역</a>
+</div>
+<div class="shopMain wishlist">
+<a href="/myshop/wish_list.html">관심상품</a>
+</div>
+<div class="shopMain likeIt displaynone">
+<a href="">좋아요</a>
+</div>
+<div class="shopMain mileage">
+<a href="/myshop/mileage/historyList.html">적립금</a>
+</div>
+<div class="shopMain coupon  ">
+<a href="/myshop/coupon/coupon.html">쿠폰</a>
+</div>
+<div class="shopMain view">
+<a href="/product/recent_view_product.html">최근 본 상품</a>
+</div>
+<div class="shopMain deposits displaynone ">
+<a href="/myshop/deposits/historyList.html">예치금</a>
+</div>
+<div class="shopMain board">
+<a href="/myshop/board_list.html">내가 쓴 게시글</a>
+</div>
+<div class="shopMain address">
+<a href="/myshop/addr/list.html">배송 주소록 관리</a>
+</div>
+<div class="shopMain profile">
+<a href="${pageContext.request.contextPath}/member/update">회원 정보 수정</a>
+</div>
+
+</div>
 <div class="titleArea">
     <h2>EDIT PROFILE</h2>
     <h3>회원 정보 수정</h3>
 </div>
 
+
 <h3 class=" ">기본정보</h3>
 <p class="required ">
-<img src="/web/upload/yangji_pc_crumb/req_check.png" alt="필수"> 필수입력사항</p>
-<form id="update" name="" 
-action="${pageContext.request.contextPath }/member/update" method="post" 
-target="_self" enctype="multipart/form-data">
-<input type="hidden" name="id" value="${dto.id }">
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수"> 
+필수입력사항
+</p>
 <div class="ec-base-table typeWrite">
         <table border="1" summary="">
 <caption>회원 기본정보</caption>
@@ -214,105 +324,131 @@ target="_self" enctype="multipart/form-data">
 </colgroup>
 <tbody>
 
-
-	<tr>
-		<th scope="row">아이디 
-		</th>
-		<td>
-			<div class="col-sm-3">
-				${dto.id }
-			</div>
-		</td>
-	</tr>
 <tr>
-<th scope="row" id="nameTitle">이름 
+<th scope="row">아이디 
 </th>
 <td>
-<span id="nameContents">
-<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
-fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
-value="${dto.name }" type="text" />
-</span> 
+${dto.id}
+</td>
+</tr>
+
+<tr>
+<th scope="row">비밀번호 
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" 
+class="" alt="필수">
+</th>
+<td>
+<input id="passwd" name="passwd" fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" 
+fw-label="비밀번호" fw-msg="" autocomplete="off" maxlength="16" 
+0="disabled" value="" type="password"> 
+(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+</td>
+</tr>
+<tr class="">
+<th scope="row">
+비밀번호 확인 
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수"></th>
+<td>
+<input id="user_passwd_confirm" name="user_passwd_confirm" 
+fw-filter="isFill&amp;isMatch[passwd]" fw-label="비밀번호 확인" 
+fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off" maxlength="16" 
+0="disabled" value="" type="password"> 
+<span id="pwConfirmMsg"></span>
+</td>
+</tr>
+
+<th scope="row" id="">이름 
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수"></th>
+<td>
+<input id="name" name="name" fw-filter="isFill&amp;isMax[30]" 
+fw-label="이름" fw-msg="" class="ec-member-name" placeholder="" 
+maxlength="30" readonly="readonly" value="${dto.name }" type="text">
 </td>
 </tr>
 
 <tr class="">
-<th scope="row" id="address">주소 
+<th scope="row">주소 
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수"></th>
 <td>
 <input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" 
 fw-label="우편번호1" fw-msg="" class="inputTypeText" placeholder="" 
 readonly="readonly" maxlength="14" value="${dto.postcode }" type="text">                    
-<a href="#" onclick="sample6_execDaumPostcode()" id="postBtn" 
-class="yg_btn_28 yg_btn5" alt="우편번호">주소검색</a>
-<br>
-<input id="address" name="address" fw-filter="" fw-label="주소" 
-fw-msg="" class="inputTypeText" placeholder="" 
-readonly="readonly" value="${dto.address }" type="text"> 기본주소<br>
+<a href="#" onclick="sample6_execDaumPostcode()" 
+id="postBtn" class="yg_btn_28 yg_btn5" alt="우편번호">주소검색</a><br>
+<input id="address" name="address" fw-filter="" fw-label="주소" fw-msg="" 
+class="inputTypeText" placeholder="" readonly="readonly" 
+value="${dto.address }" type="text"> 기본주소<br>
 <input id="detailaddress" name="detailaddress" fw-filter="" 
 fw-label="주소" fw-msg="" class="inputTypeText" placeholder="" 
-value="${dto.detailaddress }" type="text"> 
-나머지주소 (선택입력가능)
+value="${dto.detailaddress }" type="text"> 나머지주소 (선택입력가능)
 </td>
 </tr>
 
-<tr class="">
+<tr>
 <th scope="row">휴대전화 
-<img src="/web/upload/yangji_pc_crumb/req_check.png" class="displaynone" 
-alt="필수">
-</th>
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수"></th>
 <td>
-<input id="phone" name="phone" maxlength="11" 
-fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-fw-msg="" value="0${dto.phone }" type="text" />
-(-)는 제외하고 입력하세요.
+<input id="phone" name="phone" maxlength="11" fw-filter="isNumber" 
+fw-label="휴대전화" fw-alone="N" fw-msg="" value="0${dto.phone}" type="text">
 </td>
 </tr>
-               
+
+
 <tr>
 <th scope="row">이메일 
-</th>
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수"></th>
 <td>
-<input id="email" name="email" fw-filter="isFill" 
-fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value="${dto.email }"
-type="text" />
+<input id="email" name="email" fw-filter="isFill&amp;isEmail" 
+fw-label="이메일" fw-alone="N" fw-msg="" value="${dto.email }" type="text"> 
 </td>
 </tr>
-<tr>
-<th scope="row">생년월일
-</th>
-<td>
-<input id="birth" name="birth" 
-fw-filter="" fw-label="생년월일" fw-msg=""
-autocomplete="off" maxlength="8" 0="disabled" value="${dto.birth }"
-type="text" /> ex) 2000년 1월 1일 → 20000101
-</td>
-</tr>		
-
 
 
 </tbody>
-</table> 
+</table>
 </div>
+<h3 class=" ">추가정보</h3>
+<div class="ec-base-table typeWrite ">
+        <table border="1" summary="">
+<caption>회원 추가정보</caption>
+        <colgroup>
+<col style="width:150px;">
+<col style="width:auto;">
+</colgroup>
+<tbody>
 
 
+<tr class="">
+<th scope="row">생년월일
+<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" class="" alt="필수"></th>
+<td>
+<input id="birth" name="birth" fw-filter="isFill" fw-label="생년월일" 
+fw-msg="" class="inputTypeText" placeholder="" maxlength="8" 
+value="${dto.birth }" type="text"> 
+</td>
+</tr>
+
+</tbody>
+</table>
+</div>
 
 <div class="ec-base-button justify">
-<a href="#" class="yg_btn_140 yg_btn1 yg_btn_border_444" 
-onclick="document.getElementById('update').submit();" alt="회원정보수정">회원정보수정</a>
-<a href="/home" class="yg_btn_140 yg_btn4" alt="취소">취소</a>
-
+<a href="${pageContext.request.contextPath}/member/update" onclick=""
+class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="회원정보수정">회원정보수정
+</a>
+<a href="history.back()" onclick="" 
+class="yg_btn_140 yg_btn4" alt="취소">취소
+</a>
 </div>
 </form>
-
+</div>
+</div>
         
-	<div class="ec-base-button">
-<a href="${pageContext.request.contextPath}/updatepw" id="eLeaveLayerBtn" class="yg_btn_30" alt="패스워드변경">비밀번호변경</a>
-<a href="${pageContext.request.contextPath}/home"  
-class="yg_btn_30 yg_btn3" alt="취소">취소</a>
-	</div>
-
+<div class="ec-base-button">
+<a href="${pageContext.request.contextPath}/member/delete" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
+<a href="" onclick="" class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 </div>
-</div>
+       
 
 <div>
 <p class="pageMove">            
@@ -322,7 +458,7 @@ class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 <a class="pageBottom" href="#copyright" title="화면 최하단으로 이동하기" alt="맨아래로">
 <i class="fa fa-angle-down fa-2x"></i>
 </a>
-	</p>
+</p>
 </div>    
 
 
@@ -341,16 +477,14 @@ class="yg_btn_30 yg_btn3" alt="취소">취소</a>
     $(".inner_b .address i.bizLink a").text("[Go Checking]");
 </script>     
 
-   
-<script src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js" defer="defer" onload="mobRf()">
-</script>
-<!-- Enliple Common Tracker v3.5 [공용] end -->
-<iframe src="/exec/front/eclog/main/?&amp;rloc=https%3A//slowand.com/member/modify.html&amp;rref=https%3A//slowand.com/&amp;udim=1280*720&amp;rserv=eclog2-186.cafe24.com&amp;cid=CIDb61358b9e10e2a1baf457b3737878631&amp;role_path=MEMBER_MODIFY" id="log_realtime" style="display: none;"></iframe><script src="https://eclog2-186.cafe24.com/weblog_ubp.html?uid=anne2173&amp;udim=1280*720&amp;uref=https://slowand.com/&amp;uname=anne2173&amp;url=https://slowand.com/member/modify.html&amp;r_ref=https://slowand.com/&amp;shop_no=1&amp;t=1574406743263"></script><script type="text/javascript" src="//eclog2-186.cafe24.com/weblog.js?uid=anne2173&amp;uname=anne2173&amp;r_ref=https://slowand.com/&amp;shop_no=1&amp;t=1574406743263" id="log_script">
-</script>
-<div id="modalBackpanel">
+<div id="fap_common_top_script" style="display:none;">
+
 </div>
-<div id="modalContainer">
-<iframe id="modalContent" scroll="0" scrolling="no" frameborder="0"></iframe>
-</div>
+
+<script type="text/javascript" src="//slowand.com/ind-script/i18n.php?lang=ko_KR&amp;domain=front&amp;v=1911201087" charset="utf-8"></script>
+<script type="text/javascript" src="//slowand.com/ind-script/optimizer.php?filename=tZXNbtswDMdfwNc9h5Bhh51boKcNAzb0AWiJtplQokpJbbOnH5N1Q7PNSQ0v8EEAwd-fEr_sJonoNu_VDQoRn0R3TrFIU49uWxxtPqZuW965c36NMvid2z401P3Lsek-2HdCZpXR4BP9kpVSHS47BvEtYqp3ovFWUlVhRr3MDWrO7hmSvSVV1KxYF3IVY2ao-G8IcnafpSdG9_UV7yVGSa5V4kVclNDMVJ4oLws4tOQrWUjzC83XLoquVDhzCabe3f8s-2sJhu97FgiLoNgqHOJ-6Qvq41xxZuAsvB-I-a0VDThA43pIQYmg9QZS-jPkxRbHZ-uhBFxeDF0_0hFaq-NFdrRaJZBNSrGMlrVKCIXSuFYlYoUAFea78UZAw0ldzdr1B-s89G2SfMLcHSt8e5y8-7ODN4MWBPXTov6rMAz2Qlq6JTO3kWy5PAKT5Ub0V7J-G1YLHuqQQvlb2BSyNQdeL8KEnPGKL5ggBb5mAFtDZHW9mr6trPof7s_iwbb4Ti6vv5m-estA2b9vFN1_olIN_gE&amp;type=js&amp;k=81cead6b99ffa3a78f6503851e2d2fd76af38afb&amp;t=1574024793"></script>
+<script type="text/javascript" src="//slowand.com/ind-script/optimizer.php?filename=rZRLTsMwEIb3NFvOYcENSgQSqIWKChbsHGeSTGN7rLEDCqcnpK1EBE1bh81Ysfz9mbeoyIC4umbhmEqWRjB4aliB2Hghm1B5r_dnUoHMk42_FL8o6ZyY714__1ZIvDrMLVtfkRtgd0w2iO9rh7a8twX9jWvMxAs6qeoBvuzedbzpj8SgjacvAhr4JAuHZX5mrAmoe5O8S425DMRR0IM7B3vdY3dSdbaNYtMu5UxaA4-UCkwGPMiW6a9egbFol5Shhgj8gdCmFaj6EVUdwadkDNkI8DbH8N236_Viiturjyn0rZFdISKi7mHvowMvGaAfkTg-AluAfIe5UtSM_fUNnaIcBnyBNocThul4NaWV5VD7AzJN5VlLIm2Ywaq2X1Izx6hgAq92X7OC2Mgw1ZP_kukXxNGMV8HorokwIPiz0i59a9XWRnPbtorGn7hrKjU6AeMCN9LXEKYrjHTQyRorprxR8Z6k1Diy21i-AA&amp;type=js&amp;k=7c4101d5a9eb320c1a793a7c37523d01bbfe1968&amp;t=1574629648"></script>
+<script type="text/javascript" src="//slowand.com/ind-script/optimizer.php?filename=rZNBbgIxDEUPMGx7jgiK1HVppXYxqAgqdW0Sd8ZMEqdxAprbd4Au2JJ0E0WK_su3_a16dqjmi6hC5C6CUxCCWoOHDtUWhXPUqA6iQEavr-dsTRan99lBHlSJ_hUDC6Vi_RdJ35LUATRnX06IqLFCvr3IPzmBfany8RENxmL1Cj1-VwxiBTJgamGs8PAWwZRH6TkndpBIXzC7nk_FqHW2iTYccihHjC0NuIlssk51g23piJb8wL4uG-_TnnAcS80ESH1ki80RLBmYUOUVMZi7xOHax7s0cpppsPY2j6ibLBgnM97jYv70qELeW9JNn5xVYrAxKNR5JQP55Rnipn8tKgsj56Q0JOymFhYT_zh7ENJn_OVS40-zc7e5qK3wJ5MemiPh6f-Y7rxN0nPY9RQC-a6yYBE7EX4B&amp;type=js&amp;k=629d5282c8f608c63ae4bd0c93fc3b0a877cfb74&amp;t=1573420409"></script>
+
 </body>
 </html>

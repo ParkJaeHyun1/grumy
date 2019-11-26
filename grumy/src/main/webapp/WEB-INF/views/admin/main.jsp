@@ -40,7 +40,8 @@ $(function () {
 })
 </script>
 	<script>
-	var a = ${wait}
+	var a = ${wait};
+	var headt = "hello";
 $(document).ready(function(){
 	new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
@@ -57,7 +58,7 @@ $(document).ready(function(){
 	  options: {
 	    title: {
 	      display: true,
-	      text: 'World population per region (in millions)'
+	      text: headt
 	    }
 	  }
 	});
@@ -68,7 +69,7 @@ $(document).ready(function(){
 	<div id="container">
 			<div id="contents">
 			
-		<h3>관리자 페이지 입니다</h3>
+		<h3>관리자 페이지 입니다</h3><br>
 		<div id="seller-content" class="seller-sub-frame">
 		<!---->
 
@@ -348,7 +349,7 @@ $(document).ready(function(){
 							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid;">
 								<div class="panel-heading">
 									<div class="pull-left">
-										<h3 class="panel-title"><b>미답변 문의</b></h3>
+										<h3 class="panel-title"><b>답변 문의</b></h3>
 									</div>
 									
 								</div>
@@ -402,7 +403,7 @@ $(document).ready(function(){
 													<c:forEach var="dto" items="${communityl}">
 														<a href="javascript:readd(${dto.communityNo })" style="color: #555555;">
 														<li>
-															<span>${dto.content }</span>
+															<span>문의 합니다</span>
 														</li>
 														
 														<li style="text-align:right">
