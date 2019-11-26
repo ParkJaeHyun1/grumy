@@ -245,9 +245,10 @@ public class MemberController {
 		String id = (String)session.getAttribute("id");
 		
 		MemberDTO dto = dao.read(id);
-
+		
 		model.addAttribute("dto", dto);
-
+		
+		
 		return "/update";
 	}
 

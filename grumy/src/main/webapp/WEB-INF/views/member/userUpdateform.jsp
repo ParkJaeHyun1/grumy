@@ -159,7 +159,8 @@ function inCheck(f){
 		alert("email을 입력하세요");
 		f.email.focus();
 		return false;
-	}    
+	}
+
 }
 </script>
 
@@ -226,10 +227,26 @@ name='frm' onsubmit="return inCheck(this)">
 <span><span class="xans-member-var-name">${dto.name }</span></span>
 </strong>
  님은 현재 
+ <c:choose>
+	<c:when test="${dto.grade == 'H' }">
 <strong>
-<span class="xans-member-var-group_name">${dto.grade }</span>
+<span class="xans-member-var-group_name">일반 회원</span>
 <span class="myshop_benefit_ship_free_message"></span>
 </strong>
+	</c:when>
+	<c:when test="${dto.grade == 'A' }">
+<strong>
+<span class="xans-member-var-group_name">관리자</span>
+<span class="myshop_benefit_ship_free_message"></span>
+</strong>
+	</c:when>
+	<c:when test="${dto.grade == 'S' }">
+<strong>
+<span class="xans-member-var-group_name">VIP</span>
+<span class="myshop_benefit_ship_free_message"></span>
+</strong>
+	</c:when>
+</c:choose>
   입니다.
 </p>
 
