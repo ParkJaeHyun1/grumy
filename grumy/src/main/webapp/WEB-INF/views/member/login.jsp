@@ -85,7 +85,7 @@
 </div>
 
 <form id="member_form_3274124755" name="" 
-action="${pageContext.request.contextPath }" method="post" 
+action="${pageContext.request.contextPath }/member/login" method="post" 
 target="_self" enctype="multipart/form-data">
 
 <div class="xans-element- xans-member xans-member-login ">
@@ -104,8 +104,8 @@ fw-msg="" class="inputTypeText" placeholder="ID" value="" type="text">
 fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="패스워드" 
 fw-msg="" autocomplete="off" value="" 
 type="password" placeholder="PASSWORD"></label>            
-<a href="#none" class="yg_btn" 
-onclick="MemberAction.login('member_form_3274124755'); return false;" 
+<a href="#" class="yg_btn" 
+onclick="document.getElementById('member_form_3274124755').submit();" 
 alt="로그인" style="background:#a18266">로그인</a>
 
 
