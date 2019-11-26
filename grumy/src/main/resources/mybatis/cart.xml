@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where cartNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
-			#{item.val2ue}
+			#{item.value}
 		</foreach>
 	</delete>
 

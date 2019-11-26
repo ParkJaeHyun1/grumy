@@ -4,53 +4,62 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spring.model.mapper.itemMapper">
-	
-<select id="list" parameterType="Map" resultType="ItemDTO">
-		select itemNo, image, title, description, content, price,salePrice, type
+
+	<select id="list" parameterType="Map" resultType="ItemDTO">
+		select itemNo, image, title, description, content, price,salePrice,
+		type
 		from(
-		select itemNo, image, title, description, content, price,salePrice, type, rownum rnum
+		select itemNo, image, title, description, content,
+		price,salePrice, type, rownum rnum
 		from item
 		where type = #{type})
 <![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
-</select>
+	</select>
 
-<select id="read" parameterType="int" resultType="ItemDTO">
-		select itemNo, image, title, description, content, price,salePrice, type
+	<select id="read" parameterType="int" resultType="ItemDTO">
+		select itemNo,
+		image, title, description, content, price,salePrice, type
 		from item
-		where itemNo = #{itemNo}                                           
-</select>
+		where itemNo = #{itemNo}
+	</select>
 
-<select id="color" parameterType="Map" resultType="String">
-		select distinct(itemColor)
+	<select id="color" parameterType="Map" resultType="String">
+		select
+		distinct(itemColor)
 		from item i, itemOption o
-		where i.itemNo = o.itemNo and i.itemNo =#{itemNo}
-</select>
+		where i.itemNo = o.itemNo
+		and i.itemNo =#{itemNo}
+	</select>
 
-<select id="size" parameterType="Map" resultType="String">
+	<select id="size" parameterType="Map" resultType="String">
 		select itemSize
 		from item i, itemOption o
-		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo} and o.itemColor = #{color}
-</select>
+		where i.itemNo = o.itemOptionNo and i.itemNo
+		=#{itemNo} and o.itemColor = #{color}
+	</select>
 
-<select id="count" parameterType="Map" resultType="int">
+	<select id="count" parameterType="Map" resultType="int">
 		select o.count
 		from item i, itemOption o
-		where i.itemNo = o.itemOptionNo and i.itemNo =#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
-</select>
+		where i.itemNo = o.itemOptionNo and i.itemNo
+		=#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
+	</select>
 
 
-<select id="subtype" parameterType="Map" resultType="String">
-		select distinct(subType)
+	<select id="subtype" parameterType="Map" resultType="String">
+		select
+		distinct(subType)
 		from itemType t, item i
-		where t.parentType = i.type and t.parentType=#{parentType}
-</select>
+		where t.parentType = i.type
+		and t.parentType=#{parentType}
+	</select>
 
 
 
-<select id="total" parameterType="Map" resultType="int">
+	<select id="total" parameterType="Map" resultType="int">
 		select count(*) from item
 		<where>
-		type = #{type} 
+			type = #{type}
 			<choose>
 				<when test="col=='content'">
 					and content like '%'||#{word}||'%'
@@ -64,10 +73,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
-	
+
 	<delete id="delete" parameterType="int">
 		delete from itemOption
-		where itemNo = #{itemNo}
+		where
+		itemNo = #{itemNo}
 	</delete>
 
 	<update id="update" parameterType="int">

@@ -20,6 +20,5 @@ public interface itemMapper {
 	
 	int delete(int itemNo);
 	int update(int itemOptionNo);
-	
 
 }
