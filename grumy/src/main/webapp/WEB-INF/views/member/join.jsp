@@ -209,7 +209,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 
 	<h3>기본정보</h3>
 	<p class="required ">
-	<img src="" alt="필수" />
+	<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 	필수입력사항
 	</p>
 <div class="ec-base-table typeWrite" style="margin-top: -11px;">
@@ -222,7 +222,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 <tbody>
 	<tr>
 		<th scope="row">아이디 
-		<img src="" alt="필수" /></th>
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
 		<input id="id" name="id"
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
@@ -237,7 +237,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row">비밀번호 
-		<img src="" alt="필수" /></th>
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
 		<input id="passwd" name="passwd" 
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
@@ -248,7 +248,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row">비밀번호 확인 
-		<img src="" alt="필수" /></th>
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
 		<input id="user_passwd_confirm"
 			name="user_passwd_confirm" fw-filter="isFill&isMatch[passwd]"
@@ -259,7 +259,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr>
 		<th scope="row" id="nameTitle">이름 
-		<img src="" alt="필수" /></th>
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
 		<span id="nameContents">
 		<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
@@ -270,7 +270,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr class="">
 		<th scope="row">주소 
-		<img src="/"
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
 		 class="displaynone" alt="필수" />
 		</th>
 		<td>
@@ -289,7 +289,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		
 	<tr class="">
 		<th scope="row">전화번호 
-		<img src="" class="displaynone" alt="필수" />
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수" />
 		</th>
 		<td>
 		<input id="phone" name="phone" maxlength="11" 
@@ -300,7 +300,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		</tr>
 		<tr>
 		<th scope="row">이메일 
-		<img src="" alt="필수" />
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
 		<input id="email" name="email" fw-filter="isFill" 

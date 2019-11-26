@@ -160,16 +160,12 @@ function inCheck(f){
 		f.email.focus();
 		return false;
 	}
-
+	
+	
 }
 </script>
 
-<script type="text/javascript"> 
-    function formSubmit()
-    {
-    document.getElementById("frm").submit();
-    }
-</script>
+
 </head>
 <body id="cmn">
 
@@ -437,16 +433,19 @@ value="${dto.birth }" type="text">
 </div>
 
 <div class="ec-base-button justify">
-<button type="submit" class="yg_btn_140 yg_btn1 yg_btn_border_444" 
- alt="회원정보수정">회원정보수정</a> 
-<button type="history.back()" class="yg_btn_140 yg_btn4" alt="취소">취소</a>
+<a href="${pageContext.request.contextPath}/member/update" onclick=""
+class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="회원정보수정">회원정보수정
+</a>
+<a href="history.back()" onclick="" 
+class="yg_btn_140 yg_btn4" alt="취소">취소
+</a>
 </div>
 </form>
 </div>
 </div>
         
 <div class="ec-base-button">
-<a href="" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
+<a href="${pageContext.request.contextPath}/member/delete" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
 <a href="" onclick="" class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 </div>
        
