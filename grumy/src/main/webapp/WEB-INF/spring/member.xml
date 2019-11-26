@@ -49,5 +49,27 @@
 			value="/WEB-INF/views/member/userUpdateform.jsp" />
 	</definition>
 	
+	<definition name="/findid" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/findidForm.jsp" />
+	</definition>
 	
+	<definition name="/findidproc" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/findidProc.jsp" />
+	</definition>
+	
+	<definition name="/findpw" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/findpwForm.jsp" />
+	</definition>
+	
+	<definition name="/findpwproc" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/findpwProc.jsp" />
+	</definition>
 </tiles-definitions>

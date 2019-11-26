@@ -5,6 +5,9 @@
 <head>
 <title>회원가입중</title>
 <meta charset="utf-8">
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 
@@ -15,7 +18,7 @@
 			<br>
 			
 		</div>
-		<button onclick="history.back()" class="btn btn-default">다시시도</button>
+		
 
 	</div>
 </body>

@@ -109,12 +109,12 @@ public class MemberController {
 			
 		} else {
 			request.setAttribute("str", "아이디 또는 비밀번호를 잘못 입력하셨거나 <br>회원이 아닙니다. 회원가입 하세요.");
-			return "preproc:/";
+			return "/preproc";
 		}
 		
 		return "redirect:/";
 	}
-
+	
 	@GetMapping("/member/login")
 	public String login(HttpServletRequest request) {
 		String c_id = "";
@@ -150,13 +150,13 @@ public class MemberController {
 
 		model.addAttribute("passwd", passwd);
 
-		return "member/findpwproc";
+		return "/findpwproc";
 	}
 
 	@GetMapping("/member/findpw")
 	public String findpw() {
 
-		return "member/findpwform";
+		return "/findpw";
 	}
 
 	@PostMapping("/member/findid")
@@ -169,13 +169,13 @@ public class MemberController {
 
 		model.addAttribute("id", id);
 
-		return "member/findidproc";
+		return "/findidproc";
 	}
 
 	@GetMapping("/member/findid")
 	public String findid() {
 
-		return "member/findidform";
+		return "/findid";
 	}
 
 	@GetMapping("/member/logout")
