@@ -50,7 +50,7 @@
 						</tr>
 							<th scope="row">평소사이즈</th>
 							
-							<td><select name="mysize" name="mysize" class="form-control">
+							<td><select name="mySize" name="mySize" class="form-control">
 							<option value="XS">XS</option>
 							<option value="S">S</option>
 							<option value="M">M</option>

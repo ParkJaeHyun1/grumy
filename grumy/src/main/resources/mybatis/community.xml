@@ -5,6 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
+<insert id="create_reply" parameterType="communityDTO">
+insert into community(communityNo,content,picture,wdate,ref,indent,id,ansnum,itemNo)
+values((select nvl(max(communityNo),0)+1 from community),#{content},#{picture,jdbcType=VARCHAR},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
+</insert>
+
+
+<update id="update" parameterType="int">
+	update community 
+	set content = #{content},
+		picture = #{picture,jdbcType=VARCHAR}
+	where communityNo = #{communityNo}
+</update>
+
+<delete id="delete" parameterType="int">
+delete from community
+where communityNo = #{communityNo}
+</delete>
+
 <select id="read" parameterType="int" resultType="communityDTO">
 select communityNo,content,id,wdate,picture
 from community

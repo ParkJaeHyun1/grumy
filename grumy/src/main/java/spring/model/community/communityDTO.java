@@ -11,6 +11,7 @@ public class communityDTO {
 	private String itemTitle     ;
 	private String picture       ;
 	private String filesize      ;
+	private MultipartFile fileMF;
 	private String wdate;
 	private MultipartFile filenameMF ;
 	private int ref;
@@ -19,108 +20,148 @@ public class communityDTO {
 		return communityNo;
 	}
 
+
 	public void setCommunityNo(int communityNo) {
 		this.communityNo = communityNo;
 	}
+
 
 	public String getId() {
 		return id;
 	}
 
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 
 	public String getContent() {
 		return content;
 	}
 
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 
 	public String getItemNo() {
 		return itemNo;
 	}
 
+
 	public void setItemNo(String itemNo) {
 		this.itemNo = itemNo;
 	}
+
 
 	public String getItemPicture() {
 		return itemPicture;
 	}
 
+
 	public void setItemPicture(String itemPicture) {
 		this.itemPicture = itemPicture;
 	}
+
 
 	public String getItemTitle() {
 		return itemTitle;
 	}
 
+
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
 	}
+
 
 	public String getPicture() {
 		return picture;
 	}
 
+
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+
 
 	public String getFilesize() {
 		return filesize;
 	}
 
+
 	public void setFilesize(String filesize) {
 		this.filesize = filesize;
 	}
+
+
+	public MultipartFile getFileMF() {
+		return fileMF;
+	}
+
+
+	public void setFileMF(MultipartFile fileMF) {
+		this.fileMF = fileMF;
+	}
+
 
 	public String getWdate() {
 		return wdate;
 	}
 
+
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
+
 
 	public MultipartFile getFilenameMF() {
 		return filenameMF;
 	}
 
+
 	public void setFilenameMF(MultipartFile filenameMF) {
 		this.filenameMF = filenameMF;
 	}
+
 
 	public int getRef() {
 		return ref;
 	}
 
+
 	public void setRef(int ref) {
 		this.ref = ref;
 	}
+
 
 	public int getIndent() {
 		return indent;
 	}
 
+
 	public void setIndent(int indent) {
 		this.indent = indent;
 	}
+
 
 	public int getAnsnum() {
 		return ansnum;
 	}
 
+
 	public void setAnsnum(int ansnum) {
 		this.ansnum = ansnum;
 	}
 
+
+	private int ansnum;
+	
+
 	public communityDTO(int communityNo, String id, String content, String itemNo, String itemPicture, String itemTitle,
-			String picture, String filesize, String wdate, MultipartFile filenameMF, int ref, int indent, int ansnum) {
+			String picture, String filesize, MultipartFile fileMF, String wdate, MultipartFile filenameMF, int ref,
+			int indent, int ansnum) {
 		super();
 		this.communityNo = communityNo;
 		this.id = id;
@@ -130,6 +171,7 @@ public class communityDTO {
 		this.itemTitle = itemTitle;
 		this.picture = picture;
 		this.filesize = filesize;
+		this.fileMF = fileMF;
 		this.wdate = wdate;
 		this.filenameMF = filenameMF;
 		this.ref = ref;
@@ -137,8 +179,7 @@ public class communityDTO {
 		this.ansnum = ansnum;
 	}
 
-	private int ansnum;
-	
+
 	public communityDTO() {
 		super();
 		// TODO Auto-generated constructor stub

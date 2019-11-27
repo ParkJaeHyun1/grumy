@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,71 @@ public class CommunityController {
 	
 	@Autowired
 	private communityMapper mapper;
+	
+	@PostMapping("/community/create_reply")
+	public String create_reply(communityDTO dto) {
+		mapper.create_reply(dto);
+
+		Map map = new HashMap();
+		map.put("ref", dto.getRef());
+		map.put("ansnum", dto.getAnsnum());
+		
+		return "redirect:/community/list";
+	}
+	
+	@GetMapping("/community/create_reply")
+	public String create_reply(int communityNo,HttpServletRequest request,HttpSession session) {
+		communityDTO dto = mapper.read(communityNo);
+		
+		//String id = (String) session.getAttribute("id");
+		//request.setAttribute("name", mapper.getname(id));
+		
+		request.setAttribute("dto", dto);
+		
+		return "/community/create_reply";
+	}
+	
+	
+	
+	@PostMapping("/community/update")
+	public String update(communityDTO dto,HttpServletRequest request) {
+		
+		String basePath = request.getRealPath("/storage");
+		
+		int filesize = (int)dto.getFileMF().getSize();
+		
+		if (filesize > 0) {
+			dto.setPicture(Utility.saveFileSpring(dto.getFileMF(), basePath));
+			
+		}
+		int flag = mapper.update(dto);
+		
+		if(flag ==1)
+			return "redirect:/community/list";
+		else
+			return null;
+		
+	}
+	
+	@GetMapping("/community/update")
+	public String update(Integer communityNo,Model model) {
+		communityDTO dto = mapper.read(communityNo);
+		
+		model.addAttribute("dto",dto);
+		
+		return "/community/update";
+	}
+	
+	@GetMapping("/community/delete")
+	public String delete(int communityNo) {
+		int flag = mapper.delete(communityNo);
+		
+		if(flag==1) {
+			return "redirect:/community/list";
+		}else {
+			return null;
+		}
+	}
 	
 	@GetMapping("/community/read")
 	public String read(int communityNo, Model model) {

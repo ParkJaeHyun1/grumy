@@ -66,12 +66,30 @@ span.star, span.camera, .sprite_comment {
 		}
 	}
 
-	function read(no) {
-		var url = "read";
-		url += "?itemNo=" + no;
-
-		location.href = "../item/" + url;
+	
+	function update(reviewNo){
+		var url = "update";
+		url += "?reviewNo="+reviewNo;
+		
+		location.href = url;
 	}
+	function delete1(reviewNo) {
+
+		 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+
+			 var url = "delete";
+		 	url += "?reviewNo="+reviewNo;
+			 
+		     location.href=url;
+
+		 }else{   //취소
+
+		     return false;
+
+		 }
+
+		}
+
 </script>
 </head>
 <body class="unknown unknown-78 windows_os reviews index widget_1 ko-KR"
@@ -269,6 +287,16 @@ span.star, span.camera, .sprite_comment {
 															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
 															접기</a>
 													</div>
+												</div>
+												<div class="ec-base-button ">
+													<p align="right">
+														<button class="yg_btn_30 yg_btn4"
+															onclick="location.href='list'">LIST</button>
+														<button class="yg_btn_30 yg_btn4"
+															onclick="javascript:update(${dto.reviewNo})">MODIFY</button>
+														<button class="yg_btn_30 yg_btn4" id="delete"
+															onclick="javascript:delete1(${dto.reviewNo})">DELETE</button>
+													</p>
 												</div>
 											</div>
 										</div>

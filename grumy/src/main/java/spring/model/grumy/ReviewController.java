@@ -32,10 +32,21 @@ public class ReviewController {
 	@Autowired
 	private reviewMapper mapper;
 	
+	@GetMapping("/review/delete")
+	public String delete(int reviewNo) {
+		int flag = mapper.delete(reviewNo);
+		
+		if(flag==1) {
+			return "redirect:/review/list";
+		}else {
+			return null;
+		}
+	}
+	
 	@PostMapping("/review/create")
 	public String create(reviewDTO dto, HttpServletRequest request) {
 		String basePath = request.getRealPath("/storage");
-
+		System.out.println(dto.getItemNo());
 		int filesize = (int) dto.getFilenameMF().getSize();
 
 		if (filesize > 0) {
@@ -58,21 +69,11 @@ public class ReviewController {
 		return "/review/create";
 	}
 	
-	@RequestMapping("/review/read")
-	public String read(Locale locale, Model model, int no) {
-		reviewDTO dto = mapper.read(no);
-		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
-		model.addAttribute("dto", dto);
-		
-		return "/review/read";
-	}
 	
-	@RequestMapping("/review/create")
-	public String create(Locale locale, Model model,reviewDTO dto) {
 	
-		
-		return "/review/create";
-	}
+	
+	
+	
 	@RequestMapping("/review/list")
 	public String list(HttpServletRequest request) {
 		
