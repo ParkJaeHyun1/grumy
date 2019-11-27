@@ -34,7 +34,7 @@
 						<tr>
 							<th scope="row">상품명</th>
 							
-							<td><input type="text" id="itemNo" name="itemNo" value=""></td>
+							<td><input type="text" id="itemOptionNo" name="itemOptionNo" value=""></td>
 						</tr>
 						<tr>
 							<th scope="row">id</th>

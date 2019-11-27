@@ -12,7 +12,7 @@ where reviewNo = #{reviewNo}
 
 <insert id="create" parameterType="reviewDTO">
 INSERT INTO review(reviewNo,id,content,height,weight,mySize,itemOptionNo,picture,star) 
-VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),'tester1',#{content},#{height},#{weight},#{mySize},16,#{picture, jdbcType=VARCHAR},#{star})
+VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),'tester1',#{content},#{height},#{weight},#{mySize},#{itemOptionNo},#{picture, jdbcType=VARCHAR},#{star})
 </insert>
 
 
@@ -23,8 +23,10 @@ VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),'tester1',#{content}
 		select reviewNo, id,r.content,r.picture,i.image as itemPicture,i.title as itemTitle,height,weight,mySize,star,rownum rnum,itemColor,itemSize,i.itemNo
 		from item i, review r, itemOption o
 		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo
+		
 		)
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+		ORDER BY reviewNo desc
 	</select>
 
 	<select id="itemReviewlist" resultType="reviewDTO">

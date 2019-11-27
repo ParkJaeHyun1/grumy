@@ -9,40 +9,6 @@ public class reviewDTO {
 	private String picture;
 	private MultipartFile filenameMF ;
 	private String itemPicture;
-	private String itemTitle;
-	private String height;
-	private String weight;
-	private String mySize;
-	private String star;
-	private String itemColor;
-	private String itemSize;
-	private int itemNo;
-	
-	public reviewDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public reviewDTO(int reviewNo, String id, String content, String picture, MultipartFile filenameMF,
-			String itemPicture, String itemTitle, String height, String weight, String mySize, String star,
-			String itemColor, String itemSize, int itemNo) {
-		super();
-		this.reviewNo = reviewNo;
-		this.id = id;
-		this.content = content;
-		this.picture = picture;
-		this.filenameMF = filenameMF;
-		this.itemPicture = itemPicture;
-		this.itemTitle = itemTitle;
-		this.height = height;
-		this.weight = weight;
-		this.mySize = mySize;
-		this.star = star;
-		this.itemColor = itemColor;
-		this.itemSize = itemSize;
-		this.itemNo = itemNo;
-	}
-
 	public int getReviewNo() {
 		return reviewNo;
 	}
@@ -147,6 +113,14 @@ public class reviewDTO {
 		this.itemSize = itemSize;
 	}
 
+	public String getItemOptionNo() {
+		return itemOptionNo;
+	}
+
+	public void setItemOptionNo(String itemOptionNo) {
+		this.itemOptionNo = itemOptionNo;
+	}
+
 	public int getItemNo() {
 		return itemNo;
 	}
@@ -154,6 +128,43 @@ public class reviewDTO {
 	public void setItemNo(int itemNo) {
 		this.itemNo = itemNo;
 	}
+
+	public reviewDTO(int reviewNo, String id, String content, String picture, MultipartFile filenameMF,
+			String itemPicture, String itemTitle, String height, String weight, String mySize, String star,
+			String itemColor, String itemSize, String itemOptionNo, int itemNo) {
+		super();
+		this.reviewNo = reviewNo;
+		this.id = id;
+		this.content = content;
+		this.picture = picture;
+		this.filenameMF = filenameMF;
+		this.itemPicture = itemPicture;
+		this.itemTitle = itemTitle;
+		this.height = height;
+		this.weight = weight;
+		this.mySize = mySize;
+		this.star = star;
+		this.itemColor = itemColor;
+		this.itemSize = itemSize;
+		this.itemOptionNo = itemOptionNo;
+		this.itemNo = itemNo;
+	}
+
+	private String itemTitle;
+	private String height;
+	private String weight;
+	private String mySize;
+	private String star;
+	private String itemColor;
+	private String itemSize;
+	private String itemOptionNo;
+	private int itemNo;
+	
+	public reviewDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 }
