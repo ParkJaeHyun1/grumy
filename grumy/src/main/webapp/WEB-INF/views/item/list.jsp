@@ -121,15 +121,17 @@ function updateItemCountAjax(itemOptionNo,cnt){
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
 							</strong> 
 							
-							<input id="item_count_${dto.itemOptionNo}"
-								name="item_count_${dto.itemOptionNo}" size="2"
-								value="${dto.count}" type="text" /><a href="javascript:;"
-								onclick="itemCountUp(${dto.itemOptionNo});"><img
-								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
-								alt="수량증가" class="up" /></a><a href="javascript:;"
-								onclick="itemCountDown(${dto.itemOptionNo});"><img
-								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
-								alt="수량감소" class="down" /></a> <a href="javascript:;"
+<%-- 							<input id="item_count_${dto.itemOptionNo}" --%>
+<%-- 								name="item_count_${dto.itemOptionNo}" size="2" --%>
+<%-- 								value="${dto.count}" type="text" /><a href="javascript:;" --%>
+<%-- 								onclick="itemCountUp(${dto.itemOptionNo});"><img --%>
+<!-- 								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" -->
+<!-- 								alt="수량증가" class="up" /></a><a href="javascript:;" -->
+<%-- 								onclick="itemCountDown(${dto.itemOptionNo});"><img --%>
+<!-- 								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" -->
+<!-- 								alt="수량감소" class="down" /></a>  -->
+								
+								<a href="javascript:;"
 								class="yg_btn_24 yg_btn3"
 								onclick="itemCountModify(${dto.itemOptionNo},item_count_${dto.itemOptionNo}.value);"
 								alt="변경">재고 변경</a>
