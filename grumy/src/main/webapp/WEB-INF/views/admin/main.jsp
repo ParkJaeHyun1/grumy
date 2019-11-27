@@ -39,9 +39,10 @@ $(function () {
 	  $('#myTab a:first').tab('show')
 })
 </script>
-	<script>
+<script>
 	var a = ${wait};
 	var headt = "hello";
+	var pos = "결제건수";
 $(document).ready(function(){
 	new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
@@ -49,7 +50,7 @@ $(document).ready(function(){
 	    labels: ['a','b','c','d','e','f','g','h','i','j'],
 	    datasets: [{ 
 	        data: [a,2,3,4,5,6,7,10,15,30],
-	        label: "Africa",
+	        label: pos,
 	        borderColor: "#3e95cd",
 	        fill: false
 	      }
