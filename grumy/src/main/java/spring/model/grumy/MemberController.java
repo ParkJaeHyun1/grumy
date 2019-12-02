@@ -35,7 +35,7 @@ public class MemberController {
 	public String create() {
 		
 		return "/create";
-	}
+	} 
 
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto, Model model, HttpServletRequest request) {
