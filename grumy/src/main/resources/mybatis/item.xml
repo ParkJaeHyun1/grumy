@@ -5,17 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.itemMapper">
 
-	<select id="list" parameterType="Map" resultType="ItemDTO">
-		select itemNo, image, title, description, content, price,salePrice,
-		type
-		from(
-		select itemNo, image, title, description, content,
-		price,salePrice, type, rownum rnum
-		from item
-		where type = #{type})
-<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
-	</select>
-
 	<select id="read" parameterType="int" resultType="ItemDTO">
 		select itemNo,
 		image, title, description, content, price,salePrice, type
@@ -88,6 +77,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where itemOptionNo = #{itemOptionNo}
 	</update>
 
+
+
+	<resultMap type="ItemDTO" id="itemMap">
+		<result property="itemNo" column="itemNo" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="content" column="content" />
+		<result property="price" column="price" />
+		<result property="salePrice" column="salePrice" />
+		<result property="type" column="type" />
+		<result property="image" column="image" />
+		<collection property="itemOptionList" column="itemNo"
+			javaType="List" ofType="ItemOptionDTO" resultMap="itemOptionDTOListMap" />
+	</resultMap>
+	<resultMap type="itemOptionDTO" id="itemOptionDTOListMap">
+		<result property="itemNo" column="itemNo" />
+		<result property="itemOptionNo" column="itemOptionNo" />
+		<result property="itemCount" column="itemCount" />
+		<result property="itemSize" column="itemSize" />
+		<result property="itemColor" column="itemColor" />
+	</resultMap>
+	<select id="list" parameterType="Map" resultType="itemMap">
+		select itemNo, image, title, description, content, price,salePrice,	type,itemOptionNo,itemColor,itemSize,itemCount
+		from(
+		select itemNo, image, title, description, content, price,salePrice, type, rownum rnum,itemOptionNo,itemColor,itemSize,itemCount
+		from item i , itemOption o
+		where type = #{type} and i.itemNo = o.itemNo)
+	<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+	</select>
 </mapper>
 
 

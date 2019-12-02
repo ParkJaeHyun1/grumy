@@ -48,10 +48,10 @@ public class ItemController {
 				countMap.put(colorList.get(i)+"/"+sizeList.get(j), (Integer)count);
 			}
 		}
-		dto.setColorList(colorList);
-		dto.setSizeMap(sizeMap);
-		dto.setCountMap(countMap);
-		System.out.println("으악:"+dto.getColorList().size());
+		//dto.setColorList(colorList);
+		//dto.setSizeMap(sizeMap);
+		//dto.setCountMap(countMap);
+		//System.out.println("으악:"+dto.getColorList().size());
 		request.setAttribute("dto",dto);
 		return "/item/read";
 	}
