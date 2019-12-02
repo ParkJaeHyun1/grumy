@@ -26,6 +26,8 @@
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script-->
+
+
 <link rel="canonical" href="http://www.slowand.com">
 	<link rel="alternate" href="http://www.m.slowand.com/">
 

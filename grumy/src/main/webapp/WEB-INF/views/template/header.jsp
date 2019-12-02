@@ -27,11 +27,11 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 		<!-- 로고 -->
 		<div class="topArea">
-			<h1 class="xans-element- xans-layout xans-layout-logotop ">
+			<h1 class="xans-element- xans-layout xans-layout-logotop " id="logotype">         
 				<a href="${pageContext.request.contextPath}"> <!--span>그루미</span--> <img
 					src="${pageContext.request.contextPath}/images/grumy.jpg"
-					style="margin-top: 0px; width: 153px; height: 33px; padding-top: 20px" />
-				</a>
+					style="margin-top: 0px; width: 153px; height:auto; padding-top: 20px;  " />
+				</a>     
 			</h1>
 
 		</div>
