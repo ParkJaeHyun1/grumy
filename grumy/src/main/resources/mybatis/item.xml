@@ -102,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<select id="read" parameterType="int" resultMap="itemMap">
 		select i.itemNo, image, title, description, content, price,salePrice, type,itemOptionNo,itemColor,itemSize,itemCount
 		from item i , itemOption o
-		where i.itemNo = #{itemNo}
+		where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
 	</select>
 </mapper>
 

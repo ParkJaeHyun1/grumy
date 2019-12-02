@@ -595,19 +595,14 @@
 															class="ec-product-button" required="true">
 
 															<c:forEach var="itemOption" items="${dto.itemOptionList}">
-																<c:if
-																	test="${(not empty dto.itemSalePrice)&&dto.itemSalePrice != 0}">
-																	<div class="discount">
-																		${dto.itemPrice}원
-																		<p class="displaynone"></p>
-																	</div>
+																<c:if test="${(empty pre_val)||itemOption.itemColor != pre_val}">
 																<li class="" option_value="컬러" link_image=""
 																	title="아이보리"><a href=""> <span>${itemOption.itemColor}</span></a>
 																</li>
-																<c:set target="${pre_val}"
+																<c:set var="pre_val"
 																	value="${itemOption.itemColor}" />
 																</c:if>
-															</c:forEach>
+															</c:forEach>  
 														</ul>
 
 
@@ -626,8 +621,7 @@
 															alt="옵션 선택" /></a></td>
 												</tr>
 
-												<tr
-													class="xans-element- xans-product xans-product-option xans-record-">
+												<tr	class="xans-element- xans-product xans-product-option xans-record-">
 													<th scope="row">SIZE</th>
 													<td><ul option_product_no="3607"
 															option_select_element="ec-option-select-finder"
@@ -636,7 +630,7 @@
 															product_option_area="product_option_3607_0"
 															option_style="button" ec-dev-id="product_option_id2"
 															ec-dev-name="option2" ec-dev-class="ProductOption0"
-															class="ec-product-button" required="true">
+															class="ec-product-button" required="true" id="itemSize">
 															<li class="ec-product-able" option_value="S"
 																link_image="" title="S"><a href="#none"><span>S</span></a></li>
 															<li class="ec-product-disabled" option_value="M"
