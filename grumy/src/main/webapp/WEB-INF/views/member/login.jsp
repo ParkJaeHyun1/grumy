@@ -37,28 +37,7 @@
 <link rel="stylesheet" type="text/css" href="//www.slowand.com//ind-script/optimizer.php?filename=rY7BDQIxDAQLOL7UYR0gUQgVmMQkhsSO4gSU7jmODuA--9nd0UDUTEBu6kbVAEXoMJ-PUPo1sZtiywnM0-TJOAjYg-UEzgyy-p4IEg7tDXJPjS1quUQuhSXsls0etoE7lefyZ5XifucOlHDnFR8JPdVNFbFR0Do20buptn_0sBQDFmsYKuYX-0BtreZvfshv&amp;type=css&amp;k=a657dc189b9b8bbc03db761fe930ee0ea776ae32&amp;t=1566806466">
 
 <title>grumy</title>
-<Script>
-$('#login').click(function() {
-	var id = $('#id').val();
-	var passwd = $('#passwd').val();
- 		$.ajax({
-			type : "POST",
-			url : "/member/login",
- 			data : "id=" + id + "&passwd=" + passwd,
- 			dataType : "text",
- 			success : function(data, textStatus, xhr) {
- 				if (data == 'loginFail') {
-                       alert('로그인에 실패하였습니다.')
-                   } else {
-                       window.location.href = '/home';
-                   }
-               },
-               error : function(request, status, error) {
-                   alert("code:" + request.status + "\n" + "error:" + error);
-               }
-           })
- });
-</Script>
+
 </head>
 <body id="cmn">
 
@@ -126,6 +105,7 @@ fw-msg="" class="inputTypeText" placeholder="ID" value="" type="text">
 fw-filter="isFill&amp;isMin[4]&amp;isMax[16]" fw-label="패스워드" 
 fw-msg="" autocomplete="off" value="" 
 type="password" placeholder="PASSWORD"></label>            
+
 <a href="#" class="yg_btn" id="login"
 onclick="document.getElementById('member_form_3274124755').submit();" 
 alt="로그인" style="background:#a18266">로그인</a>
@@ -156,7 +136,9 @@ alt="회원가입" style="background:#a18266">
 </p>
 
 </fieldset>
+<c:if test="${alert=fail }">
 
+</c:if>
 </div>
 </div>
 </form>

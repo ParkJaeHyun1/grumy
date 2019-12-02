@@ -198,7 +198,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 }); 
 </script>
 	<!-- //상단카테고리 -->
-<form id="joinForm" name="joinForm" action="createproc"
+<form id="joinForm" name="joinForm" action="create"
 	onsubmit="return inCheck(this)" method="post" enctype="multipart/form-data">
 <div id="container">
 	<div id="contents">

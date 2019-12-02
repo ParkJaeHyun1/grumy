@@ -37,9 +37,9 @@ public class MemberController {
 		return "/create";
 	}
 
-	@PostMapping("/member/createproc")
-	public String createproc(MemberDTO dto, Model model, HttpServletRequest request) {
-		String url = "/preproc";
+	@PostMapping("/member/create")
+	public String create(MemberDTO dto, Model model, HttpServletRequest request) {
+		String url = "/main";
 		
 		if (dao.duplicateId(dto.getId()) == 1) {
 			model.addAttribute("str", "중복된 아이디 입니다. 아이디 중복을 확인하세요");
@@ -108,8 +108,8 @@ public class MemberController {
 		
 			
 		} else {
-			request.setAttribute("str", "아이디 또는 비밀번호를 잘못 입력하셨거나 <br>회원이 아닙니다. 회원가입 하세요.");
-			return "/preproc";
+			model.addAttribute("alert", "fail");
+			return "/login";
 		}
 		
 		return "redirect:/";
