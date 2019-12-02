@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="util" uri="/ELFunctions"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
 	function read(communityNo) {
 		var url = "read";
+		url += "?communityNo=" + communityNo;
+
+		location.href = url;
+	}
+	function read_reply(communityNo) {
+		var url = "read_reply";
 		url += "?communityNo=" + communityNo;
 
 		location.href = url;
@@ -80,32 +87,61 @@
 									<td></td>
 									<td></td>
 							</c:when>
+							
 							<c:otherwise>
 								<c:forEach var="dto" items="${list}">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
-										<td>${dto.communityNo}</td>
-										<td class="thumb left"><a><img
-												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-												width="63.75px" height="63.75px" border="0" alt=""></a></td>
+										<c:choose>
+											<c:when test="${dto.indent == 0 }">
+												<td>${dto.communityNo}</td>
+												<td class="thumb left"><a><img
+														src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+														width="63.75px" height="63.75px" border="0" alt=""></a></td>
 
-										<td class="subject left txtBreak"><span class="prd_name"
-											style="color: #aaa;">${dto.itemTitle}</span><br> 
-											
-												
+												<td class="subject left txtBreak"><span
+													class="prd_name" style="color: #aaa;">${dto.itemTitle}</span><br>
+
+
 													<img
-														src="${pageContext.request.contextPath}/images/icon_1.png"
-														alt="비밀글">
-													<a href="javascript:read(${dto.communityNo })" style="color: #aaa;">문의합니다
-														♡</a>
-												
-											 <span class="txtEm"></span> <c:if
-												test="${util:newImg(dto.wdate) }">
-												<img
-													src="${pageContext.request.contextPath}/images/icon_4.gif">
-											</c:if></td>
-										<td>${dto.id }</td>
-										<td class=""><span class="txtNum">${dto.wdate }</span></td>
+													src="${pageContext.request.contextPath }/images/secret.png" /><a
+													href="javascript:read(${dto.communityNo })"
+													style="color: #aaa;">문의합니다 ♡</a> <span class="txtEm"></span>
+													<c:if test="${util:newImg(dto.wdate) }">
+														<img alt=""
+															src="${pageContext.request.contextPath }/images/new.gif">
+													</c:if></td>
+												<td>${dto.id }</td>
+												<td class=""><span class="txtNum">${dto.wdate }</span></td>
+											</c:when>
+											
+																
+											<c:otherwise>
+												<td>${dto.communityNo}</td>
+												<td class="thumb left"><a><img
+														src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+														width="63.75px" height="63.75px" border="0" alt=""></a></td>
+
+												<td class="subject left txtBreak"><span
+													class="prd_name" style="color: #aaa;">${dto.itemTitle}</span><br>
+
+
+													<img
+													src="${pageContext.request.contextPath }/images/re.gif" />
+													<img
+													src="${pageContext.request.contextPath }/images/secret.png" /><a
+													href="javascript:read_reply(${dto.communityNo })"
+													style="color: #aaa;">답변합니다 ♡</a> <span class="txtEm"></span>
+													<c:if test="${util:newImg(dto.wdate) }">
+														<img alt=""
+															src="${pageContext.request.contextPath }/images/new.gif">
+													</c:if></td>
+												<td>${dto.id }</td>
+												<td class=""><span class="txtNum">${dto.wdate }</span></td>
+											</c:otherwise>
+
+										</c:choose>
+
 									</tr>
 								</c:forEach>
 							</c:otherwise>

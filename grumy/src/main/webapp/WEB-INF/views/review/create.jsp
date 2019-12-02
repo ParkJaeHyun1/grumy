@@ -32,7 +32,7 @@
 					</colgroup>
 					<tbody>
 						<tr>
-							<th scope="row">상품명</th>
+							<th scope="row">상품명itemOptionNo</th>
 							
 							<td><input type="text" id="itemOptionNo" name="itemOptionNo" value=""></td>
 						</tr>
@@ -80,10 +80,7 @@
 							
 							<td><input type="file" class="form-control" id="picture"  name="filenameMF" accept=".jpg,.gif,.png"></td>
 						</tr>
-						<tr>
-							<th scope="row">PASSWORD</th>
-							<td><input type="password" id="passwd" name="passwd"></td>
-						</tr>
+					
 					</tbody>
 				</table>
 					<p align="right">

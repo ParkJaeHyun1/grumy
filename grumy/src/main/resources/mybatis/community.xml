@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.communityMapper">
 
 <insert id="create_reply" parameterType="communityDTO">
-insert into community(communityNo,content,picture,wdate,ref,indent,id,ansnum,itemNo)
-values((select nvl(max(communityNo),0)+1 from community),#{content},#{picture,jdbcType=VARCHAR},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
+insert into community(communityNo,content,wdate,ref,indent,id,ansnum,itemNo)
+values((select nvl(max(communityNo),0)+1 from community),#{content},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
 </insert>
 
 
@@ -24,18 +24,20 @@ where communityNo = #{communityNo}
 </delete>
 
 <select id="read" parameterType="int" resultType="communityDTO">
-select communityNo,content,id,wdate,picture
+select communityNo,content,id,wdate,picture, itemNo
 from community
 where communityNo = #{communityNo}
 </select>
 
 	<select id="list" parameterType="Map" resultType="communityDTO">
-		select communityNo,id,wdate,itemPicture,itemTitle,itemNo
+		select communityNo,id,wdate,itemPicture,itemTitle,itemNo, indent
 		from (
-		select communityNo,id,wdate,i.itemNo,
-		i.image as itemPicture,i.title as itemTitle, rownum rnum
+		select communityNo,id,to_char(c.wdate,'yyyy-MM-dd') as wdate,i.itemNo,
+		i.image as itemPicture,i.title as itemTitle, rownum as rnum, c.indent as indent
 		from item i, community c
-		where c.itemNo = i.itemno)
+		where c.itemNo = i.itemno
+		order by ref desc
+		)
 		<![CDATA[ where rnum>=1 and rnum<=5]]>
 </select>
 

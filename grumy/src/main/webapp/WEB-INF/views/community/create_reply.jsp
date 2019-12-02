@@ -41,7 +41,7 @@
 							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
 										name="content" id="content">
-								${dto.content }	</textarea></td>
+									</textarea></td>
 							</tr>
 						</tbody>
 						<tbody class="">

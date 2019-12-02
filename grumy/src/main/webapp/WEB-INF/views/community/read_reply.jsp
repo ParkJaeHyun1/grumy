@@ -3,25 +3,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-	function read(no) {
+	function read(communityNo) {
 		var url = "read";
-		url += "?no=" + no;
+		url += "?communityNo=" + communityNo;
 
 		location.href = url;
 	}
-	function create_reply(no) {
+	function create_reply(communityNo) {
 		var url = "create_reply";
-		url += "?no=" + no;
+		url += "?communityNo=" + communityNo;
 
 		location.href = url;
 	}
-	function update(no) {
+	function update(communityNo) {
 		var url = "update";
-		url += "?no=" + no;
+		url += "?communityNo=" + communityNo;
 
 		location.href = url;
 	}
-	function delete1(no) {
+	function delete1(communityNo) {
 
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
@@ -48,7 +48,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">배송 문의</font>
+						<font color="#555555">상품 문의</font>
 					</h2>
 
 					<!--h3>공지사항입니다.</h3-->
@@ -80,10 +80,10 @@
 
 								</ul>
 								<div class="detail">${dto.content }</div>
-								<c:if test="${not empty dto.file1 }">
+								<c:if test="${not empty dto.picture }">
 								<img width="200px"
 								height="150px" class="img-thumbnail"
-								src="${pageContext.request.contextPath}/storage/${dto.file1}">
+								src="${pageContext.request.contextPath}/storage/${dto.picture}">
 								</c:if>
 								 
 							</td>
@@ -95,8 +95,8 @@
 									</span>
 									<c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
 									 <span class="gRight">	 
-									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+									 <a href="javascript:update(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+									 <a href="javascript:delete1(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 									</c:if>
 								</div></td>

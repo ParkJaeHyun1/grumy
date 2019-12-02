@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.community.communityDTO;
+import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.communityMapper;
 import spring.model.utility.Utility;
 
@@ -26,30 +27,67 @@ public class CommunityController {
 	@Autowired
 	private communityMapper mapper;
 	
+	
+	
 	@PostMapping("/community/create_reply")
-	public String create_reply(communityDTO dto) {
-		mapper.create_reply(dto);
-
-		Map map = new HashMap();
-		map.put("ref", dto.getRef());
-		map.put("ansnum", dto.getAnsnum());
+	public String create_reply(communityDTO dto, int no) {
+		communityDTO dto2 = mapper.read(no);
+		dto2.setContent(dto.getContent());
 		
+		System.out.println(dto2.getContent()+"a1");
+		System.out.println(dto2.getRef()+"a2");
+		System.out.println(dto2.getId()+"a3");
+		System.out.println(dto2.getAnsnum()+"a4");
+		System.out.println(dto2.getItemNo()+"a5");
+		System.out.println(no+"a6");
+		
+		
+		
+		mapper.create_reply(dto2);
+	
 		return "redirect:/community/list";
 	}
 	
 	@GetMapping("/community/create_reply")
 	public String create_reply(int communityNo,HttpServletRequest request,HttpSession session) {
+		
+		
 		communityDTO dto = mapper.read(communityNo);
 		
 		//String id = (String) session.getAttribute("id");
-		//request.setAttribute("name", mapper.getname(id));
+		//request.setAttribute("name", mapper.getname(id));		
 		
 		request.setAttribute("dto", dto);
 		
 		return "/community/create_reply";
 	}
 	
+	@GetMapping("/community/read_reply")
+	public String read_reply(int communityNo,HttpSession session,Model model){
+		String id = (String)session.getAttribute("id"); 
+
+		if( id ==null) {
+			id =  "";
+		}
 	
+		communityDTO dto = mapper.read(communityNo);
+		
+		
+		if(id.equals("admin")||id.equals(dto.getId())) {
+			
+		
+		String content = dto.getContent().replaceAll("\r\n", "<br>");
+		
+		dto.setContent(content);
+		
+
+		model.addAttribute("dto",dto);
+		
+		return "/community/read_reply";
+		}else {
+			return "/community/error";
+		}
+	}
 	
 	@PostMapping("/community/update")
 	public String update(communityDTO dto,HttpServletRequest request) {
@@ -149,7 +187,7 @@ public class CommunityController {
 	map.put("word", word);
 	
 	ArrayList<communityDTO> list = mapper.list(map);
-	
+	System.out.println(list.get(1).getWdate());
 	request.setAttribute("col", col);
 	request.setAttribute("word", word);
 	request.setAttribute("list",list);
