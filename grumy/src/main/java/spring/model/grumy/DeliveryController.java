@@ -78,19 +78,20 @@ public class DeliveryController {
 	}
 	
 	@GetMapping("/delivery/delete")
-	public String delete(int no) {
-		int flag = mapper.delete(no);
+	public String delete(int ref) {
+		int flag = mapper.delete(ref);
 		
-		if(flag==1) {
+
+		
 			return "redirect:/delivery/list";
-		}else {
-			return null;
-		}
+		
+		
 	}
 	
 	@GetMapping("/delivery/read_reply")
 	public String read_reply(int no,HttpSession session,Model model){
 		String id = (String)session.getAttribute("id"); 
+		String grade = (String)session.getAttribute("grade");
 
 		if( id ==null) {
 			id =  "";
@@ -98,8 +99,7 @@ public class DeliveryController {
 	
 		DeliveryDTO dto = mapper.read(no);
 		
-		
-		if(id.equals("admin")||id.equals(dto.getId())) {
+		if(grade.equals("A")||id.equals(dto.getCheck_read())) {
 			
 		
 		String content = dto.getContent().replaceAll("\r\n", "<br>");
@@ -118,17 +118,21 @@ public class DeliveryController {
 	
 	@GetMapping("/delivery/read")
 		public String read(int no, Model model,HttpSession session) {
-			String id = (String)session.getAttribute("id"); 
+			String id = (String)session.getAttribute("id");
+			String grade = (String) session.getAttribute("grade");
 
 			if( id ==null) {
 				id =  "";
+				grade ="";
 			}
+			
+			
 		
 			DeliveryDTO dto = mapper.read(no);
 			
 			
-			if(id.equals("admin")||id.equals(dto.getId())) {
-				
+			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev()=='S') {
+				 
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");
 			
@@ -213,6 +217,7 @@ public class DeliveryController {
 		
 		
 		List<DeliveryDTO> list = mapper.list(map); 
+		List<DeliveryDTO> list_ = mapper.list_(); 
 		
 		int total = mapper.total(map);
 		
@@ -224,6 +229,7 @@ public class DeliveryController {
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("list", list);
+		request.setAttribute("list_", list_);
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		

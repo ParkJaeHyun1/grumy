@@ -11,8 +11,8 @@ where id = #{id}
 </select>
 
 <insert id="create_reply" parameterType="DeliveryDTO">
-insert into delivery(no,subject,writer,id,content,file1,wdate,ref,indent)
-values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{id},#{content},#{file1,jdbcType=VARCHAR},sysdate,#{no},1)
+insert into delivery(no,subject,writer,id,content,file1,wdate,ref,indent,check_read)
+values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{id},#{content},#{file1,jdbcType=VARCHAR},sysdate,#{ref},1,#{check_read})
 </insert>
 
 <update id="update" parameterType="int">
@@ -42,7 +42,7 @@ where no = #{no}
 	</select>
 	
 <select id="read" parameterType="int" resultType="DeliveryDTO">
-select no,subject,writer,content,wdate,file1,indent,id
+select no,subject,writer,content,wdate,file1,indent,id,ref,lev,check_read
 from delivery
 where no = #{no}
 </select>
@@ -52,18 +52,19 @@ where no = #{no}
 
 <delete id="delete" parameterType="int">
 delete from delivery
-where no = #{no}
+where ref = #{ref}
 </delete>
 
 <insert id="create" parameterType="DeliveryDTO">
-insert into delivery(no,subject,content,writer,wdate,file1,ref,id)
+insert into delivery(no,subject,content,writer,wdate,file1,ref,id,lev,check_read)
 values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
-#{writer},sysdate,#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery),#{id})
+#{writer},sysdate,#{file1,jdbcType=VARCHAR},(select nvl(max(ref),0)+1 from delivery),#{id},#{lev},#{check_read})
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
 select count(*) from delivery
 	<where>
+		lev = 'A'
          	<choose>
          		<when test="col=='subject'">
          		subject like '%'||#{word}||'%'
@@ -79,10 +80,23 @@ select count(*) from delivery
 </select>
 
 
+<select id="list_" resultType="DeliveryDTO">
+select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
+	from (
+			select no,subject,writer,wdate,indent,rownum r
+			from (
+				select no,subject,writer,wdate,indent
+				from delivery
+				where lev = 'S'
+				order by ref desc
+				)
+		)
+
+</select>
 
 
 <select id="list" parameterType="Map" resultType="DeliveryDTO">
-select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate,indent
+select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
 	from (
 			select no,subject,writer,wdate,indent,rownum r
 			from (
@@ -92,16 +106,22 @@ select no,subject,writer,to_char(wdate, 'yyyy-mm-dd')wdate,indent
 					<choose>
 						<when test="col == 'subject'">
 						subject like '%'||#{word}||'%'
+						and lev = 'A'
 						</when>
 						<when test="col == 'content'">
 						content like '%'||#{word}||'%'
+						and lev = 'A'
 						</when>
 						<when test="col == 'writer'">
 						writer like '%'||#{word}||'%'
+						and lev = 'A'
 						</when>
+						<otherwise>
+						lev = 'A'
+						</otherwise>
 					</choose>
 				</where>
-				order by ref desc
+				order by ref desc,no asc
 				)
 		)
 <![CDATA[

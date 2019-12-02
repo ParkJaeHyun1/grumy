@@ -22,9 +22,11 @@
 				action="create_reply" method="post" 
 				enctype="multipart/form-data">
 				
-				<input type="hidden" name="no" value="${param.no }">
+				<input type="hidden" name="ref" value="${dto.ref }">
+				<input type="hidden" name="lev" value="A">
 				<input type="hidden" name="writer" value="${name}">
 				<input type="hidden" name="id" value="${sessionScope.id}">
+				<input type="hidden" name="check_read" value="${dto.id}">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>

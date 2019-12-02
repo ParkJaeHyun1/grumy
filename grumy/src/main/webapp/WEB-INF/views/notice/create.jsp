@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div id="container">
@@ -32,7 +34,7 @@
 						<tr>
 							<th scope="row">SUBJECT</th>
 							
-							<td><input type="text" id="subject" name="subject" value=""></td>
+							<td><input type="text" id="subject" name="subject" style=width:300px></td>
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
@@ -100,6 +102,13 @@ $(function(){
           $("#frm").submit();
       });    
 });
+var pasteHTML = function(filename){                     //업로드한 사진을 화면에 보여주게 만드는 스크립트입니다.
+
+    var sHTML = '<img src="${pageContext.request.contextPath}/se2/upload/'+filename+'">'; //사진이 저장된 경로입니다.
+
+    oEditors.getById["txtContent"].exec("PASTE_HTML", [sHTML]);
+
+};
 function input(f){
 	if(f.subject.value==''){
 		alert("제목을 입력하세요");

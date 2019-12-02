@@ -11,9 +11,10 @@ public interface deliveryMapper {
 	int create(DeliveryDTO dto);
 	DeliveryDTO read(int no);
 	Map noread(int no);
-	int delete(int no);
+	int delete(int ref);
 	int update(DeliveryDTO dto);
 	int create_reply(DeliveryDTO dto);
 	String getname(String id);
+	List<DeliveryDTO> list_();
 
 }

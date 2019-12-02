@@ -3,12 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-	function read(no) {
-		var url = "read";
-		url += "?no=" + no;
 
-		location.href = url;
-	}
 	function create_reply(no) {
 		var url = "create_reply";
 		url += "?no=" + no;
@@ -21,12 +16,12 @@
 
 		location.href = url;
 	}
-	function delete1(no) {
+	function delete1(ref) {
 
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
 			var url = "delete";
-			url += "?no=" + no;
+			url += "?ref="+ref;
 
 			location.href = url;
 
@@ -37,6 +32,7 @@
 		}
 
 	}
+	
 </script>
 
 <div id="container">
@@ -94,41 +90,18 @@
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 									 <span class="gRight">
-									 <c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
+									 <c:if test="${sessionScope.grade=='A' }">
 									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									 </c:if>
 									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+									 <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 
 								</div></td>
 							
 						</tr>
-
-							<c:choose>
-								<c:when test="${empty noArr[0] }">
-									<tr>
-										<td>NEXT</td>
-										<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-									</tr>
-								</c:when>
-								<c:when test="${empty noArr[1] }">
-									<tr>
-										<td>PREV</td>
-										<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-									</tr>
-								</c:when>
-								<c:otherwise>
-									<tr>
-										<td>PREV</td>
-										<td><a href="javascript:read(${noArr[0]})">${subjectArr[0]}</a></td>
-									</tr>
-									<tr>
-										<td>NEXT</td>
-										<td><a href="javascript:read(${noArr[1]})">${subjectArr[1]}</a></td>
-									</tr>
-								</c:otherwise>
-							</c:choose>
+						
 
 					</tbody>
 				</table>

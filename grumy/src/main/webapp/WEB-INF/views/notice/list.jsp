@@ -65,6 +65,20 @@
                     $login_page_url = /member/login.html
                     $deny_access_url = /index.html
                 -->
+						<c:if test="${nowPage==1 }">
+							<c:forEach var="dto" items="${list_ }">
+								<tr style="background-color: #FAFAFA; color: #555555;"
+									class="xans-record-">
+									<td></td>
+									<td class="displaynone"></td>
+									<td class="subject left txtBreak"><strong> <a
+											href="javascript:read(${dto.no })" style="color: #555555;">
+												${dto.subject }</a> <span class="txtEm"></span></strong></td>
+									<td>${dto.writer }</td>
+									<td class=""><span class="txtNum">${dto.wdate }</span></td>
+								</tr>
+							</c:forEach>
+						</c:if>
 						<c:choose>
 							<c:when test="${empty list }">
 								<tr>
@@ -74,20 +88,7 @@
 									<td></td>
 							</c:when>
 							<c:otherwise>
-								<c:if test="${nowPage==1 }">
-									<c:forEach var="dto" items="${list_ }"> 
-										<tr style="background-color: #FAFAFA; color: #555555;"
-											class="xans-record-">
-											<td></td>
-											<td class="displaynone"></td>
-											<td class="subject left txtBreak"><strong> <a
-													href="javascript:read(${dto.no })" style="color: #555555;">
-														${dto.subject }</a> <span class="txtEm"></span></strong></td>
-											<td>${dto.writer }</td>
-											<td class=""><span class="txtNum">${dto.wdate }</span></td>
-										</tr>
-									</c:forEach>
-								</c:if>
+
 								<c:forEach var="dto" items="${list}" varStatus="status">
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
