@@ -101,14 +101,14 @@
 						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
 					<script type="text/javascript"
 						src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
-<script type="text/javascript"
-	src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
+					<script type="text/javascript"
+						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
 
-<script type='text/javascript'>
+					<script type='text/javascript'>
       var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
 </script>
 
-<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
+					<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
             var oBankInfo = "";
             $.ajax({
                 type: "GET",
@@ -120,7 +120,7 @@
                 }
              });
              return oBankInfo; }};</script>
-<script type="text/javascript">            
+					<script type="text/javascript">            
 					var EC_ROOT_DOMAIN = "cafe24.com";
             var EC_I18N_LOG_STATUS = "F";
             var EC_GLOBAL_INFO = (function() {
@@ -152,9 +152,9 @@
                     }
                 };
             })();</script>
-<script type="text/javascript"
-	src="https://slowand.com/ind-script/moment.php?convert=T"></script>
-<script type="text/javascript">            
+					<script type="text/javascript"
+						src="https://slowand.com/ind-script/moment.php?convert=T"></script>
+					<script type="text/javascript">            
             	var EC_GLOBAL_DATETIME = (function() {
                 var oConstants = {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"};
                 var oOptions = {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"};
@@ -378,19 +378,19 @@
                 };
             })();</script>
 
-<link rel="stylesheet" type="text/css"
-	href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
-<link rel="stylesheet" type="text/css"
-	href="https://slowand.com//ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
+					<link rel="stylesheet" type="text/css"
+						href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
+					<link rel="stylesheet" type="text/css"
+						href="https://slowand.com//ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
 
-<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
-<meta name="path_role" content="PRODUCT_DETAIL" />
-<meta name="author" content="슬로우앤드" />
-<meta name="description" content="" />
-<meta name="keywords"
-	content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
-<meta name="design_html_path"
-	content="http://slowand.com/product/detail.html" />
+					<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
+					<meta name="path_role" content="PRODUCT_DETAIL" />
+					<meta name="author" content="슬로우앤드" />
+					<meta name="description" content="" />
+					<meta name="keywords"
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
+					<meta name="design_html_path"
+						content="http://slowand.com/product/detail.html" />
 </head>
 <body id="cmn">
 	<div id="skipNavigation">
@@ -594,10 +594,19 @@
 															ec-dev-name="option1" ec-dev-class="ProductOption0"
 															class="ec-product-button" required="true">
 
-															<c:forEach var="color" items="${dto.colorList}">
+															<c:forEach var="itemOption" items="${dto.itemOptionList}">
+																<c:if
+																	test="${(not empty dto.itemSalePrice)&&dto.itemSalePrice != 0}">
+																	<div class="discount">
+																		${dto.itemPrice}원
+																		<p class="displaynone"></p>
+																	</div>
 																<li class="" option_value="컬러" link_image=""
-																	title="아이보리"><a href=""> <span>${color}</span></a>
+																	title="아이보리"><a href=""> <span>${itemOption.itemColor}</span></a>
 																</li>
+																<c:set target="${pre_val}"
+																	value="${itemOption.itemColor}" />
+																</c:if>
 															</c:forEach>
 														</ul>
 
@@ -959,164 +968,6 @@
 						<div class="board">
 							<h3>REVIEW</h3>
 
-							<!-- 리뷰 -->
-							<div
-								class="reviews_index reviews_index--list js-pagination-list ">
-								<div class="reviews_index__head">
-									<div class="reviews_index__title_bar">
-										<div class="reviews_index__title">
-											<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
-										</div>
-									</div>
-									<script
-										src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
-									<link rel="stylesheet" media="all"
-										href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
-										<div id="google-translate-button" class="hidden"></div>
-										<div class="reviews_index__body">
-											<div class="page">
-												<div class="reviews_index__no_data_message">아직 작성한 리뷰가
-													없습니다.</div>
-												<ul class="reviews_index__reviews reviews">
-
-													<c:forEach var="dto" items="${list}">
-														<li id="review_${dto.reviewNo}"
-															class="review reviews_index_list_review "><a
-															class="reviews_index_list_review__product_image  js-link-iframe"
-															href="javascript:read(${dto.reviewNo})"> <!-- 여기야 -->
-																<img
-																src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-																style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
-																class="" width="90" height="90"></a>
-															<div class="reviews_index_list_review__lcontents">
-																<div class="reviews_index_list_review__score">
-																	<div class="reviews_index_list_review__title">
-																		<div class="reviews_index_list_review__tags">
-																			<span
-																				class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
-																				title="3일 이내 작성된 후기입니다">NEW</span>
-																		</div>
-																		<!-- 여기야 -->
-																		<a
-																			class="reviews_index_list_review__title_text js-link-iframe"
-																			href="javascript:read(${dto.reviewNo})">
-																			${dto.itemTitle} </a>
-																	</div>
-																</div>
-																<div
-																	class="reviews_index_list_review__content review_content">
-																	<a
-																		class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
-																		<div class="reviews_index_list_review__message">
-																			<span> ${dto.content}<span
-																				class="mall-link-color see_more">... 더보기</span> <br></span>
-																		</div>
-																		<div class="reviews_index_list_review__foot">
-																			<div class="reviews_index_list_review__actions">
-																				<span
-																					class="reviews_index_list_review__comments_link mall-link-color">
-																					<span class="comments-count">0</span> 개의 댓글이 있습니다
-																				</span>
-																			</div>
-																		</div>
-																	</a>
-																	<div
-																		class="reviews_index_list_review__content_inner review_content__expanded">
-																		<div class="reviews_index_list_review__message">
-																			<div class="review_options">
-																				<div class="review_option">
-																					<div class="review_option__title">키</div>
-																					<div class="review_option__content">${dto.height }</div>
-																				</div>
-																				<div class="review_option">
-																					<div class="review_option__title">몸무게</div>
-																					<div class="review_option__content">${dto.weight }</div>
-																				</div>
-																				<div class="review_option">
-																					<div class="review_option__title">평소사이즈</div>
-																					<div class="review_option__content">${dto.mySize }</div>
-																				</div>
-																				<div class="review_option">
-																					<div class="review_option__title">선택한 옵션</div>
-																					<div class="review_option__content">
-																						<c:if test="${not empty dto.itemColor}">
-																							<span class="review_option__product_option">
-																								<span class="review_option__product_option_key">COLOR:</span>
-																								<span
-																								class="review_option__product_option_value">${dto.itemColor}</span>
-																							</span>
-																						</c:if>
-																						<c:if test="${not empty dto.itemSize}">
-																							<span class="review_option__product_option">
-																								<span class="review_option__product_option_key">SIZE:</span>
-																								<span
-																								class="review_option__product_option_value">${dto.itemSize}</span>
-																							</span>
-																						</c:if>
-																					</div>
-																				</div>
-																			</div>
-																			<div
-																				class="reviews_index_list_review__message_expanded">
-																				${dto.content}</div>
-																		</div>
-																		<div class="reviews_index_list_review__foot">
-																			<div class="reviews_index_list_review__actions">
-																				<a
-																					class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
-																					접기</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="reviews_index_list_review__rcontents">
-																<div class="reviews_index_list_review__info_container">
-																	<span class="reviews_index_list_review__name">${dto.id}</span>
-
-																	<c:choose>
-																		<c:when test="${empty dto.picture}">
-																		</c:when>
-																		<c:otherwise>
-																			<img
-																				src="${pageContext.request.contextPath}/storage/${dto.picture}"
-																				class="js-review-image" width="90px" height="90px"
-																				style="opacity: 1;">
-																		</c:otherwise>
-
-																	</c:choose>
-																</div>
-															</div></li>
-													</c:forEach>
-												</ul>
-											</div>
-										</div>
-										<!-- 				푸터 -->
-								</div>
-							</div>
-							<div class="tui-tooltip" style="display: none;">
-								<div class="arrow"></div>
-								<span class="text"></span>
-							</div>
-							<!-- 		더보기기능 -->
-							<script
-								src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
-							<!--[if IE 7]>
-      <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
-    <![endif]-->
-							<script>
-			//<![CDATA[
-			var ajax_setup_args = {
-				cache : true,
-				dataType : "script",
-				accepts : {
-					script : "text/javascript, application/javascript"
-				}
-			};
-			$.ajaxSetup(ajax_setup_args);
-			//]]>
-		</script>
-							<!-- //리뷰 -->
 						</div>
 					</div>
 					<!-- //상품사용후기 -->

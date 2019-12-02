@@ -26,32 +26,6 @@ public class ItemController {
 		
 		ItemDTO dto = mapper.read(itemNo);
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
-		model.addAttribute("dto", dto);
-		
-		Map<String, ArrayList<String>> sizeMap = new HashMap<String, ArrayList<String>>();
-		Map<String,Integer> countMap = new HashMap<String,Integer>();
-		Map<String, String> map = new HashMap<String, String>();	
-		map.put("itemNo", String.valueOf(itemNo));
-		System.out.println("itemNo:"+itemNo);
-		ArrayList<String> colorList = mapper.color(map);
-				
-		for(int i=0;i<colorList.size();i++) {
-			map.put("color", colorList.get(i));
-			System.out.println("color:"+colorList.get(i));
-			ArrayList<String> sizeList = mapper.size(map);
-			sizeMap.put(colorList.get(i), sizeList);
-			
-			for(int j=0;j<sizeList.size();j++) {
-				map.put("itemSize",sizeList.get(j));
-				System.out.println("size:"+sizeList.get(j));
-				int count = mapper.count(map);
-				countMap.put(colorList.get(i)+"/"+sizeList.get(j), (Integer)count);
-			}
-		}
-		//dto.setColorList(colorList);
-		//dto.setSizeMap(sizeMap);
-		//dto.setCountMap(countMap);
-		//System.out.println("으악:"+dto.getColorList().size());
 		request.setAttribute("dto",dto);
 		return "/item/read";
 	}
@@ -88,16 +62,7 @@ public class ItemController {
 		map.put("type", type);
 		
 		ArrayList<ItemDTO> list = mapper.list(map);
-		//ArrayList<String> typeList = mapper.subtype(map);
-		
-		
-		System.out.println("사이즈:"+list.size());
 
-//		for (ItemDTO item : list) {
-//			String[] colors = item.getColor().split("/");
-//			item.setColorList(colors);
-//		}
-		
 		int total = mapper.total(map);
 		
 		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, word,type);

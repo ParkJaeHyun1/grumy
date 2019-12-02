@@ -5,13 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.itemMapper">
 
-	<select id="read" parameterType="int" resultType="ItemDTO">
-		select itemNo,
-		image, title, description, content, price,salePrice, type
-		from item
-		where itemNo = #{itemNo}
-	</select>
-
 	<select id="color" parameterType="Map" resultType="String">
 		select
 		distinct(itemColor)
@@ -98,13 +91,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="itemSize" column="itemSize" />
 		<result property="itemColor" column="itemColor" />
 	</resultMap>
-	<select id="list" parameterType="Map" resultType="itemMap">
+	<select id="list" parameterType="Map" resultMap="itemMap">
 		select itemNo, image, title, description, content, price,salePrice,	type,itemOptionNo,itemColor,itemSize,itemCount
 		from(
-		select itemNo, image, title, description, content, price,salePrice, type, rownum rnum,itemOptionNo,itemColor,itemSize,itemCount
+		select i.itemNo, image, title, description, content, price,salePrice, type, rownum rnum,itemOptionNo,itemColor,itemSize,itemCount
 		from item i , itemOption o
 		where type = #{type} and i.itemNo = o.itemNo)
 	<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+	</select>
+		<select id="read" parameterType="int" resultMap="itemMap">
+		select i.itemNo, image, title, description, content, price,salePrice, type,itemOptionNo,itemColor,itemSize,itemCount
+		from item i , itemOption o
+		where i.itemNo = #{itemNo}
 	</select>
 </mapper>
 
