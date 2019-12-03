@@ -122,7 +122,7 @@ public class MemberController {
 	@PostMapping("/member/findid")
 	public String findid(String name, String email, Model model) {
 		Map map = new HashMap();
-		map.put("mname", name);
+		map.put("name", name);
 		map.put("email", email);
 
 		String id = dao.findid(map);
