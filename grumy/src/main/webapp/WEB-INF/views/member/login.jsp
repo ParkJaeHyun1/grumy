@@ -114,7 +114,7 @@ alt="로그인" style="background:#a18266">로그인</a>
 <div class="alert alert-danger" role="alert">
 <Strong>아이디 or 비밀번호가 정확하지 않습니다.</Strong>
 </div>
-</c:if>
+</c:if> 
 
  
 <ul class="find">

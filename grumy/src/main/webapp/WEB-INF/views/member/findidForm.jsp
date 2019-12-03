@@ -105,7 +105,7 @@ fw-label="찾는방법" fw-msg="" value="1" type="radio" checked="checked">
 fw-label="찾는방법" fw-msg="" value="2" type="radio">
 <label for="check_method2">
 <span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
-</label>
+</label> 
 
 <p id="name_view" class="name" style="">
 <strong id="name_lable">이름</strong><input id="name" name="name" fw-filter="" fw-label="이름" fw-msg="" class="lostInput" placeholder="" value="" type="text">

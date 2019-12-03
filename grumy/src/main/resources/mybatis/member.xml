@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	from member
 	where id = #{id,jdbcType=VARCHAR}
 </select>
-
+ 
 <select id="findpw" parameterType="Map" resultType="String">
 	select passwd from member
 	where name = #{name} and id = #{id}

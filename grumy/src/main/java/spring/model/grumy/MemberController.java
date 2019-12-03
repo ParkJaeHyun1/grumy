@@ -117,7 +117,7 @@ public class MemberController {
 	public String findpw() {
 
 		return "/findpw";
-	}
+	} 
 
 	@PostMapping("/member/findid")
 	public String findid(String name, String email, Model model) {
