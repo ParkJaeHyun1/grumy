@@ -115,6 +115,7 @@ value="" type="text">
 fw-msg="" class="lostInput ec-member-name" placeholder="" 
 value="" type="text">
 </span>
+
 </li>
                 
 
@@ -140,7 +141,7 @@ value="" type="text">
 
 <p class="ec-base-button gBlank20">
 <a href="#none" class="yg_btn" 
-onclick="" alt="확인">확인</a>
+onclick="document.getElementById('findPasswdForm').submit();" alt="확인">확인</a>
 </p>
 
 </fieldset>

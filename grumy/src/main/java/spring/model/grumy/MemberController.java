@@ -101,16 +101,24 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/findpw")
-	public String findpw(String name, String id, Model model) {
+	public String findpw(String name, String id, String phone, String email, Model model) {
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("id", id);
+		map.put("email",email);
+		map.put("phone", phone);
 
 		String passwd = dao.findpw(map);
 
-		model.addAttribute("passwd", passwd);
+		if(passwd!=null) {
+			
+			model.addAttribute("passwd", passwd);
 
-		return "/findpwproc";
+			return "/findpwproc";
+		}else {
+		
+			return "/findpw";
+		}
 	}
 
 	@GetMapping("/member/findpw")
@@ -120,16 +128,25 @@ public class MemberController {
 	} 
 
 	@PostMapping("/member/findid")
-	public String findid(String name, String email, Model model) {
+	public String findid(String name, String email, String phone, Model model) {
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("email", email);
+		map.put("phone", phone);
 
 		String id = dao.findid(map);
+		
+		if(id!=null) {
+			
+			model.addAttribute("id", id);
 
-		model.addAttribute("id", id);
-
-		return "/findidproc";
+			return "/findidproc";
+		
+		}else{
+			model.addAttribute("msg", "failure");
+			return "/findid";
+		}
+		
 	}
 
 	@GetMapping("/member/findid")
