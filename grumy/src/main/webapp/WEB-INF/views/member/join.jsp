@@ -84,74 +84,99 @@ function sample6_execDaumPostcode() {
 </script>
 
 <!-- 필수 입력창 확인  -->
-<script type="text/javascript">
-function inCheck(f){
-	if(f.id.value.length==0){
-		alert("아이디를 입력하세요");
-		f.id.focus();
-		return false;
-	}
-	
-	if(f.passwd.value.length==0){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
-		return false;
-	}
-	if(f.user_passwd_confirm.value.length==0){
-		alert("비밀번호 확인울 입력하세요");
-		f.user_passwd_confirm.focus();
-		return false;
-	}
 
-	if(f.passwd.value != f.user_passwd_confirm.value){
-		alert("비밀번호가 일치하지 않습니다.");
-		f.passwd.value="";
-		f.user_passwd_confirm.value="";
-		f.passwd.focus();
-		return false;
-	}
-	
-	if(f.name.value.length==0){
-		alert("이름을 입력하세요");
-		f.name.focus();
-		return false;
-	}
-	
-	if(f.postcode.value.length==0){
-		alert("주소를 입력하세요")
-		f.postcode.focus();
-		return false;
-	}
-	if(f.address.value.length==0){
-		alert("주소를 입력하세요")
-		f.address.focus();
-		return false;
-	}
-	if(f.detailaddress.value.length==0){
-		alert("주소를 입력하세요")
-		f.detailaddress.focus();
-		return false;
-	}
-	if(f.phone.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.phone.focus();
-		return false;
-	}
+<script language="javascript">
+   function validate() {
+       var re = /^[a-zA-Z0-9]{8,16}$/ 
+       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+     
 
-	if(f.email.value.length==0){
-		alert("email을 입력하세요");
-		f.email.focus();
-		return false;
-	}
+       var id = document.getElementById("id");
+       var passwd = document.getElementById("passwd");
+       var email = document.getElementById("email");
 
-	if(f.agree.checked==false){
+
+
+       if(!check(re,id,"아이디는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(user_passwd_confirm.value.length==0){
+   		alert("비밀번호 확인을 입력하세요");
+   		user_passwd_confirm.focus();
+   		return false;
+   		}
+
+   	   if(passwd.value != user_passwd_confirm.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;
+   	   }
+
+ 
+
+       if(join.name.value=="") {
+           alert("이름을 입력해 주세요");
+           join.name.focus();
+           return false;
+       }
+       if(postcode.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.postcode.focus();
+   		return false;
+   	}
+   	if(address.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.address.focus();
+   		return false;
+   	}
+   	if(detailaddress.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.detailaddress.focus();
+   		return false;
+   	}
+   	if(phone.value.length==0){
+   		alert("전화번호를 입력하세요");
+   		phone.focus();
+   		return false;
+   	}
+    if(email.value=="") {
+        alert("이메일을 입력해 주세요");
+        email.focus();
+        return false;
+    }
+
+    if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+        return false;
+    }
+
+	if(agree.checked==false){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		return false;
-		
-	}
-    
-}
+	}  
+
+     
+       
+      }
+
+   function check(re, what, message) {
+       if(re.test(what.value)) {
+           return true;
+       }
+       alert(message);
+       what.value = "";
+       what.focus();
+       //return false;
+   }
 </script>
+
+
 <script type="text/javascript">
 function idCheck(id){
     if(id== ''){
@@ -199,7 +224,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 </script>
 	<!-- //상단카테고리 -->
 <form id="joinForm" name="joinForm" action="create"
-	onsubmit="return inCheck(this)" method="post" enctype="multipart/form-data">
+	onsubmit="return validate();" method="post" enctype="multipart/form-data">
 <div id="container">
 	<div id="contents">
 		<div class="titleArea">
@@ -229,7 +254,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			fw-label="아이디" fw-msg="" maxlength="16" class="inputTypeText" placeholder=""
 			value="" type="text" />
 			<span id="idMsg"></span> 
-			(영문소문자/숫자,4~16자)
+			(영문 대소문자/숫자,8~16자)
 			<button type="button" class="yg_btn_140 yg_btn3"
 				 onclick="idCheck(document.joinForm.id.value)">ID 중복확인</button>
 			<div id="idcheck"></div>
@@ -243,7 +268,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
 			autocomplete="off" maxlength="16" 0="disabled" value=""
 			type="password" /> 
-		(영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 8자~16자)
+		(영문 대소문자/숫자,8~16자)
 		</td>
 	</tr>
 	<tr>
@@ -270,8 +295,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	</tr>
 	<tr class="">
 		<th scope="row">주소 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
-		 class="displaynone" alt="필수" />
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
 		<input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
@@ -289,7 +313,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		
 	<tr class="">
 		<th scope="row">전화번호 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" class="displaynone" alt="필수" />
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
 		<input id="phone" name="phone" maxlength="11" 
@@ -310,6 +334,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		</tr>
 		<tr>
 		<th scope="row">생년월일
+		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
 		<input id="birth" name="birth" 

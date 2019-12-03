@@ -83,32 +83,10 @@ public class MemberController {
 			session.setAttribute("id", map.get("id"));
 			session.setAttribute("grade", grade);
 
-			Cookie cookie = null;
 
-			String c_id = request.getParameter("c_id");
-
-			if (c_id != null) {
-				cookie = new Cookie("c_id", "Y");
-				cookie.setMaxAge(120);
-				response.addCookie(cookie);
-
-				cookie = new Cookie("c_id_val", map.get("id"));
-				cookie.setMaxAge(120);
-				response.addCookie(cookie);
-			} else {
-				cookie = new Cookie("c_id", "");
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
-
-				cookie = new Cookie("c_id_val", "");
-				cookie.setMaxAge(0);
-				response.addCookie(cookie);
-			}
-			
 		
-			
 		} else {
-			model.addAttribute("alert", "fail");
+			model.addAttribute("msg", "failure");
 			return "/login";
 		}
 		
@@ -117,25 +95,7 @@ public class MemberController {
 	
 	@GetMapping("/member/login")
 	public String login(HttpServletRequest request) {
-		String c_id = "";
-		String c_id_val = "";
 
-		Cookie[] cookies = request.getCookies();
-		Cookie cookie = null;
-
-		if (cookies != null) {
-			for (int i = 0; i < cookies.length; i++) {
-				cookie = cookies[i];
-
-				if (cookie.getName().equals("c_id")) {
-					c_id = cookie.getValue();
-				} else if (cookie.getName().equals("c_id_val")) {
-					c_id_val = cookie.getValue();
-				}
-			}
-		}
-		request.setAttribute("c_id", c_id);
-		request.setAttribute("c_id_val", c_id_val);
 
 		return "/login";
 	}
