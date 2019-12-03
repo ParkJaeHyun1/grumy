@@ -163,24 +163,7 @@ public class MemberController {
 
 	}
 	
-	@PostMapping("member/updatePw")
-	public String updatePw(MemberDTO dto, Model model) {
-		Map map = new HashMap();
-		map.put("id", dto.getId());
-		map.put("passwd", dto.getPasswd());
 
-		dao.updatePasswd(map);
-
-		model.addAttribute("id", dto.getId());
-
-		return "redirect:/member/read";
-	}
-
-	@GetMapping("member/updatePw")
-	public String updatePw() {
-
-		return "/updatePw";
-	}
 	
 	@PostMapping("member/delete")
 	public String delete(String id,HttpServletRequest request, HttpSession session) {
@@ -208,6 +191,7 @@ public class MemberController {
 		if (flag == 1) {
 
 			model.addAttribute("id", dto.getId());
+			System.out.println("11");
 			
 			return "redirect:/member/read";
 		} else {

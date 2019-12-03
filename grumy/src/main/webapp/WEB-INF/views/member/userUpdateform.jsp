@@ -97,12 +97,7 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
-<Script type="text/javascript">
-function idpwmsg(f){
-	
-}
 
-</Script>
 
 
 <!-- 필수 입력창 확인  -->
@@ -217,8 +212,8 @@ function inCheck(f){
 
         <div id="contents">
 		
-<form action="update" class="form-horizontal" method="post" 
-name='frm' onsubmit="return inCheck(this)">
+<form action="update" class="form-horizontal" method="post" id="frm"
+name="frm" onsubmit="" target="_self" enctype="multipart/form-data">
 
 <input type="hidden" name="id" value="${dto.id }">
 
@@ -438,20 +433,23 @@ value="${dto.birth }" type="text">
 </div>
 
 <div class="ec-base-button justify">
-<a href="${pageContext.request.contextPath}/member/update" onclick=""
+
+<a href="#" onclick="document.getElementById('frm').submit();"
 class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="회원정보수정">회원정보수정
 </a>
+
 <a href="history.back()" onclick="" 
 class="yg_btn_140 yg_btn4" alt="취소">취소
 </a>
+
 </div>
 </form>
 </div>
 </div>
         
 <div class="ec-base-button">
-<a href="${pageContext.request.contextPath}/member/delete" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
-<a href="" onclick="" class="yg_btn_30 yg_btn3" alt="취소">취소</a>
+<a href="#" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
+<a href="#" onclick="" class="yg_btn_30 yg_btn3" alt="취소">취소</a>
 </div>
        
 

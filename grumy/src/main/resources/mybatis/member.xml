@@ -49,15 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where (name = #{name} and email = #{email}) or (name=#{name} and phone=#{phone}) 
 </select>
 
-<update id="updatePasswd" parameterType="Map">
-	update member
-	set passwd = #{passwd}
-	where id = #{id}
-</update>
-
 <update id="update" parameterType="MemberDTO">
 	update member
-	set name= #{name}, postcode = #{postcode} , address = #{address}, 
+	set passwd=#{passwd}, name=#{name}, postcode = #{postcode} , address = #{address}, 
 	detailaddress = #{detailaddress}, 
 	phone = #{phone}, email = #{email}, birth=#{birth}
 	where id = #{id}
