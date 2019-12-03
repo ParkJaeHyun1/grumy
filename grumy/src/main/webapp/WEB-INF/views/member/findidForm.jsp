@@ -87,14 +87,14 @@
 
 <!-- 아이디찾기 폼 -->
 <form id="findIdForm" name="findIdForm" action="findid" 
-method="post" target="_self" enctype="multipart/form-data">
+method="post" target="_self" enctype="multipart/form-data"
+onclick="">
 
 <div class="xans-element- xans-member xans-member-findid">
 
 <div class="findId">        
         <fieldset>
 <legend>아이디 찾기</legend>
-
 
 
 <input id="check_method1" name="check_method" fw-filter="" 
@@ -166,12 +166,6 @@ alt="확인">확인</a>
 <!--  페이지 상단 하단 조정 end -->
 
 <script type="text/javascript" src="//slowand.com/ind-script/i18n.php?lang=ko_KR&amp;domain=front&amp;v=1911201087" charset="utf-8"></script>
-
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=tZXNbtswDMdfwNc9h5Bhh51boKcNAzb0AWiJtplQokpJbbOnH5N1Q7PNSQ0v8EEAwd-fEr_sJonoNu_VDQoRn0R3TrFIU49uWxxtPqZuW965c36NMvid2z401P3Lsek-2HdCZpXR4BP9kpVSHS47BvEtYqp3ovFWUlVhRr3MDWrO7hmSvSVV1KxYF3IVY2ao-G8IcnafpSdG9_UV7yVGSa5V4kVclNDMVJ4oLws4tOQrWUjzC83XLoquVDhzCabe3f8s-2sJhu97FgiLoNgqHOJ-6Qvq41xxZuAsvB-I-a0VDThA43pIQYmg9QZS-jPkxRbHZ-uhBFxeDF0_0hFaq-NFdrRaJZBNSrGMlrVKCIXSuFYlYoUAFea78UZAw0ldzdr1B-s89G2SfMLcHSt8e5y8-7ODN4MWBPXTov6rMAz2Qlq6JTO3kWy5PAKT5Ub0V7J-G1YLHuqQQvlb2BSyNQdeL8KEnPGKL5ggBb5mAFtDZHW9mr6trPof7s_iwbb4Ti6vv5m-estA2b9vFN1_olIN_gE&amp;type=js&amp;k=81cead6b99ffa3a78f6503851e2d2fd76af38afb&amp;t=1574024793"></script>
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=rZVNbsIwEIUPQLc9h9XeoKXqjxQEIlRdD86Ahzgea2yDcvtGgUWREC12N5Zi53vzPHmOleEO1cOjKC-8FegUeK9m2K1R1BIDJ9GodkF141SNINqseo93u3CvboNfyTUfzWVQfrz9lKKp6-pKBXCwxbMKB1xb3l5GLK3VJ3nQ7RkyTSLodK-CYT_xQhoLeH16mmxYOoilTv5LJkWyv3fcxM6iixQJw01th9A7fRyzuWM4svG5NCjaxWyBZwgtxnKFKwn6s8ZCuEk638mUk2dXspcZWRzWs_kX9Bwov_4XBVNRKBPQnApaIKixAF-O-Ioj2GmRjzHZ-YFChxsqDXUFfYGHN4EmP0rDPcDDP5D0KFMbPuSnOtlIC_bJ50v0FbV4OqBlH7aiPVpyLbuybLwP54SlzzXjIRphi5M9WGpgkBpEvgE&amp;type=js&amp;k=82b3ffd7450bfc72bddbf0db73b461a070e21813&amp;t=1573420409"></script>
-<script type="text/javascript" src="/ind-script/optimizer.php?filename=rY9JDsIwDEUP0G45h8UgcQnYwAmMa6WGJA5xQtXbUwaJLdPGsmS95_-h18AwX2RIWV3GAJgSbDGiY9ixac3EcDRAGyM9ZrtR7NqjzeBdeDp3lcpHjA0tofecXxRTU43zFCZGXszXS0j14IWavgQP1nHTsYmLYCeJq5skTH89g8dRawHCwk7z-LXx6TmgCd309-WXfKQhaPxfw3MVOjUX4eF_zlB9Ees17XtJSaL7sbCZnwxX&amp;type=js&amp;k=3713b072f420c6621412a929d2509456a52ba407&amp;t=1560719849"></script>
-
-<script src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js" defer="defer" onload="mobRf()"></script>
 
 
 </body>
