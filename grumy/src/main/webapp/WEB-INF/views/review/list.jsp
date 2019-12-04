@@ -12,14 +12,12 @@
 						<font color="#555555">REVIEW</font>
 					</h1>
 				</div>
-				<!-- 				<p class="imgArea"> -->
-				<!-- 					<img style="display: block; margin: 0px auto;" -->
-				<!-- 						src="https://www.slowand.com/web/upload/a18a11bb6099ad89997e7b6c437088fb.jpg"> -->
-				<!-- 				</p> -->
-			</div>
+					</div>
 			<div class="crema-reviews crema-applied">
 				<html
-					class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths placeholder cssfilters svgfilters">
+					class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange 
+					history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow 
+					opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths placeholder cssfilters svgfilters">
 <head>
 <style id="stndz-style"></style>
 <meta charset="UTF-8">
@@ -146,6 +144,9 @@ span.star, span.camera, .sprite_comment {
 						<c:forEach var="dto" items="${list}">
 							<c:choose>
 								<c:when test="${empty dto.picture}">
+								<img
+											src="${pageContext.request.contextPath}/images/noimg.gif"
+											alt="" width="63" height="63">
 								</c:when>
 								<c:otherwise>
 									<li id="review_${dto.reviewNo}"
@@ -154,7 +155,7 @@ span.star, span.camera, .sprite_comment {
 										data-url="${pageContext.request.contextPath}/review/create"
 										class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
 											<img
-											src="${pageContext.request.contextPath}/images/${dto.picture}"
+											src="${pageContext.request.contextPath}/storage/${dto.picture}"
 											alt="" width="63" height="63">
 									</a></li>
 								</c:otherwise>
@@ -207,9 +208,9 @@ span.star, span.camera, .sprite_comment {
 								<li id="review_${dto.reviewNo}"
 									class="review reviews_index_list_review "><a
 									class="reviews_index_list_review__product_image  js-link-iframe"
-									href="javascript:read(${dto.reviewNo})"> <!-- 여기야 --> <img
-										src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-										style="background-image: url(&quot;//${pageContext.request.contextPath}/images/${dto.itemPicture}&quot;); background-size: cover; background-position: center center; opacity: 1;"
+									href="javascript:read(${dto.reviewNo})"> <!-- 여기야 --> 
+									<img src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+										style="background-image: url(&quot;//${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}&quot;); background-size: cover; background-position: center center; opacity: 1;"
 										class="" width="90" height="90">
 								</a>
 									<div class="reviews_index_list_review__lcontents">
@@ -223,7 +224,7 @@ span.star, span.camera, .sprite_comment {
 												<!-- 여기야 -->
 												<a
 													class="reviews_index_list_review__title_text js-link-iframe"
-													href="javascript:read(${dto.reviewNo})">
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
 													${dto.itemTitle} </a>
 											</div>
 										</div>

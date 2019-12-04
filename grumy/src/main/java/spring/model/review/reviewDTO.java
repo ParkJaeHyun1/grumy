@@ -9,6 +9,16 @@ public class reviewDTO {
 	private String picture;
 	private MultipartFile filenameMF ;
 	private String itemPicture;
+	private String itemTitle;
+	private String height;
+	private String weight;
+	private String mySize;
+	private String star;
+	private String itemColor;
+	private String itemSize;
+	private String itemOptionNo;
+	private int itemNo;
+	
 	public int getReviewNo() {
 		return reviewNo;
 	}
@@ -150,15 +160,6 @@ public class reviewDTO {
 		this.itemNo = itemNo;
 	}
 
-	private String itemTitle;
-	private String height;
-	private String weight;
-	private String mySize;
-	private String star;
-	private String itemColor;
-	private String itemSize;
-	private String itemOptionNo;
-	private int itemNo;
 	
 	public reviewDTO() {
 		super();
