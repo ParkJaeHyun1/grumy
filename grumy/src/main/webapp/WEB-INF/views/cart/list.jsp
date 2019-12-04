@@ -50,10 +50,17 @@ function orderAll(){
 	$('#orderForm').submit();
 }
 function orderSeleted(){
+	var cnt = 0;
 	$.each(list, function(index, item){ 
-	    if($('#cart_checkBox_'+item.cartNo).is(":checked"))
-	    $('#cart_checkBox_'+item.cartNo).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
+	    if($('#cart_checkBox_'+item.cartNo).is(":checked")){
+	    	$('#cart_checkBox_'+item.cartNo).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
+			cnt++;
+	    }
 	});
+	if(cnt==0){
+		alert('선택한 상품이 없습니다.');
+		return;
+	}
 	$('#orderForm').submit();                   
 }
 
@@ -208,7 +215,7 @@ function setView(){
 				</div>
 				<div class="xans-element- xans-order xans-order-basketpackage " id="display_no_item_list"	style="display: none">
 					<div class="xans-element- xans-order xans-order-empty ">
-						<p>장바구니가 비어 있습니다.</p>
+						<p>장바구니가 비어 있습니다.</p>     
 					</div>
 				</div>
 

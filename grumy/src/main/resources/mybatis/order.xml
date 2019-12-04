@@ -3,11 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="spring.model.mapper.CartMapper">
+<mapper namespace="spring.model.mapper.OrderMapper">
 
-	<select id="itemOptionList" parameterType="List">
-		select itemOptionNo,itemColor,count,itemSize,itemNo
-		where itemOptionNo in
+	<select id="itemOptionList" parameterType="List" resultType="OrderItemDTO">
+		select o.itemOptionNo,i.title as itemTitle,i.image as itemImage,i.price as itemPrice, i.salePrice as itemSalePrice, o.itemSize,o.itemColor,i.itemNo,o.itemCount
+		from item i, itemOption o
+		where i.itemNo = o.itemNo and itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
 			#{item.value}

@@ -82,84 +82,7 @@
 
 				<form id="frm_order_act" name="frm_order_act" action=""
 					method="post" target="_self" enctype="multipart/form-data">
-					<input id="move_order_after" name="move_order_after"
-						value="/order/order_result.html" type="hidden" /> <input
-						id="member_group_price" name="member_group_price" value="0"
-						type="hidden" /> <input id="mileage_generate3"
-						name="mileage_generate3" value="3876" type="hidden" /> <input
-						id="total_group_dc" name="total_group_dc" value="0" type="hidden" />
-					<input id="total_plusapp_mileage_price"
-						name="total_plusapp_mileage_price" value="" type="hidden" /> <input
-						id="basket_type" name="basket_type" value="all_buy" type="hidden" />
-					<input id="productPeriod" name="productPeriod" value=""
-						type="hidden" /> <input id="member_id" name="member_id" value=""
-						type="hidden" /> <input id="delvType" name="delvType" value="A"
-						type="hidden" /> <input id="isUpdateMemberEmailOrder"
-						name="isUpdateMemberEmailOrder" value="F" type="hidden" /> <input
-						id="isSimplyOrderForm" name="isSimplyOrderForm" value="F"
-						type="hidden" /> <input id="__ocountry" name="__ocountry"
-						value="   " type="hidden" /> <input id="__oaddr1" name="__oaddr1"
-						value="" type="hidden" /> <input id="__ocity" name="__ocity"
-						value="" type="hidden" /> <input id="__ostate" name="__ostate"
-						value="" type="hidden" /> <input id="sSinameZhAreaWord"
-						name="sSinameZhAreaWord" value="省/市" type="hidden" /> <input
-						id="sSinameTwAreaWord" name="sSinameTwAreaWord" value="市/縣"
-						type="hidden" /> <input id="sGunameZhAreaWord"
-						name="sGunameZhAreaWord" value="区" type="hidden" /> <input
-						id="sGunameTwAreaWord" name="sGunameTwAreaWord" value="區/市"
-						type="hidden" /> <input id="__faddress" name="__faddress"
-						value="" type="hidden" /> <input id="__si_gun_dosi"
-						name="__si_gun_dosi" value="" type="hidden" /> <input
-						id="__ju_do" name="__ju_do" value="" type="hidden" /> <input
-						id="message_autosave" name="message_autosave" value="F"
-						type="hidden" /> <input id="hope_date" name="hope_date" value=""
-						type="hidden" /> <input id="hope_ship_begin_time"
-						name="hope_ship_begin_time" value="" type="hidden" /> <input
-						id="hope_ship_end_time" name="hope_ship_end_time" value=""
-						type="hidden" /> <input id="is_fast_shipping_time"
-						name="is_fast_shipping_time" value="" type="hidden" /> <input
-						id="eguarantee_id" name="eguarantee_id" value="F" type="hidden" />
-					<input id="is_hope_shipping" name="is_hope_shipping" value="F"
-						type="hidden" /> <input id="is_fast_shipping"
-						name="is_fast_shipping" value="" type="hidden" /> <input
-						id="fCountryCd" name="fCountryCd" value="" type="hidden" /> <input
-						id="sCpnPrd" name="sCpnPrd" value="0" type="hidden" /> <input
-						id="sCpnOrd" name="sCpnOrd" value="0" type="hidden" /> <input
-						id="coupon_saving" name="coupon_saving" value="0" type="hidden" />
-					<input id="coupon_discount" name="coupon_discount" value="0"
-						type="hidden" /> <input id="coupon_shipfee" name="coupon_shipfee"
-						value="0" type="hidden" /> <input id="is_no_ozipcode"
-						name="is_no_ozipcode" value="F" type="hidden" /> <input
-						id="is_no_rzipcode" name="is_no_rzipcode" value="F" type="hidden" />
-					<input id="is_cashreceipt_displayed_on_screen"
-						name="is_cashreceipt_displayed_on_screen" value="F" type="hidden" />
-					<input id="is_taxrequest_displayed_on_screen"
-						name="is_taxrequest_displayed_on_screen" value="F" type="hidden" />
-					<input id="app_scheme" name="app_scheme" value="" type="hidden" />
-					<input id="is_store" name="is_store" value="" type="hidden" /> <input
-						id="defer_commission" name="defer_commission" value="0"
-						type="hidden" /> <input id="order_form_simple_type"
-						name="order_form_simple_type" value="F" type="hidden" /> <input
-						id="information_agreement_check_val"
-						name="information_agreement_check_val" value="F" type="hidden" />
-					<input id="consignment_agreement_check_val"
-						name="consignment_agreement_check_val" value="F" type="hidden" />
-					<input id="basket_sync_flag" name="basket_sync_flag" value="F"
-						type="hidden" /> <input id="app_discount_data"
-						name="app_discount_data" value="" type="hidden" /> <input
-						id="is_shipping_address_readonly_by_app"
-						name="is_shipping_address_readonly_by_app" value="" type="hidden" />
-					<input id="is_app_shipfee" name="is_app_shipfee" value="F"
-						type="hidden" /> <input id="app_shipfee_data"
-						name="app_shipfee_data" value="" type="hidden" /> <input
-						id="is_available_shipping_company_by_app"
-						name="is_available_shipping_company_by_app" value="" type="hidden" />
-					<input id="is_direct_buy" name="is_direct_buy" value="F"
-						type="hidden" /> <input id="is_subscription_invoice"
-						name="is_subscription_invoice" value="F" type="hidden" /> <input
-						id="sEleID" name="sEleID"
-						value="total_price||productPeriod||ophone1_1||ophone1_2||ophone1_3||ophone2_1||ophone2_2||ophone2_3||ophone1_ex1||ophone1_ex2||ophone2_ex1||ophone2_ex2||basket_type||oname||oname2||english_oname||english_name||english_name2||input_mile||input_deposit||hope_date||hope_ship_begin_time||hope_ship_end_time||is_fast_shipping_time||fname||fname2||paymethod||eguarantee_flag||eguarantee_ssn1||eguarantee_ssn2||eguarantee_year||eguarantee_month||eguarantee_day||eguarantee_user_gender||eguarantee_personal_agreement||question||question_passwd||delvType||f_country||fzipcode||faddress||fphone1_1||fphone1_2||fphone1_3||fphone1_4||fphone1_ex1||fphone1_ex2||fphone2_ex1||fphone2_ex2||fphone2||fmessage||fmessage_select||rname||rzipcode1||rzipcode2||raddr1||raddr2||rphone1_1||rphone1_2||rphone1_3||rphone2_1||rphone2_2||rphone2_3||omessage||omessage_select||ozipcode1||ozipcode2||oaddr1||oaddr2||oemail||oemail1||oemail2||ocity||ostate||ozipcode||eguarantee_id||coupon_discount||coupon_saving||order_password||is_fast_shipping||fCountryCd||message_autosave||oa_content||gift_use_flag||pname||bankaccount||regno1||regno2||escrow_agreement0||addr_paymethod||member_group_price||chk_purchase_agreement||total_plusapp_mileage_price||mileage_generate3||is_hope_shipping||sCpnPrd||sCpnOrd||coupon_shipfee||np_req_tx_id||np_save_rate||np_save_rate_add||np_use_amt||np_mileage_use_amount||np_cash_use_amount||np_total_use_amount||np_balance_amt||np_use||np_sig||flagEscrowUse||flagEscrowIcashUse||add_ship_fee||total_group_dc||pron_name||pron_name2||pron_oname||faddress2||si_gun_dosi||ju_do||is_set_product||basket_prd_no||move_order_after||is_no_ozipcode||is_no_rzipcode||__ocountry||__oaddr1||__ocity||__ostate||__faddress||__si_gun_dosi||__ju_do||sSinameZhAreaWord||sSinameTwAreaWord||sGunameZhAreaWord||sGunameTwAreaWord||delivcompany||is_store||cashreceipt_user_type||cashreceipt_user_type2||cashreceipt_regist||cashreceipt_user_mobile1||cashreceipt_user_mobile2||cashreceipt_user_mobile3||cashreceipt_reg_no||is_cashreceipt_displayed_on_screen||tax_request_regist||tax_request_name||tax_request_phone1||tax_request_phone2||tax_request_phone3||tax_request_email1||tax_request_email2||tax_request_company_type||tax_request_company_regno||tax_request_company_name||tax_request_president_name||tax_request_zipcode||tax_request_address1||tax_request_address2||tax_request_company_condition||tax_request_company_line||is_taxrequest_displayed_on_screen||isSimplyOrderForm||use_safe_phone||app_scheme||isUpdateMemberEmailOrder||defer_commission||defer_p_name||order_form_simple_type||gmo_order_id||gmo_transaction_id||receiver_id_card_key||receiver_id_card_type||simple_join_is_check||simple_join_agree_use_info||etc_subparam_member_id||etc_subparam_email1||etc_subparam_passwd||etc_subparam_user_passwd_confirm||etc_subparam_passwd_type||etc_subparam_is_sms||etc_subparam_is_news_mail||information_agreement_check_val||consignment_agreement_check_val||remind_id||remind_code||shipping_additional_fee_show||shipping_additional_fee_hide||shipping_additional_fee_name_show||save_paymethod||allat_account_nm||basket_sync_flag||member_id||input_pointfy||set_main_address0||app_discount_data||is_shipping_address_readonly_by_app||is_app_shipfee||app_shipfee_data||is_available_shipping_company_by_app||is_direct_buy||is_subscription_invoice||subscription_start_date"
-						type="hidden" />
+				
 					<div class="xans-element- xans-order xans-order-form xans-record-">
 						<!-- 이값은 지우면 안되는 값입니다. ($move_order_after 주문완료페이지 주소 / $move_basket 장바구니페이지 주소)
         $move_order_after=/order/order_result.html
@@ -215,6 +138,7 @@
 									</tfoot>
 									<tbody
 										class="xans-element- xans-order xans-order-normallist center">
+											<c:forEach var="dto" items="${list}">    
 										<tr class="xans-record-">      
 											<td class=""></td>      
 											<td class="thumb gClearLine"><a
@@ -262,6 +186,7 @@
 												<div class="displaynone"></div>
 											</td>
 										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
@@ -354,350 +279,12 @@
 								</table>
 							</div>
 						</div>
-						<!-- 해외배송상품 주문내역 -->
-						<div class="orderListArea displaynone">
-							<div class="title">
-								<h3>해외배송상품 주문내역</h3>
-								<p class="button">
-									<a href="javascript:window.history.back();"><img
-										src="//img.echosting.cafe24.com/skin/base_ko_KR/order/btn_prev.gif"
-										alt="이전페이지" /></a>
-								</p>
-							</div>
-
-							<div class="ec-base-table typeList gBorder">
-								<table border="1" summary="">
-									<caption>해외배송</caption>
-									<colgroup>
-										<col style="width: 40px" class="" />
-										<col style="width: 92px" />
-										<col style="width: auto" />
-										<col style="width: 98px" />
-										<col style="width: 75px" />
-										<col style="width: 98px" />
-										<col style="width: 98px" />
-										<col style="width: 98px" />
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col" class=""><input type="checkbox"
-												onclick="" /></th>
-											<th scope="col">IMAGE</th>
-											<th scope="col">PRODUCT NAME</th>
-											<th scope="col">PRICE</th>
-											<th scope="col">QTY</th>
-											<th scope="col">POINT<!--적립금-->
-											</th>
-											<th scope="col">DELIVERY</th>
-											<th scope="col">TOTAL</th>
-										</tr>
-									</thead>
-									<tfoot class="right">
-										<tr>
-											<td class=""></td>
-											<td colspan="7"><span class="gLeft">[해외배송]</span> 상품구매금액
-												<span class="displaynone"> ()</span> + 배송비 <span
-												id="f_list_total_delv_price_id"></span>원<span
-												class="displaynone"> - 상품할인금액 </span> = 합계 : <strong
-												class="txtEm gIndent10"><span id="" class="txt18"></span></strong>
-												<span id="" class="displaynone"></span></td>
-										</tr>
-									</tfoot>
-									<tbody
-										class="xans-element- xans-order xans-order-oversealist center">
-										<tr class="">
-											<td class="displaynone"></td>
-											<td class="thumb gClearLine"><a
-												href="/product/detail.html"><img src=""
-													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
-													alt="" /></a></td>
-											<td class="left gClearLine"><a
-												href="/product/detail.html"></a>
-												<div class="option displaynone"></div>
-												<ul
-													class="xans-element- xans-order xans-order-optionset option">
-													<li class=""><strong></strong> (개)</li>
-												</ul>
-												<p class="gBlank5 displaynone">무이자할부 상품</p>
-												<p class="gBlank5 displaynone">유효기간 :</p></td>
-											<td>
-												<div class="">
-													<p class="displaynone"></p>
-												</div>
-												<div class="displaynone">
-													<p class="displaynone"></p>
-												</div>
-											</td>
-											<td></td>
-											<td><span class="txtInfo"></span></td>
-											<td class="delivery">해외배송</td>
-											<td><div class="displaynone"></div></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
 						<ul class="ec-base-help controlInfo typeBtm">
 							<li class="txtWarn txt11">상품의 옵션 및 수량 변경은 상품상세 또는 장바구니에서
 								가능합니다.</li>
 							<li class="txtWarn txt11 displaynone">할인 적용 금액은 주문서작성의
 								결제예정금액에서 확인 가능합니다.</li>
 						</ul>
-						<!-- 주문 정보 -->
-						<div class="orderArea  ec-shop-ordererForm">
-							<div class="title">
-								<h3>주문 정보</h3>
-								<p class="required">
-									<img src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-									필수입력사항
-								</p>
-							</div>
-							<div class="ec-base-table typeWrite">
-								<table border="1" summary="">
-									<caption>주문 정보 입력</caption>
-									<colgroup>
-										<col style="width: 170px;" />
-										<col style="width: auto;" />
-									</colgroup>
-									<!-- 국내 쇼핑몰 -->
-									<tbody class="address_form  ">
-										<tr>
-											<th scope="row">주문하시는 분 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oname" name="oname" fw-filter="isFill"
-												fw-label="주문자 성명" fw-msg="" class="inputTypeText"
-												placeholder="" size="15" value="" type="text" /></td>
-										</tr>
-										<tr class="">
-											<th scope="row">주소 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="ozipcode1" name="ozipcode1"
-												fw-filter="isFill" fw-label="주문자 우편번호1" fw-msg=""
-												class="inputTypeText" placeholder="" size="6" maxlength="6"
-												readonly="1" value="" type="text" /> <a href="#none"
-												id="btn_search_ozipcode" class="yg_btn_24 yg_btn5"
-												alt="우편번호">우편번호</a><br /> <input id="oaddr1" name="oaddr1"
-												fw-filter="isFill" fw-label="주문자 주소1" fw-msg=""
-												class="inputTypeText" placeholder="" size="40" readonly="1"
-												value="" type="text" /> <span class="txtInfo">기본주소</span><br />
-												<input id="oaddr2" name="oaddr2" fw-filter="isFill"
-												fw-label="주문자 주소2" fw-msg="" class="inputTypeText"
-												placeholder="" size="40" value="" type="text" /> <span
-												class="txtInfo">나머지주소</span><span class="grid displaynone">(선택입력가능)</span>
-											</td>
-										</tr>
-										<tr class="displaynone">
-											<th scope="row">일반전화 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
-											</th>
-											<td></td>
-										</tr>
-										<tr class="">
-											<th scope="row">휴대전화 <span class=""><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
-											</th>
-											<td><select id="ophone2_1" name="ophone2_[]"
-												fw-filter="isNumber&isFill" fw-label="주문자 핸드폰번호"
-												fw-alone="N" fw-msg="">
-													<option value="010">010</option>
-													<option value="011">011</option>
-													<option value="016">016</option>
-													<option value="017">017</option>
-													<option value="018">018</option>
-													<option value="019">019</option>
-											</select>-<input id="ophone2_2" name="ophone2_[]" maxlength="4"
-												fw-filter="isNumber&isFill" fw-label="주문자 핸드폰번호"
-												fw-alone="N" fw-msg="" size="4" value="" type="text" />-<input
-												id="ophone2_3" name="ophone2_[]" maxlength="4"
-												fw-filter="isNumber&isFill" fw-label="주문자 핸드폰번호"
-												fw-alone="N" fw-msg="" size="4" value="" type="text" /></td>
-										</tr>
-									</tbody>
-									<!-- 해외 쇼핑몰 -->
-									<tbody class="address_form displaynone">
-										<tr>
-											<th scope="row">Name <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oname" name="oname" fw-filter="isFill"
-												fw-label="주문자 성명" fw-msg="" class="inputTypeText"
-												placeholder="" size="15" value="" type="text" /> <span
-												class="displaynone"> <a href="#none"
-													id="btn_recent_addr_id"><img
-														src="//img.echosting.cafe24.com/skin/base_ko_KR/order/btn_address_recent.gif"
-														alt="주문자 정보 불러오기" /></a>
-											</span></td>
-										</tr>
-										<tr>
-											<th scope="row">English Name</th>
-											<td></td>
-										</tr>
-										<tr class="displaynone">
-											<th scope="row">Phonetics</th>
-											<td></td>
-										</tr>
-										<tr>
-											<th scope="row">Zip/ Postal code</th>
-											<td><a href="#none" id="btn_search_ofzipcode" class=""><img
-													src="//img.echosting.cafe24.com/skin/base_ko_KR/order/btn_address_search.gif"
-													alt="주소검색" /></a></td>
-										</tr>
-										<tr>
-											<th scope="row">Address Line 1 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oaddr1" name="oaddr1" fw-filter="isFill"
-												fw-label="주문자 주소1" fw-msg="" class="inputTypeText"
-												placeholder="" size="40" readonly="1" value="" type="text" /></td>
-										</tr>
-										<tr>
-											<th scope="row">Address Line 2</th>
-											<td><input id="oaddr2" name="oaddr2" fw-filter="isFill"
-												fw-label="주문자 주소2" fw-msg="" class="inputTypeText"
-												placeholder="" size="40" value="" type="text" /></td>
-										</tr>
-										<tr>
-											<th scope="row">City <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td></td>
-										</tr>
-										<tr>
-											<th scope="row">State/Province <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td></td>
-										</tr>
-										<tr>
-											<th scope="row">Telephone <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td>
-												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row">Mobile Phone <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td>
-												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
-											</td>
-										</tr>
-									</tbody>
-									<!-- 이메일 국내/해외 -->
-									<tbody class="email ec-orderform-emailRow">
-										<tr>
-											<th scope="row">이메일 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oemail1" name="oemail1"
-												fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg=""
-												class="mailId" value="" type="text" />@<input id="oemail2"
-												name="oemail2" fw-filter="isFill" fw-label="주문자 이메일"
-												fw-alone="N" fw-msg="" class="mailAddress"
-												readonly="readonly" value="" type="text" /><select
-												id="oemail3" fw-filter="isFill" fw-label="주문자 이메일"
-												fw-alone="N" fw-msg="">
-													<option value="" selected="selected">- 이메일 선택 -</option>
-													<option value="naver.com">naver.com</option>
-													<option value="daum.net">daum.net</option>
-													<option value="nate.com">nate.com</option>
-													<option value="hotmail.com">hotmail.com</option>
-													<option value="yahoo.com">yahoo.com</option>
-													<option value="empas.com">empas.com</option>
-													<option value="korea.com">korea.com</option>
-													<option value="dreamwiz.com">dreamwiz.com</option>
-													<option value="gmail.com">gmail.com</option>
-													<option value="etc">직접입력</option>
-											</select>
-												<ul class="gBlank5 txtInfo">
-													<li>- 이메일을 통해 주문처리과정을 보내드립니다.</li>
-													<li>- 이메일 주소란에는 반드시 수신가능한 이메일주소를 입력해 주세요</li>
-												</ul></td>
-										</tr>
-									</tbody>
-									<!-- 비회원 결제 -->
-									<tbody class="noMember displaynone">
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td>(주문조회시 필요합니다. 4자에서 12자 영문 또는 숫자 대소문자 구분)</td>
-										</tr>
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호<br />확인 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<!-- 배송업체(방식) 선택 -->
-						<div id="lShippingCompanyLists" class="shippingArea displaynone">
-							<div class="title">
-								<h3>배송업체(방식) 선택</h3>
-							</div>
-							<table border="1" summary="">
-								<caption>배송업체(방식) 선택</caption>
-								<thead>
-									<tr>
-										<th scope="col">
-											<div class="method">
-												<p class="ec-base-help displaynone">스토어픽업을 사용할 수 없는 상품이
-													포함되어 있어 일반 배송사만 선택 가능합니다.</p>
-											</div>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>
-											<ul class="list " id='deliv_info_view'>
-												<li>배송업체 : <span id='deliv_company_name_custom_type'></span></li>
-												<li class="">배송비 : <span
-													id='deliv_company_price_custom_type'>0</span></li>
-												<li class="displaynone">
-													<div
-														class="ec-shop-shipping_additional_fee_show displaynone">
-														배송비 : <strong><span id="f_addr_total_ship_fee_id"></span>원</strong>
-														= 해외배송비 <span id="f_addr_delv_price_id"></span>원 + 보험료 <span
-															id="f_addr_insurance_price_id"></span>원 <span
-															class="ec-shop-shipping_additional_fee_name_show">
-															+ <span id="f_addr_shipping_additional_fee_name_id"></span>
-															<span id="f_addr_shipping_additional_fee_id"></span>원
-														</span>
-														<p>
-															보험료는 배송과정에서 발생하는 분실, 도난, 파손 등으로 인한 손해에 대하여<br />규정에 따라
-															배상해 드리는 서비스입니다.
-														</p>
-													</div>
-													<div class="ec-shop-shipping_additional_fee_hide ">
-														배송비 : <strong><span id="f_addr_total_ship_fee_id"></span>원</strong>
-														= 해외배송비 <span id="f_addr_delv_price_id"></span>원 + 보험료 <span
-															id="f_addr_insurance_price_id"></span>원
-														<p>
-															배송비에는 관세 및 세금 등의 각종 비용은 포함되어 있지 않습니다.<br />상품수령 시 고객님이
-															추가로 지불하셔야 합니다.<br />보험료는 배송과정에서 발생하는 분실, 도난, 파손 등으로 인한
-															손해에 대하여<br />규정에 따라 배상해 드리는 서비스입니다.
-														</p>
-													</div>
-												</li>
-												<li>배송소요기간 : <span
-													id='deliv_company_period_custom_type'></span></li>
-												<li>홈페이지주소 : <span id='deliv_company_site_custom_type'></span></li>
-												<li class="displaynone" id='areaname'>배송가능 지역 : <span
-													id='deliv_company_areaname_custom_type'></span></li>
-												<li class="displaynone" id='ordertime'>주문가능 시간 : <span
-													id='deliv_company_ordertime_custom_type'></span></li>
-											</ul>
-											<ul class="list displaynone" id='store_info_view'>
-												<li>주소 : <span id='store_receive_addr'></span></li>
-												<li>전화번호 : <span id='store_main_phone'></span></li>
-												<li>영업시간 : <span id='store_office_hour'></span></li>
-												<li>수령 가능일 : <span id='store_receive_period'></span></li>
-												<li>수령지 안내 : <span id='store_receive_info'></span></li>
-												<li class="map">약도<br /> <span id='store_receive_map'></span></li>
-											</ul>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<!-- 배송 정보 -->
 						<div class="orderArea">
 							<div class="title">
 								<h3>배송 정보</h3>
@@ -737,20 +324,7 @@
 														for="sameaddr0">주문자 정보와 동일</label> <input id="sameaddr1"
 														name="sameaddr" fw-filter="" fw-label="1" fw-msg=""
 														value="F" type="radio" /><label for="sameaddr1">새로운배송지</label>
-													<span class="recent ec-shop-RecentDelivery "> 최근 배송지
-														: <input id="recent_delivery_info0"
-														name="recent_delivery_info" fw-filter="" fw-label="배송지"
-														fw-msg="" value="759189" type="radio" /><label
-														for="recent_delivery_info0">유경은</label> <input
-														id="recent_delivery_info1" name="recent_delivery_info"
-														fw-filter="" fw-label="배송지" fw-msg="" value="124120"
-														type="radio" /><label for="recent_delivery_info1">유경은
-													</label> <input id="recent_delivery_info2"
-														name="recent_delivery_info" fw-filter="" fw-label="배송지"
-														fw-msg="" value="120805" type="radio" /><label
-														for="recent_delivery_info2">유경은 </label>
-													</span> <a href="#none" id="btn_shipp_addr"
-														class=" yg_btn_80 yg_btn3" alt="주소록 보기">주소록 보기</a>
+													
 												</div>
 											</td>
 										</tr>
@@ -1087,55 +661,6 @@
 								<li>비밀번호는 작성하신 문의글을 게시판에서 내용 확인 할 때 사용됩니다.</li>
 							</ul>
 						</div>
-						<!-- 약관 동의 -->
-						<div class="termArea displaynone">
-							<div class="check displaynone"></div>
-							<div class="inner">
-								<div class="box displaynone">
-									<h4>쇼핑몰 이용약관</h4>
-								</div>
-								<div class="box displaynone"
-									id="ec-orderform-NoMemberAgreementRow">
-									<h4>비회원 구매 시 개인정보수집 이용동의</h4>
-								</div>
-								<div class="box displaynone"
-									id="ec-orderform-PrivacyAgreementRow">
-									<h4>개인정보수집 이용동의</h4>
-								</div>
-								<div class="box displaynone">
-									<h4>배송정보 제공방침</h4>
-								</div>
-								<div id="ec-shop-privacy_agreement_for_identification"
-									class="box displaynone">
-									<h4>고유식별정보수집 동의</h4>
-									<textarea id="privacy_agreement_for_identification"
-										name="privacy_agreement_for_identification" fw-filter=""
-										fw-label="고유식별정보수집" fw-msg="" maxlength="250" cols="70"
-										readonly="1">[고유식별정보 처리에 대한 안내]
-회사는 회원이 주문한 상품의 배송 시 배송 국가의 통관을 위하여 고유식별정보(신분증 ID)를 수집하여 배송 처리 완료 후 1달까지 보유 및 이용합니다.
-수집한 고유식별정보는 통관 처리를 위해 아래 수탁업체에 제공될 수 있습니다.
-
-- 수탁업체 : ㅇㅇ택배, ㅁㅁ택배
-- 위탁업무 : 해외배송 시 통관 처리
-- 보유 및 이용기간 : 배송완료 후 1달
-
-※ 고유식별정보 제공에 동의하지 않으시면, 해당 국가로의 배송이 불가합니다.</textarea>
-									<input id="privacy_agreement_for_identification_checkbox0"
-										name="privacy_agreement_for_identification_checkbox[]"
-										fw-filter="" fw-label="고유식별정보수집 동의" fw-msg="" value="T"
-										type="checkbox" /><label
-										for="privacy_agreement_for_identification_checkbox0">동의</label>
-								</div>
-								<div class="box displaynone displaynone"
-									id="ec-orderform-informationAgreementRow">
-									<h4>개인정보 제3자 제공 동의 (선택)</h4>
-								</div>
-								<div class="box displaynone displaynone"
-									id="ec-orderform-ConsignmentAgreementRow">
-									<h4>개인정보취급 위탁 동의 (선택)</h4>
-								</div>
-							</div>
-						</div>
 						<!-- 결제 예정 금액 -->
 						<div class="title">
 							<h3>결제 예정 금액</h3>
@@ -1166,7 +691,7 @@
 										<tr>
 											<td class="price"><div class="box txt16">
 													<strong><span id="total_order_price_view"
-														class="txt23">96,900</span>원</strong> <span class="displaynone"><span
+														class="txt23">${totalPrice+deliveryCharge}</span>원</strong> <span class="displaynone"><span
 														id="total_order_price_ref_view"></span></span>
 												</div></td>
 											<td class="option "><div class="box txt16">

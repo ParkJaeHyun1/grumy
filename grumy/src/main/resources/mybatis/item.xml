@@ -90,6 +90,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="itemCount" column="itemCount" />
 		<result property="itemSize" column="itemSize" />
 		<result property="itemColor" column="itemColor" />
+	
 	</resultMap>
 	<select id="list" parameterType="Map" resultMap="itemMap">
 		select itemNo, image, title, description, content, price,salePrice,	type,itemOptionNo,itemColor,itemSize,itemCount
