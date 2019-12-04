@@ -76,12 +76,7 @@
 
 								</ul>
 								<div class="detail">${dto.content }</div>
-								<c:if test="${not empty dto.file1 }">
-								<img width="200px"
-								height="150px" class="img-thumbnail"
-								src="${pageContext.request.contextPath}/storage/${dto.file1}">
-								</c:if>
-								 
+																 
 							</td>
 						</tr>
 						<tr>
@@ -92,7 +87,6 @@
 									 <span class="gRight">
 									 <c:if test="${sessionScope.grade=='A' }">
 									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
-									 <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									 </c:if>
 									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
 									 <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
