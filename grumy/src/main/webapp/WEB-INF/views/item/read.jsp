@@ -20,8 +20,6 @@
 <script type="text/javascript"
 	src="https://www.slowand.com/ec-js/common.js"></script>
 <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://www.slowand.com/yangji/js/jquery.bxslider.min.js"></script>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
@@ -38,16 +36,24 @@
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
 		<script>
+		$(document).ready(function(){
+
+		});
 			var selectedColor;
 			var selectedSize;
-            var list = [];
+            var list = {};
             var selectedItem = {};
             <c:forEach items="${dto.itemOptionList}" var="itemOption">
-            list.push({itemColor:'${itemOption.itemColor}',itemSize:'${itemOption.itemSize}',itemCount:${itemOption.itemCount},itemOptionNo:${itemOption.itemOptionNo}});
-            </c:forEach>
+            list.itemOptionNo${itemOption.itemOptionNo}={itemColor:'${itemOption.itemColor}',itemSize:'${itemOption.itemSize}',itemCount:${itemOption.itemCount},itemOptionNo:${itemOption.itemOptionNo}}; 
+            </c:forEach> 
             	function setTotalPrice(){
-            		$('#totalPrice').html(Object.keys(selectedItem).length*${dto.price-dto.salePrice});
-            		$('#totalCount').html(Object.keys(selectedItem).length);
+            		var totalCount = 0;
+            		$.each(selectedItem, function(index, item){ 
+            		    totalCount += item.count;
+            		});
+            		
+            		$('#totalPrice').html((totalCount*${dto.price-dto.salePrice}).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")+'원');      
+            		$('#totalCount').html(totalCount);     
             	}
             	function checkColor(color) {
             		if(selectedColor == color) 
@@ -56,7 +62,6 @@
             			$('#divItemSize').css('display', 'table-row');
             		$('#selectedItemColor').html(color);
             		$('#categoryItemColor').html('');
-            		
             		$.each(list, function(index, item){ 
             		    if(item.itemColor == color){
             		    	if(item.itemCount==0)
@@ -69,21 +74,49 @@
             		$('#itemColor'+selectedColor).attr('class','');
             		selectedColor = color;
 			   	}
+            	function itemCountUp(itemOptionNo){
+            		updateItemCount(itemOptionNo,selectedItem[itemOptionNo].count+1);
+            	}
+            	function itemCountDown(itemOptionNo){
+            		updateItemCount(itemOptionNo,selectedItem[itemOptionNo].count-1);
+            	}
+            	function itemCountModify(itemOptionNo,cnt){
+            		updateItemCount(itemOptionNo,cnt);
+            	}
+
+            	function updateItemCount(itemOptionNo,cnt){
+             		if(isNaN(cnt) || cnt<1){
+            			alert('수량은 1 이상이어야 합니다');
+            			$('#count'+itemOptionNo).val(selectedItem[itemOptionNo].count);
+            			return false;
+            		}else if(cnt> list['itemOptionNo'+itemOptionNo].itemCount){
+            			alert('최대 주문수량은 '+ list['itemOptionNo'+itemOptionNo].itemCount +'개 입니다.');
+            			$('#count'+itemOptionNo).val(selectedItem[itemOptionNo].count);
+            			return false;
+            		}
+            		selectedItem[itemOptionNo].count = Number(cnt);
+            		$('#count'+itemOptionNo).val(cnt);
+            		setTotalPrice();
+            	}
+
             	function deleteItem(itemOptionNo){
             		$('#selectedItem'+itemOptionNo).remove();
+    				delete selectedItem[itemOptionNo];
+    				setTotalPrice();
             	}
-				function checkSize(size,color,itemOptionNo) {
+				function checkSize(size,color,itemOptionNo) {   
 					if(selectedItem[itemOptionNo]){
 						alert('이미 선택되어 있는 옵션입니다.');
 						return;
 					}
 					$('#itemSize'+size).attr('class','ec-product-selected');
 					$('#itemSize'+selectedSize).attr('class','');
+					$('#selectedItemSize').html(size);
 					selectedItem[itemOptionNo] = {itemSize:size,itemColor:color,itemOptionNo:itemOptionNo,count:1};
 					selectedSize = size;
 					
 					var str = "";
-					str += '<tr class="option_product" id="selectedItem"'+itemOptionNo+'>';
+					str += '<tr class="option_product" id="selectedItem'+itemOptionNo+'">';
 					str += '<td>';  
 					str += '<input type="hidden" class="option_box_id"	id="orderInfo" value="" name="orderInfoList" >';
 					str += '<p 	class="product">';
@@ -92,18 +125,18 @@
 					str += '</td>';
 					str += '<td>';
 					str += '<span class="quantity" style="width: 65px;">';
-					str += '<input	type="text" id="option_box1_quantity" class="quantity_opt eProductQuantityClass" value="1">';
+					str += '<input	type="text" id="count'+itemOptionNo+'" class="quantity_opt eProductQuantityClass" value="1" onblur="itemCountModify('+itemOptionNo+',this.value)">';
 					str += '<a href="#none">';
-					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"id="option_box1_up" class="up option_box_up" alt="수량증가">';
+					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"id="option_box1_up" class="up option_box_up" alt="수량증가" onclick="itemCountUp('+itemOptionNo+')">';
 					str += '</a>';
 					str += '<a href="#none">';
 					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif" ';
-					str += 'id="option_box1_down" class="down option_box_down"	alt="수량감소">';
+					str += 'id="option_box1_down" class="down option_box_down"	alt="수량감소" onclick="itemCountDown('+itemOptionNo+')">';
 					str += '</a>';
 					str += '</span>';
 					str += '<a href="#none" class="delete">';
 					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"';
-					str += 'alt="삭제" id="option_box1_del" class="option_box_del" onclick="deleteItem("'+itemOptionNo+'")">';
+					str += 'alt="삭제" id="option_box1_del" class="option_box_del" onclick="deleteItem('+itemOptionNo+')">';
 					str += '</a></td><td class="right">	<fmt:formatNumber value="${dto.price-dto.salePrice}" pattern="###,###,###"/>원</td></tr>';
 					
 					$('.option_products').append(str);
@@ -133,37 +166,37 @@
 
                 }//end showList
          </script>
-		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
+		<meta name="author" content="슬로우앤드 - 천천히 그리고,">                
 			<meta name="keywords"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />                            
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />                                                
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">       
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">             
 
-				<meta name="viewport" content="width=device-width">
+				<meta name="viewport" content="width=device-width">    
 					<link rel="canonical"
-						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                           
+						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                                                                                                                   
 					<link rel="alternate"
-						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                   
 					<meta property="og:url"
-						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                       
 					<meta property="og:title"
-						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                         
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                                      
 					<meta property="og:description"
 						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />       
-					<meta property="og:site_name" content="슬로우앤드" />
+					<meta property="og:site_name" content="슬로우앤드" />      
 					<meta property="og:type" content="product" />
 					<meta property="og:image"     
-						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
-					<meta property="product:price:amount" content="29800" />
+						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />     
+					<meta property="product:price:amount" content="29800" />           
 					<meta property="product:price:currency" content="KRW" />                
 					<meta property="product:sale_price:amount" content="29800" />
-					<meta property="product:sale_price:currency" content="KRW" />                       
+					<meta property="product:sale_price:currency" content="KRW" />                                
 					<link rel="shortcut icon"
 						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />       
 					<script type="text/javascript"
 						src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript"
-						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>           
+						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>                 
 					<script type="text/javascript"
 						src="https://slowand.com/ind-script/moment.php?convert=T"></script>                
 
@@ -185,7 +218,7 @@
 <body id="cmn">
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>
+			<a href="#category">전체상품목록 바로가기</a>             
 		</p>             
 		<p>
 			<a href="#contents">본문 바로가기</a>          
@@ -424,8 +457,7 @@
 										<div class="guideArea">
 											<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
 											<p class="info ">
-												(최소주문수량 1개 이상<span class=""> / 최대주문수량 20개 이하</span>)
-											</p>
+											</p>      
 											<!-- //참고 -->
 											<span class="sizeGuide displaynone"><a href="#none"
 												class="size_guide_info" product_no="3596">사이즈 가이드</a></span>
