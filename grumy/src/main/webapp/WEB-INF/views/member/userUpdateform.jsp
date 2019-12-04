@@ -464,9 +464,8 @@ value="${dto.birth }" type="text">
 
 <form action="delete" class="form-horizontal" method="post" id="delfrm"
 name="delfrm" onsubmit="return validate();" enctype="multipart/form-data">
-<div class="ec-base-button">
-<a href="#" onclick="document.getElementById('delfrm').submit();" 
-id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
+<div class="ec-base-button justify">
+<button type="submit" class="yg_btn_140">탈퇴</button>
 </div>
 </form>      
 
