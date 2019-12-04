@@ -89,9 +89,9 @@
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 									 <span class="gRight">
-									
+									<c:if test="${sessionScope.grade=='A' }">
 									 <a href="javascript:create_reply(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
-									
+									</c:if>
 									 <a href="javascript:update(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
 									 <a href="javascript:delete1(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>

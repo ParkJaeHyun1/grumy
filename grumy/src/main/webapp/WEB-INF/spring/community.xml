@@ -40,4 +40,14 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/create_reply.jsp" />
 	</definition>
+	<definition name="/community/read_reply" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/community/read_reply.jsp" />
+	</definition>
+	<definition name="/community/error" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/community/error.jsp" />
+	</definition>
 	</tiles-definitions>

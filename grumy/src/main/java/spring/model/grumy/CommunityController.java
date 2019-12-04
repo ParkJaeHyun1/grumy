@@ -30,8 +30,8 @@ public class CommunityController {
 	
 	
 	@PostMapping("/community/create_reply")
-	public String create_reply(communityDTO dto, int no) {
-		communityDTO dto2 = mapper.read(no);
+	public String create_reply(communityDTO dto, int communityNo) {
+		communityDTO dto2 = mapper.read(communityNo);
 		dto2.setContent(dto.getContent());
 		
 		System.out.println(dto2.getContent()+"a1");
@@ -39,7 +39,7 @@ public class CommunityController {
 		System.out.println(dto2.getId()+"a3");
 		System.out.println(dto2.getAnsnum()+"a4");
 		System.out.println(dto2.getItemNo()+"a5");
-		System.out.println(no+"a6");
+		System.out.println(communityNo+"a6");
 		
 		
 		

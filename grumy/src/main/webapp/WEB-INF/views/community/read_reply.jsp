@@ -69,7 +69,7 @@
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
-							<td>${dto.writer }</td>
+							<td>${dto.id }</td>
 						</tr>
 						<tr>
 							<td colspan="2">

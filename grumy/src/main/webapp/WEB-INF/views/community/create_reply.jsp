@@ -21,8 +21,12 @@
 			<form id="boardWriteForm" name="frm"
 				action="create_reply" method="post" 
 				enctype="multipart/form-data">
+				<input type="hidden" name="ref" value="${dto.ref }">
 				
-				<input type="hidden" name="no" value="${param.communityNo }">
+				<input type="hidden" name="id" value="${sessionScope.id}">
+				<input type="hidden" name="communityNo" value="${dto.communityNo}">
+				
+				
 <%-- 				<input type="hidden" name="writer" value="${name}"> --%>
 <%-- 				<input type="hidden" name="id" value="${sessionScope.id}"> --%>
 				<div class="ec-base-table typeWrite ">

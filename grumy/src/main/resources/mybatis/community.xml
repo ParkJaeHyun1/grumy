@@ -5,48 +5,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
-<insert id="create_reply" parameterType="communityDTO">
-insert into community(communityNo,content,wdate,ref,indent,id,ansnum,itemNo)
-values((select nvl(max(communityNo),0)+1 from community),#{content},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
-</insert>
+	<insert id="create_reply" parameterType="communityDTO">
+		insert into community(communityNo,content,wdate,ref,indent,id,ansnum,itemNo)
+		values((select nvl(max(communityNo),0)+1 from
+		community),#{content},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
+	</insert>
 
 
-<update id="update" parameterType="int">
-	update community 
-	set content = #{content},
+	<update id="update" parameterType="int">
+		update community
+		set content = #{content},
 		picture = #{picture,jdbcType=VARCHAR}
-	where communityNo = #{communityNo}
-</update>
+		where communityNo = #{communityNo}
+	</update>
 
-<delete id="delete" parameterType="int">
-delete from community
-where communityNo = #{communityNo}
-</delete>
+	<delete id="delete" parameterType="int">
+		delete from community
+		where communityNo = #{communityNo}
+	</delete>
 
-<select id="read" parameterType="int" resultType="communityDTO">
-select communityNo,content,id,wdate,picture, itemNo
-from community
-where communityNo = #{communityNo}
-</select>
+	<select id="read" parameterType="int" resultType="communityDTO">
+		select communityNo,content,id,wdate,picture, itemNo
+		from community
+		where communityNo = #{communityNo}
+	</select>
 
 	<select id="list" parameterType="Map" resultType="communityDTO">
 		select communityNo,id,wdate,itemPicture,itemTitle,itemNo, indent
 		from (
 		select communityNo,id,to_char(c.wdate,'yyyy-MM-dd') as wdate,i.itemNo,
-		i.image as itemPicture,i.title as itemTitle, rownum as rnum, c.indent as indent
+		i.image as itemPicture,i.title as itemTitle, rownum as rnum, c.indent
+		as indent
 		from item i, community c
 		where c.itemNo = i.itemno
-		order by ref desc
+		ORDER BY ref DESC, ansnum
 		)
-		<![CDATA[ where rnum>=1 and rnum<=5]]>
-</select>
+		<![CDATA[ where rnum>=1 and rnum<=7]]>
+	</select>
 
 
 
-<insert id="create" parameterType="communityDTO">
-INSERT INTO community(communityNo, id, content,itemNo,picture,wdate,ref)
- VALUES((SELECT NVL(MAX(communityNo), 0) + 1 as communityNo FROM community),
-#{id},#{content},#{itemNo},#{picture, jdbcType=VARCHAR},sysdate,(SELECT NVL(MAX(ref), 0) + 1  FROM community))
+	<insert id="create" parameterType="communityDTO">
+		INSERT INTO community(communityNo, id, content,itemNo,picture,wdate,ref)
+		VALUES((SELECT NVL(MAX(communityNo), 0) + 1 as communityNo FROM
+		community),
+		#{id},#{content},#{itemNo},#{picture, jdbcType=VARCHAR},sysdate,(SELECT NVL(MAX(ref), 0) + 1 FROM
+		community))
 
-</insert>
+	</insert>
 </mapper>
