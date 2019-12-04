@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="util" uri="/ELFunctions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
@@ -101,68 +100,88 @@ function sample6_execDaumPostcode() {
 
 
 <!-- 필수 입력창 확인  -->
-<script type="text/javascript">
-function inCheck(f){
-	if(f.id.value.length==0){
-		alert("아이디를 입력하세요");
-		f.id.focus();
-		return false;
-	}
-	
-	if(f.passwd.value.length==0){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
-		return false;
-	}
-	if(f.user_passwd_confirm.value.length==0){
-		alert("비밀번호 확인울 입력하세요");
-		f.user_passwd_confirm.focus();
-		return false;
-	}
 
-	if(f.passwd.value != f.user_passwd_confirm.value){
-		alert("비밀번호가 일치하지 않습니다.");
-		f.passwd.value="";
-		f.user_passwd_confirm.value="";
-		f.passwd.focus();
-		return false;
-	}
-	
-	if(f.name.value.length==0){
-		alert("이름을 입력하세요");
-		f.name.focus();
-		return false;
-	}
-	
-	if(f.postcode.value.length==0){
-		alert("주소를 입력하세요")
-		f.postcode.focus();
-		return false;
-	}
-	if(f.address.value.length==0){
-		alert("주소를 입력하세요")
-		f.address.focus();
-		return false;
-	}
-	if(f.detailaddress.value.length==0){
-		alert("주소를 입력하세요")
-		f.detailaddress.focus();
-		return false;
-	}
-	if(f.phone.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.phone.focus();
-		return false;
-	}
+<script language="javascript">
+   function validate() {
+       var re = /^[a-zA-Z0-9]{8,16}$/ 
+       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+     
 
-	if(f.email.value.length==0){
-		alert("email을 입력하세요");
-		f.email.focus();
-		return false;
-	}
-	
-	
-}
+       
+       var passwd = document.getElementById("passwd");
+       var email = document.getElementById("email");
+
+
+
+      
+
+       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(user_passwd_confirm.value.length==0){
+   		alert("비밀번호 확인을 입력하세요");
+   		user_passwd_confirm.focus();
+   		return false;
+   		}
+
+   	   if(passwd.value != user_passwd_confirm.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;
+   	   }
+
+ 
+
+       if(join.name.value=="") {
+           alert("이름을 입력해 주세요");
+           join.name.focus();
+           return false;
+       }
+       if(postcode.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.postcode.focus();
+   		return false;
+   	}
+   	if(address.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.address.focus();
+   		return false;
+   	}
+   	if(detailaddress.value.length==0){
+   		alert("주소를 입력하세요")
+   		f.detailaddress.focus();
+   		return false;
+   	}
+   	if(phone.value.length==0){
+   		alert("전화번호를 입력하세요");
+   		phone.focus();
+   		return false;
+   	}
+    if(email.value=="") {
+        alert("이메일을 입력해 주세요");
+        email.focus();
+        return false;
+    }
+
+    if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+        return false;
+    }
+
+       
+      }
+
+   function check(re, what, message) {
+       if(re.test(what.value)) {
+           return true;
+       }
+       alert(message);
+       what.value = "";
+       what.focus();
+       //return false;
+   }
 </script>
 
 
@@ -212,8 +231,8 @@ function inCheck(f){
 
         <div id="contents">
 		
-<form action="update" class="form-horizontal" method="post" id="frm"
-name="frm" onsubmit="" target="_self" enctype="multipart/form-data">
+<form id="frm" name="frm" action="update"
+	onsubmit="return validate();" method="post" enctype="multipart/form-data">
 
 <input type="hidden" name="id" value="${dto.id }">
 
@@ -407,6 +426,7 @@ fw-label="이메일" fw-alone="N" fw-msg="" value="${dto.email }" type="text">
 </tbody>
 </table>
 </div>
+
 <h3 class=" ">추가정보</h3>
 <div class="ec-base-table typeWrite ">
         <table border="1" summary="">
@@ -424,7 +444,8 @@ fw-label="이메일" fw-alone="N" fw-msg="" value="${dto.email }" type="text">
 <td>
 <input id="birth" name="birth" fw-filter="isFill" fw-label="생년월일" 
 fw-msg="" class="inputTypeText" placeholder="" maxlength="8" 
-value="${dto.birth }" type="text"> 
+value="${dto.birth }" type="text">
+
 </td>
 </tr>
 
@@ -432,26 +453,22 @@ value="${dto.birth }" type="text">
 </table>
 </div>
 
-<div class="ec-base-button justify">
-
-<a href="#" onclick="document.getElementById('frm').submit();"
-class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="회원정보수정">회원정보수정
-</a>
-
-<a href="history.back()" onclick="" 
-class="yg_btn_140 yg_btn4" alt="취소">취소
-</a>
-
-</div>
+	<div class="ec-base-button justify">
+	<button type="submit" class="yg_btn_140">회원정보수정</button>
+	<button type="reset" class="yg_btn_140 yg_btn3">취소</button>
+	</div>
+	
 </form>
 </div>
 </div>
-        
+
+<form action="delete" class="form-horizontal" method="post" id="delfrm"
+name="delfrm" onsubmit="return validate();" enctype="multipart/form-data">
 <div class="ec-base-button">
-<a href="#" onclick="" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
-<a href="#" onclick="" class="yg_btn_30 yg_btn3" alt="취소">취소</a>
+<a href="#" onclick="document.getElementById('delfrm').submit();" 
+id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">탈퇴</a>
 </div>
-       
+</form>      
 
 <div>
 <p class="pageMove">            

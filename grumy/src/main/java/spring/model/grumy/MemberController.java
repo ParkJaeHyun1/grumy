@@ -190,10 +190,7 @@ public class MemberController {
 		
 		if (flag == 1) {
 
-			model.addAttribute("id", dto.getId());
-			System.out.println("11");
-			
-			return "redirect:/member/read";
+			return "redirect:/";
 		} else {
 			
 			return "error";
@@ -213,53 +210,8 @@ public class MemberController {
 		return "/update";
 	}
 
-	@RequestMapping("/member/read")
-	public String read(HttpSession session, Model model) {
-		String id = (String)session.getAttribute("id");
-		
-		MemberDTO dto = dao.read(id);
+	
 
-		model.addAttribute("dto", dto);
-
-		return "/read";
-	}
-
-	@RequestMapping("/admin/list")
-	public String list(HttpServletRequest request) {
-		String col = Utility.checkNull(request.getParameter("col"));
-		String word = Utility.checkNull(request.getParameter("word"));
-
-		if (col.equals("total"))
-			word = "";
-
-		int nowPage = 1;
-		int recordPerpage = 3;
-
-		if (request.getParameter("nowPage") != null) {
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		}
-
-		int sno = ((nowPage - 1) * recordPerpage) + 1;
-		int eno = nowPage * recordPerpage;
-
-		Map map = new HashMap();
-		map.put("col", col);
-		map.put("word", word);
-		map.put("sno", sno);
-		map.put("eno", eno);
-
-		List<MemberDTO> list = dao.list(map);
-
-		int total = dao.total(map);
-		String paging = Utility.paging(total, nowPage, recordPerpage, col, word);
-
-		request.setAttribute("list", list);
-		request.setAttribute("paging", paging);
-		request.setAttribute("col", col);
-		request.setAttribute("word", word);
-		request.setAttribute("nowPage", nowPage);
-
-		return "/list";
-	}
+	
 
 }

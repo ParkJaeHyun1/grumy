@@ -32,10 +32,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <select id="read" parameterType="String" resultType="MemberDTO">
-	select id,name,postcode,address,detailaddress,
+	select id,passwd,name,postcode,address,detailaddress,
 	phone,email,birth,point,grade
 	from member
-	where id = #{id,jdbcType=VARCHAR}
+	where id = #{id}
 </select>
  
 <select id="findpw" parameterType="Map" resultType="String">
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <delete id="delete" parameterType="String">
 	delete from member
-	where id = #{id}
+	where id = #{id} and passwd = #{passwd} 
 </delete>
 
 <select id="list" parameterType="Map" resultType="MemberDTO">

@@ -4,6 +4,7 @@
     "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 
 <tiles-definitions>
+	
 	<definition name="main"
 		template="/WEB-INF/views/template/template.jsp">
 		<put-attribute name="header"
@@ -11,6 +12,7 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
+	
 	<definition name="/home" extends="main">
 		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
@@ -23,22 +25,12 @@
 			value="/WEB-INF/views/member/join.jsp" />
 	</definition>
 	
-
-	
 	<definition name="/login" extends="main">
 		<put-attribute name="title" value="회원가입"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/login.jsp" />
 	</definition>
 
-
-	<definition name="/read" extends="main">
-		<put-attribute name="title" value="grumy"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/member/read.jsp" />
-	</definition>
-	
-	
 	<definition name="/update" extends="main">
 		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
@@ -68,4 +60,5 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/findpwProc.jsp" />
 	</definition>
+	
 </tiles-definitions>

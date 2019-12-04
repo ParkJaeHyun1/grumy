@@ -594,7 +594,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	
 	<div class="ec-base-button">
 	<button type="submit" class="yg_btn_140">회원가입</button>
-	<button type="reset" class="yg_btn_140 yg_btn3" onclick="CheckingJoinInfoLayerClose()">닫기</button>
+	<button type="reset" class="yg_btn_140 yg_btn3" onclick="history.back();">닫기</button>
 	</div>
 
 </div>	
