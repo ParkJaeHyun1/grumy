@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.AdminMapper">
 	<select id="total" parameterType="int" resultType="int">
-		select count(stat) from admintest where stat = #{stat}
+		select count(state) from orderItem where state = #{state}
 	</select>
-	<select id="list" parameterType="int" resultType="AdminDTO">
-		select * from admintest where stat = #{stat} order by no desc
+	<select id="list" parameterType="int" resultType="OrderDTO">
+		select * from nOrder where state = #{state} order by orderitemno desc
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">

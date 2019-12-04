@@ -67,8 +67,8 @@
 									<c:forEach var="dto" items="${list}" varStatus="status">
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
-											<td>${dto.no}</td>
-											<td style="text-align:left">${dto.name }</td>
+											<td>${dto.orderNo}</td>
+											<td style="text-align:left">${dto.id }</td>
 											<td>입금 대기</td>
 										</tr>
 									</c:forEach>
