@@ -7,8 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="list" parameterType="String" resultType="CartDTO">
 		select
-		c.cartNo, c.id, c.itemOptionNo,c.count,o.itemSize,o.count as
-		itemCount,o.itemColor,i.itemNo,i.image as itemPicture,i.title
+		c.cartNo, c.id, c.itemOptionNo,c.count,o.itemSize,o.itemCount,o.itemColor,i.itemNo,i.image as itemPicture,i.title
 		as
 		itemTitle,i.price as itemPrice,i.salePrice as itemSalePrice
 		from cart

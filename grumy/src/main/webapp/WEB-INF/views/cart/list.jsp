@@ -42,10 +42,10 @@ var list={};
 <c:forEach items="${list}" var="item">
 list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemOptionNo:${item.itemOptionNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count},itemCount:${item.itemCount}};
 </c:forEach>
-function orderAll(){
+function orderAll(){ 
 	$.each(list, function(index, item){ 
 	    $('#cart_checkBox_'+item.cartNo).prop('checked',true);
-	    $('#cart_checkBox_'${dto.cartNo}).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
+	    $('#cart_checkBox_'+item.cartNo).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
 	});
 	$('#orderForm').submit();
 }
@@ -101,7 +101,7 @@ function deleteCartAjax(cartNoList){
 		data : JSON.stringify(cartNoList),
 		contentType : "application/json; charset=utf-8",
 		success : function(result, status, xhr) {
-			$.each(b , function(index, item){
+			$.each(cartNoList, function(index, item){
 				$('#cart_'+item).remove();
 				delete list['cartNo'+item];
 			});
@@ -192,7 +192,7 @@ function setView(){
 			<a href="#category">전체상품목록 바로가기</a>       
 		</p>        
 		<p>
-			<a href="#contents">본문 바로가기</a>        
+			<a href="#contents">본문 바로가기</a>                 
 		</p>
 	</div>
 
@@ -259,7 +259,8 @@ function setView(){
 								<tfoot class="right">
 									<tr>
 										<td colspan="10"><span class="gLeft">[기본배송]</span> 구매금액 <span
-											id="purchase_price1">${totalPrice}</span><span
+											id="purchase_price1"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
+										</span><span
 											class="displaynone">()</span><span class="displaynone">
 										</span><span class="displaynone"> + 부가세 <span
 												class="displaynone"> </span>
@@ -268,16 +269,16 @@ function setView(){
 											0
                                         </c:when>
 													<c:otherwise>
-       										 2500
+       									<fmt:formatNumber value="2500" pattern="###,###,###"/>
     									</c:otherwise>
 												</c:choose></span><span class="displaynone"> </span> = 합계 : <strong
 											class="txtEm gIndent10"><span class="txt18"
 												id="total_price1"><c:choose>
 														<c:when test="${totalPrice >= 50000}">
-												${totalPrice}
+												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
                                                 </c:when>
 														<c:otherwise>
-       											${totalPrice+2500}
+       											<fmt:formatNumber value="${totalPrice+2500}" pattern="###,###,###"/>
     											</c:otherwise>
 													</c:choose></span>원</strong> <span class="displaynone"> </span></td>
 									</tr>
@@ -464,7 +465,7 @@ function setView(){
 							<tbody class="center">
 								<tr>
 									<td><div class="box txt16">
-											<strong><span class="txt23" id="purchase_price2">${totalPrice}</span>원</strong>
+											<strong><span class="txt23" id="purchase_price2"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/></span>원</strong>
 											<span class="txt14 displaynone"></span>
 										</div></td>
 									<td class="displaynone"><div class="box txt16">
@@ -479,7 +480,7 @@ function setView(){
 												0
                                                 </c:when>
 														<c:otherwise>
-       											 2500
+       											 <fmt:formatNumber value="2500" pattern="###,###,###"/>
     											</c:otherwise>
 													</c:choose>
 											</span>원</strong> <span class="txt14 displaynone"></span>
@@ -529,10 +530,10 @@ function setView(){
 											<strong class="txt23">= </strong><strong><span
 												class="txt23" id="total_price2"> <c:choose>
 														<c:when test="${totalPrice >= 50000}">
-												${totalPrice}
+												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
                                                 </c:when>
 														<c:otherwise>
-       											${totalPrice+2500}
+       											<fmt:formatNumber value="${totalPrice+2500}" pattern="###,###,###"/>
     											</c:otherwise>
 													</c:choose>
 											</span>원</strong> <span class="txt14 displaynone"></span>
@@ -549,7 +550,7 @@ function setView(){
 								<p id="mTotalBenefitPrice" class="txtEm txt16">
 									<strong>0원</strong>
 								</p>
-								<ul class="ec-base-desc typeDot gLarge rightDD">
+								<ul class="ec-base-desc typeDot gLarge rightDD">  
 									<li class="displaynone"><strong class="term">기간할인</strong><span
 										id="" class="desc">0원</span></li>
 									<li class="displaynone"><strong class="term">회원할인</strong><span
