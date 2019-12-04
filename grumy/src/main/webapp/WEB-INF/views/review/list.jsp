@@ -277,6 +277,8 @@ span.star, span.camera, .sprite_comment {
 																</c:if>
 															</div>
 														</div>
+														<div class="review_option__title">별점</div>
+														<div class="review_option__content">${dto.star }</div>
 													</div>
 													<div class="reviews_index_list_review__message_expanded">
 														${dto.content}</div>
@@ -291,12 +293,34 @@ span.star, span.camera, .sprite_comment {
 												<div class="ec-base-button ">
 													<p align="right">
 														<button class="yg_btn_30 yg_btn4"
-															onclick="location.href='list'">LIST</button>
+															onclick="location.href='list'">REPLY</button>
 														<button class="yg_btn_30 yg_btn4"
 															onclick="javascript:update(${dto.reviewNo})">MODIFY</button>
 														<button class="yg_btn_30 yg_btn4" id="delete"
 															onclick="javascript:delete1(${dto.reviewNo})">DELETE</button>
 													</p>
+												</div>
+
+
+												<div
+													class="comments js-comments-container js-ie-opacity-fix">
+													<div class="comments__arrow_top"></div>
+													<ul class="comments__list">
+
+														<li class="comment" id="comment_257958">
+															<div class="comment__inner">
+																<div class="comment__lpane" title="slowandyeong">slowand</div>
+																<div class="comment__rpane">
+																	<div class="comment__error_message"></div>
+																	<div class="comment__message">
+																		<span class="comment__message_text">${dto.id}님
+																			! , 슬로우앤드에 포토리뷰후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원
+																			지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
 												</div>
 											</div>
 										</div>

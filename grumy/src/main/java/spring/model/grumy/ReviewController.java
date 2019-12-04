@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import spring.model.community.communityDTO;
 import spring.model.item.ItemDTO;
 import spring.model.mapper.itemMapper;
 import spring.model.mapper.reviewMapper;
@@ -31,6 +32,36 @@ public class ReviewController {
 	
 	@Autowired
 	private reviewMapper mapper;
+	
+	@PostMapping("/review/update")
+	public String update(reviewDTO dto,HttpServletRequest request) {
+		
+		String basePath = request.getRealPath("/storage");
+		
+		
+		int filesize = (int) dto.getFilenameMF().getSize();
+
+		if (filesize > 0) {
+			dto.setPicture(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
+			
+		}
+		int flag = mapper.update(dto);
+		
+		if(flag ==1)
+			return "redirect:/review/list";
+		else
+			return null;
+		
+	}
+	
+	@GetMapping("/review/update")
+	public String update(Integer reviewNo,Model model) {
+		reviewDTO dto = mapper.read(reviewNo);
+		
+		model.addAttribute("dto",dto);
+		
+		return "/review/update";
+	}
 	
 	@GetMapping("/review/delete")
 	public String delete(int reviewNo) {
@@ -46,7 +77,7 @@ public class ReviewController {
 	@PostMapping("/review/create")
 	public String create(reviewDTO dto, HttpServletRequest request) {
 		String basePath = request.getRealPath("/storage");
-		System.out.println(dto.getItemNo());
+		
 		int filesize = (int) dto.getFilenameMF().getSize();
 
 		if (filesize > 0) {

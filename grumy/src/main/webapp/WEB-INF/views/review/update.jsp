@@ -14,7 +14,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style=text-align:center>
 					<h2>
-						<font color="#555555">REVIEW 등록</font>
+						<font color="#555555">REVIEW 수정</font>
 					</h2>
 					
 					<!--h3>공지사항입니다.</h3-->
@@ -22,8 +22,10 @@
 			</div>
 			<br><br>
 			<!-- 글 내용-->
-			<form action="create" method="post" id="frm"
+			<form action="update" method="post" id="frm"
 				enctype="multipart/form-data" onsubmit="return input(this)" >
+				<input type="hidden" name="reviewNo" value="${param.reviewNo}">
+				
 			<div class="ec-base-table typeWrite ">
 				<table border="1" summary="">
 					<colgroup>
@@ -34,7 +36,7 @@
 						<tr>
 							<th scope="row">상품명itemOptionNo</th>
 							
-							<td><input type="text" id="itemOptionNo" name="itemOptionNo" value=""></td>
+							<td><input type="text" id="itemOptionNo" name="itemOptionNo" value="${dto.itemOptionNo }"></td>
 						</tr>
 						<tr>
 							<th scope="row">id</th>
@@ -42,11 +44,11 @@
 						</tr>
 							<th scope="row">키</th>
 							
-							<td><input type="text" id="height" name="height" value=""></td>
+							<td><input type="text" id="height" name="height" value="${dto.height }"></td>
 						</tr>
 							<th scope="row">몸무게</th>
 							
-							<td><input type="text" id="weight" name="weight" value=""></td>
+							<td><input type="text" id="weight" name="weight" value="${dto.weight }" ></td>
 						</tr>
 							<th scope="row">평소사이즈</th>
 							
@@ -73,7 +75,7 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<textarea rows="20" cols="150" name="content" id="content"></textarea>
+								<textarea rows="20" cols="150" name="content" id="content" >${dto.content }</textarea>
 							</td>
 						</tr>
 						<th scope="row">사진첨부</th>

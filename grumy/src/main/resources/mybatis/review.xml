@@ -5,10 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.reviewMapper">
 
+<update id="update" parameterType="int">
+		update review
+		set content = #{content},
+		picture = #{picture,jdbcType=VARCHAR},
+		height = #{height},
+		weight = #{weight},
+		mySize = #{mySize},
+		itemOptionNo=#{itemOptionNo},
+		star = #{star}
+		where reviewNo = #{reviewNo}
+	</update>
+
 <delete id="delete" parameterType="int">
 delete from review
 where reviewNo = #{reviewNo}
 </delete>
+
+
 
 <insert id="create" parameterType="reviewDTO">
 INSERT INTO review(reviewNo,id,content,height,weight,mySize,itemOptionNo,picture,star) 
@@ -40,9 +54,9 @@ VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),'tester1',#{content}
 	</select>
 
 	<select id="read" parameterType="int" resultType="reviewDTO">
-		select reviewNo, id,r.content,r.picture,i.image as itemPicture,i.title as itemTitle,height,weight,mySize,star
-		from item i, review r, itemOption o
-		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo;
+		select reviewNo, id,content,picture,height,weight,mySize,star
+		from review
+		where reviewNo = #{reviewNo}
 	</select>
 
 	<select id="pcount" resultType="int">
