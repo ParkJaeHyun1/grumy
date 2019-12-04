@@ -26,23 +26,23 @@ public class AdminController {
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {
 		
-		int wait = mapper.count(100);	//입금대기
-		int nOrder = mapper.count(200);	//신규주문
-		int sReady = mapper.count(300);	//배송준비
-		int sIng = mapper.count(400);	//배송중
-		int sFin = mapper.count(500);	//배송완료
+		int wait = mapper.total(100);	//입금대기
+		int nOrder = mapper.total(200);	//신규주문
+		int sReady = mapper.total(300);	//배송준비
+		int sIng = mapper.total(400);	//배송중
+		int sFin = mapper.total(500);	//배송완료
 		
 		
-		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
-		NoticeDTO noticetr = noticet.get(0);
+		//ArrayList<NoticeDTO> noticet = mapper.noticel(1);
+		//NoticeDTO noticetr = noticet.get(0);
 		
-		ArrayList<NoticeDTO> noticel = mapper.noticel(5);
+		//ArrayList<NoticeDTO> noticel = mapper.noticel(5);
 		ArrayList<DeliveryDTO> deliveryl = mapper.deliveryl(5);
 		ArrayList<communityDTO> communityl = mapper.communityl(5);
 		
 		
-		request.setAttribute("noticetr", noticetr);
-		request.setAttribute("noticel", noticel);
+		//request.setAttribute("noticetr", noticetr);
+		//request.setAttribute("noticel", noticel);
 		request.setAttribute("deliveryl", deliveryl);
 		request.setAttribute("communityl", communityl);
 		request.setAttribute("wait", wait);
@@ -53,12 +53,12 @@ public class AdminController {
 		
 		return "/admin/main";
 	}
-	@GetMapping("/admin/mwait")
+	@GetMapping("/admin/mwait/list")
 	public String mwait(HttpServletRequest request) {
 		List<AdminDTO> list = mapper.list(100);
 		
 		request.setAttribute("list", list);
-		return "/admin/mwait";
+		return "/admin/mwait/list";
 	}
 	
 	@GetMapping("/admin/newOrder")

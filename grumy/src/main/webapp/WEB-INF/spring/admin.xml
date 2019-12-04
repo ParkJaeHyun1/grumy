@@ -17,7 +17,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/main.jsp" />
 	</definition>
- 	<definition name="/admin/mwait" extends="main">
+ 	<definition name="/admin/mwait/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/moneyWait.jsp" />
