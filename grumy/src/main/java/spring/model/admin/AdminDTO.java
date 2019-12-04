@@ -1,41 +1,13 @@
 package spring.model.admin;
 
 public class AdminDTO {
-	private int no;
-	private String name;
-	private int stat;
-	public AdminDTO(int no, String name, int stat) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.stat = stat;
-	}
-	public AdminDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "TestDTO [no=" + no + ", name=" + name + ", stat=" + stat + "]";
-	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getStat() {
-		return stat;
-	}
-	public void setStat(int stat) {
-		this.stat = stat;
-	}
-	
+	private int orderno;	//주문번호 t-order
+	private int itemcount;	//수량 t-orderitem
+	private int state;		//상태 t-orderitem
+	private String id;		//아이디 t-order
+	private String odate;	//주문일자 t-order
+	private String price;	//가격 t-item
+	private String title;	//아이템명 t-item
+	private String image;	//이미지 t-item
 	
 }

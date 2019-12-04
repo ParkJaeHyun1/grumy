@@ -155,7 +155,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="${root }/admin/newOrder">${nOrder}</a>
+												href="${root }/admin/newOrder">${newOrder}</a>
 											<!---->
 												<span>건</span>
 										</span></li>

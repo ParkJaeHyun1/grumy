@@ -77,7 +77,6 @@ function updateItemCount(cartNo,cnt){
 		return false;
 	}
 	updateItemCountAjax(cartNo,cnt);
-	return true;
 }
 function updateItemCountAjax(cartNo,cnt){
 	$.ajax({
