@@ -9,8 +9,6 @@ public class DeliveryDTO {
 	private String content;
 	private String wdate;
 	private String passwd;
-	private String file1;
-	private MultipartFile fileMF;
 	private int ref;
 	private int indent;
 	private String id;
@@ -23,11 +21,10 @@ public class DeliveryDTO {
 	@Override
 	public String toString() {
 		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
-				+ ", wdate=" + wdate + ", passwd=" + passwd + ", file1=" + file1 + ", fileMF=" + fileMF + ", ref=" + ref
+				+ ", wdate=" + wdate + ", passwd=" + passwd  + ", ref=" + ref
 				+ ", indent=" + indent + ", id=" + id + ", lev=" + lev + ", check_read=" + check_read + "]";
 	}
-	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd, String file1,
-			MultipartFile fileMF, int ref, int indent, String id, char lev, String check_read) {
+	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd, int ref, int indent, String id, char lev, String check_read) {
 		super();
 		this.no = no;
 		this.subject = subject;
@@ -35,8 +32,6 @@ public class DeliveryDTO {
 		this.content = content;
 		this.wdate = wdate;
 		this.passwd = passwd;
-		this.file1 = file1;
-		this.fileMF = fileMF;
 		this.ref = ref;
 		this.indent = indent;
 		this.id = id;
@@ -78,18 +73,6 @@ public class DeliveryDTO {
 	}
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
-	}
-	public String getFile1() {
-		return file1;
-	}
-	public void setFile1(String file1) {
-		this.file1 = file1;
-	}
-	public MultipartFile getFileMF() {
-		return fileMF;
-	}
-	public void setFileMF(MultipartFile fileMF) {
-		this.fileMF = fileMF;
 	}
 	public int getRef() {
 		return ref;

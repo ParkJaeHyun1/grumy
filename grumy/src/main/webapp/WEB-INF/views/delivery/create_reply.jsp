@@ -51,7 +51,9 @@
 						<tbody>
 							<tr class="">
 								<th scope="row">SECRET${name }</th>
-								<td><input id="secure1" name="secure"
+								<td><input id="secure0" name="secure" fw-filter="isFill"
+									fw-label="비밀글설정" fw-msg="" value="F" type="radio" onclick="return(false);"><label
+									for="secure0">공개글</label> <input id="secure1" name="secure"
 									fw-filter="isFill" fw-label="비밀글설정" fw-msg="" value="T"
 									type="radio" checked="checked"><label for="secure1">비밀글</label></td>
 							</tr>

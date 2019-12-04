@@ -51,14 +51,6 @@ public class DeliveryController {
 	@PostMapping("/delivery/update")
 	public String update(DeliveryDTO dto,HttpServletRequest request) {
 		
-		String basePath = request.getRealPath("/storage");
-		
-		int filesize = (int)dto.getFileMF().getSize();
-		
-		if (filesize > 0) {
-			dto.setFile1(Utility.saveFileSpring(dto.getFileMF(), basePath));
-			
-		}
 		int flag = mapper.update(dto);
 		
 		if(flag ==1)
@@ -160,15 +152,7 @@ public class DeliveryController {
 	
 	@PostMapping("/delivery/create")
 	public String create(DeliveryDTO dto,HttpServletRequest request) {
-		 String basePath = request.getRealPath("/storage"); 
 
-		int filesize = (int)dto.getFileMF().getSize();
-		
-		if (filesize > 0) {
-			dto.setFile1(Utility.saveFileSpring(dto.getFileMF(), basePath));
-			
-		}		
-		
 		int flag = mapper.create(dto);
 		
 		if (flag == 1) {
