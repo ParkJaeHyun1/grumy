@@ -5,6 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.noticeMapper">
 
+<select id="getname" parameterType="String" resultType="String">
+select name from member
+where id = #{id}
+</select>
+
 <insert id="create" parameterType="NoticeDTO">
 insert into notice(no,subject,content,wdate,writer,viewcnt,lev)
 values((select nvl(max(no),0)+1 from notice),#{subject},#{content},sysdate,#{writer},0,#{lev})

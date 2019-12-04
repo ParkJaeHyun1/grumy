@@ -1,31 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("UTF-8");
-%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript">
-	function input(f) {
-		if (f.subject.value == '') {
-			alert("제목을 입력하세요");
-			f.subject.focus();
-			return false;
-		}
-	/* 	if (f.content.value == '') {
-			alert("내용을 입력하세요");
-			f.content.focus();
-			return false;
-		}
-	} */
-	 if (CKEDITOR.instances['content'].getData() == '') {
-	      window.alert('내용을 입력해 주세요.');
-	      CKEDITOR.instances['content'].focus();
-	      return false;
-	    }
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div id="container">
 	<div id="contents">
@@ -45,8 +23,9 @@
 			<br>
 			<br>
 			<!-- 글 내용-->
-			<form action="create" method="post" id="frm"
+			<form action="create" method="post" id="frm" 
 				onsubmit="return input(this)">
+				<input type="hidden" name="writer" value="${name }">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -59,10 +38,6 @@
 
 								<td><input type="text" id="subject" name="subject"
 									style="width: 300px"></td>
-							</tr>
-							<tr>
-								<th scope="row">WRITER</th>
-								<td><span name="writer">grumy</span></td>
 							</tr>
 							<tr>
 								<td colspan="2" style="align: center"><textarea rows="20"
@@ -96,4 +71,23 @@
 
 
 </div>
-
+<script type="text/javascript">
+	function input(f) {
+		if (f.subject.value == '') {
+			alert("제목을 입력하세요");
+			f.subject.focus();
+			return false;
+		}
+	/* 	if (f.content.value == '') {
+			alert("내용을 입력하세요");
+			f.content.focus();
+			return false;
+		}
+	} */
+	 if (CKEDITOR.instances['content'].getData() == '') {
+	      window.alert('내용을 입력해 주세요.');
+	      CKEDITOR.instances['content'].focus();
+	      return false;
+	    }
+	}
+</script>

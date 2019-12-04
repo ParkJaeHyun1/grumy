@@ -48,7 +48,10 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/notice/create")
-	public String create() {
+	public String create(HttpSession session,HttpServletRequest request) {
+		String id = (String) session.getAttribute("id");
+		
+		request.setAttribute("name", mapper.getname(id));
 		
 		return "/notice/create";
 	}
@@ -112,8 +115,7 @@ public class NoticeController {
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
 
-		if (col.equals("total"))
-			word = "";
+		
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){

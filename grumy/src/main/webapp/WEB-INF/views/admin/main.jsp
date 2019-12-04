@@ -19,7 +19,7 @@
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com/ind-script/optimizer.php?filename=rc49DsIwDAXgvWXlHBY_EjszEz1B6litaWpHcYLU25MiTkC7-cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlEAS3aMmgyVO6O5sooxbJe9ox1Yj5SUhb4J_WO2P8XiFsaqCmLijt-fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d883c5&t=1543392667" />
-
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
 <script type="text/javascript">
 function readn(no){
@@ -34,22 +34,57 @@ function readd(no){
 	
 	location.href="../delivery/"+url;
 }
+function readd2(no){
+	var url = "read";
+	url += "?communityNo="+no;
+	
+	location.href="../community/"+url;
+}
 
 $(function () {
 	  $('#myTab a:first').tab('show')
 })
+
 </script>
 <script>
-	var a = ${wait};
-	var headt = "hello";
-	var pos = "결제건수";
+	
+	
 $(document).ready(function(){
+	var gchange = "";
+	var a = ${wait};
+	var glabels = ['a','b','c','d','e','f','g','h','i','j'];
+	var gdata = [a,2,3,4,5,6,7,10,15,30];
+	var pos = "결제건수";
+	$(".payb").on('click',function(){
+		gchange = $(this).val();
+
+		$.get('main', function(){
+			if(gchange == "payb1"){
+				pos="결제건수";
+				glabels = ['a1','b','c','d','e','f','g','h','i','j'];
+				gdata = [a,20,3,4,5,15,7,10,15,30];
+				chart1();
+			}else if(gchange == "payb2"){
+				pos="결제자수";
+				glabels = ['a2','b','c','d','e','f','g','h','i','j'];
+				gdata = [a,2,3,24,5,6,7,10,15,30];
+				chart1();
+			}else if(gchange == "payb3"){
+				pos="결제금액";
+				glabels = ['a3','b','c','d','e','f','g','h','i','j'];
+				gdata = [a,2,35,4,5,6,7,20,15,30];
+				chart1();
+			}
+			
+		});
+	});
+	function chart1(){
 	new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
 	  data: {
-	    labels: ['a','b','c','d','e','f','g','h','i','j'],
+	    labels: glabels,
 	    datasets: [{ 
-	        data: [a,2,3,4,5,6,7,10,15,30],
+	        data: gdata,
 	        label: pos,
 	        borderColor: "#3e95cd",
 	        fill: false
@@ -58,11 +93,13 @@ $(document).ready(function(){
 	  },
 	  options: {
 	    title: {
-	      display: true,
-	      text: headt
+	      display: false,
+	      text: ""
 	    }
 	  }
 	});
+	}
+	chart1();
 });
 </script>
 </head>
@@ -73,17 +110,14 @@ $(document).ready(function(){
 		<h3>관리자 페이지 입니다</h3><br>
 		<div id="seller-content" class="seller-sub-frame">
 		<!---->
-
 		<ui-view>	
 			<!---->
 			<ui-view name="important-notice"><!---->
 			<div>
 				<!---->
-				<!---->
 				<div class="panel panel-dashboard panel-deposit">
 						<!---->
 					<div class="panel-body"
-						ng-if="vm.paymentInfo &amp;&amp; vm.paymentInfo.$resolved"
 						style="border:1px solid">
 						<a href="javascript:read(${noticetr.no })" style="color: #555555;">
 							<div>
@@ -94,143 +128,110 @@ $(document).ready(function(){
 						</a>
 					</div>
 				</div>
-				<!---->
 			
-			<!----><!----></ui-view>
+			<!----></ui-view>
 			<div class="seller-sub-content">
 				<div style="position: relative">
 					<!---->
 					<div class="row">
-						<!---->
 						<!---->
 						<ui-view name="naverpay-salesinfo">
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="panel panel-dashboard panel-deposit">
 								<!---->
 								<div class="panel-body"
-									ng-if="vm.paymentInfo &amp;&amp; vm.paymentInfo.$resolved"
 									style="border:1px solid">
 									
 									<ul class="panel-list" >
 										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_unpayment" class="text-number"
-												ng-bind="::vm.paymentInfo.paymentWaitCases"
-												data-nclicks-code="ord.paymentwait"
-												href="${root }/admin/mwait">${wait}</a>
-											<!----> <!---->
+												<a class="text-number"
+												href="${root }/admin/mwait/list">${wait}</a>
+											<!----> 
 												<span>건</span>
 										</span></li>
 										<li><span class="info-title">신규주문</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery" class="text-number"
-												ng-bind="::vm.paymentInfo.newOrderCases"
-												data-nclicks-code="ord.new" 
+												<a class="text-number"
 												href="${root }/admin/newOrder">${nOrder}</a>
-											<!----> <!---->
+											<!---->
 												<span>건</span>
 										</span></li>
 										<span>&nbsp</span>
 									</ul>
 								</div>
 								<!---->
-								<!---->
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="panel panel-dashboard panel-delivery">
 								<!---->
-								<div class="panel-body"
-									ng-if="vm.delivery &amp;&amp; vm.delivery.$resolved" style="border:1px solid">
+								<div class="panel-body" style="border:1px solid">
 									
 									<ul class="panel-list">
 										<li><span class="info-title">배송준비</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery({summaryInfoType : 'DELIVERY_READY'})"
-												class="text-number"
-												ng-bind="::vm.paymentInfo.deliveryPreparingCases"
-												data-nclicks-code="del.wait"
+												<a class="text-number"
 												href="${root }/admin/sendReady">${sReady}</a>
-											<!----> <!---->
+											<!----> 
 												<span>건</span>
 										</span></li>
 										<li ><span class="info-title">배송중</span> <span
 											class="number-area" >
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery_situation({summaryInfoType : 'DELIVERING'})"
-												class="text-number" ng-bind="::vm.delivery.deliveringCases"
-												data-nclicks-code="del.ing"
+												<a class="text-number" 
 												href="${root }/admin/sending">${sIng}</a>
-											<!----> <!---->
+											<!---->
 												<span>건</span>
 										</span></li>
 										<li><span class="info-title">배송완료</span> <span
 											class="number-area">
-												<!---->`
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_sale_delivery_situation({summaryInfoType : 'DELIVERED'})"
-												class="text-number" ng-bind="::vm.delivery.deliveredCases"
-												data-nclicks-code="del.completed"
+												<!---->
+												<a class="text-number" 
 												href="${root }/admin/sendFin">${sFin}</a>
-											<!----> <!---->
+											<!---->
 												<span>건</span>
 										</span></li>
 									</ul>
 								</div>
-								<!---->
 								<!---->
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="panel panel-dashboard panel-return">
 								<!---->
-								<div class="panel-body"
-									ng-if="vm.claim &amp;&amp; vm.claim.$resolved" style="border:1px solid">
+								<div class="panel-body" style="border:1px solid">
 									
 									<ul class="panel-list">
 										<li><span class="info-title">취소요청</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_claim_cancel({summaryInfoType : 'CANCEL_REQUEST'})"
-												class="text-number" ng-bind="::vm.claim.cancelClaimCases"
-												data-nclicks-code="claim.cancel"
+												<a class="text-number" 
 												href="#/naverpay/claim/cancel?summaryInfoType=CANCEL_REQUEST">0</a>
-											<!----> <!---->
+											<!----> 
 												<span>건</span>
 										</span></li>
 										<li><span class="info-title">반품요청</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_claim_return({summaryInfoType : 'RETURN_REQUEST'})"
-												class="text-number" ng-bind="::vm.claim.returnClaimCases"
-												data-nclicks-code="claim.return"
+												<a class="text-number" 
 												href="#/naverpay/claim/return?summaryInfoType=RETURN_REQUEST">0</a>
-											<!----> <!---->
+											<!----> 
 												<span>건</span>
 										</span></li>
 										<li><span class="info-title">교환요청</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_claim_exchange({summaryInfoType : 'EXCHANGE_REQUEST'})"
-												class="text-number" ng-bind="::vm.claim.exchangeClaimCases"
-												data-nclicks-code="claim.exchange"
+												<a class="text-number" 
 												href="#/naverpay/claim/exchange?summaryInfoType=EXCHANGE_REQUEST">0</a>
-											<!----> <!---->
+											<!----> 
 												<span>건</span>
 										</span></li>
 									</ul>
 								</div>
-								<!---->
 								<!---->
 							</div>
 						</div>
@@ -241,17 +242,13 @@ $(document).ready(function(){
 							<div class="panel panel-dashboard panel-settlement">
 								<!---->
 								<div class="panel-body"
-									ng-if="vm.settlement &amp;&amp; vm.settlement.$resolved"
 									style="border:1px solid">
 									
 									<ul class="panel-list">
 										<li><span class="info-title">오늘정산</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_settlemgt_sellerdailysettle({searchType: 'settleToday'})"
-												class="text-number" ng-bind="::vm.settlement.todayAmount"
-												data-nclicks-code="set.today"
+												<a class="text-number"
 												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleToday">0</a>
 											<!----> <!---->
 												<span>원</span>
@@ -259,27 +256,16 @@ $(document).ready(function(){
 										<li><span class="info-title">정산예정</span> <span
 											class="number-area">
 												<!---->
-												<a ng-if="::vm.isDesktop"
-												ui-sref="main.naverpay_settlemgt_sellerdailysettle({searchType: 'settleExpect'})"
-												class="text-number" ng-bind="::vm.settlement.expectedAmount"
-												data-nclicks-code="set.expected"
+												<a class="text-number" 
 												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleExpect">0</a>
-											<!----> <!---->
+											<!----> 
 												<span>원</span>
 										</span></li>
-										<li><span class="info-title">충전금</span> <span
-											class="number-area">
-												<!---->
-												<a ng-if="::vm.isDesktop" ui-sref="main.naverpay_charge"
-												class="text-number" ng-bind="::vm.settlement.chargeBalance"
-												data-nclicks-code="set.charge" href="#/naverpay/charge">0</a>
-											<!----> <!---->
-												<span>원</span>
-										</span></li>
+										<span>&nbsp</span>
 									</ul>
 								</div>
 								<!---->
-								<!---->
+
 							</div>
 						</div>
 						</ui-view>
@@ -289,36 +275,22 @@ $(document).ready(function(){
 							<div class="panel panel-dashboard panel-stats" style="border:1px solid">
 								<div class="panel-heading">
 									<div class="pull-left">
-										<h3 class="panel-title">스토어 매출 통계</h3>
+										<h3 class="panel-title"><b>스토어 매출 통계</b></h3>
 									</div>
-									<div class="pull-right">
-										<span class="store-name hidden-xs"><a
-											ng-href="https://smartstore.naver.com/gyeongjadd"
-											target="_blank" data-nclicks-code="sales.storemove"
-											href="https://smartstore.naver.com/gyeongjadd">
-												<!---->
-												<!---->
-												
-										</a></span>
-									</div>
+									
 								</div>
+								<form id="frm">
 								<div class="panel-body">
 									<div class="text-center">
 										<div data-toggle="buttons"
 											class="btn-group btn-group-customize">
-											<label class="btn btn-default active"
-												ng-class="{active: vm.currentChartIndex === 0}"
-												ng-click="vm.showChart(0)"
-												data-nclicks-code="sales.numofpay"><input
-												type="radio">결제건수</label><label class="btn btn-default"
-												ng-class="{active: vm.currentChartIndex === 1}"
-												ng-click="vm.showChart(1)" data-nclicks-code="sales.payer"><input
-												type="radio">결제자수</label><label class="btn btn-default"
-												ng-class="{active: vm.currentChartIndex === 2}"
-												ng-click="vm.showChart(2)" data-nclicks-code="sales.price"><input
-												type="radio">결제금액</label>
+											<button type="button" class="btn btn-default payb" value="payb1">결제건수</button>
+											<button type="button" class="btn btn-default payb" value="payb2">결제자수</button>
+											<button type="button" class="btn btn-default payb" value="payb3">결제금액</button>
+											
 										</div>
 									</div>
+									<br>
 									<div class="stats-area">
 										<!---->
 										<div id="chart-container-paycount"
@@ -331,29 +303,27 @@ $(document).ready(function(){
 											<div class="container" style="width:500px; height:600px">
 												<canvas id="line-chart" width="20" height="10"></canvas>
 												</div>
-					<!-- =============================== -->
-											
+					<!-- =============================== -->											
 										</div>
 										<!---->
-										<!---->
-										<!---->
-										<!---->
+
 									</div>
 								</div>
+								</form>
 								<!---->
 							</div>
 						</div>
 						<!----></ui-view>
-						<!---->
 						<ui-view name="inquery">
 						<div class="col-lg-3 col-md-6 col-sm-6">
-							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid;">
+							<div class="panel panel-dashboard panel-inquiry" style="border:1px solid; height:380px;">
 								<div class="panel-heading">
 									<div class="pull-left">
-										<h3 class="panel-title"><b>답변 문의</b></h3>
+										<h2 class="panel-title"><b>답변 문의</b></h2>
 									</div>
 									
 								</div>
+								<br>
 								<div class="panel-body">
 									
 									<ul class="nav nav-tabs" role="tablist" id="myTab">
@@ -362,7 +332,7 @@ $(document).ready(function(){
 									</ul>
 									
 									<div class="tab-content">
-									  <div role="tabpanel" class="tab-pane active" id="home" style="height:270px;">
+									  <div role="tabpanel" class="tab-pane active" id="home">
 									  <ul class="panel-list">
 									  	<br>
 											<c:choose>
@@ -402,7 +372,7 @@ $(document).ready(function(){
 												</c:when>
 												<c:otherwise>
 													<c:forEach var="dto" items="${communityl}">
-														<a href="javascript:readd(${dto.communityNo })" style="color: #555555;">
+														<a href="javascript:readd2(${dto.communityNo })" style="color: #555555;">
 														<li>
 															<span>문의 합니다</span>
 														</li>
@@ -427,11 +397,8 @@ $(document).ready(function(){
 										<ul class="panel-list has-question">
 											<!---->
 										</ul>
-										<!---->
-								
+										<!---->					
 									</div>
-									<!---->
-									
 									<!---->
 								</div>
 								<!---->
@@ -446,24 +413,20 @@ $(document).ready(function(){
 								<div class="panel-heading">
 									<div class="pull-left">
 										<h3 class="panel-title">
-											<a ui-sref="main.centernotice.list"
-												data-nclicks-code="notice.move" href="${root }/notice/list"><b>공지사항</b>
+											<a href="${root }/notice/list"><b>공지사항</b>
 												<i class="fn-shopping fn-shopping-forward2 text-muted"
 												aria-hidden="true"></i>
 											</a>
 										</h3>
 									</div>
 								</div>
-								<div class="panel-body" style="height:340px;">
-									<!---->
-
+								<div class="panel-body" style="height:355px;">
+								<br>
 					<!-- ================================================== -->
 						<ul class="panel-list">
 						<c:choose>
-							<c:when test="${empty noticel }">
-								
+							<c:when test="${empty noticel }">					
 									<li>등록된 글이 없습니다.</li>
-
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="dto" items="${noticel}">
@@ -473,7 +436,7 @@ $(document).ready(function(){
 									</li>
 									
 									<li style="text-align:right">
-									<span>${dto.wdate }</span>
+										<span>${dto.wdate }</span>
 									</li>
 									</a>
 									
@@ -484,7 +447,7 @@ $(document).ready(function(){
 						</c:choose>
 						</ul>
 
-									<!---->
+					<!-- ====================================================== -->
 								</div>
 								<!---->
 							</div>

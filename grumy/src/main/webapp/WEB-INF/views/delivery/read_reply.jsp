@@ -80,12 +80,7 @@
 
 								</ul>
 								<div class="detail">${dto.content }</div>
-								<c:if test="${not empty dto.file1 }">
-								<img width="200px"
-								height="150px" class="img-thumbnail"
-								src="${pageContext.request.contextPath}/storage/${dto.file1}">
-								</c:if>
-								 
+															 
 							</td>
 						</tr>
 						<tr>

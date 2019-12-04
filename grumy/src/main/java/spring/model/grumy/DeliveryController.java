@@ -177,8 +177,7 @@ public class DeliveryController {
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
 
-		if (col.equals("total"))
-			word = "";
+		
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){

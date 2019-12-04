@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "//www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
 <head>
@@ -9,7 +10,7 @@
 	content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" sa />
 
 <!--PG크로스브라우징필수내용 시작-->
-<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Cache-Control" content="no-cache" />         
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <!--PG크로스브라우징필수내용 끝-->
@@ -36,347 +37,135 @@
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
-		<script type="application/ld+json">
-    {
-     "@context": "http://schema.org",
-     "@type": "Person",
-     "name": "그루미",
-     "url": "http://www.slowand.com",
-     "sameAs": [
-       "https://www.instagram.com/slow.and",
-       "https://www.facebook.com/slowandmore",
-     ]
-    }
-</script>
 		<script>
-         function showReplyList(nowPage){
-             var itemNo = ${dto.itemNo};
+			var selectedColor;
+			var selectedSize;
+            var list = [];
+            var selectedItem = {};
+            <c:forEach items="${dto.itemOptionList}" var="itemOption">
+            list.push({itemColor:'${itemOption.itemColor}',itemSize:'${itemOption.itemSize}',itemCount:${itemOption.itemCount},itemOptionNo:${itemOption.itemOptionNo}});
+            </c:forEach>
+            	function setTotalPrice(){
+            		$('#totalPrice').html(Object.keys(selectedItem).length*${dto.price-dto.salePrice});
+            		$('#totalCount').html(Object.keys(selectedItem).length);
+            	}
+            	function checkColor(color) {
+            		if(selectedColor == color) 
+            			return;
+            		if(!selectedColor)
+            			$('#divItemSize').css('display', 'table-row');
+            		$('#selectedItemColor').html(color);
+            		$('#categoryItemColor').html('');
+            		
+            		$.each(list, function(index, item){ 
+            		    if(item.itemColor == color){
+            		    	if(item.itemCount==0)
+            		    		$('#categoryItemColor').append("<li class='ec-product-soldout' id='itemSize"+item.itemSize+"\"'><a href='#none'><span>"+item.itemSize+"</span></a></li>");		
+            		    	else
+            		    		$('#categoryItemColor').append("<li class='' id='itemSize"+item.itemSize+"'><a href='#none' onclick='checkSize(\""+item.itemSize+"\",\""+color+"\",\""+item.itemOptionNo+"\")'><span>"+item.itemSize+"</span></a></li>");
+            		    	$('#itemColor'+color).attr('class','ec-product-selected');
+            		    }
+            		});
+            		$('#itemColor'+selectedColor).attr('class','');
+            		selectedColor = color;
+			   	}
+            	function deleteItem(itemOptionNo){
+            		$('#selectedItem'+itemOptionNo).remove();
+            	}
+				function checkSize(size,color,itemOptionNo) {
+					if(selectedItem[itemOptionNo]){
+						alert('이미 선택되어 있는 옵션입니다.');
+						return;
+					}
+					$('#itemSize'+size).attr('class','ec-product-selected');
+					$('#itemSize'+selectedSize).attr('class','');
+					selectedItem[itemOptionNo] = {itemSize:size,itemColor:color,itemOptionNo:itemOptionNo,count:1};
+					selectedSize = size;
+					
+					var str = "";
+					str += '<tr class="option_product" id="selectedItem"'+itemOptionNo+'>';
+					str += '<td>';  
+					str += '<input type="hidden" class="option_box_id"	id="orderInfo" value="" name="orderInfoList" >';
+					str += '<p 	class="product">';
+					str += '${dto.title}<br> - <span>'+color+'/'+size+'</span>';
+					str += '</p>';
+					str += '</td>';
+					str += '<td>';
+					str += '<span class="quantity" style="width: 65px;">';
+					str += '<input	type="text" id="option_box1_quantity" class="quantity_opt eProductQuantityClass" value="1">';
+					str += '<a href="#none">';
+					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"id="option_box1_up" class="up option_box_up" alt="수량증가">';
+					str += '</a>';
+					str += '<a href="#none">';
+					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif" ';
+					str += 'id="option_box1_down" class="down option_box_down"	alt="수량감소">';
+					str += '</a>';
+					str += '</span>';
+					str += '<a href="#none" class="delete">';
+					str += '<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"';
+					str += 'alt="삭제" id="option_box1_del" class="option_box_del" onclick="deleteItem("'+itemOptionNo+'")">';
+					str += '</a></td><td class="right">	<fmt:formatNumber value="${dto.price-dto.salePrice}" pattern="###,###,###"/>원</td></tr>';
+					
+					$('.option_products').append(str);
+					setTotalPrice();
+	
+				}                  
+            	function showReplyList(nowPage){
+                    var itemNo = ${dto.itemNo};
 
-             $.getJSON("./reply/list/" + itemNo + "/" + nowPage + ".json",
-                   function(data) {
-                 		var str="";
-                 
-                 		if(list == null || list.length == 0){
-                   			return;
-                 		}
-                 
-                 		for (var i = 0, len = list.length || 0; i < len; i++) {
-                   			str +="<li class='list-group-item' data-rnum='"+list[i].rnum+"'>";
-                   			str +="<div><div class='header'><strong class='primary-font'>"+list[i].id+"</strong>"; 
-                   			str +="<small class='pull-right text-muted'>"+list[i].regdate+"</small></div>";
-                   			str +=replaceAll(list[i].content,'\n','<br>')+"</div></li>";
-                 		}                      
-                   });
-                     
+                    $.getJSON("./reply/list/" + itemNo + "/" + nowPage + ".json",
+                          function(data) {
+                        		var str="";
+                        
+                        		if(list == null || list.length == 0){
+                          			return;
+                        		}
+                        
+                        		for (var i = 0, len = list.length || 0; i < len; i++) {
+                          			str +="<li class='list-group-item' data-rnum='"+list[i].rnum+"'>";
+                          			str +="<div><div class='header'><strong class='primary-font'>"+list[i].id+"</strong>"; 
+                          			str +="<small class='pull-right text-muted'>"+list[i].regdate+"</small></div>";
+                          			str +=replaceAll(list[i].content,'\n','<br>')+"</div></li>";        
+                        		}                      
+                          });
+                            
 
 
-         }//end showList
+                }//end showList
          </script>
 		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />                            
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">       
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
+						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                           
 					<link rel="alternate"
 						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<meta property="og:url"
 						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<meta property="og:title"
-						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                         
 					<meta property="og:description"
-						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
+						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />       
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="product" />
-					<meta property="og:image"
+					<meta property="og:image"     
 						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
 					<meta property="product:price:amount" content="29800" />
-					<meta property="product:price:currency" content="KRW" />
+					<meta property="product:price:currency" content="KRW" />                
 					<meta property="product:sale_price:amount" content="29800" />
-					<meta property="product:sale_price:currency" content="KRW" />
+					<meta property="product:sale_price:currency" content="KRW" />                       
 					<link rel="shortcut icon"
-						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
+						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />       
 					<script type="text/javascript"
 						src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript"
-						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
-
-					<script type='text/javascript'>
-      var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
-</script>
-
-					<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
-            var oBankInfo = "";
-            $.ajax({
-                type: "GET",
-                url: "/exec/front/Shop/Bankinfo",
-                dataType: "json",
-                async: false,
-                success: function(oResponse) {
-                    oBankInfo = oResponse;
-                }
-             });
-             return oBankInfo; }};</script>
-					<script type="text/javascript">            
-					var EC_ROOT_DOMAIN = "cafe24.com";
-            var EC_I18N_LOG_STATUS = "F";
-            var EC_GLOBAL_INFO = (function() {
-                var oData = {"base_domain":"anne2173.cafe24.com","root_domain":"cafe24.com","is_global":false,"country_code":"KR","language_code":"ko_KR","admin_language_code":"ko_KR"};
-                
-                return {
-                    getBaseDomain: function() {
-                        return oData['base_domain'];
-                    },
-
-                    getRootDomain: function() {
-                        return oData['root_domain'];
-                    },
-
-                    isGlobal: function() {
-                        return oData['is_global'];
-                    },
-
-                    getCountryCode: function() {
-                        return oData['country_code'];
-                    },
-
-                    getLanguageCode: function() {
-                        return oData['language_code'];
-                    },
-                    
-                    getAdminLanguageCode: function() {
-                        return oData['admin_language_code'];
-                    }
-                };
-            })();</script>
+						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>           
 					<script type="text/javascript"
-						src="https://slowand.com/ind-script/moment.php?convert=T"></script>
-					<script type="text/javascript">            
-            	var EC_GLOBAL_DATETIME = (function() {
-                var oConstants = {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"};
-                var oOptions = {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"};
-                var oPolicies = {"shop":{"outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"}};
-                var sOverrideTimezone = '';
-                var sMomentNamespace = 'EC_GLOBAL_MOMENT';
-                
-                var fMomentLoaded = function() {
-                    var bMomentLoaded = !!window[sMomentNamespace];
-                    var bMomentTZLoaded = false;
-                    if (bMomentLoaded) {
-                        bMomentTZLoaded = !!window[sMomentNamespace].tz;
-                    }
-                    
-                    return bMomentLoaded && bMomentTZLoaded;
-                };
-                
-                var fMomentWrapper = function() {
-                    return window[sMomentNamespace];
-                };
-                
-                var fShallowMerge = function(oTarget, oSource) {
-                    oSource = oSource || {};
-                    for (var sKey in oSource) {
-                        if (oSource.hasOwnProperty(sKey)) {
-                            oTarget[sKey] = oSource[sKey];
-                        }
-                    }
-                    
-                    return oTarget;
-                };
-                
-                var getFormatFromFlag = function(oOptions, iFlag, bOpposite) {
-                    if (bOpposite) {
-                        switch (iFlag) {
-                            case 1:
-                                return oOptions[oConstants.IN_DATE_FORMAT];
-                            case 2:
-                                return oOptions[oConstants.IN_TIME_FORMAT];
-                            default:
-                                return oOptions[oConstants.IN_FORMAT];    
-                        }
-                    }
-                    
-                    switch (iFlag) {
-                        case 1:
-                            return oOptions[oConstants.OUT_DATE_FORMAT];
-                        case 2:
-                            return oOptions[oConstants.OUT_TIME_FORMAT];
-                        default:
-                            return oOptions[oConstants.OUT_FORMAT];
-                    }
-                };
-                              
-                return {
-                    const: oConstants,
-                    
-                    init: function(fCallback) {
-                        if (fMomentLoaded()) {
-                            if (typeof fCallback === 'function') {
-                                fCallback();
-                            }
-                            
-                            return;
-                        }
-                        
-                        var oScript = document.createElement('script');
-                        oScript.type = 'text/javascript';
-                        oScript.async = true;
-                        oScript.src = '/ind-script/moment.php?convert=T';
-                        oScript.onload = oScript.onreadystatechange = function () {
-                            fMomentWrapper().defaultFormat = oOptions[oConstants.OUT_FORMAT];
-                            fMomentWrapper().tz.setDefault(oOptions[oConstants.IN_ZONE]);
-                            
-                            if (typeof fCallback === 'function') {
-                                fCallback();
-                            }
-                        };
-                        
-                        var oFirstScript = document.getElementsByTagName('script')[0];
-                        oFirstScript.parentNode.insertBefore(oScript, oFirstScript);
-                    },
-                    
-                    initPromise: function() {
-                        if (!window.Promise) {
-                            return;
-                        }
-                        
-                        return new Promise(function(resolve) {
-                            this.init(resolve);
-                        }.bind(this));
-                    },
-                    
-                    isLoaded: function() {
-                        return fMomentLoaded();
-                    },
-                                    
-                    setOptions: function(oNewOptions) {
-                         if (typeof oNewOptions === 'object') {
-                             for (var sKey in oNewOptions) {
-                                 if (oNewOptions.hasOwnProperty(sKey) && oOptions.hasOwnProperty(sKey)) {
-                                     oOptions[sKey] = oNewOptions[sKey];
-                                 }
-                             }
-                         }
-                         
-                         return this;
-                    },
-                    
-                    now: function(mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return Math.floor(new Date().getTime() / 1000);
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()()
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    format: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()
-                            .tz(sTime, oFormatOptions.inZone)
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    parse: function(sTime, mOptions) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oParseOptions = this.getOptions(mOptions);
-                        return fMomentWrapper().tz((sTime || new Date()), oParseOptions.inZone).tz(oParseOptions.outZone);
-                    },
-                    
-                    getOptions: function(mOptions, iFlag) {
-                        mOptions = mOptions || {};
-                      
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        if (typeof mOptions === 'string' && oPolicies[mOptions]) {
-                            oMergedOptions = fShallowMerge(oMergedOptions, oPolicies[mOptions]);
-                        } else if (typeof mOptions === 'object') {
-                            oMergedOptions = fShallowMerge(oMergedOptions, mOptions);
-                        }
-                        
-                        if (sOverrideTimezone) {
-                            if ((typeof mOptions === 'string' && mOptions === 'shop') || (typeof mOptions === 'object' && !mOptions[oConstants.OUT_ZONE])) {
-                                oMergedOptions[oConstants.OUT_ZONE] = sOverrideTimezone;
-                            }
-                        }
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    getRevertOptions: function(mOptions) {
-                        var oCurrentOptions = this.getOptions(mOptions);
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        oMergedOptions[oConstants.IN_ZONE] = oCurrentOptions[oConstants.OUT_ZONE];
-                        oMergedOptions[oConstants.IN_FORMAT] = oCurrentOptions[oConstants.OUT_FORMAT];
-                        oMergedOptions[oConstants.IN_DATE_FORMAT] = oCurrentOptions[oConstants.OUT_DATE_FORMAT];
-                        oMergedOptions[oConstants.IN_TIME_FORMAT] = oCurrentOptions[oConstants.OUT_TIME_FORMAT];
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    today: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            throw new Error('MomentJS didnt initialize');
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        var oRevertOptions = this.getRevertOptions(mOptions);
-                        var oToday;
-                        if (!sTime || sTime === 'now') {
-                            oToday = this.parse('', mOptions);
-                        } else {
-                            iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                            oToday = fMomentWrapper().tz(sTime, getFormatFromFlag(oRevertOptions, iFlag, true), oRevertOptions[oConstants.IN_ZONE]);
-                            if (oToday.isValid() === false) {
-                                var oStandardDateRegex = new RegExp(oConstants.STANDARD_DATE_REGEX.replace(/\//g, ''));
-                                if (oStandardDateRegex.test(sTime) === true) {
-                                    oToday = fMomentWrapper().tz(sTime, oRevertOptions[oConstants.IN_ZONE]);
-                                } else {
-                                    oToday = fMomentWrapper()();
-                                }
-                            }
-                        }
-                        
-                        var oStartOfDay = oToday.clone().startOf('day');
-                        var oEndOfDay = oToday.clone().endOf('day');
-                        
-                        var sStartOfDayInSeoul = oStartOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        var sEndOfDayInSeoul = oEndOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        
-                        return [sStartOfDayInSeoul, sEndOfDayInSeoul];
-                    },
-                    
-                    parseFromFormat: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                        
-                        var oRevertOptions = {};
-                        if (typeof mOptions === 'string') {
-                            oRevertOptions = this.getRevertOptions(mOptions);
-                        } else {
-                            oRevertOptions = this.getOptions(mOptions);
-                        }
-                        
-                        return fMomentWrapper()(sTime, getFormatFromFlag(oRevertOptions, iFlag, true));
-                    }
-                };
-            })();</script>
+						src="https://slowand.com/ind-script/moment.php?convert=T"></script>                
 
 					<link rel="stylesheet" type="text/css"
 						href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
@@ -385,49 +174,31 @@
 
 					<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
 					<meta name="path_role" content="PRODUCT_DETAIL" />
-					<meta name="author" content="슬로우앤드" />
+					<meta name="author" content="슬로우앤드" />        
 					<meta name="description" content="" />
 					<meta name="keywords"
 						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
 					<meta name="design_html_path"
-						content="http://slowand.com/product/detail.html" />
+						content="http://slowand.com/product/detail.html" />                                 
 </head>
+
 <body id="cmn">
 	<div id="skipNavigation">
 		<p>
 			<a href="#category">전체상품목록 바로가기</a>
-		</p>
+		</p>             
 		<p>
-			<a href="#contents">본문 바로가기</a>
+			<a href="#contents">본문 바로가기</a>          
 		</p>
 	</div>
 
 	<div id="wrap">
 		<!-- 상단카테고리 -->
 
-		<script>
-    // 메인메뉴에 마우스오버시 하위메뉴 나타남
-    $(".gnb > li").mouseenter(function(){
-        //$(this).find(".gnb_sub").stop().slideDown(200);
-        $(this).find(".gnb_sub").stop().css('display','block');
-    });
-    $(".gnb > li").mouseleave(function(){
-        $(this).find(".gnb_sub").css("display","none");
-    });  
-    
-    // 메인메뉴에 마우스오버시 하위메뉴 나타남 *커뮤니티 이동 양지수정*
-    $(".myList > .xans-layout-boardinfo").mouseenter(function(){
-        //$(this).find(".gnb_sub").stop().slideDown(200);
-        $(this).find(".gnb_sub").stop().css('display','block');
-    });
-    $(".myList > .xans-layout-boardinfo").mouseleave(function(){
-        $(this).find(".gnb_sub").css("display","none");
-    }); 
-</script>
 		<!-- //상단카테고리 -->
 
 		<div id="container">
-			<div id="contents">
+			<div id="contents">    
 
 				<!--
     $category_page = /product/list.html
@@ -452,7 +223,7 @@
 										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage " />
 									</a>
 									<div id="zoom_wrap"></div>
-									<div class="color displaynone"></div>
+									<div class="color displaynone"></div>      
 								</div>
 							</div>
 							<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
@@ -463,12 +234,12 @@
 										src="//slowand.com/web/product/small/201911/4ea4f1ef5b1ebf6b8498831b8ef4b233.gif"
 										class="ThumbImage" alt="" /></li>
 								</ul>
-							</div>
+							</div>         
 							<!-- //참고 -->
 							<div class="likeButton displaynone">
 								<button type="button">
 									<span class="title">좋아요</span><span class="count"></span>
-								</button>
+								</button>                    
 							</div>
 						</div>
 						<!-- //이미지 영역 -->
@@ -595,14 +366,15 @@
 															class="ec-product-button" required="true">
 
 															<c:forEach var="itemOption" items="${dto.itemOptionList}">
-																<c:if test="${(empty pre_val)||itemOption.itemColor != pre_val}">
-																<li class="" option_value="컬러" link_image=""
-																	title="아이보리"><a href=""> <span>${itemOption.itemColor}</span></a>
-																</li>
-																<c:set var="pre_val"
-																	value="${itemOption.itemColor}" />
+																<c:if
+																	test="${(empty pre_val)||itemOption.itemColor != pre_val}">
+																	<li class="" option_value="컬러" link_image=""
+																		title="아이보리" id="itemColor${itemOption.itemColor}"><a href="javascript:;"
+																		onclick="checkColor('${itemOption.itemColor}')"> <span>${itemOption.itemColor}</span></a>
+																	</li>             
+																	<c:set var="pre_val" value="${itemOption.itemColor}" />       
 																</c:if>
-															</c:forEach>  
+															</c:forEach>
 														</ul>
 
 
@@ -610,7 +382,8 @@
 														<p class="value">
 															[필수] <span
 																class="ec-shop-front-product-option-desc-trigger"
-																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
+																data-option_msg="옵션을 선택해 주세요" id="selectedItemColor">옵션을
+																선택해 주세요</span>
 														</p>
 													</td>
 												</tr>
@@ -620,37 +393,26 @@
 															src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_manual_select.gif"
 															alt="옵션 선택" /></a></td>
 												</tr>
-
-												<tr	class="xans-element- xans-product xans-product-option xans-record-">
+												<tr
+													class="xans-element- xans-product xans-product-option xans-record-"
+													id="divItemSize" style="display:none">     
 													<th scope="row">SIZE</th>
-													<td><ul option_product_no="3607"
+													<td><ul option_product_no="3668"
 															option_select_element="ec-option-select-finder"
 															option_sort_no="2" option_type="T" item_listing_type="S"
 															option_title="SIZE" product_type="product_option"
-															product_option_area="product_option_3607_0"
+															product_option_area="product_option_3668_0"
 															option_style="button" ec-dev-id="product_option_id2"
 															ec-dev-name="option2" ec-dev-class="ProductOption0"
-															class="ec-product-button" required="true" id="itemSize">
-															<li class="ec-product-able" option_value="S"
-																link_image="" title="S"><a href="#none"><span>S</span></a></li>
-															<li class="ec-product-disabled" option_value="M"
-																link_image="" title="M"><a href="#none"><span>M</span></a></li>
-															<li class="ec-product-disabled" option_value="L"
-																link_image="" title="L"><a href="#none"><span>L</span></a></li>
+															class="ec-product-button" required="true"
+															id="categoryItemColor">
 														</ul>
 														<p class="value">
 															[필수] <span
-																class="ec-shop-front-product-option-desc-trigger"
-																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
-														</p> <select
-														product_option_area_select="product_option_3607_0"
-														id="product_option_id2" name="option2" option_title="SIZE"
-														option_type="T" item_listing_type="S"
-														class="ProductOption0" style="display: none;"
-														required="true"><option value="*">empty</option>
-															<option value="S">S</option>
-															<option value="M">M</option>
-															<option value="L">L</option></select></td>
+																class="ec-shop-front-product-option-desc-trigger ec-product-value"
+																data-option_msg="옵션을 선택해 주세요" id="selectedItemSize">옵션을
+																선택해 주세요</span>
+														</p></td>
 												</tr>
 
 
@@ -710,77 +472,20 @@
 												</tr>
 											</tbody>
 											<!-- 참고 : 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다.-->
-											<tbody class="option_products">
-
-												<tr class="option_product " data-option-index="1"
-													target-key="3596">
-													<td><input type="hidden" class="option_box_id"
-														id="option_box1_id" value="P0000FII000A"
-														name="item_code[]" data-item-add-option=""
-														data-item-reserved="N" data-option-id="'+sOptionId+'"><p
-																class="product">
-																#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color<br> - <span>아이보리</span>
-															</p></td>
-													<td><span class="quantity" style="width: 65px;"><input
-															type="text" id="option_box1_quantity"
-															name="quantity_opt[]"
-															class="quantity_opt eProductQuantityClass" value="1"
-															product-no="3596"><a href="#none"><img
-																	src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"
-																	id="option_box1_up" class="up option_box_up" alt="수량증가"></a><a
-																href="#none"><img
-																	src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif"
-																	id="option_box1_down" class="down option_box_down"
-																	alt="수량감소"></a></span><a href="#none" class="delete"><img
-															src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-															alt="삭제" id="option_box1_del" class="option_box_del"></a></td>
-													<td class="right"><span id="option_box1_price"><input
-															type="hidden" class="option_box_price" value="29800"
-															product-no="3596" item_code="P0000FII000A"><span
-																class="ec-front-product-item-price" code="P0000FII000A"
-																product-no="3596">29,800원</span></span></td>
-												</tr>
-												<tr class="option_product " data-option-index="2"
-													target-key="3596">
-													<td><input type="hidden" class="option_box_id"
-														id="option_box2_id" value="P0000FII000C"
-														name="item_code[]" data-item-add-option=""
-														data-item-reserved="N" data-option-id="'+sOptionId+'"><p
-																class="product">
-																#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color<br> - <span>코코아브라운</span>
-															</p></td>
-													<td><span class="quantity" style="width: 65px;"><input
-															type="text" id="option_box2_quantity"
-															name="quantity_opt[]"
-															class="quantity_opt eProductQuantityClass" value="1"
-															product-no="3596"><a href="#none"><img
-																	src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_up.gif"
-																	id="option_box2_up" class="up option_box_up" alt="수량증가"></a><a
-																href="#none"><img
-																	src="//img.echosting.cafe24.com/design/skin/default/product/btn_count_down.gif"
-																	id="option_box2_down" class="down option_box_down"
-																	alt="수량감소"></a></span><a href="#none" class="delete"><img
-															src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-															alt="삭제" id="option_box2_del" class="option_box_del"></a></td>
-													<td class="right"><span id="option_box2_price"><input
-															type="hidden" class="option_box_price" value="29800"
-															product-no="3596" item_code="P0000FII000C"><span
-																class="ec-front-product-item-price" code="P0000FII000C"
-																product-no="3596">29,800원</span></span></td>
-												</tr>
+											<tbody class="option_products" >
 											</tbody>
 
 
 											<tfoot>
 												<tr>
 													<td colspan="3"><strong>TOTAL PRICE</strong> (qty) <span
-														class="total"><strong><em>0</em></strong> (0 items)</span>
+														class="total"><strong><em id="totalPrice">0</em></strong> (<span id="totalCount">0</span> items)</span>
 														<p class="ec-base-help txt11 displaynone EC-price-warning">할인가가
 															적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p></td>
 												</tr>
 											</tfoot>
 										</table>
-									</div>
+									</div>        
 									<!-- //참고 -->
 
 									<div class="xans-element- xans-product xans-product-action">

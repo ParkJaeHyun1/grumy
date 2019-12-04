@@ -16,5 +16,6 @@ public interface noticeMapper {
 	int passcheck(Map map);
 	int delete(int no);
 	List<NoticeDTO> list_();
+	String getname(String id);
 
 }

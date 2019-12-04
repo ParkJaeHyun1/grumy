@@ -9,7 +9,7 @@ import spring.model.delivery.DeliveryDTO;
 import spring.model.notice.NoticeDTO;
 
 public interface AdminMapper {
-	int count(int stat);
+	int total(int stat);
 	List<AdminDTO> list(int stat);
 	ArrayList<NoticeDTO> noticel(int rownum);
 	ArrayList<DeliveryDTO> deliveryl(int rownum);
