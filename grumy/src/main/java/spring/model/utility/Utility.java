@@ -139,7 +139,7 @@ public class Utility {
 		List<String> list = new ArrayList<String>();
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
-		for(int i=0;i<2;i++) {
+		for(int i=0;i<3;i++) {
 		list.add(sd.format(cal.getTime())); //오늘날짜 YYYY~형태로 가져옴
 		cal.add(Calendar.DATE, -1);
 		} 
