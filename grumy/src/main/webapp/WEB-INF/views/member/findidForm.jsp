@@ -41,6 +41,21 @@
 <link rel="stylesheet" type="text/css" href="//www.slowand.com//ind-script/optimizer.php?filename=rY5BDgIhDEUPMG49RzNq4nkqVKhCSyhouL3juHU1uvmbl__yIGomIDd1o2qAInSYz0co_ZLYTbHlBOZp8mQcBOzOcgJnBll9TwQJh_YGTuWx_FmluN2C97DFO1DCjVd9JPRUt6u-JGKjoHX8Je-q2n7Jw1IMWKxhqJif7AO1Fc2ffZtf&amp;type=css&amp;k=0bf1200a5e8ef8a5ba790aa4613ab5bd42bdb5c6&amp;t=1566806466">
 
 <title>grumy</title>
+
+<!--  radio 변경 -->
+<script type="text/javascript">
+function transformType(id){
+	if(id=="Radio_On"){
+		document.all["Radio_On"].style.display="";
+		document.all["Radio_Off"].style.display="none";
+	}else{
+		document.all["Radio_On"].style.display="none";
+		document.all["Radio_Off"].style.display="";
+	}
+}
+
+</script>
+
 </head>
 <body id="cmn">
 <div id="wrap">    
@@ -97,11 +112,11 @@ onclick="">
 <legend>아이디 찾기</legend>
 
 
-<input id="check_method1" name="check_method" fw-filter="" 
+<input id="check_method1" name="check_method" fw-filter="" onclick="transformType('Radio_On');"
 fw-label="찾는방법" fw-msg="" value="1" type="radio" checked="checked">
 <label for="check_method1">이메일</label>
 
-<input id="check_method2" name="check_method" fw-filter="" 
+<input id="check_method2" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
 fw-label="찾는방법" fw-msg="" value="2" type="radio">
 <label for="check_method2">
 <span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
@@ -111,17 +126,16 @@ fw-label="찾는방법" fw-msg="" value="2" type="radio">
 <strong id="name_lable">이름</strong><input id="name" name="name" fw-filter="" fw-label="이름" fw-msg="" class="lostInput" placeholder="" value="" type="text">
 </p>
             
-<p id="email_view" class="email" style="">
-<strong>이메일로 찾기</strong><input id="email" name="email" fw-filter="isEmail" fw-label="이메일" 
+<p id="Radio_On" class="email" style="">
+<strong>이메일</strong><input id="email" name="email" fw-filter="isEmail" fw-label="이메일" 
 fw-msg="" class="lostInput" placeholder="" value="" type="text">
 </p>
             
-<p id="phone_view" class="phone" style="display:none;">
-<strong>휴대폰 번호로 찾기</strong>
-<input id="phone" name="phone" 
-fw-filter="isNumber" 
-fw-label="휴대전화 번호" fw-msg="" class="phone" 
-placeholder="" maxlength="11" value="" type="text">
+<p id="Radio_Off" class="phone" style="display:none;">
+<strong>휴대폰 번호</strong><input id="phone" name="phone" 
+fw-filter="isNumber" fw-label="휴대전화 번호" 
+fw-msg="" class="lostInput" placeholder="" maxlength="11" 
+value="" type="text">
 </p>
          
 <p class="ec-base-button ">
