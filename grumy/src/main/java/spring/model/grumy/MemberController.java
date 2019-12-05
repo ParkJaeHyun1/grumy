@@ -55,7 +55,7 @@ public class MemberController {
 		}
 
 		return url;
-	}//end createproc
+	}//end create
 	
 	@ResponseBody
 	@GetMapping(value = "/member/idcheck", produces = "application/json;charset=utf-8")
@@ -167,7 +167,7 @@ public class MemberController {
 
 	
 	@PostMapping("member/delete")
-	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session) {
+	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session,Model model) {
 		Map map = new HashMap();
 		map.put("id", id);
 		map.put("passwd", passwd);
@@ -175,8 +175,11 @@ public class MemberController {
 		int flag = dao.delete(map);
 
 		if (flag == 1) {
+			
 			session.invalidate();
-			return "redirect:/";
+
+			return "redirect:/"; 
+			
 		} else {
 			return "error";
 		}
@@ -193,7 +196,7 @@ public class MemberController {
 		int flag = dao.update(dto);
 		
 		if (flag == 1) {
-
+			
 			return "redirect:/";
 		} else {
 			

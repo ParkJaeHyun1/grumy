@@ -97,25 +97,24 @@ function sample6_execDaumPostcode() {
     }
 </script>
 
-
-
 <!-- 회원정보 확인  -->
 
 <script language="javascript">
    function validate() {
-       var re = /^[a-zA-Z0-9]{8,16}$/ 
+       
        var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-   
+   	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
+   	   
        var passwd = document.getElementById("passwd");
        var email = document.getElementById("email");
 
-
-       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
-           return false;
+	   if(!check(re3,passwd,"숫자,영문,특수문자가 모두 포함되어야 합니다")){
+		   user_passwd_confirm.value="";
+		   return false;
        }
 
        if(user_passwd_confirm.value.length==0){
-   		alert("비밀번호 확인을 입력하세요");
+   		alert("비밀번호를 입력하세요");
    		user_passwd_confirm.focus();
    		return false;
    		}
@@ -180,14 +179,9 @@ function sample6_execDaumPostcode() {
 <!-- 탈퇴 처리 확인 -->
 <script language="javascript">
    function validate1() {
-       var re = /^[a-zA-Z0-9]{8,16}$/ 
-      
+       
        var passwd = document.getElementById("passwd");
- 
-       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
-           return false;
-       }
-
+      
        if(user_passwd_confirm.value.length==0){
    		alert("비밀번호 확인을 입력하세요");
    		user_passwd_confirm.focus();
@@ -201,6 +195,7 @@ function sample6_execDaumPostcode() {
    		passwd.focus();
    		return false;
    	   }
+   	   
    	   if(delpasswd.value != passwd.value){
    		alert("비밀번호가 일치하지 않습니다.");
    		passwd.value="";
@@ -210,15 +205,6 @@ function sample6_execDaumPostcode() {
    	   }
 }
 
-   function check(re, what, message) {
-       if(re.test(what.value)) {
-           return true;
-       }
-       alert(message);
-       what.value = "";
-       what.focus();
-       //return false;
-   }
 </script>
 
 </head>
