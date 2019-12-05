@@ -83,6 +83,14 @@ function sample6_execDaumPostcode() {
     }
 </script>
 
+<!-- 회원가입시 정규식 사용 -->
+
+<script>
+	var 
+
+</script>
+
+
 <!-- 필수 입력창 확인  -->
 
 <script language="javascript">
@@ -90,12 +98,12 @@ function sample6_execDaumPostcode() {
    function validate() {
        
 	   var re = /^[a-zA-Z0-9]{8,16}$/ 
-       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-       var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
+	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
 
-       var id = document.getElementById("id");
-       var passwd = document.getElementById("passwd");
-       var email = document.getElementById("email");
+	   var id = document.getElementById("id");
+	   var passwd = document.getElementById("passwd");
+	   var email = document.getElementById("email");
 
 
 
@@ -261,7 +269,6 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
 			fw-label="아이디" fw-msg="" maxlength="16" class="inputTypeText" placeholder=""
 			value="" type="text" />
-			<span id="idMsg"></span> 
 			(영문 대소문자/숫자,8~16자)
 			<button type="button" class="yg_btn_140 yg_btn3"
 				 onclick="idCheck(document.joinForm.id.value)">ID 중복확인</button>
@@ -275,7 +282,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<input id="passwd" name="passwd" 
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
 			autocomplete="off" maxlength="16" 0="disabled" value=""
-			type="password" /> 
+			type="password" />
+		<div id="pwcheck"></div>
 		(영문 대소문자/숫자,8~16자, 영문,숫자,특수문자 조합)
 		</td>
 	</tr>
