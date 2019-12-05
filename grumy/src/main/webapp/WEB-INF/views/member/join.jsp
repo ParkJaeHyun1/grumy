@@ -86,7 +86,7 @@ function sample6_execDaumPostcode() {
 <!-- 회원가입시 정규식 사용 -->
 
 <script>
-	var 
+
 
 </script>
 
@@ -651,7 +651,6 @@ $(document).ready(function() {
 
 $(".inner_b .address i.bizLink a").text("[Go Checking]");
 </script>
-	
 
 <hr class="layout" />
 <!-- //참고 -->
