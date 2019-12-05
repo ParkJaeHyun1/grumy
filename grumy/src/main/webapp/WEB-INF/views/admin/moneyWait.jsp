@@ -93,8 +93,6 @@
 								</c:otherwise>
 							</c:choose>
 	
-	
-	
 						</tbody>
 					</table>
 					<p
@@ -106,26 +104,20 @@
 						<fieldset class="boardSearch">
 							<p>
 								<select id="col" name="col" fw-filter="" fw-label="" fw-msg="">
-									<option value="subject"
-										<c:if test="${col == 'subject' }">selected</c:if>>결제번호</option>
-									<option value="content"
-										<c:if test="${col == 'content' }">selected</c:if>>아이템명</option>
-									<option value="writer"
-										<c:if test="${col == 'writer' }">selected</c:if>>구매자</option>
-								</select> <input id="word" name="word" type="text">
+									<option value="onum"
+										<c:if test="${col == 'onum' }">selected</c:if>>결제번호</option>
+									<option value="otitle"
+										<c:if test="${col == 'otitle' }">selected</c:if>>아이템명</option>
+									<option value="buyer"
+										<c:if test="${col == 'buyer' }">selected</c:if>>구매자</option>
+								</select> 
+								<input id="word" name="word" type="text">
 								<button class="yg_btn_28 yg_btn3">SEARCH</button>
 							</p>
 						</fieldset>
 					</div>
-				</form>
-				
-				<c:if test="${sessionScope.id=='admin' && sessionScope.grade=='A' }">
-							<p  align="right">
-							<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
-							</p>
-				</c:if>
-		
-					
+				</form>	
+				${paging}	
 			</div>	
 		</div>
 		<hr class="layout">

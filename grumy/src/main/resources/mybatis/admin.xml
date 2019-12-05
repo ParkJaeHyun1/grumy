@@ -7,6 +7,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="total" parameterType="int" resultType="int">
 		select count(state) from orderItem where state = #{state}
 	</select>
+	<select id="totalP" parameterType="map" resultType="int">
+		select count(*) from 
+			(
+			select a.id, a.orderno, i.title, b.orderitemno from norder a, orderitem b, itemoption o, item i 
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state}
+			)
+		<where>
+			<choose>
+				<when test="col == 'onum'">
+					and orderno like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'otitle'">
+					and title like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'buyer'">
+					and id like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
 	
 	<resultMap type="orderDTO" id="orderMap">
 		<result property="id" column="id"/>
@@ -26,10 +46,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="list" parameterType="int" resultMap="orderMap">
-		select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, a.odate odate, b.itemcount itemcount,  b.state state, 
-		(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
-		from norder a, orderitem b ,item i, itemOption o
-		where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state} order by a.orderno desc
+		select * from
+		(select orderno, id, odate, orderItemNo, itemcount, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
+		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, a.odate odate, b.itemcount itemcount,  b.state state, 
+			(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
+			from norder a, orderitem b ,item i, itemOption o
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state} 
+			
+				<choose>
+					<when test="col == 'onum'">
+						and a.orderno like '%'||#{word}||'%'
+					</when>
+					<when test="col == 'otitle'">
+						and i.title like '%'||#{word}||'%'
+					</when>
+					<when test="col == 'buyer'">
+						and a.id like '%'||#{word}||'%'
+					</when>
+				</choose>
+			order by a.orderno desc
+			))
+		<![CDATA[
+		where r >=#{sno} and r<=#{eno}
+		]]>
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
