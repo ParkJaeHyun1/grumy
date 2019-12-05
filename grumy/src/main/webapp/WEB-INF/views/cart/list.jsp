@@ -297,12 +297,12 @@ function setView(){
 											id="cart_checkBox_${dto.cartNo}"
 											name="orderInfoList"  value="${dto.cartNo}"/></td>
 										<td class="thumb gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}"><img
+											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
 												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
 												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 												alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
 										<td class="left gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?no=${dto.itemNo}">${dto.itemTitle}
+											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}
 												<img src="https://www.slowand.com//web/upload/custom_3.gif"
 												alt="" />
 										</a><span class="displaynone"><br />(영문명 : )</span>

@@ -22,8 +22,7 @@ public class CartController {
 	@RequestMapping("/cart/list")
 	public String list(HttpServletRequest request, HttpSession session) {
 		int totalPrice=0;
-		//String userID = (String)session.getAttribute("id");
-		String id = "tester"; 
+		String id = (String)session.getAttribute("id");
 		ArrayList<CartDTO> list = mapper.list(id);
 		
 		for(CartDTO dto: list )

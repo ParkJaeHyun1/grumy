@@ -87,9 +87,10 @@
 </div>
 
 <form id="member_form_3274124755" name="" 
-action="login" method="post" 
+action="loginProc" method="post" 
 target="_self" enctype="multipart/form-data">
 
+<input type="hidden" name="url" value="${url}"></input>
 <div class="xans-element- xans-member xans-member-login ">
 <div class="login">        
 

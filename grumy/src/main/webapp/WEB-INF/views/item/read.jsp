@@ -41,7 +41,7 @@
 		});
 			var selectedColor;
 			var selectedSize;
-            var list = {};
+            var list = {}; 
             var selectedItem = {};
             <c:forEach items="${dto.itemOptionList}" var="itemOption">
             list.itemOptionNo${itemOption.itemOptionNo}={itemColor:'${itemOption.itemColor}',itemSize:'${itemOption.itemSize}',itemCount:${itemOption.itemCount},itemOptionNo:${itemOption.itemOptionNo}}; 
@@ -142,7 +142,21 @@
 					$('.option_products').append(str);
 					setTotalPrice();
 	
-				}                  
+				}        
+				function addToCart(){
+					checkLogin();
+				}
+				function buyNow(){
+					checkLogin();
+				}
+				function checkLogin(){ 
+					if(${sessionScope.id == null || sessionScope.id==''}){
+						var result = confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?");
+						if(result){
+							$('#loginForm').submit();
+						}
+					}
+				}
             	function showReplyList(nowPage){
                     var itemNo = ${dto.itemNo};
 
@@ -216,6 +230,18 @@
 </head>
 
 <body id="cmn">
+<div class="xans-element- xans-product xans-product-basketadd ec-base-layer " style="position:fixed;top:50%;left:50%;z-index:1000;width:450px;margin:-175px 0 0 -225px;"><div class="header">
+        <h3>장바구니 담기</h3>
+    </div>
+<div class="content" style="padding:185px 20px 65px;text-align:center;background:url(//img.echosting.cafe24.com/skin/base/product/bg_add_basket.gif) no-repeat 50% 68px;">    
+        <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+    </div>
+<div class="ec-base-button">
+        <a href="/order/basket.html?delvtype=A" alt="장바구니 이동" class="yg_btn yg_btn1 yg_btn_hover_fff">장바구니 이동</a>
+        <a href="#none" onclick="$('#confirmLayer').hide();" alt="쇼핑계속하기" complete="complete" class="yg_btn yg_btn3 yg_btn_hover_333">쇼핑계속하기</a>
+    </div>
+<a class="close" onclick="$('#confirmLayer').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="닫기"></a>
+</div>
 	<div id="skipNavigation">
 		<p>
 			<a href="#category">전체상품목록 바로가기</a>             
@@ -237,8 +263,11 @@
     $category_page = /product/list.html
     $project_page = /product/project.html
     $jointbuy_page = /product/jointbuy.html
--->
-
+-->				
+				<form action="${pageContext.request.contextPath}/member/login" class="form-horizontal" method="post" id="loginForm" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
+					<input type="hidden" name="url" value ="/item/read?itemNo=${dto.itemNo}"></input>
+				</form>
+			
 				<!-- 상단 제품 정보  -->
 				<div class="xans-element- xans-product xans-product-detail">
 					<div class="detailArea ">
@@ -251,9 +280,8 @@
 										href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 										alt="P0000FII"
 										onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
-										<img
-										src="${pageContext.request.contextPath}/images/${dto.image}"
-										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage " />
+										<img src="${pageContext.request.contextPath}/images/${dto.image}"
+										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage" />
 									</a>
 									<div id="zoom_wrap"></div>
 									<div class="color displaynone"></div>      
@@ -524,10 +552,10 @@
 										<div class="fixed_cont_btn">
 											<div class="ec-base-button">
 												<a id="cartBtn" href="#none" class=" cart"
-													onclick="product_submit(2, '/exec/front/order/basket/', this)"
+													onclick="addToCart()"
 													alt="장바구니 담기">ADD TO CART</a> <a id="wishBtn"
 													style="width: 100%" href="#none" class="first "
-													onclick="product_submit(1, '/exec/front/order/basket/', this)"><span
+													onclick="butNow()"><span
 													alt="바로구매하기" id="btnBuy">BUY NOW</span> <span alt="예약주문"
 													class="displaynone" id="cartBtn">예약주문</span></a> <a
 													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a>
@@ -942,6 +970,9 @@ fbq('track', 'ViewContent', {
 	<!-- CMC script -->
 	<!-- External Script End -->
 
+		<script type="text/javascript"
+		src="https://www.slowand.com/ind-script/optimizer.php?filename=nY-7DsIwDEX3lpXvsFqQmPmUPEwbNYkrPyT4e9JOSCzQ0ZbvOb4wU0EYRoaVaWJXgFHIOCAEEXgwVYVApVA9tcUZfrnH0All00S18_Q8GDTVo9LsXsjHoup8xo8oht4EWcDViuNwu8BqPqfQz1oySMQ-oqSpgiypXqGZyRS8kxR2Q2O3Ab9e-pO7oQpFy7gViRZ2x4J6j3GjvgE&type=css&k=a53c0167c1b780cc8388be1ef9dc0b901e71c22f&t=1543392667"></script>
+	
 	<script type="text/javascript"
 		src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
 		charset="utf-8"></script>
@@ -954,7 +985,8 @@ fbq('track', 'ViewContent', {
 		src="https://slowand.com//ind-script/optimizer.php?filename=rZXBbsIwDIZfYNc9R7S9AaVCQoLB2kk7m9RrQ5M4clIq3n6Z6DQ4QNV0h0ZVpP9z_MexRUMGxcsrC8dUMxgBzomyIScK9NSxRHH0YsVkg9gzVZ0MIscASouss5XGuGkoKLJPR_8spuDesI-7J4V9AN0Ov0vqbJiOghPyVmmEGieLM1XnEGBDdVIK8RuMWZImlo1yMzm5YpQh686TOQNgbVJ8uD1EGUi2Mxk7l1wYf5BVvNZ_ARUoMaW2biCLqlrbL0q9mShXP6mATiUUqCHJjEH_biFVuiRj7jrIV6pFF5qy3NyPswUbK_QmUo8Hfe8FXrObYHQ8RHQR_aQA4M9WXtZknUFzQE6W77hClo9qcASQgW8xzCc4VhJnMoaiSKbETu_IzslltOGP6HN05FV6_E_lm43y8wDy8cAbIfBITxuRX1riB8UB_Dt4vwE&type=js&k=f225e7df2a80165137842b4ee6b7303ab9119144&t=1573420409"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/ind-script/itemread.php"></script>
-</body>
+
+</body>       
 </html>
 
 <script

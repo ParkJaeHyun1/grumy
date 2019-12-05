@@ -36,9 +36,10 @@ public class OrderController {
 			totalPrice += (dto.getItemPrice() - dto.getItemSalePrice());
 			if(s.length>2)
 				dto.setCartNo(Integer.parseInt(s[2]));
+			System.out.println(dto.toString());
 		}
 		if(totalPrice<50000)
-			deliveryCharge = 2500;
+			deliveryCharge = 0;
 		
 		request.setAttribute("list", orderItemList);
 		request.setAttribute("totalPrice", totalPrice);

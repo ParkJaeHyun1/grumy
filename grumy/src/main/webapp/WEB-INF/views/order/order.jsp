@@ -19,6 +19,72 @@
 <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"  type="application/javascript"></script>
+<script>
+function purchase(){
+   BootPay.request({
+      price: '1000', //실제 결제되는 가격
+      application_id: "5dd76d0802f57e0021e217c1",
+      name: '${list[0].itemTitle}', //결제창에서 보여질 이름
+      pg: '',
+      method: '', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+      show_agree_window: 1, // 부트페이 정보 동의 창 보이기 여부
+      items: [
+         {
+            item_name: '나는 아이템', //상품명
+            qty: 1, //수량
+            unique: '123', //해당 상품을 구분짓는 primary key
+            price: 1000, //상품 단가
+            cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
+            cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
+            cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
+         }
+      ],
+      user_info: {
+         username: '구매자이름',
+         email: '구매자 메일',
+         addr: '사용자 주소',
+         phone: '010-1234-4567'
+      },
+      order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
+      account_expire_at: '2018-05-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+      extra: {
+          start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
+         end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
+           vbank_result: 1, // 가상계좌 사용시 사용, 가상계좌 결과창을 볼지(1), 말지(0), 미설정시 봄(1)
+           quota: '0' // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용
+      }
+   }).error(function (data) {
+      //결제 진행시 에러가 발생하면 수행됩니다.
+      console.log(data);
+   }).cancel(function (data) {
+      alert('결제를 취소하셨습니다.');
+      console.log(data);
+   }).ready(function (data) {
+      alert('가상계좌 번호 발급:'+data);
+      console.log(data);
+   }).confirm(function (data) {
+      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
+      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
+      console.log(data);
+      var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
+      if (enable) {
+         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+      } else {
+         BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+      }
+   }).close(function (data) {
+       console.log(data);
+   }).done(function (data) {
+	   alert('결제가 완료되었습니다.');
+      //결제가 정상적으로 완료되면 수행됩니다.
+      //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
+      console.log(data);
+   });
+}
+   </script>
+
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
@@ -127,12 +193,12 @@
 										<tr>
 											<td class=""></td>
 											<td colspan="8"><span class="gLeft">[기본배송]</span> 상품구매금액
-												96,900<span class="displaynone"> (0)</span><span
+												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/><span class="displaynone"> (0)</span><span
 												class="displaynone"> + 부가세 0</span> + 배송비 <span
-												id="domestic_ship_fee">0 (무료)</span> <span
+												id="domestic_ship_fee"><fmt:formatNumber value="${deliveryCharge}" pattern="###,###,###"/> <c:if test="${deliveryCharge==0}">(무료)</c:if></span> <span
 												class="displaynone"> - 상품할인금액 0 </span> = 합계 : <strong
 												class="txtEm gIndent10"><span
-													id="domestic_ship_fee_sum" class="txt18">96,900</span>원</strong> <span
+													id="domestic_ship_fee_sum" class="txt18"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong> <span
 												class="displaynone"></span></td>
 										</tr>
 									</tfoot>
@@ -142,140 +208,57 @@
 										<tr class="xans-record-">      
 											<td class=""></td>      
 											<td class="thumb gClearLine"><a
-												href="/product/detail.html?product_no=3573&cate_no=24"><img
-													src="//www.slowand.com/web/product/tiny/201911/23d4e1113d8d2f213b43cc9e02b415ee.jpg"
+												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
+													src="${pageContext.request.contextPath}/images/${dto.itemImage}"
 													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 													alt="" /></a></td>
 											<td class="left gClearLine"><a
-												href="/product/detail.html?product_no=3573&cate_no=24">#SLOWMADE.
-													퍼스널 울 골지가디건 - 5 color</a>
-												<div class="option ">[옵션: 그레이]</div>
+												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle }</a>
+												<div class="option ">[옵션: ${dto.itemColor}/${dto.itemSize} } }]</div>
 												<p class="gBlank5 displaynone">무이자할부 상품</p>
 												<p class="gBlank5 displaynone">유효기간 :</p></td>
 											<td>
+											<c:if test="${dto.itemSalePrice != 0} }">
 												<div class="discount">
-													25000원
+														<fmt:formatNumber value="${dto.itemPrice}" pattern="###,###,###"/>원
 													<p class="displaynone"></p>
 												</div>
-											
+											</c:if>
 											<div id="cart_item_price_21">
-												22000원</div></td>
-											<td>1</td>
+												<fmt:formatNumber value="${dto.itemPrice-dto.itemSalePrice}" pattern="###,###,###"/>원</div></td>
+											<td>${dto.count} </td>
 											<td><span class="txtInfo"><input
 													id='product_mileage_cash_3573_000D'
 													name='product_mileage_cash' value='578' type="hidden"><img
 														src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
-														578원<br /> <input id='product_mileage_card_3573_000D'
+														<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br /> <input id='product_mileage_card_3573_000D'
 														name='product_mileage_card' value='289' type="hidden"><img
 															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
-															289원<br /> <input id='product_mileage_tcash_3573_000D'
+															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber> 원<br /> <input id='product_mileage_tcash_3573_000D'
 															name='product_mileage_tcash' value='289' type="hidden"><img
 																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
-																289원<br /> <input id='product_mileage_cell_3573_000D'
+																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_cell_3573_000D'
 																name='product_mileage_cell' value='289' type="hidden"><img
 																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
-																	289원<br /> <input id='product_mileage_icash_3573_000D'
+																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_icash_3573_000D'
 																	name='product_mileage_icash' value='289' type="hidden"><img
 																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
-																		289원</span></td>
+																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
 											<td><div class="txtInfo">
 													기본배송<br />
 												</div></td>
-											<td rowspan="1" class="">[무료]</td>
-											<td>28,900원
+											<td rowspan="1" class="">
+											<c:choose>
+												<c:when test="${deliveryCharge==0 }"> 무료</c:when>
+												<c:otherwise>${deliveryCharge }</c:otherwise>
+											</c:choose>
+											</td>
+											<td><fmt:formatNumber value="${dto.count*(dto.itemPrice-dto.itemSalePrice)}" pattern="###,###,###"/>원
 												<div class="displaynone"></div>
 											</td>
 										</tr>
 										</c:forEach>
 									</tbody>
-								</table>
-							</div>
-
-							<!-- 업체기본배송 -->
-							<div class="ec-base-table typeList gBorder displaynone">
-								<table border="1" summary="">
-									<caption>업체기본배송</caption>
-									<colgroup>
-										<col style="width: 40px" class="" />
-										<col style="width: 92px" />
-										<col style="width: auto" />
-										<col style="width: 98px" />
-										<col style="width: 75px" />
-										<col style="width: 98px" />
-										<col style="width: 98px" />
-										<col style="width: 85px" />
-										<col style="width: 98px" />
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col" class=""><input type="checkbox"
-												onclick="" /></th>
-											<th scope="col">IMAGE</th>
-											<th scope="col">PRODUCT NAME</th>
-											<th scope="col">PRICE</th>
-											<th scope="col">QTY</th>
-											<th scope="col">POINT<!--적립금-->
-											</th>
-											<th scope="col">DELIVERY</th>
-											<th scope="col">CHARGE</th>
-											<th scope="col">TOTAL</th>
-										</tr>
-									</thead>
-									<tfoot class="right">
-										<tr>
-											<td class=""></td>
-											<td colspan="8"><span class="gLeft">[업체기본배송]</span>
-												상품구매금액 <span class="displaynone"> ()</span><span
-												class="displaynone"> + 부가세 </span> + 배송비 <span
-												class="displaynone"> - 상품할인금액 </span> = 합계 : <strong
-												class="txtEm gIndent10"><span class="txt18"></span></strong>
-												<span class="displaynone"></span></td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<!-- 개별배송 -->
-							<div class="ec-base-table typeList gBorder displaynone">
-								<table border="1" summary="">
-									<caption>개별배송</caption>
-									<colgroup>
-										<col style="width: 40px" class="" />
-										<col style="width: 92px" />
-										<col style="width: auto" />
-										<col style="width: 98px" />
-										<col style="width: 75px" />
-										<col style="width: 98px" />
-										<col style="width: 98px" />
-										<col style="width: 85px" />
-										<col style="width: 98px" />
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col" class=""><input type="checkbox"
-												onclick="" /></th>
-											<th scope="col">IMAGE</th>
-											<th scope="col">PRODUCT NAME</th>
-											<th scope="col">PRICE</th>
-											<th scope="col">QTY</th>
-											<th scope="col">POINT<!--적립금-->
-											</th>
-											<th scope="col">DELIVERY</th>
-											<th scope="col">CHARGE</th>
-											<th scope="col">TOTAL</th>
-										</tr>
-									</thead>
-									<tfoot class="right">
-										<tr>
-											<td class=""></td>
-											<td colspan="8"><span class="gLeft">[개별배송]</span> 상품구매금액
-												<span class="displaynone"> ()</span><span
-												class="displaynone"> + 부가세 </span> + 배송비 <span
-												class="displaynone"> - 상품할인금액 </span> = 합계 : <strong
-												class="txtEm gIndent10"><span class="txt18"></span></strong>
-												<span class="displaynone"></span></td>
-										</tr>
-									</tfoot>
 								</table>
 							</div>
 						</div>
@@ -702,7 +685,7 @@
 												</div></td>
 											<td><div class="box txtEm txt16">
 													<strong>=</strong> <strong><span
-														id="total_order_sale_price_view" class="txt23">96,900</span>원</strong>
+														id="total_order_sale_price_view" class="txt23"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong>
 													<span class="displaynone"><span
 														id="total_order_sale_price_ref_view"></span></span>
 												</div></td>
@@ -833,15 +816,14 @@
 							<!-- 최종결제금액 -->
 							<div class="total" style="border: 1px solid #ddd">           
 								<h4>
-									<strong id="current_pay_name">무통장 입금</strong> <span>최종결제
-										금액</span>
+									<span>최종결제 금액</span>
 								</h4>
 								<p class="price">
 									<span></span><input id="total_price" name="total_price"
 										fw-filter="isFill" fw-label="결제금액" fw-msg=""
 										class="inputTypeText" placeholder=""
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
-										size="10" readonly="1" value="96900" type="text" /><span>원</span>
+										size="10" readonly="1" value="${totalPrice+deliveryCharge}" type="text" /><span>원</span>
 								</p>
 								<p class="paymentAgree" id="chk_purchase_agreement">
 									<input id="chk_purchase_agreement0"
@@ -851,7 +833,7 @@
 								</p>     
 								<div class="button">
 									<a href="#none" class="yg_btn_140" id="btn_payment"
-										style="width: 330px;" alt="결제하기">결제하기</a>
+										style="width: 330px;" alt="결제하기" onclick="purchase()">결제하기</a>
 								</div>
 								<div class="mileage ">
 									<dl class="ec-base-desc gLarge right">

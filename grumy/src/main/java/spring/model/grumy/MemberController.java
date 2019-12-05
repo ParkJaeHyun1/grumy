@@ -55,7 +55,7 @@ public class MemberController {
 		}
 
 		return url;
-	}//end create
+	}//end createproc
 	
 	@ResponseBody
 	@GetMapping(value = "/member/idcheck", produces = "application/json;charset=utf-8")
@@ -73,9 +73,9 @@ public class MemberController {
 		return map;
 	}//end idcheck
 	
-	@PostMapping("/member/login")
+	@RequestMapping("/member/loginProc")
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response,@RequestParam(value="url",required=false) String url) {
 		int flag = dao.loginCheck(map);
 
 		if (flag == 1) {
@@ -83,20 +83,18 @@ public class MemberController {
 			session.setAttribute("id", map.get("id"));
 			session.setAttribute("grade", grade);
 
-
-		
 		} else {
 			model.addAttribute("msg", "failure");
 			return "/login";
 		}
-		
-		return "redirect:/";
+		if(url == null || url.equals(""))
+			return "redirect:/";
+		return"redirect:"+url;
 	}
 	
-	@GetMapping("/member/login")
-	public String login(HttpServletRequest request) {
-
-
+	@RequestMapping("/member/login")
+	public String login(HttpServletRequest request,@RequestParam(value="url",required=false) String url) {
+		request.setAttribute("url", url);
 		return "/login";
 	}
 	
@@ -112,7 +110,6 @@ public class MemberController {
 
 		if(passwd!=null) {
 			
-			model.addAttribute("email", email);
 			model.addAttribute("passwd", passwd);
 
 			return "/findpwproc";
@@ -167,19 +164,13 @@ public class MemberController {
 
 	
 	@PostMapping("member/delete")
-	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session,Model model) {
-		Map map = new HashMap();
-		map.put("id", id);
-		map.put("passwd", passwd);
+	public String delete(String id,HttpServletRequest request, HttpSession session) {
 		
-		int flag = dao.delete(map);
+		int flag = dao.delete(id);
 
 		if (flag == 1) {
-			
 			session.invalidate();
-
-			return "redirect:/"; 
-			
+			return "redirect:/";
 		} else {
 			return "error";
 		}
@@ -196,7 +187,7 @@ public class MemberController {
 		int flag = dao.update(dto);
 		
 		if (flag == 1) {
-			
+
 			return "redirect:/";
 		} else {
 			
