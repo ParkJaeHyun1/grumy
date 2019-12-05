@@ -112,6 +112,7 @@ public class MemberController {
 
 		if(passwd!=null) {
 			
+			model.addAttribute("email", email);
 			model.addAttribute("passwd", passwd);
 
 			return "/findpwproc";
@@ -166,9 +167,12 @@ public class MemberController {
 
 	
 	@PostMapping("member/delete")
-	public String delete(String id,HttpServletRequest request, HttpSession session) {
+	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session) {
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("passwd", passwd);
 		
-		int flag = dao.delete(id);
+		int flag = dao.delete(map);
 
 		if (flag == 1) {
 			session.invalidate();

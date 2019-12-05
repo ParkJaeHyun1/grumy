@@ -132,6 +132,13 @@ function sample6_execDaumPostcode() {
    		passwd.focus();
    		return false;
    	   }
+   	   if(delfrm.passwd.value != frm.passwd.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;   
+   	   }
 
  
 
@@ -464,6 +471,8 @@ value="${dto.birth }" type="text">
 
 <form action="delete" class="form-horizontal" method="post" id="delfrm"
 name="delfrm" onsubmit="return validate();" enctype="multipart/form-data">
+<input type="hidden" name="id" id="id" value="${dto.id }">
+<input type="hidden" name="passwd" id="passwd" value="${dto.passwd }">
 <div class="ec-base-button justify">
 <button type="submit" class="yg_btn_140">탈퇴</button>
 </div>
