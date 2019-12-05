@@ -45,7 +45,7 @@ public class MemberController {
 			url = "redirect:/";
 		} else {
 			url = "error";
-		}
+		} 
 
 		return url;
 	}//end createproc
