@@ -99,21 +99,16 @@ function sample6_execDaumPostcode() {
 
 
 
-<!-- 필수 입력창 확인  -->
+<!-- 회원정보 확인  -->
 
 <script language="javascript">
    function validate() {
        var re = /^[a-zA-Z0-9]{8,16}$/ 
        var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-     
-
-       
+   
        var passwd = document.getElementById("passwd");
        var email = document.getElementById("email");
 
-
-
-      
 
        if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
            return false;
@@ -132,15 +127,6 @@ function sample6_execDaumPostcode() {
    		passwd.focus();
    		return false;
    	   }
-   	   if(delfrm.passwd.value != frm.passwd.value){
-   		alert("비밀번호가 일치하지 않습니다.");
-   		passwd.value="";
-   		user_passwd_confirm.value="";
-   		passwd.focus();
-   		return false;   
-   	   }
-
- 
 
        if(join.name.value=="") {
            alert("이름을 입력해 주세요");
@@ -191,6 +177,49 @@ function sample6_execDaumPostcode() {
    }
 </script>
 
+<!-- 탈퇴 처리 확인 -->
+<script language="javascript">
+   function validate1() {
+       var re = /^[a-zA-Z0-9]{8,16}$/ 
+      
+       var passwd = document.getElementById("passwd");
+ 
+       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+           return false;
+       }
+
+       if(user_passwd_confirm.value.length==0){
+   		alert("비밀번호 확인을 입력하세요");
+   		user_passwd_confirm.focus();
+   		return false;
+   		}
+
+   	   if(passwd.value != user_passwd_confirm.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;
+   	   }
+   	   if(delpasswd.value != passwd.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;   
+   	   }
+}
+
+   function check(re, what, message) {
+       if(re.test(what.value)) {
+           return true;
+       }
+       alert(message);
+       what.value = "";
+       what.focus();
+       //return false;
+   }
+</script>
 
 </head>
 <body id="cmn">
@@ -470,9 +499,9 @@ value="${dto.birth }" type="text">
 </div>
 
 <form action="delete" class="form-horizontal" method="post" id="delfrm"
-name="delfrm" onsubmit="return validate();" enctype="multipart/form-data">
+name="delfrm" onsubmit="return validate1();" enctype="multipart/form-data">
 <input type="hidden" name="id" id="id" value="${dto.id }">
-<input type="hidden" name="passwd" id="passwd" value="${dto.passwd }">
+<input type="hidden" name="delpasswd" id="delpasswd" value="${dto.passwd }">
 <div class="ec-base-button justify">
 <button type="submit" class="yg_btn_140">탈퇴</button>
 </div>
