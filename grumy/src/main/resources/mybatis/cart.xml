@@ -7,13 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="list" parameterType="String" resultType="CartDTO">
 		select
-		c.cartNo, c.id, c.itemOptionNo,c.count,o.itemSize,o.itemCount,o.itemColor,i.itemNo,i.image as itemPicture,i.title
+		c.cartNo, c.id,
+		c.itemOptionNo,c.count,o.itemSize,o.itemCount,o.itemColor,i.itemNo,i.image
+		as itemPicture,i.title
 		as
-		itemTitle,i.price as itemPrice,i.salePrice as itemSalePrice
+		itemTitle,i.price as itemPrice,i.salePrice as
+		itemSalePrice
 		from cart c, item i, itemOption o
-		where id = #{id} and c.itemOptionNo =
+		where id = #{id} and
+		c.itemOptionNo =
 		o.itemOptionNo and o.itemNo = i.itemNo
-		order by c.itemOptionNo
+		order by
+		c.itemOptionNo
 	</select>
 
 
@@ -33,4 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set>
 		where cartNo = #{cartNo}
 	</update>
+
+	<select id="checkDuplicate" parameterType="map" resultType="int">
+		select  itemOptionNo from cart
+		where id=#{id} and itemOptionNo in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item,jdbcType=INTEGER}
+		</foreach>
+	</select>
 </mapper>

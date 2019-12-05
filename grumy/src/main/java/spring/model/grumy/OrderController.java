@@ -1,6 +1,9 @@
 package spring.model.grumy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -20,9 +23,17 @@ public class OrderController {
 
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
 	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList) {
-
+		System.out.println(orderInfoList.length);
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
+		
+		Arrays.sort(orderInfoList, new Comparator<String>() {
+			@Override
+			public int compare(String o1, String o2) {
+				
+				return o1.split("/")[0].compareTo( o2.split("/")[0]);
+			}
+		});
 		
 		for(String orderInfo:orderInfoList) 
 			itemOptionNoList.add(Integer.parseInt(orderInfo.split("/")[0]));
