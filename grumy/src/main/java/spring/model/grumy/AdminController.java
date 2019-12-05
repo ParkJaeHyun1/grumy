@@ -1,7 +1,9 @@
 package spring.model.grumy;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +35,20 @@ public class AdminController {
 		int sIng = mapper.total(400);	//배송중
 		int sFin = mapper.total(500);	//배송완료
 		
+		ArrayList<OrderDTO> list1 = mapper.list(100);
+		System.out.println(list1.get(1).getOrderItemList().size());
 		
+		Iterator<OrderDTO> iter = list1.iterator();
+		while(iter.hasNext()) {
+			OrderDTO dto = iter.next();
+			ArrayList<OrderItemDTO> dto2 = dto.getOrderItemList();
+			Iterator<OrderItemDTO> iter2 = dto2.iterator();
+			
+			while(iter2.hasNext()) {
+				OrderItemDTO dto3 = iter2.next();
+				
+			}
+		}
 		//ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		//NoticeDTO noticetr = noticet.get(0);
 		
@@ -56,7 +71,7 @@ public class AdminController {
 	}
 	@GetMapping("/admin/mwait/list")
 	public String mwait(HttpServletRequest request) {
-		List<OrderItemDTO> list = mapper.list(100);
+		ArrayList<OrderDTO> list = mapper.list(100);
 		
 		request.setAttribute("list", list);
 		return "/admin/mwait/list";
@@ -64,41 +79,41 @@ public class AdminController {
 	
 	@GetMapping("/admin/newOrder")
 	public String nOrder(HttpServletRequest request) {
-		List<OrderItemDTO> list = mapper.list(200);
+		//List<OrderDTO> list = mapper.list(200);
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 		return "/admin/newOrder";
 	}
 	@PostMapping("/admin/newOrder")
 	public String nOrder(HttpServletRequest request, AdminDTO dto) {
-		List<OrderItemDTO> list = mapper.list(200);
+		//List<OrderDTO> list = mapper.list(200);
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 		
 		
 		return "/admin/newOrder";
 	}
 	@RequestMapping("/admin/sendReady")
 	public String sReady(HttpServletRequest request) {
-		List<OrderItemDTO> list = mapper.list(300);
+		//List<OrderDTO> list = mapper.list(300);
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 			
 		return "/admin/sendReady";
 	}
 	@RequestMapping("/admin/sending")
 	public String sIng(HttpServletRequest request) {
-		List<OrderItemDTO> list = mapper.list(200);
+		//List<OrderDTO> list = mapper.list(200);
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 				
 		return "/admin/sending";
 	}
 	@RequestMapping("/admin/sendFin")
 	public String sFin(HttpServletRequest request) {
-		List<OrderItemDTO> list = mapper.list(200);
+		//List<OrderDTO> list = mapper.list(200);
 		
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
 			
 		return "/admin/sendFin";
 	}
