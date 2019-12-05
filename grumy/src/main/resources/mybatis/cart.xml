@@ -10,11 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		c.cartNo, c.id, c.itemOptionNo,c.count,o.itemSize,o.itemCount,o.itemColor,i.itemNo,i.image as itemPicture,i.title
 		as
 		itemTitle,i.price as itemPrice,i.salePrice as itemSalePrice
-		from cart
-		c, item i, itemOption o
+		from cart c, item i, itemOption o
 		where id = #{id} and c.itemOptionNo =
-		o.itemOptionNo and o.itemNo =
-		i.itemNo
+		o.itemOptionNo and o.itemNo = i.itemNo
+		order by c.itemOptionNo
 	</select>
 
 

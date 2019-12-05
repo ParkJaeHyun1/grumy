@@ -7,8 +7,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="total" parameterType="int" resultType="int">
 		select count(state) from orderItem where state = #{state}
 	</select>
-	<select id="list" parameterType="int" resultType="OrderDTO">
-		select * from nOrder where state = #{state} order by orderitemno desc
+	
+	<resultMap type="orderDTO" id="orderMap">
+		<result property="id" column="id"/>
+		<result property="orderNo" column="orderno"/>
+		<result property="odate" column="odate"/>
+		<collection property="orderItemList" column="orderno"
+			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListMap" />
+	</resultMap>
+	<resultMap type="OrderItemDTO" id="orderItemDTOListMap">
+		<result property="itemCount" column="itemcount"/>
+		<result property="state" column="state"/>	
+		<result property="itemPrice" column="itemPrice"/>	
+		<result property="itemTitle" column="itemTitle"/>	
+		<result property="itemSize" column="itemSize"/>	
+		<result property="itemColor" column="itemColor"/>	
+		<result property="orderItemNo" column="orderItemNo"/>	
+	</resultMap>
+	
+	<select id="list" parameterType="int" resultMap="orderMap">
+		select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, a.odate odate, b.itemcount itemcount,  b.state state, 
+		(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
+		from norder a, orderitem b ,item i, itemOption o
+		where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state} order by a.orderno desc
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">

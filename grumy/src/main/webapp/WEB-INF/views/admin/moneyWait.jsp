@@ -33,19 +33,25 @@
 						<caption>게시판 목록</caption>
 						<colgroup
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
-							<col style="width: 70px;">
-
+							<col style="width: 100px;">
 							<col style="width: auto;">
-							<col style="width: 134px;">
-
+							<col style="width: 100px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<tr style="">
-								<th scope="col">NO</th>
-
-								<th scope="col">Item</th>
-								<th scope="col">상태</th>
+								<th scope="col">주문번호</th>
+								<th scope="col">아이템명</th>
+								<th scope="col">색깔</th>
+								<th scope="col">사이즈</th>
+								<th scope="col">수량</th>
+								<th scope="col">가격</th>
+								<th scope="col">주문아이디</th>
+								<th scope="col">입금상태</th>
 							</tr>
 						</thead>
 						<tbody
@@ -59,18 +65,30 @@
 								<c:when test="${empty list }">
 									<tr>
 										<td></td>
+										<td></td>
 										<td>등록된 글이 없습니다.</td>
+										<td></td>
+										<td></td>
+										<td></td>
 										<td></td>
 										<td></td>
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="dto" items="${list}" varStatus="status">
+										<c:forEach var="dto2" items="${dto.orderItemList}" varStatus="status">
+										
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
 											<td>${dto.orderNo}</td>
-											<td style="text-align:left">${dto.id }</td>
+											<td>${dto2.itemTitle}</td>
+											<td>${dto2.itemColor}</td>
+											<td>${dto2.itemSize}</td>
+											<td>${dto2.itemCount}</td>
+											<td>${dto2.itemPrice }</td>
+											<td>${dto.id}</td>
 											<td>입금 대기</td>
 										</tr>
+										</c:forEach>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -107,7 +125,7 @@
 							</p>
 				</c:if>
 		
-					${paging}		
+					
 			</div>	
 		</div>
 		<hr class="layout">

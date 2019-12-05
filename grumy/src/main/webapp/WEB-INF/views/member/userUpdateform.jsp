@@ -45,6 +45,7 @@
 id="AuthSSLContainer" charset="utf-8" 
 src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?token=YXV0aF9tb2RlJTNEZGVjcnlwdENsaWVudCUyNmF1dGhfY2FsbGJhY2tOYW1lJTNETWVtYmVyRWRpdEF1dGh0U1NMLnNldE1lbWJlciUyNmF1dGhfc3RyaW5nJTNEZHdCZ2dxMkJKV1VXdXE1SzVHc0JBdVlsdzJsMEhPMWJZWFV4STclMjUyQkd2UXIlMjUyQmZVdzklMjUyRnkzQkJVQkdkdWZ0bzI0cngxdkwwcmRxbmpFQVZxJTI1MkJBTkRjbmtvN2NjdE8yTDl5ZFp6bnlETURJbElKVTZ1ZDJ5NDhXdDU1JTI1MkJVVHl4WXZ2NnR3bjdLM1A2eWkzYlMyR1plNFVFMzJ2S3RPR3JpQ1NDMm83SkFnRkF0UGt0dXNDSkdQU0NJMkt1MEZwZFdrM2hOQmpRTWlhTm1rdDJFJTI1MkIlMjUyQlhRMzVrMkJtWGM3S1R2T0FBJTI1MkJmdUs5Z3N2ZWZybVNwSEZNM2Vpck9xdVJmU2hLbW1kWGd0d1RrdmZyZTFlNW1HYUUwMm1PZ3Y1NFhmQjM5azlQaEZQa2MlMjUyRjlwdXo1JTI1MkJobDNjUk0lMjUyQjNiUWNROFAxajhjYkxsaTVaZzhLd3RiSGVRYVpQcFVzSW9OSlEzTCUyNTJCdHdEV3NINE1HaWNGZTlBenFHeTlSWHRRR3BKQXBrbjBEQktJNU4yUzNNcG1vNUczc1l6JTI1MkY0dFlIdFJBNW9wRWczV0k2djUwTTRQZGNYeXklMjUyRjB5eTRYdFRKZjRIWVRCVWlUSk1RbjI3MXNRNVl6JTI1MkIyS3p2ZHZMSDdFakclMjUyQnBsWk9VWGE2RCUyNTJCUlM2JTI1MkJEQkIzNlp2RGJZejdoaWptOVBaZ1pVYjU1V2VQRjNzdGVZMmUlMjUyRnA1VURvU0tQaGglMjUyRnRYRVVsYkFFRXVJd1VMbklwVjF3d1NjcDc5JTI1MkJjTlZWMWxiZXZ0eW5DcmdDaHdPanpHanJlZWNFZTVRZE95dmc5Y0NVUU9qRWMyaiUyNTJGd3RkT2J5b1pTQmt4enpCcGUyQ2lmU28lMjUyQiUyNTJGU0k4OUhuSHhEVnlDVElTeiUyNTJCb0VJNEZzSzhqRGhkRkpWNUxFYlElMjUyQiUyNTJGTlZMNjUxTXh2anN4cVFMTWQzZXR6NDd2Q2xycVlhMllZd2pLJTI1MkJLbTBhMUZjakhZZEhPQW9SQyUyNTJGb3A2MjRnWmxmbWJEeG9XRmhEMk1Sbkp6ZVJGNlowbGdFR0w4eGpwU0h5JTI1MkZZayUyNTJGM1NOJTI1MkJseDh2TlFKVjFwTFdWQnRmdjlZM2U4NEVSRTNNTmxoVUs3WnVWMjI5MFhCOXJzbFV6ZGRib3h4VSUyNTJCJTI1MkZxVnpuQXNEYXpNJTI1MkZQaG1GWXZSU0ZjZVY4eGpTNlgyVmpIWmN3d1M4T1J0YmhrUUgzcWY2ZCUyNTJCSU1sd0QwMFN6WE5ZODhhQUQzUlRkNTl0QjRGcUxLQ1N5TEQlMjUyRkt1bE56QmElMjUyQldGRWlxUlNiY1dwcExNR3h4TFpRQkptR1FEUmZIN0JITVBSQUc4dmhCZklvJTI1MkJIUGw3U3BqY3JHSVJza1ZJcmV6YnhialhrVmNIMSUyNTJCRlZKSDlCdVJtc1ViUjlnJTI1MkJHRkRjcGdHJTI1MkJjMUdHaWZkUVhoRnNodzZ1OSUyNTJCcUZUWks5VFJiREFWb2RsenREd1dZN056JTI1MkZUTFF3SVZaOWdDZGxReGdDME5CM2UyRmF6ekFmMHVvTUdUOEdIRyUyNTJGcVdkb0ZWUUljanpQTFljdUJ6QmY5MFdFbkpmMVIlMjUyRmglMjUyQjNVbVNWa010WFJyeG1KSzY0NU1TSUc5MFhqT0hPandMczN0QyUyNTJCalBBbGpic0lWcXlieEpNeFFHczJFTDVNMy&amp;com=0&amp;id=c157440674330784405"></script><script type="text/javascript" id="AuthSSLContainer" charset="utf-8" src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?token=UyNTJCWmpTMmlEMXFkZEJBQmg1TWZaQlhRRGdJWlNudiUyNTJGaGVqTzdXTzJZS3dhNFhueTFjZXRvMiUyNTJCTzdqTWdkT2x6N1pRYkRINWZlbjFUMyUyNTJGSW81aVglMjUyRjJqa2J1REl3V1lLS0VHV2FPVkd2Z1IxQ2NjZURiZWRBMlBQWFA3QnBSc3NiWFljJTI1MkJhJTI1MkJ6TmxoTjdvNXU5VWI2UHZtQ2xPTTh1NHJJZzNiY3NrYlJZZGp5cllYM0d5MkdkM1lJU1Q5SzNwOGZKNlBFJTI1MkJYJTI1MkJBS3JQOEUzJTI1MkZaYnpnSE10OGFOMUhuZ3k2b3RYcTF0S1JUTzNwYWxRcTUlMjUyQklxVzZ0bkclMjUyQmd2U3ZEY3VTT1dLVWU5THhHQUk0aXhyOVhLbXRnS3FMUmRMZWdDajJtNkclMjUyRmo5cUlPTGhzZlVlTDRSamR6WmE5aE1PcFpKTVhYdjFySHk2R01vWQ==&amp;com=1&amp;id=c157440674330784405">
 </script>
+
 <!--  다음 주소 찾기  -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -99,28 +100,24 @@ function sample6_execDaumPostcode() {
 
 
 
-<!-- 필수 입력창 확인  -->
+<!-- 회원정보 확인  -->
 
 <script language="javascript">
    function validate() {
-       var re = /^[a-zA-Z0-9]{8,16}$/ 
-       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-     
-
        
+       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+   	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
+   	   
        var passwd = document.getElementById("passwd");
        var email = document.getElementById("email");
 
-
-
-      
-
-       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
-           return false;
+	   if(!check(re3,passwd,"숫자,영문,특수문자가 모두 포함되어야 합니다")){
+		   user_passwd_confirm.value="";
+		   return false;
        }
 
        if(user_passwd_confirm.value.length==0){
-   		alert("비밀번호 확인을 입력하세요");
+   		alert("비밀번호를 입력하세요");
    		user_passwd_confirm.focus();
    		return false;
    		}
@@ -132,8 +129,6 @@ function sample6_execDaumPostcode() {
    		passwd.focus();
    		return false;
    	   }
-
- 
 
        if(join.name.value=="") {
            alert("이름을 입력해 주세요");
@@ -183,6 +178,41 @@ function sample6_execDaumPostcode() {
        //return false;
    }
 </script>
+
+
+
+<!-- 탈퇴 처리 확인 -->
+
+<script language="javascript">
+   function validate1() {
+       
+       var passwd = document.getElementById("passwd");
+      
+       if(user_passwd_confirm.value.length==0){
+   		alert("비밀번호 확인을 입력하세요");
+   		user_passwd_confirm.focus();
+   		return false;
+   		}
+
+   	   if(passwd.value != user_passwd_confirm.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;
+   	   }
+   	   
+   	   if(delpasswd.value != passwd.value){
+   		alert("비밀번호가 일치하지 않습니다.");
+   		passwd.value="";
+   		user_passwd_confirm.value="";
+   		passwd.focus();
+   		return false;   
+   	   }
+}
+
+</script>
+
 
 
 </head>
@@ -463,7 +493,9 @@ value="${dto.birth }" type="text">
 </div>
 
 <form action="delete" class="form-horizontal" method="post" id="delfrm"
-name="delfrm" onsubmit="return validate();" enctype="multipart/form-data">
+name="delfrm" onsubmit="return validate1();" enctype="multipart/form-data">
+<input type="hidden" name="id" id="id" value="${dto.id }">
+<input type="hidden" name="delpasswd" id="delpasswd" value="${dto.passwd }">
 <div class="ec-base-button justify">
 <button type="submit" class="yg_btn_140">탈퇴</button>
 </div>

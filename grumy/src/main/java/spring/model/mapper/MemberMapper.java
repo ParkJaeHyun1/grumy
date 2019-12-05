@@ -6,7 +6,7 @@ import spring.model.member.MemberDTO;
 
 public interface MemberMapper {
 	int create(MemberDTO dto);
-	int delete(String id);
+	int delete(Map map);
 	int duplicateId(String id);
 	String findid(Map map);
 	String findpw(Map map);

@@ -83,17 +83,27 @@ function sample6_execDaumPostcode() {
     }
 </script>
 
+<!-- 회원가입시 정규식 사용 -->
+
+<script>
+
+
+</script>
+
+
 <!-- 필수 입력창 확인  -->
 
 <script language="javascript">
+   
    function validate() {
-       var re = /^[a-zA-Z0-9]{8,16}$/ 
-       var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-     
+       
+	   var re = /^[a-zA-Z0-9]{8,16}$/ 
+	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
 
-       var id = document.getElementById("id");
-       var passwd = document.getElementById("passwd");
-       var email = document.getElementById("email");
+	   var id = document.getElementById("id");
+	   var passwd = document.getElementById("passwd");
+	   var email = document.getElementById("email");
 
 
 
@@ -101,12 +111,12 @@ function sample6_execDaumPostcode() {
            return false;
        }
 
-       if(!check(re,passwd,"패스워드는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+       if(!check(re3,passwd,"패스워드는 8~16자의 영문,숫자,특수문자로 입력")) {
            return false;
        }
 
        if(user_passwd_confirm.value.length==0){
-   		alert("비밀번호 확인을 입력하세요");
+   		alert("비밀번호을 입력하세요");
    		user_passwd_confirm.focus();
    		return false;
    		}
@@ -119,51 +129,56 @@ function sample6_execDaumPostcode() {
    		return false;
    	   }
 
- 
-
-       if(join.name.value=="") {
-           alert("이름을 입력해 주세요");
-           join.name.focus();
-           return false;
+	   if(joinForm.name.value.length==0){
+         alert("이름을 입력해 주세요");
+         joinForm.name.focus();
+         return false;
        }
-       if(postcode.value.length==0){
+	   
+       if(joinForm.postcode.value.length==0){
    		alert("주소를 입력하세요")
-   		f.postcode.focus();
+   		joinForm.postcode.focus();
    		return false;
-   	}
-   	if(address.value.length==0){
+   	   }
+       
+   	   if(joinForm.address.value.length==0){
    		alert("주소를 입력하세요")
-   		f.address.focus();
+   		joinForm.address.focus();
    		return false;
-   	}
-   	if(detailaddress.value.length==0){
+   	   }
+   	   
+   	   if(joinForm.detailaddress.value.length==0){
    		alert("주소를 입력하세요")
-   		f.detailaddress.focus();
+   		joinForm.detailaddress.focus();
    		return false;
-   	}
-   	if(phone.value.length==0){
+   	   }
+   	
+   	   if(joinForm.phone.value.length==0){
    		alert("전화번호를 입력하세요");
-   		phone.focus();
+   		joinForm.phone.focus();
    		return false;
-   	}
-    if(email.value=="") {
+   	   }
+   	   
+       if(email.value.length==0) {
         alert("이메일을 입력해 주세요");
         email.focus();
         return false;
-    }
+       }
 
-    if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
         return false;
-    }
+       }
+       if(joinForm.birth.value.length==0){
+    	   alert("생년월일을 입력해 주세요")
+    	   joinForm.birth.focus();
+    	   return false;
+       }
 
-	if(agree.checked==false){
+	   if(agree.checked==false){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		return false;
-	}  
-
-     
-       
-      }
+	   }  
+}
 
    function check(re, what, message) {
        if(re.test(what.value)) {
@@ -173,7 +188,8 @@ function sample6_execDaumPostcode() {
        what.value = "";
        what.focus();
        //return false;
-   }
+    }
+   
 </script>
 
 
@@ -253,7 +269,6 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
 			fw-label="아이디" fw-msg="" maxlength="16" class="inputTypeText" placeholder=""
 			value="" type="text" />
-			<span id="idMsg"></span> 
 			(영문 대소문자/숫자,8~16자)
 			<button type="button" class="yg_btn_140 yg_btn3"
 				 onclick="idCheck(document.joinForm.id.value)">ID 중복확인</button>
@@ -267,8 +282,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<input id="passwd" name="passwd" 
 			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
 			autocomplete="off" maxlength="16" 0="disabled" value=""
-			type="password" /> 
-		(영문 대소문자/숫자,8~16자)
+			type="password" />
+		<div id="pwcheck"></div>
+		(영문 대소문자/숫자,8~16자, 영문,숫자,특수문자 조합)
 		</td>
 	</tr>
 	<tr>
@@ -283,14 +299,13 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		</td>
 	</tr>
 	<tr>
-		<th scope="row" id="nameTitle">이름 
+		<th scope="row">이름 
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
-		<span id="nameContents">
 		<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
 		fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
 		value="" type="text" />
-		</span> 
+		<span id="nameContents"></span> 
 		</td> 
 	</tr>
 	<tr class="">
@@ -636,7 +651,6 @@ $(document).ready(function() {
 
 $(".inner_b .address i.bizLink a").text("[Go Checking]");
 </script>
-	
 
 <hr class="layout" />
 <!-- //참고 -->

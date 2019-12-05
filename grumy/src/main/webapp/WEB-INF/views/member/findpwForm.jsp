@@ -26,7 +26,22 @@
 <link rel="stylesheet" type="text/css" href="//www.slowand.com//ind-script/optimizer.php?filename=tZWxcsMgDIZ3O2ufQ5e0d907d2qeQIBikwCiCK7x25cmGZp66TlmRIc-0C_0AyN7gu0uQUw8JPSQSLgkTaBF4JA4ZNDsPYdNDTzBf_aT7oRdyZZDp_i8MLHkvPRQhxOlZakZlaNfqaT7IpQEMATabV-fIRblrO7H7B2Iod6Q2CGAnGx4uUA9m-IIPHlFCQ42mD6iyJdZjq0FccmgUKy-nDFryaPAa2BFYBW1LqgrtgE0M7tsYwPySK4Ftr4-U3QLfSMONmCmFiqjakCdDfZq4DurWVEE10Lcuksvx04YhqO9eli1sFVAx89Cadqoszhr7vxzOfMdM68C2mOQVWz51hBOtcQ3lBNlzeURBefs27B_kKbQYuT_fm8PX9iX6qYyctyPNkYbhh_4Nw&amp;type=css&amp;k=732fa7cc7293fdff97cc675423e7143ab5742dd6&amp;t=1547093551">
 <link rel="stylesheet" type="text/css" href="//www.slowand.com//ind-script/optimizer.php?filename=rY5BDgIhDEUPMG49RzNq4nkqVKhCSyhouL3juHU1uvmbl__yIGomIDd1o2qAInSYz0co_ZLYTbHlBOZp8mQcBOzOcgJnBll9TwQJh_YGTuWx_FmluN2C97DFO1DCjVd9JPRUt6u-JGKjoHX8Je-q2n7Jw1IMWKxhqJif7AO1Fc2ffZtf&amp;type=css&amp;k=0bf1200a5e8ef8a5ba790aa4613ab5bd42bdb5c6&amp;t=1566806466">
 
-<title>슬로우앤드</title>
+<title>grumy</title>
+
+<!--  radio 변경 -->
+<script type="text/javascript">
+function transformType(id){
+	if(id=="Radio_On"){
+		document.all["Radio_On"].style.display="";
+		document.all["Radio_Off"].style.display="none";
+	}else{
+		document.all["Radio_On"].style.display="none";
+		document.all["Radio_Off"].style.display="";
+	}
+}
+
+</script>
+
 </head>
 <body id="cmn">
 
@@ -85,12 +100,12 @@ onclick="">
 <span class="desc"><span class="gBlank5">
 
 
-<input id="check_method1" name="check_method" fw-filter="" 
+<input id="check_method1" name="check_method" fw-filter="" onclick="transformType('Radio_On');"
 fw-label="찾는방법" fw-msg="" value="1" type="radio" checked="checked">
 <label for="check_method1">이메일
 </label>
 
-<input id="check_method2" name="check_method" fw-filter="" 
+<input id="check_method2" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
 fw-label="찾는방법" fw-msg="" value="2" type="radio">
 <label for="check_method2">
 <span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
@@ -119,7 +134,7 @@ value="" type="text">
 </li>
                 
 
-<li id="email_view" class="email" style="">
+<li id="Radio_On" class="email" style="">
 <strong class="term">이메일로 찾기</strong>
 <span class="desc">
 <input id="email" name="email" fw-filter="isEmail" fw-label="이메일" 
@@ -127,12 +142,12 @@ fw-msg="" class="lostInput" placeholder="" value="" type="text">
 </span>
 </li>
                 
-<li id="phone_view" class="phone" style="display:none;">
+<li id="Radio_Off" class="phone" style="display:none;">
 <strong class="term">휴대폰 번호로 찾기</strong>
 <span class="desc">
 <input id="phone" name="phone" 
 fw-filter="isNumber" fw-label="휴대전화 번호" 
-fw-msg="" class="phone" placeholder="" maxlength="11" 
+fw-msg="" class="lostInput" placeholder="" maxlength="11" 
 value="" type="text">
 </span>
 </li>

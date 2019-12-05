@@ -41,18 +41,11 @@ public class MemberController {
 	public String create(MemberDTO dto, Model model, HttpServletRequest request) {
 		String url = "/main";
 		
-		if (dao.duplicateId(dto.getId()) == 1) {
-			model.addAttribute("str", "중복된 아이디 입니다. 아이디 중복을 확인하세요");
-			
-		}else{
-
-			if (dao.create(dto) == 1) {
-				url = "redirect:/";
-			} else {
-				url = "error";
-			}
-
-		}
+		if (dao.create(dto) == 1) {
+			url = "redirect:/";
+		} else {
+			url = "error";
+		} 
 
 		return url;
 	}//end createproc
@@ -73,9 +66,9 @@ public class MemberController {
 		return map;
 	}//end idcheck
 	
-	@PostMapping("/member/login")
+	@RequestMapping("/member/loginProc")
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response,@RequestParam(value="url",required=false) String url) {
 		int flag = dao.loginCheck(map);
 
 		if (flag == 1) {
@@ -83,20 +76,18 @@ public class MemberController {
 			session.setAttribute("id", map.get("id"));
 			session.setAttribute("grade", grade);
 
-
-		
 		} else {
 			model.addAttribute("msg", "failure");
 			return "/login";
 		}
-		
-		return "redirect:/";
+		if(url == null || url.equals(""))
+			return "redirect:/";
+		return"redirect:"+url;
 	}
 	
-	@GetMapping("/member/login")
-	public String login(HttpServletRequest request) {
-
-
+	@RequestMapping("/member/login")
+	public String login(HttpServletRequest request,@RequestParam(value="url",required=false) String url) {
+		request.setAttribute("url", url);
 		return "/login";
 	}
 	
@@ -166,9 +157,13 @@ public class MemberController {
 
 	
 	@PostMapping("member/delete")
-	public String delete(String id,HttpServletRequest request, HttpSession session) {
+	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session) {
+		Map map = new HashMap();
+		map.put("id",id);
+		map.put("passwd",passwd);
 		
-		int flag = dao.delete(id);
+		
+		int flag = dao.delete(map);
 
 		if (flag == 1) {
 			session.invalidate();

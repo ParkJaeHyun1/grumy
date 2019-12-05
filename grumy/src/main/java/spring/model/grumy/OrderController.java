@@ -9,28 +9,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.model.mapper.OrderMapper;
 import spring.model.mapper.itemMapper;
 import spring.model.order.OrderItemDTO;
 
 @Controller
 public class OrderController {
 	@Autowired
-	itemMapper itemMapper;
-	
+	OrderMapper orderMapper;
+
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
 	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList) {
 
-		ArrayList<OrderItemDTO> list = new ArrayList<OrderItemDTO>();
-		for(String orderInfo:orderInfoList) {
-			String[] s = orderInfo.split("/");
-			OrderItemDTO dto = new OrderItemDTO();
-			dto.setItemOptionNo(Integer.parseInt(s[0]));
+		int totalPrice = 0,deliveryCharge=0;
+		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
+		
+		for(String orderInfo:orderInfoList) 
+			itemOptionNoList.add(Integer.parseInt(orderInfo.split("/")[0]));
+
+		ArrayList<OrderItemDTO> orderItemList = orderMapper.itemOptionList(itemOptionNoList);
+		
+		for(int i=0;i<orderInfoList.length;i++) {
+			String[] s = orderInfoList[i].split("/");
+			OrderItemDTO dto = orderItemList.get(i);
 			dto.setCount(Integer.parseInt(s[1]));
+			totalPrice += (dto.getItemPrice() - dto.getItemSalePrice());
 			if(s.length>2)
 				dto.setCartNo(Integer.parseInt(s[2]));
-			list.add(dto);
+			System.out.println(dto.toString());
 		}
+		if(totalPrice<50000)
+			deliveryCharge = 0;
+		
+		request.setAttribute("list", orderItemList);
+		request.setAttribute("totalPrice", totalPrice);
+		request.setAttribute("deliveryCharge",deliveryCharge);
 		return "/order/order";
 	}
 }
- 
