@@ -41,17 +41,10 @@ public class MemberController {
 	public String create(MemberDTO dto, Model model, HttpServletRequest request) {
 		String url = "/main";
 		
-		if (dao.duplicateId(dto.getId()) == 1) {
-			model.addAttribute("str", "중복된 아이디 입니다. 아이디 중복을 확인하세요");
-			
-		}else{
-
-			if (dao.create(dto) == 1) {
-				url = "redirect:/";
-			} else {
-				url = "error";
-			}
-
+		if (dao.create(dto) == 1) {
+			url = "redirect:/";
+		} else {
+			url = "error";
 		}
 
 		return url;
