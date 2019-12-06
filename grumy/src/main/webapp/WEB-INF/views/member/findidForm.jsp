@@ -137,6 +137,7 @@ fw-filter="isNumber" fw-label="휴대전화 번호"
 fw-msg="" class="lostInput" placeholder="" maxlength="11" 
 value="" type="text">
 </p>
+
          
 <p class="ec-base-button ">
 <a href="#" class="yg_btn" 

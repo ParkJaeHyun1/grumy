@@ -1,5 +1,6 @@
 package spring.model.grumy;
 
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +39,11 @@ public class MemberController {
 	} 
 
 	@PostMapping("/member/create")
-	public String create(MemberDTO dto, Model model, HttpServletRequest request) {
+	public String create(MemberDTO dto, Model model){
 		String url = "/main";
 		
 		if (dao.create(dto) == 1) {
+
 			url = "redirect:/";
 		} else {
 			url = "error";
@@ -67,7 +69,7 @@ public class MemberController {
 	
 	@RequestMapping("/member/loginProc")
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response,@RequestParam(value="url",required=false) String url) {
+			HttpServletRequest request, HttpServletResponse response,@RequestParam(value="url",required=false) String url) throws Exception{
 		int flag = dao.loginCheck(map);
 
 		if (flag == 1) {
@@ -76,7 +78,11 @@ public class MemberController {
 			session.setAttribute("grade", grade);
 
 		} else {
-			model.addAttribute("msg", "failure");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디or패스워드가 잘못되었습니다.'); "
+					+ "history.go(-1);</script>");
+			out.flush();
 			return "/login";
 		}
 		if(url == null || url.equals(""))
@@ -91,7 +97,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/findpw")
-	public String findpw(String name, String id, String phone, String email, Model model) {
+	public String findpw(HttpServletRequest request, HttpServletResponse response,
+			String name, String id, String phone, String email, Model model
+			)throws Exception {
+		
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("id", id);
@@ -99,14 +108,25 @@ public class MemberController {
 		map.put("phone", phone);
 
 		String passwd = dao.findpw(map);
+		String email1 = dao.findemail(id);
+		int phone1 = dao.findphone(id);
 
 		if(passwd!=null) {
 			
 			model.addAttribute("passwd", passwd);
+			model.addAttribute("email1", email1);
+			model.addAttribute("phone1", phone1);
+			
 
 			return "/findpwproc";
+			
 		}else {
-		
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('입력하신 정보가 올바르지 않습니다.'); "
+					+ "history.go(-1);</script>");
+			out.flush();
 			return "/findpw";
 		}
 	}
@@ -118,7 +138,8 @@ public class MemberController {
 	} 
 
 	@PostMapping("/member/findid")
-	public String findid(String name, String email, String phone, Model model) {
+	public String findid(HttpServletRequest request, HttpServletResponse response,
+String name, String email, String phone, Model model) throws Exception{
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("email", email);
@@ -133,7 +154,13 @@ public class MemberController {
 			return "/findidproc";
 		
 		}else{
-			model.addAttribute("msg", "failure");
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('요청하신 정보로 가입하신 아이디가 존재하지 않습니다.'); "
+					+ "history.go(-1);</script>");
+			out.flush();
+			
 			return "/findid";
 		}
 		
@@ -148,6 +175,7 @@ public class MemberController {
 	@GetMapping("/member/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
+		
 
 		return "redirect:/";
 
@@ -156,20 +184,22 @@ public class MemberController {
 
 	
 	@PostMapping("member/delete")
-	public String delete(String id,String passwd,HttpServletRequest request, HttpSession session) {
+	public String delete(String id,String delpasswd,HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
+		
 		Map map = new HashMap();
 		map.put("id",id);
-		map.put("passwd",passwd);
+		map.put("passwd",delpasswd);
 		
 		
 		int flag = dao.delete(map);
 
 		if (flag == 1) {
 			session.invalidate();
-			return "redirect:/";
+			return "/home";
 		} else {
 			return "error";
 		}
+		
 	}
 
 	@GetMapping("/member/delete")
@@ -179,12 +209,16 @@ public class MemberController {
 	}
 
 	@PostMapping("/member/update")
-	public String update(MemberDTO dto, Model model) {
+	public String update(HttpServletRequest request, HttpServletResponse response,MemberDTO dto, Model model)throws Exception {
 		int flag = dao.update(dto);
 		
 		if (flag == 1) {
-
-			return "redirect:/";
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('정보수정을 완료하였습니다.'); "
+					+ "history.go(-1);</script>");
+			out.flush();
+			return "/home";
 		} else {
 			
 			return "error";

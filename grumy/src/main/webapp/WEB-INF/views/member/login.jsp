@@ -107,11 +107,7 @@ type="password" placeholder="PASSWORD"></label>
 <a href="#" class="yg_btn" id="login"
 onclick="document.getElementById('member_form_3274124755').submit();" 
 alt="로그인" style="background:#a18266">로그인</a>
-<c:if test="${msg== 'failure' }">
-<div class="alert alert-danger" role="alert">
-<Strong>아이디 or 비밀번호가 정확하지 않습니다.</Strong>
-</div>
-</c:if> 
+
 
  
 <ul class="find">

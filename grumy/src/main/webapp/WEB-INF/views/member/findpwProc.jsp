@@ -72,11 +72,9 @@ enctype="multipart/form-data">
 
 <li id="passwd_method_email_info">
 <strong class="term">이메일</strong>
-<span class="desc">
 <strong class="txtEm">
-<span>${email }</span>
+${email1 }
 </strong>
-</span>
 </li>
                 
 </ul>
