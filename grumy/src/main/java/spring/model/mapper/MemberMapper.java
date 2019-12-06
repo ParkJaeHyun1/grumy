@@ -18,6 +18,6 @@ public interface MemberMapper {
 	List<MemberDTO> list(Map map);
 	int total(Map map);
 	String findemail(String id);
-	int findphone(String id);
+	String findphone(String id);
 	
 }

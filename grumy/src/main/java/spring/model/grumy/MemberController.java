@@ -111,7 +111,7 @@ public class MemberController {
 
 		String passwd = dao.findpw(map);
 		String email1 = dao.findemail(id);
-		int phone1 = dao.findphone(id);
+		String phone1 = dao.findphone(id);
 
 		if(passwd!=null) {
 			

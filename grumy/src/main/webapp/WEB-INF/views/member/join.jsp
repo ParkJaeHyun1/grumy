@@ -178,9 +178,19 @@ function sample6_execDaumPostcode() {
        if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
         return false;
        }
-       if(joinForm.birth.value.length==0){
+       if(joinForm.birth1.value.length==0){
     	   alert("생년월일을 입력해 주세요")
-    	   joinForm.birth.focus();
+    	   joinForm.birth1.focus();
+    	   return false;
+       }
+       if(joinForm.birth2.value.length==0){
+    	   alert("생년월일을 입력해 주세요")
+    	   joinForm.birth2.focus();
+    	   return false;
+       }
+       if(joinForm.birth3.value.length==0){
+    	   alert("생년월일을 입력해 주세요")
+    	   joinForm.birth3.focus();
     	   return false;
        }
 
@@ -194,6 +204,15 @@ function sample6_execDaumPostcode() {
 	   var phone3 = document.joinForm.phone3.value;
 	   var phone = phone1 + phone2 + phone3;
 	   document.getElementById("phone").value = phone;
+	   
+	   
+	   var birth1 = document.joinForm.birth1.value;
+	   var birth2 = document.joinForm.birth2.value;
+	   var birth3 = document.joinForm.birth3.value;
+	   var birth = phone1 + phone2 + phone3;
+	   document.getElementById("birth").value = birth;
+	   
+	   
 
 	  
 	   
@@ -357,13 +376,13 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<td>
 		<input id="phone1" name="phone1" maxlength="3" style="width:50px;"
 		pattern="[0-1]{3}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" value="" type="text" />-
+		fw-msg="" type="text" />-
 		<input id="phone2" name="phone2" maxlength="4" style="width:60px;"
-		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" value="" type="text" />-
+		pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" type="text" />-
 		<input id="phone3" name="phone3" maxlength="4" style="width:60px;"
-		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" value="" type="text" />
+		pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" type="text" />
 		</td>
 		</tr>
 		<input type="hidden" id="phone" name="phone"></input>		
@@ -386,12 +405,18 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
-		<input id="birth" name="birth" 
-			fw-filter="" fw-label="생년월일" fw-msg=""
-			autocomplete="off" maxlength="8" 0="disabled" value=""
-			type="text" /> ex) 2000년 1월 1일 → 20000101
+		<input id="birth1" name="birth1" maxlength="4" style="width:70px;"
+		pattern="[0-9]{4}" fw-filter="isNumber" fw-alone="N"
+		fw-msg="" value="" type="text" placeholder="2012"/>년
+		<input id="birth2" name="birth2" maxlength="2" style="width:40px;"
+		pattern="[0-9]{2}"fw-filter="isNumber" fw-alone="N"
+		fw-msg="" value="" type="text" placeholder="02"/>월
+		<input id="birth3" name="birth3" maxlength="2" style="width:40px;"
+		pattern="[0-9]{2}"fw-filter="isNumber" fw-alone="N"
+		fw-msg="" value="" type="text" placeholder="03"/>일 
+		<strong>ex)2012년 2월 3일 ☞ 2012 02 03</strong>
 		</td>
-		
+		<input type="hidden" id="birth" name="birth"></input>
 		</tbody>
 	</table>
 </div>

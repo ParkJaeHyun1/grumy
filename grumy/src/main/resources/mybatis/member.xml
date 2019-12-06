@@ -117,7 +117,7 @@ WHERE r >= #{sno} AND r <= #{eno}
 	where id = #{id} 
 </select>
 
-<select id="findphone" parameterType="int" resultType="int">
+<select id="findphone" parameterType="String" resultType="String">
 	select phone from member
 	where id = #{id} 
 </select>
