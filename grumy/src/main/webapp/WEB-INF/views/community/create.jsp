@@ -3,27 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
-	function input(f) {
-		if (f.subject.value == '') {
-			alert("제목을 입력하세요");
-			f.subject.focus();
-			return false;
-		}
-
-		/* if (f.content.value == '') {
-			alert("내용을 입력하세요");
-			f.content.focus();
-			return false;
-		} */
-		if (CKEDITOR.instances['content'].getData() == '') {
-			window.alert('내용을 입력해 주세요.');
-			CKEDITOR.instances['content'].focus();
-			return false;
-		}
-
-	}
-</script>
 <div id="container">
 	<div id="contents">
 
@@ -39,7 +18,7 @@
 				</div>
 			</div>
 			<form id="boardWriteForm" name="frm" action="create" method="post"
-				onclick="return input(this);">
+				onsubmit="return input(this)">
 				<input type="hidden" name="id" value="${sessionScope.id }">
 				<input type="hidden" name="check_read" value="${sessionScope.id }">
 				<input type="hidden" name="itemno" value="${param.itemNo }">
@@ -118,6 +97,27 @@
 		</div>
 
 	</div>
+	<script type="text/javascript">
+	function input(f) {
+		if (f.subject.value == '') {
+			alert("제목을 입력하세요");
+			f.subject.focus();
+			return false;
+		}
+
+		/* if (f.content.value == '') {
+			alert("내용을 입력하세요");
+			f.content.focus();
+			return false;
+		} */
+		if (CKEDITOR.instances['content'].getData() == '') {
+			window.alert('내용을 입력해 주세요.');
+			CKEDITOR.instances['content'].focus();
+			return false;
+		}
+
+	}
+</script>
 
 </div>
 

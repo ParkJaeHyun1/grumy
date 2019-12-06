@@ -53,7 +53,7 @@
                   </tbody>
                   <tbody>
                      <tr class="">
-                        <th scope="row">SECRET${name }</th>
+                        <th scope="row">SECRET</th>
                         <td><input id="secure0" name="secure" fw-filter="isFill"
                            fw-label="비밀글설정" fw-msg="" value="F" type="radio" onclick="return(false);"><label
                            for="secure0">공개글</label> <input id="secure1" name="secure"
