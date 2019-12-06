@@ -23,7 +23,7 @@ public class ItemController {
 
 	@RequestMapping("/item/read")
 	public String read(int itemNo, Model model, HttpServletRequest request) {
-		
+
 		ItemDTO dto = mapper.read(itemNo);
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 		request.setAttribute("dto",dto);

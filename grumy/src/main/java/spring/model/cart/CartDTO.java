@@ -104,6 +104,13 @@ public class CartDTO {
 	public void setItemCount(int itemCount) {
 		this.itemCount = itemCount;
 	}
+	@Override
+	public String toString() {
+		return "CartDTO [cartNo=" + cartNo + ", id=" + id + ", itemOptionNo=" + itemOptionNo + ", itemNo=" + itemNo
+				+ ", count=" + count + ", itemPicture=" + itemPicture + ", itemSalePrice=" + itemSalePrice
+				+ ", itemTitle=" + itemTitle + ", itemPrice=" + itemPrice + ", itemSize=" + itemSize + ", itemColor="
+				+ itemColor + ", itemCount=" + itemCount + "]";
+	}
 	
 	
 	

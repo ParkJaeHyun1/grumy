@@ -164,6 +164,13 @@ function setView(){
 	}
 	purchasePrice = 0;
 	$.each(list, function(index, item){
+		if(item.count>item.itemCount){
+			if(item.itemCount == 0)
+				deleteCart(item.cartNo);
+			else
+				updateItemCount(cartNo,item.itemCount);
+			return;
+		}
 		$('#cart_item_count_'+item.cartNo).val(item.count);
 		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');

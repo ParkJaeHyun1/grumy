@@ -283,30 +283,16 @@ function purchase(){
 										<col style="width: 170px;" />
 										<col style="width: auto;" />
 									</colgroup>
-									<!-- 비회원 결제 -->
-									<tbody class="displaynone ec-shop-deliverySimpleNomemberForm">
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td>(주문조회시 필요합니다. 4자에서 12자 영문 또는 숫자 대소문자 구분)</td>
-										</tr>
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호 확인 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td></td>
-										</tr>
-									</tbody>
 									<!-- 국내 배송지 정보 -->
 									<tbody class="">
 										<tr class="">
-											<th scope="row">배송지 선택</th>
+											<th scope="row">배송지 선택  <img
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 											<td>
 												<div class="address">
-													<input id="sameaddr0" name="sameaddr" fw-filter=""
-														fw-label="1" fw-msg="" value="T" type="radio" /><label
-														for="sameaddr0">주문자 정보와 동일</label> <input id="sameaddr1"
-														name="sameaddr" fw-filter="" fw-label="1" fw-msg=""
-														value="F" type="radio" /><label for="sameaddr1">새로운배송지</label>
+													<input type="radio" checked/><label
+														for="sameaddr0">주문자 정보와 동일</label> 
+													<input type="radio" /><label for="sameaddr1">새로운배송지</label>
 													
 												</div>
 											</td>

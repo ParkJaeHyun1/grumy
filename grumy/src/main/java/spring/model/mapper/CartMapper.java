@@ -12,4 +12,7 @@ public interface CartMapper {
 	int delete(ArrayList<Integer> cartNoList);
 	int update(Map<String,Integer> map);
 	ArrayList<Integer>  checkDuplicate(Map map);
+	
+	int update2(Map map);
+	int insert(Map map);
 }

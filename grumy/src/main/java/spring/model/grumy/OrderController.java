@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.model.mapper.MemberMapper;
 import spring.model.mapper.OrderMapper;
 import spring.model.mapper.itemMapper;
 import spring.model.order.OrderItemDTO;
@@ -20,7 +21,9 @@ import spring.model.order.OrderItemDTO;
 public class OrderController {
 	@Autowired
 	OrderMapper orderMapper;
-
+	@Autowired
+	MemberMapper memberMapper;
+	
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
 	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList) {
 		System.out.println(orderInfoList.length);
