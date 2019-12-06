@@ -71,15 +71,14 @@ public class AdminController {
 		
 		return "/admin/main";
 	}
-	@GetMapping("/admin/mwait/list")
-	public String mwait(HttpServletRequest request) {		
-		String word = Utility.checkNull(request.getParameter("word"));
-		String col = Utility.checkNull(request.getParameter("col"));
+	public Map paging(String word, String col, String nowPageS, int state) {	//페이징 처리
+		word = Utility.checkNull(word);
+		col = Utility.checkNull(col);
 
 		//페이징 관련
 		int nowPage = 1;
-		if(request.getParameter("nowPage")!= null){
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		if(nowPageS!= null){
+			nowPage = Integer.parseInt(nowPageS);
 		} 	
 		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
 		
@@ -92,7 +91,7 @@ public class AdminController {
 		map.put("word", word);
 		map.put("sno",sno);
 		map.put("eno",eno);
-		map.put("state",100);
+		map.put("state",state);
 		
 		ArrayList<OrderDTO> list = mapper.list(map);
 		
@@ -100,39 +99,68 @@ public class AdminController {
 		
 		String paging = Utility.paging(totalP, nowPage, recordPerPage, col, word);
 		
+		map.put("nowPage", nowPage);
+		map.put("paging", paging);
+		map.put("list", list);
+		
+		return map;
+	}
+	@GetMapping("/admin/mwait/list")
+	public String mwait(HttpServletRequest request) {		
+		
+		String word = request.getParameter("word");
+		String col = request.getParameter("col");
+		String nowPageS = request.getParameter("nowPage");
+		Map map = paging(word, col, nowPageS, 100);
+	
+		int nowPage = (int) map.get("nowPage");
+		String paging = (String)map.get("paging");
+		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
+
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
-		//request.setAttribute("total", total);
-		
 		request.setAttribute("list", list);
-		return "/admin/mwait/list";
 
+		return "/admin/mwait/list";
 	}
 	
-	@GetMapping("/admin/newOrder")
+	@RequestMapping("/admin/newOrder/list")
 	public String nOrder(HttpServletRequest request) {
-		//List<OrderDTO> list = mapper.list(200);
-		
-		//request.setAttribute("list", list);
-		return "/admin/newOrder";
+		String word = request.getParameter("word");
+		String col = request.getParameter("col");
+		String nowPageS = request.getParameter("nowPage");
+		Map map = paging(word, col, nowPageS, 200);
+	
+		int nowPage = (int) map.get("nowPage");
+		String paging = (String)map.get("paging");
+		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
+
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("paging", paging);
+		request.setAttribute("list", list);
+		return "/admin/newOrder/list";
 	}
-	@PostMapping("/admin/newOrder")
-	public String nOrder(HttpServletRequest request, AdminDTO dto) {
-		//List<OrderDTO> list = mapper.list(200);
-		
-		//request.setAttribute("list", list);
-		
-		
-		return "/admin/newOrder";
-	}
+	
 	@RequestMapping("/admin/sendReady")
 	public String sReady(HttpServletRequest request) {
-		//List<OrderDTO> list = mapper.list(300);
-		
-		//request.setAttribute("list", list);
-			
+		String word = request.getParameter("word");
+		String col = request.getParameter("col");
+		String nowPageS = request.getParameter("nowPage");
+		Map map = paging(word, col, nowPageS, 300);
+	
+		int nowPage = (int) map.get("nowPage");
+		String paging = (String)map.get("paging");
+		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
+
+		request.setAttribute("col", col);
+		request.setAttribute("word", word);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("paging", paging);
+		request.setAttribute("list", list);
 		return "/admin/sendReady";
 	}
 	@RequestMapping("/admin/sending")

@@ -77,9 +77,9 @@
 										<td></td>
 								</c:when>
 								<c:otherwise>
+									<c:set var="aa"/>
 									<c:forEach var="dto" items="${list}" varStatus="status">
 										<c:forEach var="dto2" items="${dto.orderItemList}" varStatus="status">
-										
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
 											<td>${dto.orderNo}</td>
@@ -90,7 +90,17 @@
 											<td>${dto2.itemCount}</td>
 											<td>${dto2.itemPrice }</td>
 											<td>${dto.id}</td>
-											<td>입금 대기</td>
+											<td>
+											
+												<c:choose>
+													<c:when test="${status.index == 1} ">
+													</c:when>
+													<c:when test="${aa != dto.orderNo }">
+														<c:set var="aa" value="${dto.orderNo }"/>
+														입금대기													
+													</c:when>
+												</c:choose>
+											</td>
 										</tr>
 										</c:forEach>
 									</c:forEach>

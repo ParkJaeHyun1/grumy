@@ -22,7 +22,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/moneyWait.jsp" />
 	</definition>
- 	<definition name="/admin/newOrder" extends="main">
+ 	<definition name="/admin/newOrder/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/newOrder.jsp" />
