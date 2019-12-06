@@ -10,7 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="totalP" parameterType="map" resultType="int">
 		select count(*) from 
 			(
-			select a.id, a.orderno, i.title, b.orderitemno from norder a, orderitem b, itemoption o, item i 
+			select a.id, a.orderno, i.title, b.orderitemno, a.odate 
+			from norder a, orderitem b, itemoption o, item i
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state}
 			)
 		<where>
@@ -23,6 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 				<when test="col == 'buyer'">
 					and id like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'odate'">
+					and to_char(odate,'yyyy-MM-dd') like '%'||#{word}||'%'
 				</when>
 			</choose>
 		</where>
@@ -48,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" parameterType="int" resultMap="orderMap">
 		select * from
 		(select orderno, id, odate, orderItemNo, itemcount, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
-		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, a.odate odate, b.itemcount itemcount,  b.state state, 
+		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.itemcount itemcount,  b.state state, 
 			(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state} 
@@ -63,6 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<when test="col == 'buyer'">
 						and a.id like '%'||#{word}||'%'
 					</when>
+					<when test="col == 'odate'">
+						and to_char(a.odate,'yyyy-MM-dd') like '%'||#{word}||'%'
+					</when>
 				</choose>
 			order by a.orderno desc
 			))
@@ -72,10 +79,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
-		select no, subject, wdate from (
-		select no, subject, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)
+		select no, subject,lev, wdate from (
+		select no, subject, lev, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)
 		<![CDATA[
-		where rownum <=#{rownum}
+		where lev = 'A' and rownum <=#{rownum}
 		]]>
 	</select>
 

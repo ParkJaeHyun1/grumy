@@ -11,9 +11,10 @@ public class OrderDTO {
 	private String address;
 	private String detailAddress;
 	private String id;
+	private String packageno;	
 	private ArrayList<OrderItemDTO> orderItemList;
 	
-	public OrderDTO(int orderNo, String odate, String postCode, String address, String detailAddress, String id,
+	public OrderDTO(int orderNo, String odate, String postCode, String address, String detailAddress, String id, String packageno,
 			ArrayList<OrderItemDTO> orderItemList) {
 		super();
 		this.orderNo = orderNo;
@@ -22,6 +23,7 @@ public class OrderDTO {
 		this.address = address;
 		this.detailAddress = detailAddress;
 		this.id = id;
+		this.packageno = packageno;
 		this.orderItemList = orderItemList;
 	}
 	
@@ -30,6 +32,14 @@ public class OrderDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getPackageNo() {
+		return packageno;
+	}
+	
+	public void setPackageNo(String packageno) {
+		this.packageno = packageno;
+	}
+	
 	public int getOrderNo() {
 		return orderNo;
 	}
