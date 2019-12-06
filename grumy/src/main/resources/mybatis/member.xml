@@ -109,7 +109,7 @@ WHERE r >= #{sno} AND r <= #{eno}
 					email like '%'||#{word}||'%'
 				</when>
 			</choose>
-		</where>
+		</where> 
 </select>
 
 <select id="findemail" parameterType="String" resultType="String">

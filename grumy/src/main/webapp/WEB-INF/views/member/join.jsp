@@ -205,7 +205,7 @@ function sample6_execDaumPostcode() {
 	   var phone = phone1 + phone2 + phone3;
 	   document.getElementById("phone").value = phone;
 	   
-	   
+	    
 	   var birth1 = document.joinForm.birth1.value;
 	   var birth2 = document.joinForm.birth2.value;
 	   var birth3 = document.joinForm.birth3.value;

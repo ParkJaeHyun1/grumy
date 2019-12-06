@@ -107,7 +107,7 @@ public class MemberController {
 		map.put("name", name);
 		map.put("id", id);
 		map.put("email",email);
-		map.put("phone", phone);
+		map.put("phone", phone); 
 
 		String passwd = dao.findpw(map);
 		String email1 = dao.findemail(id);

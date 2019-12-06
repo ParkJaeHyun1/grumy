@@ -3,7 +3,7 @@ package spring.model.member;
 public class MemberDTO {
 	private String id;
 	private String passwd;
-	private String name;
+	private String name; 
 	private String postcode;
 	private String address;
 	private String detailaddress;
