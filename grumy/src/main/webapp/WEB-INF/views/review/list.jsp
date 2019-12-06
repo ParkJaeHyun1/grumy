@@ -370,6 +370,143 @@ span.star, span.camera, .sprite_comment {
 											</c:choose>
 										</div>
 									</div></li>
+									<!-- 이미지팝업 -->
+							<div class="show_photo_review fullscreen_popup review fullscreen_popup--loaded" style="display:none; position: absolute; z-index:1;" 
+ tabindex="-1" id="myDIV">
+  <div class="fullscreen_popup__background ie_png_fix"></div>
+  <div id="photo-popup-container" class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+    <div id="photo-popup-content" class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content" style="width: 724px; margin-top: 70px;">
+      <div class="show_photo_review__photos_container">
+        
+          <div data-width="1024" data-height="1024" data-index="1" data-count="2" id="photo-container-1" class="show_photo_review__photo_container selected js-ie-opacity-fix" style="padding: 0px; max-height: 762px; overflow: hidden;">
+            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image1/898e962774c75f32.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1024" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
+" style="max-width: 1024px;">
+          </div>
+        
+          <div data-width="618" data-height="618" data-index="2" data-count="2" id="photo-container-2" class="show_photo_review__photo_container  js-ie-opacity-fix" style="max-height: 762px; overflow: hidden;">
+            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image2/38a4208419271f81.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="618" data-height="618" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
+">
+          </div>
+        
+        </div>
+      <div id="review-contents-container" class="show_photo_review__review_contents_container js-ie-opacity-fix">
+        <div id="info-container" class="show_photo_review__info_container">
+          <div class="show_photo_review__info ">
+            <div class="show_photo_review__product">
+              <div class="show_photo_review__product_thumbnail">
+                
+                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">
+                    <img src="//assets5.cre.ma/p/slowand-com/products/00/00/00/25/71/image/extra_small_c217cf755d037b07.jpg" alt="[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" width="70" height="70" class="show_photo_review__link_to_product">
+                  </a>
+                
+              </div>
+              <div class="show_photo_review__product_info">
+                
+                <div class="show_photo_review__product_name">
+                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color</a>
+                </div>
+                <div class="show_photo_review__product_score">
+                  
+                </div>
+                <div class="show_photo_review__user_name">${dto.id }</div>
+              </div>
+            </div>
+            <div class="
+    
+      show_photo_review__translator
+    
+    hidden
+  ">
+  <button class="translator__description js-translation-button ">번역하기<span class="translator__button"></span></button>
+</div>
+
+           
+          </div>
+        </div>
+        <div id="message-container" class="js-ie-opacity-fix show_photo_review__message" style="height: 556px;">
+          <div class="show_photo_review__message_contents">
+            
+  <div class="review_options">
+    
+      <div class="review_option">
+        <div class="review_option__title">키</div>
+        <div class="review_option__content">${dto.height }</div>
+      </div>
+    
+      <div class="review_option">
+        <div class="review_option__title">몸무게</div>
+        <div class="review_option__content">${dto.weight }</div>
+      </div>
+    
+      <div class="review_option">
+        <div class="review_option__title">평소사이즈</div>
+        <div class="review_option__content">${dto.mySize }</div>
+      </div>
+    
+    
+      <div class="review_option">
+        <div class="review_option__title">선택한 옵션</div>
+        <div class="review_option__content">
+          
+            <span class="review_option__product_option">
+              <span class="review_option__product_option_key">COLOR:</span>
+              <span class="review_option__product_option_value">스킨핑크</span>
+            </span>
+          
+        </div>
+      </div>
+    
+  </div>
+
+
+            <div class="show_photo_review__all_messages js-ie-opacity-fix">
+              <div class="show_photo_review__review_message">
+               ${dto.content }      </div>
+              
+            </div>
+            <div class="show_photo_review__feedback_container">
+             
+
+              
+  <div class="comments js-comments-container js-ie-opacity-fix">
+    <div class="comments__arrow_top"></div>
+    <ul class="comments__list">
+      
+        <li class="comment" id="comment_95269">
+  <div class="comment__inner">
+    <div class="comment__lpane" title="슬로우앤드">슬로우앤드</div>
+    <div class="comment__rpane">
+      <div class="comment__error_message"></div>
+      <div class="comment__message">
+        <span class="comment__message_text">최혜진님 ! , 슬로우앤드에 후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원 지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
+        
+      </div>
+    </div>
+    
+  </div>
+</li>
+
+      
+    </ul>
+    
+  </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  
+  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 25px; right: -79px;">
+    <div class="sprites-circle-close-button ie_png_fix"><img src="${pageContext.request.contextPath}/images/colse.png"></div>
+  </div>
+
+  
+</div>
 							</c:forEach>
 						</ul>
 					</div>
@@ -426,174 +563,7 @@ span.star, span.camera, .sprite_comment {
 
 
 
-<!-- 이미지팝업 -->
-<div class="show_photo_review fullscreen_popup review fullscreen_popup--loaded" style="display:none" 
- tabindex="-1" id="myDIV">
-  <div class="fullscreen_popup__background ie_png_fix"></div>
-  <div id="photo-popup-container" class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-    <div id="photo-popup-content" class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content" style="width: 724px; margin-top: 70px;">
-      <div class="show_photo_review__photos_container">
-        
-          <div data-width="1024" data-height="1024" data-index="1" data-count="2" id="photo-container-1" class="show_photo_review__photo_container selected js-ie-opacity-fix" style="padding: 0px; max-height: 762px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image1/898e962774c75f32.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1024" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
-" style="max-width: 1024px;">
-          </div>
-        
-          <div data-width="618" data-height="618" data-index="2" data-count="2" id="photo-container-2" class="show_photo_review__photo_container  js-ie-opacity-fix" style="max-height: 762px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image2/38a4208419271f81.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="618" data-height="618" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
-">
-          </div>
-        
-        <div class="show_photo_review__images_count_indicator show_photo_review__image_count_2">
-          
-            <div class="show_photo_review__indicator_dot
-                     show_photo_review__indicator_dot--index_1
-                     js-indicator-dot
-                     js-index-1
-                     selected"></div>
-          
-            <div class="show_photo_review__indicator_dot
-                     show_photo_review__indicator_dot--index_2
-                     js-indicator-dot
-                     js-index-2
-                     "></div>
-          
-        </div>
-        
-          <div id="image-prev" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--prev">
-            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-left"></i>
-          </div>
-          <div id="image-next" class="show_photo_review__photo_navigation_button show_photo_review__photo_navigation_button--next">
-            <i class="show_photo_review__photo_navigation_button_img sprites-photo-navigation-right"></i>
-          </div>
-        
-      </div>
-      <div id="review-contents-container" class="show_photo_review__review_contents_container js-ie-opacity-fix">
-        <div id="info-container" class="show_photo_review__info_container">
-          <div class="show_photo_review__info ">
-            <div class="show_photo_review__product">
-              <div class="show_photo_review__product_thumbnail">
-                
-                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">
-                    <img src="//assets5.cre.ma/p/slowand-com/products/00/00/00/25/71/image/extra_small_c217cf755d037b07.jpg" alt="[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" width="70" height="70" class="show_photo_review__link_to_product">
-                  </a>
-                
-              </div>
-              <div class="show_photo_review__product_info">
-                
-                <div class="show_photo_review__product_name">
-                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color</a>
-                </div>
-                <div class="show_photo_review__product_score">
-                  
-                </div>
-                <div class="show_photo_review__user_name">imhj****</div>
-              </div>
-            </div>
-            <div class="
-    
-      show_photo_review__translator
-    
-    hidden
-  ">
-  <button class="translator__description js-translation-button ">번역하기<span class="translator__button"></span></button>
-</div>
-
-           
-          </div>
-        </div>
-        <div id="message-container" class="js-ie-opacity-fix show_photo_review__message" style="height: 556px;">
-          <div class="show_photo_review__message_contents">
-            
-  <div class="review_options">
-    
-      <div class="review_option">
-        <div class="review_option__title">키</div>
-        <div class="review_option__content">169cm</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">몸무게</div>
-        <div class="review_option__content">54~56</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">평소사이즈</div>
-        <div class="review_option__content">M</div>
-      </div>
-    
-    
-      <div class="review_option">
-        <div class="review_option__title">선택한 옵션</div>
-        <div class="review_option__content">
-          
-            <span class="review_option__product_option">
-              <span class="review_option__product_option_key">COLOR:</span>
-              <span class="review_option__product_option_value">스킨핑크</span>
-            </span>
-          
-        </div>
-      </div>
-    
-  </div>
 
 
-            <div class="show_photo_review__all_messages js-ie-opacity-fix">
-              <div class="show_photo_review__review_message">
-                이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ<br>터틀넥사면서 제일 고민되는게 너무 붙어서 부담스럽거나 그러지않을까 고민했는데 여리핏답게 목부분은 자연스럽게 흘러내리고 어깨부분도 편하게 딱맞구요! 특히 팔부분이 생각보다 여유있어서 인지 부각되지않고 예뻐요! 특히 소매가 짱길어서 너무 맘에들어요ㅠㅜ 긴팔원숭이라 다른모델들이 손목아무리덮는 니트여도 항상 제가입으면 짧둥 그자첸데 요 옷은 진짜 마음껏 끌어내려서 여리여리한척해봤답니다ㅠ 최고에요! 슬앤짜앙
-                
-
-              </div>
-              
-            </div>
-            <div class="show_photo_review__feedback_container">
-             
-
-              
-  <div class="comments js-comments-container js-ie-opacity-fix">
-    <div class="comments__arrow_top"></div>
-    <ul class="comments__list">
-      
-        <li class="comment" id="comment_95269">
-  <div class="comment__inner">
-    <div class="comment__lpane" title="슬로우앤드">슬로우앤드</div>
-    <div class="comment__rpane">
-      <div class="comment__error_message"></div>
-      <div class="comment__message">
-        <span class="comment__message_text">최혜진님 ! , 슬로우앤드에 후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원 지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
-        
-      </div>
-    </div>
-    
-  </div>
-</li>
-
-      
-    </ul>
-    
-  </div>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="popup_review_navigation">
-  <a href="/slowand.com/reviews/88182?app=0&amp;filter=20&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=2&amp;prev_next=true&amp;product_code=2065&amp;product_id=2571&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;sort=10&amp;user_id=52768&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--prev js-review-navigation-prev">
-    <i class="sprites-navigator-left"></i>
-  </a>
-  <a href="/slowand.com/reviews/103681?app=0&amp;filter=20&amp;iframe=1&amp;iframe_id=crema-fullscreen-popup&amp;page=1&amp;parent_widget_id=2&amp;prev_next=true&amp;product_code=2065&amp;product_id=2571&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;sort=10&amp;user_id=52768&amp;widget_env=100" data-remote="true" class="popup_review_navigation__button popup_review_navigation__button--next js-review-navigation-next">
-    <i class="sprites-navigator-right"></i>
-  </a>
-</div>
-
-    </div>
-  </div>
-  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 25px; right: -79px;">
-    <div class="sprites-circle-close-button ie_png_fix"></div>
-  </div>
-
-  
-</div>
 
     </div>

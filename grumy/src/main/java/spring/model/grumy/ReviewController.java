@@ -30,8 +30,12 @@ public class ReviewController {
 	@PostMapping("/review/create_reply")
 	public String create_reply(reviewDTO dto, int reviewNo) {
 		reviewDTO dto2 = mapper.read(reviewNo);
-		dto2.setContent(dto.getContent());
 		
+		dto2.setContent(dto.getContent());
+		dto2.setHeight(dto.getHeight());
+		dto2.setWeight(dto.getWeight());
+		dto2.setMySize(dto.getMySize());
+		dto2.setItemOptionNo(dto.getItemOptionNo());
 		
 		
 		mapper.create_reply(dto2);
@@ -41,7 +45,6 @@ public class ReviewController {
 	
 	@GetMapping("/review/create_reply")
 	public String create_reply(int reviewNo,HttpServletRequest request,HttpSession session) {
-		
 		
 		reviewDTO dto = mapper.read(reviewNo);
 		
