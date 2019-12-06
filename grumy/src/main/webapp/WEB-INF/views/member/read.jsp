@@ -103,6 +103,11 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?token=YXV0aF9tb2RlJ
 </th>
 </tr>
 <tr>
+<th scope="row" id="">비밀번호
+</th>
+<td>${dto.passwd }</td>
+</tr>
+<tr>
 <th scope="row" id="">이름 
 </th>
 <td>${dto.name }</td>
@@ -147,6 +152,25 @@ ${dto.birth }
 ${dto.point }
 </td>
 </tr>
+
+<tr>
+<th scope="row">회원등급
+</th>
+<td>
+<c:choose>
+		<c:when test="${dto.grade=='A'}">
+		관리자
+		</c:when>
+		<c:when test="${dto.grade=='H'}">
+		일반회원 
+		</c:when>
+		<c:when test="${dto.grade=='S'}">
+		VIP
+		</c:when>
+</c:choose>
+</td>
+</tr>
+
 		
 
 
@@ -160,9 +184,11 @@ ${dto.point }
 
         
 	<div class="ec-base-button">
-<a href="${pageContext.request.contextPath}/delete" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원탈퇴</a>
-<a href="${pageContext.request.contextPath}/home" 
-class="yg_btn_30 yg_btn3" alt="취소">취소</a>
+<a href="${pageContext.request.contextPath}/member/delete" id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원삭제</a>
+<a href="javascript:history.back()" 
+class="yg_btn_30 yg_btn3" alt="이전페이지">이전페이지</a>
+<a href="${pageContext.request.contextPath}/" 
+class="yg_btn_30 yg_btn3" alt="홈으로">홈으로</a>
 	</div>
 
 

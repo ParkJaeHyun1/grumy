@@ -243,6 +243,16 @@ public class MemberController {
 		
 		return "/list";
 	}
+	
+	@RequestMapping("/member/read")
+	public String read(String id,Model model) {
+		
+		MemberDTO dto = dao.read(id);
+		
+		model.addAttribute("dto",dto);
+		
+		return "/read";
+	}
 
 	
 

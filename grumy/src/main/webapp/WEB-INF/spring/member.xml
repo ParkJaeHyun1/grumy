@@ -66,5 +66,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/member/list.jsp" />
 	</definition>
+	 
+	<definition name="/read" extends="main">
+		<put-attribute name="title" value="grumy"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member/read.jsp" />
+	</definition>
 	
 </tiles-definitions>
