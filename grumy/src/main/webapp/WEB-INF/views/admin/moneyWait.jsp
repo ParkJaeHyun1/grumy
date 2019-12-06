@@ -34,17 +34,19 @@
 						<colgroup
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<col style="width: 100px;">
+							<col style="width: 120px;">
 							<col style="width: auto;">
 							<col style="width: 100px;">
-							<col style="width: 70px;">
-							<col style="width: 70px;">
-							<col style="width: 70px;">
-							<col style="width: 70px;">
+							<col style="width: 60px;">
+							<col style="width: 100px;">
+							<col style="width: 60px;">
+							<col style="width: 60px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<tr style="">
 								<th scope="col">주문번호</th>
+								<th scope="col">주문일시</th>
 								<th scope="col">아이템명</th>
 								<th scope="col">색깔</th>
 								<th scope="col">사이즈</th>
@@ -72,6 +74,7 @@
 										<td></td>
 										<td></td>
 										<td></td>
+										<td></td>
 								</c:when>
 								<c:otherwise>
 									<c:forEach var="dto" items="${list}" varStatus="status">
@@ -80,6 +83,7 @@
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
 											<td>${dto.orderNo}</td>
+											<td>${dto.odate}</td>
 											<td>${dto2.itemTitle}</td>
 											<td>${dto2.itemColor}</td>
 											<td>${dto2.itemSize}</td>
@@ -93,8 +97,6 @@
 								</c:otherwise>
 							</c:choose>
 	
-	
-	
 						</tbody>
 					</table>
 					<p
@@ -106,26 +108,22 @@
 						<fieldset class="boardSearch">
 							<p>
 								<select id="col" name="col" fw-filter="" fw-label="" fw-msg="">
-									<option value="subject"
-										<c:if test="${col == 'subject' }">selected</c:if>>결제번호</option>
-									<option value="content"
-										<c:if test="${col == 'content' }">selected</c:if>>아이템명</option>
-									<option value="writer"
-										<c:if test="${col == 'writer' }">selected</c:if>>구매자</option>
-								</select> <input id="word" name="word" type="text">
+									<option value="onum"
+										<c:if test="${col == 'onum' }">selected</c:if>>주문번호</option>
+									<option value="odate"
+										<c:if test="${col == 'odate' }">selected</c:if>>주문일시</option>
+									<option value="otitle"
+										<c:if test="${col == 'otitle' }">selected</c:if>>아이템명</option>
+									<option value="buyer"
+										<c:if test="${col == 'buyer' }">selected</c:if>>구매자</option>
+								</select> 
+								<input id="word" name="word" type="text">
 								<button class="yg_btn_28 yg_btn3">SEARCH</button>
 							</p>
 						</fieldset>
 					</div>
-				</form>
-				
-				<c:if test="${sessionScope.id=='admin' && sessionScope.grade=='A' }">
-							<p  align="right">
-							<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
-							</p>
-				</c:if>
-		
-					
+				</form>	
+				${paging}	
 			</div>	
 		</div>
 		<hr class="layout">

@@ -11,4 +11,5 @@ public interface CartMapper {
 	ArrayList<CartDTO> list(String id);
 	int delete(ArrayList<Integer> cartNoList);
 	int update(Map<String,Integer> map);
+	ArrayList<Integer>  checkDuplicate(Map map);
 }

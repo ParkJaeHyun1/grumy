@@ -96,6 +96,7 @@
             		}
             		selectedItem[itemOptionNo].count = Number(cnt);
             		$('#count'+itemOptionNo).val(cnt);
+            		$('#orderInfo'+itemOptionNo).val(itemOptionNo+'/'+cnt);
             		setTotalPrice();
             	}
 
@@ -118,7 +119,6 @@
 					var str = "";
 					str += '<tr class="option_product" id="selectedItem'+itemOptionNo+'">';
 					str += '<td>';  
-					str += '<input type="hidden" class="option_box_id"	id="orderInfo" value="" name="orderInfoList" >';
 					str += '<p 	class="product">';
 					str += '${dto.title}<br> - <span>'+color+'/'+size+'</span>';
 					str += '</p>';
@@ -140,22 +140,55 @@
 					str += '</a></td><td class="right">	<fmt:formatNumber value="${dto.price-dto.salePrice}" pattern="###,###,###"/>원</td></tr>';
 					
 					$('.option_products').append(str);
+					$('#orderInfoForm').append('<input type="hidden" id="orderInfo'+itemOptionNo+'" value="'+itemOptionNo+'/1" name="orderInfoList"/>');
 					setTotalPrice();
 	
 				}        
 				function addToCart(){
-					checkLogin();
+					if(Object.keys(selectedItem).length<=0){
+						alert('필수 옵션을 선택해주세요.');
+						return;
+					}
+					if(!isLoginUser())
+						return;
+					
+					var seletedOptionNoList = [];
+            		$.each(selectedItem, function(index, item){ 
+            			seletedOptionNoList.push(item.itemOptionNo);
+            		});
+            		
+					$.ajax({
+						type : 'put',
+						url : "../cart/checkDuplicate",
+						data :  JSON.stringify({'list':seletedOptionNoList,'id':'${sessionScope.id}'}),
+						contentType : "application/json; charset=utf-8",
+						success : function(result, status, xhr) {
+							alert(result);
+						},
+						error : function(xhr, status, er) {
+							alert('에러:'+status);
+						}
+					});
 				}
 				function buyNow(){
-					checkLogin();
+					if(Object.keys(selectedItem).length<=0){
+						alert('필수 옵션을 선택해주세요.');
+						return;
+					}
+					if(!isLoginUser())
+						return;
+					$('#orderInfoForm').submit();
+					
 				}
-				function checkLogin(){ 
+				function isLoginUser(){ 
 					if(${sessionScope.id == null || sessionScope.id==''}){
 						var result = confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?");
 						if(result){
 							$('#loginForm').submit();
 						}
+						return false;
 					}
+					return true;
 				}
             	function showReplyList(nowPage){
                     var itemNo = ${dto.itemNo};
@@ -184,26 +217,26 @@
 			<meta name="keywords"
 				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />                                                
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">             
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">                           
 
-				<meta name="viewport" content="width=device-width">    
+				<meta name="viewport" content="width=device-width">         
 					<link rel="canonical"
 						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                                                                                                                   
 					<link rel="alternate"
 						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                   
 					<meta property="og:url"
-						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                       
+						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                              
 					<meta property="og:title"
-						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                                      
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                                             
 					<meta property="og:description"
 						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />       
 					<meta property="og:site_name" content="슬로우앤드" />      
 					<meta property="og:type" content="product" />
 					<meta property="og:image"     
 						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />     
-					<meta property="product:price:amount" content="29800" />           
+					<meta property="product:price:amount" content="29800" />                     
 					<meta property="product:price:currency" content="KRW" />                
-					<meta property="product:sale_price:amount" content="29800" />
+					<meta property="product:sale_price:amount" content="29800" />    
 					<meta property="product:sale_price:currency" content="KRW" />                                
 					<link rel="shortcut icon"
 						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />       
@@ -230,7 +263,7 @@
 </head>
 
 <body id="cmn">
-<div class="xans-element- xans-product xans-product-basketadd ec-base-layer " style="position:fixed;top:50%;left:50%;z-index:1000;width:450px;margin:-175px 0 0 -225px;"><div class="header">
+<div class="xans-element- xans-product xans-product-basketadd ec-base-layer " style="position:fixed;top:50%;left:50%;z-index:1000;width:450px;margin:-175px 0 0 -225px; display:none"><div class="header">
         <h3>장바구니 담기</h3>
     </div>
 <div class="content" style="padding:185px 20px 65px;text-align:center;background:url(//img.echosting.cafe24.com/skin/base/product/bg_add_basket.gif) no-repeat 50% 68px;">    
@@ -264,11 +297,16 @@
     $project_page = /product/project.html
     $jointbuy_page = /product/jointbuy.html
 -->				
-				<form action="${pageContext.request.contextPath}/member/login" class="form-horizontal" method="post" id="loginForm" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
+
+				<form  action="${pageContext.request.contextPath}/order/order" id="orderInfoForm" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
+					  
+				</form>
+				<form action="${pageContext.request.contextPath}/member/login" id="loginForm" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
 					<input type="hidden" name="url" value ="/item/read?itemNo=${dto.itemNo}"></input>
 				</form>
+
 			
-				<!-- 상단 제품 정보  -->
+							<!-- 상단 제품 정보  -->
 				<div class="xans-element- xans-product xans-product-detail">
 					<div class="detailArea ">
 						<!-- 이미지 영역 -->
@@ -532,9 +570,11 @@
 												</tr>
 											</tbody>
 											<!-- 참고 : 옵션선택 또는 세트상품 선택시 상품이 추가되는 영역입니다. 쇼핑몰 화면에는 아래와 같은 마크업구조로 표시됩니다. 삭제시 기능이 정상동작 하지 않습니다.-->
-											<tbody class="option_products" >
+											<tbody class="option_products">
 											</tbody>
 
+
+											
 
 											<tfoot>
 												<tr>
@@ -555,7 +595,7 @@
 													onclick="addToCart()"
 													alt="장바구니 담기">ADD TO CART</a> <a id="wishBtn"
 													style="width: 100%" href="#none" class="first "
-													onclick="butNow()"><span
+													onclick="buyNow()"><span
 													alt="바로구매하기" id="btnBuy">BUY NOW</span> <span alt="예약주문"
 													class="displaynone" id="cartBtn">예약주문</span></a> <a
 													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a>
@@ -611,9 +651,10 @@
 						<div class="event"></div>
 					</div>
 				</div>
+			
 				<!-- //상단 제품 정보 -->
 
-				<div id="fixed"></div>
+				<div id="fixed"></div>          
 				<!-- offset().top 값을 위한 임의의 ID-->
 
 
@@ -685,7 +726,7 @@
 							<b><p align="center" style="text-align: center;">
 									<br>
 								</p></b>
-							<p align="center" style="text-align: center;">
+							<p align="center" style="text-align: center;"> 
 								<b><img alt=""
 									src="//slowand.com/web/upload/NNEditor/20191108/1_shop1_201304.jpg"></b>
 							</p>
@@ -898,7 +939,6 @@
 
 	</div>
 	<div id="multi_option" style="display: none;"></div>
-	<form id="frm_image_zoom" style="display: none;"></form>
 	<script type="text/javascript">var sAuthSSLDomain = "login2.cafe24ssl.com";</script>
 	<script type="text/javascript"
 		src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script>

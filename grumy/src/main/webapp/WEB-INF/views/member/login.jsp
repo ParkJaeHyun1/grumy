@@ -50,13 +50,9 @@
 <div id="header">
 <div class="myList">
 
-
-        
 </div>
 </div>
-        
-
-
+  
 <script>
     // 메인메뉴에 마우스오버시 하위메뉴 나타남
     $(".gnb > li").mouseenter(function(){
