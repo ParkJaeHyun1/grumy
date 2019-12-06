@@ -10,7 +10,7 @@ public class reviewDTO {
 	private MultipartFile filenameMF ;
 	private String itemPicture;
 	private String itemTitle;
-	private String height;
+	private int height;
 	private String weight;
 	private String mySize;
 	private String star;
@@ -18,130 +18,253 @@ public class reviewDTO {
 	private String itemSize;
 	private String itemOptionNo;
 	private int itemNo;
+	private int ref;
+	private int ansnum;
+	
+	
+
 	
 	public int getReviewNo() {
 		return reviewNo;
 	}
 
+
+
+
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
+
+
+
 
 	public String getId() {
 		return id;
 	}
 
+
+
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
+
+
 
 	public String getContent() {
 		return content;
 	}
 
+
+
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+
+
 
 	public String getPicture() {
 		return picture;
 	}
 
+
+
+
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
+
+
+
 
 	public MultipartFile getFilenameMF() {
 		return filenameMF;
 	}
 
+
+
+
 	public void setFilenameMF(MultipartFile filenameMF) {
 		this.filenameMF = filenameMF;
 	}
+
+
+
 
 	public String getItemPicture() {
 		return itemPicture;
 	}
 
+
+
+
 	public void setItemPicture(String itemPicture) {
 		this.itemPicture = itemPicture;
 	}
+
+
+
 
 	public String getItemTitle() {
 		return itemTitle;
 	}
 
+
+
+
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
 	}
 
-	public String getHeight() {
+
+
+
+	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(String height) {
+
+
+
+	public void setHeight(int height) {
 		this.height = height;
 	}
+
+
+
 
 	public String getWeight() {
 		return weight;
 	}
 
+
+
+
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
+
+
+
 
 	public String getMySize() {
 		return mySize;
 	}
 
+
+
+
 	public void setMySize(String mySize) {
 		this.mySize = mySize;
 	}
+
+
+
 
 	public String getStar() {
 		return star;
 	}
 
+
+
+
 	public void setStar(String star) {
 		this.star = star;
 	}
+
+
+
 
 	public String getItemColor() {
 		return itemColor;
 	}
 
+
+
+
 	public void setItemColor(String itemColor) {
 		this.itemColor = itemColor;
 	}
+
+
+
 
 	public String getItemSize() {
 		return itemSize;
 	}
 
+
+
+
 	public void setItemSize(String itemSize) {
 		this.itemSize = itemSize;
 	}
+
+
+
 
 	public String getItemOptionNo() {
 		return itemOptionNo;
 	}
 
+
+
+
 	public void setItemOptionNo(String itemOptionNo) {
 		this.itemOptionNo = itemOptionNo;
 	}
+
+
+
 
 	public int getItemNo() {
 		return itemNo;
 	}
 
+
+
+
 	public void setItemNo(int itemNo) {
 		this.itemNo = itemNo;
 	}
 
+
+
+
+	public int getRef() {
+		return ref;
+	}
+
+
+
+
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+
+
+
+
+	public int getAnsnum() {
+		return ansnum;
+	}
+
+
+
+
+	public void setAnsnum(int ansnum) {
+		this.ansnum = ansnum;
+	}
+
+
+
+
 	public reviewDTO(int reviewNo, String id, String content, String picture, MultipartFile filenameMF,
-			String itemPicture, String itemTitle, String height, String weight, String mySize, String star,
-			String itemColor, String itemSize, String itemOptionNo, int itemNo) {
+			String itemPicture, String itemTitle, int height, String weight, String mySize, String star,
+			String itemColor, String itemSize, String itemOptionNo, int itemNo, int ref, int ansnum) {
 		super();
 		this.reviewNo = reviewNo;
 		this.id = id;
@@ -158,9 +281,13 @@ public class reviewDTO {
 		this.itemSize = itemSize;
 		this.itemOptionNo = itemOptionNo;
 		this.itemNo = itemNo;
+		this.ref = ref;
+		this.ansnum = ansnum;
 	}
 
-	
+
+
+
 	public reviewDTO() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -34,4 +34,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/read.jsp" />
 	</definition>
+	
+	<definition name="/review/create_reply" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/review/create_reply.jsp" />
+	</definition>
 </tiles-definitions>

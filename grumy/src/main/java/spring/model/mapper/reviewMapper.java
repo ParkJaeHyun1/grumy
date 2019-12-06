@@ -14,4 +14,5 @@ public interface reviewMapper {
 	int create(reviewDTO dto);
 	ArrayList<reviewDTO> itemReviewlist(Map map);
 	reviewDTO read(int reviewNo);
+	int create_reply(reviewDTO dto);
 }

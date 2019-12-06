@@ -1,14 +1,11 @@
 package spring.model.grumy;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,14 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import spring.model.community.communityDTO;
-import spring.model.item.ItemDTO;
-import spring.model.mapper.itemMapper;
-import spring.model.mapper.reviewMapper;
-import spring.model.notice.NoticeDTO;
 import spring.model.review.reviewDTO;
+
+import spring.model.mapper.reviewMapper;
+
+
 import spring.model.utility.Utility;
 
 @Controller
@@ -32,6 +26,32 @@ public class ReviewController {
 	
 	@Autowired
 	private reviewMapper mapper;
+	
+	@PostMapping("/review/create_reply")
+	public String create_reply(reviewDTO dto, int reviewNo) {
+		reviewDTO dto2 = mapper.read(reviewNo);
+		dto2.setContent(dto.getContent());
+		
+		
+		
+		mapper.create_reply(dto2);
+	
+		return "redirect:/review/list";
+	}
+	
+	@GetMapping("/review/create_reply")
+	public String create_reply(int reviewNo,HttpServletRequest request,HttpSession session) {
+		
+		
+		reviewDTO dto = mapper.read(reviewNo);
+		
+		//String id = (String) session.getAttribute("id");
+		//request.setAttribute("name", mapper.getname(id));		
+		
+		request.setAttribute("dto", dto);
+		
+		return "/review/create_reply";
+	}
 	
 	@PostMapping("/review/update")
 	public String update(reviewDTO dto,HttpServletRequest request) {
@@ -122,7 +142,7 @@ public class ReviewController {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
 
-		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 6; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
