@@ -64,13 +64,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <select id="list" parameterType="Map" resultType="MemberDTO">
 	select id, name, postcode, address, detailaddress, 
-	phone, email, birth, point, r
+	phone, email, birth, point, grade, r
 	from(
 		select id, name, postcode, address, detailaddress, 
-		phone, email, birth, point, 
+		phone, email, birth, point, grade, 
 		rownum r
 		from(
-			select id, name, postcode, address, detailaddress
+			select id, name, postcode, address, detailaddress,
+			phone, email, birth, point, grade
 			from member
 		<where>
 			<choose>

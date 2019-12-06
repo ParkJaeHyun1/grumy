@@ -205,9 +205,10 @@ public class MemberController {
 	}
 
 	@RequestMapping("/member/list")
-	public String list(HttpServletRequest request) {
+	public String list(MemberDTO dto,HttpServletRequest request) {
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
+		
 		
 		if(col.equals("total"))
 			word = "";
@@ -227,6 +228,7 @@ public class MemberController {
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
+		
 		
 		List<MemberDTO> list = dao.list(map);
 		
