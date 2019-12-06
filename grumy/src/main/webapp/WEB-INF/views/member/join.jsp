@@ -82,14 +82,11 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
-
-<!-- 회원가입시 정규식 사용 -->
-
-<script>
+<!-- 폰번호 합치기  -->
+<script type="text/javascript">
 
 
 </script>
-
 
 <!-- 필수 입력창 확인  -->
 
@@ -97,6 +94,8 @@ function sample6_execDaumPostcode() {
    
    function validate() {
        
+
+	   
 	   var re = /^[a-zA-Z0-9]{8,16}$/ 
 	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
@@ -104,6 +103,7 @@ function sample6_execDaumPostcode() {
 	   var id = document.getElementById("id");
 	   var passwd = document.getElementById("passwd");
 	   var email = document.getElementById("email");
+	   
 
 
 
@@ -153,9 +153,19 @@ function sample6_execDaumPostcode() {
    		return false;
    	   }
    	
-   	   if(joinForm.phone.value.length==0){
+   	   if(joinForm.phone1.value.length==0){
    		alert("전화번호를 입력하세요");
-   		joinForm.phone.focus();
+   		joinForm.phone1.focus();
+   		return false;
+   	   }
+   	   if(joinForm.phone2.value.length==0){
+   		alert("전화번호를 입력하세요");
+   		joinForm.phone2.focus();
+   		return false;
+   	   }
+   	   if(joinForm.phone3.value.length==0){
+   		alert("전화번호를 입력하세요");
+   		joinForm.phone3.focus();
    		return false;
    	   }
    	   
@@ -178,6 +188,15 @@ function sample6_execDaumPostcode() {
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		return false;
 	   }  
+	   
+	   var phone1 = document.joinForm.phone1.value;
+	   var phone2 = document.joinForm.phone2.value;
+	   var phone3 = document.joinForm.phone3.value;
+	   var phone = phone1 + phone2 + phone3;
+	   document.getElementById("phone").value = phone;
+
+	  
+	   
 }
 
    function check(re, what, message) {
@@ -238,6 +257,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
     $(this).find(".gnb_sub").css("display","none");
 }); 
 </script>
+
+
+	
 	<!-- //상단카테고리 -->
 <form id="joinForm" name="joinForm" action="create"
 	onsubmit="return validate();" method="post" enctype="multipart/form-data">
@@ -319,11 +341,13 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 				 onclick="sample6_execDaumPostcode()">주소 검색</button>
 		<br />
 		<input id="address" name="address" fw-filter="" fw-label="주소"
-		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소<br /> 
-		<input id="detailaddress" name="detailaddress" fw-filter="" fw-label="주소" fw-msg=""
+		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소
+		<br />
+		<input style="width:300px;" id="detailaddress" name="detailaddress" fw-filter="" fw-label="주소" fw-msg=""
 		class="inputTypeText" placeholder="" value="" type="text" />
 	        나머지주소 (선택입력가능)
 	 	</td>
+	 
 	 </tr>
 		
 	<tr class="">
@@ -331,12 +355,22 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
-		<input id="phone" name="phone" maxlength="11" 
+		<input id="phone1" name="phone1" maxlength="3" style="width:50px;"
+		pattern="[0-1]{3}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" value="" type="text" />-
+		<input id="phone2" name="phone2" maxlength="4" style="width:60px;"
+		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		fw-msg="" value="" type="text" />-
+		<input id="phone3" name="phone3" maxlength="4" style="width:60px;"
 		fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
 		fw-msg="" value="" type="text" />
-		(-)는 제외하고 입력하세요.
 		</td>
 		</tr>
+		<input type="hidden" id="phone" name="phone"></input>		
+
+
+
+		
 		<tr>
 		<th scope="row">이메일 
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />

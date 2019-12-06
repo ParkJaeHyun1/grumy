@@ -40,7 +40,9 @@ public class MemberController {
 
 	@PostMapping("/member/create")
 	public String create(MemberDTO dto, Model model){
+		
 		String url = "/main";
+		
 		
 		if (dao.create(dto) == 1) {
 
