@@ -46,8 +46,8 @@
 											<input type="text" name="subject" style=width:300px>
 										</c:when>
 										<c:otherwise>
-											<select id="subject" name="subject">
-												<option>문의합니다 ♡</option>
+											<select id="subject" name="subject" style=width:300px>
+												<option >문의합니다 ♡</option>
 											</select>
 										</c:otherwise>
 									</c:choose></td>

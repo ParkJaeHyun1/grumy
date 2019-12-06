@@ -5,52 +5,104 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
-	<insert id="create_reply" parameterType="communityDTO">
-		insert into community(communityNo,content,wdate,ref,indent,id,ansnum,itemNo)
-		values((select nvl(max(communityNo),0)+1 from
-		community),#{content},sysdate,#{ref},#{indent}+1,#{id},#{ansnum}+1,#{itemNo})
-	</insert>
+<insert id="create_reply" parameterType="communityDTO">
+insert into community(communityNo,subject,writer,content,wdate,ref,indent,id,check_read)
+values((select nvl(max(communityNo),0)+1 from community),#{subject},#{writer},#{content},sysdate,#{ref},1,#{id},#{check_read})
+</insert>
 
 
-	<update id="update" parameterType="int">
-		update community
-		set content = #{content},
-		picture = #{picture,jdbcType=VARCHAR}
-		where communityNo = #{communityNo}
-	</update>
+<update id="update" parameterType="int">
+	update community 
+	set content = #{content}
+	where communityNo = #{communityNo}
+</update>
 
-	<delete id="delete" parameterType="int">
-		delete from community
-		where communityNo = #{communityNo}
-	</delete>
+<delete id="delete" parameterType="int">
+delete from community
+where ref = #{ref}
+</delete>
 
-	<select id="read" parameterType="int" resultType="communityDTO">
-		select communityNo,content,id,wdate,picture, itemNo
-		from community
-		where communityNo = #{communityNo}
-	</select>
+<select id="read" parameterType="int" resultType="communityDTO">
+select *
+from community
+where communityNo = #{communityNo}
+</select>
+
+<select id="list_" resultType="communityDTO">
+select communityno,subject,wdate,writer,lev
+from community
+where lev = 'S'
+order by ref desc	
+		
+</select>
 
 	<select id="list" parameterType="Map" resultType="communityDTO">
-		select communityNo,id,wdate,itemPicture,itemTitle,itemNo, indent
+		select communityNo,writer,subject,wdate,itemPicture,itemTitle,itemNo,indent,lev
 		from (
-		select communityNo,id,to_char(c.wdate,'yyyy-MM-dd') as wdate,i.itemNo,
-		i.image as itemPicture,i.title as itemTitle, rownum as rnum, c.indent
-		as indent
-		from item i, community c
-		where c.itemNo = i.itemno
-		ORDER BY ref DESC, ansnum
+				select c.communityNo communityno,c.writer writer,c.subject subject,to_char(c.wdate,'YYYY-MM-DD HH24:MI:SS') wdate,i.itemNo itemno,
+				i.image itemPicture,i.title itemTitle, c.indent indent,c.lev lev, rownum r
+				from community c left outer join item i
+				on i.itemno = c.itemno
+				where 
+					<choose>
+						<when test="col == 'subject'">
+						subject like '%'||#{word}||'%'
+						and lev = 'A'
+						</when>
+						<when test="col == 'content'">
+						content like '%'||#{word}||'%'
+						and lev = 'A'
+						</when>
+						<when test="col == 'writer'">
+						writer like '%'||#{word}||'%'
+						and lev = 'A'
+						</when>
+						<otherwise>
+						lev = 'A'
+						</otherwise>
+					</choose>
+				order by ref desc,communityno asc
 		)
-		<![CDATA[ where rnum>=1 and rnum<=7]]>
-	</select>
+		where
+		<![CDATA[
+		r >=#{sno} and r<=#{eno}
+		]]>
+
+</select>
+
+<select id="total" parameterType="Map" resultType="int">
+select count(*) from community
+		<where>
+         	<choose>
+         		<when test="col=='subject'">
+         		subject like '%'||#{word}||'%'
+         		and lev = 'A'
+         		</when>
+         		<when test="col=='content'">
+         		content like '%'||#{word}||'%'
+         		and lev = 'A'
+         		</when>
+         		<when test="col=='writer'">
+         		writer like '%'||#{word}||'%'
+         		and lev = 'A'
+         		</when>
+         		<otherwise>
+         		lev = 'A'
+         		</otherwise>
+         	</choose>
+         </where>
+</select>
+
+<select id="getname" resultType="String" parameterType="String">
+select name from member
+where id = #{id}
+</select>
 
 
+<insert id="create" parameterType="communityDTO">
+INSERT INTO community(communityNo, id, content,itemNo,wdate,ref,writer,subject,check_read,lev)
+VALUES((SELECT NVL(MAX(communityNo), 0) + 1 as communityNo FROM community),
+#{id},#{content},#{itemno},sysdate,(SELECT NVL(MAX(ref), 0) + 1  FROM community),#{writer},#{subject},#{check_read},#{lev})
 
-	<insert id="create" parameterType="communityDTO">
-		INSERT INTO community(communityNo, id, content,itemNo,picture,wdate,ref)
-		VALUES((SELECT NVL(MAX(communityNo), 0) + 1 as communityNo FROM
-		community),
-		#{id},#{content},#{itemNo},#{picture, jdbcType=VARCHAR},sysdate,(SELECT NVL(MAX(ref), 0) + 1 FROM
-		community))
-
-	</insert>
+</insert>
 </mapper>

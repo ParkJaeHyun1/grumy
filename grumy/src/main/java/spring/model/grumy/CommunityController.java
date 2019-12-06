@@ -1,8 +1,7 @@
 package spring.model.grumy;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.community.communityDTO;
-import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.communityMapper;
 import spring.model.utility.Utility;
 
@@ -30,20 +28,9 @@ public class CommunityController {
 	
 	
 	@PostMapping("/community/create_reply")
-	public String create_reply(communityDTO dto, int communityNo) {
-		communityDTO dto2 = mapper.read(communityNo);
-		dto2.setContent(dto.getContent());
+	public String create_reply(communityDTO dto) {
+		mapper.create_reply(dto);
 		
-		System.out.println(dto2.getContent()+"a1");
-		System.out.println(dto2.getRef()+"a2");
-		System.out.println(dto2.getId()+"a3");
-		System.out.println(dto2.getAnsnum()+"a4");
-		System.out.println(dto2.getItemNo()+"a5");
-		System.out.println(communityNo+"a6");
-		
-		
-		
-		mapper.create_reply(dto2);
 	
 		return "redirect:/community/list";
 	}
@@ -53,53 +40,19 @@ public class CommunityController {
 		
 		
 		communityDTO dto = mapper.read(communityNo);
+		String id = (String) session.getAttribute("id");
 		
-		//String id = (String) session.getAttribute("id");
-		//request.setAttribute("name", mapper.getname(id));		
-		
+		request.setAttribute("name", mapper.getname(id)); 		
 		request.setAttribute("dto", dto);
 		
 		return "/community/create_reply";
 	}
 	
-	@GetMapping("/community/read_reply")
-	public String read_reply(int communityNo,HttpSession session,Model model){
-		String id = (String)session.getAttribute("id"); 
-
-		if( id ==null) {
-			id =  "";
-		}
-	
-		communityDTO dto = mapper.read(communityNo);
-		
-		
-		if(id.equals("admin")||id.equals(dto.getId())) {
-			
-		
-		String content = dto.getContent().replaceAll("\r\n", "<br>");
-		
-		dto.setContent(content);
-		
-
-		model.addAttribute("dto",dto);
-		
-		return "/community/read_reply";
-		}else {
-			return "/community/error";
-		}
-	}
 	
 	@PostMapping("/community/update")
 	public String update(communityDTO dto,HttpServletRequest request) {
 		
-		String basePath = request.getRealPath("/storage");
-		
-		int filesize = (int)dto.getFileMF().getSize();
-		
-		if (filesize > 0) {
-			dto.setPicture(Utility.saveFileSpring(dto.getFileMF(), basePath));
-			
-		}
+
 		int flag = mapper.update(dto);
 		
 		if(flag ==1)
@@ -119,46 +72,42 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/delete")
-	public String delete(int communityNo) {
-		int flag = mapper.delete(communityNo);
+	public String delete(int ref) {
+		mapper.delete(ref);
 		
-		if(flag==1) {
-			return "redirect:/community/list";
-		}else {
-			return null;
-		}
+		
+		return "redirect:/community/list";
+		
 	}
 	
 	@GetMapping("/community/read")
-	public String read(int communityNo, Model model) {
+	public String read(int communityNo,HttpServletRequest request, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		String grade = (String)session.getAttribute("grade");
+		
+		if(id==null) {
+			id = "";
+			grade="";
+		}
 		communityDTO dto = mapper.read(communityNo);
 		
-		String content = dto.getContent().replaceAll("\r\n", "<br>");
-		
+		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev()=='S') {
+		String content = dto.getContent().replaceAll("\r\n", "<br>");	
 		dto.setContent(content);
 		
-		
-		
-		
-		model.addAttribute("dto",dto);
-				
-		
+		request.setAttribute("dto", dto);
 		return "/community/read";
+		}else {
+			return "/delivery/error";
+		}
+		
+		
 	}
 
 	
 	@PostMapping("/community/create")
 	public String create(communityDTO dto,HttpServletRequest request) {
 		
-		String basePath = request.getRealPath("/storage");
-		
-		int filesize = (int)dto.getFilenameMF().getSize();
-		
-		if (filesize > 0) {
-			dto.setFilesize(filesize+"");
-			dto.setPicture(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
-			
-		}
 		
 		
 		int flag = mapper.create(dto);
@@ -172,7 +121,11 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/create")
-	public String create() {
+	public String create(HttpServletRequest request, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		String name = mapper.getname(id);
+		
+		request.setAttribute("name", name);
 		
 		return "/community/create";
 	}
@@ -182,15 +135,40 @@ public class CommunityController {
 	String word = Utility.checkNull(request.getParameter("word"));
 	String col = Utility.checkNull(request.getParameter("col"));
 	
+	//페이징 관련
+	int nowPage = 1;
+	if(request.getParameter("nowPage")!=null) {
+		nowPage = Integer.parseInt(request.getParameter("nowPage"));
+	}
+	
+	int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
+	
+	//디비에서 가져올 순번
+	int sno = ((nowPage-1)*recordPerPage)+1;
+	int eno = nowPage * recordPerPage;
+	
 	Map map = new HashMap();
 	map.put("col", col);
 	map.put("word", word);
+	map.put("sno",sno);
+	map.put("eno",eno);
 	
-	ArrayList<communityDTO> list = mapper.list(map);
-	System.out.println(list.get(1).getWdate());
+	List<communityDTO> list = mapper.list(map);
+	List<communityDTO> list_ = mapper.list_();
+	
+	int total = mapper.total(map);
+	
+	String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+	
 	request.setAttribute("col", col);
 	request.setAttribute("word", word);
 	request.setAttribute("list",list);
-		return "/community/list";
+	request.setAttribute("list_",list_);
+	request.setAttribute("nowPage", nowPage);
+	request.setAttribute("paging", paging);
+	request.setAttribute("total", total);
+	
+	
+	return "/community/list";
 }
 }

@@ -3,25 +3,25 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-	
-	function create_reply(communityNo) {
+
+	function create_reply(no) {
 		var url = "create_reply";
-		url += "?communityNo=" + communityNo;
+		url += "?no=" + no;
 
 		location.href = url;
 	}
-	function update(communityNo) {
+	function update(no) {
 		var url = "update";
-		url += "?communityNo=" + communityNo;
+		url += "?no=" + no;
 
 		location.href = url;
 	}
-	function delete1(communityNo) {
+	function delete1(ref) {
 
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
 			var url = "delete";
-			url += "?communityNo=" + communityNo;
+			url += "?ref="+ref;
 
 			location.href = url;
 
@@ -32,6 +32,7 @@
 		}
 
 	}
+	
 </script>
 
 <div id="container">
@@ -60,11 +61,11 @@
 					<tbody>
 						<tr>
 							<th scope="row">SUBJECT</th>
-							<td>문의합니다</td>
+							<td>${dto.subject}</td>
 						</tr>
 						<tr>
 							<th scope="row">WRITER</th>
-							<td>유경자</td>
+							<td>${dto.writer }</td>
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -75,12 +76,7 @@
 
 								</ul>
 								<div class="detail">${dto.content }</div>
-								<c:if test="${not empty dto.picture }">
-								<img width="200px"
-								height="150px" class="img-thumbnail"
-								src="${pageContext.request.contextPath}/storage/${dto.picture}">
-								</c:if>
-								 
+																 
 							</td>
 						</tr>
 						<tr>
@@ -89,16 +85,17 @@
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
 									 <span class="gRight">
-									<c:if test="${sessionScope.grade=='A' }">
-									 <a href="javascript:create_reply(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
-									</c:if>
-									 <a href="javascript:update(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-									 <a href="javascript:delete1(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+									 <c:if test="${sessionScope.grade=='A' }">
+									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+									 </c:if>
+									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+									 <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 
 								</div></td>
 							
 						</tr>
+						
 
 					</tbody>
 				</table>

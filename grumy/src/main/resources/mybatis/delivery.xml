@@ -62,18 +62,23 @@ values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
 
 <select id="total" parameterType="Map" resultType="int">
 select count(*) from delivery
-	<where>
-		lev = 'A'
+		<where>
          	<choose>
          		<when test="col=='subject'">
          		subject like '%'||#{word}||'%'
+         		and lev = 'A'
          		</when>
          		<when test="col=='content'">
          		content like '%'||#{word}||'%'
+         		and lev = 'A'
          		</when>
          		<when test="col=='writer'">
          		writer like '%'||#{word}||'%'
+         		and lev = 'A'
          		</when>
+         		<otherwise>
+         		lev = 'A'
+         		</otherwise>
          	</choose>
          </where>
 </select>

@@ -71,7 +71,7 @@ public class DeliveryController {
 	
 	@GetMapping("/delivery/delete")
 	public String delete(int ref) {
-		int flag = mapper.delete(ref);
+		mapper.delete(ref);
 		
 
 		
@@ -87,6 +87,7 @@ public class DeliveryController {
 
 		if( id ==null) {
 			id =  "";
+			grade="";
 		}
 	
 		DeliveryDTO dto = mapper.read(no);

@@ -1,10 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js"
-	charset="utf-8">
-	 
-	</script>
+	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+	function input(f) {
+		if (f.subject.value == '') {
+			alert("제목을 입력하세요");
+			f.subject.focus();
+			return false;
+		}
+
+		/* if (f.content.value == '') {
+			alert("내용을 입력하세요");
+			f.content.focus();
+			return false;
+		} */
+		if (CKEDITOR.instances['content'].getData() == '') {
+			window.alert('내용을 입력해 주세요.');
+			CKEDITOR.instances['content'].focus();
+			return false;
+		}
+
+	}
+</script>
 <div id="container">
 	<div id="contents">
 
@@ -16,12 +35,26 @@
 					<h2>
 						<font color="#555555">상품 문의</font>
 					</h2>
-					
+
 				</div>
 			</div>
 			<form id="boardWriteForm" name="frm" action="create" method="post"
-				enctype="multipart/form-data">
-				<input type="hidden" name="id" value="유경은">
+				onclick="return input(this);">
+				<input type="hidden" name="id" value="${sessionScope.id }">
+				<input type="hidden" name="check_read" value="${sessionScope.id }">
+				<input type="hidden" name="itemno" value="${param.itemNo }">
+				<input type="hidden" name="writer" value="${name}">
+				
+				<c:choose>
+					<c:when test="${sessionScope.grade=='A' }">
+						<input type="hidden" name="lev" value="S">		
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="lev" value="A"> 
+					</c:otherwise>
+				</c:choose>
+				
+				
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -29,35 +62,46 @@
 							<col style="width: auto;">
 						</colgroup>
 						<tbody>
-							
+
 							<tr>
-							<th scope="row">상품번호</th>
-							
-							<td><input type="text" id="itemNo" name="itemNo" value=""></td>
-						</tr>
-						<tr>
-						<td colspan="2">
-						<p>이곳은 상품문의를 위한 게시판입니다!<br><br> 
+								<th scope="row">SUBJECT</th>
+								<td><c:choose>
+										<c:when test="${sessionScope.grade=='A' }">
+											<input type="text" name="subject" style="width: 300px">
+										</c:when>
+										<c:otherwise>
+											<select name="subject" style=width:300px>
+												<option >♡문의합니다</option>
+											</select>
+										</c:otherwise>
+									</c:choose></td>
+							</tr>
+							<tr>
+							</tr>
+							<tr>
+								<td colspan="2"><textarea rows="20" cols="190"
+										name="content" id="content">
+										이곳은 상품문의를 위한 게시판입니다!<br><br> 
 										주문건취소/주소지변경/상품변경<br>당일발송 상품 단독 구매 후 출고요청 <br>
 										부분배송비 입금후 가능한 상품 당일 출고요청/합배송요청에 대한 내용은 꼭 !<br> 
 										'배송 전 변경/취소' 게시판 또는 고객센터(070-7705-5595)로 당일 12시 이전 요청 해주세요!<br>
 										각 게시판에 맞는 문의 부탁드리겠습니다 좋은하루되세요 감사합니다 :-)<br><br>
-										----------------------------------------------------------------------<br></p>
-						</td>
-						</tr>
+										----------------------------------------------------------------------<br>
+										</textarea> <script type="text/javascript">
+											CKEDITOR.replace('content', {
+												height : 500
+											});
+										</script></td>
+							</tr>
 							<tr>
-								<td colspan="2"><textarea rows="20" cols="190"
-										name="content" id="content">
-										</textarea></td>
+								<th scope="row">SECRET</th>
+								<td><input id="secure0" name="secure" fw-filter="isFill"
+									fw-label="비밀글설정" fw-msg="" value="F" type="radio" onclick="return(false);"><label
+									for="secure0">공개글</label> <input id="secure1" name="secure"
+									fw-filter="isFill" fw-label="비밀글설정" fw-msg="" value="T"
+									type="radio" checked="checked"><label for="secure1">비밀글</label></td>
 							</tr>
 						</tbody>
-						<tbody class="">
-							<tr>
-								<th scope="row">FILE </th>
-								<td><input name="filenameMF" type="file"></td>
-							</tr>
-						</tbody>
-					
 					</table>
 				</div>
 				<div class="ec-base-button ">
@@ -74,57 +118,6 @@
 		</div>
 
 	</div>
-	<script type="text/javascript">
-	
-		var oEditors = [];
-		$(function() {
-			nhn.husky.EZCreator
-					.createInIFrame({
-						oAppRef : oEditors,
-						elPlaceHolder : "content", //textarea에서 지정한 id와 일치해야 합니다. 
-						//SmartEditor2Skin.html 파일이 존재하는 경로
-						sSkinURI : "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",
-						htParams : {
-							// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-							bUseToolbar : true,
-							// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-							bUseVerticalResizer : true,
-							// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-							bUseModeChanger : false,
-							fOnBeforeUnload : function() {
-
-							}
-						},
-						fOnAppLoad : function() {
-							//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-							oEditors.getById["content"].exec("PASTE_HTML",
-									[ " " ]);
-						},
-						fCreator : "createSEditor2"
-					});
-
-			//저장버튼 클릭시 form 전송
-			$("#save").click(function() {
-				oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-				$("#frm").submit();
-			});
-		});
-
-		function input(f) {
-			 var secure = this.value;
-			
-			if (f.content.value == '') {
-				alert("내용을 입력하세요");
-				f.content.focus();
-				return false;
-			}
-			if (secure == "secure1" && f.passwd.value == '') {
-				alert("비번을 입력하세요");
-				f.passwd.focus();
-				return false;
-			}
-		}
-	</script>
 
 </div>
 
