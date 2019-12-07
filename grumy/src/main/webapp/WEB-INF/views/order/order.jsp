@@ -51,7 +51,7 @@ function purchase(){
       },
       order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
       params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
-      account_expire_at: '2018-05-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
       extra: {
           start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
          end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
@@ -59,10 +59,11 @@ function purchase(){
            quota: '0' // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용
       }
    }).error(function (data) {
-      //결제 진행시 에러가 발생하면 수행됩니다.
+	  alert(data);
+      alert('결제도중 에러가 발생하였습니다. 다시 시도해주세요.')
       console.log(data);
    }).cancel(function (data) {
-      alert('결제를 취소하셨습니다.');
+      alert('결제가 취소되었습니다.');
       console.log(data);
    }).ready(function (data) {
       alert('가상계좌 번호 발급:'+data);
@@ -110,6 +111,21 @@ function setOrderInfoOfNew(){
 	$('#remail2').val('');
 	$('#rmsg').val('');
 }
+function checkPoint(val){
+		if(isNaN(val) || val<2000){
+			alert('적립금 사용량은 2000원 이상이어야 합니다');
+			$('#point').val(0);
+			return false;
+		}else if(val>${member.point}){
+			alert('적립금 사용량은 보유한 적림글을 초과할 수 없습니다.');
+			$('#point').val(${member.point}>=2000?2000:0);
+			return false;
+		}else if(val>${totalPrice+deliveryCharge}){
+			alert('적립금 사용량은 결제금액을 초과할 수 없습니다.');
+			$('#point').val(${member.point}>=${totalPrice+deliveryCharge}?${totalPrice+deliveryCharge}:(${member.point}>=2000?${member.point}:0));
+			return false;
+		}
+}
    </script>
 
 <link rel="stylesheet"
@@ -154,7 +170,7 @@ function setOrderInfoOfNew(){
 					<meta name="description"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 					<meta name="keywords"
-						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
+						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />      
 </head>
 <body id="cmn">
 	<div id="wrap">
@@ -188,7 +204,7 @@ function setOrderInfoOfNew(){
 							</div>
 
 							<!-- 기본배송 -->
-							<div class="ec-base-table typeList gBorder ">
+							<div class="ec-base-table typeList gBorder ">          
 								<table border="1" summary="">
 									<caption>기본배송</caption>
 									<colgroup>
@@ -766,10 +782,9 @@ function setOrderInfoOfNew(){
 												<th scope="row">적립금</th>
 												<td>
 													<p>
-														<input id="input_mile" name="input_mile" fw-filter=""
-															fw-label="적립금" fw-msg="" class="inputTypeText"
-															placeholder="" size="10" value="" type="text" /> 원 (총
-														사용가능 적립금 : <strong class="txtWarn">38,289</strong>원)
+														<input id="point" name="point" 	fw-label="적립금"  class="inputTypeText"
+															placeholder="" size="10" value="" type="text" onblur="checkPoint(this.value)"/> 원 (총
+														사용가능 적립금 : <strong class="txtWarn">${member.point }</strong>원)
 													</p>
 													<ul class="info">
 														<li>적립금은 최소 2,000 이상일 때 결제가 가능합니다.</li>
