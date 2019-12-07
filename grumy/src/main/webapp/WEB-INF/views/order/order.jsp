@@ -21,6 +21,9 @@
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"  type="application/javascript"></script>
 <script>
+$(document).ready(function(){
+	setOrderInfoOfMember();
+ });
 function purchase(){
    BootPay.request({
       price: '1000', //실제 결제되는 가격
@@ -83,6 +86,30 @@ function purchase(){
       console.log(data);
    });
 }
+function setOrderInfoOfMember(){
+	$('#rname').val('${member.name}');
+	$('#rpostcode').val('${member.postcode}');
+	$('#raddress').val('${member.address}');
+	$('#rdetailaddress').val('${member.detailaddress}');
+	$('#rphone1').val('${member.phone1}');
+	$('#rphone2').val('${member.phone2}');
+	$('#rphone3').val('${member.phone3}');
+	$('#remail1').val('${member.email1}');
+	$('#remail2').val('${member.email2}');
+	$('#rmsg').val('');
+}
+function setOrderInfoOfNew(){
+	$('#rname').val('');
+	$('#rpostcode').val('');
+	$('#raddress').val('');
+	$('#rdetailaddress').val('');
+	$('#rphone1').val('');
+	$('#rphone2').val('');
+	$('#rphone3').val('');
+	$('#remail1').val('');
+	$('#remail2').val('');
+	$('#rmsg').val('');
+}
    </script>
 
 <link rel="stylesheet"
@@ -105,12 +132,12 @@ function purchase(){
 					<link rel="canonical"
 						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
-						href="http://m.slowand.com/order/orderform.html" />
+						href="http://m.slowand.com/order/orderform.html" />         
 					<meta property="og:url"
-						content="http://slowand.com/order/orderform.html" />
+						content="http://slowand.com/order/orderform.html" />       
 					<meta property="og:title" content="슬로우앤드" />
 					<meta property="og:description"
-						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
+						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />       
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="website" />
 					<script type="text/javascript"
@@ -290,9 +317,9 @@ function purchase(){
 												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 											<td>
 												<div class="address">
-													<input type="radio" checked/><label
+													<input type="radio" name="destination" checked onclick="setOrderInfoOfMember()"/><label
 														for="sameaddr0">주문자 정보와 동일</label> 
-													<input type="radio" /><label for="sameaddr1">새로운배송지</label>
+													<input type="radio" name="destination" onclick="setOrderInfoOfNew()"/><label for="sameaddr1">새로운배송지</label>
 													
 												</div>
 											</td>
@@ -300,23 +327,19 @@ function purchase(){
 										<tr>
 											<th scope="row">받으시는 분 <img
 												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rname" name="rname" fw-filter="isFill"
-												fw-label="수취자 성명" fw-msg="" class="inputTypeText"
-												placeholder="" size="15" value="" type="text" /></td>
+											<td><input id="rname" name="rname" placeholder="" size="15" value="" type="text" /></td>
 										</tr>
 										<tr>
 											<th scope="row">주소 <img
 												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rzipcode1" name="rzipcode1"
-												fw-filter="isFill" fw-label="수취자 우편번호1" fw-msg=""
-												class="inputTypeText" placeholder="" size="6" maxlength="6"
+											<td><input id="rpostcode" name="rpostcode"class="inputTypeText" placeholder="" size="6" maxlength="6"
 												readonly="1" value="" type="text" /> <a href="#none"
 												id="btn_search_rzipcode" class="yg_btn_24 yg_btn5"
-												alt="우편번호">우편번호</a><br /> <input id="raddr1" name="raddr1"
+												alt="우편번호">우편번호</a><br /> <input id="raddress" name="raddress"
 												fw-filter="isFill" fw-label="수취자 주소1" fw-msg=""
 												class="inputTypeText" placeholder="" size="40" readonly="1"
 												value="" type="text" /> <span class="grid">기본주소</span><br />
-												<input id="raddr2" name="raddr2" fw-filter="isFill"
+												<input id="rdetailaddress" name="rdetailaddress" fw-filter="isFill"
 												fw-label="수취자 주소2" fw-msg="" class="inputTypeText"
 												placeholder="" size="40" value="" type="text" /> <span
 												class="grid">나머지주소</span><span class="grid displaynone">(선택입력가능)</span>
@@ -332,7 +355,7 @@ function purchase(){
 											<th scope="row">휴대전화 <span class=""><img
 													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
 											</th>
-											<td><select id="rphone2_1" name="rphone2_[]"
+											<td><select id="rphone1" name="rphone1"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="">
 													<option value="010">010</option>
@@ -341,10 +364,10 @@ function purchase(){
 													<option value="017">017</option>
 													<option value="018">018</option>
 													<option value="019">019</option>
-											</select>-<input id="rphone2_2" name="rphone2_[]" maxlength="4"
+											</select>-<input id=rphone2 name="rphone2" maxlength="4"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="" size="4" value="" type="text" />-<input
-												id="rphone2_3" name="rphone2_[]" maxlength="4"
+												id="rphone3" name="rphone3" maxlength="4"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="" size="4" value="" type="text" /></td>
 										</tr>
@@ -439,10 +462,10 @@ function purchase(){
 										<tr>
 											<th scope="row">이메일 <img
 												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oemail1" name="oemail1"
+											<td><input id="remail1" name="remail1"
 												fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg=""
-												class="mailId" value="" type="text" />@<input id="oemail2"
-												name="oemail2" fw-filter="isFill" fw-label="주문자 이메일"
+												class="mailId" value="" type="text" />@<input id="remail2"
+												name="remail2" fw-filter="isFill" fw-label="주문자 이메일"
 												fw-alone="N" fw-msg="" class="mailAddress"
 												readonly="readonly" value="" type="text" /><select
 												id="oemail3" fw-filter="isFill" fw-label="주문자 이메일"
@@ -471,7 +494,7 @@ function purchase(){
 											<th scope="row">배송메시지 <span class="displaynone"><img
 													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
 											</th>
-											<td><textarea id="omessage" name="omessage" fw-filter=""
+											<td><textarea id="rmsg" name="rmsg" fw-filter=""
 													fw-label="배송 메세지" fw-msg="" maxlength="255" cols="70"></textarea>
 												<div class="devMessage displaynone">
 													<label><input id="omessage_autosave0"

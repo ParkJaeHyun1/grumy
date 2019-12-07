@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import spring.model.mapper.MemberMapper;
 import spring.model.mapper.OrderMapper;
 import spring.model.mapper.itemMapper;
+import spring.model.member.MemberDTO;
 import spring.model.order.OrderItemDTO;
 
 @Controller
@@ -26,7 +27,7 @@ public class OrderController {
 	
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
 	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList) {
-		System.out.println(orderInfoList.length);
+
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
 		
@@ -41,6 +42,8 @@ public class OrderController {
 		for(String orderInfo:orderInfoList) 
 			itemOptionNoList.add(Integer.parseInt(orderInfo.split("/")[0]));
 
+		MemberDTO member = memberMapper.read((String)session.getAttribute("id"));
+		member.divideInfo();
 		ArrayList<OrderItemDTO> orderItemList = orderMapper.itemOptionList(itemOptionNoList);
 		
 		for(int i=0;i<orderInfoList.length;i++) {
@@ -55,6 +58,7 @@ public class OrderController {
 		if(totalPrice<50000)
 			deliveryCharge = 0;
 		
+		request.setAttribute("member", member);
 		request.setAttribute("list", orderItemList);
 		request.setAttribute("totalPrice", totalPrice);
 		request.setAttribute("deliveryCharge",deliveryCharge);

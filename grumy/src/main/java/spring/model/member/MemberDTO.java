@@ -12,6 +12,19 @@ public class MemberDTO {
 	private String birth;
 	private String point;
 	private String grade;
+	private String phone1;
+	private String phone2;
+	private String phone3;
+	private String email1;
+	private String email2;
+	
+	
+	
+	public MemberDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -78,8 +91,48 @@ public class MemberDTO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	public String getPhone1() {
+		return phone1;
+	}
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+	public String getPhone2() {
+		return phone2;
+	}
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+	public String getPhone3() {
+		return phone3;
+	}
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+	public String getEmail1() {
+		return email1;
+	}
+	public void setEmail1(String email1) {
+		this.email1 = email1;
+	}
+	public String getEmail2() {
+		return email2;
+	}
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
 	
-	
+	public void connectInfo() {
+		email = email1 +"@"+email2;
+		phone = phone1+phone2+phone3;
+	}
+	public void divideInfo() {
+		phone1 = phone.substring(0,3);
+		phone2 = phone.substring(3,7);
+		phone3 = phone.substring(7,phone.length());
+		email1 = email.substring(0,email.indexOf("@"));
+		email2 = email.substring(email.indexOf("@")+1,email.length());
+	}
 	
 	
 }
