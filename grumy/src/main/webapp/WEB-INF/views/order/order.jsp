@@ -26,7 +26,7 @@ $(document).ready(function(){
  });
 function purchase(){
    BootPay.request({
-      price: '1000', //실제 결제되는 가격
+      price: '1000', //실제 결제되는 가격         
       application_id: "5dd76d0802f57e0021e217c1",
       name: '${list[0].itemTitle}', //결제창에서 보여질 이름
       pg: '',
