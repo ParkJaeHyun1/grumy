@@ -2,8 +2,6 @@ package spring.model.grumy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,16 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import spring.model.admin.AdminDTO;
 import spring.model.community.communityDTO;
 import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.AdminMapper;
 import spring.model.notice.NoticeDTO;
 import spring.model.order.OrderDTO;
-import spring.model.order.OrderItemDTO;
 import spring.model.utility.Utility;
 
 @Controller
@@ -32,8 +31,8 @@ public class AdminController {
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {		
 		int wait = mapper.total(100);	//입금대기
-		int newOrder = mapper.total(200);	//신규주문
-		int sReady = mapper.total(300);	//배송준비
+		int newOrder = mapper.total(600);	//신규주문
+		int sReady = mapper.total(200);	//배송준비
 		int sIng = mapper.total(400);	//배송중
 		int sFin = mapper.total(500);	//배송완료
 		
@@ -105,9 +104,20 @@ public class AdminController {
 		
 		return map;
 	}
+	
+	@RequestMapping(value="/admin/mwait/update", method=RequestMethod.POST)
+	@ResponseBody
+	public String confirm(@RequestBody Map map) {
+		System.out.println(map.get("no") + " come");
+		map.put("state", 200);
+		if(mapper.updateState(map)>0) {
+			System.out.println("업뎃 성공");
+		}
+		return "success";          
+	}
+	
 	@GetMapping("/admin/mwait/list")
 	public String mwait(HttpServletRequest request) {		
-		
 		String word = request.getParameter("word");
 		String col = request.getParameter("col");
 		String nowPageS = request.getParameter("nowPage");

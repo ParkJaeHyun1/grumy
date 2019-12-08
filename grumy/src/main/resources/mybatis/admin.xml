@@ -5,7 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.AdminMapper">
 	<select id="total" parameterType="int" resultType="int">
-		select count(state) from orderItem where state = #{state}
+		select count(b.state) 
+		from norder a, orderItem b 
+		where a.orderno = b.orderno  
+		<choose>
+			<when test= "value == 600">
+			<![CDATA[
+			and state = 200 
+			and to_char(odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
+			]]>
+			</when>
+			<otherwise>
+			and state = #{state}
+			</otherwise>
+		</choose>
 	</select>
 	<select id="totalP" parameterType="map" resultType="int">
 		select count(*) from 
@@ -103,12 +116,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	
-	<!-- 
-		<update id="updateStat" parameterType="Map">
-		update admintest  
-		set stat = stat + 100
-		where no = #{no} 
+	<update id="updateState" parameterType="Map">
+		update orderitem
+		set state = #{state}
+		where orderno = #{orderno}
 	</update>	
-	 -->
 </mapper>

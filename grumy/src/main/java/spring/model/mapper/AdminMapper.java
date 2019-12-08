@@ -15,5 +15,5 @@ public interface AdminMapper {
 	ArrayList<NoticeDTO> noticel(int rownum);
 	ArrayList<DeliveryDTO> deliveryl(int rownum);
 	ArrayList<communityDTO> communityl(int rownum);
-	
+	int updateState(Map map);
 }
