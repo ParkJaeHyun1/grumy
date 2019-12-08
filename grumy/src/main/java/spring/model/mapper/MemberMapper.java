@@ -19,6 +19,6 @@ public interface MemberMapper {
 	int total(Map map);
 	String findemail(String id);
 	String findphone(String id);
-
+	String sendmail(MemberDTO dto);
 	
 }

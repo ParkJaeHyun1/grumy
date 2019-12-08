@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import spring.model.mapper.MemberMapper;
 import spring.model.member.MemberDTO;
 import spring.model.utility.Utility;
@@ -30,36 +29,33 @@ import spring.model.utility.Utility;
 @Controller
 public class MemberController {
 
-
 	@Autowired
 	private MemberMapper dao;
-		
+
 	@Autowired
 	private JavaMailSender mailSender;
 
-	
 	@GetMapping("/member/create")
 	public String create() {
-		
+
 		return "/create";
-	} 
+	}
 
 	@PostMapping("/member/create")
-	public String create(MemberDTO dto, Model model){
-		
+	public String create(MemberDTO dto, Model model) {
+
 		String url = "/main";
-		
-		
+
 		if (dao.create(dto) == 1) {
 
 			url = "redirect:/";
 		} else {
 			url = "error";
-		} 
+		}
 
 		return url;
-	}//end createproc
-	
+	}// end createproc
+
 	@ResponseBody
 	@GetMapping(value = "/member/idcheck", produces = "application/json;charset=utf-8")
 	public Map<String, Object> idcheck(String id) {
@@ -73,11 +69,12 @@ public class MemberController {
 			map.put("str", id + "는 사용가능 합니다.");
 		}
 		return map;
-	}//end idcheck
-	
+	}// end idcheck
+
 	@RequestMapping("/member/loginProc")
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response,@RequestParam(value="url",required=false) String url) throws Exception{
+			HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "url", required = false) String url) throws Exception {
 		int flag = dao.loginCheck(map);
 
 		if (flag == 1) {
@@ -88,52 +85,48 @@ public class MemberController {
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('아이디or패스워드가 잘못되었습니다.'); "
-					+ "history.go(-1);</script>");
+			out.println("<script>alert('아이디or패스워드가 잘못되었습니다.'); " + "history.go(-1);</script>");
 			out.flush();
 			return "/login";
 		}
-		if(url == null || url.equals(""))
+		if (url == null || url.equals(""))
 			return "redirect:/";
-		return"redirect:"+url;
+		return "redirect:" + url;
 	}
-	
+
 	@RequestMapping("/member/login")
-	public String login(HttpServletRequest request,@RequestParam(value="url",required=false) String url) {
+	public String login(HttpServletRequest request, @RequestParam(value = "url", required = false) String url) {
 		request.setAttribute("url", url);
 		return "/login";
 	}
-	
+
 	@PostMapping("/member/findpw")
-	public String findpw(HttpServletRequest request, HttpServletResponse response,
-			String name, String id, String phone, String email, Model model
-			)throws Exception {
-		
+	public String findpw(HttpServletRequest request, HttpServletResponse response, String name, String id, String phone,
+			String email, Model model) throws Exception {
+
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("id", id);
-		map.put("email",email);
-		map.put("phone", phone); 
+		map.put("email", email);
+		map.put("phone", phone);
 
 		String passwd = dao.findpw(map);
 		String email1 = dao.findemail(id);
 		String phone1 = dao.findphone(id);
 
-		if(passwd!=null) {
-			
+		if (passwd != null) {
+
 			model.addAttribute("passwd", passwd);
 			model.addAttribute("email1", email1);
 			model.addAttribute("phone1", phone1);
-			
 
 			return "/findpwproc";
-			
-		}else {
-			
+
+		} else {
+
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('입력하신 정보가 올바르지 않습니다.'); "
-					+ "history.go(-1);</script>");
+			out.println("<script>alert('입력하신 정보가 올바르지 않습니다.'); " + "history.go(-1);</script>");
 			out.flush();
 			return "/findpw";
 		}
@@ -143,35 +136,34 @@ public class MemberController {
 	public String findpw() {
 
 		return "/findpw";
-	} 
+	}
 
 	@PostMapping("/member/findid")
-	public String findid(HttpServletRequest request, HttpServletResponse response,
-String name, String email, String phone, Model model) throws Exception{
+	public String findid(HttpServletRequest request, HttpServletResponse response, String name, String email,
+			String phone, Model model) throws Exception {
 		Map map = new HashMap();
 		map.put("name", name);
 		map.put("email", email);
 		map.put("phone", phone);
 
 		String id = dao.findid(map);
-		
-		if(id!=null) {
-			
+
+		if (id != null) {
+
 			model.addAttribute("id", id);
 
 			return "/findidproc";
-		
-		}else{
-			
+
+		} else {
+
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('요청하신 정보로 가입하신 아이디가 존재하지 않습니다.'); "
-					+ "history.go(-1);</script>");
+			out.println("<script>alert('요청하신 정보로 가입하신 아이디가 존재하지 않습니다.'); " + "history.go(-1);</script>");
 			out.flush();
-			
+
 			return "/findid";
 		}
-		
+
 	}
 
 	@GetMapping("/member/findid")
@@ -183,22 +175,19 @@ String name, String email, String phone, Model model) throws Exception{
 	@GetMapping("/member/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		
 
 		return "redirect:/";
 
 	}
-	
 
-	
 	@PostMapping("member/delete")
-	public String delete(String id,String delpasswd,HttpServletRequest request, HttpServletResponse response, HttpSession session)throws Exception {
-		
+	public String delete(String id, String delpasswd, HttpServletRequest request, HttpServletResponse response,
+			HttpSession session) throws Exception {
+
 		Map map = new HashMap();
-		map.put("id",id);
-		map.put("passwd",delpasswd);
-		
-		
+		map.put("id", id);
+		map.put("passwd", delpasswd);
+
 		int flag = dao.delete(map);
 
 		if (flag == 1) {
@@ -207,7 +196,7 @@ String name, String email, String phone, Model model) throws Exception{
 		} else {
 			return "error";
 		}
-		
+
 	}
 
 	@GetMapping("/member/delete")
@@ -217,108 +206,110 @@ String name, String email, String phone, Model model) throws Exception{
 	}
 
 	@PostMapping("/member/update")
-	public String update(HttpServletRequest request, HttpServletResponse response,MemberDTO dto, Model model)throws Exception {
+	public String update(HttpServletRequest request, HttpServletResponse response, MemberDTO dto, Model model)
+			throws Exception {
 		int flag = dao.update(dto);
-		
+
 		if (flag == 1) {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('정보수정을 완료하였습니다.'); "
-					+ "history.go(-1);</script>");
+			out.println("<script>alert('정보수정을 완료하였습니다.'); " + "history.go(-1);</script>");
 			out.flush();
 			return "/home";
 		} else {
-			
+
 			return "error";
 		}
 
 	}
 
 	@GetMapping("/member/update")
-	public String update(Model model,HttpSession session) {
-		String id = (String)session.getAttribute("id");
-		
+	public String update(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+
 		MemberDTO dto = dao.read(id);
-		
+
 		model.addAttribute("dto", dto);
-		
-		
+
 		return "/update";
 	}
 
 	@RequestMapping("/member/list")
-	public String list(MemberDTO dto,HttpServletRequest request) {
+	public String list(MemberDTO dto, HttpServletRequest request) {
 		String col = Utility.checkNull(request.getParameter("col"));
 		String word = Utility.checkNull(request.getParameter("word"));
-		
-		
-		if(col.equals("total"))
+
+		if (col.equals("total"))
 			word = "";
-		
+
 		int nowPage = 1;
 		int recordPerpage = 5;
-		
-		if(request.getParameter("nowPage")!=null) {
+
+		if (request.getParameter("nowPage") != null) {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
-		
-		int sno = ((nowPage-1)*recordPerpage) + 1;
-		int eno = nowPage*recordPerpage;
-		
+
+		int sno = ((nowPage - 1) * recordPerpage) + 1;
+		int eno = nowPage * recordPerpage;
+
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
 		map.put("sno", sno);
 		map.put("eno", eno);
-		
-		
+
 		List<MemberDTO> list = dao.list(map);
-		
+
 		int total = dao.total(map);
 		String paging = Utility.paging(total, nowPage, recordPerpage, col, word);
-		
+
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
-		
+
 		return "/list";
 	}
-	
+
 	@RequestMapping("/member/read")
-	public String read(String id,Model model) {
-		
+	public String read(String id, Model model) {
+
 		MemberDTO dto = dao.read(id);
-		
-		model.addAttribute("dto",dto);
-		
+
+		model.addAttribute("dto", dto);
+
 		return "/read";
 	}
 
 	@RequestMapping(value = "/member/sendmail")
-	public String sendmail(HttpServletRequest request) {
-		
+	public String sendmail(HttpServletRequest request,Model model,
+			HttpServletResponse response){
+	
 		String from = "kevinahn861125@gmail.com";
-		String to = ""; 
-		String title = ""; 
-		String content = ""; 
-		
+		String to = "snowangel86@daum.net";
+		String title = "테스트";
+		String content = "1234";
+
 		System.out.println(from);
 		System.out.println(to);
 		System.out.println(title);
 		System.out.println(content);
-		try { 
+		try {
 			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
-					true, "UTF-8");
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
 			messageHelper.setFrom(from);
-			messageHelper.setTo(to); 
+			messageHelper.setTo(to);
 			messageHelper.setSubject(title);
 			messageHelper.setText(content);
 
 			mailSender.send(message);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('성공적으로 메일을 발송했습니다.');history.go(-1);</script>");
+			out.flush();
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
