@@ -19,7 +19,8 @@
 <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
-<script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"  type="application/javascript"></script>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"
+	type="application/javascript"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 var totalPrice=0,pointPrice=0,couponPrice=0;
@@ -27,7 +28,10 @@ $(document).ready(function(){
 	setOrderInfoOfMember();
 	totalPrice = ${totalPrice+deliveryCharge};
  });
- 
+var list={};
+<c:forEach items="${list}" var="item">
+	list.push({itemOptionNo:item.itemOptionNo,count:item.count});
+</c:forEach>
 function checkOrderInfo(){
 	if($('#rname').val().length==0){
 		alert('주문자 성명을 입력해주세요.');
@@ -94,7 +98,7 @@ function selectPostcode() {
             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
             if(data.userSelectedType === 'R'){
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+               // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
                     extraAddr += data.bname;
                 }
@@ -172,7 +176,7 @@ function purchase(){
       //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
       //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
       console.log(data);
-      var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
+      var enable = checkItemCount(); // 재고 수량 관리 로직 혹은 다른 처리
       if (enable) {
          BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
       } else {
@@ -187,6 +191,25 @@ function purchase(){
       console.log(data);
    });
 }     
+function checkItemCount(){
+    $.ajax({
+        type : 'put',
+        url : "../order/check",
+        data :  JSON.stringify(list),
+        contentType : "application/json; charset=utf-8",
+        success : function(result, status, xhr) {
+            alert('성공'+result);
+           if(result =='success')
+               return true;
+           else
+               return false;
+        },
+        error : function(xhr, status, er) {
+           alert('에러:'+status);
+           return false;
+        }
+     });
+}
 function setOrderInfoOfMember(){
 	$('#rname').val('${member.name}');           
 	$('#rpostcode').val('${member.postcode}');
@@ -253,41 +276,41 @@ function setPriceView(){
 	$('#totalPrice2').html(totalPrice-pointPrice);
 	$('#total_price').val(totalPrice-pointPrice);      
 }
-   </script>  
+   </script>
 
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">                      
+	<link rel="alternate" href="http://www.m.slowand.com/">
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />       
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
 		<meta name="naver-site-verification"
-			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />                  
+			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
 		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />        
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">        
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />      
+						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
-						href="http://m.slowand.com/order/orderform.html" />         
+						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
-						content="http://slowand.com/order/orderform.html" />                  
+						content="http://slowand.com/order/orderform.html" />
 					<meta property="og:title" content="슬로우앤드" />
 					<meta property="og:description"
-						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />       
+						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
 					<meta property="og:site_name" content="슬로우앤드" />
-					<meta property="og:type" content="website" /> 
-					<script type="text/javascript"      
+					<meta property="og:type" content="website" />
+					<script type="text/javascript"
 						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 					<script type="text/javascript"
-						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>     
+						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>
 					<link rel="stylesheet" type="text/css"
 						href="https://www.slowand.com/ind-script/optimizer.php?filename=tZQ9bsMwDIX3OGvPQSQt0L1zp_YE-mFsxZLokhIQ376CnSGFl0KxRhHkR_JJejBQQDidGSamnlUARqHMBsGIwIUpJjAUAsVjCbzAf_LRHIR8To7iQdOtsjCnVNvUqxm5rjQp7fGhFE2XBVlAxYjn0_srTFl7Z7ohBQ9isbMoro8go4tvCzSQzR4hzDLQBFrFURON9cyyDeVUQOLM0qDMWw64WbN-VmKLDBfisOOYm2fzLHANNBAyuwbQROSTmxqQB_QtsOWH2Gxa6Dup3kWVsIXKSjegbsxnN_AfO9xRBN9C3JJl6rGziv3VrT5bbHYX0PUnI89HfRPv7DPm98D8VIl2AX2rKLvY8f1CFlf-UDJiMpSfUXDLvn_2LzS4gn8B&type=css&k=e22f5c15bc0ccd63d04b603a65ebf1ffb78f13b2&t=1547093551" />
 
@@ -297,7 +320,7 @@ function setPriceView(){
 					<meta name="description"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 					<meta name="keywords"
-						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />      
+						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 </head>
 <body id="cmn">
 	<div id="wrap">
@@ -318,7 +341,7 @@ function setPriceView(){
 
 				<form id="frm_order_act" name="frm_order_act" action=""
 					method="post" target="_self" enctype="multipart/form-data">
-				
+
 					<div class="xans-element- xans-order xans-order-form xans-record-">
 						<!-- 이값은 지우면 안되는 값입니다. ($move_order_after 주문완료페이지 주소 / $move_basket 장바구니페이지 주소)
         $move_order_after=/order/order_result.html
@@ -331,7 +354,7 @@ function setPriceView(){
 							</div>
 
 							<!-- 기본배송 -->
-							<div class="ec-base-table typeList gBorder ">          
+							<div class="ec-base-table typeList gBorder ">
 								<table border="1" summary="">
 									<caption>기본배송</caption>
 									<colgroup>
@@ -363,70 +386,83 @@ function setPriceView(){
 										<tr>
 											<td class=""></td>
 											<td colspan="8"><span class="gLeft">[기본배송]</span> 상품구매금액
-												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/><span class="displaynone"> (0)</span><span
-												class="displaynone"> + 부가세 0</span> + 배송비 <span
-												id="domestic_ship_fee"><fmt:formatNumber value="${deliveryCharge}" pattern="###,###,###"/> <c:if test="${deliveryCharge==0}">(무료)</c:if></span> <span
+												<fmt:formatNumber value="${totalPrice}"
+													pattern="###,###,###" /><span class="displaynone">
+													(0)</span><span class="displaynone"> + 부가세 0</span> + 배송비 <span
+												id="domestic_ship_fee"><fmt:formatNumber
+														value="${deliveryCharge}" pattern="###,###,###" /> <c:if
+														test="${deliveryCharge==0}">(무료)</c:if></span> <span
 												class="displaynone"> - 상품할인금액 0 </span> = 합계 : <strong
 												class="txtEm gIndent10"><span
-													id="domestic_ship_fee_sum" class="txt18"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong> <span
-												class="displaynone"></span></td>
+													id="domestic_ship_fee_sum" class="txt18"><fmt:formatNumber
+															value="${totalPrice+deliveryCharge}"
+															pattern="###,###,###" /></span>원</strong> <span class="displaynone"></span></td>
 										</tr>
 									</tfoot>
 									<tbody
 										class="xans-element- xans-order xans-order-normallist center">
-											<c:forEach var="dto" items="${list}">    
-										<tr class="xans-record-">      
-											<td class=""></td>      
-											<td class="thumb gClearLine"><a
-												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
-													src="${pageContext.request.contextPath}/images/${dto.itemImage}"
-													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
-													alt="" /></a></td>
-											<td class="left gClearLine"><a
-												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle }</a>
-												<div class="option ">[옵션: ${dto.itemColor}/${dto.itemSize} } }]</div>
-												<p class="gBlank5 displaynone">무이자할부 상품</p>
-												<p class="gBlank5 displaynone">유효기간 :</p></td>
-											<td>
-											<c:if test="${dto.itemSalePrice != 0} }">
-												<div class="discount">
-														<fmt:formatNumber value="${dto.itemPrice}" pattern="###,###,###"/>원
-													<p class="displaynone"></p>
-												</div>
-											</c:if>
-											<div id="cart_item_price_21">
-												<fmt:formatNumber value="${dto.itemPrice-dto.itemSalePrice}" pattern="###,###,###"/>원</div></td>
-											<td>${dto.count} </td>
-											<td><span class="txtInfo"><input
-													id='product_mileage_cash_3573_000D'
-													name='product_mileage_cash' value='578' type="hidden"><img
-														src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
-														<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br /> <input id='product_mileage_card_3573_000D'
-														name='product_mileage_card' value='289' type="hidden"><img
-															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
-															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber> 원<br /> <input id='product_mileage_tcash_3573_000D'
-															name='product_mileage_tcash' value='289' type="hidden"><img
-																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
-																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_cell_3573_000D'
-																name='product_mileage_cell' value='289' type="hidden"><img
-																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
-																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_icash_3573_000D'
-																	name='product_mileage_icash' value='289' type="hidden"><img
-																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
-																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
-											<td><div class="txtInfo">
-													기본배송<br />
-												</div></td>
-											<td rowspan="1" class="">
-											<c:choose>
-												<c:when test="${deliveryCharge==0 }"> 무료</c:when>
-												<c:otherwise>${deliveryCharge }</c:otherwise>
-											</c:choose>
-											</td>
-											<td><fmt:formatNumber value="${dto.count*(dto.itemPrice-dto.itemSalePrice)}" pattern="###,###,###"/>원
-												<div class="displaynone"></div>
-											</td>
-										</tr>
+										<c:forEach var="dto" items="${list}">
+											<tr class="xans-record-">
+												<td class=""></td>
+												<td class="thumb gClearLine"><a
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
+														src="${pageContext.request.contextPath}/images/${dto.itemImage}"
+														onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
+														alt="" /></a></td>
+												<td class="left gClearLine"><a
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle }</a>
+													<div class="option ">[옵션:
+														${dto.itemColor}/${dto.itemSize} } }]</div>
+													<p class="gBlank5 displaynone">무이자할부 상품</p>
+													<p class="gBlank5 displaynone">유효기간 :</p></td>
+												<td><c:if test="${dto.itemSalePrice != 0} }">
+														<div class="discount">
+															<fmt:formatNumber value="${dto.itemPrice}"
+																pattern="###,###,###" />
+															원
+															<p class="displaynone"></p>
+														</div>
+													</c:if>
+													<div id="cart_item_price_21">
+														<fmt:formatNumber
+															value="${dto.itemPrice-dto.itemSalePrice}"
+															pattern="###,###,###" />
+														원
+													</div></td>
+												<td>${dto.count}</td>
+												<td><span class="txtInfo"><input
+														id='product_mileage_cash_3573_000D'
+														name='product_mileage_cash' value='578' type="hidden"><img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
+															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br />
+															<input id='product_mileage_card_3573_000D'
+															name='product_mileage_card' value='289' type="hidden"><img
+																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
+																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>
+																원<br /> <input id='product_mileage_tcash_3573_000D'
+																name='product_mileage_tcash' value='289' type="hidden"><img
+																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
+																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
+																	<input id='product_mileage_cell_3573_000D'
+																	name='product_mileage_cell' value='289' type="hidden"><img
+																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
+																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
+																		<input id='product_mileage_icash_3573_000D'
+																		name='product_mileage_icash' value='289' type="hidden"><img
+																			src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
+																			<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
+												<td><div class="txtInfo">
+														기본배송<br />
+													</div></td>
+												<td rowspan="1" class=""><c:choose>
+														<c:when test="${deliveryCharge==0 }"> 무료</c:when>
+														<c:otherwise>${deliveryCharge }</c:otherwise>
+													</c:choose></td>
+												<td><fmt:formatNumber
+														value="${dto.count*(dto.itemPrice-dto.itemSalePrice)}"
+														pattern="###,###,###" />원
+													<div class="displaynone"></div></td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -442,8 +478,9 @@ function setPriceView(){
 							<div class="title">
 								<h3>배송 정보</h3>
 								<p class="required">
-									<img src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-									필수입력사항
+									<img
+										src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+										alt="필수" /> 필수입력사항
 								</p>
 							</div>
 							<div class="ec-base-table typeWrite">
@@ -456,47 +493,55 @@ function setPriceView(){
 									<!-- 국내 배송지 정보 -->
 									<tbody class="">
 										<tr class="">
-											<th scope="row">배송지 선택  <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+											<th scope="row">배송지 선택 <img
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td>
 												<div class="address">
-													<input type="radio" name="destination" checked onclick="setOrderInfoOfMember()"/><label
-														for="sameaddr0">주문자 정보와 동일</label> 
-													<input type="radio" name="destination" onclick="setOrderInfoOfNew()"/><label for="sameaddr1">새로운배송지</label>
-													
+													<input type="radio" name="destination" checked
+														onclick="setOrderInfoOfMember()" /><label for="sameaddr0">주문자
+														정보와 동일</label> <input type="radio" name="destination"
+														onclick="setOrderInfoOfNew()" /><label for="sameaddr1">새로운배송지</label>
+
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">받으시는 분 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rname" name="rname" placeholder="" size="15" value="" type="text" /></td>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
+											<td><input id="rname" name="rname" placeholder=""
+												size="15" value="" type="text" /></td>
 										</tr>
 										<tr>
 											<th scope="row">주소 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rpostcode" name="rpostcode"class="inputTypeText" placeholder="" size="6" maxlength="6"
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
+											<td><input id="rpostcode" name="rpostcode"
+												class="inputTypeText" placeholder="" size="6" maxlength="6"
 												readonly="1" value="" type="text" /> <a href="#none"
 												id="btn_search_rzipcode" class="yg_btn_24 yg_btn5"
-												alt="우편번호">우편번호</a><br /> <input id="raddress" name="raddress"
-												fw-filter="isFill" fw-label="수취자 주소1" fw-msg=""
-												class="inputTypeText" placeholder="" size="40" readonly="1"
-												value="" type="text" /> <span class="grid"></span><br />
-												<input id="rdetailaddress" name="rdetailaddress" fw-filter="isFill"
-												fw-label="수취자 주소2" fw-msg="" class="inputTypeText"
-												placeholder="" size="40" value="" type="text" /> <span
-												class="grid">상세주소</span><span class="grid displaynone">(선택입력가능)</span>
-											</td>
+												alt="우편번호">우편번호</a><br /> <input id="raddress"
+												name="raddress" fw-filter="isFill" fw-label="수취자 주소1"
+												fw-msg="" class="inputTypeText" placeholder="" size="40"
+												readonly="1" value="" type="text" /> <span class="grid"></span><br />
+												<input id="rdetailaddress" name="rdetailaddress"
+												fw-filter="isFill" fw-label="수취자 주소2" fw-msg=""
+												class="inputTypeText" placeholder="" size="40" value=""
+												type="text" /> <span class="grid">상세주소</span><span
+												class="grid displaynone">(선택입력가능)</span></td>
 										</tr>
 										<tr class="displaynone">
 											<th scope="row">일반전화 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td></td>
 										</tr>
 										<tr class="">
 											<th scope="row">휴대전화 <span class=""><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td><select id="rphone1" name="rphone1"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
@@ -535,7 +580,8 @@ function setPriceView(){
 										</tr>
 										<tr>
 											<th scope="row">받으시는 분 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td><span class="grid">받는분의 이름은 영문으로 작성해 주세요.</span></td>
 										</tr>
 										<tr class="displaynone">
@@ -548,7 +594,8 @@ function setPriceView(){
 										</tr>
 										<tr>
 											<th scope="row">국가 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
@@ -558,7 +605,8 @@ function setPriceView(){
 										</tr>
 										<tr>
 											<th scope="row">주소1 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
@@ -567,17 +615,20 @@ function setPriceView(){
 										</tr>
 										<tr>
 											<th scope="row">도시 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
 											<th scope="row">주/지방 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr class="displaynone">
 											<th scope="row">일반전화 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
@@ -585,7 +636,8 @@ function setPriceView(){
 										</tr>
 										<tr class="">
 											<th scope="row">휴대전화 <span class=""><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
@@ -593,7 +645,8 @@ function setPriceView(){
 										</tr>
 										<tr id="ec-shop-receiver_id_card_key" class="displaynone">
 											<th scope="row">신분증 ID <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td>
 												<p class="gBlank5">통관을 위해 규정에 따라 신분증 ID를 수집합니다.</p>
 											</td>
@@ -604,7 +657,8 @@ function setPriceView(){
 										class="email ec-orderform-emailRow ec-shop-deliverySimpleForm">
 										<tr>
 											<th scope="row">이메일 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td><input id="remail1" name="remail1"
 												fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg=""
 												class="mailId" value="" type="text" />@<input id="remail2"
@@ -635,7 +689,8 @@ function setPriceView(){
 									<tbody class="delivery ">
 										<tr class="">
 											<th scope="row">배송메시지 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td><textarea id="rmsg" name="rmsg" fw-filter=""
 													fw-label="배송 메세지" fw-msg="" maxlength="255" cols="70"></textarea>
@@ -675,7 +730,8 @@ function setPriceView(){
 									<tbody class="delivery displaynone">
 										<tr class="">
 											<th scope="row">배송메시지 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<div class="devMessage displaynone">
@@ -826,7 +882,9 @@ function setPriceView(){
 										<tr>
 											<td class="price"><div class="box txt16">
 													<strong><span id="total_order_price_view"
-														class="txt23">${totalPrice+deliveryCharge}</span>원</strong> <span class="displaynone"><span
+														class="txt23"><fmt:formatNumber
+																value="${totalPrice+deliveryCharge}"
+																pattern="###,###,###" /></span>원</strong> <span class="displaynone"><span
 														id="total_order_price_ref_view"></span></span>
 												</div></td>
 											<td class="option "><div class="box txt16">
@@ -836,9 +894,10 @@ function setPriceView(){
 														id="total_sale_price_ref_view"></span></span>
 												</div></td>
 											<td><div class="box txtEm txt16">
-													<strong>=</strong> <strong><span
-														id="totalPrice" class="txt23"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong>
-													<span class="displaynone"><span
+													<strong>=</strong> <strong><span id="totalPrice"
+														class="txt23"><fmt:formatNumber
+																value="${totalPrice+deliveryCharge}"
+																pattern="###,###,###" /></span>원</strong> <span class="displaynone"><span
 														id="total_order_sale_price_ref_view"></span></span>
 												</div></td>
 										</tr>
@@ -909,9 +968,11 @@ function setPriceView(){
 												<th scope="row">적립금</th>
 												<td>
 													<p>
-														<input id="point" name="point" 	fw-label="적립금"  class="inputTypeText"
-															placeholder="" size="10" value="0" type="text" onblur="checkPoint(this.value)" style="text-align: right"/> 원 (총
-														사용가능 적립금 : <strong class="txtWarn">${member.point }</strong>원)
+														<input id="point" name="point" fw-label="적립금"
+															class="inputTypeText" placeholder="" size="10" value="0"
+															type="text" onblur="checkPoint(this.value)"
+															style="text-align: right" /> 원 (총 사용가능 적립금 : <strong
+															class="txtWarn">${member.point }</strong>원)
 													</p>
 													<ul class="info">
 														<li>적립금은 최소 2,000 이상일 때 결제가 가능합니다.</li>
@@ -962,10 +1023,11 @@ function setPriceView(){
 									href="https://www.slowand.com/product/slowmade-히트-터틀넥티셔츠-속기모-8-color/3606/category/1/display/3/"
 									rel="109" class="nivohref nivo-imageLink"><img
 									src="//app-storage-edge-008.cafe24.com/photoslide2/anne2173/2019/11/13/8bb83821f4f22b52fdfbbdd9c6f4de46.jpg"
-									intrinsicsize="897 x 400" alt="" title="" border="0" style="width:897px;height:325px;"></a>
+									intrinsicsize="897 x 400" alt="" title="" border="0"
+									style="width: 897px; height: 325px;"></a>
 							</div>
 							<!-- 최종결제금액 -->
-							<div class="total" style="border: 1px solid #ddd">           
+							<div class="total" style="border: 1px solid #ddd">
 								<h4>
 									<span>최종결제 금액</span>
 								</h4>
@@ -974,38 +1036,53 @@ function setPriceView(){
 										fw-filter="isFill" fw-label="결제금액" fw-msg=""
 										class="inputTypeText" placeholder=""
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
-										size="10" readonly="1" value="${totalPrice+deliveryCharge}" type="text" /><span>원</span>
+										size="10" readonly="1" value="${totalPrice+deliveryCharge}"
+										type="text" /><span>원</span>
 								</p>
-								<p class="paymentAgree" >      
+								<p class="paymentAgree">
 									<input id="chk_purchase_agreement"
 										name="chk_purchase_agreement" fw-filter="" fw-label="구매진행 동의"
 										fw-msg="" value="T" type="checkbox" /><label
-										for="chk_purchase_agreement">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
-								</p>     
+										for="chk_purchase_agreement">결제정보를 확인하였으며, 구매진행에
+										동의합니다.</label>
+								</p>
 								<div class="button">
 									<a href="#none" class="yg_btn_140" id="btn_payment"
 										style="width: 330px;" alt="결제하기" onclick="purchase()">결제하기</a>
 								</div>
-								<div class="mileage "> 
+								<div class="mileage ">
 									<dl class="ec-base-desc gLarge right">
 										<dt>
-											<strong>최종 결제금액</strong>   
+											<strong>최종 결제금액</strong>
 										</dt>
-										<dd  class="txtWarn"><sapn id="totalPrice2"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></sapn>원</dd>
+										<dd class="txtWarn">
+											<sapn id="totalPrice2">
+											<fmt:formatNumber value="${totalPrice+deliveryCharge}"
+												pattern="###,###,###" /></sapn>
+											원
+										</dd>
 									</dl>
-									<dl class="ec-base-desc gLarge right">  
-										<dt>총 상품금액</dt>  
-										<dd id="mProductMileage"><span id="productTotalPrice"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/></span>원</dd>
+									<dl class="ec-base-desc gLarge right">
+										<dt>총 상품금액</dt>
+										<dd id="mProductMileage">
+											<span id="productTotalPrice"><fmt:formatNumber
+													value="${totalPrice}" pattern="###,###,###" /></span>원
+										</dd>
 										<dt>배송비</dt>
-										<dd id="mMemberMileage"><span><fmt:formatNumber value="${deliveryCharge}" pattern="###,###,###"/></span>원</dd>
+										<dd id="mMemberMileage">
+											<span><fmt:formatNumber value="${deliveryCharge}"
+													pattern="###,###,###" /></span>원
+										</dd>
 										<dt>총 할인금액</dt>
-										<dd id="mCouponMileage"><span id="totalSalePrice2">0</span>원</dd>
+										<dd id="mCouponMileage">
+											<span id="totalSalePrice2">0</span>원
+										</dd>
 									</dl>
-								</div>    
+								</div>
 							</div>
 						</div>
 						<!-- 무이자 할부 이용안내 -->
-						<div class="ec-base-help">       
+						<div class="ec-base-help">
 							<h3>무이자 할부 이용안내</h3>
 							<div class="inner">
 								<ul>

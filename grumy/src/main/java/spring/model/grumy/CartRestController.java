@@ -52,7 +52,7 @@ public class CartRestController {
 	public ResponseEntity<String> insert(@RequestBody Map map) {
 		int cnt=0;
 		
-		ArrayList<CartDTO> updateList = oMapper.convertValue(map.get("updateList"), new TypeReference<ArrayList<CartDTO>>() {});	// 맵에서 가져와서 arrayList로 형변환할때 스프링 4.0이하에서 안되는 버그가있어서 씀
+		ArrayList<CartDTO> updateList = oMapper.convertValue(map.get("updateList"), new TypeReference<ArrayList<CartDTO>>() {});	// 留듭뿉�꽌 媛��졇���꽌 arrayList濡� �삎蹂��솚�븷�븣 �뒪�봽留� 4.0�씠�븯�뿉�꽌 �븞�릺�뒗 踰꾧렇媛��엳�뼱�꽌 ��
 		ArrayList<CartDTO> insertList = oMapper.convertValue(map.get("insertList"), new TypeReference<ArrayList<CartDTO>>() {});
 		
 		for(CartDTO dto:updateList){
@@ -73,7 +73,6 @@ public class CartRestController {
 	@PutMapping("/cart/checkDuplicate")
 	public ResponseEntity<String> checkDuplicate(@RequestBody Map map) {
 		ArrayList<CartDTO> list = oMapper.convertValue(map.get("list"), new TypeReference<ArrayList<CartDTO>>() {});
-//		ArrayList<CartDTO> list = (ArrayList<CartDTO>) map.get("list");
 		ArrayList<Integer> duplicateList  = mapper.checkDuplicate(map);   
 		String res = "";         
 		
