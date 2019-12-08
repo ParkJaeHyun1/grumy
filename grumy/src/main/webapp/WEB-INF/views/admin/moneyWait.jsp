@@ -59,8 +59,10 @@ function update(orderno){
 							<col style="width: 100px;">
 							<col style="width: 60px;">
 							<col style="width: 100px;">
-							<col style="width: 60px;">
-							<col style="width: 40px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 100px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">

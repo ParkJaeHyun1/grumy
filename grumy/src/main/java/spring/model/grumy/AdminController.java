@@ -31,10 +31,10 @@ public class AdminController {
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {		
 		int wait = mapper.total(100);	//입금대기
-		int newOrder = mapper.total(600);	//신규주문
+		int newOrder = mapper.total(201);	//신규주문
 		int sReady = mapper.total(200);	//배송준비
-		int sIng = mapper.total(400);	//배송중
-		int sFin = mapper.total(500);	//배송완료
+		int sIng = mapper.total(300);	//배송중
+		int sFin = mapper.total(400);	//배송완료
 		
 //		ArrayList<OrderDTO> list1 = mapper.list(100);
 //		System.out.println(list1.get(1).getOrderItemList().size());

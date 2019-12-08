@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from norder a, orderItem b 
 		where a.orderno = b.orderno  
 		<choose>
-			<when test= "value == 600">
+			<when test= "value == 201">
 			<![CDATA[
 			and state = 200 
 			and to_char(odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
