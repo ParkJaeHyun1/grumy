@@ -9,11 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.item.ItemDTO;
 import spring.model.mapper.itemMapper;
+import spring.model.review.reviewDTO;
 import spring.model.utility.ItemUtility;
+import spring.model.utility.Utility;
 
 @Controller
 public class ItemController {
@@ -21,6 +25,35 @@ public class ItemController {
 	@Autowired
 	private itemMapper mapper;
 
+	
+	
+	@PostMapping("/item/create")
+	public String create(ItemDTO dto, HttpServletRequest request) {
+//		String basePath = request.getRealPath("/storage");
+//		
+//		int filesize = (int) dto.getFilenameMF().getSize();
+//
+//		if (filesize > 0) {
+//			dto.content(Utility.saveFileSpring(dto.getFilenameMF(), basePath));
+//		}
+//
+//		int flag = mapper.create(dto);
+//		
+//		if(flag == 1) {
+//			return "redirect:/item/list";
+//		}else {
+//			return null;
+//		}
+		return "/item/create";
+		
+	}
+	@GetMapping("/item/create")
+	public String create() {
+		
+		return "/item/create";
+	}
+	
+	
 	@RequestMapping("/item/read")
 	public String read(int itemNo, Model model, HttpServletRequest request) {
 

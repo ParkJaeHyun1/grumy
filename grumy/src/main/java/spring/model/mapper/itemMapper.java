@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import spring.model.item.ItemDTO;
+import spring.model.review.reviewDTO;
 
 
 public interface itemMapper {
@@ -20,5 +21,7 @@ public interface itemMapper {
 	
 	int delete(int itemNo);
 	int update(int itemOptionNo);
+
+	int create(ItemDTO dto);
 
 }
