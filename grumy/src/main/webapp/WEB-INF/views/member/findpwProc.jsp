@@ -60,7 +60,7 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?auth_mode=decryptCl
     <h3>임시 비밀번호 전송</h3>
 </div>
 <form id="findPasswdMethod" name="findPasswdMethod" 
-action="findpwproc" method="post" target="_self" 
+action="sendmail" method="post" 
 enctype="multipart/form-data">
 
 <div class="xans-element- xans-member xans-member-findpasswdmethod ">
@@ -80,9 +80,8 @@ ${email1 }
 </ul>
 
 <p class="ec-base-button gBlank20">
-	<a href="#none" class="yg_btn_140" 
-	onclick="" alt="임시 비밀번호 전송">임시 비밀번호 전송</a>
-	<a href="${pageContext.request.contextPath }/member/login" class="yg_btn_140 yg_btn3" 
+	<button type="submit" class="yg_btn_140" alt="임시 비밀번호 전송">임시 비밀번호 전송</a>
+	<button href="${pageContext.request.contextPath }/member/login" class="yg_btn_140 yg_btn3" 
 	onclick="" alt="로그인">로그인</a>
 </p>
             

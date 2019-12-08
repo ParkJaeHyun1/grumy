@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import spring.model.email.EmailDTO;
+
 import spring.model.mapper.MemberMapper;
 import spring.model.member.MemberDTO;
 import spring.model.utility.Utility;
@@ -31,14 +33,11 @@ public class MemberController {
 
 	@Autowired
 	private MemberMapper dao;
-	
-	@Autowired
-	private EmailDTO dto;
-	
+		
 	@Autowired
 	private JavaMailSender mailSender;
 
-
+	
 	@GetMapping("/member/create")
 	public String create() {
 		
@@ -297,6 +296,35 @@ String name, String email, String phone, Model model) throws Exception{
 		return "/read";
 	}
 
-	
+	@RequestMapping(value = "/member/sendmail")
+	public String sendmail(HttpServletRequest request) {
+		
+		String from = "kevinahn861125@gmail.com";
+		String to = request.getParameter("email"); 
+		String title = request.getParameter("id")+"님의 비밀번호 찾기에 대한 결과입니다."; 
+		String content = request.getParameter("name")+"님이 요청하신 비밀번호는"
+		+request.getParameter("passwd")+"입니다"; 
+		
+		System.out.println(from);
+		System.out.println(to);
+		System.out.println(title);
+		System.out.println(content);
+		try { 
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
+					true, "UTF-8");
+
+			messageHelper.setFrom(from);
+			messageHelper.setTo(to); 
+			messageHelper.setSubject(title);
+			messageHelper.setText(content);
+
+			mailSender.send(message);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return "/login";
+	}
 
 }
