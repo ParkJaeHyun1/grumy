@@ -300,10 +300,9 @@ String name, String email, String phone, Model model) throws Exception{
 	public String sendmail(HttpServletRequest request) {
 		
 		String from = "kevinahn861125@gmail.com";
-		String to = request.getParameter("email"); 
-		String title = request.getParameter("id")+"님의 비밀번호 찾기에 대한 결과입니다."; 
-		String content = request.getParameter("name")+"님이 요청하신 비밀번호는"
-		+request.getParameter("passwd")+"입니다"; 
+		String to = ""; 
+		String title = ""; 
+		String content = ""; 
 		
 		System.out.println(from);
 		System.out.println(to);
