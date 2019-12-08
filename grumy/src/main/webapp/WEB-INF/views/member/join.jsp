@@ -82,11 +82,7 @@ function sample6_execDaumPostcode() {
         }).open();
     }
 </script>
-<!-- 폰번호 합치기  -->
-<script type="text/javascript">
 
-
-</script>
 
 <!-- 필수 입력창 확인  -->
 
@@ -95,7 +91,7 @@ function sample6_execDaumPostcode() {
    function validate() {
        
 
-	   
+	   var ph1 = /(^01.{1}|[0-9]{3})$/
 	   var re = /^[a-zA-Z0-9]{8,16}$/ 
 	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
@@ -152,7 +148,7 @@ function sample6_execDaumPostcode() {
    		joinForm.detailaddress.focus();
    		return false;
    	   }
-   	
+   	  
    	   if(joinForm.phone1.value.length==0){
    		alert("전화번호를 입력하세요");
    		joinForm.phone1.focus();
@@ -209,7 +205,7 @@ function sample6_execDaumPostcode() {
 	   var birth1 = document.joinForm.birth1.value;
 	   var birth2 = document.joinForm.birth2.value;
 	   var birth3 = document.joinForm.birth3.value;
-	   var birth = phone1 + phone2 + phone3;
+	   var birth = birth1 + birth2 + 3;
 	   document.getElementById("birth").value = birth;
 	   
 	   
