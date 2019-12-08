@@ -10,7 +10,7 @@ public class MemberDTO {
 	private String phone;
 	private String email;
 	private String birth;
-	private String point;
+	private int point;
 	private String grade;
 	private String phone1;
 	private String phone2;
@@ -79,10 +79,10 @@ public class MemberDTO {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public String getPoint() {
+	public int getPoint() {
 		return point;
 	}
-	public void setPoint(String point) {
+	public void setPoint(int point) {
 		this.point = point;
 	}
 	public String getGrade() {

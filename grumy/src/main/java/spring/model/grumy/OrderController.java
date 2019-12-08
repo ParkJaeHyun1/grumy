@@ -56,7 +56,7 @@ public class OrderController {
 			System.out.println(dto.toString());
 		}
 		if(totalPrice<50000)
-			deliveryCharge = 0;
+			deliveryCharge = 2500;
 		
 		request.setAttribute("member", member);
 		request.setAttribute("list", orderItemList);

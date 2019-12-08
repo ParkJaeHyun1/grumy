@@ -20,11 +20,111 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"  type="application/javascript"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+var totalPrice=0,pointPrice=0,couponPrice=0;
 $(document).ready(function(){
 	setOrderInfoOfMember();
+	totalPrice = ${totalPrice+deliveryCharge};
  });
+ 
+function checkOrderInfo(){
+	if($('#rname').val().length==0){
+		alert('주문자 성명을 입력해주세요.');
+		$('#rname').focus();
+		return false;
+	}else if($('#rpostcode').val.length==0){
+		alert('우편번호를 입력해주세요.');
+		$('#rpostcode').focus();
+		return false;
+	}else if($('#rdetailaddress').val().length==0){
+		alert('상세주소를 입력해주세요.');
+		$('#rpostcode').focus();
+		return false;
+	}else if($('#rphone2').val().length==0){
+		alert('핸드폰 번호를 입력해주세요.');
+		$('#rphone2').focus();
+		return false;
+	}
+	else if(!(/[A-Za-z0-9]{4}$/.test($('#rphone2').val()))){
+		alert('핸드폰번호를 확인해주세요.');
+		$('#rphone2').focus();
+		return false;
+	}else if($('#rphone3').val().length==0){
+		alert('핸드폰 번호를 입력해주세요.');
+		$('#rphone3').focus();
+		return false;
+	}
+	else if(!(/[A-Za-z0-9]{4}$/.test($('#rphone3').val()))){
+		alert('핸드폰번호를 확인해주세요.');
+		$('#rphone3').focus();
+		return false;
+	}else if($('#remail1').val().length==0){
+		alert('이메일을 입력해주세요.');
+		$('#remail1').focus();
+		return false;
+	}else if($('#remail2').val().length==0){
+		alert('이메일을 입력해주세요.');
+		$('#remai2').focus();
+		return false;
+	}else if(!$('#chk_purchase_agreement').is(":checked")){
+		alert('결제정보 확인 및 구매진행에 동의하셔야 주문이 가능합니다.');
+		$('#remai2').focus();
+		return false;
+	}
+	return true;
+}
+function selectPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+              //  document.getElementById("sample6_extraAddress").value = extraAddr;
+            
+            } else {
+               // document.getElementById("sample6_extraAddress").value = '';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            $('#rpostcode').val(data.zonecode);
+            $("#raddress").val(addr);
+            // 커서를 상세주소 필드로 이동한다.
+            $("#rdetailaddress").focus();
+        }
+    }).open();
+}
 function purchase(){
+	if(!checkOrderInfo()){
+		return;
+	}
    BootPay.request({
       price: '1000', //실제 결제되는 가격         
       application_id: "5dd76d0802f57e0021e217c1",
@@ -86,17 +186,19 @@ function purchase(){
       //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
       console.log(data);
    });
-}
+}     
 function setOrderInfoOfMember(){
-	$('#rname').val('${member.name}');
+	$('#rname').val('${member.name}');           
 	$('#rpostcode').val('${member.postcode}');
 	$('#raddress').val('${member.address}');
 	$('#rdetailaddress').val('${member.detailaddress}');
-	$('#rphone1').val('${member.phone1}');
+	$('#rphone1').val('${member.phone1}').attr('selected','selected');
 	$('#rphone2').val('${member.phone2}');
 	$('#rphone3').val('${member.phone3}');
 	$('#remail1').val('${member.email1}');
 	$('#remail2').val('${member.email2}');
+	$('#remail3').val('etc').attr('selected','selected');
+	$('#remail3').val('${member.email2}').attr('selected','selected');
 	$('#rmsg').val('');
 }
 function setOrderInfoOfNew(){
@@ -104,63 +206,88 @@ function setOrderInfoOfNew(){
 	$('#rpostcode').val('');
 	$('#raddress').val('');
 	$('#rdetailaddress').val('');
-	$('#rphone1').val('');
+	$('#rphone1').val('010').attr('selected','selected');
 	$('#rphone2').val('');
 	$('#rphone3').val('');
 	$('#remail1').val('');
 	$('#remail2').val('');
+	$('#remail3').val('etc').attr('selected','selected');
 	$('#rmsg').val('');
 }
-function checkPoint(val){
-		if(isNaN(val) || val<2000){
+$(function(){
+	$('#remail3').change(function(){
+		if(this.value == 'etc'){
+			$("#remail2").removeAttr("readonly");
+			$('#remail2').val('');
+		}else{
+			$("#remail2").attr("readonly",true);
+			$('#remail2').val(this.value);
+		}
+	})	
+})
+
+function checkPoint(val){  
+		if(val == 0){
+			return;
+		}
+		else if(isNaN(val) || val<2000){
 			alert('적립금 사용량은 2000원 이상이어야 합니다');
 			$('#point').val(0);
-			return false;
-		}else if(val>${member.point}){
+			return false; 
+		}else if(val>${member.point}){        
 			alert('적립금 사용량은 보유한 적림글을 초과할 수 없습니다.');
 			$('#point').val(${member.point}>=2000?2000:0);
 			return false;
-		}else if(val>${totalPrice+deliveryCharge}){
+		}else if(val>${totalPrice+deliveryCharge}){     
 			alert('적립금 사용량은 결제금액을 초과할 수 없습니다.');
 			$('#point').val(${member.point}>=${totalPrice+deliveryCharge}?${totalPrice+deliveryCharge}:(${member.point}>=2000?${member.point}:0));
 			return false;
 		}
+		pointPrice = val;
+		setPriceView();
 }
-   </script>
+function setPriceView(){
+	$('#totalSalePrice').html(pointPrice);
+	$('#totalSalePrice2').html(pointPrice);
+	$('#totalPrice').html(totalPrice-pointPrice);
+	$('#totalPrice2').html(totalPrice-pointPrice);
+	$('#total_price').val(totalPrice-pointPrice);      
+}
+   </script>  
 
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">
+	<link rel="alternate" href="http://www.m.slowand.com/">                      
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />       
 		<meta name="naver-site-verification"
-			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
+			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />                  
 
 		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />        
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">        
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />
+						href="http://slowand.com/order/orderform.html" />      
 					<link rel="alternate"
 						href="http://m.slowand.com/order/orderform.html" />         
 					<meta property="og:url"
-						content="http://slowand.com/order/orderform.html" />       
+						content="http://slowand.com/order/orderform.html" />                  
 					<meta property="og:title" content="슬로우앤드" />
 					<meta property="og:description"
 						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />       
 					<meta property="og:site_name" content="슬로우앤드" />
-					<meta property="og:type" content="website" />
-					<script type="text/javascript"
+					<meta property="og:type" content="website" /> 
+					<script type="text/javascript"      
 						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 					<script type="text/javascript"
-						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>
+						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>     
 					<link rel="stylesheet" type="text/css"
 						href="https://www.slowand.com/ind-script/optimizer.php?filename=tZQ9bsMwDIX3OGvPQSQt0L1zp_YE-mFsxZLokhIQ376CnSGFl0KxRhHkR_JJejBQQDidGSamnlUARqHMBsGIwIUpJjAUAsVjCbzAf_LRHIR8To7iQdOtsjCnVNvUqxm5rjQp7fGhFE2XBVlAxYjn0_srTFl7Z7ohBQ9isbMoro8go4tvCzSQzR4hzDLQBFrFURON9cyyDeVUQOLM0qDMWw64WbN-VmKLDBfisOOYm2fzLHANNBAyuwbQROSTmxqQB_QtsOWH2Gxa6Dup3kWVsIXKSjegbsxnN_AfO9xRBN9C3JJl6rGziv3VrT5bbHYX0PUnI89HfRPv7DPm98D8VIl2AX2rKLvY8f1CFlf-UDJiMpSfUXDLvn_2LzS4gn8B&type=css&k=e22f5c15bc0ccd63d04b603a65ebf1ffb78f13b2&t=1547093551" />
 
@@ -354,11 +481,11 @@ function checkPoint(val){
 												alt="우편번호">우편번호</a><br /> <input id="raddress" name="raddress"
 												fw-filter="isFill" fw-label="수취자 주소1" fw-msg=""
 												class="inputTypeText" placeholder="" size="40" readonly="1"
-												value="" type="text" /> <span class="grid">기본주소</span><br />
+												value="" type="text" /> <span class="grid"></span><br />
 												<input id="rdetailaddress" name="rdetailaddress" fw-filter="isFill"
 												fw-label="수취자 주소2" fw-msg="" class="inputTypeText"
 												placeholder="" size="40" value="" type="text" /> <span
-												class="grid">나머지주소</span><span class="grid displaynone">(선택입력가능)</span>
+												class="grid">상세주소</span><span class="grid displaynone">(선택입력가능)</span>
 											</td>
 										</tr>
 										<tr class="displaynone">
@@ -484,7 +611,7 @@ function checkPoint(val){
 												name="remail2" fw-filter="isFill" fw-label="주문자 이메일"
 												fw-alone="N" fw-msg="" class="mailAddress"
 												readonly="readonly" value="" type="text" /><select
-												id="oemail3" fw-filter="isFill" fw-label="주문자 이메일"
+												id="remail3" fw-filter="isFill" fw-label="주문자 이메일"
 												fw-alone="N" fw-msg="">
 													<option value="" selected="selected">- 이메일 선택 -</option>
 													<option value="naver.com">naver.com</option>
@@ -704,13 +831,13 @@ function checkPoint(val){
 												</div></td>
 											<td class="option "><div class="box txt16">
 													<strong>-</strong> <strong><span
-														id="total_sale_price_view" class="txt23">0</span>원</strong> <span
+														id="totalSalePrice" class="txt23">0</span>원</strong> <span
 														class="displaynone"><span
 														id="total_sale_price_ref_view"></span></span>
 												</div></td>
 											<td><div class="box txtEm txt16">
 													<strong>=</strong> <strong><span
-														id="total_order_sale_price_view" class="txt23"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong>
+														id="totalPrice" class="txt23"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong>
 													<span class="displaynone"><span
 														id="total_order_sale_price_ref_view"></span></span>
 												</div></td>
@@ -783,7 +910,7 @@ function checkPoint(val){
 												<td>
 													<p>
 														<input id="point" name="point" 	fw-label="적립금"  class="inputTypeText"
-															placeholder="" size="10" value="" type="text" onblur="checkPoint(this.value)"/> 원 (총
+															placeholder="" size="10" value="0" type="text" onblur="checkPoint(this.value)" style="text-align: right"/> 원 (총
 														사용가능 적립금 : <strong class="txtWarn">${member.point }</strong>원)
 													</p>
 													<ul class="info">
@@ -849,32 +976,32 @@ function checkPoint(val){
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
 										size="10" readonly="1" value="${totalPrice+deliveryCharge}" type="text" /><span>원</span>
 								</p>
-								<p class="paymentAgree" id="chk_purchase_agreement">
-									<input id="chk_purchase_agreement0"
+								<p class="paymentAgree" >      
+									<input id="chk_purchase_agreement"
 										name="chk_purchase_agreement" fw-filter="" fw-label="구매진행 동의"
 										fw-msg="" value="T" type="checkbox" /><label
-										for="chk_purchase_agreement0">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
+										for="chk_purchase_agreement">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
 								</p>     
 								<div class="button">
 									<a href="#none" class="yg_btn_140" id="btn_payment"
 										style="width: 330px;" alt="결제하기" onclick="purchase()">결제하기</a>
 								</div>
-								<div class="mileage ">
+								<div class="mileage "> 
 									<dl class="ec-base-desc gLarge right">
 										<dt>
-											<strong>총 적립예정금액</strong>
+											<strong>최종 결제금액</strong>   
 										</dt>
-										<dd id="mAllMileageSum" class="txtWarn">5,814원</dd>
+										<dd  class="txtWarn"><sapn id="totalPrice2"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></sapn>원</dd>
 									</dl>
-									<dl class="ec-base-desc gLarge right">
-										<dt>상품별 적립금</dt>
-										<dd id="mProductMileage">1,938원원</dd>
-										<dt>회원 적립금</dt>
-										<dd id="mMemberMileage">3,876원</dd>
-										<dt>쿠폰 적립금</dt>
-										<dd id="mCouponMileage">0원</dd>
+									<dl class="ec-base-desc gLarge right">  
+										<dt>총 상품금액</dt>  
+										<dd id="mProductMileage"><span id="productTotalPrice"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/></span>원</dd>
+										<dt>배송비</dt>
+										<dd id="mMemberMileage"><span><fmt:formatNumber value="${deliveryCharge}" pattern="###,###,###"/></span>원</dd>
+										<dt>총 할인금액</dt>
+										<dd id="mCouponMileage"><span id="totalSalePrice2">0</span>원</dd>
 									</dl>
-								</div>
+								</div>    
 							</div>
 						</div>
 						<!-- 무이자 할부 이용안내 -->
