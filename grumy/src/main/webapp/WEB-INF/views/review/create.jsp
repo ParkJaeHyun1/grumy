@@ -96,9 +96,15 @@
 
 							</select></td>
 							</tr>
-							<tr>
-								<td colspan="2" style="text-align: center"><textarea
-										rows="20" cols="150" name="content" id="content"></textarea></td>
+							<tr>                 
+										<td colspan="2"><textarea rows="20" cols="193"
+										name="content" id="content">
+										</textarea> <script type="text/javascript">                 
+											CKEDITOR.replace('content', {
+												height : 500
+											});
+										</script></td>
+							
 							</tr>
 							<th scope="row">사진첨부</th>
 

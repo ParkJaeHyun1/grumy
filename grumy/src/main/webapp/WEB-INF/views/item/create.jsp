@@ -38,11 +38,94 @@
 							<col style="width: auto;">
 						</colgroup>
 						<tbody>
+						<tr>
+							<th scope="row" >카테고리</th>
+<p><select name="example" size="1" onChange="redirect(this.options.selectedIndex)">
+<option>Technology Sites</option>
+<option>News Sites</option>
+<option>Search Engines</option>
+</select>
+<select name="stage2" size="1">
+<option value="http://javascriptkit.com">JavaScript Kit</option>
+<option value="http://www.news.com">News.com</option>
+<option value="http://www.wired.com">Wired News</option>
+</select>
+<input type="button" name="test" value="Go!"
+onClick="go()">
+</p>
+							<td><select id="category" name="" name="parentType" class="form-control">
+
+									<option value="">-메인 카테고리-</option>
+									<option value="OUTER">OUTER</option>
+									<option value="TOP">TOP</option>
+									<option value="SKIRT">SKIRT</option>
+									<option value="BOTTOM">BOTTOM</option>
+									<option value="SHOES/BAG">SHOES/BAG</option>
+									<option value="ACC">ACC</option>
+							</select>        
+							<!-- 	OUTER 선택 시 출력 -->   
+							<select id="sub1" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="핸드메이드">핸드메이드</option>
+									<option value="코트/자켓">코트/자켓</option>
+									<option value="가디건">가디건</option>
+									<option value="점퍼">점퍼</option>
+							</select>  
+							
+							<!-- 	TOP 선택 시 출력 -->   
+							<select id="sub2" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="니트/가디건">니트/가디건</option>
+									<option value="맨투맨/후드/티셔츠">맨투맨/후드/티셔츠</option>
+									<option value="셔츠/블라우스">셔츠/블라우스</option>
+									<option value="슬리브리스">슬리브리스</option>
+							</select>                   
+
+							<!-- 	DRESS는 서브 카테고리 없음 -->   
+							<!-- 	SKIRT 선택 시 출력 -->   
+							<select id="sub3" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="미니">미니</option>
+									<option value="미디/롱">미디/롱</option>								
+							</select>  
+							<!-- 	BOTTOM 선택 시 출력 -->   
+							<select id="sub4" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="데님">데님</option>
+									<option value="면바지/슬랙스">면바지/슬랙스</option>								
+									<option value="쇼츠">쇼츠</option>								
+							</select> 
+							<!-- 	SHOES/BAG 선택 시 출력 -->   
+							<select id="sub5" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="슈즈">슈즈</option>
+									<option value="백">백</option>								
+							</select>
+							<!-- 	ACC 선택 시 출력 -->   
+							<select id="sub6" name="" name="subType" class="form-control">
+									<option value="">-서브 카테고리-</option>
+									<option value="쥬얼리">쥬얼리</option>
+									<option value="모자">모자</option>								
+									<option value="벨트">벨트</option>								
+									<option value="양말">양말</option>								
+									<option value="홈웨어">홈웨어</option>								
+									<option value="etc">etc</option>								
+							</select>  
+							</td>
+							</tr>
+						
+						
+						
+						
+						
+						
+						
+						
 							<tr>
-								<th scope="row">상품명</th>
+								<th scope="row" style="width: 300px">상품명</th>         
 
 								<td><input type="text" id="itemOptionNo"
-									name="itemOptionNo" value=""></td>
+									name="itemOptionNo" style="width: 300px"value=""></td>
 							</tr>
 							<th scope="row">상품 이미지</th>
 
@@ -65,9 +148,15 @@
 							<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
 								<td><input type="text" id="itemColor" name="itemColor" value=""></td>
 						
-							<tr>
-								<td colspan="2" style="text-align: center"><textarea
-										rows="20" cols="150" name="content" id="content"></textarea></td>
+							<tr>                 
+										<td colspan="2"><textarea rows="20" cols="193"
+										name="content" id="content">
+										</textarea> <script type="text/javascript">                 
+											CKEDITOR.replace('content', {
+												height : 500
+											});
+										</script></td>
+							
 							</tr>
 							
 
@@ -144,4 +233,39 @@
 			return false;
 		}
 	}
+	
+	
+	var groups=document.doublecombo.example.options.length
+	var group=new Array(groups)
+	for (i=0; i<groups; i++)
+	group[i]=new Array()
+
+	group[0][0]=new Option("JavaScript Kit","http://javascriptkit.com")
+	group[0][1]=new Option("News.com","http://www.news.com")
+	group[0][2]=new Option("Wired News","http://www.wired.com")
+
+	group[1][0]=new Option("CNN","http://www.cnn.com")
+	group[1][1]=new Option("ABC News","http://www.abcnews.com")
+
+	group[2][0]=new Option("Hotbot","http://www.hotbot.com")
+	group[2][1]=new Option("Infoseek","http://www.infoseek.com")
+	group[2][2]=new Option("Excite","http://www.excite.com")
+	group[2][3]=new Option("Lycos","http://www.lycos.com")
+
+	var temp=document.doublecombo.stage2
+
+	function redirect(x){
+	for (m=temp.options.length-1;m>0;m--)
+	temp.options[m]=null
+	for (i=0;i<group[x].length;i++){
+	temp.options[i]=new Option(group[x][i].text,group[x][i].value)
+	}
+	temp.options[0].selected=true
+	}
+
+	function go(){
+	location=temp.options[temp.selectedIndex].value
+	}
+
+	</script>
 </script>
