@@ -13,10 +13,11 @@ public class OrderItemDTO {
 	private int itemNo;
 	private int itemCount;
 	private String state;
+	private String state2;
 	private int cartNo;
 	
 	public OrderItemDTO(int orderItemNo, int itemOptionNo, int count, String itemTitle, String itemImage, int itemPrice,
-			int itemSalePrice, String itemSize, String itemColor, int itemNo, int itemCount, String state, int cartNo) {
+			int itemSalePrice, String itemSize, String itemColor, int itemNo, int itemCount, String state,String state2, int cartNo) {
 		super();
 		this.orderItemNo = orderItemNo;
 		this.itemOptionNo = itemOptionNo;
@@ -30,6 +31,7 @@ public class OrderItemDTO {
 		this.itemNo = itemNo;
 		this.itemCount = itemCount;
 		this.state = state;
+		this.state2 = state2;
 		this.cartNo = cartNo;
 	}
 
@@ -189,11 +191,14 @@ public class OrderItemDTO {
 	public int getCartNo() {
 		return cartNo;
 	}
-
-
-
 	public void setCartNo(int cartNo) {
 		this.cartNo = cartNo;
+	}
+	public String getState2() {
+		return state2;
+	}
+	public void setState2(String state2) {
+		this.state2 = state2;
 	}
 
 

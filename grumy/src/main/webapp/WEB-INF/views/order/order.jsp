@@ -299,7 +299,7 @@ function setPriceView(){
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />     
+						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
 						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
@@ -310,7 +310,7 @@ function setPriceView(){
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="website" />
 					<script type="text/javascript"
-						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>      
+						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 					<script type="text/javascript"
 						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>
@@ -328,7 +328,13 @@ function setPriceView(){
 <body id="cmn">
 	<div id="wrap">
 		<!-- 상단카테고리 -->
-
+		<form action="${pageContext.request.contextPath}/order/insert"
+			id="orderResultForm" class="form-horizontal" method="post"
+			enctype="application/x-www-form-urlencoded;charset=UTF-8"
+			style="display: none">
+			<input type="hidden" name="url"
+				value="/item/read?itemNo=${dto.itemNo}"></input>
+		</form>
 
 
 		<!-- //상단카테고리 -->

@@ -68,6 +68,6 @@ public class OrderController {
 	public String insert(HttpServletRequest request, HttpSession session) {
 
 	
-		return "/order/order";
+		return "/order/insert";
 	}
 }
