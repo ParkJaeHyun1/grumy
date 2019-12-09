@@ -63,14 +63,14 @@ span.star, span.camera, .sprite_comment {
     		x.style.display = "none";
     	    }
     }
-    function popup2(reviewNo){
-    	var x = document.getElementById("myDIV");
-    	  if (x.style.display === "none") {
-    		  x.style.display = "none";
-    	  } else {
-    		x.style.display = "block";
-    	  }
-    }
+//     function popup2(reviewNo){
+//     	var x = document.getElementById("myDIV");
+//     	  if (x.style.display === "none") {
+//     		  x.style.display = "none";
+//     	  } else {
+//     		x.style.display = "block";
+//     	  }
+//     }
 	
 	function fimg(id, w, h) {
 		var img = document.getElementById(id);
