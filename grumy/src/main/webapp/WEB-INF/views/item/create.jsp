@@ -44,14 +44,16 @@
 								<td><input type="text" id="itemOptionNo"
 									name="itemOptionNo" value=""></td>
 							</tr>
-							
 							<th scope="row">상품 이미지</th>
 
-							<td><input type="file" id="fname" name="fname" accept=".jpg,.png,.gif"></td>
+							<td><input type="file" class="form-control" id="image"
+								name="filenameMF" accept=".jpg,.gif,.png"></td>
 							</tr>
-							<th scope="row">사이즈(ex)S,M,L..)</th>
+							
+							<tr>
+							<th scope="row">사이즈</th>
 
-							<td><select name="weight" name="weight" class="form-control">
+							<td><select name="itmeSize" name="itmeSize" class="form-control">
 
 									<option value="">-사이즈 선택-</option>
 									<option selected="selected" value="S">S</option>
@@ -61,40 +63,28 @@
 							</select></td>
 							</tr>
 							<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
-
-							<td><select name="mySize" name="mySize" class="form-control">
-							</select></td>
-							</tr>
-							</tr>
-							<th scope="row">별점</th>
-
-							<td><select name="star" class="form-control">
-									<option value="★★★★★아주좋아요" selected="selected">★★★★★아주좋아요</option>
-									<option value="★★★★맘에들어요">★★★★맘에들어요</option>
-									<option value="★★★보통이에요">★★★보통이에요</option>
-									<option value="★★그냥그래요">★★그냥그래요</option>
-									<option value="★별로에요">★별로에요</option>
-
-							</select></td>
-							</tr>
+								<td><input type="text" id="itemColor" name="itemColor" value=""></td>
+						
 							<tr>
 								<td colspan="2" style="text-align: center"><textarea
 										rows="20" cols="150" name="content" id="content"></textarea></td>
 							</tr>
-							<th scope="row">사진첨부</th>
-
-							<td><input type="file" class="form-control" id="picture"
-								name="filenameMF" accept=".jpg,.gif,.png"></td>
-							</tr>
+							
 
 						</tbody>
 					</table>
-					<p align="right">
-						<button type="submit" class="yg_btn_30 yg_btn4" id="save">저장</button>
-						<button type="button" class="yg_btn_30 yg_btn4"
-							onclick="history.back()">취소</button>
-					</p>
+	
+			
+				
+				<div class="ec-base-button ">
+					<span class="gLeft">
+						<button type="button" class="yg_btn_30 yg_btn4" alt="목록" onclick="location.href='${pageContext.request.contextPath}/item/list'">LIST</button>
+					</span> <span class="gRight">
+						<button id="save" type="submit" class="yg_btn_30 yg_btn4" alt="등록">OK</button>
+						<button type="button" onclick="history.back()" class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
+					</span>
 				</div>
+			</div>	
 			</form>
 
 		</div>

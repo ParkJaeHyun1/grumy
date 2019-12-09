@@ -70,21 +70,45 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			
 			<!-- cre.ma / 로그인 회원 정보 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
 
-			<div class="xans-element- xans-layout xans-layout-boardinfo">
-				<a style="cursor: pointer;">COMMUNITY</a>
-				<ul class="gnb_sub">
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/community/list">상품 문의<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/delivery/list">배송
-							문의<span></span>
-					</a></li>
-					<li class="xans-record-"><a href="/board/delay/2/">DELAY<span></span></a></li>
-					<li class="xans-record-"><a href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span>
-					</a></li>
-					<li class="xans-record-"><a
-						href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
-				</ul>
-			</div>
+			
+				<div class="xans-element- xans-layout xans-layout-category main_cate">
+				<div class="position" >      
+					<ul>
+			<li class="xans-record-"><a href="" onmouseenter="blockSubMenu('COMMUNITY')" onmouseleave="noneSubMenu('COMMUNITY')" style="font-weight:unset">COMMUNITY</a>
+               <div class="sub-category" id="sub_menu_COMMUNITY" style="display:none" onmouseenter="blockSubMenu('COMMUNITY')" onmouseleave="noneSubMenu('COMMUNITY')">
+                     <ul class="gnb_sub">                                                           
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>         
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/community/list">상품 문의<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span></a></li>
+                        <li class="xans-record-"><a
+                           href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
+                     </ul>
+                </div>
+			</li>
+			</ul></div></div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 			<form id="searchBarForm" name="" action="/product/search.html"
 				method="get" target="_self" enctype="multipart/form-data">
@@ -259,6 +283,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 						</li>
 						
+	
 
 					</ul>
 				</div>
