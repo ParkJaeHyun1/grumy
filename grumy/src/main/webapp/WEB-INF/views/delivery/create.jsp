@@ -53,6 +53,12 @@
 									</c:choose></td>
 							</tr>
 							<tr>
+								<th>CATEGORY</th>
+								<td>
+									<c:if test=""></c:if>
+								</td>
+							</tr>
+							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
 										name="content" id="content">배송전 상품 변경/취소/환불 처리는 '배송전 변경/취소' 게시판에 꼭 남겨주세요!<br><br>
 																	*원단공장&거래처에서 겨울원단 시즌오프로 갑작스러운 지연/품절이 불가피하게<br> 

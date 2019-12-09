@@ -44,24 +44,14 @@
 			<div class="ec-base-table typeList gBorder">
 				<table border="1" summary="">
 					<caption>게시판 목록</caption>
-					<colgroup
-						class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
-						<col style="width: 70px;">
-						<col style="width: 135px;" class="displaynone">
-						<col style="width: auto;">
-						<col style="width: 134px;">
-						<col style="width: 84px;" class="">
-						<col style="width: 60px;" class="displaynone">
-						<col style="width: 77px;" class="displaynone">
-						<col style="width: 80px;" class="displaynone">
-					</colgroup>
 					<thead
 						class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 						<tr style="">
-							<th scope="col">NO</th>
-							<th scope="col">SUBJECT</th>
-							<th scope="col">WRITER</th>
-							<th scope="col" class="">DATE</th>
+							<th style="width: 70px;">NO</th>
+							<th style="width:150px;">CATEGORY</th>
+							<th style="width: auto;">SUBJECT</th>
+							<th style="width: 134px;">WRITER</th>
+							<th style="width: 84px;">DATE</th>
 						</tr>
 					</thead>
 					<tbody
@@ -76,7 +66,7 @@
 								<tr style="background-color: #FAFAFA; color: #555555;"
 									class="xans-record-">
 									<td>공지</td>
-									<td class="displaynone"></td>
+									<td></td>
 									<td class="subject left txtBreak"><strong> <a
 											href="javascript:read(${dto.no })" style="color: #555555;">
 												${dto.subject }</a>
@@ -92,6 +82,7 @@
 							<c:when test="${empty list}">
 								<tr>
 									<td></td>
+									<td>CATEGORY</td>
 									<td>등록된 글이 없습니다.</td>
 									<td></td>
 									<td></td>
@@ -101,7 +92,7 @@
 									<tr style="background-color: #FFFFFF; color: #555555;"
 										class="xans-record-">
 										<td>${total-status.index-((nowPage-1)*10)}</td>
-										<td class="displaynone"></td>
+										<td>${dto.category }</td>
 										<td class="subject left txtBreak"><strong> 
 										       <c:choose>
 													

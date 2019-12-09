@@ -34,8 +34,9 @@
 							<tr>
 								<th scope="row">SUBJECT</th>
 
-								<td><input type="text" id="subject" name="subject"
-									value="${dto.subject }"></td>
+								<td><select id="subject" name="subject" style="width:300px">
+									<option>♡답변합니다</option>
+								</select></td>
 							</tr>
 							<tr>
 								<th scope="row">WRITER</th>

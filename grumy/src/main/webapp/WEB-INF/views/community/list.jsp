@@ -87,7 +87,16 @@
 										<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
 										<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
 										</c:if></a></td>
-							<td>${dto.writer }</td>
+							<td><script type="text/javascript">
+										var len = ('${dto.writer}'.length);
+										var name = '${dto.writer}'.replace(
+												'${dto.writer}'.substr(1,
+														len), "****");
+										if(${dto.indent==1}){
+											name = '${dto.writer}'
+										}
+											document.write(name);
+										</script></td>
 							<td><span class="txtNum">${dto.wdate}</span>
 							</td>
 						</tr>

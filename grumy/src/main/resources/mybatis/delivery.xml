@@ -19,6 +19,7 @@ values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{id},#{cont
 	update delivery 
 	set subject = #{subject},
 		content = #{content},
+		wdate = sysdate
 		where no = #{no}
 </update>
 
@@ -100,11 +101,11 @@ select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
 
 
 <select id="list" parameterType="Map" resultType="DeliveryDTO">
-select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
+select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent,category
 	from (
-			select no,subject,writer,wdate,indent,rownum r
+			select no,subject,writer,wdate,indent,category,rownum r
 			from (
-				select no,subject,writer,wdate,indent
+				select no,subject,writer,wdate,category,indent
 				from delivery
 				<where>
 					<choose>

@@ -21,12 +21,12 @@
 
       location.href = url;
    }
-   function delete1(no) {
+   function delete1(ref) {
 
       if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
          var url = "delete";
-         url += "?no=" + no;
+         url += "?ref=" + ref;
 
          location.href = url;
 
@@ -91,7 +91,7 @@
                            <c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
                             <span class="gRight">    
                             <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-                            <a href="javascript:delete1(${param.no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+                            <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
                            </span>
                            </c:if>
                         </div></td>
