@@ -52,12 +52,18 @@
 										</c:otherwise>
 									</c:choose></td>
 							</tr>
+							<c:if test="${sessionScope.grade!='A' }">
 							<tr>
 								<th>CATEGORY</th>
 								<td>
-									<c:if test=""></c:if>
+										<select id="category" name="category">
+											<option>배송 문의</option>
+											<option>배송 전 변경/취소</option>
+											<option>배송 후 교환/반품</option>
+										</select>
 								</td>
 							</tr>
+							</c:if>
 							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
 										name="content" id="content">배송전 상품 변경/취소/환불 처리는 '배송전 변경/취소' 게시판에 꼭 남겨주세요!<br><br>

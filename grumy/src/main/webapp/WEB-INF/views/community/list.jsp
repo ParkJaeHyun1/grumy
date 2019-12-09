@@ -10,10 +10,28 @@
 		
 		location.href= url;
 	}
+	function create(){
+		if(${sessionScope.id!=null}){
+			location.href="create";
+		}else{
+			if(confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?")){
+				$('#loginForm').submit;
+			}else{
+				return false;
+			}
+		}
+	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <div id="container">
 	<div id="contents">
+	<form action="${pageContext.request.contextPath}/member/login"
+					id="loginForm" class="form-horizontal" method="post"
+					enctype="application/x-www-form-urlencoded;charset=UTF-8"
+					style="display: none">
+					<input type="hidden" name="url"
+						value="/delivery/list"></input>
+				</form>
 
 		<div
 			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
@@ -126,11 +144,9 @@
 					</fieldset>
 				</div>
 			</form>
-			<c:if test="${not empty sessionScope.id }">
 			<p align="right">
-			<button class="yg_btn_30 yg_btn4" onclick="location.href='create'">WRITE</button>
+			<button class="yg_btn_30 yg_btn4" onclick="javascript:create();">WRITE</button>
 		</p>
-		</c:if>
 		${paging }
 
 		</div>
