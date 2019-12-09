@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import spring.model.item.ItemOptionDTO;
 
 public class OrderDTO {
-	private int orderNo;
+	private String orderNo;
 	private String odate;
 	private String postCode;
 	private String address;
@@ -14,8 +14,7 @@ public class OrderDTO {
 	private String packageno;	
 	private ArrayList<OrderItemDTO> orderItemList;
 	
-	public OrderDTO(int orderNo, String odate, String postCode, String address, String detailAddress, String id, String packageno,
-			ArrayList<OrderItemDTO> orderItemList) {
+	public OrderDTO(String orderNo, String odate, String postCode, String address, String detailAddress, String id, String packageno, ArrayList<OrderItemDTO> orderItemList) {
 		super();
 		this.orderNo = orderNo;
 		this.odate = odate;
@@ -40,11 +39,11 @@ public class OrderDTO {
 		this.packageno = packageno;
 	}
 	
-	public int getOrderNo() {
+	public String getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
 

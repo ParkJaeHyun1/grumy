@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import spring.model.mapper.itemMapper;
 import spring.model.mapper.reviewMapper;
+import spring.model.order.OrderItemDTO;
 import spring.model.review.reviewDTO;
 
 @RestController
@@ -25,7 +28,7 @@ public class itemRestController {
 	private reviewMapper mapper;
 	@Autowired
 	private itemMapper imapper;
-	
+
 	
 	@GetMapping("/item/reply/list/{itemNo}/{nowPage}")
 	public ResponseEntity<List<reviewDTO>> getList(@PathVariable("itemNo") int itemNo,@PathVariable("nowPage") int nowPage){
@@ -62,5 +65,18 @@ public class itemRestController {
 
 	}
 	
+	@PutMapping("/item/check")
+	public ResponseEntity<String> check(@RequestBody ArrayList<OrderItemDTO>list) {
+		
+		ArrayList<Integer> itemCount = imapper.checkItemCount(list); 
 
+		if(itemCount.size()!=list.size())
+			return new ResponseEntity<String>("fail", HttpStatus.OK);
+
+		for(int i=0;i<itemCount.size();i++) {
+			if(list.get(i).getCount()>itemCount.get(i))
+				return new ResponseEntity<String>("fail", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 }

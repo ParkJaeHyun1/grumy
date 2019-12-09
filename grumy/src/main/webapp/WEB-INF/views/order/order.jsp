@@ -19,69 +19,265 @@
 <!-- 해당 JS는 플래시를 사용하기 위한 스크립트입니다. -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
-<script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"  type="application/javascript"></script>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.0.2.min.js"
+	type="application/javascript"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+var totalPrice=0,pointPrice=0,couponPrice=0;
+$(document).ready(function(){
+	setOrderInfoOfMember();
+	totalPrice = ${totalPrice+deliveryCharge};
+ });
+var list=[];
+<c:forEach items="${list}" var="item">
+	list.push({itemOptionNo:${item.itemOptionNo},count:${item.count}});
+</c:forEach>
+function checkOrderInfo(){
+	if($('#rname').val().length==0){
+		alert('주문자 성명을 입력해주세요.');
+		$('#rname').focus();
+		return false;
+	}else if($('#rpostcode').val.length==0){
+		alert('우편번호를 입력해주세요.');
+		$('#rpostcode').focus();
+		return false;
+	}else if($('#rdetailaddress').val().length==0){
+		alert('상세주소를 입력해주세요.');
+		$('#rpostcode').focus();
+		return false;
+	}else if($('#rphone2').val().length==0){
+		alert('핸드폰 번호를 입력해주세요.');
+		$('#rphone2').focus();
+		return false;
+	}
+	else if(!(/[A-Za-z0-9]{4}$/.test($('#rphone2').val()))){
+		alert('핸드폰번호를 확인해주세요.');
+		$('#rphone2').focus();
+		return false;
+	}else if($('#rphone3').val().length==0){
+		alert('핸드폰 번호를 입력해주세요.');
+		$('#rphone3').focus();
+		return false;
+	}
+	else if(!(/[A-Za-z0-9]{4}$/.test($('#rphone3').val()))){
+		alert('핸드폰번호를 확인해주세요.');
+		$('#rphone3').focus();
+		return false;
+	}else if($('#remail1').val().length==0){
+		alert('이메일을 입력해주세요.');
+		$('#remail1').focus();
+		return false;
+	}else if($('#remail2').val().length==0){
+		alert('이메일을 입력해주세요.');
+		$('#remai2').focus();
+		return false;
+	}else if(!$('#chk_purchase_agreement').is(":checked")){
+		alert('결제정보 확인 및 구매진행에 동의하셔야 주문이 가능합니다.');
+		$('#remai2').focus();
+		return false;
+	}
+	return true;
+}
+function selectPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+               // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+              //  document.getElementById("sample6_extraAddress").value = extraAddr;
+            
+            } else {
+               // document.getElementById("sample6_extraAddress").value = '';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            $('#rpostcode').val(data.zonecode);
+            $("#raddress").val(addr);
+            // 커서를 상세주소 필드로 이동한다.
+            $("#rdetailaddress").focus();
+        }
+    }).open();
+}
 function purchase(){
-   BootPay.request({
-      price: '1000', //실제 결제되는 가격
-      application_id: "5dd76d0802f57e0021e217c1",
-      name: '${list[0].itemTitle}', //결제창에서 보여질 이름
-      pg: '',
-      method: '', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
-      show_agree_window: 1, // 부트페이 정보 동의 창 보이기 여부
-      items: [
-         {
-            item_name: '나는 아이템', //상품명
-            qty: 1, //수량
-            unique: '123', //해당 상품을 구분짓는 primary key
-            price: 1000, //상품 단가
-            cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
-            cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
-            cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
-         }
-      ],
-      user_info: {
-         username: '구매자이름',
-         email: '구매자 메일',
-         addr: '사용자 주소',
-         phone: '010-1234-4567'
-      },
-      order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
-      account_expire_at: '2018-05-25', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
-      extra: {
-          start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
-         end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
-           vbank_result: 1, // 가상계좌 사용시 사용, 가상계좌 결과창을 볼지(1), 말지(0), 미설정시 봄(1)
-           quota: '0' // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용
-      }
-   }).error(function (data) {
-      //결제 진행시 에러가 발생하면 수행됩니다.
-      console.log(data);
-   }).cancel(function (data) {
-      alert('결제를 취소하셨습니다.');
-      console.log(data);
-   }).ready(function (data) {
-      alert('가상계좌 번호 발급:'+data);
-      console.log(data);
-   }).confirm(function (data) {
-      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
-      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
-      console.log(data);
-      var enable = true; // 재고 수량 관리 로직 혹은 다른 처리
-      if (enable) {
-         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
-      } else {
-         BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
-      }
-   }).close(function (data) {
-       console.log(data);
-   }).done(function (data) {
-	   alert('결제가 완료되었습니다.');
-      //결제가 정상적으로 완료되면 수행됩니다.
-      //비즈니스 로직을 수행하기 전에 결제 유효성 검증을 하시길 추천합니다.
-      console.log(data);
+	if(!checkOrderInfo()){
+		return;
+	}
+	BootPay.request({
+	      price: '1000', //실제 결제되는 가격         
+	      application_id: "5dd76d0802f57e0021e217c1",
+	      name: '${list[0].itemTitle}', //결제창에서 보여질 이름
+	      pg: '',
+	      method: '', //결제수단, 입력하지 않으면 결제수단 선택부터 화면이 시작합니다.
+	      show_agree_window: 1, // 부트페이 정보 동의 창 보이기 여부
+	      items: [
+	         {
+	            item_name: '나는 아이템', //상품명
+	            qty: 1, //수량
+	            unique: '123', //해당 상품을 구분짓는 primary key
+	            price: 1000, //상품 단가
+	            cat1: 'TOP', // 대표 상품의 카테고리 상, 50글자 이내
+	            cat2: '티셔츠', // 대표 상품의 카테고리 중, 50글자 이내
+	            cat3: '라운드 티', // 대표상품의 카테고리 하, 50글자 이내
+	         }
+	      ],
+	      user_info: {
+	         username: '${member.name}',
+	         email: '${member.email}',
+	         addr: '주소',
+	         phone: '${member.phone}'
+	      },
+	      order_id: '고유order_id_1234', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+	      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
+	      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+	      extra: {
+	          start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
+	         end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한
+	           vbank_result: 1, // 가상계좌 사용시 사용, 가상계좌 결과창을 볼지(1), 말지(0), 미설정시 봄(1)
+	           quota: '0' // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용
+	      }
+	   }).error(function (data) {
+	      alert('결제도중 에러가 발생하였습니다. 다시 시도해주세요.')
+	      console.log(data);
+	   }).cancel(function (data) {
+	      alert('결제가 취소되었습니다.');
+	      console.log(data);
+	   }).ready(function (data) {
+	      alert('가상계좌 번호 발급:'+data);
+	      console.log(data);
+	   }).confirm(function (data) {
+	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
+	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
+	      console.log(data);
+	      var enable = checkItemCount(); // 재고 수량 관리 로직 혹은 다른 처리
+	      if (enable) {
+	         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+	      } else {
+	         BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+	      }
+	   }).close(function (data) {
+	       console.log(data);
+	   }).done(function (data) {
+	      alert('결제가 완료되었습니다.');
+	     
+	   });
+}     
+
+function checkItemCount(){
+	var enable;
+    $.ajax({
+        type : 'put',
+        url : "../item/check",
+        data :  JSON.stringify(list),
+        contentType : "application/json; charset=utf-8",
+        async:false,
+        success : function(result, status, xhr) {
+        	if(result =='success'){
+        		enable= true;
+        	}else{
+        	   alert('재고가 부족한 상품이 존재합니다.\n이전페이지로 이동합니다.');
+        	   $(location).attr('href', '${url}');
+        	   enable= false;
+           }
+        },
+        error : function(xhr, status, er) {
+           alert('결제중 에러가 발생하였습니다.\n다시 시도하여 주세요.');
+           enable= false;
+        }
    });
+    return enable;
+}
+function setOrderInfoOfMember(){
+	$('#rname').val('${member.name}');           
+	$('#rpostcode').val('${member.postcode}');
+	$('#raddress').val('${member.address}');
+	$('#rdetailaddress').val('${member.detailaddress}');
+	$('#rphone1').val('${member.phone1}').attr('selected','selected');
+	$('#rphone2').val('${member.phone2}');
+	$('#rphone3').val('${member.phone3}');
+	$('#remail1').val('${member.email1}');
+	$('#remail2').val('${member.email2}');
+	$('#remail3').val('etc').attr('selected','selected');
+	$('#remail3').val('${member.email2}').attr('selected','selected');
+	$('#rmsg').val('');
+}
+function setOrderInfoOfNew(){
+	$('#rname').val('');
+	$('#rpostcode').val('');
+	$('#raddress').val('');
+	$('#rdetailaddress').val('');
+	$('#rphone1').val('010').attr('selected','selected');
+	$('#rphone2').val('');
+	$('#rphone3').val('');
+	$('#remail1').val('');
+	$('#remail2').val('');
+	$('#remail3').val('etc').attr('selected','selected');
+	$('#rmsg').val('');
+}
+$(function(){
+	$('#remail3').change(function(){
+		if(this.value == 'etc'){
+			$("#remail2").removeAttr("readonly");
+			$('#remail2').val('');
+		}else{
+			$("#remail2").attr("readonly",true);
+			$('#remail2').val(this.value);
+		}
+	})	
+})
+
+function checkPoint(val){  
+		if(val == 0){
+			return;
+		}
+		else if(isNaN(val) || val<2000){
+			alert('적립금 사용량은 2000원 이상이어야 합니다');
+			$('#point').val(0);
+			return false; 
+		}else if(val>${member.point}){        
+			alert('적립금 사용량은 보유한 적림글을 초과할 수 없습니다.');
+			$('#point').val(${member.point}>=2000?2000:0);
+			return false;
+		}else if(val>${totalPrice+deliveryCharge}){     
+			alert('적립금 사용량은 결제금액을 초과할 수 없습니다.');
+			$('#point').val(${member.point}>=${totalPrice+deliveryCharge}?${totalPrice+deliveryCharge}:(${member.point}>=2000?${member.point}:0));
+			return false;
+		}
+		pointPrice = val;
+		setPriceView();
+}
+function setPriceView(){
+	$('#totalSalePrice').html(pointPrice);
+	$('#totalSalePrice2').html(pointPrice);
+	$('#totalPrice').html(totalPrice-pointPrice);
+	$('#totalPrice2').html(totalPrice-pointPrice);
+	$('#total_price').val(totalPrice-pointPrice);      
 }
    </script>
 
@@ -103,7 +299,7 @@ function purchase(){
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />
+						href="http://slowand.com/order/orderform.html" />     
 					<link rel="alternate"
 						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
@@ -114,7 +310,7 @@ function purchase(){
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="website" />
 					<script type="text/javascript"
-						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
+						src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>      
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 					<script type="text/javascript"
 						src="//www.slowand.com/ind-script/moment.php?convert=T"></script>
@@ -148,7 +344,7 @@ function purchase(){
 
 				<form id="frm_order_act" name="frm_order_act" action=""
 					method="post" target="_self" enctype="multipart/form-data">
-				
+
 					<div class="xans-element- xans-order xans-order-form xans-record-">
 						<!-- 이값은 지우면 안되는 값입니다. ($move_order_after 주문완료페이지 주소 / $move_basket 장바구니페이지 주소)
         $move_order_after=/order/order_result.html
@@ -193,70 +389,83 @@ function purchase(){
 										<tr>
 											<td class=""></td>
 											<td colspan="8"><span class="gLeft">[기본배송]</span> 상품구매금액
-												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/><span class="displaynone"> (0)</span><span
-												class="displaynone"> + 부가세 0</span> + 배송비 <span
-												id="domestic_ship_fee"><fmt:formatNumber value="${deliveryCharge}" pattern="###,###,###"/> <c:if test="${deliveryCharge==0}">(무료)</c:if></span> <span
+												<fmt:formatNumber value="${totalPrice}"
+													pattern="###,###,###" /><span class="displaynone">
+													(0)</span><span class="displaynone"> + 부가세 0</span> + 배송비 <span
+												id="domestic_ship_fee"><fmt:formatNumber
+														value="${deliveryCharge}" pattern="###,###,###" /> <c:if
+														test="${deliveryCharge==0}">(무료)</c:if></span> <span
 												class="displaynone"> - 상품할인금액 0 </span> = 합계 : <strong
 												class="txtEm gIndent10"><span
-													id="domestic_ship_fee_sum" class="txt18"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong> <span
-												class="displaynone"></span></td>
+													id="domestic_ship_fee_sum" class="txt18"><fmt:formatNumber
+															value="${totalPrice+deliveryCharge}"
+															pattern="###,###,###" /></span>원</strong> <span class="displaynone"></span></td>
 										</tr>
 									</tfoot>
 									<tbody
 										class="xans-element- xans-order xans-order-normallist center">
-											<c:forEach var="dto" items="${list}">    
-										<tr class="xans-record-">      
-											<td class=""></td>      
-											<td class="thumb gClearLine"><a
-												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
-													src="${pageContext.request.contextPath}/images/${dto.itemImage}"
-													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
-													alt="" /></a></td>
-											<td class="left gClearLine"><a
-												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle }</a>
-												<div class="option ">[옵션: ${dto.itemColor}/${dto.itemSize} } }]</div>
-												<p class="gBlank5 displaynone">무이자할부 상품</p>
-												<p class="gBlank5 displaynone">유효기간 :</p></td>
-											<td>
-											<c:if test="${dto.itemSalePrice != 0} }">
-												<div class="discount">
-														<fmt:formatNumber value="${dto.itemPrice}" pattern="###,###,###"/>원
-													<p class="displaynone"></p>
-												</div>
-											</c:if>
-											<div id="cart_item_price_21">
-												<fmt:formatNumber value="${dto.itemPrice-dto.itemSalePrice}" pattern="###,###,###"/>원</div></td>
-											<td>${dto.count} </td>
-											<td><span class="txtInfo"><input
-													id='product_mileage_cash_3573_000D'
-													name='product_mileage_cash' value='578' type="hidden"><img
-														src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
-														<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br /> <input id='product_mileage_card_3573_000D'
-														name='product_mileage_card' value='289' type="hidden"><img
-															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
-															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber> 원<br /> <input id='product_mileage_tcash_3573_000D'
-															name='product_mileage_tcash' value='289' type="hidden"><img
-																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
-																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_cell_3573_000D'
-																name='product_mileage_cell' value='289' type="hidden"><img
-																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
-																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br /> <input id='product_mileage_icash_3573_000D'
-																	name='product_mileage_icash' value='289' type="hidden"><img
-																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
-																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
-											<td><div class="txtInfo">
-													기본배송<br />
-												</div></td>
-											<td rowspan="1" class="">
-											<c:choose>
-												<c:when test="${deliveryCharge==0 }"> 무료</c:when>
-												<c:otherwise>${deliveryCharge }</c:otherwise>
-											</c:choose>
-											</td>
-											<td><fmt:formatNumber value="${dto.count*(dto.itemPrice-dto.itemSalePrice)}" pattern="###,###,###"/>원
-												<div class="displaynone"></div>
-											</td>
-										</tr>
+										<c:forEach var="dto" items="${list}">
+											<tr class="xans-record-">
+												<td class=""></td>
+												<td class="thumb gClearLine"><a
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
+														src="${pageContext.request.contextPath}/images/${dto.itemImage}"
+														onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
+														alt="" /></a></td>
+												<td class="left gClearLine"><a
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemOptionNo }${dto.itemTitle }</a>
+													<div class="option ">[옵션:
+														${dto.itemColor}/${dto.itemSize} } }]</div>
+													<p class="gBlank5 displaynone">무이자할부 상품</p>
+													<p class="gBlank5 displaynone">유효기간 :</p></td>
+												<td><c:if test="${dto.itemSalePrice != 0} }">
+														<div class="discount">
+															<fmt:formatNumber value="${dto.itemPrice}"
+																pattern="###,###,###" />
+															원
+															<p class="displaynone"></p>
+														</div>
+													</c:if>
+													<div id="cart_item_price_21">
+														<fmt:formatNumber
+															value="${dto.itemPrice-dto.itemSalePrice}"
+															pattern="###,###,###" />
+														원
+													</div></td>
+												<td>${dto.count}</td>
+												<td><span class="txtInfo"><input
+														id='product_mileage_cash_3573_000D'
+														name='product_mileage_cash' value='578' type="hidden"><img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
+															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br />
+															<input id='product_mileage_card_3573_000D'
+															name='product_mileage_card' value='289' type="hidden"><img
+																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
+																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>
+																원<br /> <input id='product_mileage_tcash_3573_000D'
+																name='product_mileage_tcash' value='289' type="hidden"><img
+																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
+																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
+																	<input id='product_mileage_cell_3573_000D'
+																	name='product_mileage_cell' value='289' type="hidden"><img
+																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
+																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
+																		<input id='product_mileage_icash_3573_000D'
+																		name='product_mileage_icash' value='289' type="hidden"><img
+																			src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
+																			<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
+												<td><div class="txtInfo">
+														기본배송<br />
+													</div></td>
+												<td rowspan="1" class=""><c:choose>
+														<c:when test="${deliveryCharge==0 }"> 무료</c:when>
+														<c:otherwise>${deliveryCharge }</c:otherwise>
+													</c:choose></td>
+												<td><fmt:formatNumber
+														value="${dto.count*(dto.itemPrice-dto.itemSalePrice)}"
+														pattern="###,###,###" />원
+													<div class="displaynone"></div></td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
@@ -272,8 +481,9 @@ function purchase(){
 							<div class="title">
 								<h3>배송 정보</h3>
 								<p class="required">
-									<img src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-									필수입력사항
+									<img
+										src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+										alt="필수" /> 필수입력사항
 								</p>
 							</div>
 							<div class="ec-base-table typeWrite">
@@ -283,70 +493,60 @@ function purchase(){
 										<col style="width: 170px;" />
 										<col style="width: auto;" />
 									</colgroup>
-									<!-- 비회원 결제 -->
-									<tbody class="displaynone ec-shop-deliverySimpleNomemberForm">
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td>(주문조회시 필요합니다. 4자에서 12자 영문 또는 숫자 대소문자 구분)</td>
-										</tr>
-										<tr class="ec-orderform-NoMemberPasswdRow">
-											<th scope="row">주문조회 비밀번호 확인 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td></td>
-										</tr>
-									</tbody>
 									<!-- 국내 배송지 정보 -->
 									<tbody class="">
 										<tr class="">
-											<th scope="row">배송지 선택</th>
+											<th scope="row">배송지 선택 <img
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td>
 												<div class="address">
-													<input id="sameaddr0" name="sameaddr" fw-filter=""
-														fw-label="1" fw-msg="" value="T" type="radio" /><label
-														for="sameaddr0">주문자 정보와 동일</label> <input id="sameaddr1"
-														name="sameaddr" fw-filter="" fw-label="1" fw-msg=""
-														value="F" type="radio" /><label for="sameaddr1">새로운배송지</label>
-													
+													<input type="radio" name="destination" checked
+														onclick="setOrderInfoOfMember()" /><label for="sameaddr0">주문자
+														정보와 동일</label> <input type="radio" name="destination"
+														onclick="setOrderInfoOfNew()" /><label for="sameaddr1">새로운배송지</label>
+
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">받으시는 분 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rname" name="rname" fw-filter="isFill"
-												fw-label="수취자 성명" fw-msg="" class="inputTypeText"
-												placeholder="" size="15" value="" type="text" /></td>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
+											<td><input id="rname" name="rname" placeholder=""
+												size="15" value="" type="text" /></td>
 										</tr>
 										<tr>
 											<th scope="row">주소 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="rzipcode1" name="rzipcode1"
-												fw-filter="isFill" fw-label="수취자 우편번호1" fw-msg=""
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
+											<td><input id="rpostcode" name="rpostcode"
 												class="inputTypeText" placeholder="" size="6" maxlength="6"
 												readonly="1" value="" type="text" /> <a href="#none"
 												id="btn_search_rzipcode" class="yg_btn_24 yg_btn5"
-												alt="우편번호">우편번호</a><br /> <input id="raddr1" name="raddr1"
-												fw-filter="isFill" fw-label="수취자 주소1" fw-msg=""
-												class="inputTypeText" placeholder="" size="40" readonly="1"
-												value="" type="text" /> <span class="grid">기본주소</span><br />
-												<input id="raddr2" name="raddr2" fw-filter="isFill"
-												fw-label="수취자 주소2" fw-msg="" class="inputTypeText"
-												placeholder="" size="40" value="" type="text" /> <span
-												class="grid">나머지주소</span><span class="grid displaynone">(선택입력가능)</span>
-											</td>
+												alt="우편번호">우편번호</a><br /> <input id="raddress"
+												name="raddress" fw-filter="isFill" fw-label="수취자 주소1"
+												fw-msg="" class="inputTypeText" placeholder="" size="40"
+												readonly="1" value="" type="text" /> <span class="grid"></span><br />
+												<input id="rdetailaddress" name="rdetailaddress"
+												fw-filter="isFill" fw-label="수취자 주소2" fw-msg=""
+												class="inputTypeText" placeholder="" size="40" value=""
+												type="text" /> <span class="grid">상세주소</span><span
+												class="grid displaynone">(선택입력가능)</span></td>
 										</tr>
 										<tr class="displaynone">
 											<th scope="row">일반전화 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td></td>
 										</tr>
 										<tr class="">
 											<th scope="row">휴대전화 <span class=""><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
-											<td><select id="rphone2_1" name="rphone2_[]"
+											<td><select id="rphone1" name="rphone1"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="">
 													<option value="010">010</option>
@@ -355,10 +555,10 @@ function purchase(){
 													<option value="017">017</option>
 													<option value="018">018</option>
 													<option value="019">019</option>
-											</select>-<input id="rphone2_2" name="rphone2_[]" maxlength="4"
+											</select>-<input id=rphone2 name="rphone2" maxlength="4"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="" size="4" value="" type="text" />-<input
-												id="rphone2_3" name="rphone2_[]" maxlength="4"
+												id="rphone3" name="rphone3" maxlength="4"
 												fw-filter="isNumber&isFill" fw-label="수취자 핸드폰번호"
 												fw-alone="N" fw-msg="" size="4" value="" type="text" /></td>
 										</tr>
@@ -383,7 +583,8 @@ function purchase(){
 										</tr>
 										<tr>
 											<th scope="row">받으시는 분 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td><span class="grid">받는분의 이름은 영문으로 작성해 주세요.</span></td>
 										</tr>
 										<tr class="displaynone">
@@ -396,7 +597,8 @@ function purchase(){
 										</tr>
 										<tr>
 											<th scope="row">국가 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
@@ -406,7 +608,8 @@ function purchase(){
 										</tr>
 										<tr>
 											<th scope="row">주소1 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
@@ -415,17 +618,20 @@ function purchase(){
 										</tr>
 										<tr>
 											<th scope="row">도시 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr>
 											<th scope="row">주/지방 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td></td>
 										</tr>
 										<tr class="displaynone">
 											<th scope="row">일반전화 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
@@ -433,7 +639,8 @@ function purchase(){
 										</tr>
 										<tr class="">
 											<th scope="row">휴대전화 <span class=""><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<p class="gBlank5">'-' 없이 숫자만 입력해 주세요.</p>
@@ -441,7 +648,8 @@ function purchase(){
 										</tr>
 										<tr id="ec-shop-receiver_id_card_key" class="displaynone">
 											<th scope="row">신분증 ID <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
 											<td>
 												<p class="gBlank5">통관을 위해 규정에 따라 신분증 ID를 수집합니다.</p>
 											</td>
@@ -452,14 +660,15 @@ function purchase(){
 										class="email ec-orderform-emailRow ec-shop-deliverySimpleForm">
 										<tr>
 											<th scope="row">이메일 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-											<td><input id="oemail1" name="oemail1"
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												alt="필수" /></th>
+											<td><input id="remail1" name="remail1"
 												fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg=""
-												class="mailId" value="" type="text" />@<input id="oemail2"
-												name="oemail2" fw-filter="isFill" fw-label="주문자 이메일"
+												class="mailId" value="" type="text" />@<input id="remail2"
+												name="remail2" fw-filter="isFill" fw-label="주문자 이메일"
 												fw-alone="N" fw-msg="" class="mailAddress"
 												readonly="readonly" value="" type="text" /><select
-												id="oemail3" fw-filter="isFill" fw-label="주문자 이메일"
+												id="remail3" fw-filter="isFill" fw-label="주문자 이메일"
 												fw-alone="N" fw-msg="">
 													<option value="" selected="selected">- 이메일 선택 -</option>
 													<option value="naver.com">naver.com</option>
@@ -483,9 +692,10 @@ function purchase(){
 									<tbody class="delivery ">
 										<tr class="">
 											<th scope="row">배송메시지 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
-											<td><textarea id="omessage" name="omessage" fw-filter=""
+											<td><textarea id="rmsg" name="rmsg" fw-filter=""
 													fw-label="배송 메세지" fw-msg="" maxlength="255" cols="70"></textarea>
 												<div class="devMessage displaynone">
 													<label><input id="omessage_autosave0"
@@ -523,7 +733,8 @@ function purchase(){
 									<tbody class="delivery displaynone">
 										<tr class="">
 											<th scope="row">배송메시지 <span class="displaynone"><img
-													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></span>
+													src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+													alt="필수" /></span>
 											</th>
 											<td>
 												<div class="devMessage displaynone">
@@ -674,19 +885,22 @@ function purchase(){
 										<tr>
 											<td class="price"><div class="box txt16">
 													<strong><span id="total_order_price_view"
-														class="txt23">${totalPrice+deliveryCharge}</span>원</strong> <span class="displaynone"><span
+														class="txt23"><fmt:formatNumber
+																value="${totalPrice+deliveryCharge}"
+																pattern="###,###,###" /></span>원</strong> <span class="displaynone"><span
 														id="total_order_price_ref_view"></span></span>
 												</div></td>
 											<td class="option "><div class="box txt16">
 													<strong>-</strong> <strong><span
-														id="total_sale_price_view" class="txt23">0</span>원</strong> <span
+														id="totalSalePrice" class="txt23">0</span>원</strong> <span
 														class="displaynone"><span
 														id="total_sale_price_ref_view"></span></span>
 												</div></td>
 											<td><div class="box txtEm txt16">
-													<strong>=</strong> <strong><span
-														id="total_order_sale_price_view" class="txt23"><fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###"/></span>원</strong>
-													<span class="displaynone"><span
+													<strong>=</strong> <strong><span id="totalPrice"
+														class="txt23"><fmt:formatNumber
+																value="${totalPrice+deliveryCharge}"
+																pattern="###,###,###" /></span>원</strong> <span class="displaynone"><span
 														id="total_order_sale_price_ref_view"></span></span>
 												</div></td>
 										</tr>
@@ -757,10 +971,11 @@ function purchase(){
 												<th scope="row">적립금</th>
 												<td>
 													<p>
-														<input id="input_mile" name="input_mile" fw-filter=""
-															fw-label="적립금" fw-msg="" class="inputTypeText"
-															placeholder="" size="10" value="" type="text" /> 원 (총
-														사용가능 적립금 : <strong class="txtWarn">38,289</strong>원)
+														<input id="point" name="point" fw-label="적립금"
+															class="inputTypeText" placeholder="" size="10" value="0"
+															type="text" onblur="checkPoint(this.value)"
+															style="text-align: right" /> 원 (총 사용가능 적립금 : <strong
+															class="txtWarn">${member.point }</strong>원)
 													</p>
 													<ul class="info">
 														<li>적립금은 최소 2,000 이상일 때 결제가 가능합니다.</li>
@@ -811,10 +1026,11 @@ function purchase(){
 									href="https://www.slowand.com/product/slowmade-히트-터틀넥티셔츠-속기모-8-color/3606/category/1/display/3/"
 									rel="109" class="nivohref nivo-imageLink"><img
 									src="//app-storage-edge-008.cafe24.com/photoslide2/anne2173/2019/11/13/8bb83821f4f22b52fdfbbdd9c6f4de46.jpg"
-									intrinsicsize="897 x 400" alt="" title="" border="0" style="width:897px;height:325px;"></a>
+									intrinsicsize="897 x 400" alt="" title="" border="0"
+									style="width: 897px; height: 325px;"></a>
 							</div>
 							<!-- 최종결제금액 -->
-							<div class="total" style="border: 1px solid #ddd">           
+							<div class="total" style="border: 1px solid #ddd">
 								<h4>
 									<span>최종결제 금액</span>
 								</h4>
@@ -823,14 +1039,16 @@ function purchase(){
 										fw-filter="isFill" fw-label="결제금액" fw-msg=""
 										class="inputTypeText" placeholder=""
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
-										size="10" readonly="1" value="${totalPrice+deliveryCharge}" type="text" /><span>원</span>
+										size="10" readonly="1" value="${totalPrice+deliveryCharge}"
+										type="text" /><span>원</span>
 								</p>
-								<p class="paymentAgree" id="chk_purchase_agreement">
-									<input id="chk_purchase_agreement0"
+								<p class="paymentAgree">
+									<input id="chk_purchase_agreement"
 										name="chk_purchase_agreement" fw-filter="" fw-label="구매진행 동의"
 										fw-msg="" value="T" type="checkbox" /><label
-										for="chk_purchase_agreement0">결제정보를 확인하였으며, 구매진행에 동의합니다.</label>
-								</p>     
+										for="chk_purchase_agreement">결제정보를 확인하였으며, 구매진행에
+										동의합니다.</label>
+								</p>
 								<div class="button">
 									<a href="#none" class="yg_btn_140" id="btn_payment"
 										style="width: 330px;" alt="결제하기" onclick="purchase()">결제하기</a>
@@ -838,23 +1056,35 @@ function purchase(){
 								<div class="mileage ">
 									<dl class="ec-base-desc gLarge right">
 										<dt>
-											<strong>총 적립예정금액</strong>
+											<strong>최종 결제금액</strong>
 										</dt>
-										<dd id="mAllMileageSum" class="txtWarn">5,814원</dd>
+										<dd class="txtWarn">
+											<sapn id="totalPrice2"> <fmt:formatNumber
+												value="${totalPrice+deliveryCharge}" pattern="###,###,###" /></sapn>
+											원
+										</dd>
 									</dl>
 									<dl class="ec-base-desc gLarge right">
-										<dt>상품별 적립금</dt>
-										<dd id="mProductMileage">1,938원원</dd>
-										<dt>회원 적립금</dt>
-										<dd id="mMemberMileage">3,876원</dd>
-										<dt>쿠폰 적립금</dt>
-										<dd id="mCouponMileage">0원</dd>
+										<dt>총 상품금액</dt>
+										<dd id="mProductMileage">
+											<span id="productTotalPrice"><fmt:formatNumber
+													value="${totalPrice}" pattern="###,###,###" /></span>원
+										</dd>
+										<dt>배송비</dt>
+										<dd id="mMemberMileage">
+											<span><fmt:formatNumber value="${deliveryCharge}"
+													pattern="###,###,###" /></span>원
+										</dd>
+										<dt>총 할인금액</dt>
+										<dd id="mCouponMileage">
+											<span id="totalSalePrice2">0</span>원
+										</dd>
 									</dl>
 								</div>
 							</div>
 						</div>
 						<!-- 무이자 할부 이용안내 -->
-						<div class="ec-base-help">       
+						<div class="ec-base-help">
 							<h3>무이자 할부 이용안내</h3>
 							<div class="inner">
 								<ul>

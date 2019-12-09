@@ -119,20 +119,20 @@ fw-label="찾는방법" fw-msg="" value="1" type="radio" checked="checked">
 <input id="check_method2" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
 fw-label="찾는방법" fw-msg="" value="2" type="radio">
 <label for="check_method2">
-<span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
+핸드폰번호</span>
 </label> 
 
 <p id="name_view" class="name" style="">
-<strong id="name_lable">이름</strong><input id="name" name="name" fw-filter="" fw-label="이름" fw-msg="" class="lostInput" placeholder="" value="" type="text">
+<strong id="name_lable">이름</strong><input style="width:150px;height:30px;" id="name" name="name" fw-filter="" fw-label="이름" fw-msg="" class="lostInput" placeholder="" value="" type="text">
 </p>
             
 <p id="Radio_On" class="email" style="">
-<strong>이메일</strong><input id="email" name="email" fw-filter="isEmail" fw-label="이메일" 
+<strong>이메일</strong><input style="width:150px;height:30px;" id="email" name="email" fw-filter="isEmail" fw-label="이메일" 
 fw-msg="" class="lostInput" placeholder="" value="" type="text">
 </p>
             
 <p id="Radio_Off" class="phone" style="display:none;">
-<strong>휴대폰 번호</strong><input id="phone" name="phone" 
+<strong>핸드폰번호</strong><input style="width:141px;height:24px;" id="phone" name="phone" 
 fw-filter="isNumber" fw-label="휴대전화 번호" 
 fw-msg="" class="lostInput" placeholder="" maxlength="11" 
 value="" type="text">

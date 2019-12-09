@@ -94,4 +94,20 @@
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
+
+	<!-- 이메일 설정 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="kevinahn861125@gmail.com" />
+		<property name="password" value="chlwlals09!" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
 </beans>

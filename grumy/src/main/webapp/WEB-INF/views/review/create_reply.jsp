@@ -3,9 +3,7 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js"
-	charset="utf-8">
-	
-	</script>
+	charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 

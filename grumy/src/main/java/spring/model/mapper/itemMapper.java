@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import spring.model.item.ItemDTO;
+import spring.model.order.OrderItemDTO;
+import spring.model.review.reviewDTO;
 
 
 public interface itemMapper {
@@ -16,9 +18,10 @@ public interface itemMapper {
 	ArrayList<String> size(Map<String, String> map);
 	int count(Map<String, String> map);
 	int total(Map map);
-	
-	
 	int delete(int itemNo);
 	int update(int itemOptionNo);
+	int create(ItemDTO dto);
+	ArrayList<Integer> checkItemCount(ArrayList<OrderItemDTO> list);
+	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
 
 }

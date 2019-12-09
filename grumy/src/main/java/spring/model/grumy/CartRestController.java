@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.context.request.SessionScope;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import spring.model.cart.CartDTO;
 import spring.model.mapper.CartMapper;
 
 @RestController
@@ -23,6 +28,8 @@ public class CartRestController {
 
 	@Autowired
 	private CartMapper mapper;
+	ObjectMapper oMapper = new ObjectMapper();
+
 	@DeleteMapping("/cart/delete")
 	public ResponseEntity<String> remove(@RequestBody ArrayList<Integer> cartNoList) {
 
@@ -40,9 +47,24 @@ public class CartRestController {
 
 	}
 	
+
 	@PutMapping("/cart/insert")
-	public ResponseEntity<String> insert(@RequestBody Map<String, Integer> map) {
-		return mapper.update(map) > 0
+	public ResponseEntity<String> insert(@RequestBody Map map) {
+		int cnt=0;
+		
+		ArrayList<CartDTO> updateList = oMapper.convertValue(map.get("updateList"), new TypeReference<ArrayList<CartDTO>>() {});	// 留듭뿉�꽌 媛��졇���꽌 arrayList濡� �삎蹂��솚�븷�븣 �뒪�봽留� 4.0�씠�븯�뿉�꽌 �븞�릺�뒗 踰꾧렇媛��엳�뼱�꽌 ��
+		ArrayList<CartDTO> insertList = oMapper.convertValue(map.get("insertList"), new TypeReference<ArrayList<CartDTO>>() {});
+		
+		for(CartDTO dto:updateList){
+			 map.put("dto", dto);
+			 cnt += mapper.update2(map);
+		}
+		for(CartDTO dto: insertList) {
+			 map.put("dto", dto);
+			 cnt += mapper.insert(map);
+		}
+		
+		return cnt == (updateList.size()+insertList.size())
 				? new ResponseEntity<String>("success", HttpStatus.OK)
 						: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 
@@ -50,16 +72,18 @@ public class CartRestController {
 
 	@PutMapping("/cart/checkDuplicate")
 	public ResponseEntity<String> checkDuplicate(@RequestBody Map map) {
-
-		ArrayList<Integer> list  = mapper.checkDuplicate(map);
-		String res = "";
-		if(list.size()>0) {
-			for(int i:list)
-				res += (i+"/");
+		ArrayList<CartDTO> list = oMapper.convertValue(map.get("list"), new TypeReference<ArrayList<CartDTO>>() {});
+		ArrayList<Integer> duplicateList  = mapper.checkDuplicate(map);   
+		String res = "";         
+		
+		if(duplicateList.size()>0) {
+			for(int i:duplicateList)
+				res += (i+"/");       
 		}
-		return list.size() > 0
+
+		return duplicateList.size() > 0
 				? new ResponseEntity<String>(res, HttpStatus.OK)
-						:(list.size()==0?new ResponseEntity<String>("noDuplicate",HttpStatus.OK):new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR)) ;
+						:(duplicateList.size()==0?new ResponseEntity<String>("noDuplicate",HttpStatus.OK):new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR)) ;
 
 	}
 }

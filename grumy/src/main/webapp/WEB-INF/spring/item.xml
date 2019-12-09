@@ -21,4 +21,11 @@
         <put-attribute name="title" value="item 상세페이지" ></put-attribute> 
         <put-attribute name="body" value="/WEB-INF/views/item/read.jsp" /> 
 </definition>  
+
+<definition name="/item/create" extends="main">
+		<put-attribute name="title"	value="item 등록 페이지"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/create.jsp" />
+	</definition>
+
 </tiles-definitions>

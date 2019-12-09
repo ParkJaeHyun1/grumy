@@ -164,6 +164,13 @@ function setView(){
 	}
 	purchasePrice = 0;
 	$.each(list, function(index, item){
+		if(item.count>item.itemCount){
+			if(item.itemCount == 0)
+				deleteCart(item.cartNo);
+			else
+				updateItemCount(cartNo,item.itemCount);
+			return;
+		}
 		$('#cart_item_count_'+item.cartNo).val(item.count);
 		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
@@ -222,6 +229,7 @@ function setView(){
 				<!-- 장바구니 모듈 Package -->
 				<div class="xans-element- xans-order xans-order-basketpackage " id="display_item_list"	style="display: none">
 				<form action="../order/order" class="form-horizontal" method="post" id="orderForm" enctype="application/x-www-form-urlencoded;charset=UTF-8">
+					<input type="hidden" name="url"	value="${pageContext.request.contextPath}/cart/list"></input>
 					<!-- 일반상품 -->
 					<div class="orderListArea ec-base-table typeList gBorder">
 						<div class="xans-element- xans-order xans-order-normtitle title ">
@@ -302,7 +310,7 @@ function setView(){
 												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 												alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
 										<td class="left gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}
+											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.cartNo}${dto.itemTitle}
 												<img src="https://www.slowand.com//web/upload/custom_3.gif"
 												alt="" />
 										</a><span class="displaynone"><br />(영문명 : )</span>

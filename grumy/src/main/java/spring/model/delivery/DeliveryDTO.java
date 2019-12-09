@@ -9,6 +9,7 @@ public class DeliveryDTO {
 	private String content;
 	private String wdate;
 	private String passwd;
+	private String category;
 	private int ref;
 	private int indent;
 	private String id;
@@ -18,13 +19,8 @@ public class DeliveryDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Override
-	public String toString() {
-		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
-				+ ", wdate=" + wdate + ", passwd=" + passwd  + ", ref=" + ref
-				+ ", indent=" + indent + ", id=" + id + ", lev=" + lev + ", check_read=" + check_read + "]";
-	}
-	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd, int ref, int indent, String id, char lev, String check_read) {
+	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd,
+			String category, int ref, int indent, String id, char lev, String check_read) {
 		super();
 		this.no = no;
 		this.subject = subject;
@@ -32,11 +28,18 @@ public class DeliveryDTO {
 		this.content = content;
 		this.wdate = wdate;
 		this.passwd = passwd;
+		this.category = category;
 		this.ref = ref;
 		this.indent = indent;
 		this.id = id;
 		this.lev = lev;
 		this.check_read = check_read;
+	}
+	@Override
+	public String toString() {
+		return "DeliveryDTO [no=" + no + ", subject=" + subject + ", writer=" + writer + ", content=" + content
+				+ ", wdate=" + wdate + ", passwd=" + passwd + ", category=" + category + ", ref=" + ref + ", indent="
+				+ indent + ", id=" + id + ", lev=" + lev + ", check_read=" + check_read + "]";
 	}
 	public int getNo() {
 		return no;
@@ -74,6 +77,12 @@ public class DeliveryDTO {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public int getRef() {
 		return ref;
 	}
@@ -104,6 +113,7 @@ public class DeliveryDTO {
 	public void setCheck_read(String check_read) {
 		this.check_read = check_read;
 	}
+
 
 	
 	}

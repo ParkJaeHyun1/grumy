@@ -10,7 +10,7 @@
 	content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" sa />
 
 <!--PG크로스브라우징필수내용 시작-->
-<meta http-equiv="Cache-Control" content="no-cache" />         
+<meta http-equiv="Cache-Control" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
 <meta http-equiv="Pragma" content="no-cache" />
 <!--PG크로스브라우징필수내용 끝-->
@@ -102,6 +102,7 @@
 
             	function deleteItem(itemOptionNo){
             		$('#selectedItem'+itemOptionNo).remove();
+            		$('#orderInfo'+itemOptionNo).remove();
     				delete selectedItem[itemOptionNo];
     				setTotalPrice();
             	}
@@ -152,18 +153,44 @@
 					if(!isLoginUser())
 						return;
 					
-					var seletedOptionNoList = [];
+					var updateList = [];
+					var insertList = [];
             		$.each(selectedItem, function(index, item){ 
-            			seletedOptionNoList.push(item.itemOptionNo);
+            			insertList.push({itemOptionNo:item.itemOptionNo,count:item.count});
             		});
             		
 					$.ajax({
 						type : 'put',
 						url : "../cart/checkDuplicate",
-						data :  JSON.stringify({'list':seletedOptionNoList,'id':'${sessionScope.id}'}),
+						data :  JSON.stringify({'list':insertList,'id':'${sessionScope.id}'}),
 						contentType : "application/json; charset=utf-8",
 						success : function(result, status, xhr) {
-							alert(result);
+							if(result != 'noDuplicate'){
+								if(!confirm("장바구니에 동일한 상품이 있습니다. 장바구니에 추가하시겠습니까?"))
+									return;
+								
+								var duplicateOptionNoList = result.split('/');
+								for(var i=0;i<insertList.length;i++){
+									const idx = duplicateOptionNoList.indexOf(insertList[i].itemOptionNo); 
+									if (idx > -1){
+										updateList.push({itemOptionNo:insertList[i].itemOptionNo,count:insertList[i].count});
+										insertList.splice(i--, 1);
+									}
+								}
+							}
+		                     $.ajax({
+		                         type : 'put',
+		                         url : "../cart/insert",
+		                         data :  JSON.stringify({'insertList':insertList,'id':'${sessionScope.id}','updateList':updateList}),
+		                         contentType : "application/json; charset=utf-8",
+		                         success : function(result, status, xhr) {
+		                            $('#basketAddSucess').css('display', 'block');
+		                         },
+		                         error : function(xhr, status, er) {
+		                            alert('에러:'+status);
+		                         }
+		                      });
+					
 						},
 						error : function(xhr, status, er) {
 							alert('에러:'+status);
@@ -190,6 +217,9 @@
 					}
 					return true;
 				}
+				function closeBasketAddSucess(){
+					$('#basketAddSucess').css('display', 'none');
+				}
             	function showReplyList(nowPage){
                     var itemNo = ${dto.itemNo};
 
@@ -213,39 +243,39 @@
 
                 }//end showList
          </script>
-		<meta name="author" content="슬로우앤드 - 천천히 그리고,">                
+		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />                                                
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 			<meta name="description"
-				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">                           
+				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
 
-				<meta name="viewport" content="width=device-width">         
+				<meta name="viewport" content="width=device-width">   
 					<link rel="canonical"
-						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                                                                                                                   
+						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />           
 					<link rel="alternate"
-						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                   
+						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<meta property="og:url"
-						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />                              
+						content="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<meta property="og:title"
-						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />                                             
+						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" />
 					<meta property="og:description"
-						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />       
-					<meta property="og:site_name" content="슬로우앤드" />      
+						content="맨투맨,후디에 이어 요청많았던 후드집업♥ 양기모로 한겨울 미리미리 준비하기 :)  도톰하고 폭닥한 특양기모원단으로 가볍게 티 위에만 걸쳐도 포근해요 *.* (니켈칩/3중재봉/아일렛디테일)" />
+					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="product" />
-					<meta property="og:image"     
-						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />     
-					<meta property="product:price:amount" content="29800" />                     
-					<meta property="product:price:currency" content="KRW" />                
-					<meta property="product:sale_price:amount" content="29800" />    
-					<meta property="product:sale_price:currency" content="KRW" />                                
+					<meta property="og:image"
+						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
+					<meta property="product:price:amount" content="29800" />
+					<meta property="product:price:currency" content="KRW" />
+					<meta property="product:sale_price:amount" content="29800" />      
+					<meta property="product:sale_price:currency" content="KRW" />
 					<link rel="shortcut icon"
-						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />       
+						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
 					<script type="text/javascript"
 						src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript"
-						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>                 
+						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>     
 					<script type="text/javascript"
-						src="https://slowand.com/ind-script/moment.php?convert=T"></script>                
+						src="https://slowand.com/ind-script/moment.php?convert=T"></script>
 
 					<link rel="stylesheet" type="text/css"
 						href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
@@ -254,33 +284,41 @@
 
 					<title>#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color - 슬로우앤드</title>
 					<meta name="path_role" content="PRODUCT_DETAIL" />
-					<meta name="author" content="슬로우앤드" />        
+					<meta name="author" content="슬로우앤드" />
 					<meta name="description" content="" />
 					<meta name="keywords"
 						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
 					<meta name="design_html_path"
-						content="http://slowand.com/product/detail.html" />                                 
+						content="http://slowand.com/product/detail.html" />
 </head>
 
 <body id="cmn">
-<div class="xans-element- xans-product xans-product-basketadd ec-base-layer " style="position:fixed;top:50%;left:50%;z-index:1000;width:450px;margin:-175px 0 0 -225px; display:none"><div class="header">
-        <h3>장바구니 담기</h3>
-    </div>
-<div class="content" style="padding:185px 20px 65px;text-align:center;background:url(//img.echosting.cafe24.com/skin/base/product/bg_add_basket.gif) no-repeat 50% 68px;">    
-        <p>장바구니에 상품이 정상적으로 담겼습니다.</p>
-    </div>
-<div class="ec-base-button">
-        <a href="/order/basket.html?delvtype=A" alt="장바구니 이동" class="yg_btn yg_btn1 yg_btn_hover_fff">장바구니 이동</a>
-        <a href="#none" onclick="$('#confirmLayer').hide();" alt="쇼핑계속하기" complete="complete" class="yg_btn yg_btn3 yg_btn_hover_333">쇼핑계속하기</a>
-    </div>
-<a class="close" onclick="$('#confirmLayer').hide();"><img src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif" alt="닫기"></a>
-</div>
+	<div
+		class="xans-element- xans-product xans-product-basketadd ec-base-layer " id="basketAddSucess"
+		style="position: fixed; top: 50%; left: 50%; z-index: 1000; width: 450px; margin: -175px 0 0 -225px; display: none">
+		<div class="header">
+			<h3>장바구니 담기</h3>
+		</div>
+		<div class="content"
+			style="padding: 185px 20px 65px; text-align: center; background: url(//img.echosting.cafe24.com/skin/base/product/bg_add_basket.gif) no-repeat 50% 68px;">
+			<p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+		</div>
+		<div class="ec-base-button">
+			<a href="${pageContext.request.contextPath}/cart/list" alt="장바구니 이동"
+				class="yg_btn yg_btn1 yg_btn_hover_fff">장바구니 이동</a> <a href="#none"
+				onclick="$('#basketAddSucess').hide();" alt="쇼핑계속하기"
+				complete="complete" class="yg_btn yg_btn3 yg_btn_hover_333">쇼핑계속하기</a>
+		</div>
+		<a class="close" onclick="$('#basketAddSucess').hide();"><img
+			src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
+			alt="닫기"></a>
+	</div>
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>             
-		</p>             
+			<a href="#category">전체상품목록 바로가기</a>
+		</p>
 		<p>
-			<a href="#contents">본문 바로가기</a>          
+			<a href="#contents">본문 바로가기</a>
 		</p>
 	</div>
 
@@ -290,23 +328,31 @@
 		<!-- //상단카테고리 -->
 
 		<div id="container">
-			<div id="contents">    
+			<div id="contents">
 
 				<!--
     $category_page = /product/list.html
     $project_page = /product/project.html
     $jointbuy_page = /product/jointbuy.html
--->				
+-->
 
-				<form  action="${pageContext.request.contextPath}/order/order" id="orderInfoForm" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
-					  
-				</form>
-				<form action="${pageContext.request.contextPath}/member/login" id="loginForm" class="form-horizontal" method="post" enctype="application/x-www-form-urlencoded;charset=UTF-8" style="display:none">
-					<input type="hidden" name="url" value ="/item/read?itemNo=${dto.itemNo}"></input>
+				<form action="${pageContext.request.contextPath}/order/order"
+					id="orderInfoForm" class="form-horizontal" method="post"
+					enctype="application/x-www-form-urlencoded;charset=UTF-8"
+					style="display: none">
+					<input type="hidden" name="url"
+						value="/item/read?itemNo=${dto.itemNo}"></input>
+					</form>
+				<form action="${pageContext.request.contextPath}/member/login"
+					id="loginForm" class="form-horizontal" method="post"
+					enctype="application/x-www-form-urlencoded;charset=UTF-8"
+					style="display: none">
+					<input type="hidden" name="url"
+						value="/item/read?itemNo=${dto.itemNo}"></input>
 				</form>
 
-			
-							<!-- 상단 제품 정보  -->
+
+				<!-- 상단 제품 정보  -->
 				<div class="xans-element- xans-product xans-product-detail">
 					<div class="detailArea ">
 						<!-- 이미지 영역 -->
@@ -318,11 +364,12 @@
 										href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 										alt="P0000FII"
 										onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
-										<img src="${pageContext.request.contextPath}/images/${dto.image}"
+										<img
+										src="${pageContext.request.contextPath}/images/${dto.image}"
 										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage" />
 									</a>
 									<div id="zoom_wrap"></div>
-									<div class="color displaynone"></div>      
+									<div class="color displaynone"></div>
 								</div>
 							</div>
 							<!-- 참고 : 뉴상품관리 전용 모듈입니다. 뉴상품관리 이외의 곳에서 사용하면 정상동작하지 않습니다. -->
@@ -333,12 +380,12 @@
 										src="//slowand.com/web/product/small/201911/4ea4f1ef5b1ebf6b8498831b8ef4b233.gif"
 										class="ThumbImage" alt="" /></li>
 								</ul>
-							</div>         
+							</div>
 							<!-- //참고 -->
 							<div class="likeButton displaynone">
 								<button type="button">
 									<span class="title">좋아요</span><span class="count"></span>
-								</button>                    
+								</button>
 							</div>
 						</div>
 						<!-- //이미지 영역 -->
@@ -468,10 +515,11 @@
 																<c:if
 																	test="${(empty pre_val)||itemOption.itemColor != pre_val}">
 																	<li class="" option_value="컬러" link_image=""
-																		title="아이보리" id="itemColor${itemOption.itemColor}"><a href="javascript:;"
+																		title="아이보리" id="itemColor${itemOption.itemColor}"><a
+																		href="javascript:;"
 																		onclick="checkColor('${itemOption.itemColor}')"> <span>${itemOption.itemColor}</span></a>
-																	</li>             
-																	<c:set var="pre_val" value="${itemOption.itemColor}" />       
+																	</li>
+																	<c:set var="pre_val" value="${itemOption.itemColor}" />
 																</c:if>
 															</c:forEach>
 														</ul>
@@ -494,7 +542,7 @@
 												</tr>
 												<tr
 													class="xans-element- xans-product xans-product-option xans-record-"
-													id="divItemSize" style="display:none">     
+													id="divItemSize" style="display: none">
 													<th scope="row">SIZE</th>
 													<td><ul option_product_no="3668"
 															option_select_element="ec-option-select-finder"
@@ -522,8 +570,7 @@
 										</table>
 										<div class="guideArea">
 											<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-											<p class="info ">
-											</p>      
+											<p class="info "></p>
 											<!-- //참고 -->
 											<span class="sizeGuide displaynone"><a href="#none"
 												class="size_guide_info" product_no="3596">사이즈 가이드</a></span>
@@ -574,29 +621,29 @@
 											</tbody>
 
 
-											
+
 
 											<tfoot>
 												<tr>
 													<td colspan="3"><strong>TOTAL PRICE</strong> (qty) <span
-														class="total"><strong><em id="totalPrice">0</em></strong> (<span id="totalCount">0</span> items)</span>
+														class="total"><strong><em id="totalPrice">0</em></strong>
+															(<span id="totalCount">0</span> items)</span>
 														<p class="ec-base-help txt11 displaynone EC-price-warning">할인가가
 															적용된 최종 결제예정금액은 주문 시 확인할 수 있습니다.</p></td>
 												</tr>
 											</tfoot>
 										</table>
-									</div>        
+									</div>
 									<!-- //참고 -->
 
 									<div class="xans-element- xans-product xans-product-action">
 										<div class="fixed_cont_btn">
 											<div class="ec-base-button">
 												<a id="cartBtn" href="#none" class=" cart"
-													onclick="addToCart()"
-													alt="장바구니 담기">ADD TO CART</a> <a id="wishBtn"
-													style="width: 100%" href="#none" class="first "
-													onclick="buyNow()"><span
-													alt="바로구매하기" id="btnBuy">BUY NOW</span> <span alt="예약주문"
+													onclick="addToCart()" alt="장바구니 담기">ADD TO CART</a> <a
+													id="wishBtn" style="width: 100%" href="#none"
+													class="first " onclick="buyNow()"><span alt="바로구매하기"
+													id="btnBuy">BUY NOW</span> <span alt="예약주문"
 													class="displaynone" id="cartBtn">예약주문</span></a> <a
 													class="displaynone soldout" alt="SOLD OUT">SOLD OUT</a>
 											</div>
@@ -651,10 +698,10 @@
 						<div class="event"></div>
 					</div>
 				</div>
-			
+
 				<!-- //상단 제품 정보 -->
 
-				<div id="fixed"></div>          
+				<div id="fixed"></div>
 				<!-- offset().top 값을 위한 임의의 ID-->
 
 
@@ -726,7 +773,7 @@
 							<b><p align="center" style="text-align: center;">
 									<br>
 								</p></b>
-							<p align="center" style="text-align: center;"> 
+							<p align="center" style="text-align: center;">
 								<b><img alt=""
 									src="//slowand.com/web/upload/NNEditor/20191108/1_shop1_201304.jpg"></b>
 							</p>
@@ -1010,9 +1057,9 @@ fbq('track', 'ViewContent', {
 	<!-- CMC script -->
 	<!-- External Script End -->
 
-		<script type="text/javascript"
+	<script type="text/javascript"
 		src="https://www.slowand.com/ind-script/optimizer.php?filename=nY-7DsIwDEX3lpXvsFqQmPmUPEwbNYkrPyT4e9JOSCzQ0ZbvOb4wU0EYRoaVaWJXgFHIOCAEEXgwVYVApVA9tcUZfrnH0All00S18_Q8GDTVo9LsXsjHoup8xo8oht4EWcDViuNwu8BqPqfQz1oySMQ-oqSpgiypXqGZyRS8kxR2Q2O3Ab9e-pO7oQpFy7gViRZ2x4J6j3GjvgE&type=css&k=a53c0167c1b780cc8388be1ef9dc0b901e71c22f&t=1543392667"></script>
-	
+
 	<script type="text/javascript"
 		src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
 		charset="utf-8"></script>
@@ -1026,7 +1073,7 @@ fbq('track', 'ViewContent', {
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/ind-script/itemread.php"></script>
 
-</body>       
+</body>
 </html>
 
 <script

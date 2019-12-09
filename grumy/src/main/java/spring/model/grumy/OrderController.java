@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,49 +14,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.model.mapper.MemberMapper;
 import spring.model.mapper.OrderMapper;
 import spring.model.mapper.itemMapper;
+import spring.model.member.MemberDTO;
 import spring.model.order.OrderItemDTO;
 
 @Controller
 public class OrderController {
 	@Autowired
 	OrderMapper orderMapper;
-
+	@Autowired
+	itemMapper itemMapper;
+	@Autowired
+	MemberMapper memberMapper;
+	
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
-	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList) {
-		System.out.println(orderInfoList.length);
+	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList,String url) {
+
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
+		Map<String, String> map = new HashMap<String, String>();
 		
-		Arrays.sort(orderInfoList, new Comparator<String>() {
-			@Override
-			public int compare(String o1, String o2) {
+		for(String str:orderInfoList) 
+			map.put(str.split("/")[0], str);
 				
-				return o1.split("/")[0].compareTo( o2.split("/")[0]);
-			}
-		});
-		
 		for(String orderInfo:orderInfoList) 
 			itemOptionNoList.add(Integer.parseInt(orderInfo.split("/")[0]));
 
-		ArrayList<OrderItemDTO> orderItemList = orderMapper.itemOptionList(itemOptionNoList);
+		MemberDTO member = memberMapper.read((String)session.getAttribute("id"));
+		member.divideInfo();
+		ArrayList<OrderItemDTO> orderItemList = itemMapper.itemOptionList(itemOptionNoList);
 		
-		for(int i=0;i<orderInfoList.length;i++) {
-			String[] s = orderInfoList[i].split("/");
-			OrderItemDTO dto = orderItemList.get(i);
-			dto.setCount(Integer.parseInt(s[1]));
+		for(OrderItemDTO dto:orderItemList) {
+			String[] orderInfo = map.get(dto.getItemOptionNo()+"").split("/");
+			dto.setCount(Integer.parseInt(orderInfo[1]));
 			totalPrice += (dto.getItemPrice() - dto.getItemSalePrice());
-			if(s.length>2)
-				dto.setCartNo(Integer.parseInt(s[2]));
-			System.out.println(dto.toString());
+			if(orderInfo.length>2)
+				dto.setCartNo(Integer.parseInt(orderInfo[2]));
 		}
 		if(totalPrice<50000)
-			deliveryCharge = 0;
+			deliveryCharge = 2500;
 		
+		request.setAttribute("url", url);
+		request.setAttribute("member", member);
 		request.setAttribute("list", orderItemList);
 		request.setAttribute("totalPrice", totalPrice);
 		request.setAttribute("deliveryCharge",deliveryCharge);
+		return "/order/order";
+	}
+	
+	@RequestMapping("/order/insert")			//itemOptionNo,count,cartNo
+	public String insert(HttpServletRequest request, HttpSession session) {
+
+	
 		return "/order/order";
 	}
 }

@@ -10,7 +10,7 @@ public interface MemberMapper {
 	int delete(Map map);
 	int duplicateId(String id);
 	String findid(Map map);
-	String findpw(Map map);
+	String findpw(Map map); 
 	String getGrade(String id);
 	int loginCheck(Map<String,String> map);
 	MemberDTO read(String id);
@@ -18,6 +18,6 @@ public interface MemberMapper {
 	List<MemberDTO> list(Map map);
 	int total(Map map);
 	String findemail(String id);
-	int findphone(String id);
+	String findphone(String id);
 	
 }

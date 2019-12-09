@@ -100,15 +100,15 @@ onclick="">
 <span class="desc"><span class="gBlank5">
 
 
-<input id="check_method1" name="check_method" fw-filter="" onclick="transformType('Radio_On');"
-fw-label="찾는방법" fw-msg="" value="1" type="radio" checked="checked">
-<label for="check_method1">이메일
+<input id="check_method0" name="check_method" fw-filter="" onclick="transformType('Radio_On');"
+fw-label="찾는방법" fw-msg="" value="0" type="radio" checked="checked"\>
+<label for="check_method0">이메일
 </label>
 
-<input id="check_method2" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
-fw-label="찾는방법" fw-msg="" value="2" type="radio">
-<label for="check_method2">
-<span id="search_type_mobile_lable" style="display:inline;">휴대폰번호</span>
+<input id="check_method1" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
+fw-label="찾는방법" fw-msg="" value="1" type="radio">
+<label for="check_method1">
+휴대폰번호
 </label>
 </span></span>
 

@@ -6,13 +6,13 @@
 
 	function create_reply(no) {
 		var url = "create_reply";
-		url += "?no=" + no;
+		url += "?communityNo=" + no;
 
 		location.href = url;
 	}
 	function update(no) {
 		var url = "update";
-		url += "?no=" + no;
+		url += "?communityNo=" + no;
 
 		location.href = url;
 	}
@@ -44,7 +44,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">배송 문의</font>
+						<font color="#555555">상품 문의</font>
 					</h2>
 
 					<!--h3>공지사항입니다.</h3-->
@@ -86,9 +86,9 @@
 									</span>
 									 <span class="gRight">
 									 <c:if test="${sessionScope.grade=='A' }">
-									 <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+									 <a href="javascript:create_reply(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
 									 </c:if>
-									 <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+									 <a href="javascript:update(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
 									 <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 

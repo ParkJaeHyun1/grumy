@@ -70,7 +70,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where itemOptionNo = #{itemOptionNo}
 	</update>
 
-
+	<select id="itemOptionList" parameterType="List"
+		resultType="OrderItemDTO">
+		select o.itemOptionNo,i.title as itemTitle,i.image as
+		itemImage,i.price as itemPrice, i.salePrice as itemSalePrice,
+		o.itemSize,o.itemColor,i.itemNo,o.itemCount
+		from item i, itemOption o
+		where i.itemNo = o.itemNo and itemOptionNo in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item.value}
+		</foreach>
+		order by itemOptionNo
+	</select>
 
 	<resultMap type="ItemDTO" id="itemMap">
 		<result property="itemNo" column="itemNo" />
@@ -82,7 +94,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="type" column="type" />
 		<result property="image" column="image" />
 		<collection property="itemOptionList" column="itemNo"
-			javaType="List" ofType="ItemOptionDTO" resultMap="itemOptionDTOListMap" />
+			javaType="List" ofType="ItemOptionDTO"
+			resultMap="itemOptionDTOListMap" />
 	</resultMap>
 	<resultMap type="itemOptionDTO" id="itemOptionDTOListMap">
 		<result property="itemNo" column="itemNo" />
@@ -90,20 +103,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="itemCount" column="itemCount" />
 		<result property="itemSize" column="itemSize" />
 		<result property="itemColor" column="itemColor" />
-	
+
 	</resultMap>
 	<select id="list" parameterType="Map" resultMap="itemMap">
-		select itemNo, image, title, description, content, price,salePrice,	type,itemOptionNo,itemColor,itemSize,itemCount
+		select itemNo, image, title, description, content, price,salePrice,
+		type,itemOptionNo,itemColor,itemSize,itemCount
 		from(
-		select i.itemNo, image, title, description, content, price,salePrice, type, rownum rnum,itemOptionNo,itemColor,itemSize,itemCount
-		from item i , itemOption o
+		select i.itemNo,
+		image, title, description, content, price,salePrice, type, rownum
+		rnum,itemOptionNo,itemColor,itemSize,itemCount
+		from item i , itemOption
+		o
 		where type = #{type} and i.itemNo = o.itemNo)
 	<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 	</select>
-		<select id="read" parameterType="int" resultMap="itemMap">
-		select i.itemNo, image, title, description, content, price,salePrice, type,itemOptionNo,itemColor,itemSize,itemCount
-		from item i , itemOption o
+	<select id="read" parameterType="int" resultMap="itemMap">
+		select i.itemNo,
+		image, title, description, content, price,salePrice,
+		type,itemOptionNo,itemColor,itemSize,itemCount
+		from item i , itemOption
+		o
 		where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
+	</select>
+
+	<select id="checkItemCount" parameterType="List"
+		resultType="int">
+		select itemCount from itemOption
+		where itemOptionNo in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item.itemOptionNo,jdbcType=INTEGER}
+		</foreach>
+		order by itemOptionNo
 	</select>
 </mapper>
 

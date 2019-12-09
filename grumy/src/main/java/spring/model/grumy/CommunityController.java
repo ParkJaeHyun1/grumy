@@ -63,7 +63,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/update")
-	public String update(Integer communityNo,Model model) {
+	public String update(int communityNo,Model model) {
 		communityDTO dto = mapper.read(communityNo);
 		
 		model.addAttribute("dto",dto);

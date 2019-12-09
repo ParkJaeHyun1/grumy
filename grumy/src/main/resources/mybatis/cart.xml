@@ -38,13 +38,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set>
 		where cartNo = #{cartNo}
 	</update>
+	<insert id="create" parameterType="map">
+		<foreach item="item" collection="insertList">
+			INSERT INTO
+			cart(cartNo,itemOptionNo,id,count) VALUES((SELECT NVL(MAX(cartNo), 0)
+			+ 1 as no FROM cart),#{item}.#{id},1)
+		</foreach>
+	</insert>
+	<insert id="insert" parameterType="map">
+		INSERT INTO
+		cart(cartNo,itemOptionNo,id,count) VALUES((SELECT NVL(MAX(cartNo), 0)
+		+ 1 as no FROM
+		cart),#{dto.itemOptionNo,jdbcType=INTEGER},#{id,jdbcType=VARCHAR},#{dto.count,jdbcType=INTEGER})
+	</insert>
+
+	<update id="update2" parameterType="map">
+		update cart
+		<set>
+			count = (select count from cart where id = #{id,jdbcType=VARCHAR} and itemOptionNo=#{dto.itemOptionNo,jdbcType=INTEGER})+#{dto.count,jdbcType=INTEGER}
+		</set>
+		where id = #{id,jdbcType=VARCHAR} and itemOptionNo=#{dto.itemOptionNo,jdbcType=INTEGER}
+	</update>
 
 	<select id="checkDuplicate" parameterType="map" resultType="int">
-		select  itemOptionNo from cart
-		where id=#{id} and itemOptionNo in
+		select itemOptionNo from cart
+		where id=#{id,jdbcType=VARCHAR} and
+		itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
-			#{item,jdbcType=INTEGER}
+			#{item.itemOptionNo,jdbcType=INTEGER}
 		</foreach>
 	</select>
 </mapper>

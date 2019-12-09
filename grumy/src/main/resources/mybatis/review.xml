@@ -55,7 +55,7 @@ VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),#{id},#{content},#{h
 	
 
 	<select id="read" parameterType="int" resultType="reviewDTO">
-		select reviewNo, id,content,picture,height,weight,mySize,star, itemoptionNo,ref
+		select reviewNo, id,content,picture,height,weight,mySize,star
 		from review
 		where reviewNo = #{reviewNo}
 	</select>
