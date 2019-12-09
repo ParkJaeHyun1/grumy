@@ -61,7 +61,14 @@ span.star, span.camera, .sprite_comment {
     		x.style.display = "block";
     	  } else {
     		x.style.display = "none";
-    	    
+    	    }
+    }
+    function popup2(reviewNo){
+    	var x = document.getElementById("myDIV");
+    	  if (x.style.display === "none") {
+    		  x.style.display = "none";
+    	  } else {
+    		x.style.display = "block";
     	  }
     }
 	
@@ -162,18 +169,13 @@ span.star, span.camera, .sprite_comment {
 							<c:choose>
 								<c:when test="${empty dto.picture}">
 									<img src="${pageContext.request.contextPath}/images/noimg.gif"
-										onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63">
+										onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63" style="margin: 6px">
 								</c:when>
 								<c:otherwise>
-									<li id="review_11"
-										class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-										style="width: 63px; margin-right: 5px;"><a
-										
-										class="products_reviews_summary_thumbnail_small_without_score__thumbnail_link js-link-fullscreen-popup">
-											<img
+									<img
 											src="${pageContext.request.contextPath}/storage/${dto.picture}"
-											onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63">
-									</a></li>
+											onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63" style="margin: 6px">
+									
 								</c:otherwise>
 
 							</c:choose>
@@ -501,8 +503,9 @@ span.star, span.camera, .sprite_comment {
     </div>
   </div>
   
-  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 25px; right: -79px;">
-    <div class="sprites-circle-close-button ie_png_fix"><img src="${pageContext.request.contextPath}/images/colse.png"></div>
+  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 55px; right:210px;">
+    <div class="sprites-circle-close-button ie_png_fix"><img src="${pageContext.request.contextPath}/images/colse.png" 
+    onclick="javascript:popup2(${dto.reviewNo})"></div>
   </div>
 
   
