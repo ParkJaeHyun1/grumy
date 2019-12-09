@@ -52,7 +52,7 @@ $(function () {
 $(document).ready(function(){
 	var gchange = "";
 	var a = ${wait};
-	var glabels = ['a','b','c','d','e','f','g','h','i','j'];
+	var glabels = ['19/12/01','19/12/02','c','d','e','f','g','h','i','j'];
 	var gdata = [a,2,3,4,5,6,7,10,15,30];
 	var pos = "결제건수";
 	$(".payb").on('click',function(){
@@ -145,12 +145,13 @@ $(document).ready(function(){
 									<ul class="panel-list" >
 										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
-												<!---->
 												<a class="text-number"
 												href="${root }/admin/mwait/list">${wait}</a>
-											<!----> 
+											
 												<span>건</span>
-										</span></li>
+										</span>
+										
+										</li>
 										<li><span class="info-title">신규주문</span> <span
 											class="number-area">
 												<!---->

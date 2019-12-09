@@ -9,9 +9,9 @@
 <script>
 function update(orderno){
 	alert(orderno);
-	var aa = { "orderno" : orderno};
+	var aa = { "orderno" : orderno, "state" : "배송준비"};
 	$.ajax({
-		url         :   "./update",
+		url         :   "${pageContext.request.contextPath}/admin/update",
         contentType :   "application/json; charset=utf-8",
         type        :   "post",
 		data: JSON.stringify(aa),
@@ -76,7 +76,7 @@ function update(orderno){
 								<th scope="col">가격</th>
 								<th scope="col">주문아이디</th>
 								<th scope="col">입금상태</th>
-								<th scope="col">입금확인</th>
+								<th scope="col">확인</th>
 							</tr>
 						</thead>
 						<tbody

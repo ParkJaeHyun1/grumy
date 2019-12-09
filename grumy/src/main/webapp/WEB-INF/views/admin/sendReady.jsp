@@ -7,8 +7,24 @@
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script>
-function ready(){
-	
+function update(orderno){
+	alert(orderno);
+	var aa = { "orderno" : orderno , "state" : "배송중"};
+	$.ajax({
+		url         :   "${pageContext.request.contextPath}/admin/update",
+        contentType :   "application/json; charset=utf-8",
+        type        :   "post",
+		data: JSON.stringify(aa),
+		success : function(retVal){
+			alert("성공:"+retVal);
+			location.reload();
+		}, 
+		error : function(request, status, error){
+			alert("에러1:"+request);
+			alert("에러2:"+status);
+			alert("에러3:"+error);
+		}
+	});
 }
 </script>
 </head>
@@ -21,11 +37,10 @@ function ready(){
 					class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 					<div class="title" style="text-align: center;">
 						<h2>
-							<font color="#555555">배송준비</font>
+							<font color="#555555">입금대기</font>                  
 						</h2>
 						<br>
 						<br>
-						<!--h3>공지사항입니다.</h3-->
 					</div>
 					<p class="imgArea"></p>
 				</div>
@@ -33,9 +48,9 @@ function ready(){
 					<span
 						class="xans-element- xans-board xans-board-replysort-1002 xans-board-replysort xans-board-1002 "></span>
 				</div>
+				
 				<div class="ec-base-table typeList gBorder">
 					<table border="1" summary="">
-						<caption>게시판 목록</caption>
 						<colgroup
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<col style="width: 100px;">
@@ -44,8 +59,10 @@ function ready(){
 							<col style="width: 100px;">
 							<col style="width: 60px;">
 							<col style="width: 100px;">
-							<col style="width: 60px;">
-							<col style="width: 60px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
+							<col style="width: 100px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
@@ -59,6 +76,7 @@ function ready(){
 								<th scope="col">가격</th>
 								<th scope="col">주문아이디</th>
 								<th scope="col">입금상태</th>
+								<th scope="col">확인</th>
 							</tr>
 						</thead>
 						<tbody
@@ -80,11 +98,12 @@ function ready(){
 										<td></td>
 										<td></td>
 										<td></td>
+										<td></td>
 								</c:when>
 								<c:otherwise>
+									<c:set var="aa"/>
 									<c:forEach var="dto" items="${list}" varStatus="status">
 										<c:forEach var="dto2" items="${dto.orderItemList}" varStatus="status">
-										
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
 											<td>${dto.orderNo}</td>
@@ -95,7 +114,17 @@ function ready(){
 											<td>${dto2.itemCount}</td>
 											<td>${dto2.itemPrice }</td>
 											<td>${dto.id}</td>
-											<td><button type="button" onclick="alert('aa')">입금 확인</button></td>
+											<c:choose>										
+												<c:when test="${aa != dto.orderNo }">
+													<c:set var="aa" value="${dto.orderNo }"/>
+													<td>입금대기</td>
+													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}')">확인버튼</button></td>
+												</c:when>
+												<c:otherwise>
+													<td></td>
+													<td></td>
+												</c:otherwise>
+											</c:choose>							
 										</tr>
 										</c:forEach>
 									</c:forEach>
@@ -104,9 +133,9 @@ function ready(){
 	
 						</tbody>
 					</table>
-					<p
-						class="xans-element- xans-board xans-board-empty-1002 xans-board-empty xans-board-1002 message displaynone "></p>
+					<p class="xans-element- xans-board xans-board-empty-1002 xans-board-empty xans-board-1002 message displaynone "></p>
 				</div>
+				
 				<form action="list">
 					<div
 						class="xans-element- xans-board xans-board-search-1002 xans-board-search xans-board-1002 ">

@@ -30,11 +30,11 @@ public class AdminController {
 	
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {		
-		int wait = mapper.total(100);	//입금대기
-		int newOrder = mapper.total(201);	//신규주문
-		int sReady = mapper.total(200);	//배송준비
-		int sIng = mapper.total(300);	//배송중
-		int sFin = mapper.total(400);	//배송완료
+		int wait = mapper.total("입금대기");	//입금대기
+		int newOrder = mapper.total("신규주문");	//신규주문
+		int sReady = mapper.total("배송준비");	//배송준비
+		int sIng = mapper.total("배송중");	//배송중
+		int sFin = mapper.total("배송완료");	//배송완료
 		
 //		ArrayList<OrderDTO> list1 = mapper.list(100);
 //		System.out.println(list1.get(1).getOrderItemList().size());
@@ -70,7 +70,7 @@ public class AdminController {
 		
 		return "/admin/main";
 	}
-	public Map paging(String word, String col, String nowPageS, int state) {	//페이징 처리
+	public Map paging(String word, String col, String nowPageS, String state) {	//페이징 처리
 		word = Utility.checkNull(word);
 		col = Utility.checkNull(col);
 
@@ -105,11 +105,10 @@ public class AdminController {
 		return map;
 	}
 	
-	@RequestMapping(value="/admin/mwait/update", method=RequestMethod.POST)
+	@RequestMapping("/admin/update")
 	@ResponseBody
 	public String confirm(@RequestBody Map map) {
 		System.out.println(map.get("no") + " come");
-		map.put("state", 200);
 		if(mapper.updateState(map)>0) {
 			System.out.println("업뎃 성공");
 		}
@@ -121,7 +120,7 @@ public class AdminController {
 		String word = request.getParameter("word");
 		String col = request.getParameter("col");
 		String nowPageS = request.getParameter("nowPage");
-		Map map = paging(word, col, nowPageS, 100);
+		Map map = paging(word, col, nowPageS, "입금대기");
 	
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
@@ -141,7 +140,7 @@ public class AdminController {
 		String word = request.getParameter("word");
 		String col = request.getParameter("col");
 		String nowPageS = request.getParameter("nowPage");
-		Map map = paging(word, col, nowPageS, 200);
+		Map map = paging(word, col, nowPageS, "신규주문");
 	
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
@@ -160,7 +159,7 @@ public class AdminController {
 		String word = request.getParameter("word");
 		String col = request.getParameter("col");
 		String nowPageS = request.getParameter("nowPage");
-		Map map = paging(word, col, nowPageS, 300);
+		Map map = paging(word, col, nowPageS, "배송준비");
 	
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
