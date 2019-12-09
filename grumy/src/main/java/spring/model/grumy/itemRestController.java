@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import spring.model.mapper.itemMapper;
 import spring.model.mapper.reviewMapper;
 import spring.model.review.reviewDTO;
@@ -25,7 +27,7 @@ public class itemRestController {
 	private reviewMapper mapper;
 	@Autowired
 	private itemMapper imapper;
-	
+
 	
 	@GetMapping("/item/reply/list/{itemNo}/{nowPage}")
 	public ResponseEntity<List<reviewDTO>> getList(@PathVariable("itemNo") int itemNo,@PathVariable("nowPage") int nowPage){

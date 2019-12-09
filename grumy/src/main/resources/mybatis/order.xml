@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="checkItemCount" parameterType="List" resultType="int">
-		select itemCount from itemOptionNo
+		select itemCount from itemOption
 		where itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">

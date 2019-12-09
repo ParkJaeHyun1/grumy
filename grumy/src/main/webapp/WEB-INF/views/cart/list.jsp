@@ -309,7 +309,7 @@ function setView(){
 												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 												alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
 										<td class="left gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}
+											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.cartNo}${dto.itemTitle}
 												<img src="https://www.slowand.com//web/upload/custom_3.gif"
 												alt="" />
 										</a><span class="displaynone"><br />(영문명 : )</span>

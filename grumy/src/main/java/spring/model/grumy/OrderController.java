@@ -31,13 +31,9 @@ public class OrderController {
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
 		
-		Arrays.sort(orderInfoList, new Comparator<String>() {
-			@Override
-			public int compare(String o1, String o2) {
-				
-				return o1.split("/")[0].compareTo( o2.split("/")[0]);
-			}
-		});
+		for(String str:orderInfoList)
+			
+
 		
 		for(String orderInfo:orderInfoList) 
 			itemOptionNoList.add(Integer.parseInt(orderInfo.split("/")[0]));
