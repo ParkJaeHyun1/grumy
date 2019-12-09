@@ -16,15 +16,15 @@
 		<div
 			class="xans-element- xans-board xans-board-readpackage-1002 xans-board-readpackage xans-board-1002 ">
 			<div
-				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
+				class="xans-element- xans-board  ">                      
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">상품 등록</font>
+						<font color="#555555">상품 등록</font>                                                                   
 					</h2>
 
 					<!--h3>공지사항입니다.</h3-->
 				</div>
-			</div>
+			</div>        
 			<br>
 			<br>
 			<!-- 글 내용-->
@@ -45,43 +45,24 @@
 									name="itemOptionNo" value=""></td>
 							</tr>
 							
-							<th scope="row">키</th>
+							<th scope="row">상품 이미지</th>
 
-							<td><input type="text" id="height" name="height" value=""></td>
+							<td><input type="file" id="fname" name="fname" accept=".jpg,.png,.gif"></td>
 							</tr>
-							<th scope="row">몸무게</th>
+							<th scope="row">사이즈(ex)S,M,L..)</th>
 
 							<td><select name="weight" name="weight" class="form-control">
 
-									<option value="">-몸무게 선택-</option>
-									<option value="~44">~44</option>
-									<option value="45~47">45~47</option>
-									<option value="48~50">48~50</option>
-									<option selected="selected" value="51~53">51~53</option>
-									<option value="54~56">54~56</option>
-									<option value="57~59">57~59</option>
-									<option value="60~62">60~62</option>
-									<option value="63~65">63~65</option>
-									<option value="66~68">66~68</option>
-									<option value="69~71">69~71</option>
-									<option value="72~74">72~74</option>
-									<option value="75~77">75~77</option>
-									<option value="78~80">78~80</option>
-									<option value="81~83">81~83</option>
-									<option value="84~86">84~86</option>
-									<option value="87~89">87~89</option>
-									<option value="90~">90~</option>
-							</select></td>
-							</tr>
-							<th scope="row">평소사이즈</th>
-
-							<td><select name="mySize" name="mySize" class="form-control">
-									<option value="XS">XS</option>
-									<option value="S">S</option>
+									<option value="">-사이즈 선택-</option>
+									<option selected="selected" value="S">S</option>
 									<option value="M">M</option>
 									<option value="L">L</option>
-									<option value="XL">XL</option>
-									<option value="2XL">2XL</option>
+									<option value="FREE">FREE</option>
+							</select></td>
+							</tr>
+							<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
+
+							<td><select name="mySize" name="mySize" class="form-control">
 							</select></td>
 							</tr>
 							</tr>
