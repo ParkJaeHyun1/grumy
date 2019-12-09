@@ -9,12 +9,9 @@
 
 <body id="cmn">
 
-<input type="hidden" id="id"/>
-<input type="hidden" id="email"/>
-<input type="hidden" id="passwd"/>
-<input type="hidden" id="name"/>
-
-
+${id }
+${email }
+${passwd }
 
 </body>
 </html>

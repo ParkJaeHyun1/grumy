@@ -113,12 +113,15 @@ public class MemberController {
 		String passwd = dao.findpw(map);
 		String email1 = dao.findemail(id);
 		String phone1 = dao.findphone(id);
+		String id1 = dao.findid(map);
+	
 
 		if (passwd != null) {
 
 			model.addAttribute("passwd", passwd);
-			model.addAttribute("email1", email1);
-			model.addAttribute("phone1", phone1);
+			model.addAttribute("email", email1);
+			model.addAttribute("phone", phone1);
+			model.addAttribute("id", id1);
 
 			return "/findpwproc";
 
@@ -283,18 +286,14 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/member/sendmail")
-	public String sendmail(HttpServletRequest request,Model model,
+	public String sendmail(HttpServletRequest request,
 			HttpServletResponse response){
-	
+		
 		String from = "kevinahn861125@gmail.com";
-		String to = "snowangel86@daum.net";
-		String title = "테스트";
-		String content = "1234";
+		String to = request.getParameter("email");
+		String title =request.getParameter("id")+"님이 요청하신 비밀번호입니다.";
+		String content = request.getParameter("id")+"님이 요청하신 비밀번호는 "+request.getParameter("passwd")+"입니다.";
 
-		System.out.println(from);
-		System.out.println(to);
-		System.out.println(title);
-		System.out.println(content);
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
@@ -309,6 +308,7 @@ public class MemberController {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('성공적으로 메일을 발송했습니다.');history.go(-1);</script>");
 			out.flush();
+			
 
 		} catch (Exception e) {
 			System.out.println(e);

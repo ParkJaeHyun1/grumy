@@ -63,6 +63,12 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?auth_mode=decryptCl
 action="sendmail" method="post" 
 enctype="multipart/form-data">
 
+<input type="hidden" name="email" value="${email }"/>
+<input type="hidden" name="passwd" value="${passwd }"/>
+<input type="hidden" name="id" value="${id }"/>
+
+
+
 <div class="xans-element- xans-member xans-member-findpasswdmethod ">
 <div class="inner">        
         
@@ -73,7 +79,7 @@ enctype="multipart/form-data">
 <li id="passwd_method_email_info">
 <strong class="term">이메일</strong>
 <strong class="txtEm">
-${email1 }
+${email }
 </strong>
 </li>
                 
