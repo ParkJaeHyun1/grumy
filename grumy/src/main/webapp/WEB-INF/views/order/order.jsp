@@ -273,11 +273,12 @@ function checkPoint(val){
 		setPriceView();
 }
 function setPriceView(){
+	
 	$('#totalSalePrice').html(pointPrice);
 	$('#totalSalePrice2').html(pointPrice);
-	$('#totalPrice').html(totalPrice-pointPrice);
-	$('#totalPrice2').html(totalPrice-pointPrice);
-	$('#total_price').val(totalPrice-pointPrice);      
+	$('#total_price').val((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+	$('#total_price2').html((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+	$('#total_price3').html((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));      
 }
    </script>
 
@@ -287,7 +288,7 @@ function setPriceView(){
 	<link rel="alternate" href="http://www.m.slowand.com/">
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />     
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
@@ -328,14 +329,6 @@ function setPriceView(){
 <body id="cmn">
 	<div id="wrap">
 		<!-- 상단카테고리 -->
-		<form action="${pageContext.request.contextPath}/order/insert"
-			id="orderResultForm" class="form-horizontal" method="post"
-			enctype="application/x-www-form-urlencoded;charset=UTF-8"
-			style="display: none">
-			<input type="hidden" name="url"
-				value="/item/read?itemNo=${dto.itemNo}"></input>
-		</form>
-
 
 		<!-- //상단카테고리 -->
 
@@ -348,9 +341,29 @@ function setPriceView(){
 					<h3>주문서작성</h3>
 				</div>
 
-				<form id="frm_order_act" name="frm_order_act" action=""
-					method="post" target="_self" enctype="multipart/form-data">
-
+				<form id="orderForm" name="orderForm"
+					action="${pageContext.request.contextPath}/order/insert"
+					method="post"
+					enctype="application/x-www-form-urlencoded;charset=UTF-8">
+					<input type="hidden" name="url"
+						value="/item/read?itemNo=${dto.itemNo}"></input>
+					<input type="hidden" name="orderNo" id="orderNo"></input>
+					<input type="hidden" name="totalPrice" id="totalPrice"></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					<input type="hidden" name="" id=""></input>
+					
 					<div class="xans-element- xans-order xans-order-form xans-record-">
 						<!-- 이값은 지우면 안되는 값입니다. ($move_order_after 주문완료페이지 주소 / $move_basket 장바구니페이지 주소)
         $move_order_after=/order/order_result.html
@@ -903,7 +916,7 @@ function setPriceView(){
 														id="total_sale_price_ref_view"></span></span>
 												</div></td>
 											<td><div class="box txtEm txt16">
-													<strong>=</strong> <strong><span id="totalPrice"
+													<strong>=</strong> <strong><span id="total_price3"
 														class="txt23"><fmt:formatNumber
 																value="${totalPrice+deliveryCharge}"
 																pattern="###,###,###" /></span>원</strong> <span class="displaynone"><span
@@ -1045,7 +1058,7 @@ function setPriceView(){
 										fw-filter="isFill" fw-label="결제금액" fw-msg=""
 										class="inputTypeText" placeholder=""
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
-										size="10" readonly="1" value="${totalPrice+deliveryCharge}"
+										size="10" readonly="1" value="<fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###" />"
 										type="text" /><span>원</span>
 								</p>
 								<p class="paymentAgree">
@@ -1065,7 +1078,7 @@ function setPriceView(){
 											<strong>최종 결제금액</strong>
 										</dt>
 										<dd class="txtWarn">
-											<sapn id="totalPrice2"> <fmt:formatNumber
+											<sapn id="total_price2"> <fmt:formatNumber
 												value="${totalPrice+deliveryCharge}" pattern="###,###,###" /></sapn>
 											원
 										</dd>
@@ -1079,7 +1092,7 @@ function setPriceView(){
 										<dt>배송비</dt>
 										<dd id="mMemberMileage">
 											<span><fmt:formatNumber value="${deliveryCharge}"
-													pattern="###,###,###" /></span>원
+													pattern="###,###,###" /></span>원     
 										</dd>
 										<dt>총 할인금액</dt>
 										<dd id="mCouponMileage">
