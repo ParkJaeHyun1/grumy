@@ -47,7 +47,6 @@ public class MemberController {
 		String url = "/main";
 
 		if (dao.create(dto) == 1) {
-
 			url = "redirect:/";
 		} else {
 			url = "error";

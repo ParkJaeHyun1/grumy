@@ -49,12 +49,13 @@ public class OrderController {
 		for(OrderItemDTO dto:orderItemList) {
 			String[] orderInfo = map.get(dto.getItemOptionNo()+"").split("/");
 			dto.setCount(Integer.parseInt(orderInfo[1]));
-			totalPrice += (dto.getItemPrice() - dto.getItemSalePrice());
+			totalPrice += ((dto.getItemPrice() - dto.getItemSalePrice())*dto.getCount());
 			if(orderInfo.length>2)
 				dto.setCartNo(Integer.parseInt(orderInfo[2]));
 		}
 		if(totalPrice<50000)
 			deliveryCharge = 2500;
+		
 		
 		request.setAttribute("url", url);
 		request.setAttribute("member", member);

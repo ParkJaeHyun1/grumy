@@ -12,13 +12,12 @@ public class OrderItemDTO {
 	private String itemSize;
 	private String itemColor;
 	private int itemNo;
-	private int itemCount;
 	private String state;
 	private String state2;
 	private int cartNo;
 	
 	public OrderItemDTO(int orderItemNo, int itemOptionNo, int count, String itemTitle, String itemImage, int itemPrice,
-			int itemSalePrice, String itemSize, String itemColor, int itemNo, int itemCount, String state,String state2, int cartNo,String deliveryNo) {
+			int itemSalePrice, String itemSize, String itemColor, int itemNo, String state,String state2, int cartNo,String deliveryNo) {
 		super();
 		this.orderItemNo = orderItemNo;
 		this.itemOptionNo = itemOptionNo;
@@ -30,7 +29,6 @@ public class OrderItemDTO {
 		this.itemSize = itemSize;
 		this.itemColor = itemColor;
 		this.itemNo = itemNo;
-		this.itemCount = itemCount;
 		this.state = state;
 		this.state2 = state2;
 		this.cartNo = cartNo;
@@ -176,20 +174,6 @@ public class OrderItemDTO {
 		this.itemNo = itemNo;
 	}
 
-
-
-	public int getItemCount() {
-		return itemCount;
-	}
-
-
-
-	public void setItemCount(int itemCount) {
-		this.itemCount = itemCount;
-	}
-
-
-
 	public String getState() {
 		return state;
 	}
@@ -222,7 +206,7 @@ public class OrderItemDTO {
 		return "OrderItemDTO [orderItemNo=" + orderItemNo + ", itemOptionNo=" + itemOptionNo + ", count=" + count
 				+ ", itemTitle=" + itemTitle + ", itemImage=" + itemImage + ", itemPrice=" + itemPrice
 				+ ", itemSalePrice=" + itemSalePrice + ", itemSize=" + itemSize + ", itemColor=" + itemColor
-				+ ", itemNo=" + itemNo + ", itemCount=" + itemCount + ", state=" + state + ", cartNo=" + cartNo + "]";
+				+ ", itemNo=" + itemNo  + ", state=" + state + ", cartNo=" + cartNo + "]";
 	}
 
 	
