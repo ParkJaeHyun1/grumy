@@ -119,8 +119,6 @@ function sample6_execDaumPostcode() {
 
    	   if(passwd.value != user_passwd_confirm.value){
    		alert("비밀번호가 일치하지 않습니다.");
-   		passwd.value="";
-   		user_passwd_confirm.value="";
    		passwd.focus();
    		return false;
    	   }
@@ -205,7 +203,7 @@ function sample6_execDaumPostcode() {
 	   var birth1 = document.joinForm.birth1.value;
 	   var birth2 = document.joinForm.birth2.value;
 	   var birth3 = document.joinForm.birth3.value;
-	   var birth = birth1 + birth2 + 3;
+	   var birth = birth1 + birth2 + birth3;
 	   document.getElementById("birth").value = birth;
 	   
 	   
@@ -370,11 +368,16 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
-		<input id="phone1" name="phone1" maxlength="3" style="width:50px;"
-		pattern="[0-1]{3}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" type="text" />-
+		<select id="phone1">
+		<option value="010">010</option>
+		<option value="011">011</option>
+		<option value="016">016</option>
+		<option value="017">017</option>
+		<option value="019">019</option>
+		</select>
+		-
 		<input id="phone2" name="phone2" maxlength="4" style="width:60px;"
-		pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
+		pattern="[0-9]{3,4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
 		fw-msg="" type="text" />-
 		<input id="phone3" name="phone3" maxlength="4" style="width:60px;"
 		pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
