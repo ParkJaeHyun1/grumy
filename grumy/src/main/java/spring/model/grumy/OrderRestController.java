@@ -41,9 +41,14 @@ public class OrderRestController {
 	}
 	@PutMapping("/order/insert")
 	public ResponseEntity<String> insert(@RequestBody OrderDTO order) {
-		System.out.println(order);
+		
 		int cnt = orderMapper.insert(order);
-		System.out.println(order.getOrderNo());
-		return new ResponseEntity<String>("1531351351", HttpStatus.OK);
+		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	@PutMapping("/order/delete")
+	public ResponseEntity<String> delete(@RequestBody OrderDTO order) {
+		
+		int cnt = orderMapper.delete(order.getOrderNo());
+		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

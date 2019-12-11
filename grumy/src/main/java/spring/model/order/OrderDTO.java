@@ -21,6 +21,7 @@ public class OrderDTO {
 	private String imagineAccount;
 	private String imagineBank;
 	private String imagineDate;
+	private String state;
 	private ArrayList<OrderItemDTO> orderItemList;
 	
 	
@@ -33,7 +34,7 @@ public class OrderDTO {
 	public OrderDTO(String orderNo, String odate, String id, int totalPrice, int salePrice, String rname,
 			String postcode, String address, String detailaddress, String rphone, String remail, String rmsg,
 			String paymentType, String imagineAccount, String imagineBank, String imagineDate,
-			ArrayList<OrderItemDTO> orderItemList) {
+			ArrayList<OrderItemDTO> orderItemList,String state) {
 		super();
 		this.orderNo = orderNo;
 		this.odate = odate;
@@ -52,6 +53,7 @@ public class OrderDTO {
 		this.imagineBank = imagineBank;
 		this.imagineDate = imagineDate;
 		this.orderItemList = orderItemList;
+		this.state = state;
 	}
 	public String getOrderNo() {
 		return orderNo;
@@ -155,13 +157,20 @@ public class OrderDTO {
 	public void setOrderItemList(ArrayList<OrderItemDTO> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
+	
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
 	@Override
 	public String toString() {
 		return "OrderDTO [orderNo=" + orderNo + ", odate=" + odate + ", id=" + id + ", totalPrice=" + totalPrice
 				+ ", salePrice=" + salePrice + ", rname=" + rname + ", postcode=" + postcode + ", address=" + address
 				+ ", detailaddress=" + detailaddress + ", rphone=" + rphone + ", remail=" + remail + ", rmsg=" + rmsg
 				+ ", paymentType=" + paymentType + ", imagineAccount=" + imagineAccount + ", imagineBank=" + imagineBank
-				+ ", imagineDate=" + imagineDate + ", orderItemList=" + orderItemList + "]";
+				+ ", imagineDate=" + imagineDate + ", state=" + state + "orderItemList="+orderItemList+"]";
 	}
 	
 	

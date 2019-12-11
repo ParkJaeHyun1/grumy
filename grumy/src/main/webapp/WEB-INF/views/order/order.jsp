@@ -31,20 +31,20 @@ $(document).ready(function(){
 var orderInfo = {orderItemList:[]};  
 <c:forEach items="${list}" var="item">
 	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemPrice:${item.itemSalePrice}});
-</c:forEach>  
+</c:forEach>   
 
 function checkOrderInfo(){          
 	if($('#rname').val().length==0){
 		alert('주문자 성명을 입력해주세요.');
 		$('#rname').focus();
 		return false;
-	}else if($('#rpostcode').val.length==0){
+	}else if($('#postcode').val.length==0){
 		alert('우편번호를 입력해주세요.');
-		$('#rpostcode').focus();
+		$('#postcode').focus();
 		return false;
-	}else if($('#rdetailaddress').val().length==0){
+	}else if($('#detailaddress').val().length==0){
 		alert('상세주소를 입력해주세요.');
-		$('#rpostcode').focus();
+		$('#postcode').focus();
 		return false;
 	}else if($('#rphone2').val().length==0){
 		alert('핸드폰 번호를 입력해주세요.');
@@ -119,10 +119,10 @@ function selectPostcode() {
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            $('#rpostcode').val(data.zonecode);
-            $("#raddress").val(addr);
+            $('#postcode').val(data.zonecode);
+            $("#address").val(addr);
             // 커서를 상세주소 필드로 이동한다.
-            $("#rdetailaddress").focus();
+            $("#detailaddress").focus();
         }
     }).open();
 }
@@ -135,8 +135,8 @@ function getOrderID(){
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
-        	alert("성공:"+result);
         	orderID = result;
+        	orderInfo.orderNo=result;
         },
         error : function(xhr, status, er) {
 
@@ -144,10 +144,26 @@ function getOrderID(){
    });
 	return orderID;
 }
+function setOrderInfo(){
+	var today = new Date();
+	orderInfo.orderNo = today.getFullYear()+''+today.getMonth()+today.getDate();
+	orderInfo.id = '${sessionScope.id}';
+	orderInfo.totalPrice =  ${totalPrice+deliveryCharge};
+	orderInfo.salePrice = $('#point').val();
+	orderInfo.rname = $('#rname').val();
+	orderInfo.postcode =$('#postcode').val();
+	orderInfo.address =$('#address').val();
+	orderInfo.detailaddress =$('#detailaddress').val();
+	orderInfo.rphone =$('#rphone1').val()+$('#rphone2').val()+$('#rphone3').val();
+	orderInfo.remail =$('#remail1').val()+'@'+$('#remail2').val();
+	orderInfo.rmsg =$('#rmsg').val();
+	orderInfo.state ='주문대기';
+}
 function purchase(){    
-	if(!checkOrderInfo()){
+	if(!checkOrderInfo())
 		return;
-	}
+	
+	setOrderInfo();
 	BootPay.request({
 	      price: '1000', //실제 결제되는 가격         
 	      application_id: "5dd76d0802f57e0021e217c1",
@@ -183,22 +199,29 @@ function purchase(){
 	      }
 	   }).error(function (data) {
 	      alert('결제도중 에러가 발생하였습니다. 다시 시도해주세요.')
+	       deleteOrder();
 	      console.log(data);
 	   }).cancel(function (data) {
 	      alert('결제가 취소되었습니다.');
+	      deleteOrder();
 	      console.log(data);
 	   }).ready(function (data) {
 	      alert('가상계좌 번호 발급:'+data);
+	      orderInfo.imagineAccount=data.account;
+	      orderInfo.imagineBank=data.bankname;
+	      orderInfo.imagineDate=data.expireddate;
 	      console.log(data);
 	   }).confirm(function (data) {
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
 	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
 	      console.log(data);
+	     
 	      var enable = checkItem(); // 재고 수량 관리 로직 혹은 다른 처리
 	      if (enable) {
 	         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
 	      } else {
 	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+	    	  deleteOrder();
 		   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
        	   	  $(location).attr('href', '${url}');
 	      }
@@ -231,11 +254,41 @@ function checkItem(){
    });
     return enable;
 }
+function deleteOrder(){         
+    
+    $.ajax({
+        type : 'put',
+        url : "../order/delete",
+        data :  JSON.stringify(orderInfo),
+        contentType : "application/json; charset=utf-8",
+        async:false,
+        success : function(result, status, xhr) {
+        },
+        error : function(xhr, status, er) {
+
+        }  
+   });
+}
+function updateOrder(){         
+    
+    $.ajax({
+        type : 'put',
+        url : "../order/update",
+        data :  JSON.stringify(orderInfo),
+        contentType : "application/json; charset=utf-8",
+        async:false,
+        success : function(result, status, xhr) {
+        },
+        error : function(xhr, status, er) {
+
+        }  
+   });
+}
 function setOrderInfoOfMember(){
 	$('#rname').val('${member.name}');           
-	$('#rpostcode').val('${member.postcode}');
-	$('#raddress').val('${member.address}');
-	$('#rdetailaddress').val('${member.detailaddress}');
+	$('#postcode').val('${member.postcode}');
+	$('#address').val('${member.address}');
+	$('#detailaddress').val('${member.detailaddress}');
 	$('#rphone1').val('${member.phone1}').attr('selected','selected');
 	$('#rphone2').val('${member.phone2}');
 	$('#rphone3').val('${member.phone3}');
@@ -247,9 +300,9 @@ function setOrderInfoOfMember(){
 }
 function setOrderInfoOfNew(){
 	$('#rname').val('');
-	$('#rpostcode').val('');        
-	$('#raddress').val('');
-	$('#rdetailaddress').val('');
+	$('#postcode').val('');        
+	$('#address').val('');
+	$('#detailaddress').val('');
 	$('#rphone1').val('010').attr('selected','selected');
 	$('#rphone2').val('');
 	$('#rphone3').val('');
@@ -270,7 +323,7 @@ $(function(){
 	})	
 })
 
-function checkPoint(val){  
+function checkPoint(val){      
 		if(val == 0){
 			return;
 		}
@@ -302,14 +355,14 @@ function setPriceView(){
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">          
+	<link rel="alternate" href="http://www.m.slowand.com/">                  
 
 		<meta name="google-site-verification"
 			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
 		<meta name="naver-site-verification"
-			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
+			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />  
 
-		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
+		<meta name="author" content="슬로우앤드 - 천천히 그리고,">        
 			<meta name="keywords"
 				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 			<meta name="description"
@@ -317,7 +370,7 @@ function setPriceView(){
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />
+						href="http://slowand.com/order/orderform.html" />      
 					<link rel="alternate"
 						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
@@ -337,7 +390,7 @@ function setPriceView(){
 
 					<title>그루미</title>
 					<meta name="path_role" content="ORDER_ORDERFORM" />
-					<meta name="author" content="슬로우앤드" />
+					<meta name="author" content="슬로우앤드" />    
 					<meta name="description"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 					<meta name="keywords"
@@ -548,15 +601,15 @@ function setPriceView(){
 											<th scope="row">주소 <img
 												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
 												alt="필수" /></th>
-											<td><input id="rpostcode" name="rpostcode"
+											<td><input id="postcode" name="postcode"
 												class="inputTypeText" placeholder="" size="6" maxlength="6"
 												readonly="1" value="" type="text" /> <a href="#none"
 												id="btn_search_rzipcode" class="yg_btn_24 yg_btn5"
-												alt="우편번호">우편번호</a><br /> <input id="raddress"
-												name="raddress" fw-filter="isFill" fw-label="수취자 주소1"
+												alt="우편번호">우편번호</a><br /> <input id="address"
+												name="address" fw-filter="isFill" fw-label="수취자 주소1"
 												fw-msg="" class="inputTypeText" placeholder="" size="40"
 												readonly="1" value="" type="text" /> <span class="grid"></span><br />
-												<input id="rdetailaddress" name="rdetailaddress"
+												<input id="detailaddress" name="detailaddress"
 												fw-filter="isFill" fw-label="수취자 주소2" fw-msg=""
 												class="inputTypeText" placeholder="" size="40" value=""
 												type="text" /> <span class="grid">상세주소</span><span

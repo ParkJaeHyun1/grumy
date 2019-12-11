@@ -19,11 +19,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insert" parameterType="OrderDTO"
-		useGeneratedKeys="true" keyProperty="orderNo">
-		insert into norder(orderno,odate,id,totalItemPrice,salePrice,rname,postcode,address,detailaddress,phone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate)
-	values(#{orderNo}||'-'||lpad(orderNo_SEQ,8,'0'),sysdate,#{id},#{totalItemPrice},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress}
-	,#{phone},#{remail,jdbcType=STRING},#{rmsg,jdbcType=STRING},#{paymenttype,jdbcType=STRING},#{imagineaccount,jdbcType=STRING},#{imaginebank,jdbcType=STRING},#{imaginedate,jdbcType=STRING})
+		useGeneratedKeys="true" keyProperty="orderNo" keyColumn="orderNo">
+		insert into norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state)
+	values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
+	#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},#{imagineDate,jdbcType=VARCHAR},#{state})
 	</insert>
-
+	
+	<delete id="delete" parameterType="String">
+		delete from norder
+		where orderNo = #{orderNo}
+	</delete>
 
 </mapper>
