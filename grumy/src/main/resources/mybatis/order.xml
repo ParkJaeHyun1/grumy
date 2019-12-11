@@ -5,15 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.OrderMapper">
 
 
-	<select id="checkItemCount" parameterType="List"
-		resultType="int">
-		select itemCount,itemPrice,itemSalePrice 
-		from itemOption
-		where itemOptionNo in
+	<select id="checkItem" parameterType="List"
+		resultType="OrderItemDTO">
+		select itemOptionNo,itemCount,price as itemPrice,salePrice as
+		itemSalePrice
+		from itemOption o, item i
+		where o.itemNo = i.itemNo and itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
 			#{item.itemOptionNo,jdbcType=INTEGER}
 		</foreach>
 		order by itemOptionNo
 	</select>
+
+	<insert id="insert" parameterType="OrderDTO"
+		useGeneratedKeys="true" keyProperty="orderNo">
+		insert into norder(orderno,odate,id,totalItemPrice,salePrice,rname,postcode,address,detailaddress,phone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate)
+	values(#{orderNo}||'-'||lpad(orderNo_SEQ,8,'0'),sysdate,#{id},#{totalItemPrice},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress}
+	,#{phone},#{remail,jdbcType=STRING},#{rmsg,jdbcType=STRING},#{paymenttype,jdbcType=STRING},#{imagineaccount,jdbcType=STRING},#{imaginebank,jdbcType=STRING},#{imaginedate,jdbcType=STRING})
+	</insert>
+
+
 </mapper>

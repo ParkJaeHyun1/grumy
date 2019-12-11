@@ -164,13 +164,7 @@ function setView(){
 	}
 	purchasePrice = 0;
 	$.each(list, function(index, item){
-		if(item.count>item.itemCount){
-			if(item.itemCount == 0)
-				deleteCart(item.cartNo);
-			else
-				updateItemCount(cartNo,item.itemCount);
-			return;
-		}
+		
 		$('#cart_item_count_'+item.cartNo).val(item.count);
 		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
@@ -202,16 +196,16 @@ function setView(){
 <body id="cmn">
 	<div id="skipNavigation">
 		<p>
-			<a href="#category">전체상품목록 바로가기</a>       
-		</p>        
+			<a href="#category">전체상품목록 바로가기</a>
+		</p>
 		<p>
-			<a href="#contents">본문 바로가기</a>                 
+			<a href="#contents">본문 바로가기</a>
 		</p>
 	</div>
 
-	<div id="wrap">     
+	<div id="wrap">
 
-		<!-- //상단카테고리 -->
+		<!-- //상단카테고리 -->       
 		<div id="container">
 			<div id="contents">
 
@@ -220,61 +214,66 @@ function setView(){
 					<h2>CART</h2>
 					<h3>장바구니</h3>
 				</div>
-				<div class="xans-element- xans-order xans-order-basketpackage " id="display_no_item_list"	style="display: none">
+				<div class="xans-element- xans-order xans-order-basketpackage "
+					id="display_no_item_list" style="display: none">
 					<div class="xans-element- xans-order xans-order-empty ">
-						<p>장바구니가 비어 있습니다.</p>     
+						<p>장바구니가 비어 있습니다.</p>
 					</div>
 				</div>
 
 				<!-- 장바구니 모듈 Package -->
-				<div class="xans-element- xans-order xans-order-basketpackage " id="display_item_list"	style="display: none">
-				<form action="../order/order" class="form-horizontal" method="post" id="orderForm" enctype="application/x-www-form-urlencoded;charset=UTF-8">
-					<input type="hidden" name="url"	value="${pageContext.request.contextPath}/cart/list"></input>
-					<!-- 일반상품 -->
-					<div class="orderListArea ec-base-table typeList gBorder">
-						<div class="xans-element- xans-order xans-order-normtitle title ">
-							<h3>
-								상품 (<span id="item_count">${fn:length(list)}</span>)
-							</h3>
-						</div>
+				<div class="xans-element- xans-order xans-order-basketpackage "
+					id="display_item_list" style="display: none">
+					<form action="../order/order" class="form-horizontal" method="post"
+						id="orderForm"
+						enctype="application/x-www-form-urlencoded;charset=UTF-8">
+						<input type="hidden" name="url"
+							value="${pageContext.request.contextPath}/cart/list"></input>
+						<!-- 일반상품 -->
+						<div class="orderListArea ec-base-table typeList gBorder">
+							<div class="xans-element- xans-order xans-order-normtitle title ">
+								<h3>
+									상품 (<span id="item_count">${fn:length(list)}</span>)
+								</h3>
+							</div>
 
-						<!-- 일반상품 (기본배송) -->
-						<table border="1" summary=""
-							class="xans-element- xans-order xans-order-normnormal xans-record-">
-							<caption>기본배송</caption>
-							<colgroup>
-								<col style="width: 40px" />
-								<col style="width: 92px" />
-								<col style="width: auto" />
-								<col style="width: 98px" />
-								<col style="width: 120px" />
-								<col style="width: 88px" />
-								<col style="width: 88px" />
-								<col style="width: 75px" />
-								<col style="width: 88px" />
-								<col style="width: 110px" />
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col"><input type="checkbox" id="chb"
-										onclick="setAllCheckBox()" /></th>
-									<th scope="col">IMAGE</th>
-									<th scope="col">PRODUCT NAME</th>
-									<th scope="col">PRICE</th>
-									<th scope="col">QTY</th>
-									<th scope="col" class="mileage">POINT<!--적립금-->
-									</th>
-									<th scope="col">DELIVERY</th>
-									<th scope="col">CHARGE</th>
-									<th scope="col">TOTAL</th>
-									<th scope="col">ORDER</th>
-								</tr>
-							</thead>
+							<!-- 일반상품 (기본배송) -->
+							<table border="1" summary=""
+								class="xans-element- xans-order xans-order-normnormal xans-record-">
+								<caption>기본배송</caption>
+								<colgroup>
+									<col style="width: 40px" />
+									<col style="width: 92px" />
+									<col style="width: auto" />
+									<col style="width: 98px" />
+									<col style="width: 120px" />
+									<col style="width: 88px" />
+									<col style="width: 88px" />
+									<col style="width: 75px" />
+									<col style="width: 88px" />
+									<col style="width: 110px" />
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col"><input type="checkbox" id="chb"
+											onclick="setAllCheckBox()" /></th>
+										<th scope="col">IMAGE</th>
+										<th scope="col">PRODUCT NAME</th>
+										<th scope="col">PRICE</th>
+										<th scope="col">QTY</th>
+										<th scope="col" class="mileage">POINT<!--적립금-->
+										</th>
+										<th scope="col">DELIVERY</th>
+										<th scope="col">CHARGE</th>
+										<th scope="col">TOTAL</th>
+										<th scope="col">ORDER</th>
+									</tr>
+								</thead>
 								<tfoot class="right">
 									<tr>
 										<td colspan="10"><span class="gLeft">[기본배송]</span> 구매금액 <span
-											id="purchase_price1"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
-										</span><span
+											id="purchase_price1"><fmt:formatNumber
+													value="${totalPrice}" pattern="###,###,###" /> </span><span
 											class="displaynone">()</span><span class="displaynone">
 										</span><span class="displaynone"> + 부가세 <span
 												class="displaynone"> </span>
@@ -283,326 +282,335 @@ function setView(){
 											0
                                         </c:when>
 													<c:otherwise>
-       									<fmt:formatNumber value="2500" pattern="###,###,###"/>
-    									</c:otherwise>
+														<fmt:formatNumber value="2500" pattern="###,###,###" />
+													</c:otherwise>
 												</c:choose></span><span class="displaynone"> </span> = 합계 : <strong
 											class="txtEm gIndent10"><span class="txt18"
 												id="total_price1"><c:choose>
 														<c:when test="${totalPrice >= 50000}">
-												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
-                                                </c:when>
+															<fmt:formatNumber value="${totalPrice}"
+																pattern="###,###,###" />
+														</c:when>
 														<c:otherwise>
-       											<fmt:formatNumber value="${totalPrice+2500}" pattern="###,###,###"/>
-    											</c:otherwise>
+															<fmt:formatNumber value="${totalPrice+2500}"
+																pattern="###,###,###" />
+														</c:otherwise>
 													</c:choose></span>원</strong> <span class="displaynone"> </span></td>
 									</tr>
 								</tfoot>
-		
-							<tbody class="xans-element- xans-order xans-order-list center">
-								<c:forEach var="dto" items="${list}">                   
-									<tr class="xans-record-" id="cart_${dto.cartNo}">
-										<td><input type="checkbox"
-											id="cart_checkBox_${dto.cartNo}"
-											name="orderInfoList"  value="${dto.cartNo}"/></td>
-										<td class="thumb gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
-												src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
-												alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
-										<td class="left gClearLine"><a
-											href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.cartNo}${dto.itemTitle}
-												<img src="https://www.slowand.com//web/upload/custom_3.gif"
-												alt="" />
-										</a><span class="displaynone"><br />(영문명 : )</span>
-											<ul
-												class="xans-element- xans-order xans-order-optionall option">
-												<li class="xans-record-"><strong class="displaynone">${dto.itemTitle}</strong>[옵션:${dto.itemColor}/${dto.itemSize}]
-													<span class="displaynone">(2개)</span> <span class=""><a
-														href="#none"
-														onclick="Basket.showOptionChangeLayer('option_modify_layer_0', $(this))"
-														class="displaynone yg_btn_80 yg_btn3" alt="옵션변경">옵션변경</a></span>
-													<!-- 참고 : 옵션변경 레이어 -->
-													<div class="optionModify ec-base-layer"
-														id="option_modify_layer_0">
-														<div class="content">
-															<div class="prdModify">
-																<ul
-																	class="xans-element- xans-order xans-order-optionlist">
-																	<li class="xans-record-"><span>COLOR</span> <select
-																		option_product_no="3607"
-																		option_select_element="ec-option-select-finder"
-																		option_sort_no="1" option_type="T"
-																		item_listing_type="S" option_title="COLOR"
-																		product_type="product_option"
-																		product_option_area="product_option_3607_0"
-																		name="option1" id="product_option_id1"
-																		class="ProductOption0" option_style="select"
-																		required="true"><option value="*"
-																				link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-																			<option value="**" link_image="">-------------------</option>
-																			<option value="중청" link_image="">중청</option></select></li>
-																	<li class="xans-record-"><span>SIZE</span> <select
-																		option_product_no="3607"
-																		option_select_element="ec-option-select-finder"
-																		option_sort_no="2" option_type="T"
-																		item_listing_type="S" option_title="SIZE"
-																		product_type="product_option"
-																		product_option_area="product_option_3607_0"
-																		name="option2" id="product_option_id2"
-																		class="ProductOption0" option_style="select"
-																		required="true"><option value="*"
-																				link_image="">- [필수] 옵션을 선택해 주세요 -</option>
-																			<option value="**" link_image="">-------------------</option>
-																			<option value="S" disabled="disabled" link_image="">S</option>
-																			<option value="M" disabled="disabled" link_image="">M</option>
-																			<option value="L" disabled="disabled" link_image="">L</option></select></li>
-																</ul>
-															</div>
-														</div>
-														<div class="ec-base-button">
-															<a href="#none" class=" yg_btn_30"
-																onclick="BasketNew.modify('0', 'add');" alt="추가">추가</a>
-															<a href="#none" class="yg_btn_30 yg_btn3"
-																onclick="BasketNew.modify('0', 'modify');" alt="변경">변경</a>
-														</div>
-														<a href="#none" class="close"
-															onclick="$('.optionModify').hide();"><img
-															src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
-															alt="닫기" /></a>
-													</div> <!-- //참고 --></li>
-											</ul></td>
-										<td><c:if
-												test="${(not empty dto.itemSalePrice)&&dto.itemSalePrice != 0}">
-												<div class="discount">
-													${dto.itemPrice}원
-													<p class="displaynone"></p>
-												</div>
-											</c:if>
-											<div id="cart_item_price_${dto.cartNo}">
-												${dto.itemPrice-dto.itemSalePrice}원</div></td>
-										<td><span class=""> <span class="ec-base-qty">
-													<input id="cart_item_count_${dto.cartNo}"
-													name="cart_item_count_${dto.cartNo}" size="2"
-													value="${dto.count}" type="text" /><a href="javascript:;"
-													onclick="itemCountUp(${dto.cartNo});"><img
-														src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
-														alt="수량증가" class="up" /></a><a href="javascript:;"
-													onclick="itemCountDown(${dto.cartNo});"><img
-														src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
-														alt="수량감소" class="down" /></a>
-											</span> <a href="javascript:;" class="yg_btn_24 yg_btn3"
-												onclick="itemCountModify(${dto.cartNo},cart_item_count_${dto.cartNo}.value);"
-												alt="변경">변경</a>
-										</span> <span class="displaynone">2</span></td>
-										<td><span class="txtInfo">
-												<div>
 
-													<input id="product_mileage_cash_3615_000A"
-														name="product_mileage_cash" value="1060" type="hidden" />
-													<img
-														src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
-													<span id="cart_item_point1_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br></span>
+								<tbody class="xans-element- xans-order xans-order-list center">
+									<c:forEach var="dto" items="${list}">
+										<tr class="xans-record-" id="cart_${dto.cartNo}">
+											<td><input type="checkbox"
+												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"
+												value="${dto.cartNo}" /></td>
+											<td class="thumb gClearLine"><a
+												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
+													src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
+													alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
+											<td class="left gClearLine"><a
+												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.cartNo}${dto.itemTitle}
+													<img src="https://www.slowand.com//web/upload/custom_3.gif"
+													alt="" />
+											</a><span class="displaynone"><br />(영문명 : )</span>
+												<ul
+													class="xans-element- xans-order xans-order-optionall option">
+													<li class="xans-record-"><strong class="displaynone">${dto.itemTitle}</strong>[옵션:${dto.itemColor}/${dto.itemSize}]
+														<span class="displaynone">(2개)</span> <span class=""><a
+															href="#none"
+															onclick="Basket.showOptionChangeLayer('option_modify_layer_0', $(this))"
+															class="displaynone yg_btn_80 yg_btn3" alt="옵션변경">옵션변경</a></span>
+														<!-- 참고 : 옵션변경 레이어 -->
+														<div class="optionModify ec-base-layer"
+															id="option_modify_layer_0">
+															<div class="content">
+																<div class="prdModify">
+																	<ul
+																		class="xans-element- xans-order xans-order-optionlist">
+																		<li class="xans-record-"><span>COLOR</span> <select
+																			option_product_no="3607"
+																			option_select_element="ec-option-select-finder"
+																			option_sort_no="1" option_type="T"
+																			item_listing_type="S" option_title="COLOR"
+																			product_type="product_option"
+																			product_option_area="product_option_3607_0"
+																			name="option1" id="product_option_id1"
+																			class="ProductOption0" option_style="select"
+																			required="true"><option value="*"
+																					link_image="">- [필수] 옵션을 선택해 주세요 -</option>
+																				<option value="**" link_image="">-------------------</option>
+																				<option value="중청" link_image="">중청</option></select></li>
+																		<li class="xans-record-"><span>SIZE</span> <select
+																			option_product_no="3607"
+																			option_select_element="ec-option-select-finder"
+																			option_sort_no="2" option_type="T"
+																			item_listing_type="S" option_title="SIZE"
+																			product_type="product_option"
+																			product_option_area="product_option_3607_0"
+																			name="option2" id="product_option_id2"
+																			class="ProductOption0" option_style="select"
+																			required="true"><option value="*"
+																					link_image="">- [필수] 옵션을 선택해 주세요 -</option>
+																				<option value="**" link_image="">-------------------</option>
+																				<option value="S" disabled="disabled" link_image="">S</option>
+																				<option value="M" disabled="disabled" link_image="">M</option>
+																				<option value="L" disabled="disabled" link_image="">L</option></select></li>
+																	</ul>
+																</div>
+															</div>
+															<div class="ec-base-button">
+																<a href="#none" class=" yg_btn_30"
+																	onclick="BasketNew.modify('0', 'add');" alt="추가">추가</a>
+																<a href="#none" class="yg_btn_30 yg_btn3"
+																	onclick="BasketNew.modify('0', 'modify');" alt="변경">변경</a>
+															</div>
+															<a href="#none" class="close"
+																onclick="$('.optionModify').hide();"><img
+																src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
+																alt="닫기" /></a>
+														</div> <!-- //참고 --></li>
+												</ul></td>
+											<td><c:if
+													test="${(not empty dto.itemSalePrice)&&dto.itemSalePrice != 0}">
+													<div class="discount">
+														${dto.itemPrice}원
+														<p class="displaynone"></p>
+													</div>
+												</c:if>
+												<div id="cart_item_price_${dto.cartNo}">
+													${dto.itemPrice-dto.itemSalePrice}원</div></td>
+											<td><span class=""> <span class="ec-base-qty">
+														<input id="cart_item_count_${dto.cartNo}"
+														name="cart_item_count_${dto.cartNo}" size="2"
+														value="${dto.count}" type="text" /><a href="javascript:;"
+														onclick="itemCountUp(${dto.cartNo});"><img
+															src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif"
+															alt="수량증가" class="up" /></a><a href="javascript:;"
+														onclick="itemCountDown(${dto.cartNo});"><img
+															src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif"
+															alt="수량감소" class="down" /></a>
+												</span> <a href="javascript:;" class="yg_btn_24 yg_btn3"
+													onclick="itemCountModify(${dto.cartNo},cart_item_count_${dto.cartNo}.value);"
+													alt="변경">변경</a>
+											</span> <span class="displaynone">2</span></td>
+											<td><span class="txtInfo">
+													<div>
+
+														<input id="product_mileage_cash_3615_000A"
+															name="product_mileage_cash" value="1060" type="hidden" />
+														<img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
+														<span id="cart_item_point1_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br></span>
+													</div>
+													<div>
+														<input id="product_mileage_card_3615_000A"
+															name="product_mileage_card" value="530" type="hidden" />
+														<img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
+														<span id="cart_item_point2_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
+													</div>
+											</span></td>
+											<td>
+												<div class="txtInfo">
+													기본배송<br />
 												</div>
-												<div>
-													<input id="product_mileage_card_3615_000A"
-														name="product_mileage_card" value="530" type="hidden" />
-													<img
-														src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
-													<span id="cart_item_point2_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
-												</div>
-										</span></td>
-										<td>
-											<div class="txtInfo">
-												기본배송<br />
-											</div>
-										</td>
-										<td rowspan="1" class="">
-											<p class="displaynone">
-												0원<span class="displaynone"><br /></span><br />
-											</p> <span id="cart_item_delivery_charge_${dto.cartNo}"> <c:choose>
-													<c:when test="${totalPrice >= 50000}">
+											</td>
+											<td rowspan="1" class="">
+												<p class="displaynone">
+													0원<span class="displaynone"><br /></span><br />
+												</p> <span id="cart_item_delivery_charge_${dto.cartNo}">
+													<c:choose>
+														<c:when test="${totalPrice >= 50000}">
 												무료
                                                 </c:when>
 
-													<c:otherwise>
+														<c:otherwise>
        											 2500원
     											</c:otherwise>
-												</c:choose>
-										</span>
-										</td>
-										<td id>
-											<div id="cart_item_total_price_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}원</div>
-											<div class="displaynone" div
-												id="cart_item_total_price_data_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}</div>
-										</td>
-										<td class="button"><a href="javascript:;"
-											class="yg_btn_100" onclick="Basket.orderBasketItem(0);"
-											alt="주문하기">BUY IT NOW</a> <a href="javascript:;"
-											class="yg_btn_100 yg_btn3" onclick="deleteCart(${dto.cartNo});" alt="삭제">DELETE</a></td> 
+													</c:choose>
+											</span>
+											</td>
+											<td id>
+												<div id="cart_item_total_price_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}원</div>
+												<div class="displaynone" div
+													id="cart_item_total_price_data_${dto.cartNo}">${dto.count*(dto.itemPrice-dto.itemSalePrice)}</div>
+											</td>
+											<td class="button"><a href="javascript:;"
+												class="yg_btn_100" onclick="Basket.orderBasketItem(0);"
+												alt="주문하기">BUY IT NOW</a> <a href="javascript:;"
+												class="yg_btn_100 yg_btn3"
+												onclick="deleteCart(${dto.cartNo});" alt="삭제">DELETE</a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<!-- 일반상품 (업체기본배송) -->
+							<!-- 일반상품 (개별배송) -->
+							<!-- 일반상품 (해외배송) -->
+						</div>
+
+						<!-- 선택상품 제어 버튼 -->
+						<div
+							class="xans-element- xans-order xans-order-selectorder ec-base-button ">
+							<span class="gLeft"><a href="#none"
+								class="yg_btn_24 yg_btn5" onclick="deleteCartList()" alt="삭제하기">삭제하기</a>
+							</span> <span class="gRight"> <a href="#none"
+								class="yg_btn_24 yg_btn3" onclick="deleteCartAll();"
+								alt="장바구니비우기">장바구니 비우기</a>
+							</span>
+						</div>
+						<!-- 총 주문금액 : 국내배송상품 -->
+						<div
+							class="xans-element- xans-order xans-order-totalsummary ec-base-table typeList gBorder total  ">
+							<table border="1" summary="">
+								<caption>총 주문금액</caption>
+
+								<thead>
+									<tr>
+										<th scope="col"><strong>총 상품금액</strong></th>
+										<th scope="col" class="displaynone"><strong>총
+												부가세</strong></th>
+										<th scope="col"><strong>총 배송비</strong></th>
+										<th scope="col" class="displaynone"><strong>총
+												할인금액 </strong> <a href="#none" class="yg_btn_24 yg_btn3"
+											onclick="OrderLayer.onDiv('order_layer_benefit', event);"
+											alt="내역보기">내역보기</a></th>
+										<th scope="col"><strong>결제예정금액</strong></th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<!-- 일반상품 (업체기본배송) -->
-						<!-- 일반상품 (개별배송) -->
-						<!-- 일반상품 (해외배송) -->
-					</div>
-
-					<!-- 선택상품 제어 버튼 -->
-					<div
-						class="xans-element- xans-order xans-order-selectorder ec-base-button ">
-						<span class="gLeft"><a href="#none"
-							class="yg_btn_24 yg_btn5" onclick="deleteCartList()" alt="삭제하기">삭제하기</a>
-						</span> <span class="gRight"> <a href="#none"
-							class="yg_btn_24 yg_btn3" onclick="deleteCartAll();"
-							alt="장바구니비우기">장바구니 비우기</a>
-						</span>
-					</div>
-					<!-- 총 주문금액 : 국내배송상품 -->
-					<div
-						class="xans-element- xans-order xans-order-totalsummary ec-base-table typeList gBorder total  ">
-						<table border="1" summary="">
-							<caption>총 주문금액</caption>
-
-							<thead>
-								<tr>
-									<th scope="col"><strong>총 상품금액</strong></th>
-									<th scope="col" class="displaynone"><strong>총 부가세</strong></th>
-									<th scope="col"><strong>총 배송비</strong></th>
-									<th scope="col" class="displaynone"><strong>총
-											할인금액 </strong> <a href="#none" class="yg_btn_24 yg_btn3"
-										onclick="OrderLayer.onDiv('order_layer_benefit', event);"
-										alt="내역보기">내역보기</a></th>
-									<th scope="col"><strong>결제예정금액</strong></th>
-								</tr>
-							</thead>
-							<tbody class="center">
-								<tr>
-									<td><div class="box txt16">
-											<strong><span class="txt23" id="purchase_price2"><fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/></span>원</strong>
-											<span class="txt14 displaynone"></span>
-										</div></td>
-									<td class="displaynone"><div class="box txt16">
-											<strong><span class="txt23">0</span>원</strong> <span
-												class="txt14 displaynone"></span>
-										</div></td>
-									<td>
-										<div class="box shipping txt16">
-											<strong class="txt23">+ </strong><strong><span
-												class="txt23" id="delivery_charge2"> <c:choose>
-														<c:when test="${totalPrice >= 50000}">
+								</thead>
+								<tbody class="center">
+									<tr>
+										<td><div class="box txt16">
+												<strong><span class="txt23" id="purchase_price2"><fmt:formatNumber
+															value="${totalPrice}" pattern="###,###,###" /></span>원</strong> <span
+													class="txt14 displaynone"></span>
+											</div></td>
+										<td class="displaynone"><div class="box txt16">
+												<strong><span class="txt23">0</span>원</strong> <span
+													class="txt14 displaynone"></span>
+											</div></td>
+										<td>
+											<div class="box shipping txt16">
+												<strong class="txt23">+ </strong><strong><span
+													class="txt23" id="delivery_charge2"> <c:choose>
+															<c:when test="${totalPrice >= 50000}">
 												0
                                                 </c:when>
-														<c:otherwise>
-       											 <fmt:formatNumber value="2500" pattern="###,###,###"/>
-    											</c:otherwise>
-													</c:choose>
-											</span>원</strong> <span class="txt14 displaynone"></span>
-											<div class="shippingArea displaynone">
-												(<span></span>
-												<div class="shippingFee">
-													<a href="#none" class="button" id=""><img
-														src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_details.gif"
-														alt="자세히보기"></a>)
-													<div class="ec-base-tooltip" style="display: none;">
-														<h3>배송비할인</h3>
-														<div class="content">
-															<h4></h4>
-															<table border="1" summary="">
-																<caption>배송비 할인 이벤트 정보</caption>
-																<tbody>
-																	<tr>
-																		<th scope="row">혜택</th>
-																		<td><strong class="txtEm"></strong>
-																			<p></p></td>
-																	</tr>
-																	<tr class="displaynone">
-																		<th scope="row">기간</th>
-																		<td><strong class="txtEm"></strong>
-																			<p></p></td>
-																	</tr>
-																	<tr class="displaynone">
-																		<th scope="row">대상</th>
-																		<td></td>
-																	</tr>
-																</tbody>
-															</table>
+															<c:otherwise>
+																<fmt:formatNumber value="2500" pattern="###,###,###" />
+															</c:otherwise>
+														</c:choose>
+												</span>원</strong> <span class="txt14 displaynone"></span>
+												<div class="shippingArea displaynone">
+													(<span></span>
+													<div class="shippingFee">
+														<a href="#none" class="button" id=""><img
+															src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_details.gif"
+															alt="자세히보기"></a>)
+														<div class="ec-base-tooltip" style="display: none;">
+															<h3>배송비할인</h3>
+															<div class="content">
+																<h4></h4>
+																<table border="1" summary="">
+																	<caption>배송비 할인 이벤트 정보</caption>
+																	<tbody>
+																		<tr>
+																			<th scope="row">혜택</th>
+																			<td><strong class="txtEm"></strong>
+																				<p></p></td>
+																		</tr>
+																		<tr class="displaynone">
+																			<th scope="row">기간</th>
+																			<td><strong class="txtEm"></strong>
+																				<p></p></td>
+																		</tr>
+																		<tr class="displaynone">
+																			<th scope="row">대상</th>
+																			<td></td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+															<a href="#none" class="btnClose"><img
+																src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif"
+																alt="닫기"></a> <span class="edge"></span>
 														</div>
-														<a href="#none" class="btnClose"><img
-															src="//img.echosting.cafe24.com/skin/base/common/btn_close_tip.gif"
-															alt="닫기"></a> <span class="edge"></span>
 													</div>
 												</div>
 											</div>
-										</div>
-									</td>
-									<td class="displaynone"><div class="box txt16">
-											<strong class="txt23">- </strong><strong><span
-												class="txt23">0</span>원</strong> <span class="txt14 displaynone"></span>
-										</div></td>
-									<td><div class="box txtEm txt16">
-											<strong class="txt23">= </strong><strong><span
-												class="txt23" id="total_price2"> <c:choose>
-														<c:when test="${totalPrice >= 50000}">
-												<fmt:formatNumber value="${totalPrice}" pattern="###,###,###"/>
-                                                </c:when>
-														<c:otherwise>
-       											<fmt:formatNumber value="${totalPrice+2500}" pattern="###,###,###"/>
-    											</c:otherwise>
-													</c:choose>
-											</span>원</strong> <span class="txt14 displaynone"></span>
-										</div></td>
-								</tr>
-							</tbody>
-						</table>
-						<!-- 총 할인금액 내역보기 레이어 -->
-						<div id="order_layer_benefit" class="totalDetail ec-base-layer">
-							<div class="header">
-								<h3>총 할인금액 상세내역</h3>
+										</td>
+										<td class="displaynone"><div class="box txt16">
+												<strong class="txt23">- </strong><strong><span
+													class="txt23">0</span>원</strong> <span class="txt14 displaynone"></span>
+											</div></td>
+										<td><div class="box txtEm txt16">
+												<strong class="txt23">= </strong><strong><span
+													class="txt23" id="total_price2"> <c:choose>
+															<c:when test="${totalPrice >= 50000}">
+																<fmt:formatNumber value="${totalPrice}"
+																	pattern="###,###,###" />
+															</c:when>
+															<c:otherwise>
+																<fmt:formatNumber value="${totalPrice+2500}"
+																	pattern="###,###,###" />
+															</c:otherwise>
+														</c:choose>
+												</span>원</strong> <span class="txt14 displaynone"></span>
+											</div></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- 총 할인금액 내역보기 레이어 -->
+							<div id="order_layer_benefit" class="totalDetail ec-base-layer">
+								<div class="header">
+									<h3>총 할인금액 상세내역</h3>
+								</div>
+								<div class="content">
+									<p id="mTotalBenefitPrice" class="txtEm txt16">
+										<strong>0원</strong>
+									</p>
+									<ul class="ec-base-desc typeDot gLarge rightDD">
+										<li class="displaynone"><strong class="term">기간할인</strong><span
+											id="" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">회원할인</strong><span
+											id="" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">재구매할인</strong><span
+											id="" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">대량구매할인</strong><span
+											id="" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">바로가기(링콘)할인</strong><span
+											id="" class="desc">원</span></li>
+										<li class="displaynone"><strong class="term">어바웃pbp할인</strong><span
+											id="" class="desc">원</span></li>
+										<li class="displaynone"><strong class="term">신규상품할인</strong><span
+											id="" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">결제수단할인</strong><span
+											id="" class="desc">원</span></li>
+										<li class="displaynone"><strong class="term">회원등급할인</strong><span
+											id="mBenefitMembergroupSale" class="desc">0원</span></li>
+										<li class="displaynone"><strong class="term">배송비할인</strong><span
+											id="" class="desc">0원</span></li>
+									</ul>
+								</div>
+								<a href="#none" class="close"
+									onclick="OrderLayer.offDiv('order_layer_benefit');"><img
+									src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
+									alt="닫기"></a>
 							</div>
-							<div class="content">
-								<p id="mTotalBenefitPrice" class="txtEm txt16">
-									<strong>0원</strong>
-								</p>
-								<ul class="ec-base-desc typeDot gLarge rightDD">  
-									<li class="displaynone"><strong class="term">기간할인</strong><span
-										id="" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">회원할인</strong><span
-										id="" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">재구매할인</strong><span
-										id="" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">대량구매할인</strong><span
-										id="" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">바로가기(링콘)할인</strong><span
-										id="" class="desc">원</span></li>
-									<li class="displaynone"><strong class="term">어바웃pbp할인</strong><span
-										id="" class="desc">원</span></li>
-									<li class="displaynone"><strong class="term">신규상품할인</strong><span
-										id="" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">결제수단할인</strong><span
-										id="" class="desc">원</span></li>
-									<li class="displaynone"><strong class="term">회원등급할인</strong><span
-										id="mBenefitMembergroupSale" class="desc">0원</span></li>
-									<li class="displaynone"><strong class="term">배송비할인</strong><span
-										id="" class="desc">0원</span></li>
-								</ul>
-							</div>
-							<a href="#none" class="close"
-								onclick="OrderLayer.offDiv('order_layer_benefit');"><img
-								src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
-								alt="닫기"></a>
 						</div>
-					</div>
-					<!-- 주문 버튼 -->
-					<div
-						class="xans-element- xans-order xans-order-totalorder ec-base-button justify">
-						<a href="#none" onclick="orderAll()" alt="전체상품주문" class=" yg_btn_140 ">전체상품주문</a>
-						<a href="#" onclick="orderSeleted()" alt="선택상품주문"
-							class="yg_btn_140 yg_btn5 ">선택상품주문</a> </span>
-						<!-- 네이버 체크아웃 구매 버튼  -->
-						<div id="NaverChk_Button"></div>
-					</div>
-				</form>
+						<!-- 주문 버튼 -->
+						<div
+							class="xans-element- xans-order xans-order-totalorder ec-base-button justify">
+							<a href="#none" onclick="orderAll()" alt="전체상품주문"
+								class=" yg_btn_140 ">전체상품주문</a> <a href="#"
+								onclick="orderSeleted()" alt="선택상품주문"
+								class="yg_btn_140 yg_btn5 ">선택상품주문</a> </span>
+							<!-- 네이버 체크아웃 구매 버튼  -->
+							<div id="NaverChk_Button"></div>
+						</div>
+					</form>
 				</div>
 				<!-- //장바구니 모듈 Package -->
 

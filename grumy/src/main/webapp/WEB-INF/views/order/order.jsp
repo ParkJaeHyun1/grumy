@@ -127,32 +127,24 @@ function selectPostcode() {
     }).open();
 }
 function getOrderID(){
-	
+	var orderID;
     $.ajax({
         type : 'put',
         url : "../order/insert",
-        data :  JSON.stringify(orderInfo.orderItemList),
+        data :  JSON.stringify(orderInfo),
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
-        	if(result =='success'){
-        		enable= true;
-        	}else{
-        	   alert('재고가 부족한 상품이 존재합니다.\n이전페이지로 이동합니다.');
-        	   $(location).attr('href', '${url}');
-        	   enable= false;
-           }
+        	alert("성공:"+result);
+        	orderID = result;
         },
         error : function(xhr, status, er) {
-           alert('결제중 에러가 발생하였습니다.\n다시 시도하여 주세요.');
-           enable= false;
+
         }
    });
-	return today;
+	return orderID;
 }
-function purchase(){
-	checkItemCount();
-	return;
+function purchase(){    
 	if(!checkOrderInfo()){
 		return;
 	}
@@ -180,7 +172,7 @@ function purchase(){
 	         addr: '주소',
 	         phone: '${member.phone}'
 	      },
-	      order_id: '1111111', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+	      order_id: getOrderID(), //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
 	      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
 	      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
 	      extra: {
@@ -199,15 +191,16 @@ function purchase(){
 	      alert('가상계좌 번호 발급:'+data);
 	      console.log(data);
 	   }).confirm(function (data) {
-		   alert('결제전 확인');
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
 	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
 	      console.log(data);
-	      var enable = checkItemCount(); // 재고 수량 관리 로직 혹은 다른 처리
+	      var enable = checkItem(); // 재고 수량 관리 로직 혹은 다른 처리
 	      if (enable) {
 	         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
 	      } else {
-	         BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+		   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
+       	   	  $(location).attr('href', '${url}');
 	      }
 	   }).close(function (data) {
 	       console.log(data);
@@ -217,7 +210,7 @@ function purchase(){
 	   });
 }     
 
-function checkItemCount(){         
+function checkItem(){         
 	var enable;      
     $.ajax({
         type : 'put',
@@ -229,13 +222,10 @@ function checkItemCount(){
         	if(result =='success'){
         		enable= true;
         	}else{
-        	   alert('재고가 부족한 상품이 존재합니다.\n이전페이지로 이동합니다.');
-        	   $(location).attr('href', '${url}');
         	   enable= false;
            }
         },
         error : function(xhr, status, er) {
-           alert('결제중 에러가 발생하였습니다.\n다시 시도하여 주세요.');
            enable= false;
         }  
    });
@@ -311,11 +301,11 @@ function setPriceView(){
 
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-<link rel="canonical" href="http://www.slowand.com">  
-	<link rel="alternate" href="http://www.m.slowand.com/">
+<link rel="canonical" href="http://www.slowand.com">
+	<link rel="alternate" href="http://www.m.slowand.com/">          
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />      
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
@@ -329,12 +319,12 @@ function setPriceView(){
 					<link rel="canonical"
 						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
-						href="http://m.slowand.com/order/orderform.html" />          
+						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
 						content="http://slowand.com/order/orderform.html" />
 					<meta property="og:title" content="슬로우앤드" />
 					<meta property="og:description"
-						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />       
+						content="20대 여성의류쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리 등" />
 					<meta property="og:site_name" content="슬로우앤드" />
 					<meta property="og:type" content="website" />
 					<script type="text/javascript"
@@ -349,7 +339,7 @@ function setPriceView(){
 					<meta name="path_role" content="ORDER_ORDERFORM" />
 					<meta name="author" content="슬로우앤드" />
 					<meta name="description"
-						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />        
+						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 					<meta name="keywords"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 </head>
@@ -360,7 +350,7 @@ function setPriceView(){
 		<!-- //상단카테고리 -->
 
 		<div id="container">
-			<div id="contents">     
+			<div id="contents">
 
 
 				<div class="titleArea">
@@ -372,16 +362,17 @@ function setPriceView(){
 					action="${pageContext.request.contextPath}/order/insert"
 					method="post"
 					enctype="application/x-www-form-urlencoded;charset=UTF-8">
-					<input type="hidden" name="url" value="/item/read?itemNo=${dto.itemNo}"></input>
-					<input type="hidden" name="orderNo" id="orderNo"></input>
-					<input type="hidden" name="totalPrice" id="totalPrice"></input>
-					<input type="hidden" name="salePrice" id="salePrice"></input>
-					<input type="hidden" name="paymentType" id="paymentType"></input>
-					<input type="hidden" name="imagineAccount" id="imagineAccount"></input>
-					<input type="hidden" name="imagineBank" id="imagineBank"></input>
-					<input type="hidden" name="imagineDate" id="imagineDate"></input>
+					<input type="hidden" name="url"
+						value="/item/read?itemNo=${dto.itemNo}"></input> <input
+						type="hidden" name="orderNo" id="orderNo"></input> <input
+						type="hidden" name="totalPrice" id="totalPrice"></input> <input
+						type="hidden" name="salePrice" id="salePrice"></input> <input
+						type="hidden" name="paymentType" id="paymentType"></input> <input
+						type="hidden" name="imagineAccount" id="imagineAccount"></input> <input
+						type="hidden" name="imagineBank" id="imagineBank"></input> <input
+						type="hidden" name="imagineDate" id="imagineDate"></input>
 
-					
+
 					<div class="xans-element- xans-order xans-order-form xans-record-">
 						<!-- 이값은 지우면 안되는 값입니다. ($move_order_after 주문완료페이지 주소 / $move_basket 장바구니페이지 주소)
         $move_order_after=/order/order_result.html
@@ -1076,7 +1067,8 @@ function setPriceView(){
 										fw-filter="isFill" fw-label="결제금액" fw-msg=""
 										class="inputTypeText" placeholder=""
 										style="text-align: right; ime-mode: disabled; clear: none; border: 0px; float: none;"
-										size="10" readonly="1" value="<fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###" />"
+										size="10" readonly="1"
+										value="<fmt:formatNumber value="${totalPrice+deliveryCharge}" pattern="###,###,###" />"
 										type="text" /><span>원</span>
 								</p>
 								<p class="paymentAgree">
@@ -1110,7 +1102,7 @@ function setPriceView(){
 										<dt>배송비</dt>
 										<dd id="mMemberMileage">
 											<span><fmt:formatNumber value="${deliveryCharge}"
-													pattern="###,###,###" /></span>원     
+													pattern="###,###,###" /></span>원
 										</dd>
 										<dt>총 할인금액</dt>
 										<dd id="mCouponMileage">

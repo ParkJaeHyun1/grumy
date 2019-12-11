@@ -1,6 +1,7 @@
 package spring.model.grumy;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import spring.model.cart.CartDTO;
 import spring.model.mapper.OrderMapper;
-import spring.model.mapper.itemMapper;
+import spring.model.order.OrderDTO;
 import spring.model.order.OrderItemDTO;
 
 @RestController
@@ -27,16 +24,26 @@ public class OrderRestController {
 	@PutMapping("/order/check")
 	public ResponseEntity<String> check(@RequestBody ArrayList<OrderItemDTO>list) {
 		
-		ArrayList<Integer> itemCount = orderMapper.checkItemCount(list); 
-
-		if(itemCount.size()!=list.size())
+		ArrayList<OrderItemDTO> orderItemList = orderMapper.checkItem(list); 
+		Map<Integer,OrderItemDTO> map =new HashMap();
+		
+		if(orderItemList.size()!=list.size())
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
-
-		for(int i=0;i<itemCount.size();i++) {
-			if(list.get(i).getCount()>itemCount.get(i))
+		
+		for(OrderItemDTO orderItem: orderItemList)
+			map.put(orderItem.getItemOptionNo(), orderItem);
+			
+		for(OrderItemDTO orderItem : list) {
+			if(orderItem.getCount()>map.get(orderItem.getItemOptionNo()).getCount() || orderItem.getItemPrice() != map.get(orderItem.getItemOptionNo()).getItemPrice() || orderItem.getItemSalePrice()!=map.get(orderItem.getItemOptionNo()).getItemSalePrice())
 				return new ResponseEntity<String>("fail", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-
+	@PutMapping("/order/insert")
+	public ResponseEntity<String> insert(@RequestBody OrderDTO order) {
+		System.out.println(order);
+		int cnt = orderMapper.insert(order);
+		System.out.println(order.getOrderNo());
+		return new ResponseEntity<String>("1531351351", HttpStatus.OK);
+	}
 }

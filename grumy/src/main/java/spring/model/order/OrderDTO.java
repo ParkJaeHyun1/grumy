@@ -155,6 +155,14 @@ public class OrderDTO {
 	public void setOrderItemList(ArrayList<OrderItemDTO> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
+	@Override
+	public String toString() {
+		return "OrderDTO [orderNo=" + orderNo + ", odate=" + odate + ", id=" + id + ", totalPrice=" + totalPrice
+				+ ", salePrice=" + salePrice + ", rname=" + rname + ", postcode=" + postcode + ", address=" + address
+				+ ", detailaddress=" + detailaddress + ", rphone=" + rphone + ", remail=" + remail + ", rmsg=" + rmsg
+				+ ", paymentType=" + paymentType + ", imagineAccount=" + imagineAccount + ", imagineBank=" + imagineBank
+				+ ", imagineDate=" + imagineDate + ", orderItemList=" + orderItemList + "]";
+	}
 	
 	
 	
