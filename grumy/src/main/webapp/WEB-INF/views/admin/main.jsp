@@ -150,7 +150,9 @@ $(document).ready(function(){
 											
 												<span>건</span>
 										</span>
-										
+										&nbsp;&nbsp;&nbsp;
+										<span><a class="text-number"
+												href="${root }/admin/read">read테스트</span>
 										</li>
 										<li><span class="info-title">신규주문</span> <span
 											class="number-area">

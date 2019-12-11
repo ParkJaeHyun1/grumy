@@ -11,7 +11,12 @@
 					<put-attribute name="footer"
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
- 
+ 	
+ 	<definition name="mypage" extends="main">
+		<put-attribute name="mypageHeader"
+			value="/WEB-INF/views/template/mypageheader.jsp" />
+	</definition>
+	
  	<definition name="/admin/main" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
@@ -41,6 +46,11 @@
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/sendFin.jsp" />
+	</definition>
+ 	<definition name="/admin/read" extends="mypage">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/read.jsp" />
 	</definition>
 
 </tiles-definitions>

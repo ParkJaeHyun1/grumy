@@ -21,7 +21,6 @@ public interface itemMapper {
 	int delete(int itemNo);
 	int update(int itemOptionNo);
 	int create(ItemDTO dto);
-	ArrayList<Integer> checkItemCount(ArrayList<OrderItemDTO> list);
 	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
 
 }

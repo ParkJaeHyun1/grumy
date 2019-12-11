@@ -4,8 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.model.mapper.MypageMapper">
 
-<select id="getname" parameterType="String" resultType="String">
-select name from member
+<select id="read" parameterType="String" resultType="MemberDTO">
+select * from member
 where id = #{id}
 </select>
+<select id="orderCount" parameterType="String" resultType="OrderItemDTO">
+select state,count(*) as count
+from
+norder o,orderitem i
+where id = #{id} and o.orderno=i.orderno and state2 = null
+group by state
+order by state
+</select>
+
 </mapper>

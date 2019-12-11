@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import spring.model.community.communityDTO;
 import spring.model.delivery.DeliveryDTO;
 import spring.model.mapper.AdminMapper;
+import spring.model.member.MemberDTO;
 import spring.model.notice.NoticeDTO;
 import spring.model.order.OrderDTO;
+import spring.model.order.OrderItemDTO;
 import spring.model.utility.Utility;
 
 @Controller
@@ -187,5 +190,23 @@ public class AdminController {
 		//request.setAttribute("list", list);
 			
 		return "/admin/sendFin";
+	}
+	@RequestMapping("/admin/read")
+	public String read(HttpServletRequest request, HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		MemberDTO dto = mapper.read(id);
+		ArrayList<OrderItemDTO> itemList = mapper.orderCount(id);
+		Map map = new HashMap();
+		
+		for(OrderItemDTO item: itemList) { 
+			map.put(item.getState(), item.getCount());
+			
+			System.out.println(item.getState() + item.getCount());
+		}
+		
+		request.setAttribute("map", map);
+		request.setAttribute("dto", dto);
+		
+		return "/admin/read";
 	}
 }

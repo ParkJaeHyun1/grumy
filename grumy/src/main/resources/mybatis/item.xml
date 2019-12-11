@@ -126,16 +126,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
 	</select>
 
-	<select id="checkItemCount" parameterType="List"
-		resultType="int">
-		select itemCount from itemOption
-		where itemOptionNo in
-		<foreach item="item" collection="list" open="(" separator=","
-			close=")">
-			#{item.itemOptionNo,jdbcType=INTEGER}
-		</foreach>
-		order by itemOptionNo
-	</select>
 </mapper>
 
 

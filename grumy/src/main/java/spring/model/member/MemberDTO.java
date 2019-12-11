@@ -133,6 +133,14 @@ public class MemberDTO {
 		email1 = email.substring(0,email.indexOf("@"));
 		email2 = email.substring(email.indexOf("@")+1,email.length());
 	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [id=" + id + ", passwd=" + passwd + ", name=" + name + ", postcode=" + postcode + ", address="
+				+ address + ", detailaddress=" + detailaddress + ", phone=" + phone + ", email=" + email + ", birth="
+				+ birth + ", point=" + point + ", grade=" + grade + ", phone1=" + phone1 + ", phone2=" + phone2
+				+ ", phone3=" + phone3 + ", email1=" + email1 + ", email2=" + email2 + "]";
+	}
 	
 	
 }

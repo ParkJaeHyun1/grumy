@@ -12,12 +12,16 @@
 			value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
 
-	<definition name="/mypage/index" extends="main">
-		<put-attribute name="title" value="공지사항"/>
+	<definition name="mypage" extends="main">
+		<put-attribute name="mypageHeader"
+			value="/WEB-INF/views/template/mypageheader.jsp" />
+	</definition>
+	<definition name="/mypage/index" extends="mypage">
+		<put-attribute name="title" value="그루미" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/index.jsp" />
 	</definition>
-	<definition name="/mypage/orderlist" extends="main">
+	<definition name="/mypage/orderlist" extends="mypage">
 		<put-attribute name="title" value="그루미" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/orderlist.jsp" />

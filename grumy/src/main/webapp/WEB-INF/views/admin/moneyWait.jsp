@@ -111,7 +111,7 @@ function update(orderno){
 											<td>${dto2.itemTitle}</td>
 											<td>${dto2.itemColor}</td>
 											<td>${dto2.itemSize}</td>
-											<td>${dto2.itemCount}</td>
+											<td>${dto2.count}</td>
 											<td>${dto2.itemPrice }</td>
 											<td>${dto.id}</td>
 											<c:choose>										
