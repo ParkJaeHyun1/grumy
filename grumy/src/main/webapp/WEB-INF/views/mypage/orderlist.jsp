@@ -25,22 +25,58 @@
 			<div class="title">
 				<h3>주문 상품 정보</h3>
 			</div>
-			
+
 			<table border="1" summary>
 				<thead>
 					<tr>
-						<th style=width:135px>ORDER DATE<br>[ORDER NO]</th>
-						<th style=width:93px>IMAGE</th>
-						<th style=width:auto>PRODUCT NAME</th>
-						<th style=width:61px>QTY</th>
-						<th style=width:130px>PRICE</th>
-						<th style=width:130px>ORDER STATE</th>
+						<th style="width: 135px">ORDER DATE<br>[ORDER NO]
+						</th>
+						<th style="width: 93px">IMAGE</th>
+						<th style="width: auto">PRODUCT NAME</th>
+						<th style="width: 61px">QTY</th>
+						<th style="width: 130px">PRICE</th>
+						<th style="width: 130px">ORDER STATE</th>
 					</tr>
 				</thead>
-				
-			
+				<tbody class="center">
+					<c:choose>
+						<c:when test="${empty list }">
+							<tr style="align-content: center">
+								<td colspan="6"><p class="message">주문 내역이 없습니다.</p></td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="list" items="${list}">
+								<c:forEach var="list2" items="${list.orderItemList }">
+									<tr class="xans-record-">
+										<td class="number">${list.odate}<div>${list.orderNo }</div></td>
+										<td class="thumb"><a
+											href="${pageContext.request.contextPath }/item/read?itemNo=${list2.itemNo}"><img
+												style="width: 80px; height: 106px;"
+												src="${pageContext.request.contextPath}/images/${list2.itemImage }"></a></td>
+										<td class="product left top"><a
+											href="${pageContext.request.contextPath }/item/read?itemNo=${list2.itemNo}">${list2.itemTitle }</a>
+											<div>[옵션:${list2.itemColor }/${list2.itemSize }]</div></td>
+										<td>${list2.count }</td>
+										<td>${list2.itemPrice }</td>
+										<td class="state">${list2.state }
+											<div>
+												<a href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemNo}"
+													class="yg_btn_80 yg_btn1 crema-new-review-link crema-applied"
+													
+													alt="구매후기">구매후기</a>
+											</div>
+										</td>
+								</c:forEach>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+
+
 			</table>
 
 		</div>
+		${paging }
 	</div>
 </div>

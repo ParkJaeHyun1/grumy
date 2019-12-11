@@ -8,6 +8,16 @@
 <link rel="stylesheet" type="text/css" href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 
 
+<script type="text/javascript">
+function orderlist(state){
+	var url = "orderlist";
+	url += "?state=" + state;
+	
+	location.href = url;
+}
+
+</script>
+
 <div id="container">
 	<div id="contents">
 		<div class="titleArea">
@@ -24,7 +34,7 @@
 			<div class="state">
 				<ul class="order">
 					<li><strong>입금전</strong> <a
-						href="/myshop/order/list.html?order_status=shipped_before"
+						href="javascript:orderlist('입금대기')"
 						class="count"><span
 							id="xans_myshop_orderstate_shppied_before_count"><c:choose>
 																					<c:when test="${not empty map.get('입금대기') }">
@@ -34,7 +44,7 @@
 																					0</c:otherwise>
 																				</c:choose></span></a></li>
 					<li><strong>배송준비중</strong> <a
-						href="/myshop/order/list.html?order_status=shipped_standby"
+						href="javascript:orderlist('배송준비')"
 						class="count"><span
 							id="xans_myshop_orderstate_shppied_standby_count"><c:choose>
 																					<c:when test="${not empty map.get('배송준비') }">
@@ -44,7 +54,7 @@
 																					0</c:otherwise>
 																				</c:choose></span></a></li>
 					<li><strong>배송중</strong> <a
-						href="/myshop/order/list.html?order_status=shipped_begin"
+						href="javascript:orderlist('배송중')"
 						class="count"><span
 							id="xans_myshop_orderstate_shppied_begin_count"><c:choose>
 																					<c:when test="${not empty map.get('배송중') }">
@@ -54,7 +64,7 @@
 																					0</c:otherwise>
 																				</c:choose></span></a></li>
 					<li><strong>배송완료</strong> <a
-						href="${pageContext.request.contextPath }/mypage/orderlist"
+						href="javascript:orderlist('배송완료')"
 						class="count"><span
 							id="xans_myshop_orderstate_shppied_complate_count"><c:choose>
 																					<c:when test="${not empty map.get('배송완료') }">
@@ -68,15 +78,33 @@
 					<li><span class="icoDot"></span> <strong>취소 : </strong> <a
 						href="/myshop/order/list.html?order_status=order_cancel"
 						class="count"><span
-							id="xans_myshop_orderstate_order_cancel_count">1</span></a></li>
+							id="xans_myshop_orderstate_order_cancel_count"><c:choose>
+																					<c:when test="${not empty map.get('취소') }">
+																						${map.get("취소") }
+																					</c:when>
+																					<c:otherwise>
+																					0</c:otherwise>
+																				</c:choose></span></a></li>
 					<li><span class="icoDot"></span> <strong>교환 : </strong> <a
 						href="/myshop/order/list.html?order_status=order_exchange"
 						class="count"><span
-							id="xans_myshop_orderstate_order_exchange_count">0</span></a></li>
+							id="xans_myshop_orderstate_order_exchange_count"><c:choose>
+																					<c:when test="${not empty map.get('교환') }">
+																						${map.get("교환") }
+																					</c:when>
+																					<c:otherwise>
+																					0</c:otherwise>
+																				</c:choose></span></a></li>
 					<li><span class="icoDot"></span> <strong>반품 : </strong> <a
 						href="/myshop/order/list.html?order_status=order_return"
 						class="count"><span
-							id="xans_myshop_orderstate_order_return_count">1</span></a></li>
+							id="xans_myshop_orderstate_order_return_count"><c:choose>
+																					<c:when test="${not empty map.get('반품') }">
+																						${map.get("반품") }
+																					</c:when>
+																					<c:otherwise>
+																					0</c:otherwise>
+																				</c:choose></span></a></li>
 				</ul>
 			</div>
 		</div>

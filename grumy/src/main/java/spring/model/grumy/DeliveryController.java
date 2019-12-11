@@ -209,6 +209,7 @@ public class DeliveryController {
 		List<DeliveryDTO> list = mapper.list(map); 
 		List<DeliveryDTO> list_ = mapper.list_(); 
 		
+				
 		int total = mapper.total(map);
 		
 
