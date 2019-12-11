@@ -10,16 +10,26 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js"
 	charset="utf-8"></script>
-<script>
+<script>        
+ 
+//한글만 onKeyPress="hangul();"  --IE호환성을 위해... 이렇게..뿌니ㅎ;
+function hangul(){
+ if((event.keyCode < 12592) || (event.keyCode > 12687)){
+  alert("한글만 입력이 가능합니다.");
+  event.returnValue = false
+  $('#itemColor').val('');
+ }
+}
+         
    
- //콤마 자동 출력
+ //숫자만 출력, 콤마 자동 출력
  //[] <--문자 범위 [^] <--부정 [0-9] <-- 숫자  
  //[0-9] => \d , [^0-9] => \D
  var rgx1 = /\D/g;  // /[^0-9]/g 와 같은 표현
  var rgx2 = /(\d+)(\d{3})/; 
 
  function getNumber(obj){
- 	
+ 	           
       var num01;
       var num02;
       num01 = obj.value;
@@ -100,6 +110,16 @@
 							</tr>
 
 							<tr>
+								<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
+								<td id="list"><input type="text" id="itemColor" style="width: 70px" name="itemColor" onKeyPress="hangul();">              
+							<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4" style="width:50px; height:26px;line-height:0px " onclick="KoCheck()">add</button>
+									<span id="color"></span>
+             				             		     			           
+									
+									</td>             
+							</tr>
+							             
+							<tr>
 								<th scope="row">사이즈</th>
 								<td><span id="myspan"> S &nbsp;<input
 										name="checkbox" type="checkbox" value="S">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,15 +131,6 @@
 							</tr>
 
 
-							<tr>
-								<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
-								<td><input type="text" id="itemColor" style="width: 70px"> <input
-									type="button" id="test" onclick="colorPrint();" value="추가" class="yg_btn_30 yg_btn4">
-									<span id="color"></span><img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif" alt="삭제" id="option_box1_del" class="option_box_del" onclick="deleteItem(2)">
-									
-									
-									</td>             
-							</tr>
 
 							<tr>
 								<th scope="row">가격</th>
@@ -127,7 +138,6 @@
 									onkeyup="getNumber(this);" type="text" id="price" name="price"
 									value="" style="text-align: right; width: 50px"> 원</td>
 							</tr>      
-
 
 							<tr>
 								<th scope="row">할인 가격</th>
@@ -181,25 +191,26 @@
 <script type="text/javascript">
 
 
-//컬러 삭제
-function deleteItem(itemOptionNo){
-	$('#selectedItem'+itemOptionNo).remove();
-	$('#orderInfo'+itemOptionNo).remove();
-	delete selectedItem[itemOptionNo];
-	setTotalPrice();
-}
+$(function(){
+	  $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
+	   //  var d = new Date(); //date를 d에 대입, 날짜변수 만듦
+	    // var curTime = d.toLocaleTimeString(); //현재 시간을 대입
+	     var temp = document.getElementById("itemColor").value;
 
+	     var html = '<tr><td>' + temp + '</td>'; //tr, td를 열고 + 문자열로 바꾸고 +td 닫기
+	     html += '<td><button type="button" class="btnDel" style="width:13px; height:13px">X</button>'; //html변수에 삭제버튼을 대입
+	     html += '</td></tr>';           
+	     
+	     $("#list").append(html); //list라는 아이디에 html을 추가해라
+	  });            
+	               
+	  $("#list").on("click", ".btnDel", function() { //list안의 btnDel을 선택
+	    $(this).parent().parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
+	  });  
+              
+	})
 
-//컬러 출력
-function colorPrint(){
-	$('#color').append($('#itemColor').val());	
-	var str ="";
-	str = "<img"
-	$('#color').append($('#option_box1_del').val());	
-	
-}
-
-
+                  
 // size 시작
 function addElement() {
 	var aInput=document.getElementById('myspan').getElementsByTagName('input');
