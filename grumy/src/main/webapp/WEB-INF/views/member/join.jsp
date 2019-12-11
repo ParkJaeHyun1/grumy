@@ -90,18 +90,19 @@ function sample6_execDaumPostcode() {
    
    function validate() {
        
-
-	   var ph1 = /(^01.{1}|[0-9]{3})$/
-	   var re = /^[a-zA-Z0-9]{8,16}$/ 
+	   var re = /^[a-zA-Z0-9]{8,16}$/;
 	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/
-
+	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
+	   var format1 = /^(19[0-9][0-9]|201[0-9])$/;
+	   var format2 = /^(0[0-9]|1[0-2])$/;
+	   var format3 = /^(0[1-9]|[1-2][0-9]|3[0-1])$/;
+	   
 	   var id = document.getElementById("id");
 	   var passwd = document.getElementById("passwd");
 	   var email = document.getElementById("email");
-	   
-
-
+	   var testbirth1 = document.getElementById("birth1");
+	   var testbirth2 = document.getElementById("birth2");
+	   var testbirth3 = document.getElementById("birth3");
 
        if(!check(re,id,"아이디는 8~16자의 영문 대소문자와 숫자로만 입력")) {
            return false;
@@ -172,22 +173,38 @@ function sample6_execDaumPostcode() {
        if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
         return false;
        }
+      
+       
        if(joinForm.birth1.value.length==0){
     	   alert("생년월일을 입력해 주세요")
     	   joinForm.birth1.focus();
     	   return false;
        }
+       
+       if(!check(format1,testbirth1,"유효하지 않은 값입니다.")) {
+           return false;
+       }
+       
        if(joinForm.birth2.value.length==0){
     	   alert("생년월일을 입력해 주세요")
     	   joinForm.birth2.focus();
     	   return false;
        }
+       
+       if(!check(format2,testbirth2,"유효하지 않은 값입니다.")) {
+           return false;
+       }
+       
        if(joinForm.birth3.value.length==0){
     	   alert("생년월일을 입력해 주세요")
     	   joinForm.birth3.focus();
     	   return false;
        }
-
+       
+       if(!check(format3,testbirth3,"유효하지 않은 값입니다.")) {
+           return false;
+       }
+       
 	   if(agree.checked==false){
 		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
 		return false;
@@ -205,11 +222,7 @@ function sample6_execDaumPostcode() {
 	   var birth3 = document.joinForm.birth3.value;
 	   var birth = birth1 + birth2 + birth3;
 	   document.getElementById("birth").value = birth;
-	   
-	   
 
-	  
-	   
 }
 
    function check(re, what, message) {
@@ -359,8 +372,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<input style="width:300px;" id="detailaddress" name="detailaddress" fw-filter="" fw-label="주소" fw-msg=""
 		class="inputTypeText" placeholder="" value="" type="text" />
 	        나머지주소 (선택입력가능)
-	 	</td>
-	 
+	 	</td> 
 	 </tr>
 		
 	<tr class="">
@@ -387,8 +399,6 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<input type="hidden" id="phone" name="phone"></input>		
 
 
-
-		
 		<tr>
 		<th scope="row">이메일 
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
