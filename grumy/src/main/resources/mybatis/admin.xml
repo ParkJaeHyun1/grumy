@@ -130,6 +130,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateState" parameterType="Map">
 		update orderitem
 		set state = #{state}
+		<choose>
+			<when test= 'state.equals("배송중")'>
+			and deliveryno = #{deliveryno}
+			</when>
+		</choose>
 		where orderno = #{orderno}
 	</update>
 	
