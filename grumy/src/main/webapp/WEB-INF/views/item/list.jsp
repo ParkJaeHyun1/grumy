@@ -146,12 +146,12 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 					<!-- //참고 -->
 				</ul>
 			</div>
-<%-- 			<c:if test="${not empty sessionScope.id && sessionScope.id == 'A' }"> --%>
+			<c:if test="${not empty sessionScope.id && sessionScope.grade == 'A' }"> 
 				<p align="right">
 						<button class="yg_btn_28 yg_btn3" style="float:rigth" onclick="location.href='${pageContext.request.contextPath}/item/create'">상품등록</button> &nbsp;
 				</p>
 				<br></br>
-<%-- 			</c:if> --%>
+</c:if> 
 			<ul class="prdList grid4">
 
 				<c:forEach var="dto" items="${list}">
