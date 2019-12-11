@@ -5,8 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.OrderMapper">
 
 
-	<select id="checkItemCount" parameterType="List" resultType="int">
-		select itemCount from itemOption
+	<select id="checkItemCount" parameterType="List"
+		resultType="int">
+		select itemCount,itemPrice,itemSalePrice 
+		from itemOption
 		where itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
@@ -14,5 +16,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</foreach>
 		order by itemOptionNo
 	</select>
-
 </mapper>

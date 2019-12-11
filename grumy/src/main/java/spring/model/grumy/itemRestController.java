@@ -65,18 +65,4 @@ public class itemRestController {
 
 	}
 	
-	@PutMapping("/item/check")
-	public ResponseEntity<String> check(@RequestBody ArrayList<OrderItemDTO>list) {
-		
-		ArrayList<Integer> itemCount = imapper.checkItemCount(list); 
-
-		if(itemCount.size()!=list.size())
-			return new ResponseEntity<String>("fail", HttpStatus.OK);
-
-		for(int i=0;i<itemCount.size();i++) {
-			if(list.get(i).getCount()>itemCount.get(i))
-				return new ResponseEntity<String>("fail", HttpStatus.OK);
-		}
-		return new ResponseEntity<String>("success", HttpStatus.OK);
-	}
 }

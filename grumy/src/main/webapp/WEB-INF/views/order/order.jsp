@@ -23,16 +23,17 @@
 	type="application/javascript"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-var totalPrice=0,pointPrice=0,couponPrice=0;
+var totalPrice=0,pointPrice=0,couponPrice =0;
 $(document).ready(function(){
 	setOrderInfoOfMember();
 	totalPrice = ${totalPrice+deliveryCharge};
  });
-var orderInfo() = {}; 
+var orderInfo = {orderItemList:[]};  
 <c:forEach items="${list}" var="item">
-	orderinfo[orderItemList].push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemPrice:{item.itemSalePrice}});
-</c:forEach>
-function checkOrderInfo(){
+	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemPrice:${item.itemSalePrice}});
+</c:forEach>  
+
+function checkOrderInfo(){          
 	if($('#rname').val().length==0){
 		alert('주문자 성명을 입력해주세요.');
 		$('#rname').focus();
@@ -126,10 +127,11 @@ function selectPostcode() {
     }).open();
 }
 function getOrderID(){
+	
     $.ajax({
         type : 'put',
         url : "../order/insert",
-        data :  JSON.stringify(orderInfo[]),
+        data :  JSON.stringify(orderInfo.orderItemList),
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
@@ -149,6 +151,8 @@ function getOrderID(){
 	return today;
 }
 function purchase(){
+	checkItemCount();
+	return;
 	if(!checkOrderInfo()){
 		return;
 	}
@@ -176,7 +180,7 @@ function purchase(){
 	         addr: '주소',
 	         phone: '${member.phone}'
 	      },
-	      order_id: getOrderID(), //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
+	      order_id: '1111111', //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
 	      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
 	      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
 	      extra: {
@@ -213,12 +217,12 @@ function purchase(){
 	   });
 }     
 
-function checkItemCount(){
-	var enable;
+function checkItemCount(){         
+	var enable;      
     $.ajax({
         type : 'put',
-        url : "../item/check",
-        data :  JSON.stringify(orderInfo[orderItemList]),
+        url : "../order/check",
+        data :  JSON.stringify(orderInfo.orderItemList),
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
@@ -233,7 +237,7 @@ function checkItemCount(){
         error : function(xhr, status, er) {
            alert('결제중 에러가 발생하였습니다.\n다시 시도하여 주세요.');
            enable= false;
-        }
+        }  
    });
     return enable;
 }
@@ -253,7 +257,7 @@ function setOrderInfoOfMember(){
 }
 function setOrderInfoOfNew(){
 	$('#rname').val('');
-	$('#rpostcode').val('');
+	$('#rpostcode').val('');        
 	$('#raddress').val('');
 	$('#rdetailaddress').val('');
 	$('#rphone1').val('010').attr('selected','selected');
@@ -272,7 +276,7 @@ $(function(){
 		}else{
 			$("#remail2").attr("readonly",true);
 			$('#remail2').val(this.value);
-		}
+		}     
 	})	
 })
 
@@ -307,11 +311,11 @@ function setPriceView(){
 
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-<link rel="canonical" href="http://www.slowand.com">
+<link rel="canonical" href="http://www.slowand.com">  
 	<link rel="alternate" href="http://www.m.slowand.com/">
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />     
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />      
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
@@ -325,7 +329,7 @@ function setPriceView(){
 					<link rel="canonical"
 						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
-						href="http://m.slowand.com/order/orderform.html" />      
+						href="http://m.slowand.com/order/orderform.html" />          
 					<meta property="og:url"
 						content="http://slowand.com/order/orderform.html" />
 					<meta property="og:title" content="슬로우앤드" />
@@ -356,7 +360,7 @@ function setPriceView(){
 		<!-- //상단카테고리 -->
 
 		<div id="container">
-			<div id="contents">
+			<div id="contents">     
 
 
 				<div class="titleArea">

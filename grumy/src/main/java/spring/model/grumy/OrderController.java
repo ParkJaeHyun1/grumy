@@ -56,7 +56,6 @@ public class OrderController {
 		if(totalPrice<50000)
 			deliveryCharge = 2500;
 		
-		
 		request.setAttribute("url", url);
 		request.setAttribute("member", member);
 		request.setAttribute("list", orderItemList);

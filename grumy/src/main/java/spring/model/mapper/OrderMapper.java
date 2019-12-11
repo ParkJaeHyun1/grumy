@@ -5,5 +5,5 @@ import spring.model.order.OrderItemDTO;
 
 
 public interface OrderMapper {
-
+	ArrayList<Integer> checkItemCount(ArrayList<OrderItemDTO> list);
 }
