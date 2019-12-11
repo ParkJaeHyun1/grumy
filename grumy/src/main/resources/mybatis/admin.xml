@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListMap" />
 	</resultMap>
 	<resultMap type="OrderItemDTO" id="orderItemDTOListMap">
-		<result property="itemCount" column="itemcount"/>
+		<result property="count" column="count"/>
 		<result property="state" column="state"/>	
 		<result property="itemPrice" column="itemPrice"/>	
 		<result property="itemTitle" column="itemTitle"/>	
@@ -64,8 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, id, odate, orderItemNo, itemcount, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
-		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.itemcount itemcount,  b.state state, 
+		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
+		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
 			(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
@@ -138,4 +138,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where orderno = #{orderno}
 	</update>
 	
+	
+	<select id="read" parameterType="String" resultType="MemberDTO">
+		select * from member
+		where id = #{id}
+	</select>
+
+	<select id="orderCount" parameterType="String" resultType="OrderItemDTO">
+		select state,count(*) as count
+		from
+		norder o,orderitem i
+		where id = #{id} and o.orderno=i.orderno and state2 = null
+		group by state
+		order by state
+	</select>
 </mapper>
