@@ -8,6 +8,8 @@ import spring.model.review.reviewDTO;
 public interface reviewMapper {
 	int delete(int reviewNo);
 	ArrayList<reviewDTO> list(Map map);
+	ArrayList<reviewDTO> listp();
+	ArrayList<reviewDTO> listr();
 	int update(reviewDTO dto);
 	int pcount();
 	int total(Map map);

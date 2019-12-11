@@ -156,6 +156,8 @@ public class ReviewController {
 		map.put("eno",eno);
 
 		ArrayList<reviewDTO> list = mapper.list(map);
+		ArrayList<reviewDTO> listp = mapper.listp();
+		ArrayList<reviewDTO> listr = mapper.listr();
 		System.out.println("씨발!:"+list.size());
 		
 		int total = mapper.total(map);
@@ -166,11 +168,11 @@ public class ReviewController {
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
-				
-				
 		
 		request.setAttribute("pcount", pcount);
 		request.setAttribute("list",list);
+		request.setAttribute("listp",listp);
+		request.setAttribute("listr",listr);
 		return "/review/list";
 	}
 }

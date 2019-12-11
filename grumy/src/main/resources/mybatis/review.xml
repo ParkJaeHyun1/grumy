@@ -7,9 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-<update id="update" parameterType="int">
+	<update id="update" parameterType="int">
 		update review
-		set content = #{content},
+		set content =
+		#{content},
 		picture = #{picture,jdbcType=VARCHAR},
 		height = #{height},
 		weight = #{weight},
@@ -19,50 +20,74 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where reviewNo = #{reviewNo}
 	</update>
 
-<delete id="delete" parameterType="int">
-delete from review
-where reviewNo = #{reviewNo}
-</delete>
+	<delete id="delete" parameterType="int">
+		delete from review
+		where reviewNo = #{reviewNo}
+	</delete>
 
-<insert id="create_reply" parameterType="reviewDTO">
-		insert into review(reviewNo,id,content,height,weight,mySize,itemOptionNo,ref,ansnum)
-		values((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),#{id},#{content},#{height},#{weight},#{mySize},#{itemOptionNo},
-#{ref},#{ansnum}+1)
+	<insert id="create_reply" parameterType="reviewDTO">
+		insert into
+		review(reviewNo,id,content,height,weight,mySize,itemOptionNo,ref,ansnum)
+		values((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM
+		review),#{id},#{content},#{height},#{weight},#{mySize},#{itemOptionNo},
+		#{ref},#{ansnum}+1)
 	</insert>
 
-<insert id="create" parameterType="reviewDTO">
-INSERT INTO review(reviewNo,id,content,height,weight,mySize,itemOptionNo,picture,star,ref) 
-VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM review),#{id},#{content},#{height},#{weight},#{mySize},#{itemOptionNo},
-#{picture, jdbcType=VARCHAR},#{star},(SELECT NVL(MAX(ref), 0) + 1 FROM
+	<insert id="create" parameterType="reviewDTO">
+		INSERT INTO
+		review(reviewNo,id,content,height,weight,mySize,itemOptionNo,picture,star,ref)
+		VALUES((SELECT NVL(MAX(reviewNo), 0) + 1 as no FROM
+		review),#{id},#{content},#{height},#{weight},#{mySize},#{itemOptionNo},
+		#{picture, jdbcType=VARCHAR},#{star},(SELECT NVL(MAX(ref), 0) + 1 FROM
 		review))
-</insert>
+	</insert>
 
 
 
 	<select id="list" resultType="reviewDTO">
-		select reviewNo, id, content, picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,ansnum
+		select reviewNo, id, content,
+		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,ansnum
 		from(
-		select reviewNo, id,r.content,r.picture,i.image as itemPicture,i.title as itemTitle,height,weight,mySize,star,rownum rnum,itemColor,itemSize,i.itemNo,ansnum
-		from item i, review r, itemOption o
-		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo
-		
+		select reviewNo, id,r.content,r.picture,i.image as
+		itemPicture,i.title as itemTitle,height,weight,mySize,star,rownum
+		rnum,itemColor,itemSize,i.itemNo,ansnum
+		from item i, review r,
+		itemOption o
+		where r.itemOptionNo = o.itemOptionNo and o.itemNo =
+		i.itemNo
+
 		)
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
-		and ansnum=0
+<!-- 		and ansnum=0 -->
 		ORDER BY reviewNo desc
 	</select>
-
+	
+	<select id="listp" resultType="reviewDTO">
+		select r.picture picture
+		from item i, review r, itemOption o
+		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo and picture
+		is not null
+	</select>
+	
+	<select id="listr" resultType="reviewDTO">
+		select content
+		from review
+		where ansnum=1 
+	</select>
+	
 	
 
 	<select id="read" parameterType="int" resultType="reviewDTO">
-		select reviewNo, id,content,picture,height,weight,mySize,star
+		select
+		reviewNo, id,content,picture,height,weight,mySize,star
 		from review
 		where reviewNo = #{reviewNo}
 	</select>
 
 	<select id="pcount" resultType="int">
 		select count(*) as pcount
-		from review
+		from
+		review
 		where picture is not null
 	</select>
 
