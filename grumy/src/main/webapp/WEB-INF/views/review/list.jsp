@@ -52,7 +52,7 @@ span.star, span.camera, .sprite_comment {
 </style>
 <script type="text/javascript" async=""
    src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
-<script async="" src="//www.google-analytics.com/analytics.js"></script>
+<script  src="//www.google-analytics.com/analytics.js"></script>
 <script>
  
     function popup(reviewNo){
@@ -61,15 +61,11 @@ span.star, span.camera, .sprite_comment {
           x.style.display = "block";
          } else {
           x.style.display = "none";
-           }
+        }
     }
-    function popup2(reviewNo){
+    function popup2(){
        var x = document.getElementById("myDIV");
-         if (x.style.display === "none") {
-            x.style.display = "none";
-         } else {
-          x.style.display = "block";
-         }
+       x.style.display = "none";
     }
    
    function fimg(id, w, h) {
@@ -168,14 +164,12 @@ span.star, span.camera, .sprite_comment {
                   <c:forEach var="dto" items="${list}">
                      <c:choose>
                         <c:when test="${empty dto.picture}">
-                           <img src="${pageContext.request.contextPath}/images/noimg.gif"
-                              onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63" style="margin: 6px">
                         </c:when>
                         <c:otherwise>
                            <img
-                                 src="${pageContext.request.contextPath}/storage/${dto.picture}"
-                                 onclick="javascript:popup(${dto.reviewNo})" alt="" width="63" height="63" style="margin: 6px">
-                           
+                              src="${pageContext.request.contextPath}/storage/${dto.picture}"
+                              onclick="javascript:popup(${dto.reviewNo})" width="63" 
+                              height="63" style="margin: 6px">
                         </c:otherwise>
 
                      </c:choose>
@@ -227,7 +221,8 @@ span.star, span.camera, .sprite_comment {
                         <li id="review_${dto.reviewNo}"
                            class="review reviews_index_list_review "><a
                            class="reviews_index_list_review__product_image  js-link-iframe"
-                           href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"> <!-- 여기야 --> <img
+                           href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+                              <!-- 여기야 --> <img
                               src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
                               style="background-image: url(&quot;//${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}&quot;); background-size: cover; background-position: center center; opacity: 1;"
                               class="" width="90" height="90">
@@ -320,35 +315,32 @@ span.star, span.camera, .sprite_comment {
                                              onclick="javascript:delete1(${dto.reviewNo})">DELETE</button>
                                        </p>
                                     </div>
+                                    <div
+                                       class="comments js-comments-container js-ie-opacity-fix">
+                                       <div class="comments__arrow_top"></div>
+                                       <ul class="comments__list">
 
-                                    
-                                       <div
-                                          class="comments js-comments-container js-ie-opacity-fix">
-                                          <div class="comments__arrow_top"></div>
-                                          <ul class="comments__list">
-
-                                             <li class="comment" id="comment_257958">
-                                                <div class="comment__inner">
-                                                   <div class="comment__lpane" title="slowandyeong">slowand</div>
-                                                   <div class="comment__rpane">
-                                                      <div class="comment__error_message"></div>
-                                                      <div class="comment__message">
-                                                         <span class="comment__message_text">${dto.id}님
-                                                            ${dto.content }</span>
-                                                      </div>
+                                          <li class="comment" id="comment_257958">
+                                             <div class="comment__inner">
+                                                <div class="comment__lpane" title="slowandyeong">slowand</div>
+                                                <div class="comment__rpane">
+                                                   <div class="comment__error_message"></div>
+                                                   <div class="comment__message">
+                                                      <span class="comment__message_text">${dto.id}님
+                                                         ${dto.content }</span>
                                                    </div>
                                                 </div>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                 
-                                    
+                                             </div>
+                                          </li>
+                                       </ul>
+                                    </div>
                                  </div>
                               </div>
                            </div>
                            <div class="reviews_index_list_review__rcontents">
                               <div class="reviews_index_list_review__info_container">
-                                 <span class="reviews_index_list_review__name"><script type="text/javascript">
+                                 <span class="reviews_index_list_review__name"><script
+                                       type="text/javascript">
                               var len = ('${dto.id}'.length);
                               var name = '${dto.id}'.replace(
                                     '${dto.id}'.substr(4,
@@ -372,143 +364,136 @@ span.star, span.camera, .sprite_comment {
                                  </c:choose>
                               </div>
                            </div></li>
-                           <!-- 이미지팝업 -->
-                     <div class="show_photo_review fullscreen_popup review fullscreen_popup--loaded" style="display:none; position: absolute; z-index:1;" 
- tabindex="-1" id="myDIV">
-  <div class="fullscreen_popup__background ie_png_fix"></div>
-  <div id="photo-popup-container" class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-    <div id="photo-popup-content" class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content" style="width: 724px; margin-top: 70px;">
-      <div class="show_photo_review__photos_container">
-        
-          <div data-width="1024" data-height="1024" data-index="1" data-count="2" id="photo-container-1" class="show_photo_review__photo_container selected js-ie-opacity-fix" style="padding: 0px; max-height: 762px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image1/898e962774c75f32.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="1024" data-height="1024" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
-" style="max-width: 1024px;">
-          </div>
-        
-          <div data-width="618" data-height="618" data-index="2" data-count="2" id="photo-container-2" class="show_photo_review__photo_container  js-ie-opacity-fix" style="max-height: 762px; overflow: hidden;">
-            <img src="//assets5.cre.ma/p/slowand-com/reviews/00/00/09/67/72/image2/38a4208419271f81.jpg" class="js-photo-container-review-image-zoom show_photo_review__photo_container_image" data-width="618" data-height="618" alt="이미 후기가 많아서 후기가 더필요할까 싶지만 1000개돌파 위해 써봐요ㅎ
-">
-          </div>
-        
-        </div>
-      <div id="review-contents-container" class="show_photo_review__review_contents_container js-ie-opacity-fix">
-        <div id="info-container" class="show_photo_review__info_container">
-          <div class="show_photo_review__info ">
-            <div class="show_photo_review__product">
-              <div class="show_photo_review__product_thumbnail">
-                
-                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">
-                    <img src="//assets5.cre.ma/p/slowand-com/products/00/00/00/25/71/image/extra_small_c217cf755d037b07.jpg" alt="[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" width="70" height="70" class="show_photo_review__link_to_product">
-                  </a>
-                
-              </div>
-              <div class="show_photo_review__product_info">
-                
-                <div class="show_photo_review__product_name">
-                  <a class="show_photo_review__link_to_product js-link-iframe" data-url="http://www.slowand.com/product/detail.html?cate_no=1&amp;product_no=2065">[1만 5천장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color</a>
-                </div>
-                <div class="show_photo_review__product_score">
-                  
-                </div>
-                <div class="show_photo_review__user_name">${dto.id }</div>
-              </div>
-            </div>
-            <div class="
-    
-      show_photo_review__translator
-    
-    hidden
-  ">
-  <button class="translator__description js-translation-button ">번역하기<span class="translator__button"></span></button>
-</div>
+                        <!-- 이미지팝업 -->
+                        <div
+                           class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
+                           style="display: none; position: absolute; z-index: 1;"
+                           tabindex="-1" id="myDIV">
+                           <div class="fullscreen_popup__background ie_png_fix"></div>
+                           <div id="photo-popup-container"
+                              class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+                              <div id="photo-popup-content"
+                                 class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
+                                 style="width: 724px; margin-top: 70px;">
+                                 <div class="show_photo_review__photos_container">
+                                    <div data-width="1024" data-height="1024" data-index="1"
+                                       data-count="2" id="photo-container-1"
+                                       class="show_photo_review__photo_container selected js-ie-opacity-fix"
+                                       style="padding: 0px; max-height: 762px; overflow: hidden;">
+                                       <img
+                                          src="${pageContext.request.contextPath}/storage/${dto.picture}"
+                                          class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
+                                          data-width="1024" data-height="1024"
+                                          style="max-width: 1024px; height: 724px; weight: 724px;">
+                                    </div>
+                                 </div>
 
-           
-          </div>
-        </div>
-        <div id="message-container" class="js-ie-opacity-fix show_photo_review__message" style="height: 556px;">
-          <div class="show_photo_review__message_contents">
-            
-  <div class="review_options">
-    
-      <div class="review_option">
-        <div class="review_option__title">키</div>
-        <div class="review_option__content">${dto.height }</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">몸무게</div>
-        <div class="review_option__content">${dto.weight }</div>
-      </div>
-    
-      <div class="review_option">
-        <div class="review_option__title">평소사이즈</div>
-        <div class="review_option__content">${dto.mySize }</div>
-      </div>
-    
-    
-      <div class="review_option">
-        <div class="review_option__title">선택한 옵션</div>
-        <div class="review_option__content">
-          
-            <span class="review_option__product_option">
-              <span class="review_option__product_option_key">COLOR:</span>
-              <span class="review_option__product_option_value">스킨핑크</span>
-            </span>
-          
-        </div>
-      </div>
-    
-  </div>
+                                 <div id="review-contents-container"
+                                    class="show_photo_review__review_contents_container js-ie-opacity-fix">
+                                    <div id="info-container"
+                                       class="show_photo_review__info_container">
+                                       <div class="show_photo_review__info ">
+                                          <div class="show_photo_review__product">
+                                             <div class="show_photo_review__product_thumbnail">
+                                                <a
+                                                   class="show_photo_review__link_to_product js-link-iframe"
+                                                   href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+                                                   <img
+                                                   src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+                                                   width="70" height="70"
+                                                   class="show_photo_review__link_to_product">
+                                                </a>
+                                             </div>
+                                             <div class="show_photo_review__product_info">
 
+                                                <div class="show_photo_review__product_name">
+                                                   <a
+                                                      class="show_photo_review__link_to_product js-link-iframe"
+                                                      href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+                                                </div>
+                                                <div class="show_photo_review__product_score"></div>
+                                                <div class="show_photo_review__user_name">${dto.id }</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div id="message-container"
+                                       class="js-ie-opacity-fix show_photo_review__message"
+                                       style="height: 556px;">
+                                       <div class="show_photo_review__message_contents">
 
-            <div class="show_photo_review__all_messages js-ie-opacity-fix">
-              <div class="show_photo_review__review_message">
-               ${dto.content }      </div>
-              
-            </div>
-            <div class="show_photo_review__feedback_container">
-             
+                                          <div class="review_options">
 
-              
-  <div class="comments js-comments-container js-ie-opacity-fix">
-    <div class="comments__arrow_top"></div>
-    <ul class="comments__list">
-      
-        <li class="comment" id="comment_95269">
-  <div class="comment__inner">
-    <div class="comment__lpane" title="슬로우앤드">슬로우앤드</div>
-    <div class="comment__rpane">
-      <div class="comment__error_message"></div>
-      <div class="comment__message">
-        <span class="comment__message_text">최혜진님 ! , 슬로우앤드에 후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원 지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
-        
-      </div>
-    </div>
-    
-  </div>
-</li>
+                                             <div class="review_option">
+                                                <div class="review_option__title">키</div>
+                                                <div class="review_option__content">${dto.height }</div>
+                                             </div>
 
-      
-    </ul>
-    
-  </div>
+                                             <div class="review_option">
+                                                <div class="review_option__title">몸무게</div>
+                                                <div class="review_option__content">${dto.weight }</div>
+                                             </div>
+
+                                             <div class="review_option">
+                                                <div class="review_option__title">평소사이즈</div>
+                                                <div class="review_option__content">${dto.mySize }</div>
+                                             </div>
+                                             <div class="review_option">
+                                                <div class="review_option__title">선택한 옵션</div>
+                                                <div class="review_option__content">
+
+                                                   <span class="review_option__product_option"> <span
+                                                      class="review_option__product_option_key">COLOR:</span>
+                                                      <span class="review_option__product_option_value">스킨핑크</span>
+                                                   </span>
+
+                                                </div>
+                                             </div>
+
+                                          </div>
 
 
-            </div>
-          </div>
-        </div>
-      </div>
+                                          <div
+                                             class="show_photo_review__all_messages js-ie-opacity-fix">
+                                             <div class="show_photo_review__review_message">
+                                                ${dto.content }</div>
+
+                                          </div>
+                                          <div class="show_photo_review__feedback_container">
+                                             <div
+                                                class="comments js-comments-container js-ie-opacity-fix">
+                                                <div class="comments__arrow_top"></div>
+                                                <ul class="comments__list">
+                                                   <li class="comment" id="comment_95269">
+                                                      <div class="comment__inner">
+                                                         <div class="comment__lpane" title="슬로우앤드">슬로우앤드</div>
+                                                         <div class="comment__rpane">
+                                                            <div class="comment__error_message"></div>
+                                                            <div class="comment__message">
+                                                               <span class="comment__message_text">${dto.id }님
+                                                                  ! , 슬로우앤드에 후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원
+                                                                  지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="js-ie-opacity-fix fullscreen_popup__close"
+                              style="top: 55px; right: 290px;"
+                              onclick="javascript:popup2(${dto.reviewNo})">
+                              <div class="sprites-circle-close-button ie_png_fix">
+                              </div>
+                           </div>
 
 
-    </div>
-  </div>
-  
-  <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 55px; right:210px;">
-    <div class="sprites-circle-close-button ie_png_fix"></div>
-  </div>
-
-  
-</div>
+                        </div>
                      </c:forEach>
                   </ul>
                </div>
@@ -561,11 +546,4 @@ span.star, span.camera, .sprite_comment {
       ${paging }
    </div>
    <hr class="layout">
-
-
-
-
-
-
-
-    </div>
+</div>
