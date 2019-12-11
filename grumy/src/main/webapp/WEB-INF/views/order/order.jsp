@@ -270,7 +270,6 @@ function deleteOrder(){
    });
 }
 function updateOrder(){         
-    
     $.ajax({
         type : 'put',
         url : "../order/update",
@@ -280,7 +279,7 @@ function updateOrder(){
         success : function(result, status, xhr) {
         },
         error : function(xhr, status, er) {
-
+			alert('에러:'+status);
         }  
    });
 }

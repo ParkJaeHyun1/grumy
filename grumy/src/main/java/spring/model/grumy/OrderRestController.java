@@ -51,4 +51,10 @@ public class OrderRestController {
 		int cnt = orderMapper.delete(order.getOrderNo());
 		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	@PutMapping("/order/update")
+	public ResponseEntity<String> update(@RequestBody OrderDTO order) {
+		
+		int cnt = orderMapper.update(order);
+		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
