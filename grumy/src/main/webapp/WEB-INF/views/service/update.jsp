@@ -12,7 +12,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">배송 문의 수정</font>
+						<font color="#555555">고객센터</font>
 					</h2>
 
 					<!--h3>공지사항입니다.</h3-->

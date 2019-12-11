@@ -13,7 +13,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title">
 					<h2>
-						<font color="#555555">배송 문의</font>
+						<font color="#555555">고객센터</font>
 					</h2>
 					<br><br>
 					<!--h3>배송문의 Q&A 입니다 :)</h3-->

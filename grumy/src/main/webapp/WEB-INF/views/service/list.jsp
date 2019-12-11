@@ -51,7 +51,8 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">배송 문의</font>
+						<font color="#555555">고객센터</font>
+						<button type="button" onclick="location.href='orderlist'">ORDER LIST</button>
 					</h2>
 					<br> <br>
 

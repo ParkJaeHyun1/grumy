@@ -12,7 +12,7 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">배송 문의</font>
+						<font color="#555555">고객센터</font>
 					</h2>
 					<!--h3>배송문의 Q&A 입니다 :)</h3-->
 				</div>
@@ -56,10 +56,12 @@
 							<tr>
 								<th>CATEGORY</th>
 								<td>
-										<select id="category" name="category">
-											<option>배송 문의</option>
-											<option>배송 전 변경/취소</option>
-											<option>배송 후 교환/반품</option>
+										<select id="category" name="category" style=width:300px>
+											<option>변경</option>
+											<option>취소</option>
+											<option>교환</option>
+											<option>반품</option>
+											<option>기타</option>
 										</select>
 								</td>
 							</tr>

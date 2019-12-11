@@ -504,8 +504,7 @@ span.star, span.camera, .sprite_comment {
   </div>
   
   <div class="js-ie-opacity-fix fullscreen_popup__close" style="top: 55px; right:210px;">
-    <div class="sprites-circle-close-button ie_png_fix"><img src="${pageContext.request.contextPath}/images/colse.png" 
-    onclick="javascript:popup2(${dto.reviewNo})"></div>
+    <div class="sprites-circle-close-button ie_png_fix"></div>
   </div>
 
   

@@ -28,6 +28,12 @@ public class DeliveryController {
 	@Autowired
 	deliveryMapper mapper;
 	
+	@GetMapping("/delivery/orderlist")
+	public String orderlist() {
+		
+		return "/delivery/orderlist";
+	}
+	
 	@PostMapping("/delivery/create_reply")
 	public String create_reply(DeliveryDTO dto) {
 		mapper.create_reply(dto);

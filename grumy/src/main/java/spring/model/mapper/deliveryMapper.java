@@ -1,9 +1,11 @@
 package spring.model.mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import spring.model.delivery.DeliveryDTO;
+import spring.model.order.OrderDTO;
 
 public interface deliveryMapper {
 	List<DeliveryDTO> list(Map map);
@@ -16,5 +18,6 @@ public interface deliveryMapper {
 	int create_reply(DeliveryDTO dto);
 	String getname(String id);
 	List<DeliveryDTO> list_();
+
 
 }

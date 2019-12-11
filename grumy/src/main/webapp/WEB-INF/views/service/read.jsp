@@ -3,12 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-   function read(no) {
-      var url = "read";
-      url += "?no=" + no;
 
-      location.href = url;
-   }
    function create_reply(no) {
       var url = "create_reply";
       url += "?no=" + no;
@@ -26,7 +21,7 @@
       if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
          var url = "delete";
-         url += "?ref=" + ref;
+         url += "?ref="+ref;
 
          location.href = url;
 
@@ -37,6 +32,7 @@
       }
 
    }
+   
 </script>
 
 <div id="container">
@@ -48,7 +44,7 @@
             class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
             <div class="title" style="text-align: center">
                <h2>
-                  <font color="#555555">배송 문의</font>
+                  <font color="#555555">고객센터</font>
                </h2>
 
                <!--h3>공지사항입니다.</h3-->
@@ -80,7 +76,7 @@
 
                         </ul>
                         <div class="detail">${dto.content }</div>
-                                              
+                                                 
                      </td>
                   </tr>
                   <tr>
@@ -88,15 +84,19 @@
                            <span class="gLeft">
                             <a href="list"   class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
                            </span>
-                           <c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
-                            <span class="gRight">    
+                            <span class="gRight">
+                            <c:if test="${sessionScope.grade=='A' }">
+                            <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+                            </c:if>
                             <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
                             <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
                            </span>
-                           </c:if>
+
                         </div></td>
                      
                   </tr>
+                  
+
                </tbody>
             </table>
 

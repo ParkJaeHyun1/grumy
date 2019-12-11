@@ -12,7 +12,7 @@
             class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
             <div class="title" style="text-align: center">
                <h2>
-                  <font color="#555555">배송 문의</font>
+                  <font color="#555555">고객센터</font>
                </h2>
                <!--h3>배송문의 Q&A 입니다 :)</h3-->
             </div>
@@ -53,7 +53,7 @@
                   </tbody>
                   <tbody>
                      <tr class="">
-                        <th scope="row">SECRET</th>
+                        <th scope="row">SECRET${name }</th>
                         <td><input id="secure0" name="secure" fw-filter="isFill"
                            fw-label="비밀글설정" fw-msg="" value="F" type="radio" onclick="return(false);"><label
                            for="secure0">공개글</label> <input id="secure1" name="secure"
