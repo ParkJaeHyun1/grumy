@@ -16,6 +16,5 @@ where id = #{id} and o.orderno=i.orderno and state2 = null
 group by state
 order by state
 </select>
-<select id="list" parameterType="map" resultType="order"></select>
 
 </mapper>
