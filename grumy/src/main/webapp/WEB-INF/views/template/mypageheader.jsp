@@ -78,7 +78,7 @@
 				<a href="/myshop/deposits/historyList.html">예치금</a>
 			</div>
 			<div class="shopMain board">
-				<a href="/myshop/board_list.html">내가 쓴 게시글</a>
+				<a href="${pageContext.request.contextPath }/mypage/mylist">내가 쓴 게시글</a>
 			</div>
 			<div class="shopMain address">
 				<a href="/myshop/addr/list.html">배송 주소록 관리</a>

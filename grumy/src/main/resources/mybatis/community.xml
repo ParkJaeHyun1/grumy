@@ -42,26 +42,26 @@ order by ref desc
 </select>
 
 	<select id="list" parameterType="Map" resultType="BoardDTO">
-		select board_no,writer,subject,wdate,itemPicture,itemTitle,itemNo,indent,lev
+		select board_no,writer,subject,wdate,itemPicture,itemTitle,itemNo,indent,lev,content
 		from (
 				select b.board_no board_no,b.writer writer,b.subject subject,to_char(b.wdate,'YYYY-MM-DD HH24:MI:SS') wdate,i.itemNo itemno,
-				i.image itemPicture,i.title itemTitle, b.indent indent,b.lev lev, rownum r
+				i.image itemPicture,i.title itemTitle, b.indent indent,b.lev lev,b.content content, rownum r
 				from board b left outer join item i
 				on i.itemno = b.itemno
 				where 
 					<choose>
 						<when test="col == 'subject'">
-						subject like '%'||#{word}||'%'
+						b.subject like '%'||#{word}||'%'
 						and b.lev = 'A'
 						and b.type = '상품'
 						</when>
 						<when test="col == 'content'">
-						content like '%'||#{word}||'%'
+						b.content like '%'||#{word}||'%'
 						and b.lev = 'A'
 						and b.type = '상품'
 						</when>
 						<when test="col == 'writer'">
-						writer like '%'||#{word}||'%'
+						b.writer like '%'||#{word}||'%'
 						and b.lev = 'A'
 						and b.type = '상품'
 						</when>

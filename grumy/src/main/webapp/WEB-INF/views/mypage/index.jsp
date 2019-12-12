@@ -76,7 +76,7 @@ function orderlist(state){
 				</ul>
 				<ul class="cs">
 					<li><span class="icoDot"></span> <strong>취소 : </strong> <a
-						href="/myshop/order/list.html?order_status=order_cancel"
+						href="javascript:orderlist('취소')"
 						class="count"><span
 							id="xans_myshop_orderstate_order_cancel_count"><c:choose>
 																					<c:when test="${not empty map.get('취소') }">
@@ -86,7 +86,7 @@ function orderlist(state){
 																					0</c:otherwise>
 																				</c:choose></span></a></li>
 					<li><span class="icoDot"></span> <strong>교환 : </strong> <a
-						href="/myshop/order/list.html?order_status=order_exchange"
+						href="javascript:orderlist('교환')"
 						class="count"><span
 							id="xans_myshop_orderstate_order_exchange_count"><c:choose>
 																					<c:when test="${not empty map.get('교환') }">
@@ -96,7 +96,7 @@ function orderlist(state){
 																					0</c:otherwise>
 																				</c:choose></span></a></li>
 					<li><span class="icoDot"></span> <strong>반품 : </strong> <a
-						href="/myshop/order/list.html?order_status=order_return"
+						href="javascript:orderlist('반품')"
 						class="count"><span
 							id="xans_myshop_orderstate_order_return_count"><c:choose>
 																					<c:when test="${not empty map.get('반품') }">

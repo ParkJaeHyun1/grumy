@@ -109,11 +109,11 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,inde
 
 
 <select id="list" parameterType="Map" resultType="BoardDTO">
-select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent,category
+select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,content,indent,category
 	from (
-			select board_no,subject,writer,wdate,indent,category,rownum r
+			select board_no,subject,writer,wdate,content,indent,category,rownum r
 			from (
-				select board_no,subject,writer,wdate,category,indent
+				select board_no,subject,writer,wdate,content,category,indent
 				from board
 				<where>
 					<choose>
