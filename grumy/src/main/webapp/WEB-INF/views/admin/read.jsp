@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 
+
 </head>
 <body>
 	<div id="container">
@@ -220,6 +221,7 @@
 									<tr class="xans-record-">
 										<td class="thumb"><a
 											href="/product/detail.html?product_no=3643&amp;cate_no=26"><img
+												style="width:80px; height:106px;"
 												src="//www.slowand.com/web/product/tiny/20191126/80f67cff2dcdbd9ff5580851c855e538.jpg"
 												alt=""
 												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"></a></td>
@@ -272,116 +274,7 @@
 											<p class="">-</p>
 										</td>
 									</tr>
-									<tr class="xans-record-">
-										<td class="thumb"><a
-											href="/product/detail.html?product_no=3585&amp;cate_no=26"><img
-												src="//www.slowand.com/web/product/tiny/201911/1e906989ca1d4bda86912b9b0988fd21.gif"
-												alt=""
-												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"></a></td>
-										<td class="left"><a
-											href="/product/detail.html?product_no=3585&amp;cate_no=26"><strong>#SLOWMADE.
-													네프 윈터생지 데님팬츠 (기모) - 숏/롱</strong></a>
-											<div class="option ">[옵션: 인디고블루/롱M]</div>
-											<p class="gBlank5 displaynone">무이자할부 상품</p></td>
-										<td>1</td>
-										<td class="right">
-											<div class="">
-												<strong>27,900원</strong>
-												<div class="displaynone"></div>
-											</div>
-											<div class="displaynone">
-												<strong>27,900원</strong>
-												<div class="displaynone"></div>
-											</div>
-										</td>
-										<td><div class="txtInfo">
-												기본배송
-												<div class="displaynone">(해외배송가능)</div>
-											</div></td>
-										<td>
-											<p class="txtEm">배송완료</p>
-											<p class="">
-												<a
-													href="/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3585&amp;opt_id=000E&amp;is_second_delivery=F"
-													target="_blank">우체국택배</a>
-											</p>
-											<p class="">
-												<a href="#none" class="line"
-													onclick="window.open('/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3585&amp;opt_id=000E&amp;is_second_delivery=F', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[6066250534047]</a>
-											</p> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('C','20191121-0030184|3585|000E|2824515','', 'F')"
-											alt="취소철회">취소철회</a> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('E','20191121-0030184|3585|000E|2824515','', 'F')"
-											alt="교환철회">교환철회</a> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('R','20191121-0030184|3585|000E|2824515','', 'F')"
-											alt="반품철회">반품철회</a>
-										</td>
-										<td>
-											<p class="displaynone">
-												<a href="#none" class="line"
-													onclick="OrderLayer.getDetailInfo('?product_no=3585&amp;order_id=20191121-0030184&amp;ord_item_code=20191121-0030184-02');">[상세정보]</a>
-											</p>
-											<p class="">-</p>
-										</td>
-									</tr>
-									<tr class="xans-record-">
-										<td class="thumb"><a
-											href="/product/detail.html?product_no=2299&amp;cate_no=25"><img
-												src="//www.slowand.com/web/product/tiny/201811/3f5ad8b3537bc35298617fab78fd5ecf.jpg"
-												alt=""
-												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"></a></td>
-										<td class="left"><a
-											href="/product/detail.html?product_no=2299&amp;cate_no=25"><strong>[4천장돌파]
-													루즈핏 케이블니트 - 4 color</strong></a>
-											<div class="option ">[옵션: 아이보리(모델착용)]</div>
-											<p class="gBlank5 displaynone">무이자할부 상품</p></td>
-										<td>1</td>
-										<td class="right">
-											<div class="">
-												<strong>29,000원</strong>
-												<div class="displaynone"></div>
-											</div>
-											<div class="displaynone">
-												<strong>29,000원</strong>
-												<div class="displaynone"></div>
-											</div>
-										</td>
-										<td><div class="txtInfo">
-												기본배송
-												<div class="displaynone">(해외배송가능)</div>
-											</div></td>
-										<td>
-											<p class="txtEm">배송완료</p>
-											<p class="">
-												<a
-													href="/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=2299&amp;opt_id=000G&amp;is_second_delivery=F"
-													target="_blank">우체국택배</a>
-											</p>
-											<p class="">
-												<a href="#none" class="line"
-													onclick="window.open('/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=2299&amp;opt_id=000G&amp;is_second_delivery=F', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[6066250534047]</a>
-											</p> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('C','20191121-0030184|2299|000G|2824516','', 'F')"
-											alt="취소철회">취소철회</a> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('E','20191121-0030184|2299|000G|2824516','', 'F')"
-											alt="교환철회">교환철회</a> <a href="#none"
-											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('R','20191121-0030184|2299|000G|2824516','', 'F')"
-											alt="반품철회">반품철회</a>
-										</td>
-										<td>
-											<p class="displaynone">
-												<a href="#none" class="line"
-													onclick="OrderLayer.getDetailInfo('?product_no=2299&amp;order_id=20191121-0030184&amp;ord_item_code=20191121-0030184-03');">[상세정보]</a>
-											</p>
-											<p class="">-</p>
-										</td>
-									</tr>
+									
 								</tbody>
 							</table>
 						</div>
