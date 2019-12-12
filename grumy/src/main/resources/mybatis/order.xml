@@ -7,10 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="checkItem" parameterType="List"
 		resultType="OrderItemDTO">
-		select itemOptionNo,itemCount,price as itemPrice,salePrice as
+		select itemOptionNo,itemCount as count,price as itemPrice,salePrice as
 		itemSalePrice
 		from itemOption o, item i
-		where o.itemNo = i.itemNo and itemOptionNo in
+		where o.itemNo = i.itemNo and
+		itemOptionNo in
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
 			#{item.itemOptionNo,jdbcType=INTEGER}
@@ -20,14 +21,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insert" parameterType="OrderDTO"
 		useGeneratedKeys="true" keyProperty="orderNo" keyColumn="orderNo">
-		insert into norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state)
-	values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
-	#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},#{imagineDate,jdbcType=VARCHAR},#{state})
+		insert into
+		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state)
+		values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
+		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),#{state})
 	</insert>
-	
+	<insert id="insertItem" parameterType="OrderItemDTO">
+		insert into
+		orderItem(orderitemNo,orderNo,itemOptionNo,count,deliveryNo,state,state2,itemPrice)
+		values((SELECT NVL(MAX(orderItemNo), 0) + 1 as no FROM orderItem),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
+		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),#{state})
+	</insert>
 	<delete id="delete" parameterType="String">
 		delete from norder
-		where orderNo = #{orderNo}
+		where
+		orderNo = #{orderNo}
 	</delete>
-
+	<update id="update" parameterType="OrderDTO">
+		update norder
+		set rname = #{rname},
+		postcode = #{postcode},
+		address = #{address},
+		detailaddress = #{detailaddress},
+		rphone = #{rphone},
+		remail = #{remail,jdbcType=VARCHAR},
+		rmsg = #{rmsg,jdbcType=VARCHAR},
+		paymenttype = #{paymentType,jdbcType=VARCHAR},
+		imagineaccount = #{imagineAccount,jdbcType=VARCHAR},
+		imaginebank = #{imagineBank,jdbcType=VARCHAR},
+		imaginedate = #{imagineDate,jdbcType=VARCHAR},
+		state = #{state,jdbcType=VARCHAR}
+		where orderno =	#{orderNo}
+	</update>
 </mapper>

@@ -33,15 +33,15 @@ public class OrderRestController {
 		for(OrderItemDTO orderItem: orderItemList)
 			map.put(orderItem.getItemOptionNo(), orderItem);
 			
-		for(OrderItemDTO orderItem : list) {
-			if(orderItem.getCount()>map.get(orderItem.getItemOptionNo()).getCount() || orderItem.getItemPrice() != map.get(orderItem.getItemOptionNo()).getItemPrice() || orderItem.getItemSalePrice()!=map.get(orderItem.getItemOptionNo()).getItemSalePrice())
+		for(OrderItemDTO orderItem : list) 
+			if(orderItem.getCount()>map.get(orderItem.getItemOptionNo()).getCount() || orderItem.getItemPrice() != map.get(orderItem.getItemOptionNo()).getItemPrice() || orderItem.getItemSalePrice()!=map.get(orderItem.getItemOptionNo()).getItemSalePrice()) {
 				return new ResponseEntity<String>("fail", HttpStatus.OK);
+
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	@PutMapping("/order/insert")
 	public ResponseEntity<String> insert(@RequestBody OrderDTO order) {
-		
 		int cnt = orderMapper.insert(order);
 		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -55,6 +55,6 @@ public class OrderRestController {
 	public ResponseEntity<String> update(@RequestBody OrderDTO order) {
 		
 		int cnt = orderMapper.update(order);
-		return cnt>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

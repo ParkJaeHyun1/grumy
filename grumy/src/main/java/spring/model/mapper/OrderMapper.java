@@ -11,4 +11,5 @@ public interface OrderMapper {
 	int insert(OrderDTO order);
 	int delete(String orderNo);
 	int update(OrderDTO order);
+	void insertItem(OrderItemDTO dto);
 }

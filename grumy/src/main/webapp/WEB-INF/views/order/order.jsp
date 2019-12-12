@@ -30,8 +30,8 @@ $(document).ready(function(){
  });
 var orderInfo = {orderItemList:[]};  
 <c:forEach items="${list}" var="item">
-	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemPrice:${item.itemSalePrice}});
-</c:forEach>   
+	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemSalePrice:${item.itemSalePrice}});
+</c:forEach>      
 
 function checkOrderInfo(){          
 	if($('#rname').val().length==0){
@@ -65,7 +65,7 @@ function checkOrderInfo(){
 		$('#rphone3').focus();
 		return false;
 	}else if($('#remail1').val().length==0){
-		alert('이메일을 입력해주세요.');
+		alert('이메일을 입력해주세요.');      
 		$('#remail1').focus();
 		return false;
 	}else if($('#remail2').val().length==0){
@@ -164,6 +164,7 @@ function purchase(){
 		return;
 	
 	setOrderInfo();
+
 	BootPay.request({
 	      price: '1000', //실제 결제되는 가격         
 	      application_id: "5dd76d0802f57e0021e217c1",
@@ -206,18 +207,19 @@ function purchase(){
 	      deleteOrder();
 	      console.log(data);
 	   }).ready(function (data) {
-	      alert('가상계좌 번호 발급:'+data);
 	      orderInfo.imagineAccount=data.account;
 	      orderInfo.imagineBank=data.bankname;
 	      orderInfo.imagineDate=data.expireddate;
+	      orderInfo.state = '입금대기';
+	      updateOrder();
 	      console.log(data);
 	   }).confirm(function (data) {
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
 	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
 	      console.log(data);
 	     
-	      var enable = checkItem(); // 재고 수량 관리 로직 혹은 다른 처리
-	      if (enable) {
+	      orderInfo.state = '배송준비';
+	      if (checkItem() && updateOrder()) {
 	         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
 	      } else {
 	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
@@ -229,7 +231,6 @@ function purchase(){
 	       console.log(data);
 	   }).done(function (data) {
 	      	alert('결제가 완료되었습니다.');
-	     
 	   });
 }     
 
@@ -269,7 +270,8 @@ function deleteOrder(){
         }  
    });
 }
-function updateOrder(){         
+function updateOrder(){
+	var enable;
     $.ajax({
         type : 'put',
         url : "../order/update",
@@ -277,11 +279,13 @@ function updateOrder(){
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
+        	enable = true;
         },
         error : function(xhr, status, er) {
-			alert('에러:'+status);
+			enable = false;
         }  
    });
+    return enable;
 }
 function setOrderInfoOfMember(){
 	$('#rname').val('${member.name}');           
@@ -301,7 +305,7 @@ function setOrderInfoOfNew(){
 	$('#rname').val('');
 	$('#postcode').val('');        
 	$('#address').val('');
-	$('#detailaddress').val('');
+	$('#detailaddress').val('');      
 	$('#rphone1').val('010').attr('selected','selected');
 	$('#rphone2').val('');
 	$('#rphone3').val('');
