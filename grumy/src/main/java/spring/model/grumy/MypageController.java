@@ -91,7 +91,7 @@ public class MypageController {
 		return "/mypage/mylist";
 	}
 	
-	@RequestMapping("/mypage/orderlist")
+	@RequestMapping("/mypage/orderlist/list")
 	public String orderlist(HttpServletRequest request, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		MemberDTO dto = mapper.read(id);
@@ -114,12 +114,15 @@ public class MypageController {
 		
 		Map map = new HashMap();
 		map.put("id", id);
-		map.put("state", state);
 		map.put("sno", sno);
 		map.put("eno", eno);
+		map.put("state", state);
+		
+	
 		List<OrderDTO> list = mapper.orderlist(map);
 		
-
+		
+		
 		int total = mapper.ordertotal(map);
 		
 		String paging = Utility.paging1(total, nowPage, recordPerPage, state);
@@ -129,7 +132,8 @@ public class MypageController {
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
 		request.setAttribute("nowPage", nowPage);
-		return "/mypage/orderlist";
+		request.setAttribute("total", total);
+		return "/mypage/orderlist/list";
 	}
 
 }

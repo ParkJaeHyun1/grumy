@@ -57,7 +57,7 @@
 		<div id="myshopMain"
 			class="xans-element- xans-myshop xans-myshop-main">
 			<div class="shopMain order">
-				<a href="/myshop/order/list.html">주문내역</a>
+				<a href="${pageContext.request.contextPath }/mypage/orderlist/list">주문내역</a>
 			</div>
 			<div class="shopMain wishlist">
 				<a href="/myshop/wish_list.html">관심상품</a>

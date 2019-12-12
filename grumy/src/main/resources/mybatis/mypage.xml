@@ -13,7 +13,7 @@ select i.state,count(*) as count
 from
 norder o,orderitem i
 where id = #{id} and o.orderno=i.orderno
-and between sysdate and to_char(add_months(wdate,-3),'yyyy-mm-dd')
+and o.odate>=to_char(add_months(sysdate,-3),'yyyy-mm-dd')
 group by i.state
 order by i.state
 </select>
@@ -42,7 +42,15 @@ order by i.state
 		(select b.orderItemNo orderItemNo,i.itemno itemno, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
 			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and b.state=#{state}
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id}
+			<choose>
+				<when test="state!=null">
+				and b.state = #{state}
+				</when>
+				<otherwise>
+				and b.state != '주문대기'
+				</otherwise>
+			</choose>
 
 			order by a.orderno desc
 			))
@@ -57,7 +65,15 @@ order by i.state
 		(select b.orderItemNo orderItemNo, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
 			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and b.state=#{state}
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} 
+			<choose>
+				<when test="state!=null">
+				and b.state = #{state}
+				</when>
+				<otherwise>
+				and b.state != '주문대기'
+				</otherwise>
+			</choose>
 			)))
 	</select>
 	

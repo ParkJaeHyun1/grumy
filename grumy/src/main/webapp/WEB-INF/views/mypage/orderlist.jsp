@@ -21,10 +21,23 @@
 
 		<div
 			class="xans-element- xans-myshop xans-myshop-orderhistorylistitem ec-base-table typeList">
+			<div
+				class="xans-element- xans-myshop xans-myshop-orderhistorytab ec-base-tab tab_style ">
+				<ul class="menu">
+					<li class="selected"><a
+						href="${pageContext.request.contextPath}/mypage/orderlist/list ">주문내역조회
+							(${total} )</a></li>
+					<li class=""><a
+						href="${pageContext.request.contextPath}/mypage/orderlist/list">취소/반품/교환
+							내역 ()</a></li>
+				</ul>
+			</div>
 
 			<div class="title">
 				<h3>주문 상품 정보</h3>
 			</div>
+
+			
 
 			<table border="1" summary>
 				<thead>
@@ -56,14 +69,18 @@
 												src="${pageContext.request.contextPath}/images/${list2.itemImage }"></a></td>
 										<td class="product left top"><a
 											href="${pageContext.request.contextPath }/item/read?itemNo=${list2.itemNo}">${list2.itemTitle }</a>
-											<div>[옵션:${list2.itemColor }<c:if test="${not empty list2.itemSize }">/${list2.itemSize }</c:if>]</div></td>
+											<div>
+												[옵션:${list2.itemColor }
+												<c:if test="${not empty list2.itemSize }">/${list2.itemSize }</c:if>
+												]
+											</div></td>
 										<td>${list2.count }</td>
 										<td>${list2.itemPrice }</td>
 										<td class="state">${list2.state }
 											<div>
-												<a href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemNo}"
+												<a
+													href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemNo}"
 													class="yg_btn_80 yg_btn1 crema-new-review-link crema-applied"
-													
 													alt="구매후기">구매후기</a>
 											</div>
 										</td>

@@ -14,6 +14,7 @@ public interface MypageMapper {
 	MemberDTO read(String id);
 	ArrayList<OrderItemDTO> orderCount(String id);
 	List<OrderDTO> orderlist(Map map);
+	List<OrderDTO> allorderlist(Map map);
 	int ordertotal(Map map);
 	int mytotal(Map map);
 	List<BoardDTO> mylist(Map map);

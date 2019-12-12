@@ -10,7 +10,7 @@
 
 <script type="text/javascript">
 function orderlist(state){
-	var url = "orderlist";
+	var url = "orderlist/list";
 	url += "?state=" + state;
 	
 	location.href = url;

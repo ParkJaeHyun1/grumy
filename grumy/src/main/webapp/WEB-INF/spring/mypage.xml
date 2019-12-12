@@ -21,7 +21,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/index.jsp" />
 	</definition>
-	<definition name="/mypage/orderlist" extends="mypage">
+	<definition name="/mypage/orderlist/list" extends="mypage">
 		<put-attribute name="title" value="그루미" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/orderlist.jsp" />
