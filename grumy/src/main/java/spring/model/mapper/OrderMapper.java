@@ -1,6 +1,7 @@
 package spring.model.mapper;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import spring.model.order.OrderDTO;
 import spring.model.order.OrderItemDTO;
@@ -11,5 +12,8 @@ public interface OrderMapper {
 	int insert(OrderDTO order);
 	int delete(String orderNo);
 	int update(OrderDTO order);
-	void insertItem(OrderItemDTO dto);
+	
+	int updateItemState(Map map);
+	int insertItem(OrderItemDTO orderItem);
+	int deleteItem(String orderNo);
 }

@@ -24,33 +24,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into
 		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state)
 		values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
-		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),#{state})
+		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR},
+		'YYYY-MM-DD HH24:MI:SS'),#{state})
 	</insert>
 	<insert id="insertItem" parameterType="OrderItemDTO">
 		insert into
-		orderItem(orderitemNo,orderNo,itemOptionNo,count,deliveryNo,state,state2,itemPrice)
-		values((SELECT NVL(MAX(orderItemNo), 0) + 1 as no FROM orderItem),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
-		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR}, 'YYYY-MM-DD HH24:MI:SS'),#{state})
+		orderItem(orderitemNo,orderNo,itemOptionNo,count,deliveryNo,state,itemPrice)
+		values((SELECT NVL(MAX(orderItemNo), 0) + 1 as no FROM
+		orderItem),#{orderNo},#{itemOptionNo},#{count},#{deliveryNo,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{itemPrice})
 	</insert>
 	<delete id="delete" parameterType="String">
 		delete from norder
 		where
 		orderNo = #{orderNo}
 	</delete>
+	<delete id="deleteItem" parameterType="String">
+		delete from orderItem
+		where
+		orderNo = #{orderNo}
+	</delete>
 	<update id="update" parameterType="OrderDTO">
 		update norder
-		set rname = #{rname},
+		set rname =
+		#{rname},
 		postcode = #{postcode},
 		address = #{address},
-		detailaddress = #{detailaddress},
+		detailaddress =
+		#{detailaddress},
 		rphone = #{rphone},
-		remail = #{remail,jdbcType=VARCHAR},
+		remail =
+		#{remail,jdbcType=VARCHAR},
 		rmsg = #{rmsg,jdbcType=VARCHAR},
 		paymenttype = #{paymentType,jdbcType=VARCHAR},
-		imagineaccount = #{imagineAccount,jdbcType=VARCHAR},
-		imaginebank = #{imagineBank,jdbcType=VARCHAR},
-		imaginedate = #{imagineDate,jdbcType=VARCHAR},
+		imagineaccount =
+		#{imagineAccount,jdbcType=VARCHAR},
+		imaginebank =
+		#{imagineBank,jdbcType=VARCHAR},
+		imaginedate =
+		#{imagineDate,jdbcType=VARCHAR},
 		state = #{state,jdbcType=VARCHAR}
-		where orderno =	#{orderNo}
+		where orderno = #{orderNo}
+	</update>
+	<update id="updateItem" parameterType="OrderItemDTO">
+		update orderItem
+		set orderNo = #{orderNo},
+		itemOptionNo = #{itemOptionNo},
+		count = #{count},
+		deliveryNo = #{deliveryNo,jdbcType=VARCHAR},
+		state = #{state},
+		itemPrice = #{itemPrice}
+		where orderItemNo = #{orderItemNo}
+	</update>
+	<update id="updateItemState" parameterType="Map">
+		update orderItem
+		set state = #{state}
+		where orderNo = #{orderNo}
 	</update>
 </mapper>

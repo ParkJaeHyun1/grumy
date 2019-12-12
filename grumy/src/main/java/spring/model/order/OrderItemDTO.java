@@ -2,6 +2,7 @@ package spring.model.order;
 
 public class OrderItemDTO {
 	private int orderItemNo;
+	private String orderNo;
 	private int itemOptionNo;
 	private int count;
 	private String deliveryNo;
@@ -14,23 +15,16 @@ public class OrderItemDTO {
 	private int itemNo;
 	private String state;
 	private int cartNo;
-	
-	public OrderItemDTO(int orderItemNo, int itemOptionNo, int count, String itemTitle, String itemImage, int itemPrice,
-			int itemSalePrice, String itemSize, String itemColor, int itemNo, String state, int cartNo,String deliveryNo) {
-		super();
-		this.orderItemNo = orderItemNo;
-		this.itemOptionNo = itemOptionNo;
-		this.count = count;
-		this.itemTitle = itemTitle;
-		this.itemImage = itemImage;
-		this.itemPrice = itemPrice;
-		this.itemSalePrice = itemSalePrice;
-		this.itemSize = itemSize;
-		this.itemColor = itemColor;
-		this.itemNo = itemNo;
-		this.state = state;
-		this.cartNo = cartNo;
-		this.deliveryNo = deliveryNo;
+
+
+	public String getOrderNo() {
+		return orderNo;
+	}
+
+
+
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 
 

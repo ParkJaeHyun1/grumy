@@ -23,4 +23,7 @@ public interface itemMapper {
 	int create(ItemDTO dto);
 	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
 
+	int decreaseItemCount(OrderItemDTO orderItem);
+	int increaseItemCount(OrderItemDTO orderItem);
+
 }

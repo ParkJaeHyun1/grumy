@@ -125,7 +125,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		o
 		where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
 	</select>
-
+	<update id="decreaseItemCount" parameterType="OrderItemDTO">
+		update itemOption
+		set itemCount = itemCount - #{count}
+		where itemOptionNo = #{itemOptionNo}
+	</update>
+		<update id="increaseItemCount" parameterType="OrderItemDTO">
+		update itemOption
+		set itemCount = itemCount + #{count}
+		where itemOptionNo = #{itemOptionNo}
+	</update>
+	
 </mapper>
 
 

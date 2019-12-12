@@ -29,12 +29,14 @@ $(document).ready(function(){
 	totalPrice = ${totalPrice+deliveryCharge};
  });
 var orderInfo = {orderItemList:[]};  
+var cartNoList = [];
 <c:forEach items="${list}" var="item">
-	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemSalePrice:${item.itemSalePrice}});
-</c:forEach>      
+	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemSalePrice:${item.itemSalePrice},state:'주문대기'});
+	cartNoList.push(${item.cartNo});
+</c:forEach>       
 
-function checkOrderInfo(){          
-	if($('#rname').val().length==0){
+function checkOrderInfo(){             
+	if($('#rname').val().length==0){  
 		alert('주문자 성명을 입력해주세요.');
 		$('#rname').focus();
 		return false;
@@ -199,19 +201,38 @@ function purchase(){
 	           quota: '0' // 결제금액이 5만원 이상시 할부개월 허용범위를 설정할 수 있음, [0(일시불), 2개월, 3개월] 허용, 미설정시 12개월까지 허용
 	      }
 	   }).error(function (data) {
-	      alert('결제도중 에러가 발생하였습니다. 다시 시도해주세요.')
+	      alert('결제도중 에러가 발생하였습니다. 다시 시도해주세요.');
 	       deleteOrder();
 	      console.log(data);
 	   }).cancel(function (data) {
 	      alert('결제가 취소되었습니다.');
 	      deleteOrder();
 	      console.log(data);
-	   }).ready(function (data) {
-	      orderInfo.imagineAccount=data.account;
-	      orderInfo.imagineBank=data.bankname;
-	      orderInfo.imagineDate=data.expireddate;
-	      orderInfo.state = '입금대기';
-	      updateOrder();
+	   }).ready(function (data) {  
+		  	orderInfo.imagineAccount=data.account;
+	      	orderInfo.imagineBank=data.bankname;
+	      	orderInfo.imagineDate=data.expireddate;
+	      	orderInfo.state = '입금대기';
+	  		
+	      	$.each(orderInfo.orderItemList, function(index, item){ 
+		    	item.state='입금대기';
+				item.orderNo = orderInfo.orderNo;
+	  		});
+	        
+	  		if (updateOrder()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
+	  			if(checkItem()){
+	  				deleteCartAjax(cartNoList);
+	  				// alert창으로 계좌발급 알려주고 주문내역창으로 넘어가기	
+	  			}else{
+			    	  deleteOrder();
+				   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
+		       	   	  $(location).attr('href', '${url}');	
+	  			}
+	  		}else{
+		    	  deleteOrder();
+			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
+	       	   	  $(location).attr('href', '${url}');	
+	  		}
 	      console.log(data);
 	   }).confirm(function (data) {
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
@@ -219,8 +240,15 @@ function purchase(){
 	      console.log(data);
 	     
 	      orderInfo.state = '배송준비';
-	      if (checkItem() && updateOrder()) {
-	         BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+	      if (updateOrder()) {
+	    	  	if(checkItem())
+	         		BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+	         	else{
+	  	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
+		    	  deleteOrder();
+			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
+	       	   	  $(location).attr('href', '${url}');
+	         	}
 	      } else {
 	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
 	    	  deleteOrder();
@@ -230,10 +258,22 @@ function purchase(){
 	   }).close(function (data) {
 	       console.log(data);
 	   }).done(function (data) {
+		   deleteCartAjax(cartNoList);
 	      	alert('결제가 완료되었습니다.');
 	   });
 }     
-
+function deleteCartAjax(cartNoList){
+	$.ajax({
+		type : 'delete',
+		url : "../cart/delete",
+		data : JSON.stringify(cartNoList),
+		contentType : "application/json; charset=utf-8",
+		success : function(result, status, xhr) {
+		},
+		error : function(xhr, status, er) {
+		}
+	});
+}
 function checkItem(){         
 	var enable;      
     $.ajax({
@@ -358,14 +398,14 @@ function setPriceView(){
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">                  
+	<link rel="alternate" href="http://www.m.slowand.com/">
 
 		<meta name="google-site-verification"
 			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
 		<meta name="naver-site-verification"
-			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />  
+			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
-		<meta name="author" content="슬로우앤드 - 천천히 그리고,">        
+		<meta name="author" content="슬로우앤드 - 천천히 그리고,">
 			<meta name="keywords"
 				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 			<meta name="description"
@@ -373,7 +413,7 @@ function setPriceView(){
 
 				<meta name="viewport" content="width=device-width">
 					<link rel="canonical"
-						href="http://slowand.com/order/orderform.html" />      
+						href="http://slowand.com/order/orderform.html" />
 					<link rel="alternate"
 						href="http://m.slowand.com/order/orderform.html" />
 					<meta property="og:url"
@@ -393,7 +433,7 @@ function setPriceView(){
 
 					<title>그루미</title>
 					<meta name="path_role" content="ORDER_ORDERFORM" />
-					<meta name="author" content="슬로우앤드" />    
+					<meta name="author" content="슬로우앤드" />
 					<meta name="description"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
 					<meta name="keywords"

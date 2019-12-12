@@ -84,7 +84,7 @@
 
 	<aop:config>
 		<aop:pointcut id="transactionPointcut"
-			expression="execution(* spring.model.bbs.*Service.*(..))" />
+			expression="execution(* spring.model.*.*Service.*(..))" />
 		<aop:advisor advice-ref="txAdvice"
 			pointcut-ref="transactionPointcut" />
 	</aop:config>
