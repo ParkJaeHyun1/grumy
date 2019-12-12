@@ -56,23 +56,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		ORDER BY reviewNo desc
 	</select>
-
-	<select id="listp" resultType="reviewDTO">
+<select id="listp" resultType="reviewDTO">
 		select r.picture picture, reviewNo
 		from item
 		i, review r, itemOption o
 		where r.itemOptionNo = o.itemOptionNo and
 		o.itemNo = i.itemNo and picture
 		is not null
+		ORDER BY reviewNo desc
 	</select>
-
 	<select id="read" parameterType="int" resultType="reviewDTO">
 		select
 		reviewNo, id,content,picture,height,weight,mySize,star
 		from review
 		where reviewNo = #{reviewNo}
 	</select>
-
 	<select id="pcount" resultType="int">
 		select count(*) as pcount
 		from

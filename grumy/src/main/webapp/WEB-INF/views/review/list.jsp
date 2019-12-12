@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <div id="container">
 	<div id="contents">
 		<div
@@ -67,17 +66,7 @@ function popup(reviewNo){
        var x = document.getElementById("myDIV");
        x.style.display = "none";
     }
-   function fimg(id, w, h) {
-      var img = document.getElementById(id);
-      if (img && !img.complete) {
-         var width = img.width || img.offsetWidth;
-         img.style.height = Math.round(img.width / w * h) + "px";
-         img.onload = function() {
-            this.style.height = "";
-         }
-      }
-   }
-   function create_reply(reviewNo) {
+  function create_reply(reviewNo) {
 	   var url = "create_reply";
       url += "?reviewNo="+reviewNo;
       location.href = url;
@@ -243,7 +232,12 @@ function popup(reviewNo){
 													<div class="reviews_index_list_review__actions">
 														<span
 															class="reviews_index_list_review__comments_link mall-link-color">
-															<span class="comments-count">0</span> 개의 댓글이 있습니다
+															<span class="comments-count">
+															<c:if test="${not empty dto.replyContent }">1
+															</c:if>
+															<c:if test="${empty dto.replyContent }">
+															0</c:if>
+															</span> 개의 댓글이 있습니다
 														</span>
 													</div>
 												</div>
@@ -297,9 +291,10 @@ function popup(reviewNo){
 																class="review_edit_action__button review_edit_action__button--delete">삭제</a>
 															<a onclick="javascript:update(${dto.reviewNo})"
 																class="review_edit_action__button review_edit_action__button--edit">수정</a>
-															<a onclick="javascript:create_reply(${dto.reviewNo})"
-																class="review_edit_action__button review_edit_action__button--edit">답변</a>
-
+															<c:if test="${sessionScope.grade=='A' }">
+																<a onclick="javascript:create_reply(${dto.reviewNo})"
+																	class="review_edit_action__button review_edit_action__button--edit">답변</a>
+															</c:if>
 
 															<div class="review_edit_action__divider"></div>
 														</div>
@@ -312,7 +307,7 @@ function popup(reviewNo){
 
 																<li class="comment" id="comment_252567">
 																	<div class="comment__inner">
-																		<div class="comment__lpane" >slowand</div>
+																		<div class="comment__lpane">slowand</div>
 																		<div class="comment__rpane">
 																			<div class="comment__error_message"></div>
 																			<div class="comment__message">
@@ -371,7 +366,7 @@ function popup(reviewNo){
 													data-count="2" id="photo-container-1"
 													class="show_photo_review__photo_container selected js-ie-opacity-fix"
 													style="padding: 0px; max-height: 762px; overflow: hidden;">
-													
+
 													<img
 														src="${pageContext.request.contextPath}/storage/${dto.picture}"
 														class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
@@ -476,8 +471,7 @@ function popup(reviewNo){
 										</div>
 									</div>
 									<div class="js-ie-opacity-fix fullscreen_popup__close"
-										style="top: 55px; right: 290px;"
-										onclick="javascript:popup2()">
+										style="top: 55px; right: 290px;" onclick="javascript:popup2()">
 										<div class="sprites-circle-close-button ie_png_fix"></div>
 									</div>
 								</div>
