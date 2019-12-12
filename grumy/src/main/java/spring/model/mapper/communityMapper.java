@@ -15,4 +15,5 @@ public interface communityMapper {
 	String getname(String id);
 	int total(Map map);
 	List list_();
+	int indelete(int board_no);
 }

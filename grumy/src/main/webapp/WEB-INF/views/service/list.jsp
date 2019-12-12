@@ -8,14 +8,14 @@
 <script type="text/javascript">
 	function read(no) {
 		var url = "read";
-		url += "?no=" + no;
+		url += "?board_no=" + no;
 
 		location.href = url;
 	}
 
 	function read_reply(no) {
 		var url = "read_reply";
-		url += "?no=" + no;
+		url += "?board_no=" + no;
 
 		location.href = url;
 	}
@@ -52,7 +52,6 @@
 				<div class="title" style="text-align: center">
 					<h2>
 						<font color="#555555">고객센터</font>
-						<button type="button" onclick="location.href='orderlist'">ORDER LIST</button>
 					</h2>
 					<br> <br>
 
@@ -65,7 +64,6 @@
 			</div>
 			<div class="ec-base-table typeList gBorder">
 				<table border="1" summary="">
-					<caption>게시판 목록</caption>
 					<thead
 						class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 						<tr style="">
@@ -87,10 +85,10 @@
 							<c:forEach var="dto" items="${list_ }">
 								<tr style="background-color: #FAFAFA; color: #555555;"
 									class="xans-record-">
-									<td>공지</td>
 									<td></td>
+									<td>${dto.category }</td>
 									<td class="subject left txtBreak"><strong> <a
-											href="javascript:read(${dto.no })" style="color: #555555;">
+											href="javascript:read(${dto.board_no })" style="color: #555555;">
 												${dto.subject }</a>
 												 <c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
 												 <img src="${pageContext.request.contextPath }/images/new.gif">
@@ -104,7 +102,7 @@
 							<c:when test="${empty list}">
 								<tr>
 									<td></td>
-									<td>CATEGORY</td>
+									<td></td>
 									<td>등록된 글이 없습니다.</td>
 									<td></td>
 									<td></td>
@@ -119,7 +117,7 @@
 										       <c:choose>
 													
 													<c:when test="${dto.indent==0 }">
-														<a href="javascript:read(${dto.no })"
+														<a href="javascript:read(${dto.board_no })"
 															style="color: #555555;"> <img
 															src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
 													 	<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
@@ -129,7 +127,7 @@
 														</c:if>
 													</c:when>
 													<c:otherwise>
-														<a href="javascript:read_reply(${dto.no })"
+														<a href="javascript:read_reply(${dto.board_no })"
 															style="color: #555555;"> &nbsp;<img
 															src="${pageContext.request.contextPath }/images/re.gif" />
 															<img
@@ -182,9 +180,11 @@
 					</fieldset>
 				</div>
 			</form>
+
 				<p align="right">
 					<button class="yg_btn_30 yg_btn4" onclick="javascript:create();">WRITE</button>
 				</p>
+
 
 			${paging}
 

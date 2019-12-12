@@ -22,6 +22,11 @@ delete from board
 where ref = #{ref}
 </delete>
 
+<delete id="indelete" parameterType="int">
+delete from board
+where board_no = #{board_no}
+</delete>
+
 <select id="read" parameterType="int" resultType="BoardDTO">
 select *
 from board

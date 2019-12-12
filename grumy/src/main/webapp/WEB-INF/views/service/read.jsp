@@ -6,13 +6,13 @@
 
    function create_reply(no) {
       var url = "create_reply";
-      url += "?no=" + no;
+      url += "?board_no=" + no;
 
       location.href = url;
    }
    function update(no) {
       var url = "update";
-      url += "?no=" + no;
+      url += "?board_no=" + no;
 
       location.href = url;
    }
@@ -86,9 +86,9 @@
                            </span>
                             <span class="gRight">
                             <c:if test="${sessionScope.grade=='A' }">
-                            <a href="javascript:create_reply(${param.no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
+                            <a href="javascript:create_reply(${param.board_no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
                             </c:if>
-                            <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+                            <a href="javascript:update(${param.board_no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
                             <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
                            </span>
 

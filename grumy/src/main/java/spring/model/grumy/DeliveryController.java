@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import spring.model.delivery.DeliveryDTO;
+import spring.model.board.BoardDTO;
 import spring.model.mapper.deliveryMapper;
 import spring.model.notice.NoticeDTO;
 import spring.model.utility.Utility;
@@ -28,14 +28,8 @@ public class DeliveryController {
 	@Autowired
 	deliveryMapper mapper;
 	
-	@GetMapping("/delivery/orderlist")
-	public String orderlist() {
-		
-		return "/delivery/orderlist";
-	}
-	
 	@PostMapping("/delivery/create_reply")
-	public String create_reply(DeliveryDTO dto) {
+	public String create_reply(BoardDTO dto) {
 		mapper.create_reply(dto);
 
 		
@@ -43,8 +37,8 @@ public class DeliveryController {
 	}
 	
 	@GetMapping("/delivery/create_reply")
-	public String create_reply(int no,HttpServletRequest request,HttpSession session) {
-		DeliveryDTO dto = mapper.read(no);
+	public String create_reply(int board_no,HttpServletRequest request,HttpSession session) {
+		BoardDTO dto = mapper.read(board_no);
 		String id = (String) session.getAttribute("id");
 		
 		
@@ -55,7 +49,7 @@ public class DeliveryController {
 	}
 	
 	@PostMapping("/delivery/update")
-	public String update(DeliveryDTO dto,HttpServletRequest request) {
+	public String update(BoardDTO dto,HttpServletRequest request) {
 		
 		int flag = mapper.update(dto);
 		
@@ -67,8 +61,8 @@ public class DeliveryController {
 	}
 	
 	@GetMapping("/delivery/update")
-	public String update(Integer no,Model model) {
-		DeliveryDTO dto = mapper.read(no);
+	public String update(Integer board_no,Model model) {
+		BoardDTO dto = mapper.read(board_no);
 		
 		model.addAttribute("dto",dto);
 		
@@ -85,9 +79,19 @@ public class DeliveryController {
 		
 		
 	}
+	@GetMapping("/delivery/indelete")
+	public String indelete(int board_no) {
+		mapper.indelete(board_no);
+		
+		
+		
+		return "redirect:/delivery/list";
+		
+		
+	}
 	
 	@GetMapping("/delivery/read_reply")
-	public String read_reply(int no,HttpSession session,Model model){
+	public String read_reply(int board_no,HttpSession session,Model model){
 		String id = (String)session.getAttribute("id"); 
 		String grade = (String)session.getAttribute("grade");
 
@@ -96,7 +100,7 @@ public class DeliveryController {
 			grade="";
 		}
 	
-		DeliveryDTO dto = mapper.read(no);
+		BoardDTO dto = mapper.read(board_no);
 		
 		if(grade.equals("A")||id.equals(dto.getCheck_read())) {
 			
@@ -116,7 +120,7 @@ public class DeliveryController {
 	
 	
 	@GetMapping("/delivery/read")
-		public String read(int no, Model model,HttpSession session) {
+		public String read(int board_no, Model model,HttpSession session) {
 			String id = (String)session.getAttribute("id");
 			String grade = (String) session.getAttribute("grade");
 
@@ -127,7 +131,7 @@ public class DeliveryController {
 			
 			
 		
-			DeliveryDTO dto = mapper.read(no);
+			BoardDTO dto = mapper.read(board_no);
 			
 			
 			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev()=='S') {
@@ -138,7 +142,7 @@ public class DeliveryController {
 			dto.setContent(content);
 			
 
-			Map map = mapper.noread(no);
+			Map map = mapper.noread(board_no);
 			BigDecimal [] noArr = {(BigDecimal)map.get("PRE_NO"),
 									(BigDecimal)map.get("NEXT_NO")
 									};
@@ -158,7 +162,7 @@ public class DeliveryController {
 	
 	
 	@PostMapping("/delivery/create")
-	public String create(DeliveryDTO dto,HttpServletRequest request) {
+	public String create(BoardDTO dto,HttpServletRequest request) {
 
 		int flag = mapper.create(dto);
 		
@@ -206,8 +210,8 @@ public class DeliveryController {
 		
 		
 		
-		List<DeliveryDTO> list = mapper.list(map); 
-		List<DeliveryDTO> list_ = mapper.list_(); 
+		List<BoardDTO> list = mapper.list(map); 
+		List<BoardDTO> list_ = mapper.list_(); 
 		
 				
 		int total = mapper.total(map);

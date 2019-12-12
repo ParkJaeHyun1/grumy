@@ -23,7 +23,7 @@
 			<!-- 글 내용-->
 			<form action="update" method="post" id="frm"
 				onsubmit="return input(this)" enctype="multipart/form-data">
-				<input type="hidden" name="no" value="${param.no}">
+				<input type="hidden" name="board_no" value="${param.board_no}">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>

@@ -79,6 +79,16 @@ public class CommunityController {
 		return "redirect:/community/list";
 		
 	}
+	@GetMapping("/community/indelete")
+	public String indelete(int board_no) {
+		mapper.indelete(board_no);
+		
+		
+		
+		return "redirect:/community/list";
+		
+		
+	}
 	
 	@GetMapping("/community/read")
 	public String read(int board_no,HttpServletRequest request, HttpSession session) {

@@ -5,28 +5,28 @@
 <script type="text/javascript">
    function read(no) {
       var url = "read";
-      url += "?no=" + no;
+      url += "?board_no=" + no;
 
       location.href = url;
    }
    function create_reply(no) {
       var url = "create_reply";
-      url += "?no=" + no;
+      url += "?board_no=" + no;
 
       location.href = url;
    }
    function update(no) {
       var url = "update";
-      url += "?no=" + no;
+      url += "?board_no=" + no;
 
       location.href = url;
    }
-   function delete1(ref) {
+   function delete1(no) {
 
       if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
-         var url = "delete";
-         url += "?ref=" + ref;
+         var url = "indelete";
+         url += "?board_no=" + no;
 
          location.href = url;
 
@@ -88,10 +88,10 @@
                            <span class="gLeft">
                             <a href="list"   class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
                            </span>
-                           <c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
+                           <c:if test="${sessionScope.grade=='A' }">
                             <span class="gRight">    
-                            <a href="javascript:update(${param.no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-                            <a href="javascript:delete1(${dto.ref })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+                            <a href="javascript:update(${param.board_no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+                            <a href="javascript:delete1(${param.board_no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
                            </span>
                            </c:if>
                         </div></td>

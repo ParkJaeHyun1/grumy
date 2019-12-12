@@ -9,90 +9,98 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 select name from member
 where id = #{id}
 </select>
+<delete id="indelete" parameterType="int">
+delete from board
+where board_no = #{board_no}
+</delete>
 
-<insert id="create_reply" parameterType="DeliveryDTO">
-insert into delivery(no,subject,writer,id,content,wdate,ref,indent,check_read)
-values((select nvl(max(no),0)+1 from delivery),#{subject},#{writer},#{id},#{content},sysdate,#{ref},1,#{check_read})
+<insert id="create_reply" parameterType="BoardDTO">
+insert into board(board_no,subject,writer,id,content,wdate,ref,indent,check_read,type,category)
+values((select nvl(max(board_no),0)+1 from board),#{subject},#{writer},#{id},#{content},sysdate,#{ref},1,#{check_read},#{type},#{category})
 </insert>
 
 <update id="update" parameterType="int">
-	update delivery 
+	update board 
 	set subject = #{subject},
 		content = #{content},
 		wdate = sysdate
-		where no = #{no}
+		where board_no = #{board_no}
 </update>
 
 <select id="noread" parameterType="int" resultType="Map">
 select *
 from(
 	select
-	no,subject,
-	lag(no,1) over (order by no ) pre_no,
-	lag(subject,1) over (order by no ) pre_subject,
-	lead(no,1) over (order by no ) next_no,
-	lead(subject,1) over (order by no ) next_subject
+	board_no,subject,
+	lag(board_no,1) over (order by board_no ) pre_board_no,
+	lag(subject,1) over (order by board_no ) pre_subject,
+	lead(board_no,1) over (order by board_no ) next_board_no,
+	lead(subject,1) over (order by board_no ) next_subject
 	from(
-    	select no,subject
-	    from delivery
+    	select board_no,subject
+	    from board
 	    where indent = 0
 		)
 	)
-where no = #{no}
+where board_no = #{board_no}
 	</select>
 	
-<select id="read" parameterType="int" resultType="DeliveryDTO">
-select no,subject,writer,content,wdate,indent,id,ref,lev,check_read
-from delivery
-where no = #{no}
+<select id="read" parameterType="int" resultType="BoardDTO">
+select board_no,subject,writer,content,wdate,indent,id,ref,lev,check_read,category
+from board
+where board_no = #{board_no}
 </select>
 
 
 
 
 <delete id="delete" parameterType="int">
-delete from delivery
+delete from board
 where ref = #{ref}
 </delete>
 
-<insert id="create" parameterType="DeliveryDTO">
-insert into delivery(no,subject,content,writer,wdate,ref,id,lev,check_read,category)
-values((select nvl(max(no),0)+1 from delivery),#{subject},#{content},
-#{writer},sysdate,(select nvl(max(ref),0)+1 from delivery),#{id},#{lev},#{check_read},#{category})
+<insert id="create" parameterType="BoardDTO">
+insert into board(board_no,subject,content,writer,wdate,ref,id,lev,check_read,category,type)
+values((select nvl(max(board_no),0)+1 from board),#{subject},#{content},
+#{writer},sysdate,(select nvl(max(ref),0)+1 from board),#{id},#{lev},#{check_read},#{category},#{type})
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
-select count(*) from delivery
+select count(*) from board
 		<where>
          	<choose>
          		<when test="col=='subject'">
          		subject like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '기타'
          		</when>
          		<when test="col=='content'">
          		content like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '기타'
          		</when>
          		<when test="col=='writer'">
          		writer like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '기타'
          		</when>
          		<otherwise>
          		lev = 'A'
+         		and type = '기타'
          		</otherwise>
          	</choose>
          </where>
 </select>
 
 
-<select id="list_" resultType="DeliveryDTO">
-select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
+<select id="list_" resultType="BoardDTO">
+select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent,category
 	from (
-			select no,subject,writer,wdate,indent,rownum r
+			select board_no,subject,writer,wdate,indent,category,rownum r
 			from (
-				select no,subject,writer,wdate,indent
-				from delivery
-				where lev = 'S'
+				select board_no,subject,writer,wdate,indent,category
+				from board
+				where lev = 'S' and type = '기타'
 				order by ref desc
 				)
 		)
@@ -100,33 +108,37 @@ select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent
 </select>
 
 
-<select id="list" parameterType="Map" resultType="DeliveryDTO">
-select no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent,category
+<select id="list" parameterType="Map" resultType="BoardDTO">
+select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,indent,category
 	from (
-			select no,subject,writer,wdate,indent,category,rownum r
+			select board_no,subject,writer,wdate,indent,category,rownum r
 			from (
-				select no,subject,writer,wdate,category,indent
-				from delivery
+				select board_no,subject,writer,wdate,category,indent
+				from board
 				<where>
 					<choose>
 						<when test="col == 'subject'">
 						subject like '%'||#{word}||'%'
 						and lev = 'A'
+						and type = '기타'
 						</when>
 						<when test="col == 'content'">
 						content like '%'||#{word}||'%'
 						and lev = 'A'
+						and type = '기타'
 						</when>
 						<when test="col == 'writer'">
 						writer like '%'||#{word}||'%'
 						and lev = 'A'
+						and type = '기타'
 						</when>
 						<otherwise>
 						lev = 'A'
+						and type = '기타'
 						</otherwise>
 					</choose>
 				</where>
-				order by ref desc,no asc
+				order by ref desc,board_no asc
 				)
 		)
 <![CDATA[
@@ -134,23 +146,5 @@ where r>=#{sno} and r<=#{eno}
 ]]>
 </select>
 
-
-<resultMap type="orderDTO" id="orderMap">
-		<result property="id" column="id"/>
-		<result property="orderNo" column="orderno"/>
-		<result property="odate" column="odate"/>
-		<collection property="orderItemList" column="orderno"
-			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListMap" />
-	</resultMap>
-	<resultMap type="OrderItemDTO" id="orderItemDTOListMap">
-		<result property="itemCount" column="itemcount"/>
-		<result property="state" column="state"/>	
-		<result property="itemPrice" column="itemPrice"/>	
-		<result property="itemTitle" column="itemTitle"/>	
-		<result property="itemSize" column="itemSize"/>	
-		<result property="itemColor" column="itemColor"/>	
-		<result property="orderItemNo" column="orderItemNo"/>	
-	</resultMap>
-	
 
 </mapper>

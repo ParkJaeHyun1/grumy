@@ -3,30 +3,30 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="text/javascript">
-	function read(communityNo) {
+	function read(no) {
 		var url = "read";
-		url += "?communityNo=" + communityNo;
+		url += "?board_no=" + no;
 
 		location.href = url;
 	}
-	function create_reply(communityNo) {
+	function create_reply(no) {
 		var url = "create_reply";
-		url += "?communityNo=" + communityNo;
+		url += "?board_no=" + no;
 
 		location.href = url;
 	}
-	function update(communityNo) {
+	function update(no) {
 		var url = "update";
-		url += "?communityNo=" + communityNo;
+		url += "?board_no=" + no;
 
 		location.href = url;
 	}
-	function delete1(communityNo) {
+	function delete1(no) {
 
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
 
-			var url = "delete";
-			url += "?no=" + no;
+			var url = "indelete";
+			url += "?board_no=" + no;
 
 			location.href = url;
 
@@ -93,10 +93,10 @@
 									<span class="gLeft">
 									 <a href="list"	class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
 									</span>
-									<c:if test="${sessionScope.id=='admin'&&sessionScope.grade=='A' }">
+									<c:if test="${sessionScope.grade=='A' }">
 									 <span class="gRight">	 
-									 <a href="javascript:update(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
-									 <a href="javascript:delete1(${param.communityNo })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
+									 <a href="javascript:update(${param.board_no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>
+									 <a href="javascript:delete1(${param.board_no })" class="yg_btn_30 yg_btn4" alt="삭제">DELETE</a>
 									</span>
 									</c:if>
 								</div></td>

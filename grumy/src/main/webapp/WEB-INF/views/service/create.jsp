@@ -21,10 +21,12 @@
 				enctype="multipart/form-data" onsubmit="return input(this)">
 				<input type="hidden" name="writer" value="${name }">
 				<input type="hidden" name="check_read" value="${sessionScope.id }">
+				<input type="hidden" name="type" value="기타">
 				
 				<c:choose>
 					<c:when test="${sessionScope.grade=='A' }">
 						<input type="hidden" name="lev" value="S">
+						<input type="hidden" name="category" value="공지">
 					</c:when>
 					<c:otherwise>
 						<input type="hidden" name="lev" value="A">

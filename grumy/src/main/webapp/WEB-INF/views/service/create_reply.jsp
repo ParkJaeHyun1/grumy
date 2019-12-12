@@ -26,6 +26,9 @@
             <input type="hidden" name="writer" value="${name}">
             <input type="hidden" name="id" value="${sessionScope.id}">
             <input type="hidden" name="check_read" value="${dto.id}">
+            <input type="hidden" name="category" value="${dto.category}">
+            <input type="hidden" name="type" value="기타">
+            
             <div class="ec-base-table typeWrite ">
                <table border="1" summary="">
                   <colgroup>
