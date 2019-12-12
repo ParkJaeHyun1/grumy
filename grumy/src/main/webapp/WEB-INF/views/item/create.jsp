@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-   request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,48 +10,54 @@
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js"
 	charset="utf-8"></script>
-<script>        
- 
-//한글만 onKeyPress="hangul();"  --IE호환성을 위해... 이렇게..뿌니ㅎ;
-function hangul(){
- if((event.keyCode < 12592) || (event.keyCode > 12687)){
-  alert("한글만 입력이 가능합니다.");
-  event.returnValue = false
-  $('#itemColor').val('');
- }
-}
-         
-   
- //숫자만 출력, 콤마 자동 출력
- //[] <--문자 범위 [^] <--부정 [0-9] <-- 숫자  
+<script src="https://www.slowand.com/yangji/js/jquery.bxslider.min.js"></script>
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+<link rel="shortcut icon"
+	href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
+<script type="text/javascript"
+	src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
+<script type="text/javascript"
+	src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript"
+	src="https://slowand.com/ind-script/moment.php?convert=T"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
+<link rel="stylesheet" type="text/css"
+	href="https://slowand.com//ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
+
+<script>
+	//한글만 onKeyPress="hangul();"  --IE호환성을 위해... 이렇게..뿌니ㅎ;
+
+	//숫자만 출력, 콤마 자동 출력
+	//[] <--문자 범위 [^] <--부정 [0-9] <-- 숫자  
  //[0-9] => \d , [^0-9] => \D
- var rgx1 = /\D/g;  // /[^0-9]/g 와 같은 표현
- var rgx2 = /(\d+)(\d{3})/; 
+	var rgx1 = /\D/g; // /[^0-9]/g 와 같은 표현
+	var rgx2 = /(\d+)(\d{3})/;
 
- function getNumber(obj){
- 	           
-      var num01;
-      var num02;
-      num01 = obj.value;
-      num02 = num01.replace(rgx1,"");
-      num01 = setComma(num02);
-      obj.value =  num01;
+	function getNumber(obj) {
 
- }
+		var num01;
+		var num02;
+		num01 = obj.value;
+		num02 = num01.replace(rgx1, "");
+		num01 = setComma(num02);
+		obj.value = num01;
 
- function setComma(inNum){
-      
-      var outNum;
-      outNum = inNum; 
-      while (rgx2.test(outNum)) {
-           outNum = outNum.replace(rgx2, '$1' + ',' + '$2');
-       }
-      return outNum;
+	}
 
- }
+	function setComma(inNum) {
 
-   
-   </script>
+		var outNum;
+		outNum = inNum;
+		while (rgx2.test(outNum)) {
+			outNum = outNum.replace(rgx2, '$1' + ',' + '$2');
+		}
+		return outNum;
+
+	}
+</script>
 
 <div id="container">
 	<div id="contents">
@@ -73,112 +79,143 @@ function hangul(){
 				enctype="multipart/form-data" onsubmit="return input(this)">
 				<input type="hidden" name="id" value="${sessionScope.id }">
 				<div class="ec-base-table typeWrite ">
-					<table border="1" summary="">
-						<colgroup>
-							<col style="width: 150px;">
-							<col style="width: auto;">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">카테고리</th>
+					<div class="xans-element- xans-product xans-product-detail">
+						<div class="infoArea"
+							style="float: none; width: 800px; margin: auto">
+							<table border="1" summary="">
+								<colgroup>
+									<col style="width: 150px;">
+									<col style="width: auto;">
+								</colgroup>
+								<tbody
+									class="xans-element- xans-product xans-product-option xans-record-"
+									style="background: #ffffff">
+									<tr>
+										<th scope="row">카테고리</th>
 
-								<td><select onchange="mainCategory(this)">
-										<option>-메인 카테고리-</option>
-										<option value="a">OUTER</option>
-										<option value="b">TOP</option>
-										<option value="c">DRESS</option>
-										<option value="d">SKIRT</option>
-										<option value="e">BOTTOM</option>
-										<option value="f">SHOES/BAG</option>
-										<option value="g">ACC</option>
-								</select> <select id="subCategory">
-										<option>-서브 카테고리-</option>
-								</select></td>
-							</tr>
-
-
-							<tr>
-								<th scope="row" style="width: 300px">상품명</th>
-
-								<td><input type="text" id="itemOptionNo"
-									name="itemOptionNo" style="width: 300px" value=""></td>
-							</tr>
-							<th scope="row">상품 이미지</th>
-
-							<td><input type="file" class="form-control" id="image"
-								name="filenameMF" accept=".jpg,.gif,.png"></td>
-							</tr>
-
-							<tr>
-								<th scope="row">컬러(ex)브라운,검정,화이트..)</th>
-								<td id="list"><input type="text" id="itemColor" style="width: 70px" name="itemColor" onKeyPress="hangul();">              
-							<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4" style="width:50px; height:26px;line-height:0px " onclick="KoCheck()">add</button>
-									<span id="color"></span>
-             				             		     			           
-									
-									</td>             
-							</tr>
-							             
-							<tr>
-								<th scope="row">사이즈</th>
-								<td><span id="myspan"> S &nbsp;<input
-										name="checkbox" type="checkbox" value="S">&nbsp;&nbsp;&nbsp;&nbsp;
-										M &nbsp;<input name="checkbox" type="checkbox" value="M">&nbsp;&nbsp;&nbsp;&nbsp;
-										L &nbsp;<input name="checkbox" type="checkbox" value="L">&nbsp;&nbsp;&nbsp;&nbsp;
-										XL &nbsp;<input name="checkbox" type="checkbox" value="XL">&nbsp;&nbsp;&nbsp;&nbsp;
-										FREE &nbsp;<input name="checkbox" type="checkbox" value="FREE">
-								</span></td>
-							</tr>
+										<td><select onchange="mainCategory(this)"
+											style="width: 200px;">
+												<option>-메인 카테고리-</option>
+												<option value="a">OUTER</option>
+												<option value="b">TOP</option>
+												<option value="c">DRESS</option>
+												<option value="d">SKIRT</option>
+												<option value="e">BOTTOM</option>
+												<option value="f">SHOES/BAG</option>
+												<option value="g">ACC</option>
+										</select> <select id="subCategory" style="width: 200px">
+												<option>-서브 카테고리-</option>
+										</select></td>
+									</tr>
 
 
+									<tr>
+										<th scope="row" style="width: 300px">상품명</th>
 
-							<tr>
-								<th scope="row">가격</th>
-								<td><input name="mypay" onchange="getNumber(this);"
-									onkeyup="getNumber(this);" type="text" id="price" name="price"
-									value="" style="text-align: right; width: 50px"> 원</td>
-							</tr>      
+										<td><input type="text" id="itemOptionNo"
+											name="itemOptionNo" style="width: 300px" value=""></td>
+									</tr>
+									<tr>
+										<th scope="row">상품 이미지</th>
 
-							<tr>
-								<th scope="row">할인 가격</th>
-								<td><input name="mypay" onchange="getNumber(this);"
-									onkeyup="getNumber(this);" type="text" id="salePrice"
-									name="salePrice" value=""
-									style="text-align: right; width: 50px"> 원</td>
-							</tr>
+										<td><input type="file" class="form-control" id="image"
+											name="filenameMF" accept=".jpg,.gif,.png"></td>
+									</tr>
+
+									<tr>
+										<th scope="row">컬러 추가</th>
+										<td><input type="text" id="itemColor" style="width: 70px"
+											name="itemColor">
+											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
+												style="width: 50px; height: 26px; line-height: 0px">add</button>
+										</td>
+									</tr>
+									<tr id="colorList">  
+										<th scope="row">컬러</th>
+										<td>
+											<ul class="ec-product-button" id="list">
+
+												<li class="ec-product-selected" title="아이보리" style="margin-right: 0px"
+													id="itemColor블랙"><a href="javascript:;"
+													onclick="checkColor('블랙')"> <span>블랙</span></a></li>
+												<a href="#none" class="delete" style="margin-right: 10px;"><img
+													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
+													alt="삭제" id="option_box1_del" class="option_box_del"
+													onclick="deleteItem(2)"></a>
+												<li class="" title="아이보리" id="itemColor연베이지" style="margin-right: 0px"><a
+													href="javascript:;" onclick="checkColor('연베이지')"> <span>연베이지</span></a></li>
+																						<a href="#none" class="delete" style="margin-right: 10px;"><img
+													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
+													alt="삭제" id="option_box1_del" class="option_box_del"
+													onclick="deleteItem(2)"></a>
+												<li class="" title="아이보리" id="itemColor핑크" style="margin-right: 0px"><a
+													href="javascript:;" onclick="checkColor('핑크')"> <span>핑크</span></a></li>
+																						<a href="#none" class="delete" style="margin-right: 10px;"><img
+													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
+													alt="삭제" id="option_box1_del" class="option_box_del"
+													onclick="deleteItem(2)"></a>
+												<li class="" title="아이보리" id="itemColor베이지" style="margin-right: 0px"><a
+													href="javascript:;" onclick="checkColor('베이지')"> <span>베이지</span></a></li>
+																						<a href="#none" class="delete" style="margin-right: 10px;"><img
+													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
+													alt="삭제" id="option_box1_del" class="option_box_del"
+													onclick="deleteItem(2)"></a>
+											</ul>  
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">사이즈</th>
+										<td><span id="myspan"> S &nbsp;<input
+												name="checkbox" type="checkbox" value="S">&nbsp;&nbsp;&nbsp;&nbsp;
+												M &nbsp;<input name="checkbox" type="checkbox" value="M">&nbsp;&nbsp;&nbsp;&nbsp;
+												L &nbsp;<input name="checkbox" type="checkbox" value="L">&nbsp;&nbsp;&nbsp;&nbsp;
+												XL &nbsp;<input name="checkbox" type="checkbox" value="XL">&nbsp;&nbsp;&nbsp;&nbsp;
+												FREE &nbsp;<input name="checkbox" type="checkbox"
+												value="FREE">
+										</span></td>
+									</tr>
 
 
-							<tr>
-								<th scope="row">상세 페이지</th>
-								<td></td>
-							</tr>
 
-							<tr>
-								<td colspan="2"><textarea rows="20" cols="193"
-										name="content" id="content">         	
-                              </textarea> <script type="text/javascript">                 
-                                 CKEDITOR.replace('content', {
-                                    height : 500
-                                 });
-                              </script></td>
+									<tr>
+										<th scope="row">가격</th>
+										<td><input name="mypay" onchange="getNumber(this);"
+											onkeyup="getNumber(this);" type="text" id="price"
+											name="price" value="" style="text-align: right; width: 50px">
+											원</td>
+									</tr>
 
-							</tr>
-
-						</tbody>
-					</table>               
+									<tr>
+										<th scope="row">할인 가격</th>
+										<td><input name="mypay" onchange="getNumber(this);"
+											onkeyup="getNumber(this);" type="text" id="salePrice"
+											name="salePrice" value=""
+											style="text-align: right; width: 50px"> 원</td>
+									</tr>
 
 
+									<tr>
+										<th scope="row">상세 페이지</th>
+										<td></td>
+									</tr>
 
-					<div class="ec-base-button ">           
-						<span class="gLeft">
-							<button type="button" class="yg_btn_30 yg_btn4" alt="목록"
-								onclick="location.href='list'">LIST</button>
-						</span> <span class="gRight">
-							<button id="save" type="submit" class="yg_btn_30 yg_btn4"
-								alt="등록">OK</button>
-							<button type="button" onclick="history.back()"
-								class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
-						</span>  
+									<tr>
+										<td colspan="2"><textarea rows="20" cols="117"
+												name="content" id="content">         	
+                              </textarea> <script type="text/javascript">
+																															CKEDITOR
+																																	.replace(
+																																			'content',
+																																			{
+																																				height : 500
+																																			});
+																														</script></td>
+
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</form>
@@ -189,155 +226,118 @@ function hangul(){
 </div>
 
 <script type="text/javascript">
+	var colorList = [];
 
+	$(function() {
+		$("#btnAdd")
+				.click(
+						function() { //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
+							//  var d = new Date(); //date를 d에 대입, 날짜변수 만듦
+							// var curTime = d.toLocaleTimeString(); //현재 시간을 대입
+							var color = $("#itemColor").val();
 
-$(function(){
-	  $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-	   //  var d = new Date(); //date를 d에 대입, 날짜변수 만듦
-	    // var curTime = d.toLocaleTimeString(); //현재 시간을 대입
-	     var temp = document.getElementById("itemColor").value;
+							if (!checkColor(color))
+								return;
 
-	     var html = '<tr><td>' + temp + '</td>'; //tr, td를 열고 + 문자열로 바꾸고 +td 닫기
-	     html += '<td><button type="button" class="btnDel" style="width:13px; height:13px">X</button>'; //html변수에 삭제버튼을 대입
-	     html += '</td></tr>';           
-	     
-	     $("#list").append(html); //list라는 아이디에 html을 추가해라
-	  });            
-	               
-	  $("#list").on("click", ".btnDel", function() { //list안의 btnDel을 선택
-	    $(this).parent().parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
-	  });  
-              
-	})
+							colorList.push(color);
 
-                  
-// size 시작
-function addElement() {
-	var aInput=document.getElementById('myspan').getElementsByTagName('input');
-	for(var i=0; i<aInput.length; i++) {
-	    aInput[i].onclick=new Function('addDelete(this)');
-	    }
-	}
+							var html = '<span>'
+									+ color
+									+ '<button type="button" class="btnDel" style="width:13px; height:13px">X</button>'; //html변수에 삭제버튼을 대입
+							html += '</span>';
+							$("#list").append(html); //list라는 아이디에 html을 추가해라
+							setColorList();
+						});
 
-	function addDelete(obj) {
-	var parentSpan=document.getElementById('myspan');
-	if(obj.nextSibling.nodeName!='INPUT') { // add
-	    var oInputText=document.createElement('input');
-	    oInputText.setAttribute('type', 'text');
-	    oInputText.setAttribute('placeholder', '재고수량');
-	    oInputText.setAttribute('style', 'width:50px');
-	    oInputText.setAttribute('name', 'mypay');
-	    oInputText.setAttribute('onchange', 'getNumber(this)');
-	    oInputText.setAttribute('onkeyup', 'getNumber(this)');
-	    
-	    parentSpan.insertBefore(oInputText, obj.nextSibling);
-	    }
-	else { // delete
-	    parentSpan.removeChild(obj.nextSibling);
-	    }
-	}
-
-	function addLoadEvent(func) {
-		  var oldonload = window.onload;
-		  if (typeof window.onload != 'function') {
-		    window.onload = func;
-		  } else {
-		    window.onload = function() {
-		      if (oldonload) {
-		        oldonload();
-		      }
-		      func();
-		    }
-		  }
-		}
-
-		addLoadEvent(function() {
-		  addElement();
+		$("#list").on("click", ".btnDel", function() { //list안의 btnDel을 선택
+			$(this).parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
+			setColorList();
 		});
 
-		
-		
-// category 시작
-function mainCategory(e) {
-  var sub_a = ["핸드메이드", "코트/자켓", "가디건", "점퍼"];
-  var sub_b = ["니트/가디건", "맨투맨/후드/티셔츠", "셔츠/블라우스", "슬리브리스"];
-  //var sub_c = [];
-  var sub_d = ["미니", "미디/롱"];
-  var sub_e = ["데님", "면바지/슬랙스", "쇼츠"];
-  var sub_f = ["슈즈", "백"];
-  var sub_g = ["쥬얼리", "모자", "벨트", "양말", "홈웨어", "etc"];
-  var target = document.getElementById("subCategory");
- 
-  if(e.value == "a") var d = sub_a;
-  else if(e.value == "b") var d = sub_b;
-  else if(e.value == "d") var d = sub_d;
-  else if(e.value == "e") var d = sub_e;
-  else if(e.value == "f") var d = sub_f;
-  else if(e.value == "g") var d = sub_g;
- 
-  target.options.length = 0;
- 
-  for (x in d) {
-    var opt = document.createElement("option");
-    opt.value = d[x];
-    opt.innerHTML = d[x];
-    target.appendChild(opt);
-  } 
-}
+	})
+	function setColorList() {
+		if (colorList.length > 0)
+			$('#colorList').css('display', 'table-row');
+		else
+			$('#colorList').css('display', 'none');
+	}
+	function checkColor(color) {
+		if (color == null || color == '') {
+			alert('색상에 공백을 넣을 수 없습니다.');
+			return false
+		} else if (colorList.indexOf(color) !== -1) {
+			alert('이미 등록된 색상입니다.');
+			return false;
+		}
+		return true;
+	}
 
-//category 끝
+	// category 시작
+	function mainCategory(e) {
+		var sub_a = [ "핸드메이드", "코트/자켓", "가디건", "점퍼" ];
+		var sub_b = [ "니트/가디건", "맨투맨/후드/티셔츠", "셔츠/블라우스", "슬리브리스" ];
+		//var sub_c = [];
+		var sub_d = [ "미니", "미디/롱" ];
+		var sub_e = [ "데님", "면바지/슬랙스", "쇼츠" ];
+		var sub_f = [ "슈즈", "백" ];
+		var sub_g = [ "쥬얼리", "모자", "벨트", "양말", "홈웨어", "etc" ];
+		var target = document.getElementById("subCategory");
 
+		if (e.value == "a")
+			var d = sub_a;
+		else if (e.value == "b")
+			var d = sub_b;
+		else if (e.value == "d")
+			var d = sub_d;
+		else if (e.value == "e")
+			var d = sub_e;
+		else if (e.value == "f")
+			var d = sub_f;
+		else if (e.value == "g")
+			var d = sub_g;
 
+		target.options.length = 0;
 
-   var oEditors = [];
-   $(function() {
-      nhn.husky.EZCreator
-            .createInIFrame({
-               oAppRef : oEditors,
-               elPlaceHolder : "content", //textarea에서 지정한 id와 일치해야 합니다.      
-               //SmartEditor2Skin.html 파일이 존재하는 경로
-               sSkinURI : "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",
-               htParams : {
-                  // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-                  bUseToolbar : true,
-                  // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-                  bUseVerticalResizer : true,
-                  // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-                  bUseModeChanger : false,
-                  fOnBeforeUnload : function() {
+		for (x in d) {
+			var opt = document.createElement("option");
+			opt.value = d[x];
+			opt.innerHTML = d[x];
+			target.appendChild(opt);
+		}
+	}
 
-                  }
-               },
-               fOnAppLoad : function() {
-                  //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-                  oEditors.getById["content"].exec("PASTE_HTML", [ " " ]);
-               },
-               fCreator : "createSEditor2"
-            });
+	//category 끝
 
-      //저장버튼 클릭시 form 전송
-      $("#save").click(function() {
-         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-         $("#frm").submit();
-      });
-   });
+	var oEditors = [];
+	$(function() {
+		nhn.husky.EZCreator
+				.createInIFrame({
+					oAppRef : oEditors,
+					elPlaceHolder : "content", //textarea에서 지정한 id와 일치해야 합니다.      
+					//SmartEditor2Skin.html 파일이 존재하는 경로
+					sSkinURI : "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",
+					htParams : {
+						// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+						bUseToolbar : true,
+						// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+						bUseVerticalResizer : true,
+						// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+						bUseModeChanger : false,
+						fOnBeforeUnload : function() {
 
-   function input(f) {
-      if (f.subject.value == '') {
-         alert("제목을 입력하세요");
-         f.subject.focus();
-         return false;
-      }
-      if (f.content.value == '') {
-         alert("내용을 입력하세요");
-         f.content.focus();
-         return false;
-      }
-      if (f.passwd.value == '') {
-         alert("비밀번호를 입력하세요");
-         f.passwd.focus();
-         return false;
-      }
-   }
-   
+						}
+					},
+					fOnAppLoad : function() {
+						//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
+						oEditors.getById["content"].exec("PASTE_HTML", [ " " ]);
+					},
+					fCreator : "createSEditor2"
+				});
+
+		//저장버튼 클릭시 form 전송
+		$("#save").click(function() {
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			$("#frm").submit();
+		});
+	});
 </script>
