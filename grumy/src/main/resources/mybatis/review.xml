@@ -53,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 		)
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
-		<!-- and ansnum=0 -->
+		
 		ORDER BY reviewNo desc
 	</select>
 

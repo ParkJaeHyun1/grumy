@@ -291,56 +291,49 @@ function popup(reviewNo){
 															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
 															접기</a>
 														<div class="review_edit_action">
-
-
 															<a
-																href="/slowand.com/reviews/267651?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100&amp;widget_id=1"
+																 onclick="javascript:delete1(${dto.reviewNo})"
 																data-method="delete" data-remote="true"
 																data-confirm="작성한 리뷰가 완전히 삭제됩니다"
 																class="review_edit_action__button review_edit_action__button--delete">삭제</a>
-
-
-
-
 															<a
-																href="/slowand.com/reviews/267651/edit?group=0&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100&amp;widget_id=1"
-																data-method="post" data-remote="true"
+																onclick="javascript:update(${dto.reviewNo})"
 																class="review_edit_action__button review_edit_action__button--edit">수정</a>
 
 
 															<div class="review_edit_action__divider"></div>
 														</div>
 													</div>
-												<c:if test="${not empty dto.replyContent }">
-												<div     
-													class="comments js-comments-container js-ie-opacity-fix">
-													<div class="comments__arrow_top"></div>
-													<ul class="comments__list">
+													<c:if test="${not empty dto.replyContent }">
+														<div
+															class="comments js-comments-container js-ie-opacity-fix">
+															<div class="comments__arrow_top"></div>
+															<ul class="comments__list">
 
-														<li class="comment" id="comment_252567">
-															<div class="comment__inner">
-																<div class="comment__lpane" title="slowandyeong">slowandyeong</div>
-																<div class="comment__rpane">
-																	<div class="comment__error_message"></div>
-																	<div class="comment__message">
-																		<span class="comment__message_text">${dto.id}님
-																			${dto.replyContent} </span>
-																	</div> 
-																</div>       
-															</div>     
-														</li>      
-													</ul>
+																<li class="comment" id="comment_252567">
+																	<div class="comment__inner">
+																		<div class="comment__lpane" title="slowandyeong">slowand</div>
+																		<div class="comment__rpane">
+																			<div class="comment__error_message"></div>
+																			<div class="comment__message">
+																				<span class="comment__message_text">${dto.id}님!
+																					${dto.replyContent} </span>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</c:if>
+
+
 												</div>
-											</c:if>       
-
-
 											</div>
 										</div>
-									</div>
-									<div class="reviews_index_list_review__rcontents">
-										<div class="reviews_index_list_review__info_container">
-											<span class="reviews_index_list_review__name"><script
-													type="text/javascript">
+										<div class="reviews_index_list_review__rcontents">
+											<div class="reviews_index_list_review__info_container">
+												<span class="reviews_index_list_review__name"><script
+														type="text/javascript">
                               var len = ('${dto.id}'.length);
                               var name = '${dto.id}'.replace(
                                     '${dto.id}'.substr(4,
@@ -351,19 +344,19 @@ function popup(reviewNo){
                                  document.write(name);
                               </script></span>
 
-											<c:choose>
-												<c:when test="${empty dto.picture}">
-												</c:when>
-												<c:otherwise>
-													<img
-														src="${pageContext.request.contextPath}/storage/${dto.picture}"
-														class="js-review-image" width="90px" height="90px"
-														style="opacity: 1;">
-												</c:otherwise>
+												<c:choose>
+													<c:when test="${empty dto.picture}">
+													</c:when>
+													<c:otherwise>
+														<img
+															src="${pageContext.request.contextPath}/storage/${dto.picture}"
+															class="js-review-image" width="90px" height="90px"
+															style="opacity: 1;">
+													</c:otherwise>
 
-											</c:choose>
-										</div>
-									</div></li>
+												</c:choose>
+											</div>
+										</div></li>
 								<!-- 이미지팝업 -->
 								<div
 									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
@@ -455,6 +448,8 @@ function popup(reviewNo){
 															<div class="show_photo_review__review_message">
 																${dto.content }</div>
 														</div>
+														
+														<c:if test="${not empty dto.replyContent }">
 														<div class="show_photo_review__feedback_container">
 															<div
 																class="comments js-comments-container js-ie-opacity-fix">
@@ -466,9 +461,8 @@ function popup(reviewNo){
 																			<div class="comment__rpane">
 																				<div class="comment__error_message"></div>
 																				<div class="comment__message">
-																					<span class="comment__message_text">${dto.id }님
-																						! , 슬로우앤드에 후기 남겨주셔서 감사합니다:-) ! 적립금 1,000원
-																						지급도와드렸습니다♥ 앞으로 애용 해주세요*.*</span>
+																					<span class="comment__message_text">${dto.id }님! 
+																						${dto.replyContent}</span>
 																				</div>
 																			</div>
 																		</div>
@@ -476,6 +470,7 @@ function popup(reviewNo){
 																</ul>
 															</div>
 														</div>
+														</c:if>
 													</div>
 												</div>
 											</div>
