@@ -24,6 +24,8 @@
  				<input type="hidden" name="id" value="${sessionScope.id}">
  				<input type="hidden" name="check_read" value="${dto.id}">
  				<input type="hidden" name="ref" value="${dto.ref }">
+ 				<input type="hidden" name="type" value="상품">
+ 				<input type="hidden" name="category" value="상품문의">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>

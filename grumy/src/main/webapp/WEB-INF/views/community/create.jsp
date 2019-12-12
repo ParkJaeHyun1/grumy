@@ -23,6 +23,8 @@
 				<input type="hidden" name="check_read" value="${sessionScope.id }">
 				<input type="hidden" name="itemno" value="${param.itemNo }">
 				<input type="hidden" name="writer" value="${name}">
+				<input type="hidden" name="category" value="상품 문의">
+				<input type="hidden" name="type" value="상품">
 				
 				<c:choose>
 					<c:when test="${sessionScope.grade=='A' }">

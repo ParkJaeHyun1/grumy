@@ -23,7 +23,7 @@
 			<!-- 글 내용-->
 			<form action="update" method="post" id="frm"
 				onsubmit="return input(this)" enctype="multipart/form-data">
-				<input type="hidden" name="communityNo" value="${param.communityNo}">
+				<input type="hidden" name="board_no" value="${param.board_no}">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -38,7 +38,7 @@
 							</tr>
 							<tr>
 								<th scope="row">WRITER</th>
-								<td>${dto.id }</td>
+								<td>${dto.writer }</td>
 							</tr>
 							<tr>
 								<td colspan="2" style="text-align: center"><textarea

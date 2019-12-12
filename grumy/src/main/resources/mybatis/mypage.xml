@@ -9,20 +9,20 @@ select * from member
 where id = #{id}
 </select>
 <select id="orderCount" parameterType="String" resultType="OrderItemDTO">
-select state,count(*) as count
+select i.state,count(*) as count
 from
 norder o,orderitem i
-where id = #{id} and o.orderno=i.orderno and state2 is null
-group by state
-order by state
+where id = #{id} and o.orderno=i.orderno and i.state2 is null
+group by i.state
+order by i.state
 </select>
 <select id="orderCount2" parameterType="String" resultType="OrderItemDTO">
-select state2,count(*) as count
+select i.state2,count(*) as count
 from
 norder o,orderitem i
 where id = #{id} and o.orderno=i.orderno
-group by state2
-order by state2
+group by i.state2
+order by i.state2
 </select>
 
 	<resultMap type="orderDTO" id="orderMap">
@@ -47,9 +47,9 @@ order by state2
 		select * from
 		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
 		(select b.orderItemNo orderItemNo,i.itemno itemno, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			(i.Price -i.SalePrice) itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and state=#{state}
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and b.state=#{state}
 
 			order by a.orderno desc
 			))
@@ -62,9 +62,9 @@ order by state2
 	select count(*) from(
 		(select orderno, odate, orderItemNo, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
 		(select b.orderItemNo orderItemNo, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			(i.Price -i.SalePrice) itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and state=#{state}
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} and b.state=#{state}
 			)))
 	</select>
 

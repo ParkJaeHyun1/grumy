@@ -56,7 +56,7 @@
 												src="${pageContext.request.contextPath}/images/${list2.itemImage }"></a></td>
 										<td class="product left top"><a
 											href="${pageContext.request.contextPath }/item/read?itemNo=${list2.itemNo}">${list2.itemTitle }</a>
-											<div>[옵션:${list2.itemColor }/${list2.itemSize }]</div></td>
+											<div>[옵션:${list2.itemColor }<c:if test="${not empty list2.itemSize }">/${list2.itemSize }</c:if>]</div></td>
 										<td>${list2.count }</td>
 										<td>${list2.itemPrice }</td>
 										<td class="state">${list2.state }

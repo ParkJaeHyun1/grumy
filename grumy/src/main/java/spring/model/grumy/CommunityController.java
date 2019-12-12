@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import spring.model.community.communityDTO;
+import spring.model.board.BoardDTO;
 import spring.model.mapper.communityMapper;
 import spring.model.utility.Utility;
 
 
 @Controller
 public class CommunityController {
-	
+	 
 	@Autowired
 	private communityMapper mapper;
 	
 	
 	
 	@PostMapping("/community/create_reply")
-	public String create_reply(communityDTO dto) {
+	public String create_reply(BoardDTO dto) {
 		mapper.create_reply(dto);
 		
 	
@@ -36,10 +36,10 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/create_reply")
-	public String create_reply(int communityNo,HttpServletRequest request,HttpSession session) {
+	public String create_reply(int board_no,HttpServletRequest request,HttpSession session) {
 		
 		
-		communityDTO dto = mapper.read(communityNo);
+		BoardDTO dto = mapper.read(board_no);
 		String id = (String) session.getAttribute("id");
 		
 		request.setAttribute("name", mapper.getname(id)); 		
@@ -50,7 +50,7 @@ public class CommunityController {
 	
 	
 	@PostMapping("/community/update")
-	public String update(communityDTO dto,HttpServletRequest request) {
+	public String update(BoardDTO dto,HttpServletRequest request) {
 		
 
 		int flag = mapper.update(dto);
@@ -63,8 +63,8 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/update")
-	public String update(int communityNo,Model model) {
-		communityDTO dto = mapper.read(communityNo);
+	public String update(int board_no,Model model) {
+		BoardDTO dto = mapper.read(board_no);
 		
 		model.addAttribute("dto",dto);
 		
@@ -81,7 +81,7 @@ public class CommunityController {
 	}
 	
 	@GetMapping("/community/read")
-	public String read(int communityNo,HttpServletRequest request, HttpSession session) {
+	public String read(int board_no,HttpServletRequest request, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		String grade = (String)session.getAttribute("grade");
 		
@@ -89,7 +89,7 @@ public class CommunityController {
 			id = "";
 			grade="";
 		}
-		communityDTO dto = mapper.read(communityNo);
+		BoardDTO dto = mapper.read(board_no);
 		
 		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev()=='S') {
 		String content = dto.getContent().replaceAll("\r\n", "<br>");	
@@ -106,7 +106,7 @@ public class CommunityController {
 
 	
 	@PostMapping("/community/create")
-	public String create(communityDTO dto,HttpServletRequest request) {
+	public String create(BoardDTO dto,HttpServletRequest request) {
 		
 		
 		
@@ -131,7 +131,7 @@ public class CommunityController {
 	}
 	
 @RequestMapping("/community/list")
-	public String list(HttpServletRequest request,communityDTO dto) {
+	public String list(HttpServletRequest request,BoardDTO dto) {
 	String word = Utility.checkNull(request.getParameter("word"));
 	String col = Utility.checkNull(request.getParameter("col"));
 	
@@ -153,8 +153,8 @@ public class CommunityController {
 	map.put("sno",sno);
 	map.put("eno",eno);
 	
-	List<communityDTO> list = mapper.list(map);
-	List<communityDTO> list_ = mapper.list_();
+	List<BoardDTO> list = mapper.list(map);
+	List<BoardDTO> list_ = mapper.list_();
 	
 	int total = mapper.total(map);
 	

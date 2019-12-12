@@ -6,7 +6,7 @@
 <script type="text/javascript">
 	function read(no){
 		var url = "read";
-		url += "?communityNo="+no;
+		url += "?board_no="+no;
 		
 		location.href= url;
 	}
@@ -30,7 +30,7 @@
 					enctype="application/x-www-form-urlencoded;charset=UTF-8"
 					style="display: none">
 					<input type="hidden" name="url"
-						value="/delivery/list"></input>
+						value="/community/list"></input>
 				</form>
 
 		<div
@@ -67,7 +67,7 @@
 								<td></td>
 								<td></td>
 								<td class="subject left txtBreak">
-								<a href="javascript:read(${dto.communityNo })">${dto.subject }
+								<a href="javascript:read(${dto.board_no })">${dto.subject }
 										<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
 										<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
 										</c:if></a></td>
@@ -97,7 +97,7 @@
 							</td>
 							<td class="subject left txtBreak">
 							<c:if test="${not empty dto.itemTitle }"><span class="txtNum">${dto.itemTitle }</span><br></c:if>
-										<a href="javascript:read(${dto.communityNo });">
+										<a href="javascript:read(${dto.board_no });">
 										<c:if test="${dto.indent ==1 }">
 										<img src="${pageContext.request.contextPath }/images/re.gif" />
 										</c:if>

@@ -5,63 +5,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
-<insert id="create_reply" parameterType="communityDTO">
-insert into community(communityNo,subject,writer,content,wdate,ref,indent,id,check_read)
-values((select nvl(max(communityNo),0)+1 from community),#{subject},#{writer},#{content},sysdate,#{ref},1,#{id},#{check_read})
+<insert id="create_reply" parameterType="BoardDTO">
+insert into board(board_no,subject,writer,content,wdate,ref,indent,id,check_read,category,type)
+values((select nvl(max(board_no),0)+1 from board),#{subject},#{writer},#{content},sysdate,#{ref},1,#{id},#{check_read},#{category},#{type})
 </insert>
 
 
 <update id="update" parameterType="int">
-	update community 
+	update board 
 	set content = #{content}
-	where communityNo = #{communityNo}
+	where board_no = #{board_no}
 </update>
 
 <delete id="delete" parameterType="int">
-delete from community
+delete from board
 where ref = #{ref}
 </delete>
 
-<select id="read" parameterType="int" resultType="communityDTO">
+<select id="read" parameterType="int" resultType="BoardDTO">
 select *
-from community
-where communityNo = #{communityNo}
+from board
+where board_no = #{board_no}
 </select>
 
-<select id="list_" resultType="communityDTO">
-select communityno,subject,wdate,writer,lev
-from community
-where lev = 'S'
+<select id="list_" resultType="BoardDTO">
+select board_no,subject,wdate,writer,lev
+from board
+where lev = 'S' and type = '상품'
 order by ref desc	
 		
 </select>
 
-	<select id="list" parameterType="Map" resultType="communityDTO">
-		select communityNo,writer,subject,wdate,itemPicture,itemTitle,itemNo,indent,lev
+	<select id="list" parameterType="Map" resultType="BoardDTO">
+		select board_no,writer,subject,wdate,itemPicture,itemTitle,itemNo,indent,lev
 		from (
-				select c.communityNo communityno,c.writer writer,c.subject subject,to_char(c.wdate,'YYYY-MM-DD HH24:MI:SS') wdate,i.itemNo itemno,
-				i.image itemPicture,i.title itemTitle, c.indent indent,c.lev lev, rownum r
-				from community c left outer join item i
-				on i.itemno = c.itemno
+				select b.board_no board_no,b.writer writer,b.subject subject,to_char(b.wdate,'YYYY-MM-DD HH24:MI:SS') wdate,i.itemNo itemno,
+				i.image itemPicture,i.title itemTitle, b.indent indent,b.lev lev, rownum r
+				from board b left outer join item i
+				on i.itemno = b.itemno
 				where 
 					<choose>
 						<when test="col == 'subject'">
 						subject like '%'||#{word}||'%'
-						and lev = 'A'
+						and b.lev = 'A'
+						and b.type = '상품'
 						</when>
 						<when test="col == 'content'">
 						content like '%'||#{word}||'%'
-						and lev = 'A'
+						and b.lev = 'A'
+						and b.type = '상품'
 						</when>
 						<when test="col == 'writer'">
 						writer like '%'||#{word}||'%'
-						and lev = 'A'
+						and b.lev = 'A'
+						and b.type = '상품'
 						</when>
 						<otherwise>
-						lev = 'A'
+						b.lev = 'A'
+						and b.type = '상품'
 						</otherwise>
 					</choose>
-				order by ref desc,communityno asc
+				order by ref desc,board_no asc
 		)
 		where
 		<![CDATA[
@@ -71,23 +75,27 @@ order by ref desc
 </select>
 
 <select id="total" parameterType="Map" resultType="int">
-select count(*) from community
+select count(*) from board
 		<where>
          	<choose>
          		<when test="col=='subject'">
          		subject like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '상품'
          		</when>
          		<when test="col=='content'">
          		content like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '상품'
          		</when>
          		<when test="col=='writer'">
          		writer like '%'||#{word}||'%'
          		and lev = 'A'
+         		and type = '상품'
          		</when>
          		<otherwise>
          		lev = 'A'
+         		and type = '상품'
          		</otherwise>
          	</choose>
          </where>
@@ -99,10 +107,10 @@ where id = #{id}
 </select>
 
 
-<insert id="create" parameterType="communityDTO">
-INSERT INTO community(communityNo, id, content,itemNo,wdate,ref,writer,subject,check_read,lev)
-VALUES((SELECT NVL(MAX(communityNo), 0) + 1 as communityNo FROM community),
-#{id},#{content},#{itemno},sysdate,(SELECT NVL(MAX(ref), 0) + 1  FROM community),#{writer},#{subject},#{check_read},#{lev})
+<insert id="create" parameterType="BoardDTO">
+INSERT INTO board(board_no, id, content,itemNo,wdate,ref,writer,subject,check_read,lev,category,type)
+VALUES((SELECT NVL(MAX(board_no), 0) + 1 as board_no FROM board),
+#{id},#{content},#{itemno},sysdate,(SELECT NVL(MAX(ref), 0) + 1  FROM board),#{writer},#{subject},#{check_read},#{lev},#{category},#{type})
 
 </insert>
 </mapper>

@@ -1,17 +1,17 @@
 package spring.model.mapper;
 
-import java.util.List; 
+import java.util.List;
 import java.util.Map;
 
-import spring.model.community.communityDTO;
+import spring.model.board.BoardDTO;
 
 public interface communityMapper {
-	int update(communityDTO dto);
+	int update(BoardDTO dto);
 	List list(Map map);
-	int create(communityDTO dto);
-	communityDTO read(int communityNo);
-	int delete(int communityNo);
-	int create_reply(communityDTO dto);
+	int create(BoardDTO dto);
+	BoardDTO read(int board_no);
+	int delete(int board_no);
+	int create_reply(BoardDTO dto);
 	String getname(String id);
 	int total(Map map);
 	List list_();
