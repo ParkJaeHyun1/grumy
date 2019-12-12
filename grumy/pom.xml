@@ -15,7 +15,6 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-
 		<!-- 비밀번호 이메일 전송 -->
 		<dependency>
 			<groupId>org.springframework</groupId>

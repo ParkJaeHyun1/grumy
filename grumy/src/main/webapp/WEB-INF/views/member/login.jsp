@@ -131,6 +131,7 @@ alt="로그인" style="background:#a18266">로그인</a>
 alt="회원가입" style="background:#a18266">
 회원가입
 </a>
+ 
 </p>
 
 </fieldset>
