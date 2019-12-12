@@ -21,17 +21,8 @@
 			<form id="boardWriteForm" name="frm"
 				action="create_reply" method="post" 
 				enctype="multipart/form-data">
-				<input type="hidden" name="ref" value="${dto.ref }">
-				<input type="hidden" name="id" value="${sessionScope.id}">
-				<input type="hidden" name="reviewNo" value="${dto.reviewNo}">
-				<input type="hidden" name="height" value="${dto.height}">
-				<input type="hidden" name="weight" value="${dto.weight}">
-				<input type="hidden" name="mySize" value="${dto.mySize}">
-				<input type="hidden" name="itemOptionNo" value="${dto.itemOptionNo}">
-				
-				
-<%-- 				<input type="hidden" name="writer" value="${name}"> --%>
-<%-- 				<input type="hidden" name="id" value="${sessionScope.id}"> --%>
+ 				<input type="hidden" name="reviewNo" value="${reviewNo}">
+
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -47,7 +38,7 @@
 							</tr>
 							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
-										name="content" id="content">
+										name="replyContent" id="replyContent">
 									</textarea></td>
 							</tr>
 						</tbody>
@@ -75,7 +66,7 @@
 	$(function(){
 	      nhn.husky.EZCreator.createInIFrame({
 	          oAppRef: oEditors,
-	          elPlaceHolder: "content", //textarea에서 지정한 id와 일치해야 합니다. 
+	          elPlaceHolder: "replyContent", //textarea에서 지정한 id와 일치해야 합니다. 
 	          //SmartEditor2Skin.html 파일이 존재하는 경로
 	          sSkinURI: "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",  
 	          htParams : {
@@ -91,14 +82,14 @@
 	          }, 
 	          fOnAppLoad : function(){
 	              //기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-	              oEditors.getById["content"].exec("PASTE_HTML", [" "]);
+	              oEditors.getById["replyContent"].exec("PASTE_HTML", [" "]);
 	          },
 	          fCreator: "createSEditor2"
 	      });
 	      
 	      //저장버튼 클릭시 form 전송
 	      $("#save").click(function(){
-	          oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+	          oEditors.getById["replyContent"].exec("UPDATE_CONTENTS_FIELD", []);
 	          $("#frm").submit();
 	      });    
 	});

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.review.reviewDTO;
-
+import spring.model.board.BoardDTO;
 import spring.model.mapper.reviewMapper;
 
 import spring.model.utility.Utility;
@@ -27,14 +27,19 @@ public class ReviewController {
 	private reviewMapper mapper;
 
 	@PostMapping("/review/create_reply")
-	public String create_reply(reviewDTO dto) {
-		mapper.create_reply(dto);
+	public String create_reply(int reviewNo, String replyContent) {
+		Map map = new HashMap();
+		map.put("reviewNo", reviewNo);
+		map.put("replyContent", replyContent);
+		mapper.create_reply(map);
 		return "redirect:/review/list";
 	}
 
 	@GetMapping("/review/create_reply")
 	public String create_reply(int reviewNo, HttpServletRequest request, HttpSession session) {
+		
 		request.setAttribute("reviewNo",reviewNo);
+		
 		return "/review/create_reply";
 	}
 

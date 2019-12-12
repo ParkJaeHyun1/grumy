@@ -26,11 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		reviewNo = #{reviewNo}
 	</delete>
 
-	<insert id="create_reply" parameterType="reviewDTO">
+	<update id="create_reply" parameterType="Map">
 		update review
 		set replyContent = #{replyContent}
 		where reviewNo = #{reviewNo}
-	</insert>
+	</update>
 
 	<insert id="create" parameterType="reviewDTO">
 		INSERT INTO
@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="listp" resultType="reviewDTO">
-		select r.picture picture
+		select r.picture picture, reviewNo
 		from item
 		i, review r, itemOption o
 		where r.itemOptionNo = o.itemOptionNo and
