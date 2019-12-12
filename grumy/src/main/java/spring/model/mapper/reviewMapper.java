@@ -9,12 +9,13 @@ public interface reviewMapper {
 	int delete(int reviewNo);
 	ArrayList<reviewDTO> list(Map map);
 	ArrayList<reviewDTO> listp();
-	ArrayList<reviewDTO> listr();
+
 	int update(reviewDTO dto);
 	int pcount();
 	int total(Map map);
 	int create(reviewDTO dto);
-	ArrayList<reviewDTO> itemReviewlist(Map map);
+
 	reviewDTO read(int reviewNo);
 	int create_reply(reviewDTO dto);
+
 }

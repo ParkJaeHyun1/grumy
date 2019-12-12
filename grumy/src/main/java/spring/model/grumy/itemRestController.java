@@ -31,7 +31,7 @@ public class itemRestController {
 
 	
 	@GetMapping("/item/reply/list/{itemNo}/{nowPage}")
-	public ResponseEntity<List<reviewDTO>> getList(@PathVariable("itemNo") int itemNo,@PathVariable("nowPage") int nowPage){
+	public ResponseEntity<String> getList(@PathVariable("itemNo") int itemNo,@PathVariable("nowPage") int nowPage){
 
 		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
 		
@@ -43,8 +43,11 @@ public class itemRestController {
 		map.put("eno", eno);
 		map.put("itemNo", itemNo);
 		
-		return new ResponseEntity<List<reviewDTO>>(mapper.itemReviewlist(map),HttpStatus.OK);
-		
+		//이게 원래코드인데 itemReviewlist를 interface 에서만 선언해놓고 xml에선 만들지도않아서 무슨쓸모인지모르겠음
+		//return new ResponseEntity<List<reviewDTO>>(mapper.itemReviewlist(map),HttpStatus.OK);
+		// 리뷰맵퍼랑 리뷰댓글 맵퍼써서 두개반환해줘야함
+		//위의 반환형태 변경
+		return new ResponseEntity<String>("success",HttpStatus.OK);
 		
 	}
 

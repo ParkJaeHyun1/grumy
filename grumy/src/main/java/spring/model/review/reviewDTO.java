@@ -18,123 +18,65 @@ public class reviewDTO {
 	private String itemSize;
 	private String itemOptionNo;
 	private int itemNo;
-	private int ref;
-	private int ansnum;
-	
+	private String replyContent;
 	
 
-	
+	public String getReplyContent() {
+		return replyContent;
+	}
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
 	public int getReviewNo() {
 		return reviewNo;
 	}
-
-
-
-
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
-
-
-
-
 	public String getId() {
 		return id;
 	}
-
-
-
-
 	public void setId(String id) {
 		this.id = id;
 	}
 
-
-
-
 	public String getContent() {
 		return content;
 	}
-
-
-
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-
-
-
 	public String getPicture() {
 		return picture;
 	}
-
-
-
-
 	public void setPicture(String picture) {
 		this.picture = picture;
 	}
-
-
-
-
 	public MultipartFile getFilenameMF() {
 		return filenameMF;
 	}
-
-
-
-
 	public void setFilenameMF(MultipartFile filenameMF) {
 		this.filenameMF = filenameMF;
 	}
-
-
-
-
 	public String getItemPicture() {
 		return itemPicture;
 	}
-
-
-
-
 	public void setItemPicture(String itemPicture) {
 		this.itemPicture = itemPicture;
 	}
 
-
-
-
 	public String getItemTitle() {
 		return itemTitle;
 	}
-
-
-
-
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
 	}
-
-
-
-
 	public int getHeight() {
 		return height;
 	}
-
-
-
-
 	public void setHeight(int height) {
 		this.height = height;
 	}
-
-
-
 
 	public String getWeight() {
 		return weight;
@@ -234,37 +176,10 @@ public class reviewDTO {
 
 
 
-	public int getRef() {
-		return ref;
-	}
-
-
-
-
-	public void setRef(int ref) {
-		this.ref = ref;
-	}
-
-
-
-
-	public int getAnsnum() {
-		return ansnum;
-	}
-
-
-
-
-	public void setAnsnum(int ansnum) {
-		this.ansnum = ansnum;
-	}
-
-
-
 
 	public reviewDTO(int reviewNo, String id, String content, String picture, MultipartFile filenameMF,
 			String itemPicture, String itemTitle, int height, String weight, String mySize, String star,
-			String itemColor, String itemSize, String itemOptionNo, int itemNo, int ref, int ansnum) {
+			String itemColor, String itemSize, String itemOptionNo, int itemNo) {
 		super();
 		this.reviewNo = reviewNo;
 		this.id = id;
@@ -281,8 +196,7 @@ public class reviewDTO {
 		this.itemSize = itemSize;
 		this.itemOptionNo = itemOptionNo;
 		this.itemNo = itemNo;
-		this.ref = ref;
-		this.ansnum = ansnum;
+
 	}
 
 
