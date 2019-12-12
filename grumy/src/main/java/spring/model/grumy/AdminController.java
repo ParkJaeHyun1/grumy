@@ -12,12 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import spring.model.community.communityDTO;
-import spring.model.delivery.DeliveryDTO;
+import spring.model.board.BoardDTO;
 import spring.model.mapper.AdminMapper;
 import spring.model.member.MemberDTO;
 import spring.model.notice.NoticeDTO;
@@ -57,8 +54,8 @@ public class AdminController {
 		NoticeDTO noticetr = noticet.get(0);
 		
 		ArrayList<NoticeDTO> noticel = mapper.noticel(5);
-		ArrayList<DeliveryDTO> deliveryl = mapper.deliveryl(5);
-		ArrayList<communityDTO> communityl = mapper.communityl(5);
+		ArrayList<BoardDTO> deliveryl = mapper.deliveryl(5);
+		ArrayList<BoardDTO> communityl = mapper.communityl(5);
 		
 		
 		request.setAttribute("noticetr", noticetr);
@@ -128,7 +125,7 @@ public class AdminController {
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
 		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
-
+		System.out.println(list.get(0).getOrderItemList().size());
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);

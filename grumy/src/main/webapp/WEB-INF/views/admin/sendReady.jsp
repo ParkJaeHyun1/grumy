@@ -37,7 +37,7 @@ function update(orderno){
 					class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 					<div class="title" style="text-align: center;">
 						<h2>
-							<font color="#555555">입금대기</font>                  
+							<font color="#555555">배송준비</font>                  
 						</h2>
 						<br>
 						<br>
@@ -63,6 +63,7 @@ function update(orderno){
 							<col style="width: 70px;">
 							<col style="width: 70px;">
 							<col style="width: 100px;">
+							<col style="width: 100px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
@@ -77,6 +78,7 @@ function update(orderno){
 								<th scope="col">주문아이디</th>
 								<th scope="col">입금상태</th>
 								<th scope="col">확인</th>
+								<th scope="col">배송번호</th>
 							</tr>
 						</thead>
 						<tbody
@@ -92,6 +94,7 @@ function update(orderno){
 										<td></td>
 										<td></td>
 										<td>등록된 글이 없습니다.</td>
+										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -119,10 +122,12 @@ function update(orderno){
 													<c:set var="aa" value="${dto.orderNo }"/>
 													<td>입금대기</td>
 													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}')">확인버튼</button></td>
+											<td><input type="text" required="required"></td>
 												</c:when>
 												<c:otherwise>
 													<td></td>
 													<td></td>
+											<td><input type="text" required="required"></td>
 												</c:otherwise>
 											</c:choose>							
 										</tr>

@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from
 		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
 		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			(i.Price -i.SalePrice) itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
+			b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
 			
@@ -110,20 +110,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 
-	<select id="deliveryl" parameterType="int" resultType="DeliveryDTO">
-		select no, subject, wdate from (
-		select no, subject, to_char(wdate, 'mm.dd.') wdate, lev from delivery where indent = 0 order by no desc)
+	<select id="deliveryl" parameterType="int" resultType="BoardDTO">
+		select board_no, subject, wdate from (
+		select board_no, subject, to_char(wdate, 'mm.dd.') wdate, lev, type from board where indent = 0 order by board_no desc)
 		<![CDATA[
-		where rownum <=#{rownum} 
+		where rownum <=#{rownum} and type='기타'
 		]]>
 		and LEV = 'A'
 	</select>
 
-	<select id="communityl" parameterType="int" resultType="communityDTO">
-		select communityno, content, wdate from (
-		select communityno, content, to_char(wdate, 'mm.dd.') wdate from community order by communityno desc)
+	<select id="communityl" parameterType="int" resultType="BoardDTO">
+		select board_no, content, wdate from (
+		select board_no, content, to_char(wdate, 'mm.dd.') wdate, type from board order by board_no desc)
 		<![CDATA[
-		where rownum <=#{rownum}
+		where rownum <=#{rownum} and type='상품'
 		]]>
 	</select>
 	
@@ -145,12 +145,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="orderCount" parameterType="String" resultType="OrderItemDTO">
-		select state,count(*) as count
+		select i.state, count(*) as count
 		from
-		norder o,orderitem i
-		where id = #{id} and o.orderno=i.orderno and state2 = null
-		group by state
-		order by state
+		norder o, orderitem i
+		where id = #{id} and o.orderno=i.orderno
+		group by i.state
+		order by i.state
 	</select>
 	
 </mapper>

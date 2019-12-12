@@ -106,7 +106,11 @@ function update(orderno){
 										<c:forEach var="dto2" items="${dto.orderItemList}" varStatus="status">
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
-											<td>${dto.orderNo}</td>
+											<c:choose>										
+												<c:when test="${aa != dto.orderNo }">
+												<td rowspan="${dto.getOrderItemList().size() }">${dto.orderNo}</td>
+												</c:when>
+											</c:choose>
 											<td>${dto.odate}</td>
 											<td>${dto2.itemTitle}</td>
 											<td>${dto2.itemColor}</td>

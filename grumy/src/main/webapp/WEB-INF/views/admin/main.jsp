@@ -28,15 +28,15 @@ function readn(no){
 	
 	location.href="../notice/"+url;
 }
-function readd(no){
+function readd(board_no){
 	var url = "read";
-	url += "?no="+no;
+	url += "?board_no="+board_no;
 	
 	location.href="../delivery/"+url;
 }
-function readd2(no){
+function readd2(board_no){
 	var url = "read";
-	url += "?communityNo="+no;
+	url += "?board_no="+board_no;
 	
 	location.href="../community/"+url;
 }
@@ -346,7 +346,7 @@ $(document).ready(function(){
 												</c:when>
 												<c:otherwise>
 													<c:forEach var="dto" items="${deliveryl}">
-														<a href="javascript:readd(${dto.no })" style="color: #555555;">
+														<a href="javascript:readd(${dto.board_no })" style="color: #555555;">
 														<li>
 															<span>${dto.subject }</span>
 														</li>
@@ -375,7 +375,7 @@ $(document).ready(function(){
 												</c:when>
 												<c:otherwise>
 													<c:forEach var="dto" items="${communityl}">
-														<a href="javascript:readd2(${dto.communityNo })" style="color: #555555;">
+														<a href="javascript:readd2(${dto.board_no })" style="color: #555555;">
 														<li>
 															<span>문의 합니다</span>
 														</li>
