@@ -46,58 +46,85 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 	<link rel="stylesheet" href="./bootstrapt/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="./bootstrapt/css/bootstrap.css" />
 	<script src="./bootstrapt/js/bootstrap.min.js"></script>
-
-	<script>
-		function itemCountUp(itemOptionNo) {
-			updateItemCount(itemOptionNo, count + 1);
+<script>
+	function itemCountUp(itemOptionNo) {
+		updateItemCount(itemOptionNo, count + 1);
+	}
+	function itemCountDown(itemOptionNo) {
+		updateItemCount(itemOptionNo, count - 1);
+	}
+	function itemCountModify(itemOptionNo, cnt) {
+		updateItemCount(itemOptionNo, cnt);
+	}
+	function updateItemCount(itemOptionNo, cnt) {
+		if (!$.isNumeric(cnt) || cnt < 1) {
+			alert('품절 표시를 해주세요');
+			$('#item_count_' + itemOptionNo).val(count);
+			return false;
+		} else if (cnt > list['itemOptionNo' + itemOptionNo].itemCount) {
+			alert('재고가 부족합니다.');
+			$('#item_count_' + itemOptionNo).val(count);
+			return false;
 		}
-		function itemCountDown(itemOptionNo) {
-			updateItemCount(itemOptionNo, count - 1);
-		}
-		function itemCountModify(itemOptionNo, cnt) {
-			updateItemCount(itemOptionNo, cnt);
-		}
-		function updateItemCount(itemOptionNo, cnt) {
-			if (!$.isNumeric(cnt) || cnt < 1) {
-				alert('품절 표시를 해주세요');
-				$('#item_count_' + itemOptionNo).val(count);
-				return false;
-			} else if (cnt > list['itemOptionNo' + itemOptionNo].itemCount) {
-				alert('재고가 부족합니다.');
-				$('#item_count_' + itemOptionNo).val(count);
-				return false;
+		updateItemCountAjax(itemOptionNo, cnt);
+		return true;
+	}
+	function updateItemCountAjax(itemOptionNo, cnt) {
+		alert('3333');
+		$.ajax({
+			type : 'put',
+			url : "./update",
+			data : JSON.stringify({
+				"itemOptionNo" : itemOptionNo,
+				"count" : cnt
+			}),
+			contentType : "application/json; charset=utf-8",
+			success : function(result, status, xhr) {
+				alert('성공');
+				count = cnt;
+				setView();
+			},
+			error : function(xhr, status, er) {
+				alert('에러:' + status);
 			}
-			updateItemCountAjax(itemOptionNo, cnt);
-			return true;
-		}
-		function updateItemCountAjax(itemOptionNo, cnt) {
-			alert('3333');
-			$.ajax({
-				type : 'put',
-				url : "./update",
-				data : JSON.stringify({
-					"itemOptionNo" : itemOptionNo,
-					"count" : cnt
-				}),
-				contentType : "application/json; charset=utf-8",
-				success : function(result, status, xhr) {
-					alert('성공');
-					count = cnt;
-					setView();
-				},
-				error : function(xhr, status, er) {
-					alert('에러:' + status);
-				}
-			});
-		}
-	</script>
-	<style type="">
-/* #logotype{ */
-/* margin-top: 0px;  */
-/* width: 288px;  */
-/* height: 33px;  */
-/* padding-top: 20px; */
-/* } */
+		});
+	}
+</script>
+<style type="">           
+.modal-dialog.modal-80size {
+	width: 150%;
+	height: 80%;
+	margin: 0;
+	padding: 0;
+}
+
+.modal-content.modal-80size {
+	height: auto;
+	min-height: 80%;
+}
+
+.modal.modal-center {
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+	.modal.modal-center:before {
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+}
+
+.modal-dialog.modal-center {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.btn-primary {
+	
+}
 </style>
 </head>
 <body id="main">
@@ -124,7 +151,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<div id="contents">
 				<div class="title">
 					<h2>
-						<span>${parentType}</span><BR></BR>
+						<span>${parentType}</span><BR></BR>         
 					</h2>
 					<%-- 				<c:forEach var="dto" items="${list}"> --%>
 					<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
@@ -146,12 +173,15 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 					<!-- //참고 -->
 				</ul>
 			</div>
-			<c:if test="${not empty sessionScope.id && sessionScope.grade == 'A' }"> 
+			<c:if
+				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 				<p align="right">
-						<button class="yg_btn_28 yg_btn3" style="float:rigth" onclick="location.href='${pageContext.request.contextPath}/item/create'">상품등록</button> &nbsp;
+					<button class="yg_btn_28 yg_btn3" style="float: rigth"
+						onclick="location.href='${pageContext.request.contextPath}/item/create'">상품등록</button>
+					&nbsp;
 				</p>
 				<br></br>
-</c:if> 
+			</c:if>
 			<ul class="prdList grid4">
 
 				<c:forEach var="dto" items="${list}">
@@ -163,158 +193,18 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 								src="${pageContext.request.contextPath}/images/${dto.image}"
 								id="eListPrdImage2065_4"
 								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
-						</div>
+						</div>          
 						<div class="description">
 							<strong class="name"> <a
 								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
 							</strong>
+              
 
-							<%-- 							<input id="item_count_${dto.itemOptionNo}" --%>
-							<%-- 								name="item_count_${dto.itemOptionNo}" size="2" --%>
-							<%-- 								value="${dto.count}" type="text" /><a href="javascript:;" --%>
-							<%-- 								onclick="itemCountUp(${dto.itemOptionNo});"><img --%>
-							<!-- 								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_up.gif" -->
-							<!-- 								alt="수량증가" class="up" /></a><a href="javascript:;" -->
-							<%-- 								onclick="itemCountDown(${dto.itemOptionNo});"><img --%>
-							<!-- 								src="//img.echosting.cafe24.com/skin/base/common/btn_quantity_down.gif" -->
-							<!-- 								alt="수량감소" class="down" /></a>  -->
-
-							<!-- 								<a href="javascript:;" -->
-							<!-- 								class="yg_btn_24 yg_btn3" -->
-							<%-- 								onclick="itemCountModify(${dto.itemOptionNo},item_count_${dto.itemOptionNo}.value);" --%>
-							<!-- 								alt="변경">재고 변경</a> -->
-
-
-
-							<button id="testBtn" class="btn">모달 테스트</button>
-							<!-- 회원가입 확인 Modal-->
-							<div class="modal fade" id="testModal" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button class="close" type="button" data-dismiss="modal"
-												aria-label="Close">
-												<button type="button" class="close" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</button>
-											<h3 class="modal-title" id="exampleModalLabel">
-												모달테스트
-												</h5>
-										</div>
-										<div class="modal-body">
-											<tbody
-												class="xans-element- xans-product xans-product-option xans-record-">
-												<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-												<tr
-													class="xans-element- xans-product xans-product-option xans-record-">
-													<th scope="row">COLOR</th>
-													<td>
-														<ul option_product_no="3596"
-															option_select_element="ec-option-select-finder"
-															option_sort_no="1" option_type="T" item_listing_type="S"
-															option_title="COLOR" product_type="product_option"
-															product_option_area="product_option_3596_0"
-															option_style="button" ec-dev-id="product_option_id1"
-															ec-dev-name="option1" ec-dev-class="ProductOption0"
-															class="ec-product-button" required="true">
-
-
-															<li class="" option_value="컬러" link_image="" title="아이보리"><a
-																href=""> <span>연베이지</span></a></li>
-
-															<li class="" option_value="컬러" link_image="" title="아이보리"><a
-																href=""> <span>핑크</span></a></li>
-
-															<li class="" option_value="컬러" link_image="" title="아이보리"><a
-																href=""> <span>베이지</span></a></li>
-
-															<li class="" option_value="컬러" link_image="" title="아이보리"><a
-																href=""> <span>블랙</span></a></li>
-
-														</ul>
-
-
-
-														<p class="value">
-															[필수] <span
-																class="ec-shop-front-product-option-desc-trigger"
-																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
-														</p>
-													</td>
-												</tr>
-												<tr class="displaynone" id="">
-													<td colspan="2" class="selectButton"><a href="#none"
-														onclick=""><img
-															src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_manual_select.gif"
-															alt="옵션 선택"></a></td>
-												</tr>
-
-												<tr
-													class="xans-element- xans-product xans-product-option xans-record-">
-													<th scope="row">SIZE</th>
-													<td><ul option_product_no="3607"
-															option_select_element="ec-option-select-finder"
-															option_sort_no="2" option_type="T" item_listing_type="S"
-															option_title="SIZE" product_type="product_option"
-															product_option_area="product_option_3607_0"
-															option_style="button" ec-dev-id="product_option_id2"
-															ec-dev-name="option2" ec-dev-class="ProductOption0"
-															class="ec-product-button" required="true">
-															<li class="ec-product-able" option_value="S"
-																link_image="" title="S"><a href="#none"><span>S</span></a></li>
-															<li class="ec-product-disabled" option_value="M"
-																link_image="" title="M"><a href="#none"><span>M</span></a></li>
-															<li class="ec-product-disabled" option_value="L"
-																link_image="" title="L"><a href="#none"><span>L</span></a></li>
-														</ul>
-														<p class="value">
-															[필수] <span
-																class="ec-shop-front-product-option-desc-trigger"
-																data-option_msg="옵션을 선택해 주세요">옵션을 선택해 주세요</span>
-														</p> <select
-														product_option_area_select="product_option_3607_0"
-														id="product_option_id2" name="option2" option_title="SIZE"
-														option_type="T" item_listing_type="S"
-														class="ProductOption0" style="display: none;"
-														required="true"><option value="*">empty</option>
-															<option value="S">S</option>
-															<option value="M">M</option>
-															<option value="L">L</option></select></td>
-												</tr>
-
-
-
-
-												<!-- //참고 -->
-											</tbody>
-
-
-										</div>
-										<div class="modal-footer">
-											<a class="btn" id="modalY" href="#">예</a>
-											<button class="btn" type="button" data-dismiss="modal">아니요</button>
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-
-							<script>
-								$('#testBtn').click(function(e) {
-									e.preventDefault();
-									$('#testModal').modal("show");
-								});
-							</script>
-
-
-
+							<!-- modal 구동 버튼 (trigger) -->
+							<button type="button" class="yg_btn_28 yg_btn3"
+								data-toggle="modal" data-target="#my80sizeCenterModal">재고 변경</button>
 
 							<div class="colorchip">
 								<div
@@ -363,9 +253,46 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 
 				</c:forEach>
+				<div class="modal modal-center fade" id="my80sizeCenterModal"
+								tabindex="-1" role="dialog"
+								aria-labelledby="my80sizeCenterModalLabel">         
+								<div class="modal-dialog modal-80size modal-center"
+									role="document">             
+									<div class="modal-content modal-80size" style="width:730px; height:150px">
+										<div class="modal-header">            
+											<h4 class="modal-title" id="myModalLabel" style="font-size:1.2rem">재고 변경</h4>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>      
+											</button>
+										</div>
+										
+										<div class="modal-body">
+											<div class="thumbnail">
+												<c:forEach var="dto" items="${list}">
+												<img
+													style="width:340px; height:auto; float:left"
+													src="${pageContext.request.contextPath}/images/${dto.image}"
+													id="eListPrdImage2065_4"
+													alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" />
+													</c:forEach>
+											</div>
+										</div>       
+										           
+										<div class="modal-footer">                  
+
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal" style="margin-top: -8px">변경</button>
+
+										</div>
+									</div>
+								</div>
+						</div>
 			</ul>
 		</div>
 	</div>
+	
+	
 
 	<script>
 		$('.ec-base-product .prdList > li')

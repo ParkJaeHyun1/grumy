@@ -200,7 +200,7 @@
 									</tr>
 
 									<tr>
-										<td colspan="2"><textarea rows="20" cols="117"
+										<td colspan="2"><textarea rows="20" cols="122"        
 												name="content" id="content">         	
                               </textarea> <script type="text/javascript">
 																															CKEDITOR
@@ -211,14 +211,14 @@
 																																			});
 																														</script></td>
 
-									</tr>
+									</tr>        
 
-								</tbody>
+								</tbody>       
 							</table>
-						</div>
+						</div>        
 					</div>
 				</div>
-			</form>
+			</form>        
 
 		</div>
 	</div>
