@@ -25,6 +25,20 @@
 <script type="text/javascript" id="AuthSSLContainer" charset="utf-8" 
 src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?auth_mode=decryptClient&amp;auth_callbackName=AUTHSSL_SC.decryptCallbackFn&amp;auth_string=XV5OidKsv9DKma575fcoZW0iuJvmgQWPMYVDHTxNS7HZUkt0u3%2Bn1ZRjQnOsW3Qu9sNDULRWfYGIM4cULxKUweXUQXvcru0Svzuo6yV%2BC1ilJhwt8ZUOAIcBcb7JyJmy2X4lPLpZKK7WX5apiWl%2FM%2FzLCSs3vBGxjfwYBd2fZJo569WBAAy%2B8AXKEDMXBjhX%2B7NqLwhHESe%2FjSkA7vXRFM9Nwb2ag3g8hd0NCcVln1cMdUa6bY22vfhUL%2FZuBpOlWS4HnF%2FUCVgwCcxgStYlDT2Ttvlm8EZ4DQJm7ZstOdGVMGwqu3aZpq8PkseNLQvyzfJ5AXu2tkHyfKi0EqDwnzwyW%2BpMfYUArAM8J%2BHn7fJkbVv2Tqj8D2Q4UyoxfICz2GlUryfAmq%2Bab%2BrMHiQNKQy7zvK1m2HHiloWKsTrnUq7wvqBCVHsXd9Bn7vkOSJk1gTufbY%2FyoN8Ux7d1AQU55D7spElT2GSy90DlVghFqW5FGo6k666jN6nrCSZa7J1&amp;dummy=1575341179590">
 </script>
+<!--  radio 변경 -->
+<script type="text/javascript">
+function transformType(id){
+	if(id=="Radio_On"){
+		document.all["Radio_On"].style.display="";
+		document.all["Radio_Off"].style.display="none";
+	}else{
+		document.all["Radio_On"].style.display="none";
+		document.all["Radio_Off"].style.display="";
+	}
+}
+
+</script>
+
 </head>
 
 <body id="cmn">
@@ -60,13 +74,13 @@ src="https://login2.cafe24ssl.com/crypt/AuthSSLManagerV2.php?auth_mode=decryptCl
     <h3>임시 비밀번호 전송</h3>
 </div>
 <form id="findPasswdMethod" name="findPasswdMethod" 
-action="sendmail" method="post" 
+method="post" 
 enctype="multipart/form-data">
 
 <input type="hidden" name="email" value="${email }"/>
 <input type="hidden" name="passwd" value="${passwd }"/>
 <input type="hidden" name="id" value="${id }"/>
-
+<input type="hidden" name="phone" value="${phone }"/>
 
 
 <div class="xans-element- xans-member xans-member-findpasswdmethod ">
@@ -76,20 +90,58 @@ enctype="multipart/form-data">
 <legend>임시 비밀번호 전송</legend>
 <ul class="ec-base-desc typeBullet gSmall">
 
-<li id="passwd_method_email_info">
-<strong class="term">이메일</strong>
-<strong class="txtEm">
-${email }
-</strong>
-</li>
-                
-</ul>
+<span class="desc"><span class="gBlank5">
 
+
+<input id="check_method0" name="check_method" fw-filter="" onclick="transformType('Radio_On');"
+fw-label="찾는방법" fw-msg="" value="0" type="radio" checked="checked"\>
+<label for="check_method0">이메일
+</label>
+
+<input id="check_method1" name="check_method" fw-filter="" onclick="transformType('Radio_Off');"
+fw-label="찾는방법" fw-msg="" value="1" type="radio">
+<label for="check_method1">
+휴대폰번호
+</label>
+</span></span>
+
+
+<strong class="txtEm">
+
+<li id="Radio_On" class="email" style="display">
+<strong class="term">이메일</strong>
+<span class="desc">
+${email }
+</span>
 <p class="ec-base-button gBlank20">
-	<button type="submit" class="yg_btn_140" alt="임시 비밀번호 전송">임시 비밀번호 전송</a>
+
+	<button type="submit" name="sendmail" value="sendmail" formaction="sendmail"
+	class="yg_btn_140" alt="이메일로 전송">이메일로 전송</a>
 	<button href="${pageContext.request.contextPath }/member/login" class="yg_btn_140 yg_btn3" 
 	onclick="" alt="로그인">로그인</a>
-</p>
+	
+</p> 
+
+</li>
+                
+<li id="Radio_Off" class="phone" style="display:none;">
+<strong class="term">휴대폰번호</strong>
+<span class="desc">
+${phone }
+</span>
+<p class="ec-base-button gBlank20">
+	
+	<button type="submit" name="sendsms" value="sendsms" formaction="sendsms"
+	class="yg_btn_140" alt="문자로 전송">문자로 전송</a>
+	<button href="${pageContext.request.contextPath }/member/login" class="yg_btn_140 yg_btn3" 
+	onclick="" alt="로그인">로그인</a>
+	
+</p> 
+</li>
+
+</strong>               
+</ul>
+
             
 </fieldset>
 </div>
