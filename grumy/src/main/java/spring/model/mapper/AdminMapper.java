@@ -18,5 +18,6 @@ public interface AdminMapper {
 	ArrayList<BoardDTO> communityl(int rownum);
 	int updateState(Map map);
 	MemberDTO read(String id);
+	ArrayList<OrderDTO> readP(Map map);
 	ArrayList<OrderItemDTO> orderCount(String id);
 }

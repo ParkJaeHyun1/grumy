@@ -55,7 +55,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="OrderItemDTO" id="orderItemDTOListMap">
 		<result property="count" column="count"/>
 		<result property="state" column="state"/>	
+		<result property="itemNo" column="itemno"/>	
 		<result property="itemPrice" column="itemPrice"/>	
+		<result property="itemImage" column="itemImage"/>	
 		<result property="itemTitle" column="itemTitle"/>	
 		<result property="itemSize" column="itemSize"/>	
 		<result property="itemColor" column="itemColor"/>	
@@ -64,9 +66,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, rownum r from
+		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, itemImage, itemno, rownum r from
 		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor
+			b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor, i.image itemImage, i.itemno itemno
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
 			
@@ -142,6 +144,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="read" parameterType="String" resultType="MemberDTO">
 		select * from member
 		where id = #{id}
+	</select>
+	
+	<resultMap type="orderDTO" id="orderReadMap">
+		
+		<result property="name" column="name"/>
+		<result property="orderNo" column="orderNo"/>
+		<result property="odate" column="odate"/>
+		<result property="totalPrice" column="totalprice"/>
+		<result property="salePrice" column="saleprice"/>
+		<result property="paymentType" column="paymenttype"/>
+		<collection property="orderItemList" column="orderno"
+			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListReadMap" />
+	</resultMap>
+	<resultMap type="OrderItemDTO" id="orderItemDTOListReadMap">
+	
+		<result property="itemPrice" column="itemprice"/>	
+		<result property="orderItemNo" column="orderItemNo"/>	
+	</resultMap>
+	<select id="readP" parameterType="map" resultMap="orderReadMap">
+		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, 
+			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, 
+			(select sum(itemprice) from orderitem where orderno = #{orderno}) totalprice
+		from norder a, orderitem b, member c 
+		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno}
 	</select>
 
 	<select id="orderCount" parameterType="String" resultType="OrderItemDTO">

@@ -10,6 +10,7 @@ public class OrderDTO {
 	private String id;
 	private int totalPrice;
 	private int salePrice;
+	private String name;
 	private String rname;
 	private String postcode;
 	private String address;
@@ -31,7 +32,7 @@ public class OrderDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OrderDTO(String orderNo, String odate, String id, int totalPrice, int salePrice, String rname,
+	public OrderDTO(String orderNo, String odate, String id, int totalPrice, int salePrice, String name, String rname,
 			String postcode, String address, String detailaddress, String rphone, String remail, String rmsg,
 			String paymentType, String imagineAccount, String imagineBank, String imagineDate,
 			ArrayList<OrderItemDTO> orderItemList,String state) {
@@ -41,6 +42,7 @@ public class OrderDTO {
 		this.id = id;
 		this.totalPrice = totalPrice;
 		this.salePrice = salePrice;
+		this.name = name;
 		this.rname = rname;
 		this.postcode = postcode;
 		this.address = address;
@@ -84,6 +86,12 @@ public class OrderDTO {
 	}
 	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String rname) {
+		this.name = name;
 	}
 	public String getRname() {
 		return rname;

@@ -77,8 +77,6 @@ function update(orderno){
 								<th scope="col">가격</th>
 								<th scope="col">주문아이디</th>
 								<th scope="col">입금상태</th>
-								<th scope="col">확인</th>
-								<th scope="col">배송번호</th>
 							</tr>
 						</thead>
 						<tbody
@@ -94,8 +92,6 @@ function update(orderno){
 										<td></td>
 										<td></td>
 										<td>등록된 글이 없습니다.</td>
-										<td></td>
-										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -121,13 +117,9 @@ function update(orderno){
 												<c:when test="${aa != dto.orderNo }">
 													<c:set var="aa" value="${dto.orderNo }"/>
 													<td>입금대기</td>
-													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}')">확인버튼</button></td>
-											<td><input type="text" required="required"></td>
-												</c:when>
+													</c:when>
 												<c:otherwise>
 													<td></td>
-													<td></td>
-											<td><input type="text" required="required"></td>
 												</c:otherwise>
 											</c:choose>							
 										</tr>

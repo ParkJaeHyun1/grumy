@@ -152,7 +152,7 @@ $(document).ready(function(){
 										</span>
 										&nbsp;&nbsp;&nbsp;
 										<span><a class="text-number"
-												href="${root }/admin/read">read테스트</span>
+												href="${root }/admin/read">read테스트</a></span>
 										</li>
 										<li><span class="info-title">신규주문</span> <span
 											class="number-area">

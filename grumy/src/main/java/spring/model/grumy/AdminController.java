@@ -125,7 +125,7 @@ public class AdminController {
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
 		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
-		System.out.println(list.get(0).getOrderItemList().size());
+		
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
@@ -188,8 +188,9 @@ public class AdminController {
 			
 		return "/admin/sendFin";
 	}
+	
 	@RequestMapping("/admin/read")
-	public String read(HttpServletRequest request, HttpSession session) {
+	public String read(HttpServletRequest request, HttpSession session, String orderno) {
 		String id = (String)session.getAttribute("id");
 		MemberDTO dto = mapper.read(id);
 		ArrayList<OrderItemDTO> itemList = mapper.orderCount(id);
@@ -200,7 +201,11 @@ public class AdminController {
 			
 			System.out.println(item.getState() + item.getCount());
 		}
-		
+		//String orderno = (String)request.getAttribute("orderno");
+		map.put("id", id);
+		map.put("orderno", orderno);
+		System.out.println(orderno);
+		ArrayList<OrderDTO> readPList = mapper.readP(map);
 		request.setAttribute("map", map);
 		request.setAttribute("dto", dto);
 		
