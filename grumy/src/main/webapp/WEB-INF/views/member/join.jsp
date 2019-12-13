@@ -256,6 +256,24 @@ function idCheck(id){
 
 </script>
 
+<script type="text/javascript">
+function emailCheck(email){
+    if(email== ''){
+     alert("이메일을 입력하세요");
+       document.joinForm.email.focus();
+    }else{
+     var url = "emailcheck";
+     var param = "email=" + email;
+     $.get(url, param, function(data, textStatus){
+        
+        $("#emailcheck").text(data.str);
+     });
+     
+    }
+ } 
+
+</script>
+
 <title>grumy</title>
 		
 </head>
@@ -407,6 +425,9 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<input id="email" name="email" fw-filter="isFill" 
 		fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
 		type="text" />
+		<button type="button" class="yg_btn_140 yg_btn3"
+		onclick="emailCheck(document.joinForm.email.value)">이메일 중복확인</button>
+		<div id="emailcheck"></div>
 		</td>
 		</tr>
 		<tr>

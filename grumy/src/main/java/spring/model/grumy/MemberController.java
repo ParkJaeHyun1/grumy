@@ -85,6 +85,21 @@ public class MemberController {
 		}
 		return map;
 	}// end idcheck
+	
+	@ResponseBody
+	@GetMapping(value = "/member/emailcheck", produces = "application/json;charset=utf-8")
+	public Map<String, Object> emailcheck(String email) {
+
+		int flag = dao.duplicateEmail(email);
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (flag == 1) {
+			map.put("str", email + "는 중복되어 사용할 수 없습니다.");
+		} else {
+			map.put("str", email + "는 사용가능 합니다.");
+		}
+		return map;
+	}
 
 	@RequestMapping("/member/loginProc")
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,

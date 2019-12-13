@@ -9,6 +9,7 @@ public interface MemberMapper {
 	int create(MemberDTO dto);
 	int delete(Map map);
 	int duplicateId(String id);
+	int duplicateEmail(String email);
 	String findid(Map map);
 	String findpw(Map map); 
 	String getGrade(String id);
