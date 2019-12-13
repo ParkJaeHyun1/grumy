@@ -22,6 +22,8 @@
 				action="create_reply" method="post" 
 				enctype="multipart/form-data">
  				<input type="hidden" name="reviewNo" value="${reviewNo}">
+ 				
+ 				
 
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
@@ -39,6 +41,7 @@
 							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
 										name="replyContent" id="replyContent">
+									
 									</textarea></td>
 							</tr>
 						</tbody>

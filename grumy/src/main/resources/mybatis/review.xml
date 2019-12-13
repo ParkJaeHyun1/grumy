@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="create_reply" parameterType="Map">
 		update review
 		set replyContent = #{replyContent}
+		
 		where reviewNo = #{reviewNo}
 	</update>
 

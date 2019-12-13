@@ -53,15 +53,46 @@ span.star, span.camera, .sprite_comment {
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script src="//www.google-analytics.com/analytics.js"></script>
 <script>
+function updateImage(reviewNo){
+	alert(reviewNo);
+	var aa = { "reviewNo" : reviewNo};
+	$.ajax({
+		url         :   "${pageContext.request.contextPath}/review/updateImage",
+        contentType :   "application/json; charset=utf-8",
+        type        :   "post",
+		data: JSON.stringify(aa),
+		success : function(retVal){
+			alert("성공:"+retVal);
+			location.reload();
+		}, 
+		error : function(request, status, error){
+			alert("에러1:"+request);
+			alert("에러2:"+status);
+			alert("에러3:"+error);
+		}
+	});
+}
+function a3(reviewNo){
+	var aaa = reviewNo;
+	return aaa;
+}
 function popup(reviewNo){
-       var x = document.getElementById("myDIV");
+    var x = document.getElementById("myDIV");
+    	var a = reviewNo;
+    	alert(a);
+   	 	<c:forEach var="dto" items="${list}">
+   	 	if(${dto.reviewNo} == a){
          if (x.style.display === "none") {
           x.style.display = "block";
           
          } else {
           x.style.display = "none";
-        }
-    }
+      	  }
+   	 	}
+         </c:forEach>
+
+}
+
     function popup2(){
        var x = document.getElementById("myDIV");
        x.style.display = "none";
@@ -69,6 +100,7 @@ function popup(reviewNo){
   function create_reply(reviewNo) {
 	   var url = "create_reply";
       url += "?reviewNo="+reviewNo;
+      
       location.href = url;
    }
    function update(reviewNo){
@@ -232,12 +264,11 @@ function popup(reviewNo){
 													<div class="reviews_index_list_review__actions">
 														<span
 															class="reviews_index_list_review__comments_link mall-link-color">
-															<span class="comments-count">
-															<c:if test="${not empty dto.replyContent }">1
-															</c:if>
-															<c:if test="${empty dto.replyContent }">
+															<span class="comments-count"> <c:if
+																	test="${not empty dto.replyContent }">1
+															</c:if> <c:if test="${empty dto.replyContent }">
 															0</c:if>
-															</span> 개의 댓글이 있습니다
+														</span> 개의 댓글이 있습니다
 														</span>
 													</div>
 												</div>
@@ -351,131 +382,134 @@ function popup(reviewNo){
 											</div>
 										</div></li>
 								<!-- 이미지팝업 -->
-								<div
-									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
-									style="display: none; position: absolute; z-index: 1;"
-									tabindex="-1" id="myDIV">
-									<div class="fullscreen_popup__background ie_png_fix"></div>
-									<div id="photo-popup-container"
-										class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-										<div id="photo-popup-content"
-											class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
-											style="width: 724px; margin-top: 70px;">
-											<div class="show_photo_review__photos_container">
-												<div data-width="1024" data-height="1024" data-index="1"
-													data-count="2" id="photo-container-1"
-													class="show_photo_review__photo_container selected js-ie-opacity-fix"
-													style="padding: 0px; max-height: 762px; overflow: hidden;">
+								
+									<div
+										class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
+										style="display: none; position: absolute; z-index: 1;"
+										tabindex="-1" id="myDIV">
+										<div class="fullscreen_popup__background ie_png_fix"></div>
+										<div id="photo-popup-container"
+											class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+											<div id="photo-popup-content"
+												class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
+												style="width: 724px; margin-top: 70px;">
+												<div class="show_photo_review__photos_container">
+													<div data-width="1024" data-height="1024" data-index="1"
+														data-count="2" id="photo-container-1"
+														class="show_photo_review__photo_container selected js-ie-opacity-fix"
+														style="padding: 0px; max-height: 762px; overflow: hidden;">
 
-													<img
-														src="${pageContext.request.contextPath}/storage/${dto.picture}"
-														class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
-														data-width="1024" data-height="1024"
-														style="max-width: 1024px; height: 724px; weight: 724px;">
+														<img
+															src="${pageContext.request.contextPath}/storage/${dto.picture}"
+															class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
+															data-width="1024" data-height="1024" id="yke"
+															style="max-width: 1024px; height: 724px; weight: 724px;">
+													</div>
 												</div>
-											</div>
 
-											<div id="review-contents-container"
-												class="show_photo_review__review_contents_container js-ie-opacity-fix">
-												<div id="info-container"
-													class="show_photo_review__info_container">
-													<div class="show_photo_review__info ">
-														<div class="show_photo_review__product">
-															<div class="show_photo_review__product_thumbnail">
-																<a
-																	class="show_photo_review__link_to_product js-link-iframe"
-																	href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
-																	<img
-																	src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-																	width="70" height="70"
-																	class="show_photo_review__link_to_product">
-																</a>
-															</div>
-															<div class="show_photo_review__product_info">
-
-																<div class="show_photo_review__product_name">
+												<div id="review-contents-container"
+													class="show_photo_review__review_contents_container js-ie-opacity-fix">
+													<div id="info-container"
+														class="show_photo_review__info_container">
+														<div class="show_photo_review__info ">
+															<div class="show_photo_review__product">
+																<div class="show_photo_review__product_thumbnail">
 																	<a
 																		class="show_photo_review__link_to_product js-link-iframe"
-																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+																		<img
+																		src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+																		width="70" height="70"
+																		class="show_photo_review__link_to_product">
+																	</a>
 																</div>
-																<div class="show_photo_review__product_score"></div>
-																<div class="show_photo_review__user_name">${dto.id }</div>
+																<div class="show_photo_review__product_info">
+
+																	<div class="show_photo_review__product_name">
+																		<a
+																			class="show_photo_review__link_to_product js-link-iframe"
+																			href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+																	</div>
+																	<div class="show_photo_review__product_score"></div>
+																	<div class="show_photo_review__user_name">${dto.id }</div>
+																</div>
 															</div>
 														</div>
 													</div>
-												</div>
-												<div id="message-container"
-													class="js-ie-opacity-fix show_photo_review__message"
-													style="height: 556px;">
-													<div class="show_photo_review__message_contents">
+													<div id="message-container"
+														class="js-ie-opacity-fix show_photo_review__message"
+														style="height: 556px;">
+														<div class="show_photo_review__message_contents">
 
-														<div class="review_options">
+															<div class="review_options">
 
-															<div class="review_option">
-																<div class="review_option__title">키</div>
-																<div class="review_option__content">${dto.height }</div>
-															</div>
+																<div class="review_option">
+																	<div class="review_option__title">키</div>
+																	<div class="review_option__content">${dto.height }</div>
+																</div>
 
-															<div class="review_option">
-																<div class="review_option__title">몸무게</div>
-																<div class="review_option__content">${dto.weight }</div>
-															</div>
+																<div class="review_option">
+																	<div class="review_option__title">몸무게</div>
+																	<div class="review_option__content">${dto.weight }</div>
+																</div>
 
-															<div class="review_option">
-																<div class="review_option__title">평소사이즈</div>
-																<div class="review_option__content">${dto.mySize }</div>
-															</div>
-															<div class="review_option">
-																<div class="review_option__title">선택한 옵션</div>
-																<div class="review_option__content">
+																<div class="review_option">
+																	<div class="review_option__title">평소사이즈</div>
+																	<div class="review_option__content">${dto.mySize }</div>
+																</div>
+																<div class="review_option">
+																	<div class="review_option__title">선택한 옵션</div>
+																	<div class="review_option__content">
 
-																	<span class="review_option__product_option"> <span
-																		class="review_option__product_option_key">COLOR:</span>
-																		<span class="review_option__product_option_value">스킨핑크</span>
-																	</span>
+																		<span class="review_option__product_option"> <span
+																			class="review_option__product_option_key">COLOR:</span>
+																			<span class="review_option__product_option_value">스킨핑크</span>
+																		</span>
 
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div
-															class="show_photo_review__all_messages js-ie-opacity-fix">
-															<div class="show_photo_review__review_message">
-																${dto.content }</div>
-														</div>
+															<div
+																class="show_photo_review__all_messages js-ie-opacity-fix">
+																<div class="show_photo_review__review_message">
+																	${dto.content }</div>
+															</div>
 
-														<c:if test="${not empty dto.replyContent }">
-															<div class="show_photo_review__feedback_container">
-																<div
-																	class="comments js-comments-container js-ie-opacity-fix">
-																	<div class="comments__arrow_top"></div>
-																	<ul class="comments__list">
-																		<li class="comment" id="comment_95269">
-																			<div class="comment__inner">
-																				<div class="comment__lpane">슬로우앤드</div>
-																				<div class="comment__rpane">
-																					<div class="comment__error_message"></div>
-																					<div class="comment__message">
-																						<span class="comment__message_text">${dto.id }님!
-																							${dto.replyContent}</span>
+															<c:if test="${not empty dto.replyContent }">
+																<div class="show_photo_review__feedback_container">
+																	<div
+																		class="comments js-comments-container js-ie-opacity-fix">
+																		<div class="comments__arrow_top"></div>
+																		<ul class="comments__list">
+																			<li class="comment" id="comment_95269">
+																				<div class="comment__inner">
+																					<div class="comment__lpane">슬로우앤드</div>
+																					<div class="comment__rpane">
+																						<div class="comment__error_message"></div>
+																						<div class="comment__message">
+																							<span class="comment__message_text">${dto.id }님!
+																								${dto.replyContent}</span>
+																						</div>
 																					</div>
 																				</div>
-																			</div>
-																		</li>
-																	</ul>
+																			</li>
+																		</ul>
+																	</div>
 																</div>
-															</div>
-														</c:if>
+															</c:if>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
+										<div class="js-ie-opacity-fix fullscreen_popup__close"
+											style="top: 55px; right: 290px;"
+											onclick="javascript:popup2()">
+											<div class="sprites-circle-close-button ie_png_fix"></div>
+										</div>
 									</div>
-									<div class="js-ie-opacity-fix fullscreen_popup__close"
-										style="top: 55px; right: 290px;" onclick="javascript:popup2()">
-										<div class="sprites-circle-close-button ie_png_fix"></div>
-									</div>
-								</div>
-
+								
+								
 							</c:forEach>
 						</ul>
 					</div>

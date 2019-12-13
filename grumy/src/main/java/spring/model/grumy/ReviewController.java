@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.review.reviewDTO;
 import spring.model.board.BoardDTO;
@@ -32,6 +34,7 @@ public class ReviewController {
 		map.put("reviewNo", reviewNo);
 		map.put("replyContent", replyContent);
 		mapper.create_reply(map);
+		
 		return "redirect:/review/list";
 	}
 
@@ -158,5 +161,18 @@ public class ReviewController {
 
 		//request.setAttribute("listr", listr);
 		return "/review/list";
+	}
+	
+	@RequestMapping("/review/updateImage")
+	@ResponseBody
+	public reviewDTO confirm(@RequestBody Map map, HttpServletRequest request) {
+		int no = (int)map.get("reviewNo");
+		reviewDTO dto = mapper.read(no);
+		System.out.println(dto);
+		if(dto.getItemNo()>0) {
+			request.setAttribute("dtoI", dto);
+			System.out.println("업뎃 성공");
+		}
+		return dto;          
 	}
 }
