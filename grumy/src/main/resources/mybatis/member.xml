@@ -43,15 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where id = #{id}
 </select>
  
-<select id="findpw" parameterType="Map" resultType="Map">
+<select id="findpw" parameterType="Map" resultType="String">
 	select passwd from member
 	where (name = #{name} and id = #{id} and email =#{email}) or 
 	(name = #{name} and id = #{id} and phone =#{phone})
 </select>
 
-<select id="findid" parameterType="Map" resultType="Map">
+<select id="findid" parameterType="Map" resultType="String">
 	select id from member
-	where name = #{name} and (phone = #{phone} or email=#{email}) 
+	where (name = #{name} and phone = #{phone}) or (name=#{name} and email=#{email}) 
 </select>
 
 <update id="update" parameterType="MemberDTO">
