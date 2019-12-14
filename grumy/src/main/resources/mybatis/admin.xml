@@ -148,7 +148,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<resultMap type="orderDTO" id="orderReadMap">
 		
+		<result property="postcode" column="postcode"/>
+		<result property="address" column="address"/>
+		<result property="detailaddress" column="detailaddress"/>
+		<result property="rmsg" column="rmsg"/>
+		<result property="rphone" column="rphone"/>
+		<result property="state" column="state"/>
 		<result property="name" column="name"/>
+		<result property="rname" column="rname"/>
 		<result property="orderNo" column="orderNo"/>
 		<result property="odate" column="odate"/>
 		<result property="totalPrice" column="totalprice"/>
@@ -163,11 +170,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="orderItemNo" column="orderItemNo"/>	
 	</resultMap>
 	<select id="readP" parameterType="map" resultMap="orderReadMap">
-		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, 
-			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, 
+	select distinct(orderno), odate, name, totalprice, saleprice, paymenttype, state, rname,
+	postcode, address, detailaddress, rphone, rmsg	
+	
+	from(
+		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname,
+			a.postcode postcode, a.address address, a.detailaddress detailaddress, a.rphone rphone, a.rmsg rmsg,
+			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, a.state state, 
 			(select sum(itemprice) from orderitem where orderno = #{orderno}) totalprice
 		from norder a, orderitem b, member c 
-		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno}
+		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno})
 	</select>
 
 	<select id="orderCount" parameterType="String" resultType="OrderItemDTO">

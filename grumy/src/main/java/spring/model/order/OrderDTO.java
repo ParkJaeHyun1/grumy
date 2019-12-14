@@ -90,7 +90,7 @@ public class OrderDTO {
 	public String getName() {
 		return name;
 	}
-	public void setName(String rname) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public String getRname() {
@@ -175,7 +175,7 @@ public class OrderDTO {
 	@Override
 	public String toString() {
 		return "OrderDTO [orderNo=" + orderNo + ", odate=" + odate + ", id=" + id + ", totalPrice=" + totalPrice
-				+ ", salePrice=" + salePrice + ", rname=" + rname + ", postcode=" + postcode + ", address=" + address
+				+ ", salePrice=" + salePrice + ", rname=" + rname + ", postcode=" + postcode + ", address=" + address +", name=" + name
 				+ ", detailaddress=" + detailaddress + ", rphone=" + rphone + ", remail=" + remail + ", rmsg=" + rmsg
 				+ ", paymentType=" + paymentType + ", imagineAccount=" + imagineAccount + ", imagineBank=" + imagineBank
 				+ ", imagineDate=" + imagineDate + ", state=" + state + "orderItemList="+orderItemList+"]";

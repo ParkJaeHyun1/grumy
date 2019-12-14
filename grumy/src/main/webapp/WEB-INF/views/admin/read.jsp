@@ -53,28 +53,19 @@
 								<tbody>
 									<tr>
 										<th scope="row">주문번호</th>
-										<td>20191121-0030184</td>
+										<td>${readPList.orderNo} </td>
 									</tr>
 									<tr>
 										<th scope="row">주문일자</th>
-										<td>2019-11-21 23:45:04</td>
+										<td>${readPList.odate}</td>
 									</tr>
 									<tr>
 										<th scope="row">주문자</th>
-										<td><span>유경은</span></td>
+										<td><span>${readPList.name} </span></td>
 									</tr>
 									<tr>
 										<th scope="row">주문처리상태</th>
-										<td>배송완료
-											<p class="cancel yg_btn_24 yg_btn3 displaynone">
-												<input type="submit" value="주문취소" alt="주문취소">
-											</p> <span class="displaynone"> <a href="#none"
-												onclick="window.open('/myshop/order/escrow.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-												class="yg_btn_24 yg_btn3" alt="구매확인">구매확인</a> <a
-												href="#none"
-												onclick="window.open('/myshop/order/escrow.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-												class="yg_btn_24 yg_btn3" alt="환불요청">환불요청</a>
-										</span>
+										<td>${readPList.state }
 										</td>
 									</tr>
 								</tbody>
@@ -96,7 +87,7 @@
 								<tbody>
 									<tr class="sum">
 										<th scope="row">총 주문금액</th>
-										<td><span class="gSpace20"> <strong class="txt14">89,900</strong>원
+										<td><span class="gSpace20"> <strong class="txt14">${readPList.totalPrice} </strong>원
 												<span class="displaynone"></span>
 										</span> <a href="#none"
 											onclick="OrderLayer.onDiv('order_layer_detail', event);"
@@ -106,7 +97,7 @@
 								<tbody class="">
 									<tr class="sum">
 										<th scope="row">총 할인금액</th>
-										<td><strong class="txt14">1,600</strong>원</td>
+										<td><strong class="txt14">00</strong>원</td>
 									</tr>
 									<tr class="displaynone">
 										<th scope="row">쿠폰할인</th>
@@ -116,7 +107,7 @@
 									</tr>
 									<tr class="">
 										<th scope="row">추가할인금액</th>
-										<td><span class="gSpace20">1,600원</span> <a href="#none"
+										<td><span class="gSpace20">00원</span> <a href="#none"
 											onclick="OrderLayer.onDiv('order_layer_addsale', event);"
 											class="yg_btn_24 yg_btn3" alt="내역보기">내역보기</a></td>
 									</tr>
@@ -124,11 +115,11 @@
 								<tbody class="">
 									<tr class="sum">
 										<th scope="row">총 부가결제금액</th>
-										<td><strong>18,300</strong>원</td>
+										<td><strong>00</strong>원</td>
 									</tr>
 									<tr class="">
 										<th scope="row">적립금</th>
-										<td>18,300원</td>
+										<td>00원</td>
 									</tr>
 									<tr class="displaynone">
 										<th scope="row">네이버 마일리지/캐쉬</th>
@@ -152,13 +143,13 @@
 								<tbody>
 									<tr class="sum">
 										<th scope="row">총 결제금액</th>
-										<td><span class="txtEm"> <strong class="txt18">70,000</strong>원
+										<td><span class="txtEm"> <strong class="txt18">00</strong>원
 												<span class="displaynone"></span>
 										</span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">결제수단</th>
-										<td><strong><span>카드 결제</span></strong>
+										<td><strong><span>${readPList.paymentType} </span></strong>
 											<p>
 												<span>명세서에 올더게이트(으)로 표기됩니다</span> <a target="_blank" href=""
 													class="yg_btn_24 yg_btn3 displaynone" alt="인터넷뱅킹 바로가기">인터넷뱅킹
@@ -279,108 +270,8 @@
 							</table>
 						</div>
 
-						<!-- 개별배송 -->
-						<div class="ec-base-table typeList">
-							<table border="1" summary="" class="displaynone">
-								<caption>개별배송</caption>
-								<colgroup>
-									<col style="width: 92px">
-									<col style="width: auto">
-									<col style="width: 60px">
-									<col style="width: 100px">
-									<col style="width: 95px">
-									<col style="width: 110px">
-									<col style="width: 110px">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">이미지</th>
-										<th scope="col">상품정보</th>
-										<th scope="col">수량</th>
-										<th scope="col">판매가</th>
-										<th scope="col">배송구분</th>
-										<th scope="col">주문처리상태</th>
-										<th scope="col">취소/교환/반품</th>
-									</tr>
-								</thead>
-								<tfoot class="right">
-									<tr>
-										<td colspan="7"><span class="gLeft">[개별배송]</span> 상품구매금액
-											<strong>0</strong><span class="displaynone"> + 부가세 0</span> +
-											배송비 0 + 지역별배송비 0<span class="displaynone"> - 상품할인금액 0</span>
-											= 합계 : <strong class="txtEm gIndent10"><span
-												class="txt18">0원</span></strong> <span class="displaynone"></span></td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-
-						<!-- 해외배송 -->
-						<div class="ec-base-table typeList">
-							<table border="1" summary="" class="displaynone">
-								<caption>해외배송</caption>
-								<colgroup>
-									<col style="width: 92px">
-									<col style="width: auto">
-									<col style="width: 60px">
-									<col style="width: 100px">
-									<col style="width: 95px">
-									<col style="width: 110px">
-									<col style="width: 110px">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">이미지</th>
-										<th scope="col">상품정보</th>
-										<th scope="col">수량</th>
-										<th scope="col">판매가</th>
-										<th scope="col">배송구분</th>
-										<th scope="col">주문처리상태</th>
-										<th scope="col">취소/교환/반품</th>
-									</tr>
-								</thead>
-								<tfoot class="right">
-									<tr>
-										<td colspan="7"><span class="gLeft">[해외배송]</span> 상품구매금액
-											<strong>0</strong><span class="displaynone"> + 부가세 0</span> +
-											배송비 0<span class="displaynone"> - 상품할인금액 0</span> = 합계 : <strong
-											class="txtEm gIndent10"><span class="txt18">0원</span></strong>
-											<span class="displaynone"></span></td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
 					</div>
-					<!-- 사은품 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>사은품</h3>
-						</div>
-						<div class="ec-base-table typeList">
-							<table border="1" summary="">
-								<caption>사은품</caption>
-								<colgroup>
-									<col style="width: 92px">
-									<col style="width: auto">
-									<col style="width: 60px">
-									<col style="width: 110px">
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">이미지</th>
-										<th scope="col">상품정보</th>
-										<th scope="col">수량</th>
-										<th scope="col">사은품 구분</th>
-									</tr>
-								</thead>
-								<tfoot class="right">
-									<tr>
-										<td colspan="4"><span class="gLeft">[사은품]</span></td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</div>
+					
 					<!-- 최종 결제 정보 -->
 					<div class="orderArea displaynone">
 						<div class="title">
@@ -467,35 +358,15 @@
 									</tr>
 									<tr>
 										<th scope="row">받으시는분</th>
-										<td><span>유경은</span></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">영문이름</th>
-										<td><span></span></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">이름(발음기호)</th>
-										<td><span></span></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">국가</th>
-										<td></td>
+										<td><span>${readPList.rname} </span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">우편번호</th>
-										<td><span>17050</span></td>
+										<td><span>${readPList.postcode}</span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">주소</th>
-										<td><span>경기도 용인시 처인구 금령로 19 (김량장동) 4층</span></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">도시</th>
-										<td></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">주/지방</th>
-										<td></td>
+										<td><span>${readPList.address} ${readPList.detailaddress}</span></td>
 									</tr>
 									<tr>
 										<th scope="row">일반전화</th>
@@ -503,11 +374,11 @@
 									</tr>
 									<tr>
 										<th scope="row">휴대전화</th>
-										<td><span>010-9941-3075</span></td>
+										<td><span>${readPList.rphone}</span></td>
 									</tr>
 									<tr>
 										<th scope="row">배송메시지</th>
-										<td><span>부재시 문앞 부탁드립니다. 감사합니다.</span></td>
+										<td><span>${readPList.rmsg}</span></td>
 									</tr>
 									<tr class="displaynone">
 										<th scope="row">희망 배송일</th>
@@ -593,68 +464,7 @@
 							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">주문목록보기</a>
 						</span>
 					</div>
-					<!-- 총 주문금액 상세내역 레이어 -->
-					<div id="order_layer_detail" class="totalDetail ec-base-layer">
-						<div class="header">
-							<h3>총 주문금액 상세내역</h3>
-						</div>
-						<div class="content">
-							<p>89,900원</p>
-							<ul class="ec-base-desc typeDot gLarge rightDD">
-								<li><strong class="term">상품금액</strong><span class="desc">89,900원</span>
-								</li>
-								<li class="displaynone"><strong class="term">부가세</strong><span
-									class="desc">원</span></li>
-								<li><strong class="term">배송비</strong><span class="desc">0원</span>
-								</li>
-								<li><strong class="term">지역별 배송비</strong><span class="desc">0원</span>
-								</li>
-							</ul>
-						</div>
-						<a href="#none" class="close"
-							onclick="OrderLayer.offDiv('order_layer_detail');"><img
-							src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
-							alt="닫기"></a>
-					</div>
-					<!-- 추가금액할인 내역보기 레이어 -->
-					<div id="order_layer_addsale" class="totalDetail ec-base-layer">
-						<div class="header">
-							<h3>추가금액할인 내역보기</h3>
-						</div>
-						<div class="content">
-							<p>1,600원</p>
-							<ul class="ec-base-desc typeDot gLarge rightDD">
-								<li class="displaynone"><strong class="term">모바일할인</strong><span
-									class="desc">원</span></li>
-								<li class="displaynone"><strong class="term">기간할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">회원할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">재구매할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">결제수단할인</strong><span
-									class="desc">원</span></li>
-								<li class=""><strong class="term">신규상품할인</strong><span
-									class="desc">1,600원</span></li>
-								<li class="displaynone"><strong class="term">대량구매할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">어바웃pbp할인</strong><span
-									class="desc">원</span></li>
-								<li class="displaynone"><strong class="term">바로가기(링콘)할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">회원등급할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">세트상품할인</strong><span
-									class="desc">0원</span></li>
-								<li class="displaynone"><strong class="term">배송비할인</strong><span
-									class="desc">원</span></li>
-							</ul>
-						</div>
-						<a href="#none" class="close"
-							onclick="OrderLayer.offDiv('order_layer_addsale');"><img
-							src="//img.echosting.cafe24.com/skin/base/common/btn_close.gif"
-							alt="닫기"></a>
-					</div>
+					
 					<!-- 이용안내 -->
 					<div class="ec-base-help">
 						<div class="inner">
