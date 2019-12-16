@@ -91,40 +91,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 	}
 </script>
 <style type="">           
-.modal-dialog.modal-80size {
-	width: 150%;
-	height: 80%;
-	margin: 0;
-	padding: 0;
-}
 
-.modal-content.modal-80size {
-	height: auto;
-	min-height: 80%;
-}
-
-.modal.modal-center {
-	text-align: center;
-}
-
-@media screen and (min-width: 768px) {
-	.modal.modal-center:before {
-		display: inline-block;
-		vertical-align: middle;
-		content: " ";
-		height: 100%;
-	}
-}
-
-.modal-dialog.modal-center {
-	display: inline-block;
-	text-align: left;
-	vertical-align: middle;
-}
-
-.btn-primary {
-	
-}
 </style>
 </head>
 <body id="main">
@@ -202,9 +169,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 							</strong>
               
 
-							<!-- modal 구동 버튼 (trigger) -->
-							<button type="button" class="yg_btn_28 yg_btn3"
-								data-toggle="modal" data-target="#my80sizeCenterModal">재고 변경</button>
+
 
 							<div class="colorchip">
 								<div
@@ -253,46 +218,12 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 
 				</c:forEach>
-				<div class="modal modal-center fade" id="my80sizeCenterModal"
-								tabindex="-1" role="dialog"
-								aria-labelledby="my80sizeCenterModalLabel">         
-								<div class="modal-dialog modal-80size modal-center"
-									role="document">             
-									<div class="modal-content modal-80size" style="width:730px; height:150px">
-										<div class="modal-header">            
-											<h4 class="modal-title" id="myModalLabel" style="font-size:1.2rem">재고 변경</h4>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>      
-											</button>
-										</div>
-										
-										<div class="modal-body">
-											<div class="thumbnail">
-												<c:forEach var="dto" items="${list}">
-												<img
-													style="width:340px; height:auto; float:left"
-													src="${pageContext.request.contextPath}/images/${dto.image}"
-													id="eListPrdImage2065_4"
-													alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" />
-													</c:forEach>
-											</div>
-										</div>       
-										           
-										<div class="modal-footer">                  
-
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal" style="margin-top: -8px">변경</button>
-
-										</div>
-									</div>
-								</div>
-						</div>
+	
 			</ul>
 		</div>
 	</div>
 	
-	
+
 
 	<script>
 		$('.ec-base-product .prdList > li')
