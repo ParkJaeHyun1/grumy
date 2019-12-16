@@ -164,8 +164,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<collection property="orderItemList" column="orderno"
 			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListReadMap" />
 	</resultMap>
-	<resultMap type="OrderItemDTO" id="orderItemDTOListReadMap">
-	
+	<resultMap type="OrderItemDTO" id="orderItemDTOListReadMap">	
 		<result property="itemPrice" column="itemprice"/>	
 		<result property="orderItemNo" column="orderItemNo"/>	
 	</resultMap>
@@ -181,7 +180,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from norder a, orderitem b, member c 
 		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno})
 	</select>
-
+	
+	<select id="readPList" parameterType="String" resultType="OrderItemDTO">
+		select b.orderitemno orderItemNo, d.image itemImage, d.title itemTitle, d.itemno itemNo, 
+			b.count count, b.itemprice itemPrice, b.state state
+        from norder a, orderitem b, itemoption c, item d
+        where a.orderno = b.orderno and b.itemoptionno = c.itemoptionno 
+        and c.itemno = d.itemno and a.orderno = #{orderno}
+	</select>
+	
 	<select id="orderCount" parameterType="String" resultType="OrderItemDTO">
 		select i.state, count(*) as count
 		from

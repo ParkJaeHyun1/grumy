@@ -11,7 +11,20 @@
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=tZXBbsMgDIbvSa97DqvdpN133ml9AkK8hBYww0Zq3n40raZ1uUwJHLHsz_CDf2Akh7A_RAiRhqgcRGRKUSNoZviM5AU0OUd-lwNP8J981A2TTWLINx1dVhYmkbVNrZowrisV1Vn8VYq6TYyRQXmPh_3rM4TUWaPbUZwF7rHtkc3ggc_Gv8xQR32yCG7ikQJQ7DEeRckGaj4PJYFOsdFzi8WNbAXeAgWBWdO8wCaZClAhsmJCBfKItgY2P74-6Rr6BjUYX_Zx_aisugrUxVwXAz84TUERbA1xc5Zej52UH07mZmHZwYqATl8J47TrLmxN_2Cf65nvSqgI6Kg8F3Hl-4XMrvym-IyiKW1RcMm-D_sHavQ1Rv7v77Z5wy5lN71-VsfRhGD8cIV_Aw&type=css&k=1f61d62c8789295c816097742733fafb47f1b9da&t=1547093551" />
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
-
+<script>
+$(function(){
+	var temp = 1;
+	$('#pcodenobutton').click(function(){
+		alert(temp);
+		if(temp == 1){
+			$('#postcodeno').attr("readonly",false);
+			temp = 0;
+		}else{
+			$('#postcodeno').attr("readonly",true);
+		}
+	});
+});
+</script>
 
 </head>
 <body>
@@ -53,19 +66,26 @@
 								<tbody>
 									<tr>
 										<th scope="row">주문번호</th>
-										<td>${readPList.orderNo} </td>
+										<td>${readP.orderNo} </td>
 									</tr>
 									<tr>
 										<th scope="row">주문일자</th>
-										<td>${readPList.odate}</td>
+										<td>${readP.odate}</td>
 									</tr>
 									<tr>
 										<th scope="row">주문자</th>
-										<td><span>${readPList.name} </span></td>
+										<td><span>${readP.name} </span></td>
 									</tr>
 									<tr>
 										<th scope="row">주문처리상태</th>
-										<td>${readPList.state }
+										<td>${readP.state }
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">송장번호</th>
+										<td>
+											<input type="text" value="${readP.name }" id="postcodeno" readonly/>
+											<input type="button" class="yg_btn_28 yg_btn3" id="pcodenobutton" value="송장번호 입력/수정"/>
 										</td>
 									</tr>
 								</tbody>
@@ -87,7 +107,7 @@
 								<tbody>
 									<tr class="sum">
 										<th scope="row">총 주문금액</th>
-										<td><span class="gSpace20"> <strong class="txt14">${readPList.totalPrice} </strong>원
+										<td><span class="gSpace20"> <strong class="txt14">${readP.totalPrice} </strong>원
 												<span class="displaynone"></span>
 										</span> <a href="#none"
 											onclick="OrderLayer.onDiv('order_layer_detail', event);"
@@ -149,7 +169,7 @@
 									</tr>
 									<tr class="">
 										<th scope="row">결제수단</th>
-										<td><strong><span>${readPList.paymentType} </span></strong>
+										<td><strong><span>${readP.paymentType} </span></strong>
 											<p>
 												<span>명세서에 올더게이트(으)로 표기됩니다</span> <a target="_blank" href=""
 													class="yg_btn_24 yg_btn3 displaynone" alt="인터넷뱅킹 바로가기">인터넷뱅킹
@@ -209,13 +229,17 @@
 								</tfoot>
 								<tbody
 									class="xans-element- xans-myshop xans-myshop-orderhistorydetailbasic center">
+									
+									<!-- 상품리스트 -->
+									<c:forEach var="dto" items="${readPList}">
 									<tr class="xans-record-">
-										<td class="thumb"><a
-											href="/product/detail.html?product_no=3643&amp;cate_no=26"><img
-												style="width:80px; height:106px;"
-												src="//www.slowand.com/web/product/tiny/20191126/80f67cff2dcdbd9ff5580851c855e538.jpg"
-												alt=""
-												onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"></a></td>
+										<td class="thumb">
+											<a
+											href="${pageContext.request.contextPath }/item/read?itemNo=${dto.itemNo}">
+											<img
+												style="width: 80px; height: 106px;"
+												src="${pageContext.request.contextPath}/images/${dto.itemImage }"></a>
+										</td>
 										<td class="left"><a
 											href="/product/detail.html?product_no=3643&amp;cate_no=26"><strong>#SLOWMADE.
 													모먼트 윈터 밍크슬랙스 (슬림일자핏) - 2 size</strong></a>
@@ -265,6 +289,8 @@
 											<p class="">-</p>
 										</td>
 									</tr>
+									</c:forEach>
+									<!-- 리스트 -->
 									
 								</tbody>
 							</table>
@@ -358,15 +384,15 @@
 									</tr>
 									<tr>
 										<th scope="row">받으시는분</th>
-										<td><span>${readPList.rname} </span></td>
+										<td><span>${readP.rname} </span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">우편번호</th>
-										<td><span>${readPList.postcode}</span></td>
+										<td><span>${readP.postcode}</span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">주소</th>
-										<td><span>${readPList.address} ${readPList.detailaddress}</span></td>
+										<td><span>${readP.address} ${readP.detailaddress}</span></td>
 									</tr>
 									<tr>
 										<th scope="row">일반전화</th>
@@ -374,27 +400,11 @@
 									</tr>
 									<tr>
 										<th scope="row">휴대전화</th>
-										<td><span>${readPList.rphone}</span></td>
+										<td><span>${readP.rphone}</span></td>
 									</tr>
 									<tr>
 										<th scope="row">배송메시지</th>
-										<td><span>${readPList.rmsg}</span></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">희망 배송일</th>
-										<td></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">희망 배송시간</th>
-										<td></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">희망배송업체/방식</th>
-										<td></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">수령가능일</th>
-										<td></td>
+										<td><span>${readP.rmsg}</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -421,46 +431,9 @@
 							</table>
 						</div>
 					</div>
-					<!-- 수거신청 정보 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>수거신청 정보</h3>
-						</div>
-					</div>
-					<!-- 고객알림 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>고객알림</h3>
-						</div>
-						<p class="customer"></p>
-					</div>
 					<div class="ec-base-button">
-						<span class="gLeft"> <a href="#none"
-							onclick="window.open('/myshop/order/issue/tax.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-							alt="세금계산서 신청">세금계산서 신청</a> <a href="#none"
-							onclick="window.open('/myshop/order/print/tax.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-							alt="세금계산서 인쇄">세금계산서 인쇄</a> <a href="#none"
-							onclick="window.open('/myshop/order/issue/cash.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-							alt="현금영수증 신청">현금영수증 신청</a> <a href="#none"
-							onclick="window.open('/exec/front/MyShop/OrderPrintPg/?order_id=20191121-0030184&amp;print_mode=print_pg_cash', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-							alt="현금영수증전표 인쇄">현금영수증전표 인쇄</a> <a href="#none"
-							onclick="window.open('/myshop/order/print/spec.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class=" yg_btn_100 yg_btn3 yg_btn_hover_333" alt="거래명세서 인쇄">거래명세서
-								인쇄</a> <a href="#none"
-							onclick="window.open('/exec/front/MyShop/OrderPrintPg/?order_id=20191121-0030184&amp;print_mode=print_pg_card', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class=" yg_btn_100 yg_btn3 yg_btn_hover_333" alt="카드매출전표 인쇄">카드매출전표
-								인쇄</a> <a href="#none" onclick="createGiftLayer('20191121-0030184')"
-							class="displaynone yg_btn_100 yg_btn5" alt="사은품 선택">사은품 선택</a> <a
-							href="#none"
-							onclick="window.open('/myshop/order/store_pickup.html?order_id=20191121-0030184', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;"
-							class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-							alt="수령지정보 인쇄">수령지정보 인쇄</a>
-						</span> <span class="gRight"> <a
-							href="/myshop/order/list.html?page=1"
+						 <span class="gRight"> <a
+							href="#" onClick="history.go(-1)"
 							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">주문목록보기</a>
 						</span>
 					</div>

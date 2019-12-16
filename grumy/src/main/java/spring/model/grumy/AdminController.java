@@ -205,11 +205,12 @@ public class AdminController {
 		map.put("id", id);
 		map.put("orderno", orderno);
 		
-		OrderDTO readPList = mapper.readP(map);
-		
+		OrderDTO readP = mapper.readP(map);
+		ArrayList<OrderItemDTO> readPList = mapper.readPList(orderno);
 		
 		request.setAttribute("map", map);
 		request.setAttribute("dto", dto);
+		request.setAttribute("readP", readP);
 		request.setAttribute("readPList", readPList);
 		
 		return "/admin/read";
