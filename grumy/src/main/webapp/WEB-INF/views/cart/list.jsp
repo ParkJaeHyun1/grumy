@@ -43,10 +43,18 @@ var list={};
 list.cartNo${item.cartNo}={cartNo:${item.cartNo},itemOptionNo:${item.itemOptionNo},itemPrice:${item.itemPrice-item.itemSalePrice},count:${item.count},itemCount:${item.itemCount}};
 </c:forEach>
 function orderAll(){ 
+	var cnt = 0;
 	$.each(list, function(index, item){ 
-	    $('#cart_checkBox_'+item.cartNo).prop('checked',true);
-	    $('#cart_checkBox_'+item.cartNo).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
+		if(!$('#cart_checkBox_'+item.cartNo).prop("disabled")){
+	    	$('#cart_checkBox_'+item.cartNo).prop('checked',true);
+	    	$('#cart_checkBox_'+item.cartNo).val(item.itemOptionNo+'/'+item.count+'/'+item.cartNo);
+	    	cnt++;
+		}
 	});
+	if(cnt==0){
+		alert('주문할 수 있는 상품이 없습니다.');
+		return;
+	}
 	$('#orderForm').submit();
 }
 function orderSeleted(){
@@ -153,7 +161,9 @@ function setAllCheckBox(){
 	var ischecked = $('#chb').is(":checked");
 	
 	$.each(list, function(index, item){ 
-		$('#cart_checkBox_'+item.cartNo).prop('checked',ischecked);
+		if(!$('#cart_checkBox_'+item.cartNo).prop("disabled")){
+			$('#cart_checkBox_'+item.cartNo).prop('checked',ischecked);
+		}
 	});
 }
 function setView(){
@@ -170,7 +180,7 @@ function setView(){
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
 		$('#cart_item_total_price_'+item.cartNo).html((item.itemPrice*item.count)+'원');
 		purchasePrice = purchasePrice + (item.itemPrice*item.count);
-	});
+	});     
 
 	if(purchasePrice>=50000){
 		deliveryPrice = 0;
@@ -191,7 +201,7 @@ function setView(){
 	$('#item_count').html(Object.keys(list).length);
 }
 
-</script>
+</script>    
 </head>
 <body id="cmn">
 	<div id="skipNavigation">
@@ -302,16 +312,26 @@ function setView(){
 								<tbody class="xans-element- xans-order xans-order-list center">
 									<c:forEach var="dto" items="${list}">
 										<tr class="xans-record-" id="cart_${dto.cartNo}">
-											<td><input type="checkbox"
-												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"
-												value="${dto.cartNo}" /></td>
+											<td>
+											<c:choose>
+												<c:when test="${dto.count>dto.itemCount }"><input type="checkbox"
+												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"  disabled="disabled" 
+												value="${dto.cartNo}" /></c:when>
+												<c:otherwise>
+												<input type="checkbox"
+												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"  
+												value="${dto.cartNo}" />
+												</c:otherwise>
+												</c:choose>  
+												
+												</td>            
 											<td class="thumb gClearLine"><a
 												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
 													src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
 													onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 													alt="#SLOWMADE. 윈터라이트 슬림핏 데님팬츠 - one color" /></a></td>
 											<td class="left gClearLine"><a
-												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.cartNo}${dto.itemTitle}
+												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}
 													<img src="https://www.slowand.com//web/upload/custom_3.gif"
 													alt="" />
 											</a><span class="displaynone"><br />(영문명 : )</span>
@@ -381,7 +401,12 @@ function setView(){
 												</c:if>
 												<div id="cart_item_price_${dto.cartNo}">
 													${dto.itemPrice-dto.itemSalePrice}원</div></td>
-											<td><span class=""> <span class="ec-base-qty">
+											<td> 
+											<c:if test="${dto.count>dto.itemCount }">
+											<span style="color:red">[재고: ${dto.itemCount}]<br/></span>       
+											</c:if>                                    
+											<span class="">                         
+											<span class="ec-base-qty">                
 														<input id="cart_item_count_${dto.cartNo}"
 														name="cart_item_count_${dto.cartNo}" size="2"
 														value="${dto.count}" type="text" /><a href="javascript:;"
@@ -395,7 +420,7 @@ function setView(){
 													onclick="itemCountModify(${dto.cartNo},cart_item_count_${dto.cartNo}.value);"
 													alt="변경">변경</a>
 											</span> <span class="displaynone">2</span></td>
-											<td><span class="txtInfo">
+											<td><span class="txtInfo">     
 													<div>
 
 														<input id="product_mileage_cash_3615_000A"

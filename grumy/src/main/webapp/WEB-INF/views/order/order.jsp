@@ -219,15 +219,10 @@ function purchase(){
 				item.orderNo = orderInfo.orderNo;
 	  		});
 	        
-	  		if (updateOrder()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
-	  			if(checkItem()){
-	  				deleteCartAjax(cartNoList);
-	  				// alert창으로 계좌발급 알려주고 주문내역창으로 넘어가기	
-	  			}else{
-			    	  deleteOrder();
-				   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
-		       	   	  $(location).attr('href', '${url}');	
-	  			}
+	  		if (updateOrder()&&checkItem()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
+	  			deleteCartAjax(cartNoList);
+	  			// alert창으로 계좌발급 알려주고 주문내역창으로 넘어가기	
+	  			
 	  		}else{
 		    	  deleteOrder();
 			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
@@ -240,15 +235,9 @@ function purchase(){
 	      console.log(data);
 	     
 	      orderInfo.state = '배송준비';
-	      if (updateOrder()) {
-	    	  	if(checkItem())
-	         		BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
-	         	else{
-	  	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
-		    	  deleteOrder();
-			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
-	       	   	  $(location).attr('href', '${url}');
-	         	}
+	      if (updateOrder()&&checkItem()) {
+	    	  	BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+	         	
 	      } else {
 	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
 	    	  deleteOrder();

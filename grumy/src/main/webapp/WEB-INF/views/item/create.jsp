@@ -127,58 +127,39 @@
 										<td><input type="text" id="itemColor" style="width: 70px"
 											name="itemColor">
 											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
-												style="width: 50px; height: 26px; line-height: 0px">add</button>
+												style="width: 50px; height: 26px; line-height: 0px">추가</button>
 										</td>
 									</tr>
-									<tr id="colorList">  
+									<tr id="colorList" style="display:none">
 										<th scope="row">컬러</th>
 										<td>
 											<ul class="ec-product-button" id="list">
 
-												<li class="ec-product-selected" title="아이보리" style="margin-right: 0px"
-													id="itemColor블랙"><a href="javascript:;"
-													onclick="checkColor('블랙')"> <span>블랙</span></a></li>
-												<a href="#none" class="delete" style="margin-right: 10px;"><img
-													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-													alt="삭제" id="option_box1_del" class="option_box_del"
-													onclick="deleteItem(2)"></a>
-												<li class="" title="아이보리" id="itemColor연베이지" style="margin-right: 0px"><a
-													href="javascript:;" onclick="checkColor('연베이지')"> <span>연베이지</span></a></li>
-																						<a href="#none" class="delete" style="margin-right: 10px;"><img
-													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-													alt="삭제" id="option_box1_del" class="option_box_del"
-													onclick="deleteItem(2)"></a>
-												<li class="" title="아이보리" id="itemColor핑크" style="margin-right: 0px"><a
-													href="javascript:;" onclick="checkColor('핑크')"> <span>핑크</span></a></li>
-																						<a href="#none" class="delete" style="margin-right: 10px;"><img
-													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-													alt="삭제" id="option_box1_del" class="option_box_del"
-													onclick="deleteItem(2)"></a>
-												<li class="" title="아이보리" id="itemColor베이지" style="margin-right: 0px"><a
-													href="javascript:;" onclick="checkColor('베이지')"> <span>베이지</span></a></li>
-																						<a href="#none" class="delete" style="margin-right: 10px;"><img
-													src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"
-													alt="삭제" id="option_box1_del" class="option_box_del"
-													onclick="deleteItem(2)"></a>
-											</ul>  
-										</td>
+											</ul>      
+										</td>       
 									</tr>
-									<tr>
+									<tr id ="sizeList" style="display:none">          
 										<th scope="row">사이즈</th>
-										<td><span id="myspan"> S &nbsp;<input
-												name="checkbox" type="checkbox" value="S">&nbsp;&nbsp;&nbsp;&nbsp;
-												M &nbsp;<input name="checkbox" type="checkbox" value="M">&nbsp;&nbsp;&nbsp;&nbsp;
-												L &nbsp;<input name="checkbox" type="checkbox" value="L">&nbsp;&nbsp;&nbsp;&nbsp;
-												XL &nbsp;<input name="checkbox" type="checkbox" value="XL">&nbsp;&nbsp;&nbsp;&nbsp;
-												FREE &nbsp;<input name="checkbox" type="checkbox"
-												value="FREE">
-										</span></td>
+										<td>
+										<ul class="ec-product-button" id="list">
+										<li id="itemSizeS" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('S')"> <span>S</span></a></li>
+										<li id="itemSizeM" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('M')"> <span>M</span></a></li>
+										<li id="itemSizeL" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('L')"> <span>L</span></a></li>
+										<li id="itemSizeXL" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('XL')"> <span>XL</span></a></li>
+										<li id="itemSizeFREE" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('FREE')"> <span>FREE</span></a></li>          
+										</ul>           
+										</td>       
+									</tr>
+									<tr  id="countList" style="display:none">    
+										<th scope="row">재고 수량</th>
+										<td><input  type="text" id="count"	name="count" value="" style="text-align: right; width: 50px" onblur="checkCount(this.value)" onchange="getNumber(this);"
+											onkeyup="getNumber(this);">
+											개</td>
 									</tr>
 
 
-
 									<tr>
-										<th scope="row">가격</th>
+										<th scope="row">가격</th>      
 										<td><input name="mypay" onchange="getNumber(this);"
 											onkeyup="getNumber(this);" type="text" id="price"
 											name="price" value="" style="text-align: right; width: 50px">
@@ -200,7 +181,7 @@
 									</tr>
 
 									<tr>
-										<td colspan="2"><textarea rows="20" cols="122"        
+										<td colspan="2"><textarea rows="20" cols="122"
 												name="content" id="content">         	
                               </textarea> <script type="text/javascript">
 																															CKEDITOR
@@ -211,14 +192,14 @@
 																																			});
 																														</script></td>
 
-									</tr>        
+									</tr>
 
-								</tbody>       
+								</tbody>
 							</table>
-						</div>        
+						</div>
 					</div>
-				</div>
-			</form>        
+				</div>    
+			</form>
 
 		</div>
 	</div>
@@ -226,8 +207,8 @@
 </div>
 
 <script type="text/javascript">
-	var colorList = [];
-
+	var itemOptionList = [],colorList=[];
+	var selectedColor,selectedSize;
 	$(function() {
 		$("#btnAdd")
 				.click(
@@ -237,40 +218,116 @@
 							var color = $("#itemColor").val();
 
 							if (!checkColor(color))
-								return;
+								return;       
 
 							colorList.push(color);
+	
+							var html = '';  
 
-							var html = '<span>'
-									+ color
-									+ '<button type="button" class="btnDel" style="width:13px; height:13px">X</button>'; //html변수에 삭제버튼을 대입
-							html += '</span>';
+							html += '<li class=""  id="itemColor'+color+'"';
+							html +=	'style="margin-right: 0px"><a href="javascript:;"';
+							html +=	'onclick="clickColor(\''+color+'\')"> <span>'+color+'</span></a></li>';
+							html += '<a href="#none" class="delete" style="margin-right: 10px;" id="deleteColor'+color+'">';
+							html +=	'<img src="//img.echosting.cafe24.com/design/skin/default/product/btn_price_delete.gif"';
+							html +=	'alt="삭제" id="option_box1_del" class="option_box_del"';
+							html +=	'onclick="deleteColor(\''+color+'\')"></a>';            
+
 							$("#list").append(html); //list라는 아이디에 html을 추가해라
-							setColorList();
+							setColorList();       
+							 $("#itemColor").val('');
+							 $("#itemColor").focus();
 						});
-
-		$("#list").on("click", ".btnDel", function() { //list안의 btnDel을 선택
-			$(this).parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
-			setColorList();
-		});
-
+     
 	})
+	function checkCount(count){
+		$.each(itemOptionList, function(index, item){ 
+			if(item['color'] == selectedColor && item['size'] == selectedSize)
+		    	delete item;   
+		});
+		if(count == ''){
+			$('#itemSize'+selectedSize).attr('class','');
+			selectedSize = '';
+			return;  
+		}
+		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count});
+		console.log(itemOptionList);	
+	}
+	function clickSize(size){
+		$('#itemSize'+size).attr('class','ec-product-selected');
+		$('#countList').css('display', 'table-row');
+		$("#count").focus();
+		$('#count').val('');
+		selectedSize = size;  
+		
+		$.each(itemOptionList, function(index, item){ 
+			if(item['color'] == selectedColor && item['size'] == selectedSize)
+		    	$('#count').val(item['count']);
+		});  
+		    
+	}   
+	function clickColor(color){
+		if(color == selectedColor){
+			$('#itemColor'+selectedColor).attr('class','');
+			$('#sizeList').css('display', 'none');
+			selectedColor = '';
+			return;
+		}
+		
+		$('#itemSizeS').attr('class','');
+		$('#itemSizeM').attr('class','');
+		$('#itemSizeL').attr('class','');
+		$('#itemSizeXL').attr('class','');
+		$('#itemSizeFREE').attr('class','');   
+  
+		$('#countList').css('display','none');
+		$('#countList').val('');   
+		     
+		$.each(itemOptionList, function(index, item){ 
+			if(item['color'] == color)
+				$('#itemSize'+item['size']).attr('class','ec-product-selected');
+		});            
+		
+		$('#itemColor'+selectedColor).attr('class','');
+		$('#itemColor'+color).attr('class','ec-product-selected');
+		selectedColor = color;   
+		
+		$('#sizeList').css('display', 'table-row');
+
+		
+	}
+	function deleteColor(color){
+		if(!confirm("정말로 삭제하시겠습니까?"))
+			return;
+		
+		$('#itemColor'+color).remove();
+		$('#deleteColor'+color).remove();      
+		colorList.splice(colorList.indexOf(color),1);
+		
+		$.each(itemOptionList, function(index, item){ 
+			if(item['color'] == color)
+		    	delete item;
+		});  
+		
+		setColorList();            
+	}
 	function setColorList() {
+
 		if (colorList.length > 0)
 			$('#colorList').css('display', 'table-row');
 		else
 			$('#colorList').css('display', 'none');
 	}
 	function checkColor(color) {
+
 		if (color == null || color == '') {
 			alert('색상에 공백을 넣을 수 없습니다.');
-			return false
-		} else if (colorList.indexOf(color) !== -1) {
-			alert('이미 등록된 색상입니다.');
 			return false;
-		}
-		return true;
-	}
+		}else if (colorList.indexOf(color) !== -1) {
+	         alert('이미 등록된 색상입니다.');
+	         return false;
+	    }
+		return true;    
+	}    
 
 	// category 시작
 	function mainCategory(e) {
