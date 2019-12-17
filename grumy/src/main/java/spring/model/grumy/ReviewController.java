@@ -140,9 +140,17 @@ public class ReviewController {
 		map.put("sno", sno);
 		map.put("eno", eno);
 
+		Map map2 = new HashMap();
+		map2.put("col", col);
+		map2.put("word", word);
+		map2.put("sno", sno);
+		map2.put("eno", sno+40);
+		
+		
 		ArrayList<reviewDTO> list = mapper.list(map);
-		ArrayList<reviewDTO> listp = mapper.listp();
-
+		ArrayList<reviewDTO> listp = mapper.listp(map2);
+		System.out.println("씨이바리:"+ sno);
+		System.out.println("씨이바리:"+ eno);
 		//ArrayList<reviewDTO> listr = mapper.listr();
 
 		int total = mapper.total(map);

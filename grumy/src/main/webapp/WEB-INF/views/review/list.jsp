@@ -53,6 +53,7 @@ span.star, span.camera, .sprite_comment {
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script src="//www.google-analytics.com/analytics.js"></script>
 <script>
+
 function updateImage(reviewNo){
 	alert(reviewNo);
 	var aa = { "reviewNo" : reviewNo};
@@ -72,25 +73,37 @@ function updateImage(reviewNo){
 		}
 	});
 }
-function a3(reviewNo){
-	var aaa = reviewNo;
-	return aaa;
-}
-function popup(reviewNo){
-    var x = document.getElementById("myDIV");
-    	var a = reviewNo;
-    	alert(a);
-   	 	<c:forEach var="dto" items="${list}">
-   	 	if(${dto.reviewNo} == a){
+var listp={};
+<c:forEach items="${listp}" var="dto">
+	listp['reviewNo${dto.reviewNo}'] = {'picture':'${dto.picture}','itemPicture':'${dto.itemPicture}','itemTitle':'${dto.itemTitle}','id':'${dto.id}','height':'${dto.height}','weight':'${dto.weight}','mySize':'${dto.mySize}','itemColor':'${dto.itemColor}','itemSize':'${dto.itemSize}','content':'${dto.content}','replyContent':'${dto.replyContent}'};
+</c:forEach>         
+console.log(listp);
+function popup(reviewNo){     
+
+	var x = document.getElementById("myDIV");
+    	
          if (x.style.display === "none") {
-          x.style.display = "block";
-          
+          	x.style.display = "block";
+         	$('#reviewPicture').attr("src", "${pageContext.request.contextPath}/storage/"+listp['reviewNo'+reviewNo].picture);
+         	$('#reviewItemPicture').attr("src", "${pageContext.request.contextPath}/images/"+listp['reviewNo'+reviewNo].itemPicture);
+         	$('#reviewItemTitle').html(listp['reviewNo'+reviewNo].itemTitle);
+         	$("#reviewItemTitle").attr("href", "${pageContext.request.contextPath}/item/read?itemNo="+reviewNo);
+         	$('#reviewID').html(listp['reviewNo'+reviewNo].id);
+         	$('#reviewHeight').html(listp['reviewNo'+reviewNo].height);
+         	$('#reviewWeight').html(listp['reviewNo'+reviewNo].weight);
+         	$('#reviewMySize').html(listp['reviewNo'+reviewNo].mySize);
+         	$('#reviewItemColor').html(listp['reviewNo'+reviewNo].itemColor);
+         	$('#reviewItemSize').html(listp['reviewNo'+reviewNo].itemSize);
+         	$('#reviewContent').html(listp['reviewNo'+reviewNo].content);
+         	$('#reviewReplyContent').html(listp['reviewNo'+reviewNo].id+'님!'+listp['reviewNo'+reviewNo].replyContent );
+			if(listp['reviewNo'+reviewNo].replyContent == null || listp['reviewNo'+reviewNo].replyContent=='')
+				$('#reviewReply').css('display','none');
+			else
+				$('#reviewReply').css('display','block');
          } else {
           x.style.display = "none";
-      	  }
-   	 	}
-         </c:forEach>
-
+      	 }
+   	return;
 }
 
     function popup2(){
@@ -175,19 +188,26 @@ function popup(reviewNo){
 								<c:when test="${empty dto.picture}">
 								</c:when>
 								<c:otherwise>
-									<img
-										src="${pageContext.request.contextPath}/storage/${dto.picture}"
-										onclick="javascript:popup(${dto.reviewNo})" width="63"
-										height="63" style="margin: 6px">
-										${dto.reviewNo }
+									<li
+										class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
+										style="width: 63px; margin-right: 5px;"><a href="#none"	
+										onclick = "popup('${dto.reviewNo}')">
+											<img   
+											src="${pageContext.request.contextPath}/storage/${dto.picture}"
+											alt="" width="63" height="63"
+											class="js-review-image products_reviews_summary_thumbnail_small_without_score__front_photo grayscale">
+											<img
+											src="${pageContext.request.contextPath}/storage/${dto.picture}"
+											alt="" width="63" height="63"
+											class="products_reviews_summary_thumbnail_small_without_score__back_photo color"
+											style="opacity: 1;">
+									</a></li>
+
 								</c:otherwise>
 
 							</c:choose>
 						</c:forEach>
-
 					</ul>
-					<span class="swiper-notification" aria-live="assertive"
-						aria-atomic="true"></span>
 				</div>
 				<div
 					class="js-swiper-button-next products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--right"
@@ -382,134 +402,137 @@ function popup(reviewNo){
 											</div>
 										</div></li>
 								<!-- 이미지팝업 -->
-								
-									<div
-										class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
-										style="display: none; position: absolute; z-index: 1;"
-										tabindex="-1" id="myDIV">
-										<div class="fullscreen_popup__background ie_png_fix"></div>
-										<div id="photo-popup-container"
-											class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-											<div id="photo-popup-content"
-												class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
-												style="width: 724px; margin-top: 70px;">
-												<div class="show_photo_review__photos_container">
-													<div data-width="1024" data-height="1024" data-index="1"
-														data-count="2" id="photo-container-1"
-														class="show_photo_review__photo_container selected js-ie-opacity-fix"
-														style="padding: 0px; max-height: 762px; overflow: hidden;">
 
-														<img
-															src="${pageContext.request.contextPath}/storage/${dto.picture}"
-															class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
-															data-width="1024" data-height="1024" id="yke"
-															style="max-width: 1024px; height: 724px; weight: 724px;">
+								<div
+									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
+									style="display: none; position: absolute; z-index: 1;"
+									tabindex="-1" id="myDIV">
+									<div class="fullscreen_popup__background ie_png_fix"></div>
+									<div id="photo-popup-container"
+										class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+										<div id="photo-popup-content"
+											class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
+											style="width: 724px; margin-top: 70px;">
+											<div class="show_photo_review__photos_container">
+												<div data-width="1024" data-height="1024" data-index="1"
+													data-count="2" id="photo-container-1"
+													class="show_photo_review__photo_container selected js-ie-opacity-fix"
+													style="padding: 0px; max-height: 762px; overflow: hidden;">
+
+													<img id="reviewPicture"
+														src="${pageContext.request.contextPath}/storage/${dto.picture}"
+														class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
+														data-width="1024" data-height="1024" id="yke"
+														style="max-width: 1024px; height: 724px; weight: 724px;">
+												</div>
+											</div>
+
+											<div id="review-contents-container"
+												class="show_photo_review__review_contents_container js-ie-opacity-fix">
+												<div id="info-container"
+													class="show_photo_review__info_container">
+													<div class="show_photo_review__info ">
+														<div class="show_photo_review__product">
+															<div class="show_photo_review__product_thumbnail">
+																<a	id="reviewItemNo"
+																	class="show_photo_review__link_to_product js-link-iframe"
+																	href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+																	<img id="reviewItemPicture"
+																	src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+																	width="70" height="70"
+																	class="show_photo_review__link_to_product">
+																</a>
+															</div>
+															<div class="show_photo_review__product_info">
+
+																<div class="show_photo_review__product_name">
+																	<a	id="reviewItemTitle"
+																		class="show_photo_review__link_to_product js-link-iframe"
+																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+																</div>
+																<div class="show_photo_review__product_score"></div>
+																<div class="show_photo_review__user_name" id="reviewID">${dto.id }</div>
+															</div>
+														</div>
 													</div>
 												</div>
+												<div id="message-container"
+													class="js-ie-opacity-fix show_photo_review__message"
+													style="height: 556px;">
+													<div class="show_photo_review__message_contents">
 
-												<div id="review-contents-container"
-													class="show_photo_review__review_contents_container js-ie-opacity-fix">
-													<div id="info-container"
-														class="show_photo_review__info_container">
-														<div class="show_photo_review__info ">
-															<div class="show_photo_review__product">
-																<div class="show_photo_review__product_thumbnail">
-																	<a
-																		class="show_photo_review__link_to_product js-link-iframe"
-																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
-																		<img
-																		src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-																		width="70" height="70"
-																		class="show_photo_review__link_to_product">
-																	</a>
-																</div>
-																<div class="show_photo_review__product_info">
+														<div class="review_options">
 
-																	<div class="show_photo_review__product_name">
-																		<a
-																			class="show_photo_review__link_to_product js-link-iframe"
-																			href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
-																	</div>
-																	<div class="show_photo_review__product_score"></div>
-																	<div class="show_photo_review__user_name">${dto.id }</div>
+															<div class="review_option">
+																<div class="review_option__title">키</div>
+																<div class="review_option__content" id="reviewHeight">${dto.height }</div>
+															</div>
+
+															<div class="review_option">
+																<div class="review_option__title">몸무게</div>
+																<div class="review_option__content" id="reviewWeight">${dto.weight }</div>
+															</div>
+
+															<div class="review_option">
+																<div class="review_option__title">평소사이즈</div>
+																<div class="review_option__content" id="reviewMySize">${dto.mySize }</div>
+															</div>
+															<div class="review_option">
+																<div class="review_option__title">선택한 옵션</div>
+																<div class="review_option__content">
+
+																	<span class="review_option__product_option"> <span
+																		class="review_option__product_option_key">COLOR:</span>
+																		<span class="review_option__product_option_value" id="reviewItemColor">스킨핑크</span>
+																	</span>
+																	<span class="review_option__product_option"> <span
+																		class="review_option__product_option_key">SIZE:</span>
+																		<span class="review_option__product_option_value" id="reviewItemSize">스킨핑크</span>
+																	</span>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div id="message-container"
-														class="js-ie-opacity-fix show_photo_review__message"
-														style="height: 556px;">
-														<div class="show_photo_review__message_contents">
+														<div
+															class="show_photo_review__all_messages js-ie-opacity-fix">
+															<div class="show_photo_review__review_message" id="reviewContent">
+																${dto.content }</div>
+														</div>
 
-															<div class="review_options">
 
-																<div class="review_option">
-																	<div class="review_option__title">키</div>
-																	<div class="review_option__content">${dto.height }</div>
-																</div>
-
-																<div class="review_option">
-																	<div class="review_option__title">몸무게</div>
-																	<div class="review_option__content">${dto.weight }</div>
-																</div>
-
-																<div class="review_option">
-																	<div class="review_option__title">평소사이즈</div>
-																	<div class="review_option__content">${dto.mySize }</div>
-																</div>
-																<div class="review_option">
-																	<div class="review_option__title">선택한 옵션</div>
-																	<div class="review_option__content">
-
-																		<span class="review_option__product_option"> <span
-																			class="review_option__product_option_key">COLOR:</span>
-																			<span class="review_option__product_option_value">스킨핑크</span>
-																		</span>
-
-																	</div>
-																</div>
-															</div>
-															<div
-																class="show_photo_review__all_messages js-ie-opacity-fix">
-																<div class="show_photo_review__review_message">
-																	${dto.content }</div>
-															</div>
-
-															<c:if test="${not empty dto.replyContent }">
-																<div class="show_photo_review__feedback_container">
-																	<div
-																		class="comments js-comments-container js-ie-opacity-fix">
-																		<div class="comments__arrow_top"></div>
-																		<ul class="comments__list">
-																			<li class="comment" id="comment_95269">
-																				<div class="comment__inner">
-																					<div class="comment__lpane">슬로우앤드</div>
-																					<div class="comment__rpane">
-																						<div class="comment__error_message"></div>
-																						<div class="comment__message">
-																							<span class="comment__message_text">${dto.id }님!
-																								${dto.replyContent}</span>
-																						</div>
+															<div class="show_photo_review__feedback_container" id="reviewReply">
+																<div
+																	class="comments js-comments-container js-ie-opacity-fix">
+																	<div class="comments__arrow_top"></div>
+																	<ul class="comments__list">
+																		<li class="comment" id="comment_95269">
+																			<div class="comment__inner">
+																				<div class="comment__lpane">슬로우앤드</div>
+																				<div class="comment__rpane">
+																					<div class="comment__error_message"></div>
+																					<div class="comment__message">
+																						<span class="comment__message_text" id="reviewReplyContent">${dto.id }님!
+																							${dto.replyContent}</span>
 																					</div>
 																				</div>
-																			</li>
-																		</ul>
-																	</div>
+																			</div>
+																		</li>
+																	</ul>
 																</div>
-															</c:if>
-														</div>
+															</div>
+
+														
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="js-ie-opacity-fix fullscreen_popup__close"
-											style="top: 55px; right: 290px;"
-											onclick="javascript:popup2()">
-											<div class="sprites-circle-close-button ie_png_fix"></div>
-										</div>
 									</div>
-								
-								
+									<div class="js-ie-opacity-fix fullscreen_popup__close"
+										style="top: 55px; right: 290px;" onclick="javascript:popup2()">
+										<div class="sprites-circle-close-button ie_png_fix"></div>
+									</div>
+								</div>
+
+
 							</c:forEach>
 						</ul>
 					</div>

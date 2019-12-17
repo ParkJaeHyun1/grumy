@@ -9,9 +9,7 @@ public interface reviewMapper {
 	int delete(int reviewNo);
 
 	ArrayList<reviewDTO> list(Map map);
-
-	ArrayList<reviewDTO> listp();
-
+	ArrayList<reviewDTO> listp(Map map);
 	int update(reviewDTO dto);
 
 	int pcount();
