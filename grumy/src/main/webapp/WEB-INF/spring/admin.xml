@@ -32,17 +32,17 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/newOrder.jsp" />
 	</definition>
- 	<definition name="/admin/sendReady" extends="main">
+ 	<definition name="/admin/sendReady/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/sendReady.jsp" />
 	</definition>
- 	<definition name="/admin/sending" extends="main">
+ 	<definition name="/admin/sending/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/sending.jsp" />
 	</definition>
- 	<definition name="/admin/sendFin" extends="main">
+ 	<definition name="/admin/sendFin/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/sendFin.jsp" />

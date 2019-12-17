@@ -5,21 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.AdminMapper">
 	<select id="total" parameterType="String" resultType="int">
-		select count(b.state) 
-		from norder a, orderItem b 
-		where a.orderno = b.orderno  
+		select count(state) 
+		from norder  where
 		<choose>
 			<when test= '_parameter.equals("신규주문")'>
 			<![CDATA[
-			and b.state = '배송준비' 
+			state = '배송준비' 
 			and to_char(odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
 			]]>
 			</when>
 			<otherwise>
-			and b.state = #{state}
+			state = #{state}
 			</otherwise>
 		</choose>
 	</select>
+	
 	<select id="totalP" parameterType="map" resultType="int">
 		select count(*) from 
 			(
@@ -89,12 +89,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<choose>
 					<when test= 'state.equals("신규주문")'>
 					<![CDATA[
-					and b.state = '배송준비' 
+					and a.state = '배송준비' 
 					and to_char(a.odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
 					]]>
 					</when>
 					<otherwise>
-					and b.state = #{state}
+					and a.state = #{state}
 					</otherwise>
 				</choose>
 			order by a.orderno desc
@@ -130,13 +130,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="updateState" parameterType="Map">
+		update norder
+		set state = #{state, jdbcType=VARCHAR}
+		where orderno = #{orderno, jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateStateP" parameterType="Map">
 		update orderitem
-		set state = #{state}
-		<choose>
-			<when test= 'state.equals("배송중")'>
-			and deliveryno = #{deliveryno}
-			</when>
-		</choose>
+		set state = #{state},
+		deliveryno = #{deliveryno, jdbcType=VARCHAR}
 		where orderno = #{orderno}
 	</update>
 	
@@ -165,6 +167,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListReadMap" />
 	</resultMap>
 	<resultMap type="OrderItemDTO" id="orderItemDTOListReadMap">	
+		<result property="deliveryNo" column="deliveryNo"/>	
 		<result property="itemPrice" column="itemprice"/>	
 		<result property="orderItemNo" column="orderItemNo"/>	
 	</resultMap>
@@ -173,7 +176,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	postcode, address, detailaddress, rphone, rmsg	
 	
 	from(
-		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname,
+		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname, b.deliveryNo, deliveryNo,
 			a.postcode postcode, a.address address, a.detailaddress detailaddress, a.rphone rphone, a.rmsg rmsg,
 			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, a.state state, 
 			(select sum(itemprice) from orderitem where orderno = #{orderno}) totalprice
@@ -182,8 +185,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="readPList" parameterType="String" resultType="OrderItemDTO">
-		select b.orderitemno orderItemNo, d.image itemImage, d.title itemTitle, d.itemno itemNo, 
-			b.count count, b.itemprice itemPrice, b.state state
+		select b.orderitemno orderItemNo, d.image itemImage, d.title itemTitle, d.itemno itemNo, b.deliveryno deliveryNo,
+			c.itemcolor itemColor, c.itemsize itemSize, b.count count, b.itemprice itemPrice, b.state state
         from norder a, orderitem b, itemoption c, item d
         where a.orderno = b.orderno and b.itemoptionno = c.itemoptionno 
         and c.itemno = d.itemno and a.orderno = #{orderno}

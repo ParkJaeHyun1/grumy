@@ -15,15 +15,43 @@
 $(function(){
 	var temp = 1;
 	$('#pcodenobutton').click(function(){
-		alert(temp);
+		var pno = $('#postcodeno').val();
+		var ono = $('#orderno').html();
+		
 		if(temp == 1){
 			$('#postcodeno').attr("readonly",false);
+			$('#nostate').text('송장번호를 작성중입니다. ');
+			$('#nostate').css('color','red');			
 			temp = 0;
-		}else{
+		}else{		
+			update(ono, pno);
 			$('#postcodeno').attr("readonly",true);
+			$('#nostate').text('송장번호 작성을 완료했습니다');
+			$('#nostate').css('color','blue');
+			$('#postcodeno').text(pno);
+			temp = 1;
 		}
 	});
 });
+function update(orderno, deliveryno){
+	alert("check: "+ deliveryno);
+	var aa = { "orderno" : orderno, "state" : "배송중", "deliveryno" : deliveryno};
+	$.ajax({
+		url         :   "${pageContext.request.contextPath}/admin/update",
+        contentType :   "application/json; charset=utf-8",
+        type        :   "post",
+		data: JSON.stringify(aa),
+		success : function(retVal){
+			alert("성공:"+retVal);
+			//location.reload();
+		}, 
+		error : function(request, status, error){
+			alert("에러1:"+request);
+			alert("에러2:"+status);
+			alert("에러3:"+error);
+		}
+	});
+}
 </script>
 
 </head>
@@ -66,7 +94,7 @@ $(function(){
 								<tbody>
 									<tr>
 										<th scope="row">주문번호</th>
-										<td>${readP.orderNo} </td>
+										<td id="orderno">${readP.orderNo}</td>
 									</tr>
 									<tr>
 										<th scope="row">주문일자</th>
@@ -78,14 +106,16 @@ $(function(){
 									</tr>
 									<tr>
 										<th scope="row">주문처리상태</th>
-										<td>${readP.state }
-										</td>
+										<td id="ostate">${readP.state }</td>
 									</tr>
 									<tr>
 										<th scope="row">송장번호</th>
 										<td>
-											<input type="text" value="${readP.name }" id="postcodeno" readonly/>
-											<input type="button" class="yg_btn_28 yg_btn3" id="pcodenobutton" value="송장번호 입력/수정"/>
+											<c:if test = "${readP.state != '입금대기' && readP.state != '신규주문'}">
+												<input type="text" id="postcodeno" readonly/>
+												<input type="button" class="yg_btn_28 yg_btn3" id="pcodenobutton" value="송장번호 입력/수정"/>
+												<span id="nostate">송장번호를 입력해주세요</span>
+											</c:if>
 										</td>
 									</tr>
 								</tbody>
@@ -109,9 +139,7 @@ $(function(){
 										<th scope="row">총 주문금액</th>
 										<td><span class="gSpace20"> <strong class="txt14">${readP.totalPrice} </strong>원
 												<span class="displaynone"></span>
-										</span> <a href="#none"
-											onclick="OrderLayer.onDiv('order_layer_detail', event);"
-											class="more yg_btn_24 yg_btn3" alt="내역보기">내역보기</a></td>
+										</span> </td>
 									</tr>
 								</tbody>
 								<tbody class="">
@@ -127,9 +155,7 @@ $(function(){
 									</tr>
 									<tr class="">
 										<th scope="row">추가할인금액</th>
-										<td><span class="gSpace20">00원</span> <a href="#none"
-											onclick="OrderLayer.onDiv('order_layer_addsale', event);"
-											class="yg_btn_24 yg_btn3" alt="내역보기">내역보기</a></td>
+										<td><span class="gSpace20">00원</span></td>
 									</tr>
 								</tbody>
 								<tbody class="">
@@ -241,35 +267,28 @@ $(function(){
 												src="${pageContext.request.contextPath}/images/${dto.itemImage }"></a>
 										</td>
 										<td class="left"><a
-											href="/product/detail.html?product_no=3643&amp;cate_no=26"><strong>#SLOWMADE.
-													모먼트 윈터 밍크슬랙스 (슬림일자핏) - 2 size</strong></a>
-											<div class="option ">[옵션: 블랙/M]</div>
+											href="${pageContext.request.contextPath }/item/read?itemNo=${dto.itemNo}"><strong>${dto.itemTitle} </strong></a>
+											<div class="option ">[옵션: ${dto.itemColor }/${dto.itemSize }]</div>
 											<p class="gBlank5 displaynone">무이자할부 상품</p></td>
-										<td>1</td>
+										<td>${dto.count}</td>
 										<td class="right">
 											<div class="discount">
-												<strong>33,000원</strong>
+												<strong>${dto.itemPrice }원[수정!]</strong>
 												<div class="displaynone"></div>
 											</div>
 											<div class="">
-												<strong>31,400원</strong>
+												<strong>31,400원[수정!]</strong>
 												<div class="displaynone"></div>
 											</div>
 										</td>
 										<td><div class="txtInfo">
 												기본배송
-												<div class="displaynone">(해외배송가능)</div>
 											</div></td>
 										<td>
-											<p class="txtEm">배송완료</p>
-											<p class="">
-												<a
-													href="/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3643&amp;opt_id=000B&amp;is_second_delivery=F"
-													target="_blank">우체국택배</a>
-											</p>
+											<p class="txtEm">${dto.state }</p>
 											<p class="">
 												<a href="#none" class="line"
-													onclick="window.open('/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3643&amp;opt_id=000B&amp;is_second_delivery=F', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[6066250534047]</a>
+													onclick="window.open('/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3643&amp;opt_id=000B&amp;is_second_delivery=F', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a>
 											</p> <a href="#none"
 											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
 											onclick="OrderHistory.withdraw('C','20191121-0030184|3643|000B|2824514','', 'F')"

@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script>
 function update(orderno){
-	alert(orderno);
 	var aa = { "orderno" : orderno, "state" : "배송준비"};
 	$.ajax({
 		url         :   "${pageContext.request.contextPath}/admin/update",
@@ -26,6 +25,9 @@ function update(orderno){
 			alert("에러3:"+error);
 		}
 	});
+}
+function goread(orderno){
+	
 }
 </script>
 </head>
@@ -132,7 +134,7 @@ function update(orderno){
 											<c:choose>										
 												<c:when test="${aa != dto.orderNo }">
 													<c:set var="aa" value="${dto.orderNo }"/>
-													<td>입금대기</td>
+													<td>${dto2.state }</td>
 													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}')">확인버튼</button></td>
 												</c:when>
 												<c:otherwise>
