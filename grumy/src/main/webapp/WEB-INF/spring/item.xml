@@ -27,5 +27,9 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/create.jsp" />
 	</definition>
-
+	
+	<definition name="/item/error" extends="main">
+		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="body" value="/WEB-INF/views/item/error.jsp" />
+	</definition>
 </tiles-definitions>

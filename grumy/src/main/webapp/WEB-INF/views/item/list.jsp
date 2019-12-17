@@ -95,19 +95,13 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 	    if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-	       var url = "delete";
-	   
+	       var url = "${pageContext.request.contextPath}/item/delete";
 	       url += "?itemNo="+itemNo;
 	       url += "&type="+type;
-
 	       location.href = url;
 
-	    } else { //취소
-
-	       return false;
-
 	    }
-
+	    
 	 }
 	
 </script>

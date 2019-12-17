@@ -61,6 +61,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where itemNo = #{itemNo}
 	</delete>
 
+	<delete id="deleteOption" parameterType="int">
+		delete from itemOption
+		where itemNo = #{itemNo}
+	</delete>
+
 	<update id="update" parameterType="int">
 		update itemOption
 		<set>

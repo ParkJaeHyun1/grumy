@@ -2,6 +2,7 @@ package spring.model.grumy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,25 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.model.item.ItemDTO;
+import spring.model.item.ItemService;
 import spring.model.mapper.itemMapper;
-import spring.model.review.reviewDTO;
 import spring.model.utility.ItemUtility;
-import spring.model.utility.Utility;
 
 @Controller
 public class ItemController {
 
 	@Autowired
 	private itemMapper mapper;
-
-	@GetMapping("/item/list/delete")
+	@Autowired
+	private ItemService itemService;
+	
+	@RequestMapping("/item/delete")
 	public String delete(int itemNo, String type) {
-		System.out.println("come " + itemNo + " " + type);
-		mapper.delete(itemNo);
-		
-		return "redirect:/item/list?type="+type;
-
+		System.out.println("개새 꺄 아,아ㅏㅇ아");
+		if(itemService.delete(itemNo))
+			return "redirect:/item/list?type="+type;
+		return "/item/error";
 	}
+		
+	
 	
 	@PostMapping("/item/create")
 	public String create(ItemDTO dto, HttpServletRequest request) {

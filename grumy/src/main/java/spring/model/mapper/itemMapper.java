@@ -19,11 +19,14 @@ public interface itemMapper {
 	int count(Map<String, String> map);
 	int total(Map map);
 	int delete(int itemNo);
+	int deleteOption(int itemNo);
 	int update(int itemOptionNo);
 	int create(ItemDTO dto);
 	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
 
 	int decreaseItemCount(OrderItemDTO orderItem);
 	int increaseItemCount(OrderItemDTO orderItem);
+
+	
 
 }
