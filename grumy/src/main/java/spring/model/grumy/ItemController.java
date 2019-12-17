@@ -91,9 +91,7 @@ public class ItemController {
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;
-		System.out.println("페이지:"+nowPage);
-		System.out.println("sno:"+sno);
-		System.out.println("eno:"+eno);
+
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
@@ -102,7 +100,7 @@ public class ItemController {
 		map.put("type", type);
 		
 		ArrayList<ItemDTO> list = mapper.list(map);
-
+		System.out.println("개수:"+list.size());
 		int total = mapper.total(map);
 		
 		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, word,type);

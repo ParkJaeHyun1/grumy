@@ -110,11 +110,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		type,itemOptionNo,itemColor,itemSize,itemCount
 		from(
 		select i.itemNo,
-		image, title, description, content, price,salePrice, type, rownum
-		rnum,itemOptionNo,itemColor,itemSize,itemCount
-		from item i , itemOption o
+		image, title, description, content, price,salePrice, type,itemOptionNo,itemColor,itemSize,itemCount
+		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>) i , itemOption o
 		where type = #{type} and i.itemNo = o.itemNo)
-	<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+	
 	</select>
 	
 	<select id="read" parameterType="int" resultMap="itemMap">
