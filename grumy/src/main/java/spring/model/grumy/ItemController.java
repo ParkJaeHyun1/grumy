@@ -25,7 +25,14 @@ public class ItemController {
 	@Autowired
 	private itemMapper mapper;
 
-	
+	@GetMapping("/item/list/delete")
+	public String delete(int itemNo, String type) {
+		System.out.println("come " + itemNo + " " + type);
+		mapper.delete(itemNo);
+		
+		return "redirect:/item/list?type="+type;
+
+	}
 	
 	@PostMapping("/item/create")
 	public String create(ItemDTO dto, HttpServletRequest request) {

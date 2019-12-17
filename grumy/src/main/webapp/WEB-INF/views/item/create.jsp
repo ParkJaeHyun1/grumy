@@ -58,7 +58,11 @@
 
 	}
 </script>
-
+<style>
+#smart_editor2{
+	width: 780px; 
+}            
+</style>
 <div id="container">
 	<div id="contents">
 
@@ -119,9 +123,9 @@
 										<th scope="row">상품 이미지</th>
 
 										<td><input type="file" class="form-control" id="image"
-											name="filenameMF" accept=".jpg,.gif,.png"></td>
+											name="filenameMF" accept=".jpg,.gif,.png" ></td>
 									</tr>
-
+               
 									<tr>
 										<th scope="row">컬러 추가</th>
 										<td><input type="text" id="itemColor" style="width: 70px"
@@ -177,31 +181,47 @@
 
 									<tr>
 										<th scope="row">상세 페이지</th>
-										<td></td>
+										<td></td>                       
 									</tr>
-
+              
 									<tr>
-										<td colspan="2"><textarea rows="20" cols="122"
-												name="content" id="content">         	
-                              </textarea> <script type="text/javascript">
-																															CKEDITOR
-																																	.replace(
-																																			'content',
-																																			{
-																																				height : 500
-																																			});
-																														</script></td>
+										<td colspan="2"><textarea rows="20" cols="124"                                                        
+												name="content" id="content">                                                                              	
+                              </textarea> <script type="text/javascript">                               
+									CKEDITOR                                           
+									.replace(             
+										'content',
+										{          
+										height : 500
+										}              
+										'style',
+										{          
+										width : 1000             
+										}	
+									
+									);
+									</script></td>
 
-									</tr>
-
+									</tr>                                           
+		 
 								</tbody>
+       
 							</table>
+				<div class="ec-base-button ">         
+					<span class="gLeft">
+						<button type="button" class="yg_btn_30 yg_btn4" alt="목록" onclick="history.back()">LIST</button>
+					</span> <span class="gRight">
+						<button id="save" type="submit" class="yg_btn_30 yg_btn4" alt="등록">OK</button>
+						<button type="button" onclick="history.back()" class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
+					</span>
+				</div>             
 						</div>
 					</div>
-				</div>    
+				</div>   
+
 			</form>
 
-		</div>
+		</div>             
 	</div>
 
 </div>

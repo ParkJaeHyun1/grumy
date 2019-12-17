@@ -89,10 +89,29 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			}
 		});
 	}
-</script>
-<style type="">           
+	
+	
+	function delete1(itemNo, type) {
 
-</style>
+	    if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
+
+	       var url = "delete";
+	   
+	       url += "?itemNo="+itemNo;
+	       url += "&type="+type;
+
+	       location.href = url;
+
+	    } else { //취소
+
+	       return false;
+
+	    }
+
+	 }
+	
+</script>
+
 </head>
 <body id="main">
 	<div id="skipNavigation">
@@ -167,7 +186,17 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
 							</strong>
-              
+              <c:if
+				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+				<p align="center">
+			               
+					<button class="yg_btn_28 yg_btn3"
+						onclick="location.href='${pageContext.request.contextPath}/item/update'">상품수정</button>&nbsp;
+					<button class="yg_btn_28 yg_btn3"
+						onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+					             
+				</p>
+			</c:if>
 
 
 
