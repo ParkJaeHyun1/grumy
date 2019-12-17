@@ -31,6 +31,7 @@
 			<form action="create" method="post" id="frm"
 				enctype="multipart/form-data" onsubmit="return input(this)">
 				<input type="hidden" name="id" value="${sessionScope.id }">
+				<input type="hidden" name="itemOptionNo" value="${param.itemOptionNo }">
 				<div class="ec-base-table typeWrite ">
 					<table border="1" summary="">
 						<colgroup>
@@ -38,12 +39,7 @@
 							<col style="width: auto;">
 						</colgroup>
 						<tbody>
-							<tr>
-								<th scope="row">상품명itemOptionNo</th>
-
-								<td><input type="text" id="itemOptionNo"
-									name="itemOptionNo" value=""></td>
-							</tr>
+							
 							
 							<th scope="row">키</th>
 
