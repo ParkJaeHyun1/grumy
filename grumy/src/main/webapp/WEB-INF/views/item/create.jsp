@@ -116,10 +116,16 @@
 									<tr>
 										<th scope="row" style="width: 300px">상품명</th>
 
-										<td><input type="text" id="itemOptionNo"
-											name="itemOptionNo" style="width: 300px" value=""></td>
+										<td><input type="text" id="title"
+											name="title" style="width: 395px"></td>
 									</tr>
-									<tr>
+									<tr>       
+										<th scope="row" style="width: 300px; ">상품 설명</th>
+               
+										<td><textarea type="text" id="description"
+											name="description" style="width: 390px; height:150px"></textarea></td>
+									</tr>
+									<tr>          
 										<th scope="row">상품 이미지</th>
 
 										<td><input type="file" class="form-control" id="image"
