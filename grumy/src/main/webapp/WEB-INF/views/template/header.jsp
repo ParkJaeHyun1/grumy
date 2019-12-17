@@ -41,12 +41,6 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 
 	<c:choose>
-		<c:when test="${sessionId != null }">
-		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
-				<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> 
-				<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
-			</div>
-		</c:when>
 		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
 				<a href="${pageContext.request.contextPath}/admin/main">ADMIN PAGE</a>

@@ -85,7 +85,9 @@
 <form id="member_form_3274124755" name="" 
 action="loginProc" method="post" 
 target="_self" enctype="multipart/form-data">
-<input type="hidden" id="url" name="url" value="${url }">
+
+<input type="hidden" id="url" name="url" value="${url }"/>
+
 
 <div class="xans-element- xans-member xans-member-login ">
 <div class="login">        
@@ -107,6 +109,7 @@ type="password" placeholder="PASSWORD"></label>
 <a href="#" class="yg_btn" id="login"
 onclick="document.getElementById('member_form_3274124755').submit();" 
 alt="로그인" style="background:#a18266">로그인</a>
+
 <a href="${nurl}">
 <img width="150" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
 </a>

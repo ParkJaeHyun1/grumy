@@ -106,14 +106,13 @@ public class MemberController {
 			HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "url", required = false) String url) throws Exception {
 		int flag = dao.loginCheck(map);
-		String nurl = naverLoginBO.getAuthorizationUrl(session);
+		
 
 		if (flag == 1) {
 			String grade = dao.getGrade(map.get("id"));
 			session.setAttribute("id", map.get("id"));
 			session.setAttribute("grade", grade);
-			session.setAttribute("nurl", nurl);
-			System.out.println(url);
+		
 
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
@@ -133,9 +132,7 @@ public class MemberController {
 			@RequestParam(value = "url", required = false) String url) {
 		
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		
-		System.out.println("네이버:" + naverAuthUrl);
-		
+			
 		model.addAttribute("nurl", naverAuthUrl);
 
 		request.setAttribute("url", url);
@@ -147,7 +144,7 @@ public class MemberController {
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException, ParseException {
-		System.out.println("141441414141414141414141414141414141414141414");
+		
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		// 1. 로그인 사용자 정보를 읽어온다.
@@ -170,7 +167,7 @@ public class MemberController {
 		session.setAttribute("sessionId", nickname); // 세션 생성
 		model.addAttribute("result", apiResult);
 		
-		return "/home";
+		return "/login";
 	}
 
 	@PostMapping("/member/findpw")
@@ -393,8 +390,7 @@ public class MemberController {
          String api_secret = "PAMLNBACSRKGWC862RET7RSLX9UGUKHA";  
 
          Coolsms coolsms = new Coolsms(api_key, api_secret);
-         
-         
+            
          HashMap<String, String> set = new HashMap<String, String>();
          set.put("to", "01057165993"); 
 
