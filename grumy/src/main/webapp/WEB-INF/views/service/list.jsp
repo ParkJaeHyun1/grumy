@@ -38,13 +38,12 @@
 
 <div id="container">
 	<div id="contents">
-				<form action="${pageContext.request.contextPath}/member/login"
-					id="loginForm" class="form-horizontal" method="post"
-					enctype="application/x-www-form-urlencoded;charset=UTF-8"
-					style="display: none">
-					<input type="hidden" name="url"
-						value="/delivery/list"></input>
-				</form>
+		<form action="${pageContext.request.contextPath}/member/login"
+			id="loginForm" class="form-horizontal" method="post"
+			enctype="application/x-www-form-urlencoded;charset=UTF-8"
+			style="display: none">
+			<input type="hidden" name="url" value="/delivery/list"></input>
+		</form>
 		<div
 			class="xans-element- xans-board xans-board-listpackage-1002 xans-board-listpackage xans-board-1002 ">
 			<div
@@ -68,7 +67,7 @@
 						class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 						<tr style="">
 							<th style="width: 70px;">NO</th>
-							<th style="width:150px;">CATEGORY</th>
+							<th style="width: 150px;">CATEGORY</th>
 							<th style="width: auto;">SUBJECT</th>
 							<th style="width: 134px;">WRITER</th>
 							<th style="width: 84px;">DATE</th>
@@ -88,11 +87,12 @@
 									<td></td>
 									<td>${dto.category }</td>
 									<td class="subject left txtBreak"><strong> <a
-											href="javascript:read(${dto.board_no })" style="color: #555555;">
-												${dto.subject }</a>
-												 <c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
-												 <img src="${pageContext.request.contextPath }/images/new.gif">
-												 </c:if></strong></td>
+											href="javascript:read(${dto.board_no })"
+											style="color: #555555;"> ${dto.subject }</a> <c:if
+												test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
+												<img
+													src="${pageContext.request.contextPath }/images/new.gif">
+											</c:if></strong></td>
 									<td>${dto.writer }</td>
 									<td class=""><span class="txtNum">${dto.wdate }</span></td>
 								</tr>
@@ -106,6 +106,7 @@
 									<td>등록된 글이 없습니다.</td>
 									<td></td>
 									<td></td>
+								</tr>
 							</c:when>
 							<c:otherwise>
 								<c:forEach var="dto" items="${list}" varStatus="status">
@@ -113,43 +114,28 @@
 										class="xans-record-">
 										<td>${total-status.index-((nowPage-1)*10)}</td>
 										<td>${dto.category }</td>
-										<td class="subject left txtBreak"><strong> 
-										       <c:choose>
-													
-													<c:when test="${dto.indent==0 }">
-														<a href="javascript:read(${dto.board_no })"
-															style="color: #555555;"> <img
-															src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
-													 	<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
-															<img alt=""
-																src="${pageContext.request.contextPath }/images/new.gif">
-															
-														</c:if>
-													</c:when>
-													<c:otherwise>
-														<a href="javascript:read_reply(${dto.board_no })"
-															style="color: #555555;"> &nbsp;<img
+										<td class="subject left txtBreak"><strong> <a
+												href="javascript:read(${dto.board_no });"> <c:if
+														test="${dto.indent ==1 }">
+														&nbsp; <img
 															src="${pageContext.request.contextPath }/images/re.gif" />
-															<img
-															src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }</a>
-														<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
-															<img alt=""
-																src="${pageContext.request.contextPath }/images/new.gif">
-														</c:if>
-													</c:otherwise>
-
-												</c:choose> <span class="txtEm"></span></strong></td>
+													</c:if> <img
+													src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }
+													<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
+														<img alt=""
+															src="${pageContext.request.contextPath }/images/new.gif">
+													</c:if></a><span class="txtEm"></span></strong></td>
 										<td><script type="text/javascript">
 										var len = ('${dto.writer}'.length);
 										var name = '${dto.writer}'.replace(
 												'${dto.writer}'.substr(1,
 														len), "****");
-										if(${dto.indent==1}){
+										if(${dto.indent}==1){
 											name = '${dto.writer}'
 										}
 											document.write(name);
 										</script></td>
-										<td class=""><span class="txtNum">${dto.wdate }</span></td>
+										<td><span class="txtNum">${dto.wdate }</span></td>
 									</tr>
 								</c:forEach>
 							</c:otherwise>
@@ -181,9 +167,9 @@
 				</div>
 			</form>
 
-				<p align="right">
-					<button class="yg_btn_30 yg_btn4" onclick="javascript:create();">WRITE</button>
-				</p>
+			<p align="right">
+				<button class="yg_btn_30 yg_btn4" onclick="javascript:create();">WRITE</button>
+			</p>
 
 
 			${paging}

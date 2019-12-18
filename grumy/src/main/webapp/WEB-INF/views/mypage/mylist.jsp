@@ -12,12 +12,6 @@
 		location.href = url;
 	}
 
-	function read_replyc(no) {
-		var url = "${pageContext.request.contextPath}/community/read_reply";
-		url += "?board_no=" + no;
-
-		location.href = url;
-	}
 	function readd(no) {
 		var url = "${pageContext.request.contextPath}/delivery/read";
 		url += "?board_no=" + no;
@@ -107,7 +101,7 @@
 													<c:otherwise>
 														<c:choose>
 														<c:when test="${list.type=='상품' }">
-														<a href="javascript:read_replyc(${list.board_no })"
+														<a href="javascript:readc(${list.board_no })"
 															style="color: #555555;">
 														</c:when>
 														<c:otherwise>

@@ -161,7 +161,6 @@ public class MypageController {
 		int eno = nowPage * recordPerPage;
 		String state = request.getParameter("state");
 		
-		System.out.println(state);
 		
 		Map map = new HashMap();
 		map.put("id", id);

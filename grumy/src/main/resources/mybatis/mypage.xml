@@ -39,13 +39,16 @@ order by i.state
 	
 	<select id="orderlist" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor,itemOptionNo, rownum r from
+		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
 		(select b.orderItemNo orderItemNo,i.itemno itemno, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor, b.itemOptionNo itemOptionNo 
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id}
 			<choose>
-				<when test="state!=null">
+				<when test="state == 'all'">
+				and b.state != '주문대기'
+				</when>
+				<when test="state!=null" >
 				and b.state = #{state}
 				</when>
 				<otherwise>
@@ -68,6 +71,9 @@ order by i.state
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} 
 			<choose>
+				<when test="state=='all'">
+				and b.state != '주문대기'
+				</when>
 				<when test="state!=null">
 				and b.state = #{state}
 				</when>
@@ -77,7 +83,32 @@ order by i.state
 			</choose>
 			)))
 	</select>
+
+	<select id="cslist" parameterType="map" resultMap="orderMap">
+		select * from
+		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
+		(select b.orderItemNo orderItemNo,i.itemno itemno, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
+			from norder a, orderitem b ,item i, itemOption o
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id}
+			and (b.state='취소요청' or b.state = '교환요청' or b.state= '반품요청')
+			order by a.orderno desc
+			))
+		<![CDATA[
+		where r >=#{sno} and r<=#{eno}
+		]]>
+	</select>
 	
+		<select id="cstotal" parameterType="map" resultType="int">
+	select count(*) from(
+		(select orderno, odate, orderItemNo, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
+		(select b.orderItemNo orderItemNo, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
+			from norder a, orderitem b ,item i, itemOption o
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id} 
+			and (b.state='취소요청' or b.state = '교환요청' or b.state= '반품요청')
+			)))
+	</select>	
 	
 <select id="mytotal" parameterType="Map" resultType="int">
 select count(*) from board
@@ -86,17 +117,21 @@ select count(*) from board
          		<when test="col=='subject'">
          		subject like '%'||#{word}||'%'
          		and lev = 'A'
+         		and check_read = #{id}
          		</when>
          		<when test="col=='content'">
          		content like '%'||#{word}||'%'
          		and lev = 'A'
+         		and check_read = #{id}
          		</when>
          		<when test="col=='writer'">
          		writer like '%'||#{word}||'%'
          		and lev = 'A'
+         		and check_read = #{id}
          		</when>
          		<otherwise>
          		lev = 'A'
+         		and check_read = #{id}
          		</otherwise>
          	</choose>
          </where>
@@ -114,17 +149,21 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,inde
 						<when test="col == 'subject'">
 						subject like '%'||#{word}||'%'
 						and lev = 'A'
+						and check_read = #{id}
 						</when>
 						<when test="col == 'content'">
 						content like '%'||#{word}||'%'
 						and lev = 'A'
+						and check_read = #{id}
 						</when>
 						<when test="col == 'writer'">
 						writer like '%'||#{word}||'%'
 						and lev = 'A'
+						and check_read = #{id}
 						</when>
 						<otherwise>
 						lev = 'A'
+						and check_read = #{id}
 						</otherwise>
 					</choose>
 				</where>

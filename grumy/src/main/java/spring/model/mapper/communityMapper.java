@@ -7,13 +7,13 @@ import spring.model.board.BoardDTO;
 
 public interface communityMapper {
 	int update(BoardDTO dto);
-	List list(Map map);
+	List<BoardDTO> list(Map map);
 	int create(BoardDTO dto);
 	BoardDTO read(int board_no);
 	int delete(int board_no);
 	int create_reply(BoardDTO dto);
 	String getname(String id);
 	int total(Map map);
-	List list_();
+	List<BoardDTO> list_();
 	int indelete(int board_no);
 }
