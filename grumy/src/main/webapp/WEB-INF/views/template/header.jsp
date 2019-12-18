@@ -93,7 +93,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                         <li class="xans-record-"><a
                            href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">REVIEW<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=">REVIEW<span></span></a></li>
                             <li class="xans-record-"><a
                            href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span></a></li>
                      </ul>
@@ -181,13 +181,13 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 <div class="sub-category" id="sub_menu_OUTER" style="display:none" onmouseenter="blockSubMenu('OUTER')" onmouseleave="noneSubMenu('OUTER')">
 <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">핸드메이드<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=핸드메이드">핸드메이드<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">코트/자켓<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=코트/자켓">코트/자켓<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">가디건<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=가디건">가디건<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">점퍼<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=점퍼">점퍼<span></span></a></li>
                      </ul>
 </div>
 </li>
@@ -202,13 +202,13 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 ('TOP')">
                      <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">니트/가디건<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=니트/가디건">니트/가디건<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">맨투맨/후드/티셔츠<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=맨투맨/후드/티셔츠">맨투맨/후드/티셔츠<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">셔츠/블라우스<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=셔츠/블라우스">셔츠/블라우스<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">슬리브리스<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=슬리브리스">슬리브리스<span></span></a></li>
                      </ul>
                      </div>
                      </li> 
@@ -221,9 +221,9 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 ('SKIRT')">
                      <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">미니<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=미니">미니<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">미디/롱<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=미디/롱">미디/롱<span></span></a></li>
 
                      </ul>
                      </div>
@@ -238,11 +238,11 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 ('BOTTOM')">
                      <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">데님<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=데님">데님<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">면바지/슬랙스<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=면바지/슬랙스">면바지/슬랙스<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">쇼츠<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=쇼츠">쇼츠<span></span></a></li>
 
                      </ul>
                      </div>
@@ -259,9 +259,9 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 ('SHOESBAG')">
                      <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">슈즈<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=슈즈">슈즈<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">백<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=백">백<span></span></a></li>
 
                      </ul>
                      </div>
@@ -275,17 +275,17 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 ('ACC')">
                      <ul class="gnb_sub">                                                  
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">쥬얼리<span></span></a></li>         
+                           href="${pageContext.request.contextPath}/item/list/?type=쥬얼리">쥬얼리<span></span></a></li>         
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">모자<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=모자">모자<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">벨트<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=벨트">벨트<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">양말<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=양말">양말<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">홈웨어<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=홈웨어">홈웨어<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/review/list">etc<span></span></a></li>
+                           href="${pageContext.request.contextPath}/item/list/?type=etc">etc<span></span></a></li>
 
                      </ul>
                      </div>
