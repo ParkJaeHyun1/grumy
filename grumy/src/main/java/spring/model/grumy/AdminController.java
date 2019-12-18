@@ -42,16 +42,19 @@ public class AdminController {
 		ArrayList<NoticeDTO> noticel = mapper.noticel(5);
 		ArrayList<BoardDTO> deliveryl = mapper.deliveryl(5);
 		ArrayList<BoardDTO> communityl = mapper.communityl(5);
-		
+		ArrayList<OrderDTO> chartl = mapper.chartl();
+		String[] abc = {"a", "b"};
 		request.setAttribute("noticetr", noticetr);
 		request.setAttribute("noticel", noticel);
 		request.setAttribute("deliveryl", deliveryl);
 		request.setAttribute("communityl", communityl);
+		request.setAttribute("chartl", chartl);
 		request.setAttribute("wait", wait);
 		request.setAttribute("newOrder", newOrder);
 		request.setAttribute("sReady", sReady);
 		request.setAttribute("sIng", sIng);
 		request.setAttribute("sFin", sFin);
+		request.setAttribute("abc", abc);
 		
 		return "/admin/main";
 	}

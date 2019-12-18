@@ -62,7 +62,6 @@ function update(orderno){
 							<col style="width: 60px;">
 							<col style="width: 100px;">
 							<col style="width: 70px;">
-							<col style="width: 70px;">
 							<col style="width: 100px;">
 						</colgroup>
 						<thead

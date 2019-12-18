@@ -61,14 +61,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="itemTitle" column="itemTitle"/>	
 		<result property="itemSize" column="itemSize"/>	
 		<result property="itemColor" column="itemColor"/>	
-		<result property="orderItemNo" column="orderItemNo"/>	
+		<result property="orderItemNo" column="orderItemNo"/>
+		<result property="deliveryNo" column="deliveryNo"/>		
 	</resultMap>
 	
 	<select id="list" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, itemImage, itemno, rownum r from
-		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, o.itemColor itemColor, i.image itemImage, i.itemno itemno
+		(select orderno, id, odate, orderItemNo, count, state, itemPrice, itemTitle, itemSize, itemColor, itemImage, itemno, rownum r, deliveryNo 
+			 from
+		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, 
+			b.count count,  b.state state, b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, 
+			o.itemColor itemColor, i.image itemImage, i.itemno itemno, b.deliveryNo deliveryNo
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
 			
@@ -122,11 +125,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="communityl" parameterType="int" resultType="BoardDTO">
-		select board_no, content, wdate from (
-		select board_no, content, to_char(wdate, 'mm.dd.') wdate, type from board order by board_no desc)
+		select board_no, content, wdate, subject, LEV from (
+		select board_no, content, to_char(wdate, 'mm.dd.') wdate, type, subject, LEV from board order by board_no desc)
 		<![CDATA[
 		where rownum <=#{rownum} and type='상품'
 		]]>
+		and LEV = 'A'
 	</select>
 	
 	<update id="updateState" parameterType="Map">
@@ -173,10 +177,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	<select id="readP" parameterType="map" resultMap="orderReadMap">
 	select distinct(orderno), odate, name, totalprice, saleprice, paymenttype, state, rname,
-	postcode, address, detailaddress, rphone, rmsg	
+	postcode, address, detailaddress, rphone, rmsg, deliveryNo	
 	
 	from(
-		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname, b.deliveryNo, deliveryNo,
+		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname, b.deliveryNo deliveryNo,
 			a.postcode postcode, a.address address, a.detailaddress detailaddress, a.rphone rphone, a.rmsg rmsg,
 			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, a.state state, 
 			(select sum(itemprice) from orderitem where orderno = #{orderno}) totalprice
@@ -199,6 +203,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id = #{id} and o.orderno=i.orderno
 		group by i.state
 		order by i.state
+	</select>
+
+	<select id="chartl" resultType="OrderDTO">
+		select nvl(id,0) id, nvl(orderno,0) orderNo, b.datec odate from
+		    (select count(distinct(id)) id, count(orderno) orderno, to_char(odate, 'yy/mm/dd') odate 
+		    	from norder group by to_char(odate, 'yy/mm/dd')) a right outer join
+		    (SELECT
+		        TO_CHAR(TO_DATE(sysdate-9, 'yy.mm.dd') + LEVEL - 1, 'yy/mm/dd') datec
+		    FROM dual
+		    CONNECT BY
+		    <![CDATA[
+		        TO_DATE(sysdate-9, 'yy/mm/dd') + LEVEL - 1 <= TO_char(sysdate, 'yy/mm/dd')) b
+			]]>
+		on a.odate = b.datec
+		order by datec asc
 	</select>
 	
 </mapper>

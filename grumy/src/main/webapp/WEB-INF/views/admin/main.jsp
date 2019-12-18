@@ -47,31 +47,39 @@ $(function () {
 
 </script>
 <script>
-	
-	
+
 $(document).ready(function(){
+	var chartdate = new Array;
+	var chartc = new Array;
+	var chartp = new Array;
+	
+	<c:forEach var="dto" items="${chartl}">
+		chartdate.push("${dto.odate}");
+		chartc.push("${dto.orderNo}");
+		chartp.push("${dto.id}");	
+	</c:forEach>	
+	
 	var gchange = "";
 	var a = ${wait};
-	var glabels = ['19/12/01','19/12/02','c','d','e','f','g','h','i','j'];
-	var gdata = [a,2,3,4,5,6,7,10,15,30];
 	var pos = "결제건수";
+	var gdata = chartc;
+		
 	$(".payb").on('click',function(){
 		gchange = $(this).val();
 
 		$.get('main', function(){
+			glabels = chartdate;
+			
 			if(gchange == "payb1"){
 				pos="결제건수";
-				glabels = ['a1','b','c','d','e','f','g','h','i','j'];
-				gdata = [a,20,3,4,5,15,7,10,15,30];
+				gdata = chartc;
 				chart1();
 			}else if(gchange == "payb2"){
 				pos="결제자수";
-				glabels = ['a2','b','c','d','e','f','g','h','i','j'];
-				gdata = [a,2,3,24,5,6,7,10,15,30];
+				gdata = chartp;
 				chart1();
 			}else if(gchange == "payb3"){
 				pos="결제금액";
-				glabels = ['a3','b','c','d','e','f','g','h','i','j'];
 				gdata = [a,2,35,4,5,6,7,20,15,30];
 				chart1();
 			}
@@ -82,7 +90,7 @@ $(document).ready(function(){
 	new Chart(document.getElementById("line-chart"), {
 	  type: 'line',
 	  data: {
-	    labels: glabels,
+	    labels: chartdate,
 	    datasets: [{ 
 	        data: gdata,
 	        label: pos,
@@ -332,6 +340,7 @@ $(document).ready(function(){
 									<ul class="nav nav-tabs" role="tablist" id="myTab">
 									  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">배송문의</a></li>
 									  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">상품문의</a></li>
+									  <li role="presentation"><a href="#review" aria-controls="profile" role="tab" data-toggle="tab">review</a></li>
 									</ul>
 									
 									<div class="tab-content">
@@ -377,7 +386,7 @@ $(document).ready(function(){
 													<c:forEach var="dto" items="${communityl}">
 														<a href="javascript:readd2(${dto.board_no })" style="color: #555555;">
 														<li>
-															<span>문의 합니다</span>
+															<span>${dto.subject }</span>
 														</li>
 														
 														<li style="text-align:right">
@@ -388,6 +397,35 @@ $(document).ready(function(){
 													</c:forEach>
 													<br>
 													<a href="${root }/community/list" style="text-align:right"><li>더보기</li></a>
+												</c:otherwise>
+											</c:choose>
+										</ul>
+									  
+									  </div>
+									  <div role="tabpanel" class="tab-pane" id="review">
+									  <ul class="panel-list">
+									  	<br>
+											<c:choose>
+												<c:when test="${empty deliveryl }">
+													
+														<li>등록된 답변이 없습니다.</li>
+					
+												</c:when>
+												<c:otherwise>
+													<c:forEach var="dto" items="${deliveryl}">
+														<a href="javascript:readd(${dto.board_no })" style="color: #555555;">
+														<li>
+															<span>${dto.subject }</span>
+														</li>
+														
+														<li style="text-align:right">
+														<span>${dto.wdate }</span>
+														</li>
+														</a>
+														
+													</c:forEach>
+													<br>
+													<a href="${root }/review/list" style="text-align:right"><li>더보기</li></a>
 												</c:otherwise>
 											</c:choose>
 										</ul>

@@ -17,14 +17,31 @@ $(function(){
 	$('#pcodenobutton').click(function(){
 		var pno = $('#postcodeno').val();
 		var ono = $('#orderno').html();
-		
+		var ostate = $('#ostate').text();
+		var ostates;
+		switch(ostate){
+			case "입금대기":
+				ostates = "배송준비";
+				break;
+			case "배송준비":
+				ostates = "배송중";
+				break;
+			case "배송중":
+				ostates = "배송완료";
+				break;
+			case "배송완료":
+				ostates = "배송완료";
+				break;
+			default :
+				break;
+		}
 		if(temp == 1){
 			$('#postcodeno').attr("readonly",false);
 			$('#nostate').text('송장번호를 작성중입니다. ');
 			$('#nostate').css('color','red');			
 			temp = 0;
 		}else{		
-			update(ono, pno);
+			update(ono, ostates, pno);
 			$('#postcodeno').attr("readonly",true);
 			$('#nostate').text('송장번호 작성을 완료했습니다');
 			$('#nostate').css('color','blue');
@@ -33,9 +50,9 @@ $(function(){
 		}
 	});
 });
-function update(orderno, deliveryno){
+function update(orderno,ostates, deliveryno){
 	alert("check: "+ deliveryno);
-	var aa = { "orderno" : orderno, "state" : "배송중", "deliveryno" : deliveryno};
+	var aa = { "orderno" : orderno, "state" : ostates, "deliveryno" : deliveryno};
 	$.ajax({
 		url         :   "${pageContext.request.contextPath}/admin/update",
         contentType :   "application/json; charset=utf-8",
@@ -43,7 +60,7 @@ function update(orderno, deliveryno){
 		data: JSON.stringify(aa),
 		success : function(retVal){
 			alert("성공:"+retVal);
-			//location.reload();
+			location.reload();
 		}, 
 		error : function(request, status, error){
 			alert("에러1:"+request);
