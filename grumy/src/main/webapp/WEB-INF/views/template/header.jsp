@@ -251,7 +251,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                   
                  
                   
-                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=SHOESBAG" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
+                  <li class="xans-record-"><a href="${pageContext.request.contextPath}/item/list/?type=SHOES/BAG" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu
 
 ('SHOESBAG')">SHOES/BAG</a>
                    <div class="sub-category" id="sub_menu_SHOESBAG" style="display:none" onmouseenter="blockSubMenu('SHOESBAG')" onmouseleave="noneSubMenu

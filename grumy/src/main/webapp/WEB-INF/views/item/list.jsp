@@ -26,6 +26,8 @@ gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe
 
 UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
 	<link rel="stylesheet" type="text/css"
+		href="https://www.slowand.com/ind-script/optimizer.php?filename=tZW_TgMxDMb3HivPYbUgsTMz0Sfw5cxdaGJHsSPRtyf9MwBd0DUZY8U_J5_jL7BIJNjuMqQsc8YImVRKdgROFT6ysIGTGIUfauAR_rOf3EYlFPPCm1G-ViYWs7VFAx4pr0s1HAP9SCU3FKWsgMy02748QSpj8G5YLAbQiYaJ1M8MevD8fIZGmUqgU8GpOINIXBK6A85tucGrseSIYT22CiXFYET17lzjptX3Ai-BhsDarLqgTfEdoCYSzKcO5IVCD-z1MfQg4-wZjXqojGMH6o1hNAP_srCGIoQe4tZdbj32iDx_-os3VmtsAnpDkyagPbI2sdCreJInyq-oBzIn5Z7b3rKvg_lOjrjHeP794u4-cCzV-XSRtF98Sp7nE_wb&type=css&k=51d01aeefc10b65c84e6f24f7f901954d9fda193&t=1547093551" />
+	<link rel="stylesheet" type="text/css"
 		href="https://www.slowand.com/ind-script/optimizer.php?filename=rc49DsIwDAXgvWXlHBY_EjszEz1B6litaWpHcYLU25MiTkC7-
 
 cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlEAS3aMmgyVO6O5sooxbJe9ox1Yj5SUhb4J_WO2P8XiFsaqCmLijt-
@@ -42,70 +44,67 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
 		integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
 		crossorigin="anonymous"></script>
-	<script src="./jquery-3.4.1.min.js"></script>
-	<link rel="stylesheet" href="./bootstrapt/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="./bootstrapt/css/bootstrap.css" />
-	<script src="./bootstrapt/js/bootstrap.min.js"></script>
-<script>
-	function itemCountUp(itemOptionNo) {
-		updateItemCount(itemOptionNo, count + 1);
-	}
-	function itemCountDown(itemOptionNo) {
-		updateItemCount(itemOptionNo, count - 1);
-	}
-	function itemCountModify(itemOptionNo, cnt) {
-		updateItemCount(itemOptionNo, cnt);
-	}
-	function updateItemCount(itemOptionNo, cnt) {
-		if (!$.isNumeric(cnt) || cnt < 1) {
-			alert('품절 표시를 해주세요');
-			$('#item_count_' + itemOptionNo).val(count);
-			return false;
-		} else if (cnt > list['itemOptionNo' + itemOptionNo].itemCount) {
-			alert('재고가 부족합니다.');
-			$('#item_count_' + itemOptionNo).val(count);
-			return false;
+	<script src="./jquery-3.4.1.min.js"></script>  
+	<link rel="stylesheet" href="https://www.slowand.com/bootstrapt/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://www.slowand.com/bootstrapt/css/bootstrap.css" />  
+	<script src="https://www.slowand.com//bootstrapt/js/bootstrap.min.js"></script>       
+	<script>
+		function itemCountUp(itemOptionNo) {
+			updateItemCount(itemOptionNo, count + 1);
 		}
-		updateItemCountAjax(itemOptionNo, cnt);
-		return true;
-	}
-	function updateItemCountAjax(itemOptionNo, cnt) {
-		alert('3333');
-		$.ajax({
-			type : 'put',
-			url : "./update",
-			data : JSON.stringify({
-				"itemOptionNo" : itemOptionNo,
-				"count" : cnt
-			}),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr) {
-				alert('성공');
-				count = cnt;
-				setView();
-			},
-			error : function(xhr, status, er) {
-				alert('에러:' + status);
+		function itemCountDown(itemOptionNo) {
+			updateItemCount(itemOptionNo, count - 1);
+		}
+		function itemCountModify(itemOptionNo, cnt) {
+			updateItemCount(itemOptionNo, cnt);
+		}
+		function updateItemCount(itemOptionNo, cnt) {
+			if (!$.isNumeric(cnt) || cnt < 1) {
+				alert('품절 표시를 해주세요');
+				$('#item_count_' + itemOptionNo).val(count);
+				return false;
+			} else if (cnt > list['itemOptionNo' + itemOptionNo].itemCount) {
+				alert('재고가 부족합니다.');
+				$('#item_count_' + itemOptionNo).val(count);
+				return false;
 			}
-		});
-	}
-	
-	
-	function delete1(itemNo, type) {
+			updateItemCountAjax(itemOptionNo, cnt);
+			return true;
+		}
+		function updateItemCountAjax(itemOptionNo, cnt) {
+			alert('3333');
+			$.ajax({
+				type : 'put',
+				url : "./update",
+				data : JSON.stringify({
+					"itemOptionNo" : itemOptionNo,
+					"count" : cnt
+				}),
+				contentType : "application/json; charset=utf-8",
+				success : function(result, status, xhr) {
+					alert('성공');
+					count = cnt;
+					setView();
+				},
+				error : function(xhr, status, er) {
+					alert('에러:' + status);
+				}
+			});
+		}
 
-	    if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
+		function delete1(itemNo, type) {
 
-	       var url = "${pageContext.request.contextPath}/item/delete";
-	       url += "?itemNo="+itemNo;
-	       url += "&type="+type;
-	       location.href = url;
+			if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-	    }
-	    
-	 }
-	
-</script>
+				var url = "${pageContext.request.contextPath}/item/delete";
+				url += "?itemNo=" + itemNo;
+				url += "&type=" + type;
+				location.href = url;
 
+			}
+
+		}
+	</script>
 </head>
 <body id="main">
 	<div id="skipNavigation">
@@ -116,9 +115,40 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<a href="#contents">본문 바로가기</a>
 		</p>
 	</div>
-	<div id="wrap">
+	<div id="contents_wide">
+	<div id="contents">
 		<!-- 상단카테고리 -->
-
+				<div class="xans-element- xans-product xans-product-menupackage ">
+					<div
+						class="xans-element- xans-product xans-product-headcategory title ">
+						<h2>
+							<span>${parentType}</span>  
+						</h2>
+						<span class="likeButton displaynone"><button type="button">
+								<strong></strong>
+							</button></span>
+					</div>
+					<ul class="menuCategory">
+						<c:forEach var="type" items="${typeList}">
+							<c:choose>
+							<c:when test="${selectedType==type }">
+								<li style="display:;"
+								class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
+								href="${pageContext.request.contextPath}/item/list?type=${type}">${type} <span class="count displaynone">()</span></a>
+								</li>
+							</c:when>
+							<c:otherwise>
+							<li style="display:;"
+								class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
+								href="${pageContext.request.contextPath}/item/list?type=${type}">${type}<span class="count displaynone">()</span></a>
+								</li>
+							</c:otherwise>  
+							</c:choose>
+						</c:forEach>
+						<!-- //참고 -->
+					</ul>
+				</div>  
+	
 
 		<!-- 카테고리 별 상품 list -->
 		<div
@@ -129,19 +159,6 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
 			<div id="contents">
-				<div class="title">
-					<h2>
-						<span>${parentType}</span><BR></BR>         
-					</h2>
-					<%-- 				<c:forEach var="dto" items="${list}"> --%>
-					<%-- 					<c:forEach var="image" items="${dto.colorList}"> --%>
-					<!-- 						<span style="background-color: #FFFFFF" class="chips xans-record-"></span> -->
-					<%-- 					</c:forEach> --%>
-
-
-					<%-- 				</c:forEach> --%>
-				</div>
-
 
 				<ul class="menuCategory">
 					<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
@@ -173,24 +190,25 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 								src="${pageContext.request.contextPath}/images/${dto.image}"
 								id="eListPrdImage2065_4"
 								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
-						</div>          
+						</div>
 						<div class="description">
 							<strong class="name"> <a
 								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
 								class=""><span class="title displaynone"></span> <span
 									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
 							</strong>
-              <c:if
-				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-				<p align="center">
-			               
-					<button class="yg_btn_28 yg_btn3"
-						onclick="location.href='${pageContext.request.contextPath}/item/update'">상품수정</button>&nbsp;
-					<button class="yg_btn_28 yg_btn3"
-						onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
-					             
-				</p>
-			</c:if>
+							<c:if
+								test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+								<p align="center">
+
+									<button class="yg_btn_28 yg_btn3"
+										onclick="location.href='${pageContext.request.contextPath}/item/update'">상품수정</button>
+									&nbsp;
+									<button class="yg_btn_28 yg_btn3"
+										onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+
+								</p>
+							</c:if>
 
 
 
@@ -241,12 +259,12 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 
 				</c:forEach>
-	
+
 			</ul>
 		</div>
 	</div>
-	
 
+</div>
 
 	<script>
 		$('.ec-base-product .prdList > li')

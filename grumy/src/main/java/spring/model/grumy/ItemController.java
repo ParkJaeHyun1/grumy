@@ -80,7 +80,7 @@ public class ItemController {
 		String word = ItemUtility.checkNull(request.getParameter("word"));
 		String col = ItemUtility.checkNull(request.getParameter("col"));
 		String type = request.getParameter("type");
-		String titleType;
+		
 		if (col.equals("total"))
 			word = "";
 		//페이징 관련
@@ -108,14 +108,10 @@ public class ItemController {
 		
 		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, word,type);
 		
-		titleType = type;
-		if (titleType.equals("SHOESBAG"))
-			titleType = "SHOES/BAG";
 		
-		
-		//request.setAttribute("subType", typeList);
-		request.setAttribute("parentType", titleType);
-		request.setAttribute("type", type);
+		request.setAttribute("typeList", mapper.selectTypeList(type));
+		request.setAttribute("parentType", mapper.selectParentType(type));
+		request.setAttribute("selectedType", type);
 		request.setAttribute("list", list);
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);

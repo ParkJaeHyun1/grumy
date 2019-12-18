@@ -23,7 +23,8 @@ public interface itemMapper {
 	int update(int itemOptionNo);
 	int create(ItemDTO dto);
 	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
-
+	String selectParentType(String type);
+	ArrayList<String> selectTypeList(String type);
 	int decreaseItemCount(OrderItemDTO orderItem);
 	int increaseItemCount(OrderItemDTO orderItem);
 

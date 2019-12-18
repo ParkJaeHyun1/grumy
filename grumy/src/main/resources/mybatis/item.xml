@@ -36,7 +36,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       and t.parentType=#{parentType}
    </select>
 
-
+   <select id="selectTypeList" parameterType="String" resultType="String">
+    select type from itemType where parenttype=(select parenttype from itemtype where type=#{type}) or parenttype=#{type}
+        
+   </select>
+      <select id="selectParentType" parameterType="String" resultType="String">
+      select COALESCE(parenttype,type) from itemtype where type = #{type}
+   </select>
 
    <select id="total" parameterType="Map" resultType="int">
       select count(*) from item
