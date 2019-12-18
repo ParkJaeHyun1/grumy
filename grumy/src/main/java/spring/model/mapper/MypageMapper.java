@@ -17,5 +17,7 @@ public interface MypageMapper {
 	List<OrderDTO> allorderlist(Map map);
 	int ordertotal(Map map);
 	int mytotal(Map map);
+	int cstotal(Map map);
 	List<BoardDTO> mylist(Map map);
+	List<OrderDTO> cslist(Map map);
 }

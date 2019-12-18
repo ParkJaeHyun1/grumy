@@ -24,39 +24,20 @@
 			<div
 				class="xans-element- xans-myshop xans-myshop-orderhistorytab ec-base-tab tab_style ">
 				<ul class="menu">
-					<li class="selected"><a
-						href="${pageContext.request.contextPath}/mypage/orderlist/list ">주문내역조회
-							(${total})</a></li>
 					<li class=""><a
+						href="${pageContext.request.contextPath}/mypage/orderlist/list ">주문내역조회
+							(${total} )</a></li>
+					<li class="selected"><a
 						href="${pageContext.request.contextPath}/mypage/cslist/list">취소/반품/교환
 							내역 (${cstotal})</a></li>
 				</ul>
 			</div>
-			<br>
-			<form action="list">
-				<div class="xans-element- xans-myshop xans-myshop-orderhistoryhead ">
-					<div class="stateSelect">
-						<select name="state" id="state" class="fSelect">
-							<option value="all" <c:if test="${param.state eq 'all'}">selected='selected'</c:if>>전체 주문처리상태</option>
-							<option value="입금대기" <c:if test="${param.state eq '입금대기'}">selected='selected'</c:if>>입금전</option>
-							<option value="배송준비" <c:if test="${param.state eq '배송준비'}">selected='selected'</c:if>>배송준비중</option>
-							<option value="배송중" <c:if test="${param.state eq '배송중'}">selected='selected'</c:if>>배송중</option>
-							<option value="배송완료" <c:if test="${param.state == '배송완료'}">selected='selected'</c:if>>배송완료</option>
-							<option value="취소요청" <c:if test="${param.state == '취소요청'}">selected='selected'</c:if>>취소</option>
-							<option value="교환요청" <c:if test="${param.state == '교환요청'}">selected='selected'</c:if>>교환</option>
-							<option value="환불요청" <c:if test="${param.state == '환불요청'}">selected='selected'</c:if>>환불</option>
-						</select>
-						<button class="yg_btn_80 yg_btn1">조회</button>
-					</div>
-					
-				</div>
-			</form>
-			<br>
+
 			<div class="title">
 				<h3>주문 상품 정보</h3>
 			</div>
 
-
+			
 
 			<table border="1" summary>
 				<thead>
@@ -78,20 +59,10 @@
 							</tr>
 						</c:when>
 						<c:otherwise>
-							<c:set var="aa" />
 							<c:forEach var="list" items="${list}">
 								<c:forEach var="list2" items="${list.orderItemList }">
 									<tr class="xans-record-">
-										<c:choose>
-											<c:when test="${aa != list.orderNo }">
-												<td rowspan="${list.getOrderItemList().size() }">
-													${list.odate}<br> <a class="text-number"
-													href="${pageContext.request.contextPath }/admin/read?orderno=${list.orderNo}">
-														[${list.orderNo}]</a>
-												</td>
-											</c:when>
-										</c:choose>
-										<c:set var="aa" value="${list.orderNo }"></c:set>
+										<td class="number">${list.odate}<div>${list.orderNo }</div></td>
 										<td class="thumb"><a
 											href="${pageContext.request.contextPath }/item/read?itemNo=${list2.itemNo}"><img
 												style="width: 80px; height: 106px;"
@@ -108,7 +79,7 @@
 										<td class="state">${list2.state }
 											<div>
 												<a
-													href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemOptionNo}"
+													href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemNo}"
 													class="yg_btn_80 yg_btn1 crema-new-review-link crema-applied"
 													alt="구매후기">구매후기</a>
 											</div>

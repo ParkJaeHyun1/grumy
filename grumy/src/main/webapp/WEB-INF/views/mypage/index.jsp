@@ -27,8 +27,7 @@ function orderlist(state){
 		<div class="xans-element- xans-myshop xans-myshop-orderstate ">
 			<div class="title">
 				<h3>
-					나의 주문처리 현황 <span class="desc">(최근 <em>3개월</em> 기준)
-					</span>
+					나의 주문처리 현황
 				</h3>
 			</div>
 			<div class="state">
