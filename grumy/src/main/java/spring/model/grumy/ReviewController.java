@@ -149,9 +149,8 @@ public class ReviewController {
 		
 		ArrayList<reviewDTO> list = mapper.list(map);
 		ArrayList<reviewDTO> listp = mapper.listp(map2);
-		System.out.println("씨이바리:"+ sno);
-		System.out.println("씨이바리:"+ eno);
-		//ArrayList<reviewDTO> listr = mapper.listr();
+		
+		
 
 		int total = mapper.total(map);
 
@@ -167,20 +166,9 @@ public class ReviewController {
 		request.setAttribute("list", list);
 		request.setAttribute("listp", listp);
 
-		//request.setAttribute("listr", listr);
+		
 		return "/review/list";
 	}
 	
-	@RequestMapping("/review/updateImage")
-	@ResponseBody
-	public reviewDTO confirm(@RequestBody Map map, HttpServletRequest request) {
-		int no = (int)map.get("reviewNo");
-		reviewDTO dto = mapper.read(no);
-		System.out.println(dto);
-		if(dto.getItemNo()>0) {
-			request.setAttribute("dtoI", dto);
-			System.out.println("업뎃 성공");
-		}
-		return dto;          
-	}
+
 }

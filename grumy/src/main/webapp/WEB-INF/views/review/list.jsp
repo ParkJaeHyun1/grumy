@@ -13,12 +13,8 @@
 				</div>
 			</div>
 			<div class="crema-reviews crema-applied">
-				<html
-					class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange 
-               history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow 
-               opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths placeholder cssfilters svgfilters">
+				<html>
 <head>
-
 <style id="stndz-style"></style>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -44,35 +40,10 @@ span.star, span.camera, .sprite_comment {
 	color: #6db67e;
 }
 </style>
-<style type="text/css">
-.reviews_index_list_review__hide_message_container {
-	display: none;
-}
-</style>
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script src="//www.google-analytics.com/analytics.js"></script>
 <script>
-
-function updateImage(reviewNo){
-	alert(reviewNo);
-	var aa = { "reviewNo" : reviewNo};
-	$.ajax({
-		url         :   "${pageContext.request.contextPath}/review/updateImage",
-        contentType :   "application/json; charset=utf-8",
-        type        :   "post",
-		data: JSON.stringify(aa),
-		success : function(retVal){
-			alert("성공:"+retVal);
-			location.reload();
-		}, 
-		error : function(request, status, error){
-			alert("에러1:"+request);
-			alert("에러2:"+status);
-			alert("에러3:"+error);
-		}
-	});
-}
 var listp={};
 <c:forEach items="${listp}" var="dto">
 	listp['reviewNo${dto.reviewNo}'] = {'picture':'${dto.picture}','itemPicture':'${dto.itemPicture}','itemTitle':'${dto.itemTitle}','id':'${dto.id}','height':'${dto.height}','weight':'${dto.weight}','mySize':'${dto.mySize}','itemColor':'${dto.itemColor}','itemSize':'${dto.itemSize}','content':'${dto.content}','replyContent':'${dto.replyContent}'};
@@ -155,8 +126,6 @@ function popup(reviewNo){
            "
 		data-url="/slowand.com/products/reviews?app=0&amp;atarget=reviews&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;product_code=3605&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
 		<div class="products_reviews_summary__inner">
-
-
 			<div
 				class="products_reviews_summary_thumbnail_small_without_score products_reviews_summary_thumbnail_small_without_score--digits_1">
 				<div
@@ -165,15 +134,6 @@ function popup(reviewNo){
 						class="products_reviews_summary_thumbnail_small_without_score__summary_count_text">
 						<span class="count">${pcount }</span>개의 포토리뷰가 있습니다
 					</div>
-					<a
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews
-             js-link-photo-reviews
-             ">
-						<span
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_label">포토리뷰
-							모아보기</span> <span
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_check sprites-check"></span>
-					</a>
 				</div>
 
 				<div
@@ -190,9 +150,8 @@ function popup(reviewNo){
 								<c:otherwise>
 									<li
 										class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-										style="width: 63px; margin-right: 5px;"><a href="#none"	
-										onclick = "popup('${dto.reviewNo}')">
-											<img   
+										style="width: 63px; margin-right: 5px;"><a href="#none"
+										onclick="popup('${dto.reviewNo}')"> <img
 											src="${pageContext.request.contextPath}/storage/${dto.picture}"
 											alt="" width="63" height="63"
 											class="js-review-image products_reviews_summary_thumbnail_small_without_score__front_photo grayscale">
@@ -202,9 +161,7 @@ function popup(reviewNo){
 											class="products_reviews_summary_thumbnail_small_without_score__back_photo color"
 											style="opacity: 1;">
 									</a></li>
-
 								</c:otherwise>
-
 							</c:choose>
 						</c:forEach>
 					</ul>
@@ -222,8 +179,6 @@ function popup(reviewNo){
 					<i class="sprites-right-arrow-rectangle"></i>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 
@@ -245,9 +200,7 @@ function popup(reviewNo){
 					<div class="page">
 						<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
 						<ul class="reviews_index__reviews reviews">
-
 							<c:forEach var="dto" items="${list}">
-
 								<li id="review_${dto.reviewNo}"
 									class="review reviews_index_list_review "><a
 									class="reviews_index_list_review__product_image  js-link-iframe"
@@ -265,7 +218,6 @@ function popup(reviewNo){
 														class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
 														title="3일 이내 작성된 후기입니다">NEW</span>
 												</div>
-												<!-- 여기야 -->
 												<a
 													class="reviews_index_list_review__title_text js-link-iframe"
 													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
@@ -285,9 +237,8 @@ function popup(reviewNo){
 														<span
 															class="reviews_index_list_review__comments_link mall-link-color">
 															<span class="comments-count"> <c:if
-																	test="${not empty dto.replyContent }">1
-															</c:if> <c:if test="${empty dto.replyContent }">
-															0</c:if>
+																	test="${not empty dto.replyContent }">1</c:if> <c:if
+																	test="${empty dto.replyContent }">0</c:if>
 														</span> 개의 댓글이 있습니다
 														</span>
 													</div>
@@ -338,15 +289,16 @@ function popup(reviewNo){
 															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
 															접기</a>
 														<div class="review_edit_action">
+														<c:if test="${sessionScope.id== dto.id || sessionScope.grade=='A' }">
 															<a onclick="javascript:delete1(${dto.reviewNo})"
 																class="review_edit_action__button review_edit_action__button--delete">삭제</a>
 															<a onclick="javascript:update(${dto.reviewNo})"
 																class="review_edit_action__button review_edit_action__button--edit">수정</a>
+															</c:if>
 															<c:if test="${sessionScope.grade=='A' }">
 																<a onclick="javascript:create_reply(${dto.reviewNo})"
 																	class="review_edit_action__button review_edit_action__button--edit">답변</a>
 															</c:if>
-
 															<div class="review_edit_action__divider"></div>
 														</div>
 													</div>
@@ -355,8 +307,7 @@ function popup(reviewNo){
 															class="comments js-comments-container js-ie-opacity-fix">
 															<div class="comments__arrow_top"></div>
 															<ul class="comments__list">
-
-																<li class="comment" id="comment_252567">
+																<li class="comment">
 																	<div class="comment__inner">
 																		<div class="comment__lpane">slowand</div>
 																		<div class="comment__rpane">
@@ -376,23 +327,13 @@ function popup(reviewNo){
 										</div>
 										<div class="reviews_index_list_review__rcontents">
 											<div class="reviews_index_list_review__info_container">
-												<span class="reviews_index_list_review__name"><script
-														type="text/javascript">
-                              var len = ('${dto.id}'.length);
-                              var name = '${dto.id}'.replace(
-                                    '${dto.id}'.substr(4,
-                                          len), "***");  
-
-                                 name = '${dto.id}'
-      
-                                 document.write(name);
-                              </script></span>
-
+												<span class="reviews_index_list_review__name">${dto.id }</span>
 												<c:choose>
 													<c:when test="${empty dto.picture}">
 													</c:when>
 													<c:otherwise>
 														<img
+														onclick="popup('${dto.reviewNo}')"
 															src="${pageContext.request.contextPath}/storage/${dto.picture}"
 															class="js-review-image" width="90px" height="90px"
 															style="opacity: 1;">
@@ -426,7 +367,6 @@ function popup(reviewNo){
 														style="max-width: 1024px; height: 724px; weight: 724px;">
 												</div>
 											</div>
-
 											<div id="review-contents-container"
 												class="show_photo_review__review_contents_container js-ie-opacity-fix">
 												<div id="info-container"
@@ -434,7 +374,7 @@ function popup(reviewNo){
 													<div class="show_photo_review__info ">
 														<div class="show_photo_review__product">
 															<div class="show_photo_review__product_thumbnail">
-																<a	id="reviewItemNo"
+																<a id="reviewItemNo"
 																	class="show_photo_review__link_to_product js-link-iframe"
 																	href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
 																	<img id="reviewItemPicture"
@@ -446,7 +386,7 @@ function popup(reviewNo){
 															<div class="show_photo_review__product_info">
 
 																<div class="show_photo_review__product_name">
-																	<a	id="reviewItemTitle"
+																	<a id="reviewItemTitle"
 																		class="show_photo_review__link_to_product js-link-iframe"
 																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
 																</div>
@@ -460,7 +400,6 @@ function popup(reviewNo){
 													class="js-ie-opacity-fix show_photo_review__message"
 													style="height: 556px;">
 													<div class="show_photo_review__message_contents">
-
 														<div class="review_options">
 
 															<div class="review_option">
@@ -483,44 +422,42 @@ function popup(reviewNo){
 
 																	<span class="review_option__product_option"> <span
 																		class="review_option__product_option_key">COLOR:</span>
-																		<span class="review_option__product_option_value" id="reviewItemColor">스킨핑크</span>
-																	</span>
-																	<span class="review_option__product_option"> <span
+																		<span class="review_option__product_option_value"
+																		id="reviewItemColor"></span>
+																	</span> <span class="review_option__product_option"> <span
 																		class="review_option__product_option_key">SIZE:</span>
-																		<span class="review_option__product_option_value" id="reviewItemSize">스킨핑크</span>
+																		<span class="review_option__product_option_value"
+																		id="reviewItemSize"></span>
 																	</span>
 																</div>
 															</div>
 														</div>
 														<div
 															class="show_photo_review__all_messages js-ie-opacity-fix">
-															<div class="show_photo_review__review_message" id="reviewContent">
-																${dto.content }</div>
+															<div class="show_photo_review__review_message"
+																id="reviewContent">${dto.content }</div>
 														</div>
-
-
-															<div class="show_photo_review__feedback_container" id="reviewReply">
-																<div
-																	class="comments js-comments-container js-ie-opacity-fix">
-																	<div class="comments__arrow_top"></div>
-																	<ul class="comments__list">
-																		<li class="comment" id="comment_95269">
-																			<div class="comment__inner">
-																				<div class="comment__lpane">슬로우앤드</div>
-																				<div class="comment__rpane">
-																					<div class="comment__error_message"></div>
-																					<div class="comment__message">
-																						<span class="comment__message_text" id="reviewReplyContent">${dto.id }님!
-																							${dto.replyContent}</span>
-																					</div>
+														<div class="show_photo_review__feedback_container"
+															id="reviewReply">
+															<div
+																class="comments js-comments-container js-ie-opacity-fix">
+																<div class="comments__arrow_top"></div>
+																<ul class="comments__list">
+																	<li class="comment" id="comment_95269">
+																		<div class="comment__inner">
+																			<div class="comment__lpane">슬로우앤드</div>
+																			<div class="comment__rpane">
+																				<div class="comment__message">
+																					<span class="comment__message_text"
+																						id="reviewReplyContent">${dto.id }님!
+																						${dto.replyContent}</span>
 																				</div>
 																			</div>
-																		</li>
-																	</ul>
-																</div>
+																		</div>
+																	</li>
+																</ul>
 															</div>
-
-														
+														</div>
 													</div>
 												</div>
 											</div>
@@ -531,8 +468,6 @@ function popup(reviewNo){
 										<div class="sprites-circle-close-button ie_png_fix"></div>
 									</div>
 								</div>
-
-
 							</c:forEach>
 						</ul>
 					</div>
@@ -540,17 +475,18 @@ function popup(reviewNo){
 				<!--             푸터 -->
 			</div>
 		</div>
-		<div class="tui-tooltip" style="display: none;">
-			<div class="arrow"></div>
-			<span class="text"></span>
-		</div>
-		<!--       더보기기능 -->
-		<script
-			src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
-		<!--[if IE 7]>
+	</div>
+	<div class="tui-tooltip" style="display: none;">
+		<div class="arrow"></div>
+		<span class="text"></span>
+	</div>
+	<!--       더보기기능 -->
+	<script
+		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
+	<!--[if IE 7]>
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
     <![endif]-->
-		<script>
+	<script>
          //<![CDATA[
          var ajax_setup_args = {
             cache : true,
@@ -562,17 +498,17 @@ function popup(reviewNo){
          $.ajaxSetup(ajax_setup_args);
          //]]>
       </script>
-		<script>
+	<script>
          //<![CDATA[
          //]]>
       </script>
-		<form id="form-upload-image" class="hidden" data-type="json"
-			enctype="multipart/form-data"
-			action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-			accept-charset="UTF-8" data-remote="true" method="post">
-			<input name="utf8" type="hidden" value="✓">
-			<div id="upload-fields-container"></div>
-		</form>
+	<form id="form-upload-image" class="hidden" data-type="json"
+		enctype="multipart/form-data"
+		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+		accept-charset="UTF-8" data-remote="true" method="post">
+		<input name="utf8" type="hidden" value="✓">
+		<div id="upload-fields-container"></div>
+	</form>
 </body>
 				</html>
 			</div>
