@@ -39,9 +39,14 @@ public class ReviewController {
 	}
 
 	@GetMapping("/review/create_reply")
-	public String create_reply(int reviewNo, HttpServletRequest request, HttpSession session) {
+	public String create_reply(int reviewNo,String content, HttpServletRequest request, Model model) {
 		
+		
+		reviewDTO dto = mapper.read(reviewNo);
+
+		model.addAttribute("dto", dto);
 		request.setAttribute("reviewNo",reviewNo);
+		
 		
 		return "/review/create_reply";
 	}

@@ -94,7 +94,7 @@
 							</tr>
 							<tr>
 								<td colspan="2" style="text-align: center"><textarea
-										rows="20" cols="150" name="content" id="content"></textarea></td>
+										rows="20" cols="190" name="content" id="content"></textarea></td>
 							</tr>
 							<th scope="row">사진첨부</th>
 

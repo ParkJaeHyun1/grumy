@@ -39,6 +39,14 @@
 								</select></td>
 							</tr>
 							<tr>
+								<th scope="row">작성자</th>
+								<td> ${dto.id }</td>
+							</tr>
+							<tr>
+								<th scope="row">내용</th>
+								<td>${dto.content }</td>
+							</tr>
+							<tr>
 								<td colspan="2"><textarea rows="20" cols="190"
 										name="replyContent" id="replyContent">
 									

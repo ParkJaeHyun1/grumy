@@ -143,6 +143,7 @@ public class MypageController {
 	@RequestMapping("/mypage/orderlist/list")
 	public String orderlist(HttpServletRequest request, HttpSession session) {
 		String id = (String)session.getAttribute("id");
+		
 		MemberDTO dto = mapper.read(id);
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));

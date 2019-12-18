@@ -108,7 +108,7 @@
 										<td class="state">${list2.state }
 											<div>
 												<a
-													href="${pageContext.request.contextPath }/review/create?itemNo=${list2.itemOptionNo}"
+													href="${pageContext.request.contextPath }/review/create?itemOptionNo=${list2.itemOptionNo}"
 													class="yg_btn_80 yg_btn1 crema-new-review-link crema-applied"
 													alt="구매후기">구매후기</a>
 											</div>
