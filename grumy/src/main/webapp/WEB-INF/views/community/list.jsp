@@ -15,7 +15,7 @@
 			location.href="create";
 		}else{
 			if(confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?")){
-				$('#loginForm').submit;
+				$('#loginForm').submit();
 			}else{
 				return false;
 			}

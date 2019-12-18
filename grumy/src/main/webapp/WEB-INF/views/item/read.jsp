@@ -252,10 +252,10 @@
             	}
             	function createCommunity(){
             		if(${sessionScope.id!=null}){
-            			location.href="../community/create";
+            			location.href="../community/create?itemNo=${dto.itemNo}";
             		}else{
             			if(confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?")){
-            				$('#loginForm').submit;
+            				$('#loginForm2').submit;
             			}else{
             				return false;
             			}
@@ -329,9 +329,10 @@
 			<meta name="description"
 				content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등">
 
-				<meta name="viewport" content="width=device-width",initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">   
+				<meta name="viewport" content="width=device-width"
+					,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 					<link rel="canonical"
-						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />           
+						href="http://slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<link rel="alternate"
 						href="http://m.slowand.com/product/slowmade-윈터즈-양기모-후드집업-5-color/3596/" />
 					<meta property="og:url"
@@ -346,14 +347,14 @@
 						content="https://slowand.com/web/product/big/201911/4feb21170f3151de87c3fa17e5893c78.gif" />
 					<meta property="product:price:amount" content="29800" />
 					<meta property="product:price:currency" content="KRW" />
-					<meta property="product:sale_price:amount" content="29800" />      
+					<meta property="product:sale_price:amount" content="29800" />
 					<meta property="product:sale_price:currency" content="KRW" />
 					<link rel="shortcut icon"
 						href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
 					<script type="text/javascript"
 						src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 					<script type="text/javascript"
-						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>     
+						src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
 					<script type="text/javascript"
 						src="https://slowand.com/ind-script/moment.php?convert=T"></script>
 
@@ -370,13 +371,12 @@
 						content="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color, , 슬로우앤드, OUTER" />
 					<meta name="design_html_path"
 						content="http://slowand.com/product/detail.html" />
-
-
 </head>
 
 <body id="cmn">
 	<div
-		class="xans-element- xans-product xans-product-basketadd ec-base-layer " id="basketAddSucess"
+		class="xans-element- xans-product xans-product-basketadd ec-base-layer "
+		id="basketAddSucess"
 		style="position: fixed; top: 50%; left: 50%; z-index: 1000; width: 450px; margin: -175px 0 0 -225px; display: none">
 		<div class="header">
 			<h3>장바구니 담기</h3>
@@ -424,7 +424,7 @@
 					style="display: none">
 					<input type="hidden" name="url"
 						value="/item/read?itemNo=${dto.itemNo}"></input>
-					</form>
+				</form>
 				<form action="${pageContext.request.contextPath}/member/login"
 					id="loginForm" class="form-horizontal" method="post"
 					enctype="application/x-www-form-urlencoded;charset=UTF-8"
@@ -739,7 +739,7 @@
 												<li><a href="#prdReview">REVIEW <span
 														class="crema-product-reviews-count"
 														data-product-code="3596">0</span></a></li>
-												<li><a href="#prdQnA">Q &amp; A<span> 36</span></a></li>
+												<li><a href="#prdQnA">Q &amp; A<span> ${qtotal}</span></a></li>
 											</ul>
 										</div>
 										<!-- //갯수 버튼 -->
@@ -797,7 +797,7 @@
 							<li><a href="#prdReview">REVIEW <span
 									class="cnt crema-product-reviews-count"
 									data-product-code="3596">0</span></a></li>
-							<li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 
 
@@ -892,7 +892,7 @@
 							<li class="selected"><a href="#prdReview">REVIEW <span
 									class="cnt crema-product-reviews-count"
 									data-product-code="3596">0</span></a></li>
-							<li><a href="#prdQnA">Q&amp;A <span class="cnt">36</span></a></li>
+							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 						<div class="board">
 							<h3>REVIEW</h3>
@@ -900,235 +900,236 @@
 						</div>
 					</div>
 					<!-- //상품사용후기 -->
-	<div
-		class="products_reviews_summary
+					<div
+						class="products_reviews_summary
            products_reviews_summary--small_without_score
            "
-		data-url="/slowand.com/products/reviews?app=0&amp;atarget=reviews&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;product_code=3605&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-		<div class="products_reviews_summary__inner">
+						data-url="/slowand.com/products/reviews?app=0&amp;atarget=reviews&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;product_code=3605&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
+						<div class="products_reviews_summary__inner">
 
 
-			<div
-				class="products_reviews_summary_thumbnail_small_without_score products_reviews_summary_thumbnail_small_without_score--digits_1">
-				<div
-					class="products_reviews_summary_thumbnail_small_without_score__summary">
-					<div
-						class="products_reviews_summary_thumbnail_small_without_score__summary_count_text">
-						<span class="count">${pcount }</span>개의 포토리뷰가 있습니다
-					</div>
-					<a
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews
+							<div
+								class="products_reviews_summary_thumbnail_small_without_score products_reviews_summary_thumbnail_small_without_score--digits_1">
+								<div
+									class="products_reviews_summary_thumbnail_small_without_score__summary">
+									<div
+										class="products_reviews_summary_thumbnail_small_without_score__summary_count_text">
+										<span class="count">${pcount }</span>개의 포토리뷰가 있습니다
+									</div>
+									<a
+										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews
              js-link-photo-reviews
              ">
-						<span
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_label">포토리뷰
-							모아보기</span> <span
-						class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_check sprites-check"></span>
-					</a>
-				</div>
+										<span
+										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_label">포토리뷰
+											모아보기</span> <span
+										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_check sprites-check"></span>
+									</a>
+								</div>
 
-				<div
-					class="products_reviews_summary_thumbnail_small_without_score__thumbnails_container swiper-container swiper-container-horizontal">
-					<ul
-						class="products_reviews_summary_thumbnail_small_without_score__thumbnails swiper-wrapper"
-						data-fixed-margin="5"
-						data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
-						style="transform: translate3d(0px, 0px, 0px);">
-						<c:forEach var="dto" items="${listp}">
-							<c:choose>
-								<c:when test="${empty dto.picture}">
-								</c:when>
-								<c:otherwise>
-									<li
-										class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-										style="width: 63px; margin-right: 5px;"><a href="#none"	
-										onclick = "popup('${dto.reviewNo}')">
-											<img   
-											src="${pageContext.request.contextPath}/storage/${dto.picture}"
-											alt="" width="63" height="63"
-											class="js-review-image products_reviews_summary_thumbnail_small_without_score__front_photo grayscale">
-											<img
-											src="${pageContext.request.contextPath}/storage/${dto.picture}"
-											alt="" width="63" height="63"
-											class="products_reviews_summary_thumbnail_small_without_score__back_photo color"
-											style="opacity: 1;">
-									</a></li>
+								<div
+									class="products_reviews_summary_thumbnail_small_without_score__thumbnails_container swiper-container swiper-container-horizontal">
+									<ul
+										class="products_reviews_summary_thumbnail_small_without_score__thumbnails swiper-wrapper"
+										data-fixed-margin="5"
+										data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
+										style="transform: translate3d(0px, 0px, 0px);">
+										<c:forEach var="dto" items="${listp}">
+											<c:choose>
+												<c:when test="${empty dto.picture}">
+												</c:when>
+												<c:otherwise>
+													<li
+														class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
+														style="width: 63px; margin-right: 5px;"><a
+														href="#none" onclick="popup('${dto.reviewNo}')"> <img
+															src="${pageContext.request.contextPath}/storage/${dto.picture}"
+															alt="" width="63" height="63"
+															class="js-review-image products_reviews_summary_thumbnail_small_without_score__front_photo grayscale">
+																<img
+																src="${pageContext.request.contextPath}/storage/${dto.picture}"
+																alt="" width="63" height="63"
+																class="products_reviews_summary_thumbnail_small_without_score__back_photo color"
+																style="opacity: 1;"></a></li>
 
-								</c:otherwise>
+												</c:otherwise>
 
-							</c:choose>
-						</c:forEach>
-					</ul>
-				</div>
-				<div
-					class="js-swiper-button-next products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--right"
-					tabindex="0" role="button" aria-label="Next slide"
-					aria-disabled="false">
-					<i class="sprites-right-arrow-rectangle"></i>
-				</div>
-				<div
-					class="js-swiper-button-prev products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--left swiper-button-disabled"
-					tabindex="0" role="button" aria-label="Previous slide"
-					aria-disabled="true">
-					<i class="sprites-right-arrow-rectangle"></i>
-				</div>
-			</div>
+											</c:choose>
+										</c:forEach>
+									</ul>
+								</div>
+								<div
+									class="js-swiper-button-next products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--right"
+									tabindex="0" role="button" aria-label="Next slide"
+									aria-disabled="false">
+									<i class="sprites-right-arrow-rectangle"></i>
+								</div>
+								<div
+									class="js-swiper-button-prev products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--left swiper-button-disabled"
+									tabindex="0" role="button" aria-label="Previous slide"
+									aria-disabled="true">
+									<i class="sprites-right-arrow-rectangle"></i>
+								</div>
+							</div>
 
 
-		</div>
-	</div>
-
-
-	<div id="content">
-		<div class="reviews_index reviews_index--list js-pagination-list ">
-			<div class="reviews_index__head">
-				<div class="reviews_index__title_bar">
-					<div class="reviews_index__title">
-						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
+						</div>
 					</div>
-				</div>
-				<script
-					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
-				<link rel="stylesheet" media="all"
-					href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
-				<div id="google-translate-button" class="hidden"></div>
-				<div class="reviews_index__body">
-					<div class="page">
-						<div class="reviews_index__no_data_message">아직 작성한 리뷰가 없습니다.</div>
-						<ul class="reviews_index__reviews reviews">
 
-							<c:forEach var="dto" items="${list}">
 
-								<li id="review_${dto.reviewNo}"
-									class="review reviews_index_list_review "><a
-									class="reviews_index_list_review__product_image  js-link-iframe"
-									href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
-										<!-- 여기야 --> <img
-										src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-										style="background-image: url(&quot;//${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}&quot;); background-size: cover; background-position: center center; opacity: 1;"
-										class="" width="90" height="90">
-								</a>
-									<div class="reviews_index_list_review__lcontents">
-										<div class="reviews_index_list_review__score">
-											<div class="reviews_index_list_review__title">
-												<div class="reviews_index_list_review__tags">
-													<span
-														class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
-														title="3일 이내 작성된 후기입니다">NEW</span>
-												</div>
-												<!-- 여기야 -->
-												<a
-													class="reviews_index_list_review__title_text js-link-iframe"
-													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
-													${dto.itemTitle} </a>
-											</div>
-										</div>
-										<div class="reviews_index_list_review__content review_content">
-											<a
-												class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
-												<div class="reviews_index_list_review__message">
-													<span> ${dto.content}<span
-														class="mall-link-color see_more">... 더보기</span> <br>
-													</span>
-												</div>
-												<div class="reviews_index_list_review__foot">
-													<div class="reviews_index_list_review__actions">
-														<span
-															class="reviews_index_list_review__comments_link mall-link-color">
-															<span class="comments-count"> <c:if
-																	test="${not empty dto.replyContent }">1
+					<div id="content">
+						<div class="reviews_index reviews_index--list js-pagination-list ">
+							<div class="reviews_index__head">
+								<div class="reviews_index__title_bar">
+									<div class="reviews_index__title">
+										<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
+									</div>
+								</div>
+								<script
+									src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
+								<link rel="stylesheet" media="all"
+									href="//assets.cre.ma/m/widgets/css/tui-editor.min.css">
+									<div id="google-translate-button" class="hidden"></div>
+									<div class="reviews_index__body">
+										<div class="page">
+											<div class="reviews_index__no_data_message">아직 작성한 리뷰가
+												없습니다.</div>
+											<ul class="reviews_index__reviews reviews">
+
+												<c:forEach var="dto" items="${list}">
+
+													<li id="review_${dto.reviewNo}"
+														class="review reviews_index_list_review "><a
+														class="reviews_index_list_review__product_image  js-link-iframe"
+														href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+															<!-- 여기야 --> <img
+															src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+															style="background-image: url(&quot;//${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}&quot;); background-size: cover; background-position: center center; opacity: 1;"
+															class="" width="90" height="90">
+													</a>
+														<div class="reviews_index_list_review__lcontents">
+															<div class="reviews_index_list_review__score">
+																<div class="reviews_index_list_review__title">
+																	<div class="reviews_index_list_review__tags">
+																		<span
+																			class="reviews_index_list_review__tag reviews_index_list_review__tag--new"
+																			title="3일 이내 작성된 후기입니다">NEW</span>
+																	</div>
+																	<!-- 여기야 -->
+																	<a
+																		class="reviews_index_list_review__title_text js-link-iframe"
+																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+																		${dto.itemTitle} </a>
+																</div>
+															</div>
+															<div
+																class="reviews_index_list_review__content review_content">
+																<a
+																	class="reviews_index_list_review__content_inner review_content__collapsed link-expand">
+																	<div class="reviews_index_list_review__message">
+																		<span> ${dto.content}<span
+																			class="mall-link-color see_more">... 더보기</span> <br></span>
+																	</div>
+																	<div class="reviews_index_list_review__foot">
+																		<div class="reviews_index_list_review__actions">
+																			<span
+																				class="reviews_index_list_review__comments_link mall-link-color">
+																				<span class="comments-count"> <c:if
+																						test="${not empty dto.replyContent }">1
 															</c:if> <c:if test="${empty dto.replyContent }">
 															0</c:if>
-														</span> 개의 댓글이 있습니다
-														</span>
-													</div>
-												</div>
-											</a>
-											<div
-												class="reviews_index_list_review__content_inner review_content__expanded">
-												<div class="reviews_index_list_review__message">
-													<div class="review_options">
-														<div class="review_option">
-															<div class="review_option__title">키</div>
-															<div class="review_option__content">${dto.height }</div>
-														</div>
-														<div class="review_option">
-															<div class="review_option__title">몸무게</div>
-															<div class="review_option__content">${dto.weight }</div>
-														</div>
-														<div class="review_option">
-															<div class="review_option__title">평소사이즈</div>
-															<div class="review_option__content">${dto.mySize }</div>
-														</div>
-														<div class="review_option">
-															<div class="review_option__title">선택한 옵션</div>
-															<div class="review_option__content">
-																<c:if test="${not empty dto.itemColor}">
-																	<span class="review_option__product_option"> <span
-																		class="review_option__product_option_key">COLOR:</span>
-																		<span class="review_option__product_option_value">${dto.itemColor}</span>
-																	</span>
-																</c:if>
-																<c:if test="${not empty dto.itemSize}">
-																	<span class="review_option__product_option"> <span
-																		class="review_option__product_option_key">SIZE:</span>
-																		<span class="review_option__product_option_value">${dto.itemSize}</span>
-																	</span>
-																</c:if>
-															</div>
-														</div>
-														<div class="review_option__title">별점</div>
-														<div class="review_option__content">${dto.star }</div>
-													</div>
-													<div class="reviews_index_list_review__message_expanded">
-														${dto.content}</div>
-												</div>
-												<div class="reviews_index_list_review__foot">
-													<div class="reviews_index_list_review__actions">
-														<a
-															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
-															접기</a>
-														<div class="review_edit_action">
-															<a onclick="javascript:delete1(${dto.reviewNo})"
-																class="review_edit_action__button review_edit_action__button--delete">삭제</a>
-															<a onclick="javascript:update(${dto.reviewNo})"
-																class="review_edit_action__button review_edit_action__button--edit">수정</a>
-															<c:if test="${sessionScope.grade=='A' }">
-																<a onclick="javascript:create_reply(${dto.reviewNo})"
-																	class="review_edit_action__button review_edit_action__button--edit">답변</a>
-															</c:if>
-
-															<div class="review_edit_action__divider"></div>
-														</div>
-													</div>
-													<c:if test="${not empty dto.replyContent }">
-														<div
-															class="comments js-comments-container js-ie-opacity-fix">
-															<div class="comments__arrow_top"></div>
-															<ul class="comments__list">
-
-																<li class="comment" id="comment_252567">
-																	<div class="comment__inner">
-																		<div class="comment__lpane">slowand</div>
-																		<div class="comment__rpane">
-																			<div class="comment__error_message"></div>
-																			<div class="comment__message">
-																				<span class="comment__message_text">${dto.id}님!
-																					${dto.replyContent} </span>
-																			</div>
+																			</span> 개의 댓글이 있습니다
+																			</span>
 																		</div>
 																	</div>
-																</li>
-															</ul>
-														</div>
-													</c:if>
-												</div>
-											</div>
-										</div>
-										<div class="reviews_index_list_review__rcontents">
-											<div class="reviews_index_list_review__info_container">
-												<span class="reviews_index_list_review__name"><script
-														type="text/javascript">
+																</a>
+																<div
+																	class="reviews_index_list_review__content_inner review_content__expanded">
+																	<div class="reviews_index_list_review__message">
+																		<div class="review_options">
+																			<div class="review_option">
+																				<div class="review_option__title">키</div>
+																				<div class="review_option__content">${dto.height }</div>
+																			</div>
+																			<div class="review_option">
+																				<div class="review_option__title">몸무게</div>
+																				<div class="review_option__content">${dto.weight }</div>
+																			</div>
+																			<div class="review_option">
+																				<div class="review_option__title">평소사이즈</div>
+																				<div class="review_option__content">${dto.mySize }</div>
+																			</div>
+																			<div class="review_option">
+																				<div class="review_option__title">선택한 옵션</div>
+																				<div class="review_option__content">
+																					<c:if test="${not empty dto.itemColor}">
+																						<span class="review_option__product_option">
+																							<span class="review_option__product_option_key">COLOR:</span>
+																							<span class="review_option__product_option_value">${dto.itemColor}</span>
+																						</span>
+																					</c:if>
+																					<c:if test="${not empty dto.itemSize}">
+																						<span class="review_option__product_option">
+																							<span class="review_option__product_option_key">SIZE:</span>
+																							<span class="review_option__product_option_value">${dto.itemSize}</span>
+																						</span>
+																					</c:if>
+																				</div>
+																			</div>
+																			<div class="review_option__title">별점</div>
+																			<div class="review_option__content">${dto.star }</div>
+																		</div>
+																		<div
+																			class="reviews_index_list_review__message_expanded">
+																			${dto.content}</div>
+																	</div>
+																	<div class="reviews_index_list_review__foot">
+																		<div class="reviews_index_list_review__actions">
+																			<a
+																				class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
+																				접기</a>
+																			<div class="review_edit_action">
+																				<a onclick="javascript:delete1(${dto.reviewNo})"
+																					class="review_edit_action__button review_edit_action__button--delete">삭제</a>
+																				<a onclick="javascript:update(${dto.reviewNo})"
+																					class="review_edit_action__button review_edit_action__button--edit">수정</a>
+																				<c:if test="${sessionScope.grade=='A' }">
+																					<a
+																						onclick="javascript:create_reply(${dto.reviewNo})"
+																						class="review_edit_action__button review_edit_action__button--edit">답변</a>
+																				</c:if>
+
+																				<div class="review_edit_action__divider"></div>
+																			</div>
+																		</div>
+																		<c:if test="${not empty dto.replyContent }">
+																			<div
+																				class="comments js-comments-container js-ie-opacity-fix">
+																				<div class="comments__arrow_top"></div>
+																				<ul class="comments__list">
+
+																					<li class="comment" id="comment_252567">
+																						<div class="comment__inner">
+																							<div class="comment__lpane">slowand</div>
+																							<div class="comment__rpane">
+																								<div class="comment__error_message"></div>
+																								<div class="comment__message">
+																									<span class="comment__message_text">${dto.id}님!
+																										${dto.replyContent} </span>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</c:if>
+																	</div>
+																</div>
+															</div>
+															<div class="reviews_index_list_review__rcontents">
+																<div class="reviews_index_list_review__info_container">
+																	<span class="reviews_index_list_review__name"><script
+																			type="text/javascript">
                               var len = ('${dto.id}'.length);
                               var name = '${dto.id}'.replace(
                                     '${dto.id}'.substr(4,
@@ -1139,170 +1140,178 @@
                                  document.write(name);
                               </script></span>
 
-												<c:choose>
-													<c:when test="${empty dto.picture}">
-													</c:when>
-													<c:otherwise>
-														<img
-															src="${pageContext.request.contextPath}/storage/${dto.picture}"
-															class="js-review-image" width="90px" height="90px"
-															style="opacity: 1;">
-													</c:otherwise>
+																	<c:choose>
+																		<c:when test="${empty dto.picture}">
+																		</c:when>
+																		<c:otherwise>
+																			<img
+																				src="${pageContext.request.contextPath}/storage/${dto.picture}"
+																				class="js-review-image" width="90px" height="90px"
+																				style="opacity: 1;">
+																		</c:otherwise>
 
-												</c:choose>
-											</div>
-										</div></li>
-								<!-- 이미지팝업 -->
-
-								<div
-									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
-									style="display: none; position: absolute; z-index: 1;"
-									tabindex="-1" id="myDIV">
-									<div class="fullscreen_popup__background ie_png_fix"></div>
-									<div id="photo-popup-container"
-										class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
-										<div id="photo-popup-content"
-											class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
-											style="width: 724px; margin-top: 70px;">
-											<div class="show_photo_review__photos_container">
-												<div data-width="1024" data-height="1024" data-index="1"
-													data-count="2" id="photo-container-1"
-													class="show_photo_review__photo_container selected js-ie-opacity-fix"
-													style="padding: 0px; max-height: 762px; overflow: hidden;">
-
-													<img id="reviewPicture"
-														src="${pageContext.request.contextPath}/storage/${dto.picture}"
-														class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
-														data-width="1024" data-height="1024" id="yke"
-														style="max-width: 1024px; height: 724px; weight: 724px;">
-												</div>
-											</div>
-
-											<div id="review-contents-container"
-												class="show_photo_review__review_contents_container js-ie-opacity-fix">
-												<div id="info-container"
-													class="show_photo_review__info_container">
-													<div class="show_photo_review__info ">
-														<div class="show_photo_review__product">
-															<div class="show_photo_review__product_thumbnail">
-																<a	id="reviewItemNo"
-																	class="show_photo_review__link_to_product js-link-iframe"
-																	href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
-																	<img id="reviewItemPicture"
-																	src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
-																	width="70" height="70"
-																	class="show_photo_review__link_to_product">
-																</a>
-															</div>
-															<div class="show_photo_review__product_info">
-
-																<div class="show_photo_review__product_name">
-																	<a	id="reviewItemTitle"
-																		class="show_photo_review__link_to_product js-link-iframe"
-																		href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+																	</c:choose>
 																</div>
-																<div class="show_photo_review__product_score"></div>
-																<div class="show_photo_review__user_name" id="reviewID">${dto.id }</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div id="message-container"
-													class="js-ie-opacity-fix show_photo_review__message"
-													style="height: 556px;">
-													<div class="show_photo_review__message_contents">
+															</div></li>
+													<!-- 이미지팝업 -->
 
-														<div class="review_options">
+													<div
+														class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
+														style="display: none; position: absolute; z-index: 1;"
+														tabindex="-1" id="myDIV">
+														<div class="fullscreen_popup__background ie_png_fix"></div>
+														<div id="photo-popup-container"
+															class="show_photo_review__photo_popup_container fullscreen_popup__content_container">
+															<div id="photo-popup-content"
+																class="js-ie-opacity-fix show_photo_review__photo_popup_content fullscreen_popup__content"
+																style="width: 724px; margin-top: 70px;">
+																<div class="show_photo_review__photos_container">
+																	<div data-width="1024" data-height="1024"
+																		data-index="1" data-count="2" id="photo-container-1"
+																		class="show_photo_review__photo_container selected js-ie-opacity-fix"
+																		style="padding: 0px; max-height: 762px; overflow: hidden;">
 
-															<div class="review_option">
-																<div class="review_option__title">키</div>
-																<div class="review_option__content" id="reviewHeight">${dto.height }</div>
-															</div>
-
-															<div class="review_option">
-																<div class="review_option__title">몸무게</div>
-																<div class="review_option__content" id="reviewWeight">${dto.weight }</div>
-															</div>
-
-															<div class="review_option">
-																<div class="review_option__title">평소사이즈</div>
-																<div class="review_option__content" id="reviewMySize">${dto.mySize }</div>
-															</div>
-															<div class="review_option">
-																<div class="review_option__title">선택한 옵션</div>
-																<div class="review_option__content">
-
-																	<span class="review_option__product_option"> <span
-																		class="review_option__product_option_key">COLOR:</span>
-																		<span class="review_option__product_option_value" id="reviewItemColor">스킨핑크</span>
-																	</span>
-																	<span class="review_option__product_option"> <span
-																		class="review_option__product_option_key">SIZE:</span>
-																		<span class="review_option__product_option_value" id="reviewItemSize">스킨핑크</span>
-																	</span>
+																		<img id="reviewPicture"
+																			src="${pageContext.request.contextPath}/storage/${dto.picture}"
+																			class="js-photo-container-review-image-zoom show_photo_review__photo_container_image"
+																			data-width="1024" data-height="1024" id="yke"
+																			style="max-width: 1024px; height: 724px; weight: 724px;">
+																	</div>
 																</div>
-															</div>
-														</div>
-														<div
-															class="show_photo_review__all_messages js-ie-opacity-fix">
-															<div class="show_photo_review__review_message" id="reviewContent">
-																${dto.content }</div>
-														</div>
 
+																<div id="review-contents-container"
+																	class="show_photo_review__review_contents_container js-ie-opacity-fix">
+																	<div id="info-container"
+																		class="show_photo_review__info_container">
+																		<div class="show_photo_review__info ">
+																			<div class="show_photo_review__product">
+																				<div class="show_photo_review__product_thumbnail">
+																					<a id="reviewItemNo"
+																						class="show_photo_review__link_to_product js-link-iframe"
+																						href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">
+																						<img id="reviewItemPicture"
+																						src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
+																						width="70" height="70"
+																						class="show_photo_review__link_to_product">
+																					</a>
+																				</div>
+																				<div class="show_photo_review__product_info">
 
-															<div class="show_photo_review__feedback_container" id="reviewReply">
-																<div
-																	class="comments js-comments-container js-ie-opacity-fix">
-																	<div class="comments__arrow_top"></div>
-																	<ul class="comments__list">
-																		<li class="comment" id="comment_95269">
-																			<div class="comment__inner">
-																				<div class="comment__lpane">슬로우앤드</div>
-																				<div class="comment__rpane">
-																					<div class="comment__error_message"></div>
-																					<div class="comment__message">
-																						<span class="comment__message_text" id="reviewReplyContent">${dto.id }님!
-																							${dto.replyContent}</span>
+																					<div class="show_photo_review__product_name">
+																						<a id="reviewItemTitle"
+																							class="show_photo_review__link_to_product js-link-iframe"
+																							href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle}</a>
+																					</div>
+																					<div class="show_photo_review__product_score"></div>
+																					<div class="show_photo_review__user_name"
+																						id="reviewID">${dto.id }</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div id="message-container"
+																		class="js-ie-opacity-fix show_photo_review__message"
+																		style="height: 556px;">
+																		<div class="show_photo_review__message_contents">
+
+																			<div class="review_options">
+
+																				<div class="review_option">
+																					<div class="review_option__title">키</div>
+																					<div class="review_option__content"
+																						id="reviewHeight">${dto.height }</div>
+																				</div>
+
+																				<div class="review_option">
+																					<div class="review_option__title">몸무게</div>
+																					<div class="review_option__content"
+																						id="reviewWeight">${dto.weight }</div>
+																				</div>
+
+																				<div class="review_option">
+																					<div class="review_option__title">평소사이즈</div>
+																					<div class="review_option__content"
+																						id="reviewMySize">${dto.mySize }</div>
+																				</div>
+																				<div class="review_option">
+																					<div class="review_option__title">선택한 옵션</div>
+																					<div class="review_option__content">
+
+																						<span class="review_option__product_option">
+																							<span class="review_option__product_option_key">COLOR:</span>
+																							<span class="review_option__product_option_value"
+																							id="reviewItemColor">스킨핑크</span>
+																						</span> <span class="review_option__product_option">
+																							<span class="review_option__product_option_key">SIZE:</span>
+																							<span class="review_option__product_option_value"
+																							id="reviewItemSize">스킨핑크</span>
+																						</span>
 																					</div>
 																				</div>
 																			</div>
-																		</li>
-																	</ul>
+																			<div
+																				class="show_photo_review__all_messages js-ie-opacity-fix">
+																				<div class="show_photo_review__review_message"
+																					id="reviewContent">${dto.content }</div>
+																			</div>
+
+
+																			<div class="show_photo_review__feedback_container"
+																				id="reviewReply">
+																				<div
+																					class="comments js-comments-container js-ie-opacity-fix">
+																					<div class="comments__arrow_top"></div>
+																					<ul class="comments__list">
+																						<li class="comment" id="comment_95269">
+																							<div class="comment__inner">
+																								<div class="comment__lpane">슬로우앤드</div>
+																								<div class="comment__rpane">
+																									<div class="comment__error_message"></div>
+																									<div class="comment__message">
+																										<span class="comment__message_text"
+																											id="reviewReplyContent">${dto.id }님!
+																											${dto.replyContent}</span>
+																									</div>
+																								</div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+
+
+																		</div>
+																	</div>
 																</div>
 															</div>
-
-														
+														</div>
+														<div class="js-ie-opacity-fix fullscreen_popup__close"
+															style="top: 55px; right: 290px;"
+															onclick="javascript:popup2()">
+															<div class="sprites-circle-close-button ie_png_fix"></div>
+														</div>
 													</div>
-												</div>
-											</div>
+
+
+												</c:forEach>
+											</ul>
 										</div>
 									</div>
-									<div class="js-ie-opacity-fix fullscreen_popup__close"
-										style="top: 55px; right: 290px;" onclick="javascript:popup2()">
-										<div class="sprites-circle-close-button ie_png_fix"></div>
-									</div>
-								</div>
-
-
-							</c:forEach>
-						</ul>
+									<!--             푸터 -->
+							</div>
+						</div>
 					</div>
-				</div>
-				<!--             푸터 -->
-			</div>
-		</div>
-		</div>
-		<div class="tui-tooltip" style="display: none;">
-			<div class="arrow"></div>
-			<span class="text"></span>
-		</div>
-		<!--       더보기기능 -->
-		<script
-			src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
-		<!--[if IE 7]>
+					<div class="tui-tooltip" style="display: none;">
+						<div class="arrow"></div>
+						<span class="text"></span>
+					</div>
+					<!--       더보기기능 -->
+					<script
+						src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
+					<!--[if IE 7]>
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
     <![endif]-->
-		<script>
+					<script>
          //<![CDATA[
          var ajax_setup_args = {
             cache : true,
@@ -1314,17 +1323,18 @@
          $.ajaxSetup(ajax_setup_args);
          //]]>
       </script>
-		<script>
+					<script>
          //<![CDATA[
          //]]>
       </script>
-		<form id="form-upload-image" class="hidden" data-type="json"
-			enctype="multipart/form-data"
-			action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
-			accept-charset="UTF-8" data-remote="true" method="post">
-			<input name="utf8" type="hidden" value="✓">
-			<div id="upload-fields-container"></div>
-		</form>
+					<form id="form-upload-image" class="hidden" data-type="json"
+						enctype="multipart/form-data"
+						action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+						accept-charset="UTF-8" data-remote="true" method="post">
+						<input name="utf8" type="hidden" value="✓">
+							<div id="upload-fields-container"></div>
+					</form>
+
 
 
 
@@ -1340,86 +1350,65 @@
 									class="cnt crema-product-reviews-count"
 									data-product-code="3596">0</span></a></li>
 							<li class="selected"><a href="#prdQnA">Q&amp;A <span
-									class="cnt">36</span></a></li>
+									class="cnt">${qtotal }</span></a></li>
 						</ul>
 						<div class="board">
 							<h3>Q&amp;A</h3>
+							<form action="${pageContext.request.contextPath}/member/login"
+								id="loginForm2" class="form-horizontal" method="post"
+								enctype="application/x-www-form-urlencoded;charset=UTF-8"
+								style="display: none">
+								<input type="hidden" name="url"
+									value="/item/read?itemNo=${dto.itemNo }#prdQnA"></input>
+							</form>
+							<div class="xans-element- xans-product xans-product-qna ">
+								<div class="ec-base-table typeList">
 
-
-						</div>
-					</div>
-					<!-- //상품Q&A -->
-					<div id="container">
-	<div id="contents">
-	<form action="${pageContext.request.contextPath}/member/login"
-					id="loginForm" class="form-horizontal" method="post"
-					enctype="application/x-www-form-urlencoded;charset=UTF-8"
-					style="display: none">
-					<input type="hidden" name="url"
-						value="/community/list"></input>
-				</form>
-
-		<div
-			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
-				<div class="ec-base-table typeList gBorder crema-hide">
-				<table border="1" summary="">
-					<thead
-						class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
-						<tr>
-							<th style="width:70px;">NO</th>
-							<th style="width:70px;">PRODUCT</th>
-							<th style="width:auto;">SUBJECT</th>
-							<th style="width:135px">WRITER</th>
-							<th style="width:84px">DATE</th>
-						</tr>
-					</thead>
-					<c:if test="${nowPage==1 }">
-					<tbody
-						class="xans-element- xans-board xans-board-notice-4 xans-board-notice xans-board-4 center">
-						<c:forEach var="dto" items="${list_ }">
-							<tr style=background-color:#FAFAFA>
-								<td></td>
-								<td></td>
-								<td class="subject left txtBreak">
-								<a href="javascript:read(${dto.board_no })">${dto.subject }
-										<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
-										<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
-										</c:if></a></td>
-								<td>${dto.writer }</td>
-								<td><span class="txtNum">${dto.wdate}</span></td>
-						</c:forEach>
-					</tbody>
-					</c:if>
-					<tbody
-						class="xans-element- xans-board xans-board-list-4 xans-board-list xans-board-4 center">
-						<c:if test="${empty list }">
-						<tr>
-							<td></td>
-							<td></td>
-							<td>등록된 글이 없습니다.</td>
-							<td></td>
-							<td></td>
-						</tr>
-						</c:if>
-						<c:forEach var="dto" items="${list }" varStatus="status">
-						<tr>
-							<td>${total-status.index-((nowPage-1)*10) }</td>
-							<td>
-							<c:if test="${not empty dto.itemPicture }">
-								<img onclick="location.href='${pageContext.request.contextPath}/item/read?itemNo=${dto.itemno}'" style="width:64px; height:64px;" src="${pageContext.request.contextPath }/images/${dto.itemPicture }"/>
-							</c:if>							
-							</td>
-							<td class="subject left txtBreak">
-							<c:if test="${not empty dto.itemTitle }"><span class="txtNum">${dto.itemTitle }</span><br></c:if>
-										<a href="javascript:read(${dto.board_no });">
-										<c:if test="${dto.indent ==1 }">
-										<img src="${pageContext.request.contextPath }/images/re.gif" />
-										</c:if>
-										<img src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }
-										<c:if test="${util:newImg(fn:substring(dto.wdate,0,10)) }"> 
-										<img alt="" src="${pageContext.request.contextPath }/images/new.gif">
-										</c:if></a></td>
-							<td><script type="text/javascript">
+									<table border="1" summary="">
+										<colgroup>
+											<col style="width: 70px;" />
+											<col style="width: auto" />
+											<col style="width: 100px;" />
+											<col style="width: 100px;" />
+										</colgroup>
+										<thead
+											class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
+											<tr>
+												<th style="width: 70px;">NO</th>
+												<th style="width: auto;">SUBJECT</th>
+												<th style="width: 100px">WRITER</th>
+												<th style="width: 100px">DATE</th>
+											</tr>
+										</thead>
+										<tbody
+											class="xans-element- xans-board xans-board-list-4 xans-board-list xans-board-4 center">
+											<c:if test="${empty qlist }">
+												<tr>
+													<td></td>
+													<td>등록된 글이 없습니다.</td>
+													<td></td>
+													<td></td>
+												</tr>
+											</c:if>
+											<c:forEach var="dto" items="${qlist }" varStatus="status">
+												<tr>
+													<td>${qtotal-status.index}</td>
+													<td class="subject left txtBreak"><c:if
+															test="${not empty dto.itemTitle }">
+															<span class="txtNum">${dto.itemTitle }</span>
+															<br>
+														</c:if> <a href="javascript:read(${dto.board_no });"> <c:if
+																test="${dto.indent ==1 }">
+																<img
+																	src="${pageContext.request.contextPath }/images/re.gif" />
+															</c:if> <img
+															src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }
+															<c:if
+																test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
+																<img
+																	src="${pageContext.request.contextPath }/images/new.gif" />
+															</c:if></a></td>
+													<td><script type="text/javascript">
 										var len = ('${dto.writer}'.length);
 										var name = '${dto.writer}'.replace(
 												'${dto.writer}'.substr(1,
@@ -1429,47 +1418,36 @@
 										}
 											document.write(name);
 										</script></td>
-							<td><span class="txtNum">${dto.wdate}</span>
-							</td>
-						</tr>
-						
-						</c:forEach>
+													<td><span class="txtNum">${dto.wdate}</span></td>
+												</tr>
 
-					</tbody>
-				</table>
+											</c:forEach>
+
+										</tbody>
+									</table>
+								</div>
 
 
-			</div>
-						<form action="list">
-				<div
-					class="xans-element- xans-board xans-board-search-1002 xans-board-search xans-board-1002 ">
-					<fieldset class="boardSearch">
-						<p>
-							<select id="col" name="col" fw-filter="" fw-label="" fw-msg="">
-								<option value="subject"
-									<c:if test="${col == 'subject' }">selected</c:if>>제목</option>
-								<option value="content"
-									<c:if test="${col == 'content' }">selected</c:if>>내용</option>
-								<option value="writer"
-									<c:if test="${col == 'writer' }">selected</c:if>>글쓴이</option>
-							</select> <input id="word" name="word" type="text">
-							<button class="yg_btn_28 yg_btn3">SEARCH</button>
-						</p>
-					</fieldset>
-				</div>
-			</form>
-			<p align="right">
-			<button class="yg_btn_30 yg_btn4" onclick="javascript:createCommunity();">WRITE</button>
-		</p>
-		${paging }
+							</div>
+							<div>
+								<p align="right">
+									<button class="yg_btn_30 yg_btn4"
+										onclick="javascript:createCommunity();">WRITE</button>
+									<button class="yg_btn_30 yg_btn4"
+										onclick="location.href='${pageContext.request.contextPath}/community/list'">VIEW
+										ALL</button>
+								</p>
+							</div>
+							${qpaging }
 
-		</div>
-		
-	</div>
-	<hr class="layout">
-</div>
-					
-					
+
+
+
+
+						</div>
+					</div>
+					<!-- //상품Q&A -->
+
 				</div>
 				<script>
     // 추가이미지 맞추기

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
 import spring.model.order.OrderItemDTO;
-import spring.model.review.reviewDTO;
 
 
 public interface itemMapper {
@@ -27,6 +27,8 @@ public interface itemMapper {
 	ArrayList<String> selectTypeList(String type);
 	int decreaseItemCount(OrderItemDTO orderItem);
 	int increaseItemCount(OrderItemDTO orderItem);
+	List<BoardDTO> Qlist(Map map);
+	int qtotal(Map map);
 
 	
 

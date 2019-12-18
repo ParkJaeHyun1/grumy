@@ -2,7 +2,7 @@ package spring.model.grumy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
 import spring.model.item.ItemService;
 import spring.model.mapper.itemMapper;
 import spring.model.utility.ItemUtility;
+import spring.model.utility.Utility;
 
 @Controller
 public class ItemController {
@@ -77,6 +79,33 @@ public class ItemController {
 
 		ItemDTO dto = mapper.read(itemNo);
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
+		
+		int nowPage = 1;
+		if(request.getParameter("nowPage")!= null){
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
+		
+		//디비에서 가져올 순번
+		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+		int eno = nowPage * recordPerPage;
+		
+		Map map = new HashMap();
+		map.put("itemNo", itemNo);
+		map.put("sno",sno);
+		map.put("eno",eno);
+		
+		List<BoardDTO> qlist = mapper.Qlist(map);
+		
+		int qtotal = mapper.qtotal(map);
+		
+		String qpaging = Utility.paging2(qtotal, nowPage, recordPerPage,itemNo);
+
+		request.setAttribute("qpaging", qpaging);
+		request.setAttribute("qtotal", qtotal);
+		request.setAttribute("qlist", qlist);
+		
 		request.setAttribute("dto",dto);
 		return "/item/read";
 	}
