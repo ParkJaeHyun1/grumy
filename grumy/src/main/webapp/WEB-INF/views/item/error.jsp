@@ -13,10 +13,9 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title">
 					<h2>
-						<font color="#555555">고객센터</font>
+						<font color="#555555">상품 삭제</font>
 					</h2>
 					<br><br>
-					<!--h3>배송문의 Q&A 입니다 :)</h3-->
 				</div>
 			</div>
 				<div
@@ -24,7 +23,7 @@
 					<div class="secret">
 						<fieldset >
 							<p class="info">
-								글 작성자가 아닙니다.<br> <strong class="txtEm">글을 읽을 수 없습니다.</strong><br>
+								글 작성자가 아닙니다.<br> <strong class="txtEm">삭제를 실패하였습니다.</strong><br>
 								
 							</p>
 							<br><br>
