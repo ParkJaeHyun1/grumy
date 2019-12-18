@@ -80,13 +80,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          type = #{type}
          <choose>
             <when test="col=='content'">
-               and content like '%'||#{word}||'%'
+               and content like '%'||#{keyword}||'%'
             </when>
             <when test="col=='title'">
-               and title like '%'||#{word}||'%'
+               and title like '%'||#{keyword}||'%'
             </when>
             <when test="col=='id'">
-               and id like '%'||#{word}||'%'
+               and id like '%'||#{keyword}||'%'
             </when>
          </choose>
       </where>

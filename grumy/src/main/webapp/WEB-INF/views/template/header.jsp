@@ -39,7 +39,9 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 		<div class="myList">
 
-
+		<div class="xans-element- xans-layout xans-layout-statelogoff ">
+				<a href="${pageContext.request.contextPath}/item/search">SEARCH TEST</a>
+		</div>
 	<c:choose>
 		 <c:when test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 		 	<div class="xans-element- xans-layout xans-layout-statelogoff ">
@@ -93,7 +95,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                         <li class="xans-record-"><a
                            href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>
                         <li class="xans-record-"><a
-                           href="${pageContext.request.contextPath}/item/list/?type=">REVIEW<span></span></a></li>
+                           href="${pageContext.request.contextPath}/review/list/">REVIEW<span></span></a></li>
                             <li class="xans-record-"><a
                            href="${pageContext.request.contextPath}/review/create">REVIEW 등록<span></span></a></li>
                      </ul>
@@ -127,7 +129,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 <!-- 					
 <!--                     $product_page=/product/detail.html -->
 <!--                     $category_page=/product/list.html -->
-<!--                 --> -->
+<!--                 -->
 <!-- 					<fieldset> -->
 <!-- 						<legend>검색</legend> -->
 <!-- 						<input id="keyword" name="keyword" fw-filter="" fw-label="검색어" -->
@@ -163,6 +165,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 		</div>
 		<script>
+		
 			// 메인메뉴에 마우스오버시 하위메뉴 나타남
 			$(".gnb > li").mouseenter(function() {
 				//$(this).find(".gnb_sub").stop().slideDown(200);
