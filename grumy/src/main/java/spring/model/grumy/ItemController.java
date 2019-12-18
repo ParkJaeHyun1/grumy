@@ -27,6 +27,14 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
+	
+	@GetMapping("/item/search")
+	public String search() {
+			
+			return "/item/search";
+		}
+	
+	
 	@RequestMapping("/item/delete")
 	public String delete(int itemNo, String type) {
 		System.out.println("개새 꺄 아,아ㅏㅇ아");

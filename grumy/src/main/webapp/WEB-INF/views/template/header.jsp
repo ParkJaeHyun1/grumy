@@ -119,27 +119,48 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			
 			
 
-			<form id="searchBarForm" name="" action="/product/search.html"
+<!-- 			<form id="searchBarForm" name="" action="/product/search.html" -->
+<!-- 				method="get" target="_self" enctype="multipart/form-data"> -->
+<!-- 				<input id="banner_action" name="banner_action" value="" -->
+<!-- 					type="hidden" /> -->
+<!-- 				<div class="xans-element- xans-layout xans-layout-searchheader "> -->
+<!-- 					
+<!--                     $product_page=/product/detail.html -->
+<!--                     $category_page=/product/list.html -->
+<!--                 --> -->
+<!-- 					<fieldset> -->
+<!-- 						<legend>검색</legend> -->
+<!-- 						<input id="keyword" name="keyword" fw-filter="" fw-label="검색어" -->
+<!-- 							fw-msg="" class="inputTypeText" placeholder="" -->
+<!-- 							onmousedown="SEARCH_BANNER.clickSearchForm(this)" value="" -->
+<!-- 							type="text" /><input type="image" -->
+<!-- 							src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png" -->
+<!-- 							alt="검색" -->
+<!-- 							onclick="SEARCH_BANNER.submitSearchBanner(this); return false;" /> -->
+<!-- 					</fieldset> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
+
+
+<form id="searchBarForm" name="search" action="search" onsubmit="return input(this)"
 				method="get" target="_self" enctype="multipart/form-data">
-				<input id="banner_action" name="banner_action" value=""
-					type="hidden" />
+				<input id="banner_action" name="banner_action" value="" type="hidden"  />
 				<div class="xans-element- xans-layout xans-layout-searchheader ">
-					<!--
-                    $product_page=/product/detail.html
-                    $category_page=/product/list.html
-                -->
 					<fieldset>
 						<legend>검색</legend>
 						<input id="keyword" name="keyword" fw-filter="" fw-label="검색어"
-							fw-msg="" class="inputTypeText" placeholder=""
-							onmousedown="SEARCH_BANNER.clickSearchForm(this)" value=""
-							type="text" /><input type="image"
+							fw-msg="" class="inputTypeText" placeholder="" value="${keyword}" type="text" />
+					
+						<input type="image"
 							src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png"
 							alt="검색"
-							onclick="SEARCH_BANNER.submitSearchBanner(this); return false;" />
+				/>
 					</fieldset>
 				</div>
 			</form>
+
+
+
 		</div>
 		<script>
 			// 메인메뉴에 마우스오버시 하위메뉴 나타남
