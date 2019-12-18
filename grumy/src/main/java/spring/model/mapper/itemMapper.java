@@ -6,6 +6,7 @@ import java.util.Map;
 
 import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
+import spring.model.item.ItemTypeDTO;
 import spring.model.order.OrderItemDTO;
 
 
@@ -24,7 +25,8 @@ public interface itemMapper {
 	int create(ItemDTO dto);
 	ArrayList<OrderItemDTO> itemOptionList(ArrayList<Integer> itemOptionNoList);
 	String selectParentType(String type);
-	ArrayList<String> selectTypeList(String type);
+	ArrayList<ItemTypeDTO> selectTypeList(String type);
+	ArrayList<ItemTypeDTO> selectTypeListAll();
 	int decreaseItemCount(OrderItemDTO orderItem);
 	int increaseItemCount(OrderItemDTO orderItem);
 	List<BoardDTO> Qlist(Map map);

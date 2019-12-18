@@ -100,13 +100,12 @@
 										<td><select onchange="mainCategory(this)"
 											style="width: 200px;">
 												<option>-메인 카테고리-</option>
-												<option value="a">OUTER</option>
-												<option value="b">TOP</option>
-												<option value="c">DRESS</option>
-												<option value="d">SKIRT</option>
-												<option value="e">BOTTOM</option>
-												<option value="f">SHOES/BAG</option>
-												<option value="g">ACC</option>
+												<c:forEach var="dto" items="${typeList}">
+													<c:if test="${empty dto.parentType}">
+														<option value="${dto.type}">${dto.type}</option>	
+													</c:if>
+												</c:forEach>
+												
 										</select> <select id="subCategory" style="width: 200px">
 												<option>-서브 카테고리-</option>
 										</select></td>
@@ -118,12 +117,6 @@
 
 										<td><input type="text" id="title"
 											name="title" style="width: 395px"></td>
-									</tr>
-									<tr>       
-										<th scope="row" style="width: 300px; ">상품 설명</th>
-               
-										<td><textarea type="text" id="description"
-											name="description" style="width: 390px; height:150px"></textarea></td>
 									</tr>
 									<tr>          
 										<th scope="row">상품 이미지</th>
@@ -183,7 +176,12 @@
 											name="salePrice" value=""
 											style="text-align: right; width: 50px"> 원</td>
 									</tr>
-
+									<tr>       
+										<th scope="row" style="width: 300px; ">상품 설명</th>
+               
+										<td><textarea type="text" id="description"
+											name="description" style="width: 390px; height:150px"></textarea></td>
+									</tr>
 
 									<tr>
 										<th scope="row">상세 페이지</th>
@@ -356,40 +354,16 @@
 	}    
 
 	// category 시작
-	function mainCategory(e) {
-		var sub_a = [ "핸드메이드", "코트/자켓", "가디건", "점퍼" ];
-		var sub_b = [ "니트/가디건", "맨투맨/후드/티셔츠", "셔츠/블라우스", "슬리브리스" ];
-		//var sub_c = [];
-		var sub_d = [ "미니", "미디/롱" ];
-		var sub_e = [ "데님", "면바지/슬랙스", "쇼츠" ];
-		var sub_f = [ "슈즈", "백" ];
-		var sub_g = [ "쥬얼리", "모자", "벨트", "양말", "홈웨어", "etc" ];
-		var target = document.getElementById("subCategory");
+	   function mainCategory(e) {
 
-		if (e.value == "a")
-			var d = sub_a;
-		else if (e.value == "b")
-			var d = sub_b;
-		else if (e.value == "d")
-			var d = sub_d;
-		else if (e.value == "e")
-			var d = sub_e;
-		else if (e.value == "f")
-			var d = sub_f;
-		else if (e.value == "g")
-			var d = sub_g;
+	      var target = document.getElementById("subCategory");
+	      target.options.length = 0;
 
-		target.options.length = 0;
+    
+	      
+	   }            
 
-		for (x in d) {
-			var opt = document.createElement("option");
-			opt.value = d[x];
-			opt.innerHTML = d[x];
-			target.appendChild(opt);
-		}
-	}
-
-	//category 끝
+	   //category 끝
 
 	var oEditors = [];
 	$(function() {

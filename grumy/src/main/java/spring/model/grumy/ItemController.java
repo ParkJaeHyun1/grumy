@@ -47,7 +47,7 @@ public class ItemController {
 		
 	
 	
-	@PostMapping("/item/create")
+	@RequestMapping("/item/create")
 	public String create(ItemDTO dto, HttpServletRequest request) {
 //		String basePath = request.getRealPath("/storage");
 //		
@@ -67,9 +67,9 @@ public class ItemController {
 		return "/item/create";
 		
 	}
-	@GetMapping("/item/create")
-	public String create() {
-		
+	@RequestMapping("/item/createForm")
+	public String create(HttpServletRequest request) {
+		request.setAttribute("typeList", mapper.selectTypeListAll());
 		return "/item/create";
 	}
 	

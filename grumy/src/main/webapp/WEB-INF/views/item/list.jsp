@@ -129,18 +129,18 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 							</button></span>
 					</div>
 					<ul class="menuCategory">
-						<c:forEach var="type" items="${typeList}">
+						<c:forEach var="typeDTO" items="${typeList}">
 							<c:choose>
-							<c:when test="${selectedType==type }">
+							<c:when test="${selectedType==typeDTO.type }">
 								<li style="display:;"
 								class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list?type=${type}">${type} <span class="count displaynone">()</span></a>
+								href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type} <span class="count displaynone">()</span></a>
 								</li>
 							</c:when>
 							<c:otherwise>
 							<li style="display:;"
 								class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list?type=${type}">${type}<span class="count displaynone">()</span></a>
+								href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}<span class="count displaynone">()</span></a>
 								</li>
 							</c:otherwise>  
 							</c:choose>
@@ -174,7 +174,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 				<p align="right">
 					<button class="yg_btn_28 yg_btn3" style="float: rigth"
-						onclick="location.href='${pageContext.request.contextPath}/item/create'">상품등록</button>
+						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
 					&nbsp;
 				</p>
 				<br></br>
