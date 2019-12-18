@@ -30,7 +30,7 @@ public class Utility {
          
         InputStream inputStream = null; 
         OutputStream outputStream = null; 
- 
+   
         try { 
             if( fileSize > 0 ) { // 파일이 존재한다면 
                 // 인풋 스트림을 얻는다. 
