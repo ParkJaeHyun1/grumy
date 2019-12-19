@@ -155,7 +155,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 											<option value="prd_trand">트랜드명</option>
 										</select> <input id="keyword" name="keyword" fw-filter=""
 											fw-label="상품명/제조사" fw-msg="" class="inputTypeText"
-											placeholder="" size="15" value="니트" type="text">
+											placeholder="" size="15" value="${keyword}" type="text">           
 									</div>
 									<div class="popular" id="except_keyword_wrap_id" style="">
 										<strong>제외검색어</strong> <input id="exceptkeyword"

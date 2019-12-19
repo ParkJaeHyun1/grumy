@@ -84,14 +84,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <where>
          type = #{type}
          <choose>
-            <when test="col=='content'">
-               and content like '%'||#{keyword}||'%'
-            </when>
+
             <when test="col=='title'">
                and title like '%'||#{keyword}||'%'
-            </when>
-            <when test="col=='id'">
-               and id like '%'||#{keyword}||'%'
             </when>
          </choose>
       </where>
@@ -161,9 +156,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
        select i.itemNo,o.itemOptionNo,
       image, title, description, content, price,salePrice, i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
       from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>) i , itemOption o,itemType t
-      where  i.type=t.type  and  i.itemNo = o.itemNo and(t.type = #{type} or t.parentType=#{type})
-      order by itemNo desc
+     
+       where i.type=t.type  and  i.itemNo = o.itemNo and(t.type = #{type} or t.parentType=#{type})
+     
+       order by itemNo desc
    </select>
+   
+   
+   <select id="search" parameterType="Map" resultMap="itemMap">
+       select i.itemNo,o.itemOptionNo,
+      image, title, description, content, price,salePrice, i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
+      from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>) i , itemOption o,itemType t
+     
+       <where>
+     i.type=t.type  and  i.itemNo = o.itemNo and(t.type = #{type} or t.parentType=#{type})
+         <choose>
+            <when test="col=='title'">
+               and title like '%'||#{keyword}||'%'
+            </when>         
+         </choose>
+      </where>                    
+
+      order by itemNo desc
+   </select>   
+   
    
    <select id="read" parameterType="int" resultMap="itemMap">
       select i.itemNo,

@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
@@ -34,6 +35,50 @@ public class ItemController {
 	private ItemService itemService;
 
 
+	@PostMapping("/item/search")
+	public String search(HttpServletRequest request, String keyword) {
+	
+		ItemDTO dto = new ItemDTO(); 
+		keyword = ItemUtility.checkNull(request.getParameter("keyword"));
+		String col = ItemUtility.checkNull(request.getParameter("col"));
+
+		if (col.equals("total"))
+			keyword = "";
+		//페이징 관련
+		int nowPage = 1;
+		if(request.getParameter("nowPage")!= null){
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int recordPerPage = 40; //한페이지당 보여줄 레코드 갯수
+
+		//디비에서 가져올 순번
+		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+		int eno = nowPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("keyword", keyword);
+		map.put("sno",sno);
+		map.put("eno",eno);
+
+		ArrayList<ItemDTO> list = mapper.search(map);
+		System.out.println("search개수:"+list.size());
+		int total = mapper.total(map);
+
+		String paging = Utility.paging(total, nowPage, recordPerPage, col, keyword);
+
+
+		request.setAttribute("list", list);
+		request.setAttribute("col", col);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("paging", paging);
+		
+		return "/item/search";
+	}
+
+	
 	@GetMapping("/item/search")
 	public String search() {
 
@@ -152,12 +197,12 @@ public class ItemController {
 	public String list(HttpServletRequest request) {
 
 		ItemDTO dto = new ItemDTO(); 
-		String word = ItemUtility.checkNull(request.getParameter("word"));
+		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
 		String col = ItemUtility.checkNull(request.getParameter("col"));
 		String type = request.getParameter("type");
 
 		if (col.equals("total"))
-			word = "";
+			keyword = "";
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
@@ -172,7 +217,7 @@ public class ItemController {
 
 		Map map = new HashMap();
 		map.put("col", col);
-		map.put("word", word);
+		map.put("keyword", keyword);
 		map.put("sno",sno);
 		map.put("eno",eno);
 		map.put("type", type);
@@ -181,7 +226,7 @@ public class ItemController {
 		System.out.println("개수:"+list.size());
 		int total = mapper.total(map);
 
-		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, word,type);
+		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
 
 
 		request.setAttribute("typeList", mapper.selectTypeList(type));
@@ -189,7 +234,7 @@ public class ItemController {
 		request.setAttribute("selectedType", type);
 		request.setAttribute("list", list);
 		request.setAttribute("col", col);
-		request.setAttribute("word", word);
+		request.setAttribute("keyword", keyword);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
 

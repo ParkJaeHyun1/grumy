@@ -13,6 +13,7 @@ import spring.model.order.OrderItemDTO;
 
 public interface itemMapper {
 	ArrayList<ItemDTO> list(Map<String, String> map);
+	ArrayList<ItemDTO> search(Map<String, String> map);
 
 	ItemDTO read(int no);
 	ArrayList<String> color(Map<String, String> map);
