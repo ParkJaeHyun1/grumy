@@ -173,5 +173,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       where itemOptionNo = #{itemOptionNo}
    </update>
    
+   	<insert id="insertItem" parameterType="ItemDTO"
+		useGeneratedKeys="true" keyProperty="itemNo" keyColumn="itemNo">
+		insert into
+		item(itemNo,image,title,description,content,price,salePrice,type)
+		values((SELECT NVL(MAX(itemNo), 0)+ 1 FROM item),#{image},#{title},#{description},#{content},#{price},#{salePrice},#{type})
+	</insert>
+	
+	 <insert id="insertItemOption" parameterType="ItemOptionDTO">
+		insert into
+		itemOption(itemOptionNo,itemNo,itemColor,itemSize,itemCount)
+		values((SELECT NVL(MAX(itemOptionNo), 0)+ 1 FROM itemOption),#{itemNo},#{itemColor},#{itemSize},#{itemCount})
+	</insert>
 </mapper>
 

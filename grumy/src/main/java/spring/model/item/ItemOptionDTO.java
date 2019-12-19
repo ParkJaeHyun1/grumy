@@ -49,6 +49,11 @@ public class ItemOptionDTO {
 	public void setItemColor(String itemColor) {
 		this.itemColor = itemColor;
 	}
+	@Override
+	public String toString() {
+		return "ItemOptionDTO [itemNo=" + itemNo + ", itemOptionNo=" + itemOptionNo + ", itemCount=" + itemCount
+				+ ", itemSize=" + itemSize + ", itemColor=" + itemColor + "]";
+	}
 	
 	
 }

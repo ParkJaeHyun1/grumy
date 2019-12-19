@@ -104,7 +104,6 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,inde
 				order by ref desc
 				)
 		)
-
 </select>
 
 

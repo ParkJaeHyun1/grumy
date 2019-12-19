@@ -202,10 +202,10 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 								<p align="center">
 
 									<button class="yg_btn_28 yg_btn3"
-										onclick="location.href='${pageContext.request.contextPath}/item/update'">상품수정</button>
+										onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
 									&nbsp;
 									<button class="yg_btn_28 yg_btn3"
-										onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+										onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>     
 
 								</p>
 							</c:if>

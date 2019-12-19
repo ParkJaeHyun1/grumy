@@ -103,5 +103,12 @@ public class ItemDTO {
 		this.filenameMF = filenameMF;
 	}
 
+	@Override
+	public String toString() {
+		return "ItemDTO [itemNo=" + itemNo + ", image=" + image + ", title=" + title + ", description=" + description
+				+ ", content=" + content + ", price=" + price + ", salePrice=" + salePrice + ", type=" + type
+				+ ", itemOptionList=" + itemOptionList + ", filenameMF=" + filenameMF + "]";
+	}
+
 
 }

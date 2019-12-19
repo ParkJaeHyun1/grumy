@@ -33,9 +33,18 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/search.jsp" />
 	</definition>
-	
+	<definition name="/item/search" extends="main">
+		<put-attribute name="title"	value="item 검색 페이지"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/search.jsp" />
+	</definition>
 	<definition name="/item/error" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/item/error.jsp" />
+	</definition>
+		<definition name="/item/updateForm" extends="main">
+		<put-attribute name="title"	value="item 수정"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/update.jsp" />
 	</definition>
 </tiles-definitions>

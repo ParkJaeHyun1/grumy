@@ -20,4 +20,18 @@ public class ItemService {
 		}
 		return false;
 	}
+	
+	public boolean create(ItemDTO dto) {
+		int cnt = itemMapper.insertItem(dto);
+		
+		if(cnt<1)
+			return false;
+		
+		for(ItemOptionDTO itemOption : dto.getItemOptionList()) {
+			itemOption.setItemNo(dto.getItemNo());
+			cnt +=itemMapper.insertItemOption(itemOption);
+		}
+
+		return cnt==1+dto.getItemOptionList().size() ? true:false ;
+	}
 }

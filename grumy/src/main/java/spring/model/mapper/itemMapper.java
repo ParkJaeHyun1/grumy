@@ -6,6 +6,7 @@ import java.util.Map;
 
 import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
+import spring.model.item.ItemOptionDTO;
 import spring.model.item.ItemTypeDTO;
 import spring.model.order.OrderItemDTO;
 
@@ -31,7 +32,8 @@ public interface itemMapper {
 	int increaseItemCount(OrderItemDTO orderItem);
 	List<BoardDTO> Qlist(Map map);
 	int qtotal(Map map);
-
+	int insertItem(ItemDTO dto);
+	int insertItemOption(ItemOptionDTO dto);
 	
 
 }
