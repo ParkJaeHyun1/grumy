@@ -127,7 +127,7 @@ $(document).ready(function(){
 						<!---->
 					<div class="panel-body"
 						style="border:1px solid">
-						<a href="javascript:read(${noticetr.no })" style="color: #555555;">
+						<a href="javascript:readn(${noticetr.no })" style="color: #555555;">
 							<div>
 								<span class="label label-danger label-outline">공지</span>
 								<span style="font-size:20px;">${noticetr.subject }</span>&nbsp&nbsp 
@@ -158,9 +158,7 @@ $(document).ready(function(){
 											
 												<span>건</span>
 										</span>
-										&nbsp;&nbsp;&nbsp;
-										<span><a class="text-number"
-												href="${root }/admin/read">read테스트</a></span>
+										
 										</li>
 										<li><span class="info-title">신규주문</span> <span
 											class="number-area">
@@ -340,7 +338,6 @@ $(document).ready(function(){
 									<ul class="nav nav-tabs" role="tablist" id="myTab">
 									  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">배송문의</a></li>
 									  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">상품문의</a></li>
-									  <li role="presentation"><a href="#review" aria-controls="profile" role="tab" data-toggle="tab">review</a></li>
 									</ul>
 									
 									<div class="tab-content">

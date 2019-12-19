@@ -15,41 +15,54 @@
 $(function(){
 	var temp = 1;
 	$('#pcodenobutton').click(function(){
-		var pno = $('#postcodeno').val();
-		var ono = $('#orderno').html();
-		var ostate = $('#ostate').text();
-		var ostates;
-		switch(ostate){
-			case "입금대기":
-				ostates = "배송준비";
-				break;
-			case "배송준비":
-				ostates = "배송중";
-				break;
-			case "배송중":
-				ostates = "배송완료";
-				break;
-			case "배송완료":
-				ostates = "배송완료";
-				break;
-			default :
-				console.log("error");
-				break;
+		var result;
+		if(temp==1){
+			result = confirm("송장번호를 입력/변경 하시겠습니까?");
+		}else{
+			result = true;
 		}
-		if(temp == 1){
-			$('#postcodeno').attr("readonly",false);
-			$('#nostate').text('송장번호를 작성중입니다. ');
-			$('#nostate').css('color','red');			
-			temp = 0;
-		}else{		
-			update(ono, ostates, pno);
-			$('#postcodeno').attr("readonly",true);
-			$('#nostate').text('송장번호 작성을 완료했습니다');
-			$('#nostate').css('color','blue');
-			$('#postcodeno').text(pno);
-			temp = 1;
+		if(result){
+			if(temp==1)
+				alert("송장번호를 입력/변경 합니다");
+			var pno = $('#postcodeno').val();
+			var ono = $('#orderno').html();
+			var ostate = $('#ostate').text();
+			var ostates;
+			switch(ostate){
+				case "입금대기":
+					ostates = "배송준비";
+					break;
+				case "배송준비":
+					ostates = "배송중";
+					break;
+				case "배송중":
+					ostates = "배송중";
+					break;
+				case "배송완료":
+					ostates = "배송완료";
+					break;
+				default :
+					console.log("error");
+					break;
+			}
+			if(temp == 1){
+				$('#postcodeno').attr("readonly",false);
+				$('#nostate').text('송장번호를 작성중입니다. ');
+				$('#nostate').css('color','red');			
+				temp = 0;
+			}else{		
+				update(ono, ostates, pno);
+				$('#postcodeno').attr("readonly",true);
+				$('#nostate').text('송장번호 작성을 완료했습니다');
+				$('#nostate').css('color','blue');
+				$('#postcodeno').text(pno);
+				temp = 1;
+			}
+		}else{
+			alert("송장번호 입력/변경을 취소했습니다");
 		}
 	});
+	
 });
 function update(orderno,ostates, deliveryno){
 	alert("check: "+ deliveryno);
@@ -60,13 +73,13 @@ function update(orderno,ostates, deliveryno){
         type        :   "post",
 		data: JSON.stringify(aa),
 		success : function(retVal){
-			alert("성공:"+retVal);
+			console.log("성공:"+retVal);
 			location.reload();
 		}, 
 		error : function(request, status, error){
-			alert("에러1:"+request);
-			alert("에러2:"+status);
-			alert("에러3:"+error);
+			console.log("에러1:"+request);
+			console.log("에러2:"+status);
+			console.log("에러3:"+error);
 		}
 	});
 }
@@ -140,6 +153,7 @@ function update(orderno,ostates, deliveryno){
 							</table>
 						</div>
 					</div>
+					<br>
 					<!-- 결제정보 -->
 					<div class="orderArea">
 						<div class="title">
@@ -161,76 +175,34 @@ function update(orderno,ostates, deliveryno){
 									</tr>
 								</tbody>
 								<tbody class="">
-									<tr class="sum">
-										<th scope="row">총 할인금액</th>
-										<td><strong class="txt14">00</strong>원</td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">쿠폰할인</th>
-										<td><span class="gSpace20">0원</span> <a href="#none"
-											class="eUsedCouponDetail yg_btn_24 yg_btn3" alt="내역보기">내역보기</a>
-										</td>
-									</tr>
 									<tr class="">
-										<th scope="row">추가할인금액</th>
-										<td><span class="gSpace20">00원</span></td>
+										<th scope="row">할인금액</th>
+										<td><span class="gSpace20">${readP.salePrice }원</span></td>
 									</tr>
 								</tbody>
 								<tbody class="">
-									<tr class="sum">
-										<th scope="row">총 부가결제금액</th>
-										<td><strong>00</strong>원</td>
-									</tr>
 									<tr class="">
 										<th scope="row">적립금</th>
 										<td>00원</td>
 									</tr>
-									<tr class="displaynone">
-										<th scope="row">네이버 마일리지/캐쉬</th>
-										<td>0% 적립 / 0원 (마일리지 <strong>0</strong>원 + 캐쉬 <strong>0</strong>원)
-										</td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">예치금</th>
-										<td>0원</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="ec-base-table total">
-							<table border="1" summary="">
-								<caption>결제정보</caption>
-								<colgroup>
-									<col style="width: 160px">
-									<col style="width: auto">
-								</colgroup>
-								<tbody>
+									
 									<tr class="sum">
 										<th scope="row">총 결제금액</th>
-										<td><span class="txtEm"> <strong class="txt18">00</strong>원
+										<td><span class="txtEm"> <strong class="txt14">${readP.totalPrice - readP.salePrice}</strong>원
 												<span class="displaynone"></span>
 										</span></td>
 									</tr>
 									<tr class="">
 										<th scope="row">결제수단</th>
-										<td><strong><span>${readP.paymentType} </span></strong>
-											<p>
-												<span>명세서에 올더게이트(으)로 표기됩니다</span> <a target="_blank" href=""
-													class="yg_btn_24 yg_btn3 displaynone" alt="인터넷뱅킹 바로가기">인터넷뱅킹
-													바로가기</a> <a target="_blank" href="" class="displaynone"><img
-													src="//img.echosting.cafe24.com/skin/base_ko_KR/order/btn_order_payment.gif"
-													id="" alt="결제사이트 바로가기"></a>
-											</p></td>
-									</tr>
-									<tr class="displaynone">
-										<th scope="row">전자보증보험<br>서비스정보
-										</th>
-										<td></td>
+										<td><strong><span>${readP.paymentType} </span></strong></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+						
+						
 					</div>
+					<br>
 					<!-- 주문 상품 정보 -->
 					<div class="orderArea">
 						<div class="title">
@@ -264,10 +236,9 @@ function update(orderno,ostates, deliveryno){
 								<tfoot class="right">
 									<tr>
 										<td colspan="7"><span class="gLeft">[기본배송]</span> 상품구매금액
-											<strong>89,900</strong><span class="displaynone"> +
-												부가세 0</span> + 배송비 0 + 지역별배송비 0<span class=""> - 상품할인금액
-												1,600</span> = 합계 : <strong class="txtEm gIndent10"><span
-												class="txt18">88,300원</span></strong> <span class="displaynone"></span>
+											<strong>${readP.totalPrice}</strong> + 배송비 ${deliveryPay } <span class=""> - 상품할인금액
+												${readP.salePrice}</span> = 합계 : <strong class="txtEm gIndent10"><span
+												class="txt18">${totalPay }원</span></strong> <span class="displaynone"></span>
 										</td>
 									</tr>
 								</tfoot>
@@ -290,12 +261,8 @@ function update(orderno,ostates, deliveryno){
 											<p class="gBlank5 displaynone">무이자할부 상품</p></td>
 										<td>${dto.count}</td>
 										<td class="right">
-											<div class="discount">
-												<strong>${dto.itemPrice }원[수정!]</strong>
-												<div class="displaynone"></div>
-											</div>
 											<div class="">
-												<strong>31,400원[수정!]</strong>
+												<strong>${dto.itemPrice * dto.count}원 </strong>
 												<div class="displaynone"></div>
 											</div>
 										</td>
@@ -335,64 +302,6 @@ function update(orderno,ostates, deliveryno){
 
 					</div>
 					
-					<!-- 최종 결제 정보 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>최종 결제 정보</h3>
-						</div>
-						<div class="ec-base-table total">
-							<table border="1" summary="">
-								<caption>최종 결제 정보</caption>
-								<colgroup>
-									<col style="width: 160px">
-									<col style="width: auto">
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">총 결제금액</th>
-										<td><span class="txtEm"><strong class="txt18">0</strong>원</span>
-											<span class="displaynone"></span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="ec-base-table">
-							<table border="1" summary="">
-								<caption>최종 결제 정보</caption>
-								<colgroup>
-									<col style="width: 160px">
-									<col style="width: auto">
-								</colgroup>
-								<tbody
-									class="xans-element- xans-myshop xans-myshop-orderhistorydetailpaymentfinal">
-									<tr class="xans-record-">
-										<th scope="row">상품구매금액</th>
-										<td><strong>0원</strong>
-											<p></p></td>
-									</tr>
-									<tr class="xans-record-">
-										<th scope="row">배송비</th>
-										<td><strong>0원</strong>
-											<p></p></td>
-									</tr>
-									<tr class="xans-record-">
-										<th scope="row">결제예정금액</th>
-										<td><strong>0원</strong>
-											<p></p></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!-- 취소/교환/반품 신청 정보 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>취소/교환/반품 신청 정보</h3>
-						</div>
-					</div>
-					<!-- 환불정보 -->
-					<!-- 추가결제 -->
-					<!-- 배송지정보 -->
 					<div class="orderArea">
 						<div class="title">
 							<h3>배송지정보</h3>
@@ -405,20 +314,6 @@ function update(orderno,ostates, deliveryno){
 									<col style="width: auto">
 								</colgroup>
 								<tbody>
-									<tr class="displaynone">
-										<th scope="row">수령지</th>
-										<td><strong></strong>
-											<ul class="list">
-												<li>- 주소 :</li>
-												<li>- 전화번호 :</li>
-												<li>- 영업시간 :</li>
-												<li>- 수령 가능일 :</li>
-												<li>- 수령지 안내 :</li>
-											</ul>
-											<div class="map displaynone">
-												<p>* 약도</p>
-											</div></td>
-									</tr>
 									<tr>
 										<th scope="row">받으시는분</th>
 										<td><span>${readP.rname} </span></td>
@@ -447,27 +342,7 @@ function update(orderno,ostates, deliveryno){
 							</table>
 						</div>
 					</div>
-					<!-- 추가정보 -->
-					<div class="orderArea displaynone">
-						<div class="title">
-							<h3>추가정보</h3>
-						</div>
-						<div class="ec-base-table">
-							<table border="1" summary="">
-								<caption>추가 정보</caption>
-								<colgroup>
-									<col style="width: 160px">
-									<col style="width: auto">
-								</colgroup>
-								<tbody class="xans-element- xans-myshop xans-myshop-ordadd">
-									<tr class="">
-										<th scope="row"></th>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
+
 					<div class="ec-base-button">
 						 <span class="gRight"> <a
 							href="#" onClick="history.go(-1)"
