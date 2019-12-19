@@ -90,7 +90,7 @@ function update(orderno){
 									<tr>
 										<td></td>
 										<td></td>
-										<td>등록된 글이 없습니다.</td>
+										<td>배송 준비 건이 없습니다.</td>
 										<td></td>
 										<td></td>
 										<td></td>

@@ -135,8 +135,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateState" parameterType="Map">
 		update norder
-		set state = #{state, jdbcType=VARCHAR}
-		where orderno = #{orderno, jdbcType=VARCHAR}
+		set state = #{state}
+		where orderno = #{orderno}
 	</update>
 	
 	<update id="updateStateP" parameterType="Map">

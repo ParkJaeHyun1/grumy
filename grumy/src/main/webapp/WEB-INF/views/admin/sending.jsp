@@ -56,12 +56,13 @@ function update(orderno, deliveryno){
 							<col style="width: 120px;">
 							<col style="width: 120px;">
 							<col style="width: auto;">
-							<col style="width: 120px;">
-							<col style="width: 100px;">
+							<col style="width: 70px;">
+							<col style="width: 70px;">
 							<col style="width: 60px;">
 							<col style="width: 100px;">
 							<col style="width: 70px;">
 							<col style="width: 70px;">
+							<col style="width: 120px;">
 							<col style="width: 80px;">
 							<col style="width: 120px;">
 						</colgroup>
@@ -76,6 +77,7 @@ function update(orderno, deliveryno){
 								<th scope="col">수량</th>
 								<th scope="col">가격</th>
 								<th scope="col">주문아이디</th>
+								<th scope="col">송장번호</th>
 								<th scope="col">입금상태</th>
 								<th scope="col">확인</th>
 							</tr>
@@ -92,7 +94,8 @@ function update(orderno, deliveryno){
 									<tr>
 										<td></td>
 										<td></td>
-										<td>등록된 글이 없습니다.</td>
+										<td>배송 중인 건이 없습니다.</td>
+										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -128,11 +131,12 @@ function update(orderno, deliveryno){
 											<td>${dto2.count}</td>
 											<td>${dto2.itemPrice }</td>
 											<td>${dto.id}</td>
+											<td>${dto2.deliveryNo}</td>
 											<c:choose>										
 												<c:when test="${aa != dto.orderNo }">
 													<c:set var="aa" value="${dto.orderNo }"/>
 													<td>${dto2.state }</td>
-													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}, ${dto2.deliveryNo }')">확인버튼</button></td>
+													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}', '${dto2.deliveryNo}')">확인버튼</button></td>
 												</c:when>
 												<c:otherwise>
 													<td></td>

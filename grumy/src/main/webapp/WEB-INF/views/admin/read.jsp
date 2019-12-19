@@ -33,6 +33,7 @@ $(function(){
 				ostates = "배송완료";
 				break;
 			default :
+				console.log("error");
 				break;
 		}
 		if(temp == 1){

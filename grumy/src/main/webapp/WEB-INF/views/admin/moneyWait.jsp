@@ -95,7 +95,7 @@ function goread(orderno){
 									<tr>
 										<td></td>
 										<td></td>
-										<td>등록된 글이 없습니다.</td>
+										<td>입금대기 건이 없습니다.</td>
 										<td></td>
 										<td></td>
 										<td></td>
