@@ -69,6 +69,25 @@ public class ItemController {
 			return "redirect:/item/error";   //인서트실패시 에러페이지로이동해야되는데 에러페이지 몬지모를라서 일단 해놈
 
 	}
+	
+	@RequestMapping("/item/update")
+	public String update(ItemDTO dto, HttpServletRequest request,String[] itemColorList,String[] itemSizeList,int[] itemCountList) throws UnsupportedEncodingException {
+		ArrayList<ItemOptionDTO> itemOptionList = new ArrayList<ItemOptionDTO>();
+
+		for(int i=0;i<itemColorList.length;i++) 
+			itemOptionList.add(new ItemOptionDTO(dto.getItemNo(),0,itemCountList[i],itemSizeList[i],itemColorList[i]));
+
+		dto.setItemOptionList(itemOptionList);
+
+		if (dto.getFilenameMF().getSize() > 0) 
+			dto.setImage(Utility.saveFileSpring(dto.getFilenameMF(), request.getRealPath("/images")));
+
+		if(itemService.update(dto))
+			return "redirect:/item/list?type="+URLEncoder.encode(dto.getType(), "UTF-8");
+		else
+			return "redirect:/item/error";   //인서트실패시 에러페이지로이동해야되는데 에러페이지 몬지모를라서 일단 해놈
+	}
+	
 	@RequestMapping("/item/updateForm")
 	public String updateForm(HttpServletRequest request,int itemNo) {
 		ArrayList<ItemTypeDTO> list = mapper.selectTypeListAll();

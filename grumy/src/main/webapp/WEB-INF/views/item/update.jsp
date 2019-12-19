@@ -64,9 +64,9 @@
 	}
 </script>
 <style>
-#smart_editor2{
-	width: 780px; 
-}            
+#smart_editor2 {
+	width: 780px;
+}
 </style>
 <div id="container">
 	<div id="contents">
@@ -76,7 +76,7 @@
 			<div class="xans-element- xans-board  ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">상품 등록</font>
+						<font color="#555555">상품 수정</font>
 					</h2>
 
 					<!--h3>공지사항입니다.</h3-->
@@ -84,8 +84,8 @@
 			</div>
 			<br> <br>
 			<!-- 글 내용-->
-			<form action="create" method="post" id="frm"
-				enctype="multipart/form-data" onsubmit="return checkForm()">    
+			<form action="update" method="post" id="frm"
+				enctype="multipart/form-data" onsubmit="return checkForm()">
 				<input type="hidden" name="id" value="${sessionScope.id }">
 				<div class="ec-base-table typeWrite ">
 					<div class="xans-element- xans-product xans-product-detail">
@@ -104,15 +104,21 @@
 
 										<td><select onchange="mainCategory(this)"
 											style="width: 200px;">
-												<option>-메인 카테고리-</option>
 												<c:forEach var="dto" items="${typeList}">
 													<c:if test="${empty dto.parentType}">
-														<option value="${dto.type}" <c:if test="${dto.type == parentType}"> selected  </c:if>>${dto.type}</option>	
+														<option value="${dto.type}"
+															<c:if test="${dto.type == parentType}"> selected  </c:if>>${dto.type}</option>
 													</c:if>
-												</c:forEach>   
-												
+												</c:forEach>
+
 										</select> <select id="subCategory" style="width: 200px" name="type">
-												<option>-서브 카테고리-</option>
+												<c:forEach var="typeDTO" items="${typeList}">
+													<c:if
+														test="${typeDTO.parentType == parentType or typeDTO.type == parentType}">
+														<option value="${typeDTO.type}"
+															<c:if test="${typeDTO.type == dto.type}"> selected  </c:if>>${typeDTO.type}</option>
+													</c:if>
+												</c:forEach>
 										</select></td>
 									</tr>
 
@@ -120,86 +126,93 @@
 									<tr>
 										<th scope="row" style="width: 300px">상품명</th>
 
-										<td><input type="text" id="title"
-											name="title" style="width: 395px"></td>
+										<td><input type="text" id="title" name="title"
+											style="width: 395px" value="${dto.title }"></td>
 									</tr>
-									<tr>          
+									<tr>
 										<th scope="row">상품 이미지</th>
 
 										<td><input type="file" class="form-control" id="image"
-											name="filenameMF" accept=".jpg,.gif,.png" ></td>
+											name="filenameMF" accept=".jpg,.gif,.png"></td>
 									</tr>
-               
+
 									<tr>
 										<th scope="row">컬러 추가</th>
 										<td><input type="text" id="itemColor" style="width: 70px">
 											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
-												style="width: 50px; height: 26px; line-height: 0px">추가</button>
+												style="width: 50px; height: 26px; line-height: 0px" onclick="addColor(this.value)">추가</button>
 										</td>
 									</tr>
-									<tr id="colorList" style="display:none">
+									<tr id="colorList" style="display: none">  
 										<th scope="row">컬러</th>
 										<td>
 											<ul class="ec-product-button" id="list">
 
-											</ul>      
-										</td>       
+											</ul>
+										</td>
 									</tr>
-									<tr id ="sizeList" style="display:none">          
+									<tr id="sizeList" style="display: none">
 										<th scope="row">사이즈</th>
 										<td>
-										<ul class="ec-product-button" id="list">
-										<li id="itemSizeS" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('S')"> <span>S</span></a></li>
-										<li id="itemSizeM" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('M')"> <span>M</span></a></li>
-										<li id="itemSizeL" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('L')"> <span>L</span></a></li>
-										<li id="itemSizeXL" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('XL')"> <span>XL</span></a></li>
-										<li id="itemSizeFREE" class=""  style="margin-right: 0px"><a href="javascript:;" onclick="clickSize('FREE')"> <span>FREE</span></a></li>          
-										</ul>           
-										</td>       
+											<ul class="ec-product-button" id="list">
+												<li id="itemSizeS" class="" style="margin-right: 0px"><a
+													href="javascript:;" onclick="clickSize('S')"> <span>S</span></a></li>
+												<li id="itemSizeM" class="" style="margin-right: 0px"><a
+													href="javascript:;" onclick="clickSize('M')"> <span>M</span></a></li>
+												<li id="itemSizeL" class="" style="margin-right: 0px"><a
+													href="javascript:;" onclick="clickSize('L')"> <span>L</span></a></li>
+												<li id="itemSizeXL" class="" style="margin-right: 0px"><a
+													href="javascript:;" onclick="clickSize('XL')"> <span>XL</span></a></li>
+												<li id="itemSizeFREE" class="" style="margin-right: 0px"><a
+													href="javascript:;" onclick="clickSize('FREE')"> <span>FREE</span></a></li>
+											</ul>
+										</td>
 									</tr>
-									<tr  id="countList" style="display:none">    
+									<tr id="countList" style="display: none">
 										<th scope="row">재고 수량</th>
-										<td><input  type="text" id="count" value="" style="text-align: right; width: 50px" onblur="checkCount(this.value)" onchange="getNumber(this);"
-											onkeyup="getNumber(this);">
-											개</td>
+										<td><input type="text" id="count" value=""
+											style="text-align: right; width: 50px"
+											onblur="checkCount(this.value)" onchange="getNumber(this);"
+											onkeyup="getNumber(this);"> 개</td>
 									</tr>
 
 
 									<tr>
-										<th scope="row">가격</th>      
-										<td><input  onchange="getNumber(this);"
+										<th scope="row">가격</th>
+										<td><input onchange="getNumber(this);"
 											onkeyup="getNumber(this);" type="text" id="price"
-											 value="" style="text-align: right; width: 50px">
-											원
-											<input  type="hidden" id="price2" name="price" value="" >
-											</td>
+											value="${dto.price }" value=""
+											style="text-align: right; width: 50px"> 원 <input
+											type="hidden" id="price2" name="price" value=""></td>
 									</tr>
 
 									<tr>
 										<th scope="row">할인 가격</th>
-										<td><input  onchange="getNumber(this);"
-											onkeyup="getNumber(this);" type="text" id="salePrice"value=""
-											style="text-align: right; width: 50px"> 원
-													<input  type="hidden" id="salePrice2" name="salePrice" value="" ></td>
+										<td><input onchange="getNumber(this);"
+											onkeyup="getNumber(this);" type="text" id="salePrice"
+											value="${dto.salePrice }"
+											style="text-align: right; width: 50px"> 원 <input
+											type="hidden" id="salePrice2" name="salePrice" value=""></td>
 									</tr>
-									<tr>       
-										<th scope="row" style="width: 300px; ">상품 설명</th>
-               
+									<tr>
+										<th scope="row" style="width: 300px;">상품 설명</th>
+
 										<td><textarea type="text" id="description"
-											name="description" style="width: 390px; height:150px"></textarea></td>
+												name="description" style="width: 390px; height: 150px">${dto.description}</textarea></td>
 									</tr>
 
 									<tr>
 										<th scope="row">상세 페이지</th>
-										<td></td>                              
+										<td></td>
 									</tr>
-              
+
 									<tr>
-										<td colspan="2"><textarea rows="20" cols="124"                                                        
-												name="content" id="content">                                                                              	
-                              </textarea> <script type="text/javascript">                                        
+										<td colspan="2"><textarea rows="20" cols="124"
+												name="content" id="content">                                                                    	
+                              ${dto.content}</textarea> <script
+												type="text/javascript">                                          
 									CKEDITOR                                           
-									.replace(             
+									.replace(               
 										'content',
 										{          
 										height : 500
@@ -210,28 +223,30 @@
 										}	
 									
 									);
-									</script></td>              
+									</script></td>
 
-									</tr>                                           
-		 
+									</tr>
+
 								</tbody>
-       
+
 							</table>
-				<div class="ec-base-button ">         
-					<span class="gLeft">
-						<button type="button" class="yg_btn_30 yg_btn4" alt="목록" onclick="history.back()">LIST</button>
-					</span> <span class="gRight">
-						<button type="submit" class="yg_btn_30 yg_btn4" alt="등록" >OK</button>         
-						<button type="button" onclick="history.back()" class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
-					</span>
-				</div>             
-						</div>           
+							<div class="ec-base-button ">
+								<span class="gLeft">
+									<button type="button" class="yg_btn_30 yg_btn4" alt="목록"
+										onclick="history.back()">LIST</button>
+								</span> <span class="gRight">
+									<button type="submit" class="yg_btn_30 yg_btn4" alt="등록">OK</button>
+									<button type="button" onclick="history.back()"
+										class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>         
+				</div>
 
 			</form>
 
-		</div>             
+		</div>
 	</div>
 
 </div>
@@ -239,13 +254,15 @@
 <script type="text/javascript">
 	var itemOptionList = [],colorList=[];
 	var selectedColor,selectedSize;
-	$(function() {
-		$("#btnAdd")
-				.click(
-						function() { //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-							//  var d = new Date(); //date를 d에 대입, 날짜변수 만듦
-							// var curTime = d.toLocaleTimeString(); //현재 시간을 대입
-							var color = $("#itemColor").val();
+	<c:forEach items="${dto.itemOptionList}" var="itemOption">
+		itemOptionList.push({'color':'${itemOption.itemColor}','size':'${itemOption.itemSize}','count':'${itemOption.itemCount}'});
+		if(colorList.indexOf('${itemOption.itemColor}') == -1)
+			addColor('${itemOption.itemColor}');
+	</c:forEach>   
+	       
+
+						function addColor(color) { 
+							
 
 							if (!checkColor(color))
 								return;       
@@ -266,9 +283,9 @@
 							setColorList();       
 							 $("#itemColor").val('');
 							 $("#itemColor").focus();
-						});
+						};     
      
-	})
+
 	function checkCount(count){
 		$.each(itemOptionList, function(index, item){ 
 			if(item['color'] == selectedColor && item['size'] == selectedSize)

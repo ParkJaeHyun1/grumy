@@ -34,4 +34,16 @@ public class ItemService {
 
 		return cnt==1+dto.getItemOptionList().size() ? true:false ;
 	}
+
+	public boolean update(ItemDTO dto) {
+		int cnt = itemMapper.updateItem(dto);
+		
+		if(cnt<1)
+			return false;
+		
+		for(ItemOptionDTO itemOption : dto.getItemOptionList())
+			cnt +=itemMapper.insertItemOption(itemOption);
+
+		return cnt==1+dto.getItemOptionList().size() ? true:false ;
+	}
 }

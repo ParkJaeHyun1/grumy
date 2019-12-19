@@ -114,7 +114,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </set>
       where itemOptionNo = #{itemOptionNo}
    </update>
-
+   <update id="updateItem" parameterType="int">
+      update item
+      <set>
+         image = #{image},title=#{title},description=#{description},content=#{content},price=#{price},salePrice=#{salePrice},type=#{type}
+      </set>
+      where item = #{itemNo}
+   </update>
    <select id="itemOptionList" parameterType="List"
       resultType="OrderItemDTO">
       select o.itemOptionNo,i.title as itemTitle,i.image as

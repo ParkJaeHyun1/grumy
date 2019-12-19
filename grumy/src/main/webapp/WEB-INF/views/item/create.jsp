@@ -280,7 +280,7 @@
 			return;  
 		}
 		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count});
-		console.log(itemOptionList);	
+			
 	}
 	function clickSize(size){
 		$('#itemSize'+size).attr('class','ec-product-selected');
@@ -334,10 +334,11 @@
 		colorList.splice(colorList.indexOf(color),1);
 		
 		$.each(itemOptionList, function(index, item){ 
-			if(item['color'] == color)
-		    	delete item;
+			if(item['color'] == color)        
+				itemOptionList.splice(index,1);
 		});  
-		
+		  console.log(itemOptionList);        
+		$('#sizeList').css('display','none');                   
 		setColorList();            
 	}
 	function setColorList() {
@@ -410,7 +411,7 @@
 	function checkForm() {
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 		var str='';
-	      console.log(itemOptionList);
+	      
 		$.each(itemOptionList, function(index, item){ 
 			str+="<input type='hidden' name='itemColorList' value='"+item['color']+"'>";        
 			str+="<input type='hidden' name='itemSizeList' value='"+item['size']+"'>";
