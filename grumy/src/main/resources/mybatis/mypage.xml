@@ -39,9 +39,9 @@ order by i.state
 	
 	<select id="orderlist" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor, rownum r from
+		(select orderno, odate, orderItemNo,itemno, count, state, itemPrice,image, itemTitle, itemSize, itemColor, itemOptionNo,rownum r from
 		(select b.orderItemNo orderItemNo,i.itemno itemno, a.orderno orderno, to_char(a.odate, 'yyyy-MM-dd') odate, b.count count,  b.state state, 
-			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor
+			b.itemprice itemPrice, i.title itemTitle,i.image image, o.itemSize itemSize, o.itemColor itemColor, o.itemOptionNo itemOptionNo
 			from norder a, orderitem b ,item i, itemOption o
 			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and id = #{id}
 			<choose>

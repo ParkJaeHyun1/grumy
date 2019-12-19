@@ -72,9 +72,8 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 						<a href="${pageContext.request.contextPath}/member/logout"
 							class="log">LOGOUT</a> <a
 							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
-						<a href="/myshop/order/list.html">ORDER</a> <a
-							href="${pageContext.request.contextPath}/mypage/index">MY
-							PAGE</a> <a class=" cart"
+						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> <a
+							href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a> <a class=" cart"
 							href="${pageContext.request.contextPath}/cart/list">CART</a>
 					</div>
 				</c:when>
@@ -114,10 +113,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 										href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/review/list/">REVIEW<span></span></a></li>
-									<li class="xans-record-"><a
-										href="${pageContext.request.contextPath}/review/create">REVIEW
-											등록<span></span>
-									</a></li>
+									
 								</ul>
 							</div></li>
 					</ul>

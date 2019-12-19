@@ -52,7 +52,9 @@ console.log(listp);
 function popup(reviewNo){     
 
 	var x = document.getElementById("myDIV");
-    	
+	
+
+	
          if (x.style.display === "none") {
           	x.style.display = "block";
          	$('#reviewPicture').attr("src", "${pageContext.request.contextPath}/storage/"+listp['reviewNo'+reviewNo].picture);
@@ -69,6 +71,7 @@ function popup(reviewNo){
          	$('#reviewReplyContent').html(listp['reviewNo'+reviewNo].id+'님!'+listp['reviewNo'+reviewNo].replyContent );
 			if(listp['reviewNo'+reviewNo].replyContent == null || listp['reviewNo'+reviewNo].replyContent=='')
 				$('#reviewReply').css('display','none');
+			x.scrollTop = x.scrollHeight;
 			else
 				$('#reviewReply').css('display','block');
          } else {
@@ -289,11 +292,12 @@ function popup(reviewNo){
 															class="reviews_index_list_review__comments_link mall-link-color js-link-collapse">리뷰
 															접기</a>
 														<div class="review_edit_action">
-														<c:if test="${sessionScope.id== dto.id || sessionScope.grade=='A' }">
-															<a onclick="javascript:delete1(${dto.reviewNo})"
-																class="review_edit_action__button review_edit_action__button--delete">삭제</a>
-															<a onclick="javascript:update(${dto.reviewNo})"
-																class="review_edit_action__button review_edit_action__button--edit">수정</a>
+															<c:if
+																test="${sessionScope.id== dto.id || sessionScope.grade=='A' }">
+																<a onclick="javascript:delete1(${dto.reviewNo})"
+																	class="review_edit_action__button review_edit_action__button--delete">삭제</a>
+																<a onclick="javascript:update(${dto.reviewNo})"
+																	class="review_edit_action__button review_edit_action__button--edit">수정</a>
 															</c:if>
 															<c:if test="${sessionScope.grade=='A' }">
 																<a onclick="javascript:create_reply(${dto.reviewNo})"
@@ -332,8 +336,7 @@ function popup(reviewNo){
 													<c:when test="${empty dto.picture}">
 													</c:when>
 													<c:otherwise>
-														<img
-														onclick="popup('${dto.reviewNo}')"
+														<img onclick="popup('${dto.reviewNo}')"
 															src="${pageContext.request.contextPath}/storage/${dto.picture}"
 															class="js-review-image" width="90px" height="90px"
 															style="opacity: 1;">
@@ -343,10 +346,9 @@ function popup(reviewNo){
 											</div>
 										</div></li>
 								<!-- 이미지팝업 -->
-
-								<div
+						<div
 									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
-									style="display: none; position: absolute; z-index: 1;"
+									style="display: none; position: absolute; z-index: 1; overflow: auto;"
 									tabindex="-1" id="myDIV">
 									<div class="fullscreen_popup__background ie_png_fix"></div>
 									<div id="photo-popup-container"
