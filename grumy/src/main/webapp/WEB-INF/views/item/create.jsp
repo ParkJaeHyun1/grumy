@@ -44,7 +44,9 @@
 		num02 = num01.replace(rgx1, "");
 		num01 = setComma(num02);
 		obj.value = num01;
-
+		
+		$('#price2').val($('#price').val().replace(",",""));
+		$('#salePrice2').val($('#salePrice').val().replace(",",""));
 	}
 
 	function setComma(inNum) {
@@ -56,6 +58,9 @@
 		}
 		return outNum;
 
+	}
+	function removeComma(num){
+		
 	}
 </script>
 <style>
@@ -80,7 +85,7 @@
 			<br> <br>
 			<!-- 글 내용-->
 			<form action="create" method="post" id="frm"
-				enctype="multipart/form-data" onsubmit="return input(this)">
+				enctype="multipart/form-data" onsubmit="return checkForm()">    
 				<input type="hidden" name="id" value="${sessionScope.id }">
 				<div class="ec-base-table typeWrite ">
 					<div class="xans-element- xans-product xans-product-detail">
@@ -106,7 +111,7 @@
 													</c:if>
 												</c:forEach>
 												
-										</select> <select id="subCategory" style="width: 200px">
+										</select> <select id="subCategory" style="width: 200px" name="type">
 												<option>-서브 카테고리-</option>
 										</select></td>
 									</tr>
@@ -127,8 +132,7 @@
                
 									<tr>
 										<th scope="row">컬러 추가</th>
-										<td><input type="text" id="itemColor" style="width: 70px"
-											name="itemColor">
+										<td><input type="text" id="itemColor" style="width: 70px">
 											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
 												style="width: 50px; height: 26px; line-height: 0px">추가</button>
 										</td>
@@ -155,7 +159,7 @@
 									</tr>
 									<tr  id="countList" style="display:none">    
 										<th scope="row">재고 수량</th>
-										<td><input  type="text" id="count"	name="count" value="" style="text-align: right; width: 50px" onblur="checkCount(this.value)" onchange="getNumber(this);"
+										<td><input  type="text" id="count" value="" style="text-align: right; width: 50px" onblur="checkCount(this.value)" onchange="getNumber(this);"
 											onkeyup="getNumber(this);">
 											개</td>
 									</tr>
@@ -163,18 +167,20 @@
 
 									<tr>
 										<th scope="row">가격</th>      
-										<td><input name="mypay" onchange="getNumber(this);"
+										<td><input  onchange="getNumber(this);"
 											onkeyup="getNumber(this);" type="text" id="price"
-											name="price" value="" style="text-align: right; width: 50px">
-											원</td>
+											 value="" style="text-align: right; width: 50px">
+											원
+											<input  type="hidden" id="price2" name="price" value="" >
+											</td>
 									</tr>
 
 									<tr>
 										<th scope="row">할인 가격</th>
-										<td><input name="mypay" onchange="getNumber(this);"
-											onkeyup="getNumber(this);" type="text" id="salePrice"
-											name="salePrice" value=""
-											style="text-align: right; width: 50px"> 원</td>
+										<td><input  onchange="getNumber(this);"
+											onkeyup="getNumber(this);" type="text" id="salePrice"value=""
+											style="text-align: right; width: 50px"> 원
+													<input  type="hidden" id="salePrice2" name="salePrice" value="" ></td>
 									</tr>
 									<tr>       
 										<th scope="row" style="width: 300px; ">상품 설명</th>
@@ -185,26 +191,26 @@
 
 									<tr>
 										<th scope="row">상세 페이지</th>
-										<td></td>                       
+										<td></td>                              
 									</tr>
               
 									<tr>
 										<td colspan="2"><textarea rows="20" cols="124"                                                        
 												name="content" id="content">                                                                              	
-                              </textarea> <script type="text/javascript">                               
+                              </textarea> <script type="text/javascript">                                        
 									CKEDITOR                                           
 									.replace(             
 										'content',
 										{          
 										height : 500
 										}              
-										'style',
+										'style',  
 										{          
-										width : 1000             
+										width : 600             
 										}	
 									
 									);
-									</script></td>
+									</script></td>              
 
 									</tr>                                           
 		 
@@ -215,13 +221,13 @@
 					<span class="gLeft">
 						<button type="button" class="yg_btn_30 yg_btn4" alt="목록" onclick="history.back()">LIST</button>
 					</span> <span class="gRight">
-						<button id="save" type="submit" class="yg_btn_30 yg_btn4" alt="등록">OK</button>
+						<button type="submit" class="yg_btn_30 yg_btn4" alt="등록" >OK</button>         
 						<button type="button" onclick="history.back()" class="yg_btn_30 yg_btn4" alt="취소">CANCEL</button>
 					</span>
 				</div>             
-						</div>
+						</div>           
 					</div>
-				</div>   
+				</div>         
 
 			</form>
 
@@ -340,7 +346,7 @@
 			$('#colorList').css('display', 'table-row');
 		else
 			$('#colorList').css('display', 'none');
-	}
+	}      
 	function checkColor(color) {
 
 		if (color == null || color == '') {
@@ -350,15 +356,24 @@
 	         alert('이미 등록된 색상입니다.');
 	         return false;
 	    }
-		return true;    
+		return true;     
 	}    
 
 	// category 시작
 	   function mainCategory(e) {
-
+  
 	      var target = document.getElementById("subCategory");
 	      target.options.length = 0;
 
+	      <c:forEach items="${typeList}" var="item">
+			if('${item.parentType}' == e.value || '${item.type}' == e.value){
+				 var opt = document.createElement("option");
+		         opt.value = '${item.type}';
+		         opt.innerHTML = '${item.type}';
+		         target.appendChild(opt);
+
+			}	      
+	  	</c:forEach>    
     
 	      
 	   }            
@@ -384,17 +399,24 @@
 
 						}
 					},
-					fOnAppLoad : function() {
+					fOnAppLoad : function() {          
 						//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
 						oEditors.getById["content"].exec("PASTE_HTML", [ " " ]);
 					},
 					fCreator : "createSEditor2"
 				});
 
-		//저장버튼 클릭시 form 전송
-		$("#save").click(function() {
-			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-			$("#frm").submit();
-		});
 	});
+	function checkForm() {
+		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		var str='';
+	      console.log(itemOptionList);
+		$.each(itemOptionList, function(index, item){ 
+			str+="<input type='hidden' name='itemColorList' value='"+item['color']+"'>";        
+			str+="<input type='hidden' name='itemSizeList' value='"+item['size']+"'>";
+			str+="<input type='hidden' name='itemCountList' value='"+item['count']+"'>";       
+			
+		});    
+		$('#frm').append(str);    
+	}
 </script>
