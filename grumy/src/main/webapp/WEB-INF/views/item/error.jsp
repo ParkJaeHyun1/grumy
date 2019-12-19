@@ -23,7 +23,7 @@
 					<div class="secret">
 						<fieldset >
 							<p class="info">
-								글 작성자가 아닙니다.<br> <strong class="txtEm">삭제를 실패하였습니다.</strong><br>
+								<br> <strong class="txtEm">삭제를 실패하였습니다.</strong><br>
 								
 							</p>
 							<br><br>
