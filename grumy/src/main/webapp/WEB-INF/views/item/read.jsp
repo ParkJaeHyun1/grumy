@@ -1339,7 +1339,7 @@
 
 
 
-
+				<div id="contents">
 					<!-- 상품 Q&A -->
 					<div id="prdQnA" class="ec-base-tab grid5">
 						<ul class="menu">
@@ -1447,7 +1447,7 @@
 						</div>
 					</div>
 					<!-- //상품Q&A -->
-
+</div>
 				</div>
 				<script>
     // 추가이미지 맞추기
