@@ -143,9 +143,9 @@ function update(orderno,ostates, deliveryno){
 										<th scope="row">송장번호</th>
 										<td>
 											<c:if test = "${readP.state != '입금대기' && readP.state != '신규주문'}">
-												<input type="text" id="postcodeno" readonly/>
+												<input type="text" id="postcodeno" value="${readP.orderItemList[0].deliveryNo }" readonly/>
 												<input type="button" class="yg_btn_28 yg_btn3" id="pcodenobutton" value="송장번호 입력/수정"/>
-												<span id="nostate">송장번호를 입력해주세요</span>
+												<span id="nostate">송장번호를 입력해주세요 </span>
 											</c:if>
 										</td>
 									</tr>
