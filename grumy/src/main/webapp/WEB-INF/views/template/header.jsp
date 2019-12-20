@@ -87,7 +87,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<div class="xans-element- xans-layout xans-layout-category main_cate">
 				<div class="position">
 					<ul>
-						<li class="xans-record-"><a href=""
+						<li class="xans-record-"><a href="#"
 							onmouseenter="blockSubMenu('COMMUNITY')"
 							onmouseleave="noneSubMenu('COMMUNITY')"
 							style="font-weight: unset">COMMUNITY</a>
@@ -176,7 +176,8 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 					<ul>
 						<li class="xans-record-"><a
 							href="${pageContext.request.contextPath}/item/list/?type=BEST20">BEST20</a></li>
-
+              
+                                    
 						<li class="xans-record-"><a
 							href="${pageContext.request.contextPath}/item/list/?type=OUTER"
 							onmouseenter="blockSubMenu('OUTER')"
