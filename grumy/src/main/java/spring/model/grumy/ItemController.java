@@ -185,6 +185,7 @@ public class ItemController {
 
 		int qtotal = mapper.qtotal(map);
 		int rtotal = mapper.rtotal();
+		System.out.println("리뷰갯수:"+rtotal);
 
 		String qpaging = Utility.paging2(qtotal, nowPage, recordPerPage,itemNo);
 

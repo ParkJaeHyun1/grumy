@@ -675,7 +675,7 @@
 											<ul>
 												<li><a href="#prdReview">REVIEW <span
 														class="crema-product-reviews-count"
-														data-product-code="3596">${rtotal}</span></a></li>
+														>${rtotal}</span></a></li>
 												<li><a href="#prdQnA">Q &amp; A<span>
 															${qtotal}</span></a></li>
 											</ul>
@@ -734,7 +734,7 @@
 
 							<li><a href="#prdReview">REVIEW <span
 									class="cnt crema-product-reviews-count"
-									data-product-code="3596">${rtotal }</span></a></li>
+									>${rtotal }</span></a></li>
 							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 
@@ -827,9 +827,9 @@
 						<ul class="menu">
 							<li><a href="#prdDetail">DETAIL INFO</a></li>
 
-							<li class="selected"><a href="#prdReview">REVIEW <span
+							<li><a href="#prdReview">REVIEW <span
 									class="cnt crema-product-reviews-count"
-									data-product-code="3596">${rtotal }</span></a></li>
+									>${rtotal }</span></a></li>
 							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 						<div class="board">
@@ -892,7 +892,7 @@ span.star, span.camera, .sprite_comment {
 			<div class="reviews_index__head">
 				<div class="reviews_index__title_bar">
 					<div class="reviews_index__title">
-						<strong>REVIEW</strong><span class="divider">|</span>내가 작성한 리뷰
+						<strong>REVIEW</strong><span class="divider">|</span>문의글 혹은 악의적인 비방글은 무통보 삭제된다는 점 유의해주세요^^
 					</div>
 				</div>
 				<script

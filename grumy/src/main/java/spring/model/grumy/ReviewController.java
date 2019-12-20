@@ -82,13 +82,11 @@ public class ReviewController {
 
 	@GetMapping("/review/delete")
 	public String delete(int reviewNo) {
-		int flag = mapper.delete(reviewNo);
+		 mapper.delete(reviewNo);
 
-		if (flag == 1) {
+		
 			return "redirect:/review/list";
-		} else {
-			return null;
-		}
+		
 	}
 
 	@PostMapping("/review/create")

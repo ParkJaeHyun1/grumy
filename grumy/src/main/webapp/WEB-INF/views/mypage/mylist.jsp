@@ -217,6 +217,65 @@ span.star, span.camera, .sprite_comment {
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script src="//www.google-analytics.com/analytics.js"></script>
+<script>
+var listp={};
+<c:forEach items="${listp}" var="dto">
+	listp['reviewNo${dto.reviewNo}'] = {'picture':'${dto.picture}','itemPicture':'${dto.itemPicture}','itemTitle':'${dto.itemTitle}','id':'${dto.id}','height':'${dto.height}','weight':'${dto.weight}','mySize':'${dto.mySize}','itemColor':'${dto.itemColor}','itemSize':'${dto.itemSize}','content':'${dto.content}','replyContent':'${dto.replyContent}'};
+</c:forEach>         
+console.log(listp);
+function popup(reviewNo){     
+var x = document.getElementById("myDIV");
+	   if (x.style.display === "none") {
+          	x.style.display = "block";
+          	x.scrollTop = x.scrollHeight;
+         	$('#reviewPicture').attr("src", "${pageContext.request.contextPath}/storage/"+listp['reviewNo'+reviewNo].picture);
+         	$('#reviewItemPicture').attr("src", "${pageContext.request.contextPath}/images/"+listp['reviewNo'+reviewNo].itemPicture);
+         	$('#reviewItemTitle').html(listp['reviewNo'+reviewNo].itemTitle);
+         	$("#reviewItemTitle").attr("href", "${pageContext.request.contextPath}/item/read?itemNo="+reviewNo);
+         	$('#reviewID').html(listp['reviewNo'+reviewNo].id);
+         	$('#reviewHeight').html(listp['reviewNo'+reviewNo].height);
+         	$('#reviewWeight').html(listp['reviewNo'+reviewNo].weight);
+         	$('#reviewMySize').html(listp['reviewNo'+reviewNo].mySize);
+         	$('#reviewItemColor').html(listp['reviewNo'+reviewNo].itemColor);
+         	$('#reviewItemSize').html(listp['reviewNo'+reviewNo].itemSize);
+         	$('#reviewContent').html(listp['reviewNo'+reviewNo].content);
+         	$('#reviewReplyContent').html(listp['reviewNo'+reviewNo].id+'님!'+listp['reviewNo'+reviewNo].replyContent );
+			if(listp['reviewNo'+reviewNo].replyContent == null || listp['reviewNo'+reviewNo].replyContent==''){
+				$('#reviewReply').css('display','none');
+				}else
+				$('#reviewReply').css('display','block');
+         } else {
+          x.style.display = "none";
+      	 }
+   	return;
+}
+
+    function popup2(){
+       var x = document.getElementById("myDIV");
+       x.style.display = "none";
+    }
+  function create_reply(reviewNo) {
+	   var url = "create_reply";
+      url += "?reviewNo="+reviewNo;
+      
+      location.href = url;
+   }
+   function update(reviewNo){
+      var url = "update";
+      url += "?reviewNo="+reviewNo;
+      location.href = url;
+   }
+   function delete1(reviewNo) {
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+ 	var url = "delete";
+         url += "?reviewNo="+reviewNo;
+          location.href=url;
+ }else{   //취소
+   return false;
+  }
+ }
+
+</script>
 </head>
 <body class="unknown unknown-78 windows_os reviews index widget_1 ko-KR"
 	lang="ko-KR" data-action="index" data-brand-code="slowand.com"

@@ -50,12 +50,8 @@ var listp={};
 </c:forEach>         
 console.log(listp);
 function popup(reviewNo){     
-
-	var x = document.getElementById("myDIV");
-	
-
-	
-         if (x.style.display === "none") {
+var x = document.getElementById("myDIV");
+	   if (x.style.display === "none") {
           	x.style.display = "block";
           	x.scrollTop = x.scrollHeight;
          	$('#reviewPicture').attr("src", "${pageContext.request.contextPath}/storage/"+listp['reviewNo'+reviewNo].picture);
@@ -96,10 +92,10 @@ function popup(reviewNo){
       location.href = url;
    }
    function delete1(reviewNo) {
- if (confirm("정말 삭제하시겠습니까??") == true){    //확인
- var url = "delete";
-          url += "?reviewNo="+reviewNo;
-           location.href=url;
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+ 	var url = "delete";
+         url += "?reviewNo="+reviewNo;
+          location.href=url;
  }else{   //취소
    return false;
   }
@@ -346,7 +342,7 @@ function popup(reviewNo){
 											</div>
 										</div></li>
 								<!-- 이미지팝업 -->
-						<div
+								<div
 									class="show_photo_review fullscreen_popup review fullscreen_popup--loaded"
 									style="display: none; position: absolute; z-index: 1; overflow: auto;"
 									tabindex="-1" id="myDIV">

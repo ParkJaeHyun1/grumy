@@ -40,25 +40,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select reviewNo, id, content,
 		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
 		from(
-		select rownum rnum,reviewNo, id, content,
-		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
-		from(
-		select reviewNo, id,r.content,r.picture,i.image as
-		itemPicture,i.title as itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
-		from item i, review r,
-		itemOption o
-		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo
-		ORDER BY reviewNo desc
-		))
+			select rownum rnum,reviewNo, id, content,
+			picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
+			from(
+				select reviewNo, id,r.content,r.picture,i.image as
+				itemPicture,i.title as itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
+				from item i, review r,itemOption o
+				where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo 
+				ORDER BY reviewNo desc
+				)
+				where itemNo=#{itemNo}
+			)
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 	</select>
 	
 	<select id="rtotal" parameterType="int" resultType="int">
- select count(*)
-    from review  join itemoption 
-    on review.itemOptionNo = itemoption.itemOptionNo
-    where itemno= #{itemno,  jdbcType=VARCHAR}
-    
+    select count(*)
+			from(
+				select reviewNo, id,r.content,r.picture,i.image as
+				itemPicture,i.title as itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
+				from item i, review r,itemOption o
+				where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo 
+				)
+				where itemNo=#{itemNo, jdbcType=INTEGER }
    	</select>
    	
 
