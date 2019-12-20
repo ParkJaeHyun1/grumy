@@ -140,7 +140,7 @@
 										<th scope="row">컬러 추가</th>
 										<td><input type="text" id="itemColor" style="width: 70px">
 											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
-												style="width: 50px; height: 26px; line-height: 0px" onclick="addColor(this.value)">추가</button>
+												style="width: 50px; height: 26px; line-height: 0px" onclick="addColor(itemColor.value)">추가</button>      
 										</td>
 									</tr>
 									<tr id="colorList" style="display: none">  

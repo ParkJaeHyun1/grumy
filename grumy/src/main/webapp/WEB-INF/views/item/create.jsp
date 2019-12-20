@@ -7,16 +7,14 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/se2/js/service/HuskyEZCreator.js"
-	charset="utf-8"></script>
+
 <script src="https://www.slowand.com/yangji/js/jquery.bxslider.min.js"></script>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="shortcut icon"
 	href="https://slowand.com/web/upload/favicon_20170717165926.ico" />
 <script type="text/javascript"
-	src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
+	src="https://slowand.com/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>            
 <script type="text/javascript"
 	src="https://slowand.com///wcs.naver.net/wcslog.js"></script>
 <script type="text/javascript"
@@ -26,7 +24,7 @@
 	href="https://slowand.com//ind-script/optimizer.php?filename=tZXPagMhEMbvSa59jiFpoS9QeuqpfYJRp7um6hj_QPbt6-4SSAiFYvQiqPP9Rj4dB0a2BPtDAB94CGghUOQcJIGMEb4DuwSSrWW3KwtP8J94kpvIJifNbiP4XCnMKdUmNThRqJMmFIb-kKL38DWyh89rxvvCKDEqy1ShFIxBXelIbnOkEAGdo8P-9Rl8FkbL7ZisgahoqyjqwUH80e5lAdmS29DlDKAooTZNkaiUnv3BNljJ2bO70N8ePG9xN4KYY4NFhwMdlo39Ojb1IZDB2Yd6aHmbnMutY9RyyXBXXY8C14WGwFIfZUKbrDtAE7NJ2ncgj2R6YO8rvRkZB-0wUQ-XUXSg3v3RzcA3XaOhCaaHuSVK1mMndMNRr-2o9IMmoOMpU5h24hyNVjetsJ75gYln0C8&type=css&k=6c148a7d892bef3a2d344af511264df8f86d3c4e&t=1547093551" />
 <link rel="stylesheet" type="text/css"
 	href="https://slowand.com//ind-script/optimizer.php?filename=rZJBbgMxCEX3mW57DpQ2Uvc9QnMCgolN4wHL2K3m9nXSLrpOvEF8ffH4SECylYFp6c7VAVX5Zf_2CqWfstCS2prBAy-BXaKCX0QPsKHGTwFyhyOqP43mGe4BXQmrhZ4ZMm7WG1gNXN_RL9zIuraZ7FKHpPbBxI-A_2gndKHbFqbdELwbBteZgdeem3iyckxSimicCSfTrzEvpoXu5_57hcQY5t5P2Dha3abEO5u1R-JhKQ6i3jBWXL8lRG43a_9br-Qf&type=css&k=faeacdfe314ed4f276ee083d5adec203b0542fc7&t=1566806466" />
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script>
 	//한글만 onKeyPress="hangul();"  --IE호환성을 위해... 이렇게..뿌니ㅎ;
 
@@ -104,7 +102,7 @@
 
 										<td><select onchange="mainCategory(this)"
 											style="width: 200px;">
-												<option>-메인 카테고리-</option>
+												<option >-메인 카테고리-</option>
 												<c:forEach var="dto" items="${typeList}">
 													<c:if test="${empty dto.parentType}">
 														<option value="${dto.type}">${dto.type}</option>	
@@ -196,21 +194,8 @@
               
 									<tr>
 										<td colspan="2"><textarea rows="20" cols="124"                                                        
-												name="content" id="content">                                                                              	
-                              </textarea> <script type="text/javascript">                                        
-									CKEDITOR                                           
-									.replace(             
-										'content',
-										{          
-										height : 500
-										}              
-										'style',  
-										{          
-										width : 600             
-										}	
-									
-									);
-									</script></td>              
+												name="ir1" id="ir1" style="display:none">                                                                                	
+                              </textarea></td>              
 
 									</tr>                                           
 		 
@@ -235,7 +220,15 @@
 	</div>
 
 </div>
-
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+ oAppRef: oEditors,
+ elPlaceHolder: "ir1",
+ sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+ fCreator: "createSEditor2"
+});
+</script>
 <script type="text/javascript">
 	var itemOptionList = [],colorList=[];
 	var selectedColor,selectedSize;
@@ -381,33 +374,7 @@
 
 	   //category 끝
 
-	var oEditors = [];
-	$(function() {
-		nhn.husky.EZCreator
-				.createInIFrame({
-					oAppRef : oEditors,
-					elPlaceHolder : "content", //textarea에서 지정한 id와 일치해야 합니다.      
-					//SmartEditor2Skin.html 파일이 존재하는 경로
-					sSkinURI : "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",
-					htParams : {
-						// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseToolbar : true,
-						// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseVerticalResizer : true,
-						// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseModeChanger : false,
-						fOnBeforeUnload : function() {
 
-						}
-					},
-					fOnAppLoad : function() {          
-						//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-						oEditors.getById["content"].exec("PASTE_HTML", [ " " ]);
-					},
-					fCreator : "createSEditor2"
-				});
-
-	});
 	function checkForm() {
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 		var str='';

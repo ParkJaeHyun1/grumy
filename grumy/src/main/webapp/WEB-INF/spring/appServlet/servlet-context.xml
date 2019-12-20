@@ -32,6 +32,5 @@
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 	<beans:bean id="naverLoginBO" class="spring.model.member.NaverLoginBO" />
 
-
 	
 </beans:beans>

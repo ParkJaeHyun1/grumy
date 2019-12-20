@@ -25,7 +25,7 @@
 <definition name="/item/create" extends="main">
 		<put-attribute name="title"	value="item 등록 페이지"></put-attribute>
 		<put-attribute name="body"
-			value="/WEB-INF/views/item/create.jsp" />
+			value="/WEB-INF/views/item/create.jsp" />  
 	</definition>
 	
 <definition name="/item/search" extends="main">
