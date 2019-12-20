@@ -739,7 +739,8 @@
 												<li><a href="#prdReview">REVIEW <span
 														class="crema-product-reviews-count"
 														data-product-code="3596">0</span></a></li>
-												<li><a href="#prdQnA">Q &amp; A<span> ${qtotal}</span></a></li>
+												<li><a href="#prdQnA">Q &amp; A<span>
+															${qtotal}</span></a></li>
 											</ul>
 										</div>
 										<!-- //갯수 버튼 -->
@@ -905,13 +906,7 @@
            products_reviews_summary--small_without_score
            "
 						data-url="/slowand.com/products/reviews?app=0&amp;atarget=reviews&amp;iframe=1&amp;iframe_id=crema-product-reviews-2&amp;parent_url=https%3A%2F%2Fwww.slowand.com%2Fproduct%2Fslowmade-%25EB%258B%25A4%25ED%2581%25AC%25ED%2586%25A4-%25EC%25B2%25B4%25ED%2581%25AC%25ED%259E%2588%25EB%2593%25A0%25EC%25BD%2594%25ED%258A%25B8-%25ED%2594%258C%25EB%25A6%25AC%25EC%258A%25A4%25EC%2595%2588%25EA%25B0%2590-one-color%2F3605%2Fcategory%2F24%2Fdisplay%2F1%2F&amp;product_code=3605&amp;secure_user_name=V2587b3024e17dd26f3a4e3e16d2464283&amp;secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100">
-						<div class="products_reviews_summary__inner">
-
-
-						
-
-
-						</div>
+						<div class="products_reviews_summary__inner"></div>
 					</div>
 
 
@@ -933,9 +928,7 @@
 											<div class="reviews_index__no_data_message">아직 작성한 리뷰가
 												없습니다.</div>
 											<ul class="reviews_index__reviews reviews">
-
-												<c:forEach var="dto" items="${rlist}">
-
+												<c:forEach var="dto" items="${rlist}" varStatus="status">
 													<li id="review_${dto.reviewNo}"
 														class="review reviews_index_list_review "><a
 														class="reviews_index_list_review__product_image  js-link-iframe"
@@ -1230,7 +1223,6 @@
 														</div>
 													</div>
 
-
 												</c:forEach>
 											</ul>
 										</div>
@@ -1277,76 +1269,76 @@
 
 
 
-				<div id="contents">
-					<!-- 상품 Q&A -->
-					<div id="prdQnA" class="ec-base-tab grid5">
-						<ul class="menu">
-							<li><a href="#prdDetail">DETAIL INFO</a></li>
+					<div id="contents">
+						<!-- 상품 Q&A -->
+						<div id="prdQnA" class="ec-base-tab grid5">
+							<ul class="menu">
+								<li><a href="#prdDetail">DETAIL INFO</a></li>
 
 
-							<li><a href="#prdReview">REVIEW <span
-									class="cnt crema-product-reviews-count"
-									data-product-code="3596">0</span></a></li>
-							<li class="selected"><a href="#prdQnA">Q&amp;A <span
-									class="cnt">${qtotal }</span></a></li>
-						</ul>
-						<div class="board">
-							<h3>Q&amp;A</h3>
-							<form action="${pageContext.request.contextPath}/member/login"
-								id="loginForm2" class="form-horizontal" method="post"
-								enctype="application/x-www-form-urlencoded;charset=UTF-8"
-								style="display: none">
-								<input type="hidden" name="url"
-									value="/item/read?itemNo=${dto.itemNo }#prdQnA"></input>
-							</form>
-							<div class="xans-element- xans-product xans-product-qna ">
-								<div class="ec-base-table typeList">
+								<li><a href="#prdReview">REVIEW <span
+										class="cnt crema-product-reviews-count"
+										data-product-code="3596">0</span></a></li>
+								<li class="selected"><a href="#prdQnA">Q&amp;A <span
+										class="cnt">${qtotal }</span></a></li>
+							</ul>
+							<div class="board">
+								<h3>Q&amp;A</h3>
+								<form action="${pageContext.request.contextPath}/member/login"
+									id="loginForm2" class="form-horizontal" method="post"
+									enctype="application/x-www-form-urlencoded;charset=UTF-8"
+									style="display: none">
+									<input type="hidden" name="url"
+										value="/item/read?itemNo=${dto.itemNo }#prdQnA"></input>
+								</form>
+								<div class="xans-element- xans-product xans-product-qna ">
+									<div class="ec-base-table typeList">
 
-									<table border="1" summary="">
-										<colgroup>
-											<col style="width: 70px;" />
-											<col style="width: auto" />
-											<col style="width: 100px;" />
-											<col style="width: 100px;" />
-										</colgroup>
-										<thead
-											class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
-											<tr>
-												<th style="width: 70px;">NO</th>
-												<th style="width: auto;">SUBJECT</th>
-												<th style="width: 100px">WRITER</th>
-												<th style="width: 100px">DATE</th>
-											</tr>
-										</thead>
-										<tbody
-											class="xans-element- xans-board xans-board-list-4 xans-board-list xans-board-4 center">
-											<c:if test="${empty qlist }">
+										<table border="1" summary="">
+											<colgroup>
+												<col style="width: 70px;" />
+												<col style="width: auto" />
+												<col style="width: 100px;" />
+												<col style="width: 100px;" />
+											</colgroup>
+											<thead
+												class="xans-element- xans-board xans-board-listheader-4 xans-board-listheader xans-board-4 ">
 												<tr>
-													<td></td>
-													<td>등록된 글이 없습니다.</td>
-													<td></td>
-													<td></td>
+													<th style="width: 70px;">NO</th>
+													<th style="width: auto;">SUBJECT</th>
+													<th style="width: 100px">WRITER</th>
+													<th style="width: 100px">DATE</th>
 												</tr>
-											</c:if>
-											<c:forEach var="dto" items="${qlist }" varStatus="status">
-												<tr>
-													<td>${qtotal-status.index}</td>
-													<td class="subject left txtBreak"><c:if
-															test="${not empty dto.itemTitle }">
-															<span class="txtNum">${dto.itemTitle }</span>
-															<br>
-														</c:if> <a href="javascript:read(${dto.board_no });"> <c:if
-																test="${dto.indent ==1 }">
-																<img
-																	src="${pageContext.request.contextPath }/images/re.gif" />
-															</c:if> <img
-															src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }
-															<c:if
-																test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
-																<img
-																	src="${pageContext.request.contextPath }/images/new.gif" />
-															</c:if></a></td>
-													<td><script type="text/javascript">
+											</thead>
+											<tbody
+												class="xans-element- xans-board xans-board-list-4 xans-board-list xans-board-4 center">
+												<c:if test="${empty qlist }">
+													<tr>
+														<td></td>
+														<td>등록된 글이 없습니다.</td>
+														<td></td>
+														<td></td>
+													</tr>
+												</c:if>
+												<c:forEach var="dto" items="${qlist }" varStatus="status">
+													<tr>
+														<td>${qtotal-status.index}</td>
+														<td class="subject left txtBreak"><c:if
+																test="${not empty dto.itemTitle }">
+																<span class="txtNum">${dto.itemTitle }</span>
+																<br>
+															</c:if> <a href="javascript:read(${dto.board_no });"> <c:if
+																	test="${dto.indent ==1 }">
+																	<img
+																		src="${pageContext.request.contextPath }/images/re.gif" />
+																</c:if> <img
+																src="${pageContext.request.contextPath }/images/secret.png" />${dto.subject }
+																<c:if
+																	test="${util:newImg(fn:substring(dto.wdate,0,10)) }">
+																	<img
+																		src="${pageContext.request.contextPath }/images/new.gif" />
+																</c:if></a></td>
+														<td><script type="text/javascript">
 										var len = ('${dto.writer}'.length);
 										var name = '${dto.writer}'.replace(
 												'${dto.writer}'.substr(1,
@@ -1356,36 +1348,36 @@
 										}
 											document.write(name);
 										</script></td>
-													<td><span class="txtNum">${dto.wdate}</span></td>
-												</tr>
+														<td><span class="txtNum">${dto.wdate}</span></td>
+													</tr>
 
-											</c:forEach>
+												</c:forEach>
 
-										</tbody>
-									</table>
+											</tbody>
+										</table>
+									</div>
+
+
 								</div>
+								<div>
+									<p align="right">
+										<button class="yg_btn_30 yg_btn4"
+											onclick="javascript:createCommunity();">WRITE</button>
+										<button class="yg_btn_30 yg_btn4"
+											onclick="location.href='${pageContext.request.contextPath}/community/list'">VIEW
+											ALL</button>
+									</p>
+								</div>
+								${qpaging }
+
+
+
 
 
 							</div>
-							<div>
-								<p align="right">
-									<button class="yg_btn_30 yg_btn4"
-										onclick="javascript:createCommunity();">WRITE</button>
-									<button class="yg_btn_30 yg_btn4"
-										onclick="location.href='${pageContext.request.contextPath}/community/list'">VIEW
-										ALL</button>
-								</p>
-							</div>
-							${qpaging }
-
-
-
-
-
 						</div>
+						<!-- //상품Q&A -->
 					</div>
-					<!-- //상품Q&A -->
-</div>
 				</div>
 				<script>
     // 추가이미지 맞추기

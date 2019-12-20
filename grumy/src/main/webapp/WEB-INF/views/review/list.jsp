@@ -57,6 +57,7 @@ function popup(reviewNo){
 	
          if (x.style.display === "none") {
           	x.style.display = "block";
+          	x.scrollTop = x.scrollHeight;
          	$('#reviewPicture').attr("src", "${pageContext.request.contextPath}/storage/"+listp['reviewNo'+reviewNo].picture);
          	$('#reviewItemPicture').attr("src", "${pageContext.request.contextPath}/images/"+listp['reviewNo'+reviewNo].itemPicture);
          	$('#reviewItemTitle').html(listp['reviewNo'+reviewNo].itemTitle);
@@ -69,10 +70,9 @@ function popup(reviewNo){
          	$('#reviewItemSize').html(listp['reviewNo'+reviewNo].itemSize);
          	$('#reviewContent').html(listp['reviewNo'+reviewNo].content);
          	$('#reviewReplyContent').html(listp['reviewNo'+reviewNo].id+'님!'+listp['reviewNo'+reviewNo].replyContent );
-			if(listp['reviewNo'+reviewNo].replyContent == null || listp['reviewNo'+reviewNo].replyContent=='')
+			if(listp['reviewNo'+reviewNo].replyContent == null || listp['reviewNo'+reviewNo].replyContent==''){
 				$('#reviewReply').css('display','none');
-			x.scrollTop = x.scrollHeight;
-			else
+				}else
 				$('#reviewReply').css('display','block');
          } else {
           x.style.display = "none";
@@ -478,8 +478,6 @@ function popup(reviewNo){
 			</div>
 		</div>
 	</div>
-	
-	
 	<div class="tui-tooltip" style="display: none;">
 		<div class="arrow"></div>
 		<span class="text"></span>

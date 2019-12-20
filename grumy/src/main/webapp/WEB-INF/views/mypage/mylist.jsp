@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="util" uri="/ELFunctions"%>
+<style id="stndz-style"></style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
@@ -45,6 +46,11 @@ span.star, span.camera, .sprite_comment {
 		location.href = url;
 	}
 </script>
+<style>
+	#content{
+		width: 1260px;
+	}
+</style>
 
 <div id="container">
 	<div id="contents">
@@ -214,7 +220,7 @@ span.star, span.camera, .sprite_comment {
 						<ul class="reviews_index__reviews reviews">
 							<c:forEach var="dto" items="${rlist}">
 							<c:if test="${sessionScope.id== dto.id }">
-							</c:if>
+							
 								<li id="review_${dto.reviewNo}"
 									class="review reviews_index_list_review "><a
 									class="reviews_index_list_review__product_image  js-link-iframe"
@@ -481,6 +487,7 @@ span.star, span.camera, .sprite_comment {
 										<div class="sprites-circle-close-button ie_png_fix"></div>
 									</div>
 								</div>
+								</c:if>
 							</c:forEach>
 						</ul>
 					</div>
@@ -489,3 +496,37 @@ span.star, span.camera, .sprite_comment {
 			</div>
 		</div>
 	</div>
+	
+		<div class="tui-tooltip" style="display: none;">
+		<div class="arrow"></div>
+		<span class="text"></span>
+	</div>
+	<!--       더보기기능 -->
+	<script
+		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
+	<!--[if IE 7]>
+      <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
+    <![endif]-->
+	<script>
+         //<![CDATA[
+         var ajax_setup_args = {
+            cache : true,
+            dataType : "script",
+            accepts : {
+               script : "text/javascript, application/javascript"
+            }
+         };
+         $.ajaxSetup(ajax_setup_args);
+         //]]>
+      </script>
+	<script>
+         //<![CDATA[
+         //]]>
+      </script>
+      <form id="form-upload-image" class="hidden" data-type="json"
+		enctype="multipart/form-data"
+		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
+		accept-charset="UTF-8" data-remote="true" method="post">
+		<input name="utf8" type="hidden" value="✓">
+		<div id="upload-fields-container"></div>
+	</form>
