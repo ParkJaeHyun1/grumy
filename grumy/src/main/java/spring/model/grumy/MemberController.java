@@ -45,7 +45,7 @@ public class MemberController {
 
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
-
+ 
 	@Autowired
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
