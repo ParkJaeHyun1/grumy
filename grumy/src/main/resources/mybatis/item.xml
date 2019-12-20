@@ -22,7 +22,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
        	
 	</select>
-	<select id="rlist" resultType="reviewDTO">
+	
+	
+	<select id="qtotal" parameterType="Map" resultType="int">
+	select count(*) 
+	from(
+	select board_no, subject, ref, writer, wdate, check_read, indent, rownum r
+	from(
+		select board_no, subject, ref, writer, wdate, check_read, indent
+        from board
+        where lev='A' and type='상품' and itemNo = #{itemNo}
+        order by ref desc,board_no asc
+       	))
+   	</select>
+   	
+   	<select id="rlist" resultType="reviewDTO">
 		select reviewNo, id, content,
 		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
 		from(
@@ -37,22 +51,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ORDER BY reviewNo desc
 		))
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
-		
-		
 	</select>
 	
-	<select id="qtotal" parameterType="Map" resultType="int">
-	select count(*) 
-	from(
-	select board_no, subject, ref, writer, wdate, check_read, indent, rownum r
-	from(
-		select board_no, subject, ref, writer, wdate, check_read, indent
-        from board
-        where lev='A' and type='상품' and itemNo = #{itemNo}
-        order by ref desc,board_no asc
-       	))
-     
-	</select>
+	<select id="rtotal" parameterType="int" resultType="int">
+ select count(*)
+    from review  join itemoption 
+    on review.itemOptionNo = itemoption.itemOptionNo
+    where itemno= #{itemno,  jdbcType=VARCHAR}
+    
+   	</select>
+   	
 
    <select id="color" parameterType="Map" resultType="String">
       select

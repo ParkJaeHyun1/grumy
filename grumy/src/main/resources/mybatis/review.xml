@@ -85,8 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<select id="pcount" resultType="int">
 		select count(*) as pcount
-		from
-		review
+		from review
 		where picture is not null
 	</select>
 

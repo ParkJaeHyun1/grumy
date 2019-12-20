@@ -184,11 +184,13 @@ public class ItemController {
 		ArrayList<reviewDTO> rlist = mapper.rlist(map);
 
 		int qtotal = mapper.qtotal(map);
+		int rtotal = mapper.rtotal();
 
 		String qpaging = Utility.paging2(qtotal, nowPage, recordPerPage,itemNo);
 
 		request.setAttribute("qpaging", qpaging);
 		request.setAttribute("qtotal", qtotal);
+		request.setAttribute("rtotal", rtotal);
 		request.setAttribute("qlist", qlist);
 		request.setAttribute("rlist", rlist);
 

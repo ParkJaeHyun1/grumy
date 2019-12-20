@@ -3,32 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="util" uri="/ELFunctions"%>
-<style id="stndz-style"></style>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport"
-	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="stylesheet" media="all"
-	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
-<link rel="stylesheet" type="text/css"
-	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
-<style type="text/css">
-span.star, span.camera, .sprite_comment {
-	background-image:
-		url(https://assets5.cre.ma/p/slowand-com/brand_settings/00/00/00/00/01/sprite/1988520c3d2f19ba.png);
-}
 
-.mall-link-color {
-	color: #7a582f;
-}
-
-.review_comment_color {
-	color: #6db67e;
-}
-</style>
-<script type="text/javascript" async=""
-	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
-<script src="//www.google-analytics.com/analytics.js"></script>
 <script type="text/javascript">
 	function readc(no) {
 		var url = "${pageContext.request.contextPath}/community/read";
@@ -201,12 +176,68 @@ span.star, span.camera, .sprite_comment {
 </div>
 
 
+<div id="container">
+	<div id="contents">
+		<div
+			class="xans-element- xans-board xans-board-listpackage-4 xans-board-listpackage xans-board-4 ">
+			<div
+				class="xans-element- xans-board xans-board-title-4 xans-board-title xans-board-4 ">
+				<div class="title" style="text-align: center">
+					<h1>
+						<font color="#555555">REVIEW</font>
+					</h1>
+				</div>
+			</div>
+			<div class="crema-reviews crema-applied">
+				<html>
+<head>
+<style id="stndz-style"></style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" media="all"
+	href="https://assets5.cre.ma/latte/assets/pc/application-63fd329e35e3773c28e1d8df536aae454ce5b6cd92e4611da41d87d241c8e733.css">
+<link rel="stylesheet" type="text/css"
+	href="https://www.slowand.com/ind-script/optimizer.php?filename=tZXPbsMgDMbv6a57DivtpD0Pf9yEjmCGjdq8_SjtYVUvWwoXJAz-Jf4sf8BMC8K4TxATTUktkJApJ4NgmOGYKAgYWhYKbyXwDn-5j2Zg8lkchUHTZWNiFtn6Ua9WTNtSRWmPv1LR7DJjYlAh4H78PEDM2juzm2XxwBZ3FtlNAfjLhQ9YVZhOrrJnVPbhL_6JujIWstkjlHoolz4owYnSup2pYmSIMwmxdxb3NXxfmxStrxmpCepIJK-gaq0usKhr38_OTij1aLytXVQ8bKfem6wVO1MFeBq7V4G3QENgGZyywSG7DlAh8uJiB_KMvge2OIzNpoe-UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a62c2ed097a4e997d8e506b783c567e7&t=1566806466" />
+<style type="text/css">
+span.star, span.camera, .sprite_comment {
+	background-image:
+		url(https://assets5.cre.ma/p/slowand-com/brand_settings/00/00/00/00/01/sprite/1988520c3d2f19ba.png);
+}
+
+.mall-link-color {
+	color: #7a582f;
+}
+
+.review_comment_color {
+	color: #6db67e;
+}
+</style>
+<script type="text/javascript" async=""
+	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
+<script src="//www.google-analytics.com/analytics.js"></script>
+</head>
+<body class="unknown unknown-78 windows_os reviews index widget_1 ko-KR"
+	lang="ko-KR" data-action="index" data-brand-code="slowand.com"
+	data-controller="reviews" data-enable-nonmember-evaluation="true"
+	data-facebook-app-id="339825122890117" data-facebook-sdk-version="v2.9"
+	data-gaq-account="UA-45818307-10" data-iframe-id="crema-reviews-1"
+	data-is-logged-in="true"
+	data-loader-url="//assets5.cre.ma/m/widgets/loader.gif"
+	data-login-alert="로그인이 필요한 서비스입니다. 로그인 하시겠습니까?"
+	data-mall-login-url="http://www.slowand.com/member/login.html"
+	data-no-popstate="false"
+	data-parent-url="https://www.slowand.com/board/review/4/"
+	data-rails-env="production" data-review-message-all-exposed="false"
+	data-shop-builder="cafe24" data-widget-id="1"
+	data-fixed-top-menu-height="0" data-device="pc">
 	<div id="content">
 		<div class="reviews_index reviews_index--list js-pagination-list ">
 			<div class="reviews_index__head">
 				<div class="reviews_index__title_bar">
 					<div class="reviews_index__title">
-						<strong>REVIEW</strong><span class="divider">|</span>전체 리뷰
+						<strong>REVIEW</strong><span class="divider">|</span>내가 작성한 리뷰
 					</div>
 				</div>
 				<script
@@ -530,3 +561,14 @@ span.star, span.camera, .sprite_comment {
 		<input name="utf8" type="hidden" value="✓">
 		<div id="upload-fields-container"></div>
 	</form>
+	
+	</body>
+	
+				</html>
+			</div>
+
+		</div>
+		${paging }
+	</div>
+	<hr class="layout">
+</div>
