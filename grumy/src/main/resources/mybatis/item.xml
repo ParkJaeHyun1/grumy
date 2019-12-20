@@ -22,7 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
        	
 	</select>
-	
+		<select id="AllParentType" resultType="ItemTypeDTO">
+		select distinct parentType from itemType where parentType is not null
+	</select>
 	
 	<select id="qtotal" parameterType="Map" resultType="int">
 	select count(*) 
@@ -111,17 +113,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
 
    <select id="total" parameterType="Map" resultType="int">
-      select count(*) from item
-      <where>
-         type = #{type}
-         <choose>
+		select count(*) from item
+		<where> type = #{type}
+		<choose>
+				<when test="col=='title'">
+         		title like '%'||#{keyword}||'%'
+         		</when>
+				<when test="col=='itemNo'">
+         		itemNo like '%'||#{keyword}||'%'
+         		</when>           
+		</choose>
+		</where>
+	</select>
 
-            <when test="col=='title'">
-               and title like '%'||#{keyword}||'%'
-            </when>
-         </choose>
-      </where>
-   </select>
 
    <delete id="delete" parameterType="int">
       delete from item
@@ -184,33 +188,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </resultMap>
    
    <select id="list" parameterType="Map" resultMap="itemMap">
-       select i.itemNo,o.itemOptionNo,
-      image, title, description, content, price,salePrice, i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-      from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>) i , itemOption o,itemType t
-     
-       where i.type=t.type  and  i.itemNo = o.itemNo and(t.type = #{type} or t.parentType=#{type})
-     
-       order by itemNo desc
-   </select>
-   
-   
-   <select id="search" parameterType="Map" resultMap="itemMap">
-       select i.itemNo,o.itemOptionNo,
-      image, title, description, content, price,salePrice, i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-      from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>) i , itemOption o,itemType t
-     
-       <where>
-     i.type=t.type  and  i.itemNo = o.itemNo and(t.type = #{type} or t.parentType=#{type})
-         <choose>
-            <when test="col=='title'">
-               and title like '%'||#{keyword}||'%'
-            </when>         
-         </choose>
-      </where>                    
+		select i.itemNo,o.itemOptionNo,
+		image, title, description, content, price,salePrice,
+		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
+		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
+		i , itemOption o,itemType t
 
-      order by itemNo desc
-   </select>   
-   
+		where i.type=t.type and i.itemNo = o.itemNo and(t.type = #{type} or
+		t.parentType=#{type})
+
+		order by itemNo desc
+	</select>
+  <select id="search" parameterType="Map" resultMap="itemMap">
+		select i.itemNo,o.itemOptionNo,
+		image, title, description, content, price,salePrice,
+		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
+		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
+		i , itemOption o,itemType t
+
+	<where>	
+			i.type=t.type and i.itemNo = o.itemNo and(t.type = #{type} or
+			t.parentType=#{type})
+		<choose>
+				<when test="col=='title'">
+         		i.title like '%'||#{keyword}||'%'
+         		</when>
+				<when test="col=='itemNo'">
+         		i.itemNo like '%'||#{keyword}||'%'
+         		</when>
+		</choose>
+		</where>
+		order by itemNo desc
+	</select>
+
+         
    
    <select id="read" parameterType="int" resultMap="itemMap">
       select i.itemNo,

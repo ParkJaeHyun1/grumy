@@ -36,7 +36,7 @@ public interface itemMapper {
 	int qtotal(Map map);
 	int insertItem(ItemDTO dto);
 	int insertItemOption(ItemOptionDTO dto);
-
+	ArrayList<ItemTypeDTO> AllParentType();
 	int updateItem(ItemDTO dto);
 	ArrayList<reviewDTO> rlist(Map map);
 	int rtotal();

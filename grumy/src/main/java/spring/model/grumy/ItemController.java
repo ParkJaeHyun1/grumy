@@ -36,14 +36,14 @@ public class ItemController {
 	private ItemService itemService;
 
 
-	@PostMapping("/item/search")
-	public String search(HttpServletRequest request, String keyword) {
-	
-		ItemDTO dto = new ItemDTO(); 
-		keyword = ItemUtility.checkNull(request.getParameter("keyword"));
+	@RequestMapping("/item/search")
+	public String search(HttpServletRequest request, ItemDTO dto ) {
+		
+		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
 		String col = ItemUtility.checkNull(request.getParameter("col"));
+		String type = request.getParameter("type");
 
-		if (col.equals("total"))
+		if (col.equals("total"))              
 			keyword = "";
 		//페이징 관련
 		int nowPage = 1;
@@ -62,27 +62,31 @@ public class ItemController {
 		map.put("keyword", keyword);
 		map.put("sno",sno);
 		map.put("eno",eno);
+		map.put("type", type);
 
-		ArrayList<ItemDTO> list = mapper.search(map);
-		System.out.println("search개수:"+list.size());
+		ArrayList<ItemDTO> searchlist = mapper.search(map);
+		System.out.println("개수:"+searchlist.size());
 		int total = mapper.total(map);
 
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, keyword);
+		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
 
 
-		request.setAttribute("list", list);
+		request.setAttribute("typeList", mapper.selectTypeList(type));
+		request.setAttribute("parentType", mapper.selectParentType(type));
+		request.setAttribute("selectedType", type);
+		request.setAttribute("searchlist", searchlist);
 		request.setAttribute("col", col);
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
-		
+
 		return "/item/search";
 	}
 
 	
 	@GetMapping("/item/search")
-	public String search() {
-
+	public String search(HttpServletRequest request) {
+		request.setAttribute("typeList", mapper.AllParentType());
 		return "/item/search";
 	}
 
