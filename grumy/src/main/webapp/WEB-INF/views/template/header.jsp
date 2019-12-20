@@ -45,43 +45,38 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/admin/main">ADMIN
-							PAGE</a> <a href="${pageContext.request.contextPath}/member/list">LIST</a>
-						<a href="${pageContext.request.contextPath}/member/logout">LOG
-							OUT</a>
+						<a href="${pageContext.request.contextPath}/admin/main">ADMIN PAGE</a> 
+						<a href="${pageContext.request.contextPath}/member/list">LIST</a>
+						<a href="${pageContext.request.contextPath}/member/logout">LOGOUT</a>
 					</div>
 				</c:when>
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='H' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/logout"
-							class="log">LOGOUT</a> <a
-							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
-						<a href="/myshop/order/list.html">ORDER</a> <a
-							href="${pageContext.request.contextPath}/mypage/index">MY
-							PAGE</a> <a class=" cart"
-							href="${pageContext.request.contextPath}/cart/list">CART</a>
+						<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> 
+							<a href="${pageContext.request.contextPath}/member/update">MODIFY</a>
+						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> 
+						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>  
+						<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
 					</div>
 				</c:when>
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='S' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/logout"
-							class="log">LOGOUT</a> <a
+						<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> <a
 							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
-						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> <a
-							href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a> <a class=" cart"
-							href="${pageContext.request.contextPath}/cart/list">CART</a>
+						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> 
+						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a> 
+						<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/login"
-							class="log">LOGIN</a> <a
-							href="${pageContext.request.contextPath}/member/create">JOIN</a>
-						<a href="/myshop/order/list.html">ORDER</a> <a href="/order/cart">MY
-							PAGE</a> <a class=" cart"
-							href="${pageContext.request.contextPath}/cart/list">CART</a>
+						<a href="${pageContext.request.contextPath}/member/login" class="log">LOGIN</a> 
+						<a href="${pageContext.request.contextPath}/member/create">JOIN</a>
+						<a href="${pageContext.request.contextPath}/member/login" class="log">ORDER</a> 
+						<a href="${pageContext.request.contextPath}/member/login" class="log">MYPAGE</a> 
+						<a class=" cart" href="${pageContext.request.contextPath}/member/login" class="log">CART</a>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -103,8 +98,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
 									<li class="xans-record-"><a
-										href="${pageContext.request.contextPath}/community/list">상품
-											문의<span></span>
+										href="${pageContext.request.contextPath}/community/list">상품 문의<span></span>
 									</a></li>
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>

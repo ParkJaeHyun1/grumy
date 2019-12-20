@@ -8,6 +8,7 @@ import spring.model.board.BoardDTO;
 import spring.model.member.MemberDTO;
 import spring.model.order.OrderDTO;
 import spring.model.order.OrderItemDTO;
+import spring.model.review.reviewDTO;
 
 public interface MypageMapper {
 
@@ -20,4 +21,5 @@ public interface MypageMapper {
 	int cstotal(Map map);
 	List<BoardDTO> mylist(Map map);
 	List<OrderDTO> cslist(Map map);
+	ArrayList<reviewDTO> rlist(Map map);
 }

@@ -23,6 +23,7 @@ import spring.model.item.ItemOptionDTO;
 import spring.model.item.ItemService;
 import spring.model.item.ItemTypeDTO;
 import spring.model.mapper.itemMapper;
+import spring.model.review.reviewDTO;
 import spring.model.utility.ItemUtility;
 import spring.model.utility.Utility;
 
@@ -180,6 +181,7 @@ public class ItemController {
 		map.put("eno",eno);
 
 		List<BoardDTO> qlist = mapper.Qlist(map);
+		ArrayList<reviewDTO> rlist = mapper.rlist(map);
 
 		int qtotal = mapper.qtotal(map);
 
@@ -188,6 +190,7 @@ public class ItemController {
 		request.setAttribute("qpaging", qpaging);
 		request.setAttribute("qtotal", qtotal);
 		request.setAttribute("qlist", qlist);
+		request.setAttribute("rlist", rlist);
 
 		request.setAttribute("dto",dto);
 		return "/item/read";

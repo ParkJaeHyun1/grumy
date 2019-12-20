@@ -908,69 +908,7 @@
 						<div class="products_reviews_summary__inner">
 
 
-							<div
-								class="products_reviews_summary_thumbnail_small_without_score products_reviews_summary_thumbnail_small_without_score--digits_1">
-								<div
-									class="products_reviews_summary_thumbnail_small_without_score__summary">
-									<div
-										class="products_reviews_summary_thumbnail_small_without_score__summary_count_text">
-										<span class="count">${pcount }</span>개의 포토리뷰가 있습니다
-									</div>
-									<a
-										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews
-             js-link-photo-reviews
-             ">
-										<span
-										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_label">포토리뷰
-											모아보기</span> <span
-										class="products_reviews_summary_thumbnail_small_without_score__show_all_photo_reviews_check sprites-check"></span>
-									</a>
-								</div>
-
-								<div
-									class="products_reviews_summary_thumbnail_small_without_score__thumbnails_container swiper-container swiper-container-horizontal">
-									<ul
-										class="products_reviews_summary_thumbnail_small_without_score__thumbnails swiper-wrapper"
-										data-fixed-margin="5"
-										data-img-class="products_reviews_summary_thumbnail_small_without_score__front_photo"
-										style="transform: translate3d(0px, 0px, 0px);">
-										<c:forEach var="dto" items="${listp}">
-											<c:choose>
-												<c:when test="${empty dto.picture}">
-												</c:when>
-												<c:otherwise>
-													<li
-														class="products_reviews_summary_thumbnail_small_without_score__thumbnail swiper-slide swiper-slide-active"
-														style="width: 63px; margin-right: 5px;"><a
-														href="#none" onclick="popup('${dto.reviewNo}')"> <img
-															src="${pageContext.request.contextPath}/storage/${dto.picture}"
-															alt="" width="63" height="63"
-															class="js-review-image products_reviews_summary_thumbnail_small_without_score__front_photo grayscale">
-																<img
-																src="${pageContext.request.contextPath}/storage/${dto.picture}"
-																alt="" width="63" height="63"
-																class="products_reviews_summary_thumbnail_small_without_score__back_photo color"
-																style="opacity: 1;"></a></li>
-
-												</c:otherwise>
-
-											</c:choose>
-										</c:forEach>
-									</ul>
-								</div>
-								<div
-									class="js-swiper-button-next products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--right"
-									tabindex="0" role="button" aria-label="Next slide"
-									aria-disabled="false">
-									<i class="sprites-right-arrow-rectangle"></i>
-								</div>
-								<div
-									class="js-swiper-button-prev products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button products_reviews_summary_thumbnail_small_without_score__thumbnail_navigation_button--left swiper-button-disabled"
-									tabindex="0" role="button" aria-label="Previous slide"
-									aria-disabled="true">
-									<i class="sprites-right-arrow-rectangle"></i>
-								</div>
-							</div>
+						
 
 
 						</div>
@@ -996,7 +934,7 @@
 												없습니다.</div>
 											<ul class="reviews_index__reviews reviews">
 
-												<c:forEach var="dto" items="${list}">
+												<c:forEach var="dto" items="${rlist}">
 
 													<li id="review_${dto.reviewNo}"
 														class="review reviews_index_list_review "><a

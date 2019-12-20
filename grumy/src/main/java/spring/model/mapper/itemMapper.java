@@ -9,6 +9,7 @@ import spring.model.item.ItemDTO;
 import spring.model.item.ItemOptionDTO;
 import spring.model.item.ItemTypeDTO;
 import spring.model.order.OrderItemDTO;
+import spring.model.review.reviewDTO;
 
 
 public interface itemMapper {
@@ -37,6 +38,7 @@ public interface itemMapper {
 	int insertItemOption(ItemOptionDTO dto);
 
 	int updateItem(ItemDTO dto);
+	ArrayList<reviewDTO> rlist(Map map);
 	
 
 }

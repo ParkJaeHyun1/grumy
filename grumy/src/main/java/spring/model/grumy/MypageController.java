@@ -18,6 +18,7 @@ import spring.model.mapper.MypageMapper;
 import spring.model.member.MemberDTO;
 import spring.model.order.OrderDTO;
 import spring.model.order.OrderItemDTO;
+import spring.model.review.reviewDTO;
 import spring.model.utility.Utility;
 
 @Controller
@@ -122,7 +123,7 @@ public class MypageController {
 		
 		
 		List<BoardDTO> list = mapper.mylist(map); 
-
+		ArrayList<reviewDTO> rlist = mapper.rlist(map);
 				
 		int total = mapper.mytotal(map);
 		
@@ -137,6 +138,7 @@ public class MypageController {
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		request.setAttribute("dto", dto);
+		request.setAttribute("rlist", rlist);
 		return "/mypage/mylist";
 	}
 	

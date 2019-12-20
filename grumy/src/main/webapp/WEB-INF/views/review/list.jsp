@@ -478,6 +478,8 @@ function popup(reviewNo){
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="tui-tooltip" style="display: none;">
 		<div class="arrow"></div>
 		<span class="text"></span>
