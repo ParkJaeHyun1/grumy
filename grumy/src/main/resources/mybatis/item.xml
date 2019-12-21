@@ -227,29 +227,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
 		i , itemOption o,itemType t
 		<where>
+		i.type =t.type and i.itemNo = o.itemNo
 			<choose>
-				<when test="type =='parentType'">
-					parentType like '%'||#{keyword}||'%'
+				<when test="search_type == 'title'">
+					and title like '%'||#{keyword}||'%'
 				</when>
 			</choose>
-			i.type =t.type and i.itemNo = o.itemNo
 		</where>
 		order by itemNo desc
 	</select>
+	
 
 	<select id="SearchTotal" parameterType="Map" resultType="int">
-		select
-		count(*) from item
-		<where> type = #{type}
+		select count(*) from item
+		<where>
 			<choose>
-				<when test="search_type=='itemNo'">
-					i.itemNo like '%'||#{keyword}||'%'
-				</when>
 				<when test="search_type == 'title'">
 					title like '%'||#{keyword}||'%'
-				</when>
-				<when test="type =='parentType'">
-					parentType like '%'||#{keyword}||'%'
 				</when>
 			</choose>
 		</where>
