@@ -90,7 +90,10 @@ public class ItemController {
 		
 		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
 		String search_type = ItemUtility.checkNull(request.getParameter("search_type"));
-				
+		String type = request.getParameter("type");		
+		
+		if(type.equals("") || search_type == null)
+			keyword = "";
 		
 		if(search_type.equals("SearchTotal"))              
 			keyword = "";
@@ -115,7 +118,7 @@ public class ItemController {
 		map.put("keyword", keyword);
 		map.put("sno",sno);
 		map.put("eno",eno);
-		
+		map.put("type", type);
 
 		System.out.println(keyword);
 		System.out.println(search_type);
@@ -124,9 +127,10 @@ public class ItemController {
 		System.out.println("header에서 온 상품 개수:"+searchlist.size());
 		int SearchTotal = mapper.SearchTotal(map);
 
-		String paging =Utility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword);
+		String paging = ItemUtility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword,type);
 		
 		request.setAttribute("AlltypeList", mapper.AllParentType());
+		request.setAttribute("parentType",mapper.selectParentType(type));
 		request.setAttribute("searchlist",searchlist);
 		request.setAttribute("search_type",search_type);
 		request.setAttribute("keyword",keyword);

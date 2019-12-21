@@ -404,9 +404,10 @@
 				</div>
 
 				<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-				<form id="searchForm" name="" action="${pageContext.request.contextPath}/item/reSearch"
+				<form id="searchForm" name="" action="${pageContext.request.contextPath}/item/Search"
 					method="get" target="_self" enctype="multipart/form-data">
-					<input id="view_type" name="view_type" value="" type="hidden" /> <input
+					<input id="view_type" name="view_type" value="" type="hidden" /> 
+					<input
 						id="supplier_code" name="supplier_code" value="" type="hidden" />
 					<div class="xans-element- xans-search xans-search-form ">
 						<div class="ec-base-box searchbox">
@@ -414,7 +415,7 @@
 								<legend>상품 검색</legend>
 								<div class="item">
 									<strong>상품분류</strong> <select id="type"
-										name="type" fw-filter="" fw-label="" fw-msg="">
+										name="type" fw-filter="" fw-label="" fw-msg="" style="width:364px">
 										<option>-상품 카테고리-</option>
 										<c:forEach var="dto" items="${AlltypeList}">
 											<option value="${dto.parentType}">

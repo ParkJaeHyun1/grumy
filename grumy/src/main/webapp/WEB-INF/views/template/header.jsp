@@ -115,10 +115,11 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			<form id="searchBarForm" name="search" action="${pageContext.request.contextPath}/item/search"
 				onsubmit="return check()" method="get" target="_self"
 				enctype="multipart/form-data">
-			<input id="banner_action" name="banner_action" value="" type="hidden" />
+<!-- 			<input id="banner_action" name="banner_action" value="" type="hidden" /> -->
 			<div class="xans-element- xans-layout xans-layout-searchheader ">
 					<fieldset>
 						<legend>검색</legend>
+						<input type ="hidden" name="type" value="title"/>
 						<input type ="hidden" name="search_type" value="title"/>       
 						<input id="keyword" name="keyword" fw-filter="" fw-label="검색어"
 							fw-msg="" class="inputTypeText" placeholder="" value="${keyword}" type="text" /> 
