@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import spring.model.mapper.MemberMapper;
 import spring.model.mapper.OrderMapper;
 import spring.model.order.OrderDTO;
 import spring.model.order.OrderItemDTO;
@@ -33,6 +34,9 @@ public class OrderRestController {
 	@Autowired
 	OrderMapper orderMapper;
 	@Autowired
+	MemberMapper memberMapper;
+	
+	@Autowired
 	OrderService orderService;
 
 	@PutMapping("/order/check")
@@ -41,20 +45,20 @@ public class OrderRestController {
 		ArrayList<OrderItemDTO> orderItemList = orderMapper.checkItem(list); 
 		Map<Integer,OrderItemDTO> map =new HashMap();
 
-		if(orderItemList.size()!=list.size())								//구매목록리스트와 아이템에서 select한 제품의 개수가 다르면 (즉 관리자가 판매중단해서 table에서 사라진 구매목록이 있다면)
+		if(orderItemList.size()!=list.size())								//援щℓ紐⑸줉由ъ뒪�듃�� �븘�씠�뀥�뿉�꽌 select�븳 �젣�뭹�쓽 媛쒖닔媛� �떎瑜대㈃ (利� 愿�由ъ옄媛� �뙋留ㅼ쨷�떒�빐�꽌 table�뿉�꽌 �궗�씪吏� 援щℓ紐⑸줉�씠 �엳�떎硫�)
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 
 		for(OrderItemDTO orderItem: orderItemList)
 			map.put(orderItem.getItemOptionNo(), orderItem);
 
-		for(OrderItemDTO orderItem : list) 									// 구매목록에있는 제품정보와 실제 제품정보가 다를경우
+		for(OrderItemDTO orderItem : list) 									// 援щℓ紐⑸줉�뿉�엳�뒗 �젣�뭹�젙蹂댁� �떎�젣 �젣�뭹�젙蹂닿� �떎瑜쇨꼍�슦
 			if(orderItem.getItemPrice() != map.get(orderItem.getItemOptionNo()).getItemPrice() || orderItem.getItemSalePrice()!=map.get(orderItem.getItemOptionNo()).getItemSalePrice()) {
 				return new ResponseEntity<String>("fail", HttpStatus.OK);
 			}
 
 		boolean bool =orderService.decreaseItemCount(list);
 
-		if(!bool) 							//수량 감소시키는 메소드라 이조건문을 위로올리고 만약 그 밑에쪽에서 fail떠서 거래불가시키면 다시 감소시킨거 증가시켜야되서 맨밑에넣음
+		if(!bool) 							//�닔�웾 媛먯냼�떆�궎�뒗 硫붿냼�뱶�씪 �씠議곌굔臾몄쓣 �쐞濡쒖삱由ш퀬 留뚯빟 洹� 諛묒뿉履쎌뿉�꽌 fail�뼚�꽌 嫄곕옒遺덇��떆�궎硫� �떎�떆 媛먯냼�떆�궓嫄� 利앷��떆耳쒖빞�릺�꽌 留⑤컩�뿉�꽔�쓬
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
 
 		return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -90,56 +94,21 @@ public class OrderRestController {
 
 		return cnt+cnt2==order.getOrderItemList().size()+1?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-
-	@PostMapping("/order/test")
-	public void photo(HttpServletRequest request,HttpServletResponse response) {
-
-		String sFileInfo = "";
-		String filename = request.getHeader("file-name");
-		String filename_ext = filename.substring(filename.lastIndexOf(".")+1);
-		filename_ext = filename_ext.toLowerCase();
-		String dftFilePath = request.getSession().getServletContext().getRealPath("/");
-
-		String filePath = dftFilePath+"upload"+File.separator;
-		File file = new File(filePath);
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-		String realFileNm = "";
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-		String today = formatter.format(new java.util.Date());
-		realFileNm = today+UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
-		String rlFileNm = filePath + realFileNm;
-
-		InputStream is;
-		try {
-			is = request.getInputStream();
-
-			OutputStream os = new FileOutputStream(rlFileNm);
-			int numRead;
-			byte b[] = new byte[Integer.parseInt(request.getHeader("file-size"))];
-			while((numRead = is.read(b,0,b.length)) != -1) {
-				os.write(b,0,numRead);
-			}
-			if(is != null) {
-				is.close();
-			}
-			os.flush();
-			os.close();
-			
-			sFileInfo += "&bNewLine=true";
-			sFileInfo += "&sFileName="+filename;
-			sFileInfo += "&sFileURL="+request.getContextPath()+"/upload/"+realFileNm;
-			PrintWriter print = response.getWriter();
-			print.print(sFileInfo);
-			print.flush();
-			print.close();
-		}
-		catch (IOException e) {
-			System.out.println("파일업로더에러:"+ e);
-			e.printStackTrace();
-		}
-
-		
+	@PutMapping("/order/decreasePoint")
+	public ResponseEntity<String> decreasePoint(@RequestBody Map map) {
+		System.out.println("으아악:"+map.get("id"));
+		System.out.println("으아악:"+map.get("point"));
+		int cnt = memberMapper.decreasePoint(map);
+		System.out.println("cnt:"+cnt);
+		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	@PutMapping("/order/increasePoint")
+	public ResponseEntity<String> increasePoint(@RequestBody Map map) {
+		System.out.println("으아악:"+map.get("id"));
+		System.out.println("으아악:"+map.get("point"));
+
+		int cnt = memberMapper.increasePoint(map);
+		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
 }

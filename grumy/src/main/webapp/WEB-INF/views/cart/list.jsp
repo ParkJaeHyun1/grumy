@@ -178,6 +178,9 @@ function setView(){
 		$('#cart_item_count_'+item.cartNo).val(item.count);
 		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
+		$('#cart_item_point3_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
+		$('#cart_item_point4_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
+		$('#cart_item_point5_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
 		$('#cart_item_total_price_'+item.cartNo).html((item.itemPrice*item.count)+'원');
 		purchasePrice = purchasePrice + (item.itemPrice*item.count);
 	});     
@@ -201,7 +204,7 @@ function setView(){
 	$('#item_count').html(Object.keys(list).length);
 }
 
-</script>    
+</script>
 </head>
 <body id="cmn">
 	<div id="skipNavigation">
@@ -215,7 +218,7 @@ function setView(){
 
 	<div id="wrap">
 
-		<!-- //상단카테고리 -->       
+		<!-- //상단카테고리 -->
 		<div id="container">
 			<div id="contents">
 
@@ -312,19 +315,17 @@ function setView(){
 								<tbody class="xans-element- xans-order xans-order-list center">
 									<c:forEach var="dto" items="${list}">
 										<tr class="xans-record-" id="cart_${dto.cartNo}">
-											<td>
-											<c:choose>
-												<c:when test="${dto.count>dto.itemCount }"><input type="checkbox"
-												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"  disabled="disabled" 
-												value="${dto.cartNo}" /></c:when>
-												<c:otherwise>
-												<input type="checkbox"
-												id="cart_checkBox_${dto.cartNo}" name="orderInfoList"  
-												value="${dto.cartNo}" />
-												</c:otherwise>
-												</c:choose>  
-												
-												</td>            
+											<td><c:choose>
+													<c:when test="${dto.count>dto.itemCount }">
+														<input type="checkbox" id="cart_checkBox_${dto.cartNo}"
+															name="orderInfoList" disabled="disabled"
+															value="${dto.cartNo}" />
+													</c:when>
+													<c:otherwise>
+														<input type="checkbox" id="cart_checkBox_${dto.cartNo}"
+															name="orderInfoList" value="${dto.cartNo}" />
+													</c:otherwise>
+												</c:choose></td>
 											<td class="thumb gClearLine"><a
 												href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"><img
 													src="${pageContext.request.contextPath}/images/${dto.itemPicture}"
@@ -401,13 +402,10 @@ function setView(){
 												</c:if>
 												<div id="cart_item_price_${dto.cartNo}">
 													${dto.itemPrice-dto.itemSalePrice}원</div></td>
-											<td> 
-											<c:if test="${dto.count>dto.itemCount }">
-											<span style="color:red">[재고: ${dto.itemCount}]<br/></span>       
-											</c:if>                                    
-											<span class="">                         
-											<span class="ec-base-qty">                
-														<input id="cart_item_count_${dto.cartNo}"
+											<td><c:if test="${dto.count>dto.itemCount }">
+													<span style="color: red">[재고: ${dto.itemCount}]<br /></span>
+												</c:if> <span class=""> <span class="ec-base-qty"> <input
+														id="cart_item_count_${dto.cartNo}"
 														name="cart_item_count_${dto.cartNo}" size="2"
 														value="${dto.count}" type="text" /><a href="javascript:;"
 														onclick="itemCountUp(${dto.cartNo});"><img
@@ -420,7 +418,7 @@ function setView(){
 													onclick="itemCountModify(${dto.cartNo},cart_item_count_${dto.cartNo}.value);"
 													alt="변경">변경</a>
 											</span> <span class="displaynone">2</span></td>
-											<td><span class="txtInfo">     
+											<td><span class="txtInfo">
 													<div>
 
 														<input id="product_mileage_cash_3615_000A"
@@ -435,6 +433,27 @@ function setView(){
 														<img
 															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
 														<span id="cart_item_point2_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
+													</div>
+													<div>
+														<input id="product_mileage_card_3615_000A"
+															name="product_mileage_card" value="530" type="hidden" />
+														<img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
+														<span id="cart_item_point3_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
+													</div>
+													<div>
+														<input id="product_mileage_card_3615_000A"
+															name="product_mileage_card" value="530" type="hidden" />
+														<img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
+														<span id="cart_item_point4_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
+													</div>
+													<div>
+														<input id="product_mileage_card_3615_000A"
+															name="product_mileage_card" value="530" type="hidden" />
+														<img
+															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
+														<span id="cart_item_point5_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
 													</div>
 											</span></td>
 											<td>

@@ -216,11 +216,13 @@ function purchase(){
 	  		
 	      	$.each(orderInfo.orderItemList, function(index, item){ 
 		    	item.state='입금대기';
-				item.orderNo = orderInfo.orderNo;
+				item.orderNo = orderInfo.orderNo;      
 	  		});
-	        
-	  		if (updateOrder()&&checkItem()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
+	      	alert("1111");      
+	  		if (updateOrder()&&checkItem()&&decreasePoint()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
 	  			deleteCartAjax(cartNoList);
+	  			alert("인크리즈전");
+	  			increasePoint();           
 	  			// alert창으로 계좌발급 알려주고 주문내역창으로 넘어가기	
 	  			
 	  		}else{
@@ -235,7 +237,7 @@ function purchase(){
 	      console.log(data);
 	     
 	      orderInfo.state = '배송준비';
-	      if (updateOrder()&&checkItem()) {
+	      if (updateOrder()&&checkItem()&&decreasePoint()) {
 	    	  	BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
 	         	
 	      } else {
@@ -316,6 +318,46 @@ function updateOrder(){
    });
     return enable;
 }
+function decreasePoint(){
+	alert('디크리즈시작:'+pointPrice);       
+	var enable;  
+    $.ajax({
+        type : 'put',
+        url : "../order/decreasePoint",
+        data :  JSON.stringify({'point':pointPrice,'id':'${member.id}'}),
+        contentType : "application/json; charset=utf-8",
+        async:false,
+        success : function(result, status, xhr) {
+            alert('성공');
+        	enable = true;
+        },
+        error : function(xhr, status, er) {
+        	alert('실패');
+			enable = false;        
+        }  
+   });                   
+    return enable;
+}
+function increasePoint(){  
+	alert("인크리즈시작");
+	var enable;
+    $.ajax({
+        type : 'put',
+        url : "../order/increasePoint",
+        data :  JSON.stringify({'point':${totalPrice/100},'id':'${member.id}'}),                                                  
+        contentType : "application/json; charset=utf-8",           
+        async:false,
+        success : function(result, status, xhr) {
+        	 alert('성공');
+        	enable = true;
+        },
+        error : function(xhr, status, er) {
+        	 alert('실패');
+			enable = false;
+        }  
+   });
+    return enable;
+}
 function setOrderInfoOfMember(){
 	$('#rname').val('${member.name}');           
 	$('#postcode').val('${member.postcode}');
@@ -390,7 +432,7 @@ function setPriceView(){
 	<link rel="alternate" href="http://www.m.slowand.com/">
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />           
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 

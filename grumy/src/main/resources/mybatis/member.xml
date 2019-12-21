@@ -61,7 +61,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	phone = #{phone}, email = #{email}, birth=#{birth}
 	where id = #{id}
 </update>
-
+<update id="decreasePoint" parameterType="Map">
+	update member
+	set point = ((select point from member where id =#{id}) - #{point})
+	where id = #{id}
+</update>
+<update id="increasePoint" parameterType="Map">
+	update member
+	set point = ((select point from member where id =#{id}) + #{point})
+	where id = #{id}
+</update>
 <delete id="delete" parameterType="String">
 	delete from member
 	where id = #{id} and passwd = #{passwd} 
