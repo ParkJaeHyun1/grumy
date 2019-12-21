@@ -355,7 +355,6 @@
         return ctxPath;
     }
     function callAjaxForHTML5 (tempFile, sUploadURL){
-    	alert(sUploadURL);
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
@@ -370,7 +369,6 @@
 						makeArrayFromString(res._response.responseText);
 					}
 				}
-				alert(res.readyState());
 			},
 			timeout : 3,
 			onerror :  jindo.$Fn(onAjaxError, this).bind()

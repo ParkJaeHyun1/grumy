@@ -45,6 +45,7 @@
 		
 		$('#price2').val($('#price').val().replace(",",""));
 		$('#salePrice2').val($('#salePrice').val().replace(",",""));
+		
 	}
 
 	function setComma(inNum) {
@@ -57,9 +58,7 @@
 		return outNum;
 
 	}
-	function removeComma(num){
-		
-	}
+
 </script>
 <style>
 #smart_editor2{
@@ -83,7 +82,7 @@
 			<br> <br>
 			<!-- 글 내용-->
 			<form action="create" method="post" id="frm"
-				enctype="multipart/form-data" onsubmit="return checkForm()">    
+				enctype="multipart/form-data" onsubmit="return checkForm();">         
 				<input type="hidden" name="id" value="${sessionScope.id }">
 				<div class="ec-base-table typeWrite ">
 					<div class="xans-element- xans-product xans-product-detail">
@@ -100,7 +99,7 @@
 									<tr>
 										<th scope="row">카테고리</th>
 
-										<td><select onchange="mainCategory(this)"
+										<td><select onchange="maincategory(this)" id="mainCategory"
 											style="width: 200px;">
 												<option >-메인 카테고리-</option>
 												<c:forEach var="dto" items="${typeList}">
@@ -132,7 +131,7 @@
 										<th scope="row">컬러 추가</th>
 										<td><input type="text" id="itemColor" style="width: 70px">
 											<button type="button" id="btnAdd" class="yg_btn_30 yg_btn4"
-												style="width: 50px; height: 26px; line-height: 0px">추가</button>
+												style="width: 50px; height: 26px; line-height: 0px">추가</button>      
 										</td>
 									</tr>
 									<tr id="colorList" style="display:none">
@@ -194,7 +193,7 @@
               
 									<tr>
 										<td colspan="2"><textarea rows="20" cols="124"                                                        
-												name="ir1" id="ir1" style="display:none">                                                                                	
+												name="content" id="content" style="display:none">                                                                                	
                               </textarea></td>              
 
 									</tr>                                           
@@ -224,12 +223,14 @@
 var oEditors = [];
 nhn.husky.EZCreator.createInIFrame({
  oAppRef: oEditors,
- elPlaceHolder: "ir1",
+ elPlaceHolder: "content",
  sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
- fCreator: "createSEditor2"
+ fCreator: "createSEditor2",
+ htParams: { fOnBeforeUnload : function(){}}
+
 });
 </script>
-<script type="text/javascript">
+<script type="text/javascript">     
 	var itemOptionList = [],colorList=[];
 	var selectedColor,selectedSize;
 	$(function() {
@@ -243,7 +244,7 @@ nhn.husky.EZCreator.createInIFrame({
 							if (!checkColor(color))
 								return;       
 
-							colorList.push(color);
+							colorList.push(color);       
 	
 							var html = '';  
 
@@ -272,7 +273,7 @@ nhn.husky.EZCreator.createInIFrame({
 			selectedSize = '';
 			return;  
 		}
-		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count});
+		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count.replace(",","")});
 			
 	}
 	function clickSize(size){
@@ -330,8 +331,8 @@ nhn.husky.EZCreator.createInIFrame({
 			if(item['color'] == color)        
 				itemOptionList.splice(index,1);
 		});  
-		  console.log(itemOptionList);        
-		$('#sizeList').css('display','none');                   
+		$('#sizeList').css('display','none');
+		$('#countList').css('display','none');
 		setColorList();            
 	}
 	function setColorList() {
@@ -340,6 +341,7 @@ nhn.husky.EZCreator.createInIFrame({
 			$('#colorList').css('display', 'table-row');
 		else
 			$('#colorList').css('display', 'none');
+		
 	}      
 	function checkColor(color) {
 
@@ -354,7 +356,7 @@ nhn.husky.EZCreator.createInIFrame({
 	}    
 
 	// category 시작
-	   function mainCategory(e) {
+	   function maincategory(e) {
   
 	      var target = document.getElementById("subCategory");
 	      target.options.length = 0;
@@ -364,9 +366,9 @@ nhn.husky.EZCreator.createInIFrame({
 				 var opt = document.createElement("option");
 		         opt.value = '${item.type}';
 		         opt.innerHTML = '${item.type}';
-		         target.appendChild(opt);
+		         target.appendChild(opt);                    
 
-			}	      
+			}	           
 	  	</c:forEach>    
     
 	      
@@ -375,8 +377,55 @@ nhn.husky.EZCreator.createInIFrame({
 	   //category 끝
 
 
-	function checkForm() {
+	function checkForm() {    
+		   
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		   if($("#mainCategory option:selected").val()=='-메인 카테고리-'){
+			   alert('메인 카테고리를 선택해주세요.');
+			   $('#mainCategory').focus();
+			   return false;
+		   }else  if($("#subCategory option:selected").val()=='-서브 카테고리-'){
+			   alert('서브 카테고리를 선택해주세요.');
+			   $('#subCategory').focus();
+			   return false;
+		   }else if(!$("#title").val()){
+			   alert('상품명을 입력해주세요.');
+			   $('#title').focus();
+			   return false;
+		   }else if(!$('#image').val()){
+			   alert('상품 이미지를 선택해주세요.');
+			   $('#image').focus();
+			   return false;
+		   }else if(!$('#price').val()){
+			   alert('상품 가격을 입력해주세요.');
+			   $('#price').focus();
+			   return false;
+		   }else if(!$('#salePrice').val()){
+			   alert('상품 할인가격을 입력해주세요.');
+			   $('#salePrice').focus();
+			   return false;
+		   }else if($('#salePrice').val() > $('#price').val()){    
+			   alert('싱픔 할인가격이 상품 가격보다 높을 수 없습니다.');
+			   $('#salePrice').focus();
+			   return false;
+		   }else if(!$('#description').val()){
+		   	   alert('상품 설명을 입력해주세요.');
+			   $('#description').focus();
+			   return false;
+		   }else if($('#content').val() == ""  || $('#content').val() == null || $('#content').val() == '&nbsp;' || $('#content').val() == '<p>&nbsp;</p>'){
+			   alert('상세 페이지를 입력해주세요.');
+			   oEditors.getById["content"].exec("FOCUS");
+			   return false;
+		   }else if(itemOptionList.length == 0){
+			   alert('아이템 옵션을 설정해주세요.');
+			   $('#itemColor').focus();  
+			   return false;
+		   }		
+		sendDataSetting(); 
+	}
+	   
+	function sendDataSetting(){
 		var str='';
 	      
 		$.each(itemOptionList, function(index, item){ 
@@ -384,7 +433,7 @@ nhn.husky.EZCreator.createInIFrame({
 			str+="<input type='hidden' name='itemSizeList' value='"+item['size']+"'>";
 			str+="<input type='hidden' name='itemCountList' value='"+item['count']+"'>";       
 			
-		});    
-		$('#frm').append(str);    
+		}); 
+		$('#frm').append(str);
 	}
 </script>

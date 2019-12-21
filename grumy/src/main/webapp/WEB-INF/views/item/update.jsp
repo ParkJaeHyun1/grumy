@@ -59,9 +59,7 @@
 		return outNum;
 
 	}
-	function removeComma(num){
-		
-	}
+
 </script>
 <style>
 #smart_editor2 {
@@ -133,9 +131,10 @@
 										<th scope="row">상품 이미지</th>
 
 										<td><input type="file" class="form-control" id="image"
-											name="filenameMF" accept=".jpg,.gif,.png"></td>
+											name="filenameMF" accept=".jpg,.gif,.png" style="width:160px;">                  
+											<br><span name="image">${dto.image}</span></td>                         
 									</tr>
-
+									
 									<tr>
 										<th scope="row">컬러 추가</th>
 										<td><input type="text" id="itemColor" style="width: 70px">
@@ -173,7 +172,10 @@
 										<td><input type="text" id="count" value=""
 											style="text-align: right; width: 50px"
 											onblur="checkCount(this.value)" onchange="getNumber(this);"
-											onkeyup="getNumber(this);"> 개</td>
+											onkeyup="getNumber(this);"> 개
+
+											</td>
+											
 									</tr>
 
 
@@ -209,21 +211,7 @@
 									<tr>
 										<td colspan="2"><textarea rows="20" cols="124"
 												name="content" id="content">                                                                    	
-                              ${dto.content}</textarea> <script
-												type="text/javascript">                                          
-									CKEDITOR                                           
-									.replace(               
-										'content',
-										{          
-										height : 500
-										}              
-										'style',  
-										{          
-										width : 600             
-										}	
-									
-									);
-									</script></td>
+                              ${dto.content}</textarea></td>
 
 									</tr>
 
@@ -250,7 +238,17 @@
 	</div>
 
 </div>
+<script type="text/javascript">
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+ oAppRef: oEditors,
+ elPlaceHolder: "content",
+ sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+ fCreator: "createSEditor2",
+ htParams: { fOnBeforeUnload : function(){}}
 
+});
+</script>
 <script type="text/javascript">
 	var itemOptionList = [],colorList=[];
 	var selectedColor,selectedSize;
@@ -296,7 +294,7 @@
 			selectedSize = '';
 			return;  
 		}
-		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count});
+		itemOptionList.push({'color':selectedColor,'size':selectedSize,'count':count.replace(",","")});
 		console.log(itemOptionList);	
 	}
 	function clickSize(size){
@@ -354,8 +352,9 @@
 			if(item['color'] == color)
 		    	delete item;
 		});  
-		
-		setColorList();            
+		$('#sizeList').css('display','none');  
+		$('#countList').css('display','none');
+		setColorList();               
 	}
 	function setColorList() {
 
@@ -397,43 +396,63 @@
 
 	   //category 끝
 
-	var oEditors = [];
-	$(function() {
-		nhn.husky.EZCreator
-				.createInIFrame({
-					oAppRef : oEditors,
-					elPlaceHolder : "content", //textarea에서 지정한 id와 일치해야 합니다.      
-					//SmartEditor2Skin.html 파일이 존재하는 경로
-					sSkinURI : "${pageContext.request.contextPath}/se2/SmartEditor2Skin.html",
-					htParams : {
-						// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseToolbar : true,
-						// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseVerticalResizer : true,
-						// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-						bUseModeChanger : false,
-						fOnBeforeUnload : function() {
-
-						}
-					},
-					fOnAppLoad : function() {          
-						//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-						oEditors.getById["content"].exec("PASTE_HTML", [ " " ]);
-					},
-					fCreator : "createSEditor2"
-				});
-
-	});
-	function checkForm() {
+	function checkForm() {    
+		   
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		
+		   if($("#mainCategory option:selected").val()=='-메인 카테고리-'){
+			   alert('메인 카테고리를 선택해주세요.');
+			   $('#mainCategory').focus();
+			   return false;
+		   }else  if($("#subCategory option:selected").val()=='-서브 카테고리-'){
+			   alert('서브 카테고리를 선택해주세요.');
+			   $('#subCategory').focus();
+			   return false;
+		   }else if(!$("#title").val()){
+			   alert('상품명을 입력해주세요.');
+			   $('#title').focus();
+			   return false;
+		   }else if(!$('#image').val()){
+			   alert('상품 이미지를 선택해주세요.');
+			   $('#image').focus();
+			   return false;
+		   }else if(!$('#price').val()){
+			   alert('상품 가격을 입력해주세요.');
+			   $('#price').focus();
+			   return false;
+		   }else if(!$('#salePrice').val()){
+			   alert('상품 할인가격을 입력해주세요.');
+			   $('#salePrice').focus();
+			   return false;
+		   }else if($('#salePrice').val() > $('#price').val()){    
+			   alert('싱픔 할인가격이 상품 가격보다 높을 수 없습니다.');
+			   $('#salePrice').focus();
+			   return false;
+		   }else if(!$('#description').val()){
+		   	   alert('상품 설명을 입력해주세요.');
+			   $('#description').focus();
+			   return false;
+		   }else if($('#content').val() == ""  || $('#content').val() == null || $('#content').val() == '&nbsp;' || $('#content').val() == '<p>&nbsp;</p>'){
+			   alert('상세 페이지를 입력해주세요.');
+			   oEditors.getById["content"].exec("FOCUS");
+			   return false;
+		   }else if(itemOptionList.length == 0){
+			   alert('아이템 옵션을 설정해주세요.');
+			   $('#itemColor').focus();  
+			   return false;
+		   }		
+		sendDataSetting(); 
+	}
+	   
+	function sendDataSetting(){
 		var str='';
-	      console.log(itemOptionList);
+	      
 		$.each(itemOptionList, function(index, item){ 
 			str+="<input type='hidden' name='itemColorList' value='"+item['color']+"'>";        
 			str+="<input type='hidden' name='itemSizeList' value='"+item['size']+"'>";
 			str+="<input type='hidden' name='itemCountList' value='"+item['count']+"'>";       
 			
-		});    
-		$('#frm').append(str);    
+		}); 
+		$('#frm').append(str);
 	}
 </script>
