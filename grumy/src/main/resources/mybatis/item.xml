@@ -6,243 +6,289 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.itemMapper">
 
 	<select id="Qlist" parameterType="Map" resultType="BoardDTO">
-	select board_no, subject, ref, writer, wdate, check_read, indent, r 
-	from(
-	select board_no, subject, ref, writer, wdate, check_read, indent, rownum r
-	from(
-		select board_no, subject, ref, writer, wdate, check_read, indent
-        from board
-        where lev='A' and type='상품' and itemNo = #{itemNo}
-        order by ref desc,board_no asc
-       	))
-    where
+		select board_no, subject, ref, writer, wdate, check_read, indent, r
+		from(
+		select board_no, subject, ref, writer, wdate, check_read, indent,
+		rownum r
+		from(
+		select board_no, subject, ref, writer, wdate, check_read,
+		indent
+		from board
+		where lev='A' and type='상품' and itemNo = #{itemNo}
+		order by ref desc,board_no asc
+		))
+		where
     		<![CDATA[
 		r >=#{sno} and r<=#{eno}
 		]]>
 
-       	
+
 	</select>
-		<select id="AllParentType" resultType="ItemTypeDTO">
-		select distinct parentType from itemType where parentType is not null
+	<select id="AllParentType" resultType="ItemTypeDTO">
+		select distinct parentType
+		from itemType where parentType is not null
 	</select>
-	
+
 	<select id="qtotal" parameterType="Map" resultType="int">
-	select count(*) 
-	from(
-	select board_no, subject, ref, writer, wdate, check_read, indent, rownum r
-	from(
-		select board_no, subject, ref, writer, wdate, check_read, indent
-        from board
-        where lev='A' and type='상품' and itemNo = #{itemNo}
-        order by ref desc,board_no asc
-       	))
-   	</select>
-   	
-   	<select id="rlist" resultType="reviewDTO">
+		select
+		count(*)
+		from(
+		select board_no, subject, ref, writer, wdate, check_read,
+		indent, rownum r
+		from(
+		select board_no, subject, ref, writer, wdate,
+		check_read, indent
+		from board
+		where lev='A' and type='상품' and itemNo =
+		#{itemNo}
+		order by ref desc,board_no asc
+		))
+	</select>
+
+	<select id="rlist" resultType="reviewDTO">
 		select reviewNo, id, content,
 		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
 		from(
-			select rownum rnum,reviewNo, id, content,
-			picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
-			from(
-				select reviewNo, id,r.content,r.picture,i.image as
-				itemPicture,i.title as itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
-				from item i, review r,itemOption o
-				where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo 
-				ORDER BY reviewNo desc
-				)
-				where itemNo=#{itemNo}
-			)
+		select rownum rnum,reviewNo, id, content,
+		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
+		from(
+		select reviewNo, id,r.content,r.picture,i.image as
+		itemPicture,i.title as
+		itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
+		from item i, review r,itemOption o
+		where r.itemOptionNo =
+		o.itemOptionNo and o.itemNo = i.itemNo
+		ORDER BY reviewNo desc
+		)
+		where
+		itemNo=#{itemNo}
+		)
 		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
 	</select>
-	
+
 	<select id="rtotal" parameterType="int" resultType="int">
-    select count(*)
-			from(
-				select reviewNo, id,r.content,r.picture,i.image as
-				itemPicture,i.title as itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
-				from item i, review r,itemOption o
-				where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo 
-				)
-				where itemNo=#{itemNo, jdbcType=INTEGER }
-   	</select>
-   	
-
-   <select id="color" parameterType="Map" resultType="String">
-      select
-      distinct(itemColor)
-      from item i, itemOption o
-      where i.itemNo = o.itemNo
-      and i.itemNo =#{itemNo}
-   </select>
-
-   <select id="size" parameterType="Map" resultType="String">
-      select itemSize
-      from item i, itemOption o
-      where i.itemNo = o.itemOptionNo and i.itemNo
-      =#{itemNo} and o.itemColor = #{color}
-   </select>
-
-   <select id="count" parameterType="Map" resultType="int">
-      select o.count
-      from item i, itemOption o
-      where i.itemNo = o.itemOptionNo and i.itemNo
-      =#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
-   </select>
-
-
-   <select id="subtype" parameterType="Map" resultType="String">
-      select
-      distinct(subType)
-      from itemType t, item i
-      where t.parentType = i.type
-      and t.parentType=#{parentType}
-   </select>
-
-   <select id="selectTypeList" parameterType="String" resultType="ItemTypeDTO">
-    	select type,parentType from itemType where parenttype=(select parenttype from itemtype where type=#{type}) or parenttype=#{type}
-        
-   </select>
-      <select id="selectParentType" parameterType="String" resultType="String">
-      select COALESCE(parenttype,type) from itemtype where type = #{type}
-   </select>
-
-   <select id="selectTypeListAll" resultType="ItemTypeDTO">
-    	select type,parentType from itemType 
-        
-   </select>
-
-   <select id="total" parameterType="Map" resultType="int">
-		select count(*) from item
-		<where> type = #{type}
-		<choose>
-				<when test="col=='title'">
-         		title like '%'||#{keyword}||'%'
-         		</when>
-				<when test="col=='itemNo'">
-         		itemNo like '%'||#{keyword}||'%'
-         		</when>           
-		</choose>
-		</where>
+		select
+		count(*)
+		from(
+		select reviewNo, id,r.content,r.picture,i.image as
+		itemPicture,i.title as
+		itemTitle,height,weight,mySize,star,itemColor,itemSize,i.itemNo,replyContent
+		from item i, review r,itemOption o
+		where r.itemOptionNo =
+		o.itemOptionNo and o.itemNo = i.itemNo
+		)
+		where itemNo=#{itemNo,
+		jdbcType=INTEGER }
 	</select>
 
 
-   <delete id="delete" parameterType="int">
-      delete from item
-      where itemNo = #{itemNo}
-   </delete>
-   
-      <delete id="deleteOption" parameterType="int">
-      delete from itemOption
-      where itemNo = #{itemNo}
-   </delete>
+	<select id="color" parameterType="Map" resultType="String">
+		select
+		distinct(itemColor)
+		from item i, itemOption o
+		where i.itemNo = o.itemNo
+		and i.itemNo =#{itemNo}
+	</select>
 
-   <update id="update" parameterType="int">
-      update itemOption
-      <set>
-         count = #{count}
-      </set>
-      where itemOptionNo = #{itemOptionNo}
-   </update>
-   <update id="updateItem" parameterType="int">
-      update item
-      <set>
-         image = #{image},title=#{title},description=#{description},content=#{content},price=#{price},salePrice=#{salePrice},type=#{type}
-      </set>
-      where item = #{itemNo}
-   </update>
-   <select id="itemOptionList" parameterType="List"
-      resultType="OrderItemDTO">
-      select o.itemOptionNo,i.title as itemTitle,i.image as
-      itemImage,i.price as itemPrice, i.salePrice as itemSalePrice,
-      o.itemSize,o.itemColor,i.itemNo,o.itemCount
-      from item i, itemOption o
-      where i.itemNo = o.itemNo and itemOptionNo in
-      <foreach item="item" collection="list" open="(" separator=","
-         close=")">
-         #{item.value}
-      </foreach>
-      order by itemOptionNo
-   </select>
+	<select id="size" parameterType="Map" resultType="String">
+		select itemSize
+		from item i, itemOption o
+		where i.itemNo = o.itemOptionNo and i.itemNo
+		=#{itemNo} and o.itemColor = #{color}
+	</select>
 
-   <resultMap type="ItemDTO" id="itemMap">
-      <result property="itemNo" column="itemNo" />
-      <result property="title" column="title" />
-      <result property="description" column="description" />
-      <result property="content" column="content" />
-      <result property="price" column="price" />
-      <result property="salePrice" column="salePrice" />
-      <result property="type" column="type" />
-      <result property="image" column="image" />
-      <collection property="itemOptionList" column="itemNo"
-         javaType="List" ofType="ItemOptionDTO"
-         resultMap="itemOptionDTOListMap" />
-   </resultMap>
-   <resultMap type="itemOptionDTO" id="itemOptionDTOListMap">
-      <result property="itemNo" column="itemNo" />
-      <result property="itemOptionNo" column="itemOptionNo" />
-      <result property="itemCount" column="itemCount" />
-      <result property="itemSize" column="itemSize" />
-      <result property="itemColor" column="itemColor" />
+	<select id="count" parameterType="Map" resultType="int">
+		select o.count
+		from item i, itemOption o
+		where i.itemNo = o.itemOptionNo and i.itemNo
+		=#{itemNo} and o.itemColor = #{color} and o.itemSize = #{itemSize}
+	</select>
 
-   </resultMap>
-   
-   <select id="list" parameterType="Map" resultMap="itemMap">
+
+	<select id="subtype" parameterType="Map" resultType="String">
+		select
+		distinct(subType)
+		from itemType t, item i
+		where t.parentType = i.type
+		and t.parentType=#{parentType}
+	</select>
+
+	<select id="selectTypeList" parameterType="String"
+		resultType="ItemTypeDTO">
+		select type,parentType from itemType where
+		parenttype=(select parenttype
+		from itemtype where type=#{type}) or
+		parenttype=#{type}
+
+	</select>
+	<select id="selectParentType" parameterType="String"
+		resultType="String">
+		select COALESCE(parenttype,type) from itemtype where type =
+		#{type}
+	</select>
+
+	<select id="selectTypeListAll" resultType="ItemTypeDTO">
+		select type,parentType
+		from itemType
+
+	</select>
+
+	<select id="total" parameterType="Map" resultType="int">
+		select
+		count(*) from item
+		where type = #{type}
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from item
+		where itemNo =
+		#{itemNo}
+	</delete>
+
+	<delete id="deleteOption" parameterType="int">
+		delete from itemOption
+		where itemNo = #{itemNo}
+	</delete>
+
+	<update id="update" parameterType="int">
+		update itemOption
+		<set>
+			count = #{count}
+		</set>
+		where itemOptionNo = #{itemOptionNo}
+	</update>
+	<update id="updateItem" parameterType="int">
+		update item
+		<set>
+			image =
+			#{image},title=#{title},description=#{description},content=#{content},price=#{price},salePrice=#{salePrice},type=#{type}
+		</set>
+		where item = #{itemNo}
+	</update>
+	<select id="itemOptionList" parameterType="List"
+		resultType="OrderItemDTO">
+		select o.itemOptionNo,i.title as itemTitle,i.image as
+		itemImage,i.price as itemPrice, i.salePrice as itemSalePrice,
+		o.itemSize,o.itemColor,i.itemNo,o.itemCount
+		from item i, itemOption o
+		where i.itemNo = o.itemNo and itemOptionNo in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+			#{item.value}
+		</foreach>
+		order by itemOptionNo
+	</select>
+
+	<resultMap type="ItemDTO" id="itemMap">
+		<result property="itemNo" column="itemNo" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="content" column="content" />
+		<result property="price" column="price" />
+		<result property="salePrice" column="salePrice" />
+		<result property="type" column="type" />
+		<result property="image" column="image" />
+		<collection property="itemOptionList" column="itemNo"
+			javaType="List" ofType="ItemOptionDTO"
+			resultMap="itemOptionDTOListMap" />
+	</resultMap>
+	<resultMap type="itemOptionDTO" id="itemOptionDTOListMap">
+		<result property="itemNo" column="itemNo" />
+		<result property="itemOptionNo" column="itemOptionNo" />
+		<result property="itemCount" column="itemCount" />
+		<result property="itemSize" column="itemSize" />
+		<result property="itemColor" column="itemColor" />
+
+	</resultMap>
+
+	<select id="list" parameterType="Map" resultMap="itemMap">
 		select i.itemNo,o.itemOptionNo,
-		image, title, description, content, price,salePrice,
+		image, title, description, content,
+		price,salePrice,
 		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
+		from
+		(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
 		i , itemOption o,itemType t
 
-		where i.type=t.type and i.itemNo = o.itemNo and(t.type = #{type} or
+		where i.type=t.type and i.itemNo = o.itemNo
+		and(t.type = #{type} or
 		t.parentType=#{type})
 
 		order by itemNo desc
 	</select>
-  <select id="search" parameterType="Map" resultMap="itemMap">
-select i.itemNo,o.itemOptionNo,
-		image, title, description, content, price,salePrice,
-		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-		from item i , itemOption o,itemType t
 
-	where
-			i.type=t.type and i.itemNo = o.itemNo and(i.title = #{keyword} or i.itemNo =#{itemNo});
-		
+
+	<select id="search" parameterType="Map" resultMap="itemMap">
+		select
+		i.itemNo,o.itemOptionNo,
+		image, title, description, content,
+		price,salePrice,
+		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
+		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
+		i , itemOption o,itemType t
+		<where>
+			<choose>
+				<when test="type =='parentType'">
+					parentType like '%'||#{keyword}||'%'
+				</when>
+			</choose>
+			i.type =t.type and i.itemNo = o.itemNo
+		</where>
 		order by itemNo desc
 	</select>
 
-         
-   
-   <select id="read" parameterType="int" resultMap="itemMap">
-      select i.itemNo,
-      image, title, description, content, price,salePrice,
-      type,itemOptionNo,itemColor,itemSize,itemCount
-      from item i , itemOption
-      o
-      where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
-   </select>
-   <update id="decreaseItemCount" parameterType="OrderItemDTO">
-      update itemOption
-      set itemCount = itemCount - #{count}
-      where itemOptionNo = #{itemOptionNo}
-   </update>
-      <update id="increaseItemCount" parameterType="OrderItemDTO">
-      update itemOption
-      set itemCount = itemCount + #{count}
-      where itemOptionNo = #{itemOptionNo}
-   </update>
-   
-   	<insert id="insertItem" parameterType="ItemDTO"
+	<select id="SearchTotal" parameterType="Map" resultType="int">
+		select
+		count(*) from item
+		<where> type = #{type}
+			<choose>
+				<when test="search_type=='itemNo'">
+					i.itemNo like '%'||#{keyword}||'%'
+				</when>
+				<when test="search_type == 'title'">
+					title like '%'||#{keyword}||'%'
+				</when>
+				<when test="type =='parentType'">
+					parentType like '%'||#{keyword}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<select id="read" parameterType="int" resultMap="itemMap">
+		select i.itemNo,
+		image, title, description, content, price,salePrice,
+		type,itemOptionNo,itemColor,itemSize,itemCount
+		from item i , itemOption
+		o
+		where i.itemNo = #{itemNo} and i.itemNo = o.itemNo
+	</select>
+	<update id="decreaseItemCount" parameterType="OrderItemDTO">
+		update itemOption
+		set itemCount = itemCount - #{count}
+		where itemOptionNo =
+		#{itemOptionNo}
+	</update>
+	<update id="increaseItemCount" parameterType="OrderItemDTO">
+		update itemOption
+		set itemCount = itemCount + #{count}
+		where itemOptionNo =
+		#{itemOptionNo}
+	</update>
+
+	<insert id="insertItem" parameterType="ItemDTO"
 		useGeneratedKeys="true" keyProperty="itemNo" keyColumn="itemNo">
 		insert into
 		item(itemNo,image,title,description,content,price,salePrice,type)
-		values((SELECT NVL(MAX(itemNo), 0)+ 1 FROM item),#{image},#{title},#{description},#{content},#{price},#{salePrice},#{type})
+		values((SELECT NVL(MAX(itemNo), 0)+ 1 FROM
+		item),#{image},#{title},#{description},#{content},#{price},#{salePrice},#{type})
 	</insert>
-	
-	 <insert id="insertItemOption" parameterType="ItemOptionDTO">
+
+	<insert id="insertItemOption" parameterType="ItemOptionDTO">
 		insert into
 		itemOption(itemOptionNo,itemNo,itemColor,itemSize,itemCount)
-		values((SELECT NVL(MAX(itemOptionNo), 0)+ 1 FROM itemOption),#{itemNo},#{itemColor},#{itemSize},#{itemCount})
+		values((SELECT NVL(MAX(itemOptionNo), 0)+ 1 FROM
+		itemOption),#{itemNo},#{itemColor},#{itemSize},#{itemCount})
 	</insert>
 </mapper>
 

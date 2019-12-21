@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
@@ -36,15 +34,71 @@ public class ItemController {
 	private ItemService itemService;
 
 
-	@RequestMapping("/item/search")
-	public String search(HttpServletRequest request, ItemDTO dto ) {
+//	@GetMapping("/item/reSearch")
+//	public String search(HttpServletRequest request, Model model) {
+//		
+//		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
+//		String search_type = ItemUtility.checkNull(request.getParameter("search_type"));
+//		String type = request.getParameter("type");
+//
+//		if(search_type.equals("SearchTotal"))              
+//			keyword = "";
+//		
+//		if(search_type.equals("") || search_type == null)
+//			keyword = "";
+//		
+//		//페이징 관련
+//		int nowPage = 1;
+//		if(request.getParameter("nowPage")!= null){
+//			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+//		}
+//
+//		int recordPerPage = 40; //한페이지당 보여줄 레코드 갯수
+//
+//		//디비에서 가져올 순번
+//		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+//		int eno = nowPage * recordPerPage;
+//
+//		Map map = new HashMap();
+//		map.put("search_type", search_type);
+//		map.put("keyword", keyword);
+//		map.put("sno",sno);
+//		map.put("eno",eno);
+//		map.put("type", type);
+//		System.out.println(keyword);
+//		System.out.println(search_type);
+//
+//		ArrayList<ItemDTO> searchlist = mapper.search(map);
+//		//System.out.println("개수:"+searchlist.size());
+//		int SearchTotal = mapper.SearchTotal(map);
+//
+//		String paging = ItemUtility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword,type);
+//		
+//		model.addAttribute("AlltypeList", mapper.AllParentType());
+//		model.addAttribute("parentType",mapper.selectParentType(type));
+//		model.addAttribute("searchlist",searchlist);
+//		model.addAttribute("search_type",search_type);
+//		model.addAttribute("keyword",keyword);
+//		model.addAttribute("nowPage",nowPage);
+//		model.addAttribute("paging",paging);
+//
+//		return "/item/reSearch";
+//	}
+
+	@GetMapping("/item/search")
+	public String search(HttpServletRequest request) {
 		
 		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
-		String col = ItemUtility.checkNull(request.getParameter("col"));
-		String type = request.getParameter("type");
-
-		if (col.equals("total"))              
+		String search_type = ItemUtility.checkNull(request.getParameter("search_type"));
+		String type = request.getParameter("type"); //관리자 삭제기능
+		
+		
+		if(search_type.equals("SearchTotal"))              
 			keyword = "";
+		
+		if(search_type.equals("") || search_type == null)
+			keyword = "";
+		
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
@@ -58,38 +112,31 @@ public class ItemController {
 		int eno = nowPage * recordPerPage;
 
 		Map map = new HashMap();
-		map.put("col", col);
+		map.put("search_type", search_type);
 		map.put("keyword", keyword);
 		map.put("sno",sno);
 		map.put("eno",eno);
 		map.put("type", type);
 
+		System.out.println(keyword);
+		System.out.println(search_type);
+
 		ArrayList<ItemDTO> searchlist = mapper.search(map);
-		System.out.println("개수:"+searchlist.size());
-		int total = mapper.total(map);
+		System.out.println("header에서 온 상품 개수:"+searchlist.size());
+		int SearchTotal = mapper.SearchTotal(map);
 
-		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
-
-
-		request.setAttribute("typeList", mapper.selectTypeList(type));
-		request.setAttribute("parentType", mapper.selectParentType(type));
-		request.setAttribute("selectedType", type);
-		request.setAttribute("searchlist", searchlist);
-		request.setAttribute("col", col);
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("nowPage", nowPage);
-		request.setAttribute("paging", paging);
+		String paging = ItemUtility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword, type);
+		
+		request.setAttribute("AlltypeList", mapper.AllParentType());
+		request.setAttribute("parentType",mapper.selectParentType(type));
+		request.setAttribute("searchlist",searchlist);
+		request.setAttribute("search_type",search_type);
+		request.setAttribute("keyword",keyword);
+		request.setAttribute("nowPage",nowPage);
+		request.setAttribute("paging",paging);
 
 		return "/item/search";
 	}
-
-	
-	@GetMapping("/item/search")
-	public String search(HttpServletRequest request) {
-		request.setAttribute("typeList", mapper.AllParentType());
-		return "/item/search";
-	}
-
 
 	@RequestMapping("/item/delete")
 	public String delete(int itemNo, String type) {
