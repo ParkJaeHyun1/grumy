@@ -760,57 +760,9 @@
 								<br>
 							</p>
 							<p align="center" style="text-align: center;">
-								<img style="font-size: 9pt;" alt=""
-									src="${pageContext.request.contextPath}/item/images/detail1.jpg">
+							${dto.content}             
 							</p>
-							<p align="center" style="text-align: center;">
-								<br>
-							</p>
-							<p align="center" style="text-align: center;">
-								<br>
-							</p>
-							<p align="center" style="text-align: center;">
-								<span style="font-family: 돋움, dotum;"><span
-									style="font-size: 16pt;"><strong>[ 11월 말 ]</strong></span></span>
-							</p>
-							<p align="center" style="text-align: center;">
-								<br>
-							</p>
-							<p align="center" style="text-align: center;">
-								<img alt=""
-									src="/web/upload/NNEditor/20191112/제작상품 재오픈_shop1_093741.jpg"><p>&nbsp;</p>
-									<br>
-							</p>
-							<p align="center" style="text-align: center;">
-								<span style="font-family: sans-serif;"><span
-									style="color: rgb(99, 99, 99);"><b><span
-											style="font-size: 18pt;"></span></b></span></span>
-							</p>
-							<p align="center">
-								<b>&nbsp;</b>
-							</p>
-							<p align="center"></p>
-							<b><p align="center" style="text-align: center;">
-									<br>
-								</p></b>
-							<p align="center" style="text-align: center;">
-								<b><img alt=""
-									src="//slowand.com/web/upload/NNEditor/20191108/1_shop1_201304.jpg"></b>
-							</p>
-
-							<div class="xans-record-">
-								<a href="" alt="4"><img class='banner_image' width='984'
-									height='793' title='4' rel='59-15'
-									src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/1a646a9bf0f90195cb66d88c238baf2b.jpg' /></a>
-							</div>
-							<div class="xans-record-">
-								<a href="" alt="22"><img class='banner_image' width='984'
-									height='793' title='22' rel='60-15'
-									src='//app-storage-005.cafe24.com/bannermanage2/anne2173/2019/08/19/84b3b60e4c0e6b82589f63c613f651ad.jpg' /></a>
-							</div>
-						</div>
-					</div>
-				</div>
+							
 				<!-- //상품상세정보 -->
 			</div>
 

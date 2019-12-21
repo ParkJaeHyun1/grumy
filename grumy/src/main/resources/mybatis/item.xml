@@ -200,24 +200,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by itemNo desc
 	</select>
   <select id="search" parameterType="Map" resultMap="itemMap">
-		select i.itemNo,o.itemOptionNo,
+select i.itemNo,o.itemOptionNo,
 		image, title, description, content, price,salePrice,
 		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
-		i , itemOption o,itemType t
+		from item i , itemOption o,itemType t
 
-	<where>	
-			i.type=t.type and i.itemNo = o.itemNo and(t.type = #{type} or
-			t.parentType=#{type})
-		<choose>
-				<when test="col=='title'">
-         		i.title like '%'||#{keyword}||'%'
-         		</when>
-				<when test="col=='itemNo'">
-         		i.itemNo like '%'||#{keyword}||'%'
-         		</when>
-		</choose>
-		</where>
+	where
+			i.type=t.type and i.itemNo = o.itemNo and(i.title = #{keyword} or i.itemNo =#{itemNo});
+		
 		order by itemNo desc
 	</select>
 
