@@ -40,6 +40,8 @@ public class ItemService {
 		
 		if(cnt<1)
 			return false;
+		System.out.println(dto.getItemNo());
+		itemMapper.deleteOption(dto.getItemNo());
 		
 		for(ItemOptionDTO itemOption : dto.getItemOptionList())
 			cnt +=itemMapper.insertItemOption(itemOption);

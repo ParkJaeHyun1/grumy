@@ -163,7 +163,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			image =
 			#{image},title=#{title},description=#{description},content=#{content},price=#{price},salePrice=#{salePrice},type=#{type}
 		</set>
-		where item = #{itemNo}
+		where itemNo = #{itemNo}
 	</update>
 	<select id="itemOptionList" parameterType="List"
 		resultType="OrderItemDTO">

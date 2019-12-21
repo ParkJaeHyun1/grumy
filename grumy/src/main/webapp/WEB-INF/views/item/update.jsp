@@ -97,6 +97,7 @@
 								<tbody
 									class="xans-element- xans-product xans-product-option xans-record-"
 									style="background: #ffffff">
+
 									<tr>
 										<th scope="row">카테고리</th>
 
@@ -125,7 +126,11 @@
 										<th scope="row" style="width: 300px">상품명</th>
 
 										<td><input type="text" id="title" name="title"
-											style="width: 395px" value="${dto.title }"></td>
+											style="width: 395px" value="${dto.title }">
+											
+											<input type="hidden" value=${dto.itemNo }  name="itemNo">
+											</td>    
+											
 									</tr>
 									<tr>
 										<th scope="row">상품 이미지</th>
