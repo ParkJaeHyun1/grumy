@@ -397,6 +397,7 @@
 
 		<div id="container">
 			<div id="contents">
+			
 
 				<div class="titleArea">
 					<h2>SEARCH</h2>
@@ -404,37 +405,38 @@
 				</div>
 
 				<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-				<form id="searchForm" name="" action="${pageContext.request.contextPath}/item/Search"
+				<form id="searchForm" name="search" action="${pageContext.request.contextPath}/item/search"
 					method="get" target="_self" enctype="multipart/form-data">
-					<input id="view_type" name="view_type" value="" type="hidden" /> 
-					<input
-						id="supplier_code" name="supplier_code" value="" type="hidden" />
+  
 					<div class="xans-element- xans-search xans-search-form ">
 						<div class="ec-base-box searchbox">
 							<fieldset>
 								<legend>상품 검색</legend>
 								<div class="item">
-									<strong>상품분류</strong> <select id="type"
+									<strong>상품분류</strong> 
+									<select id="type"
 										name="type" fw-filter="" fw-label="" fw-msg="" style="width:364px">
-										<option>-상품 카테고리-</option>
+										<option value="SearchTotal"
+										<c:if test="${type=='SearchTotal'}">selected</c:if>>전체 카테고리</option>
 										<c:forEach var="dto" items="${AlltypeList}">
-											<option value="${dto.parentType}">
+											<option value="${dto.parentType}"
 												<c:if test="${type == dto.parentType}">
 												selected
-												</c:if> ${dto.parentType}
-											</option>             
-										</c:forEach>
-									</select> </select>             
+												</c:if>> ${dto.parentType}
+											</option>                             
+										</c:forEach>         
+									</select>             
 								</div>
 								<div class="item">
 									<strong>검색조건</strong> 
 									<select id="search_type"
 										name="search_type" fw-filter="" fw-label="상품검색" fw-msg="">
-										<option value="title"
-											<c:if test="${search_type =='title'}">selcted</c:if>>상품명</option>
+										<option value="title" 
+											<c:if test="${search_type =='title'}">selected</c:if>>상품명</option>
+											<c:if test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 										<option value="itemNo"
-											<c:if test="${search_type =='itemNo'}">selcted</c:if>>상품 번호</option>
-										
+											<c:if test="${search_type =='itemNo'}">selected</c:if>>상품 번호</option>
+										</c:if>
 									</select> 
 									<input id="keyword" name="keyword" fw-filter=""
 										fw-label="상품명/제조사" fw-msg="" class="inputTypeText" size="15"
@@ -442,14 +444,14 @@
 								</div>
 
 
-								<div class="item">
-									<strong>판매가격대</strong> <input id="itemPrice1" name="price"
-										fw-filter="isNumber" fw-label="최소판매가격" fw-msg=""
-										class="input01" size="15" value="" type="text" /> ~ <input
-										id="itemPrice2" name="price" fw-filter="isNumber"
-										fw-label="최대판매가격" fw-msg="" class="input01" size="15" value=""
-										type="text" />
-								</div>
+<!-- 								<div class="item"> -->
+<!-- 									<strong>판매가격대</strong> <input id="itemPrice1" name="price" -->
+<!-- 										fw-filter="isNumber" fw-label="최소판매가격" fw-msg="" -->
+<!-- 										class="input01" size="15" value="" type="text" /> ~ <input -->
+<!-- 										id="itemPrice2" name="price" fw-filter="isNumber" -->
+<!-- 										fw-label="최대판매가격" fw-msg="" class="input01" size="15" value="" -->
+<!-- 										type="text" /> -->
+<!-- 								</div> -->
 
 								<p class="button">
 									<input type="submit" value="search" alt="검색" />
@@ -486,6 +488,15 @@
 
 				<div
 					class="xans-element- xans-search xans-search-result ec-base-product">
+					<c:if
+				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+				<p align="right">
+					<button class="yg_btn_28 yg_btn3" style="float: rigth"
+						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
+					&nbsp;
+				</p>
+				<br></br>
+			</c:if>          
 					<ul class="prdList grid4">
 						<c:forEach var="dto" items="${searchlist}">
 							<li id="anchorBoxId_2065" class="xans-record-">

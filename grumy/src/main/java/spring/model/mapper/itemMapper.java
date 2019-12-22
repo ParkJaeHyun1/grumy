@@ -42,5 +42,6 @@ public interface itemMapper {
 	int rtotal();
 	int SearchTotal(Map map);
 	
+	
 
 }
