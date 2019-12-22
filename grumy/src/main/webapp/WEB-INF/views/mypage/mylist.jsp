@@ -16,7 +16,7 @@
 		location.href = url;
 	}
 	function read_replyd(no) {
-		var url = "${pageContext.request.contextPath}/delivery/read_reply";
+		var url = "${pageContext.request.contextPath}/delivery/read_reply";   
 		url += "?board_no=" + no;
 		location.href = url;
 	}

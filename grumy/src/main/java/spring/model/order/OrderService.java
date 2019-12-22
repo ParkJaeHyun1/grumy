@@ -17,7 +17,7 @@ public class OrderService {
 		int cnt=0;
 
 		for(OrderItemDTO orderItem: orderItemList) 
-			cnt += itemMapper.decreaseItemCount(orderItem);
+			cnt += itemMapper.decreaseItemCount(orderItem); 
 		
 		return cnt==orderItemList.size()?true:false;
 	}

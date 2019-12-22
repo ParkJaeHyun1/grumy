@@ -34,7 +34,7 @@ public class OrderController {
 
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<String, String>(); 
 		
 		for(String str:orderInfoList) 
 			map.put(str.split("/")[0], str);

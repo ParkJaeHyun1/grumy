@@ -96,7 +96,7 @@ public class OrderRestController {
 	}
 	@PutMapping("/order/decreasePoint")
 	public ResponseEntity<String> decreasePoint(@RequestBody Map map) {
-		System.out.println("으아악:"+map.get("id"));
+		System.out.println("으아악:"+map.get("id"));  
 		System.out.println("으아악:"+map.get("point"));
 		int cnt = memberMapper.decreasePoint(map);
 		System.out.println("cnt:"+cnt);
@@ -104,7 +104,7 @@ public class OrderRestController {
 	}
 	@PutMapping("/order/increasePoint")
 	public ResponseEntity<String> increasePoint(@RequestBody Map map) {
-		System.out.println("으아악:"+map.get("id"));
+		System.out.println("으아악:"+map.get("id")); 
 		System.out.println("으아악:"+map.get("point"));
 
 		int cnt = memberMapper.increasePoint(map);
