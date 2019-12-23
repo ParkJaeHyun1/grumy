@@ -209,7 +209,7 @@ public class ItemController {
 		ArrayList<reviewDTO> rlist = mapper.rlist(map);
 
 		int qtotal = mapper.qtotal(map);
-		int rtotal = mapper.rtotal();
+		int rtotal = mapper.rtotal(map);
 		System.out.println("리뷰갯수:"+rtotal);
 
 		String qpaging = Utility.paging2(qtotal, nowPage, recordPerPage,itemNo);

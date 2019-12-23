@@ -39,7 +39,7 @@ public interface itemMapper {
 	ArrayList<ItemTypeDTO> AllParentType();
 	int updateItem(ItemDTO dto);
 	ArrayList<reviewDTO> rlist(Map map);
-	int rtotal();
+	int rtotal(Map map);
 	int SearchTotal(Map map);
 	
 	

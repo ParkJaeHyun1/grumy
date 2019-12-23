@@ -734,7 +734,7 @@
 
 							<li><a href="#prdReview">REVIEW <span
 									class="cnt crema-product-reviews-count"
-									>${rtotal }</span></a></li>
+									>${rtotal}</span></a></li>
 							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 
@@ -785,7 +785,7 @@
 							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
 						<div class="board">
-							<h3>REVIEW</h3>
+							<h3 style="margin: 0px;">REVIEW</h3>
 
 						</div>
 					</div>
@@ -820,10 +820,41 @@ span.star, span.camera, .sprite_comment {
 .review_comment_color {
 	color: #6db67e;
 }
+
 </style>
 <script type="text/javascript" async=""
 	src="https://www.google-analytics.com/plugins/ua/ecommerce.js"></script>
 <script src="//www.google-analytics.com/analytics.js"></script>
+<script>
+var listp={};
+<c:forEach items="${listp}" var="dto">
+	listp['reviewNo${dto.reviewNo}'] = {'picture':'${dto.picture}','itemPicture':'${dto.itemPicture}','itemTitle':'${dto.itemTitle}','id':'${dto.id}','height':'${dto.height}','weight':'${dto.weight}','mySize':'${dto.mySize}','itemColor':'${dto.itemColor}','itemSize':'${dto.itemSize}','content':'${dto.content}','replyContent':'${dto.replyContent}'};
+</c:forEach>         
+console.log(listp);
+
+
+  function create_reply(reviewNo) {
+	   var url = "create_reply";
+      url += "?reviewNo="+reviewNo;
+      
+      location.href = url;
+   }
+   function update(reviewNo){
+	   var url = "update";
+      url += "?reviewNo="+reviewNo;
+      location.href = url;
+   }
+   function delete1(reviewNo) {
+	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+ 	var url = "delete";
+         url += "?reviewNo="+reviewNo;
+          location.href=url;
+ }else{   //취소
+   return false;
+  }
+ }
+
+</script>
 </head>
 <body class="unknown unknown-78 windows_os reviews index widget_1 ko-KR"
 	lang="ko-KR" data-action="index" data-brand-code="slowand.com"
@@ -846,7 +877,16 @@ span.star, span.camera, .sprite_comment {
 					<div class="reviews_index__title">
 						<strong>REVIEW</strong><span class="divider">|</span>문의글 혹은 악의적인 비방글은 무통보 삭제된다는 점 유의해주세요^^
 					</div>
+					
+				<p align="right">
+					<button  style="float: rigth" display:"none;
+						onclick="location.href='${pageContext.request.contextPath}/review/list/'">
+						<img src="${pageContext.request.contextPath}/images/rimg.PNG"></img></button>
+					&nbsp;
+				</p>
 				</div>
+				
+				
 				<script
 					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>
 				<link rel="stylesheet" media="all"
@@ -1163,6 +1203,8 @@ span.star, span.camera, .sprite_comment {
 		enctype="multipart/form-data"
 		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
 		accept-charset="UTF-8" data-remote="true" method="post">
+		<input type="hidden" name="url"
+										value="/item/read?itemNo=${dto.itemNo }#prdQnA"></input>
 		<input name="utf8" type="hidden" value="✓">
 		<div id="upload-fields-container"></div>
 	</form>
@@ -1191,7 +1233,7 @@ span.star, span.camera, .sprite_comment {
 
 								<li><a href="#prdReview">REVIEW <span
 										class="cnt crema-product-reviews-count"
-										data-product-code="3596">0</span></a></li>
+										>${rtotal }</span></a></li>
 								<li class="selected"><a href="#prdQnA">Q&amp;A <span
 										class="cnt">${qtotal }</span></a></li>
 							</ul>

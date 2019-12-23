@@ -157,7 +157,7 @@ public class ReviewController {
 
 		int total = mapper.total(map);
 
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+		String paging = Utility.rpaging(total, nowPage, recordPerPage, col, word);
 		
 		
 		request.setAttribute("col", col);

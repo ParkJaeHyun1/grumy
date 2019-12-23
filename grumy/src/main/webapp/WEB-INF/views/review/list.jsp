@@ -332,7 +332,7 @@ var x = document.getElementById("myDIV");
 													<c:when test="${empty dto.picture}">
 													</c:when>
 													<c:otherwise>
-														<img onclick="popup('${dto.reviewNo}')"
+														<img 
 															src="${pageContext.request.contextPath}/storage/${dto.picture}"
 															class="js-review-image" width="90px" height="90px"
 															style="opacity: 1;">
