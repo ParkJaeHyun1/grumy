@@ -422,9 +422,9 @@ function setView(){
 													<div>
 
 														<input id="product_mileage_cash_3615_000A"
-															name="product_mileage_cash" value="1060" type="hidden" />
-														<img
-															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
+															name="product_mileage_cash" value="1060" type="hidden" />     
+														<img   
+															src="${pageContext.request.contextPath}/images/point_kakao.png" style="width:13px;height:13px" />    
 														<span id="cart_item_point1_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br></span>
 													</div>
 													<div>

@@ -65,7 +65,6 @@ public class SmartEditorRestController {
 			System.out.println("�뙆�씪�뾽濡쒕뜑�뿉�윭:"+ e);
 			e.printStackTrace();
 		}
-
-		
+	
 	}
 }

@@ -96,17 +96,11 @@ public class OrderRestController {
 	}
 	@PutMapping("/order/decreasePoint")
 	public ResponseEntity<String> decreasePoint(@RequestBody Map map) {
-		System.out.println("으아악:"+map.get("id"));  
-		System.out.println("으아악:"+map.get("point"));
 		int cnt = memberMapper.decreasePoint(map);
-		System.out.println("cnt:"+cnt);
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	@PutMapping("/order/increasePoint")
 	public ResponseEntity<String> increasePoint(@RequestBody Map map) {
-		System.out.println("으아악:"+map.get("id")); 
-		System.out.println("으아악:"+map.get("point"));
-
 		int cnt = memberMapper.increasePoint(map);
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}

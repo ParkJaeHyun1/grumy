@@ -97,7 +97,7 @@ function selectPostcode() {
             } else { // 사용자가 지번 주소를 선택했을 경우(J)
                 addr = data.jibunAddress;
             }
-
+     
             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
             if(data.userSelectedType === 'R'){
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -141,7 +141,7 @@ function getOrderID(){
         	orderInfo.orderNo=result;
         },
         error : function(xhr, status, er) {
-
+        
         }
    });
 	return orderID;
@@ -165,6 +165,7 @@ function purchase(){
 	if(!checkOrderInfo())
 		return;
 	
+	var isPurchased = false;
 	setOrderInfo();
 
 	BootPay.request({
@@ -192,7 +193,7 @@ function purchase(){
 	         phone: '${member.phone}'
 	      },
 	      order_id: getOrderID(), //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
-	      params: {callback1: '그대로 콜백받을 변수 1', callback2: '그대로 콜백받을 변수 2', customvar1234: '변수명도 마음대로'},
+	      params: {callback1: '111', callback2: '22222', customvar1234: '변수명도 마음대로'},
 	      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
 	      extra: {
 	          start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
@@ -211,20 +212,19 @@ function purchase(){
 	   }).ready(function (data) {  
 		  	orderInfo.imagineAccount=data.account;
 	      	orderInfo.imagineBank=data.bankname;
-	      	orderInfo.imagineDate=data.expireddate;
+	      	orderInfo.imagineDate=data.expiredate;
+	      	orderInfo.paymentType = '가상계좌';
 	      	orderInfo.state = '입금대기';
 	  		
 	      	$.each(orderInfo.orderItemList, function(index, item){ 
 		    	item.state='입금대기';
 				item.orderNo = orderInfo.orderNo;      
 	  		});
-	      	alert("1111");      
+  
 	  		if (updateOrder()&&checkItem()&&decreasePoint()) {						// updateOrder()&&checkItem()으로 하면 checkitem이 성공하고 updateOrder가 실패할경우 checkitem을 롤백시켜줘야함
 	  			deleteCartAjax(cartNoList);
-	  			alert("인크리즈전");
-	  			increasePoint();           
+	  			isPurchased = true;
 	  			// alert창으로 계좌발급 알려주고 주문내역창으로 넘어가기	
-	  			
 	  		}else{
 		    	  deleteOrder();
 			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
@@ -235,10 +235,10 @@ function purchase(){
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
 	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
 	      console.log(data);
-	     
-	      orderInfo.state = '배송준비';
-	      if (updateOrder()&&checkItem()&&decreasePoint()) {
+
+	      if (checkItem()&&decreasePoint()) {
 	    	  	BootPay.transactionConfirm(data); // 조건이 맞으면 승인 처리를 한다.
+	    	  	isPurchased = true;
 	         	
 	      } else {
 	    	  BootPay.removePaymentWindow(); // 조건이 맞지 않으면 결제 창을 닫고 결제를 승인하지 않는다.
@@ -247,15 +247,23 @@ function purchase(){
        	   	  $(location).attr('href', '${url}');
 	      }
 	   }).close(function (data) {
-	       console.log(data);
+		   
+		   if(isPurchased)
+			location.href= "${pageContext.request.contextPath}/mypage/orderlist/list";    
+	       console.log(data);   
 	   }).done(function (data) {
+		   console.log(data);
+		   orderInfo.paymentType = data.method_name;                    
+		   orderInfo.state = '배송준비';
+		   updateOrder();
 		   deleteCartAjax(cartNoList);
-	      	alert('결제가 완료되었습니다.');
-	   });
-}     
-function deleteCartAjax(cartNoList){
-	$.ajax({
-		type : 'delete',
+	       alert('결제가 완료되었습니다.');   
+			//location.href= "${pageContext.request.contextPath}/mypage/orderlist/list";                                     
+	   });         
+}         
+function deleteCartAjax(cartNoList){      
+	$.ajax({      
+		type : 'delete',        
 		url : "../cart/delete",
 		data : JSON.stringify(cartNoList),
 		contentType : "application/json; charset=utf-8",
@@ -319,7 +327,7 @@ function updateOrder(){
     return enable;
 }
 function decreasePoint(){
-	alert('디크리즈시작:'+pointPrice);       
+ 
 	var enable;  
     $.ajax({
         type : 'put',
@@ -328,18 +336,16 @@ function decreasePoint(){
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
-            alert('성공');
         	enable = true;
         },
         error : function(xhr, status, er) {
-        	alert('실패');
 			enable = false;        
         }  
    });                   
     return enable;
 }
 function increasePoint(){  
-	alert("인크리즈시작");
+
 	var enable;
     $.ajax({
         type : 'put',
@@ -348,11 +354,9 @@ function increasePoint(){
         contentType : "application/json; charset=utf-8",           
         async:false,
         success : function(result, status, xhr) {
-        	 alert('성공');
         	enable = true;
         },
         error : function(xhr, status, er) {
-        	 alert('실패');
 			enable = false;
         }  
    });
@@ -429,10 +433,10 @@ function setPriceView(){
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
 <link rel="canonical" href="http://www.slowand.com">
-	<link rel="alternate" href="http://www.m.slowand.com/">
+	<link rel="alternate" href="http://www.m.slowand.com/">      
 
 		<meta name="google-site-verification"
-			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />           
+			content="EFPjfmjiYaukHxgQEmFrlvyllFVJax3Pr1MlHCYhkgU" />
 		<meta name="naver-site-verification"
 			content="cdc66033ac54c3c0175fba92d71c46317e5c78e1" />
 
@@ -463,7 +467,7 @@ function setPriceView(){
 						href="https://www.slowand.com/ind-script/optimizer.php?filename=tZQ9bsMwDIX3OGvPQSQt0L1zp_YE-mFsxZLokhIQ376CnSGFl0KxRhHkR_JJejBQQDidGSamnlUARqHMBsGIwIUpJjAUAsVjCbzAf_LRHIR8To7iQdOtsjCnVNvUqxm5rjQp7fGhFE2XBVlAxYjn0_srTFl7Z7ohBQ9isbMoro8go4tvCzSQzR4hzDLQBFrFURON9cyyDeVUQOLM0qDMWw64WbN-VmKLDBfisOOYm2fzLHANNBAyuwbQROSTmxqQB_QtsOWH2Gxa6Dup3kWVsIXKSjegbsxnN_AfO9xRBN9C3JJl6rGziv3VrT5bbHYX0PUnI89HfRPv7DPm98D8VIl2AX2rKLvY8f1CFlf-UDJiMpSfUXDLvn_2LzS4gn8B&type=css&k=e22f5c15bc0ccd63d04b603a65ebf1ffb78f13b2&t=1547093551" />
 
 					<title>그루미</title>
-					<meta name="path_role" content="ORDER_ORDERFORM" />
+					<meta name="path_role" content="ORDER_ORDERFORM" />     
 					<meta name="author" content="슬로우앤드" />
 					<meta name="description"
 						content="20대 여성의류 베이직쇼핑몰, 데일리룩, 캠퍼스룩, 원피스, 스커트, 악세사리, 니트, 가디건, 등" />
@@ -497,7 +501,7 @@ function setPriceView(){
 						type="hidden" name="paymentType" id="paymentType"></input> <input
 						type="hidden" name="imagineAccount" id="imagineAccount"></input> <input
 						type="hidden" name="imagineBank" id="imagineBank"></input> <input
-						type="hidden" name="imagineDate" id="imagineDate"></input>
+						type="hidden" name="imagineDate" id="imagineDate"></input>      
 
 
 					<div class="xans-element- xans-order xans-order-form xans-record-">
@@ -589,26 +593,28 @@ function setPriceView(){
 													</div></td>
 												<td>${dto.count}</td>
 												<td><span class="txtInfo"><input
-														id='product_mileage_cash_3573_000D'
-														name='product_mileage_cash' value='578' type="hidden"><img
-															src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_money.gif" />
-															<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br />
-															<input id='product_mileage_card_3573_000D'
-															name='product_mileage_card' value='289' type="hidden"><img
-																src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif" />
-																<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>
-																원<br /> <input id='product_mileage_tcash_3573_000D'
-																name='product_mileage_tcash' value='289' type="hidden"><img
-																	src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif" />
-																	<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
-																	<input id='product_mileage_cell_3573_000D'
-																	name='product_mileage_cell' value='289' type="hidden"><img
-																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif" />
-																		<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br />
-																		<input id='product_mileage_icash_3573_000D'
-																		name='product_mileage_icash' value='289' type="hidden"><img
-																			src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif" />
-																			<fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
+														id="product_mileage_cash_3722_000C"
+														name="product_mileage_cash" value="736" type="hidden"><img        
+															src="${pageContext.request.contextPath}/images/point_kakao.png" style="width:13px;height:13px">   
+																  <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br><input id="product_mileage_card_3722_000C"
+																	name="product_mileage_card" value="368" type="hidden"><img
+																		src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_card.gif">
+																			  <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br><input
+																				id="product_mileage_tcash_3722_000C"
+																				name="product_mileage_tcash" value="368"     
+																				type="hidden"><img
+																					src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_bank.gif">
+																						  <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br><input
+																							id="product_mileage_cell_3722_000C"
+																							name="product_mileage_cell" value="368"
+																							type="hidden"><img
+																								src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_mobile.gif">
+																									  <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br><input
+																										id="product_mileage_icash_3722_000C"
+																										name="product_mileage_icash" value="368"
+																										type="hidden"><img
+																											src="//img.echosting.cafe24.com/design/skin/admin/ko_KR/ico_pay_account.gif">
+																												  <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원</span></td>
 												<td><div class="txtInfo">
 														기본배송<br />
 													</div></td>
@@ -812,10 +818,10 @@ function setPriceView(){
 									</tbody>
 									<!-- 이메일 국내/해외 -->
 									<tbody
-										class="email ec-orderform-emailRow ec-shop-deliverySimpleForm">
+										class="email ec-orderform-emailRow ec-shop-deliverySimpleForm">          
 										<tr>
 											<th scope="row">이메일 <img
-												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+												src="https://www.slowand.com//web/upload/yangji_pc_crumb/req_check.png"    
 												alt="필수" /></th>
 											<td><input id="remail1" name="remail1"
 												fw-filter="isFill" fw-label="주문자 이메일" fw-alone="N" fw-msg=""
@@ -1047,9 +1053,9 @@ function setPriceView(){
 												</div></td>
 											<td class="option "><div class="box txt16">
 													<strong>-</strong> <strong><span
-														id="totalSalePrice" class="txt23">0</span>원</strong> <span
+														id="totalSalePrice" class="txt23">0</span>원</strong> <span             
 														class="displaynone"><span
-														id="total_sale_price_ref_view"></span></span>
+														id="total_sale_price_ref_view"></span></span>     
 												</div></td>
 											<td><div class="box txtEm txt16">
 													<strong>=</strong> <strong><span id="total_price3"

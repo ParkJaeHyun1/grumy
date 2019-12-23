@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		imaginebank =
 		#{imagineBank,jdbcType=VARCHAR},
 		imaginedate =
-		#{imagineDate,jdbcType=VARCHAR},
+		to_Date(#{imagineDate,jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'),
 		state = #{state,jdbcType=VARCHAR}
 		where orderno = #{orderNo}
 	</update>
