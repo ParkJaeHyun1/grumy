@@ -188,7 +188,7 @@ where r>=#{sno} and r<=#{eno}
 		where r.itemOptionNo = o.itemOptionNo and o.itemNo = i.itemNo
 		ORDER BY reviewNo desc
 		))
-		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+		<![CDATA[ where rnum>=#{snor} and rnum<=#{enor}]]>
 		
 		
 	</select>

@@ -87,7 +87,7 @@ var x = document.getElementById("myDIV");
       location.href = url;
    }
    function update(reviewNo){
-      var url = "update";
+	   var url = "update";
       url += "?reviewNo="+reviewNo;
       location.href = url;
    }

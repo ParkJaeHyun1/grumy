@@ -263,6 +263,7 @@ var x = document.getElementById("myDIV");
    function update(reviewNo){
       var url = "update";
       url += "?reviewNo="+reviewNo;
+     
       location.href = url;
    }
    function delete1(reviewNo) {
@@ -627,7 +628,7 @@ var x = document.getElementById("myDIV");
 			</div>
 
 		</div>
-		${paging }
+		${paging2 }
 	</div>
 	<hr class="layout">
 </div>

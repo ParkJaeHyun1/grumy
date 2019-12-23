@@ -98,6 +98,8 @@ public class MypageController {
 		
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
+		String wordr = Utility.checkNull(request.getParameter("wordr"));
+		String colr = Utility.checkNull(request.getParameter("colr"));
 
 		
 		//페이징 관련
@@ -106,11 +108,20 @@ public class MypageController {
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 
 		
+		int nowPager = 1;
+		if(request.getParameter("nowPager")!= null){
+			nowPager = Integer.parseInt(request.getParameter("nowPager"));
+		} 
+		
 		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
+		int recordPerPager = 5; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;
+		
+		int snor = ((nowPager-1) * recordPerPager) + 1 ;
+		int enor= nowPager * recordPerPager;
 		
 		
 		Map map = new HashMap();
@@ -119,6 +130,8 @@ public class MypageController {
 		map.put("word", word);
 		map.put("sno",sno);
 		map.put("eno",eno);
+		map.put("snor",snor);
+		map.put("enor",enor);
 		 
 		
 		
@@ -126,17 +139,24 @@ public class MypageController {
 		ArrayList<reviewDTO> rlist = mapper.rlist(map);
 				
 		int total = mapper.mytotal(map);
+		int totalr = mapper.mytotal(map);
 		
 
 		
 		String paging = Utility.mypaging(total, nowPage, recordPerPage, col, word);
+		String paging2 = Utility.mypaging2(totalr, nowPager, recordPerPager, colr, wordr);
 		
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("colr", colr);
+		request.setAttribute("wordr", wordr);
+		request.setAttribute("nowPager", nowPager);
 		request.setAttribute("list", list);
 		request.setAttribute("paging", paging);
+		request.setAttribute("paging2", paging2);
 		request.setAttribute("total", total);
+		request.setAttribute("totalr", totalr);
 		request.setAttribute("dto", dto);
 		request.setAttribute("rlist", rlist);
 		return "/mypage/mylist";

@@ -51,7 +51,7 @@ public class ReviewController {
 		return "/review/create_reply";
 	}
 
-	@PostMapping("/review/update")
+	@PostMapping("/review/list/update")
 	public String update(reviewDTO dto, HttpServletRequest request) {
 
 		String basePath = request.getRealPath("/storage");
@@ -71,16 +71,16 @@ public class ReviewController {
 
 	}
 
-	@GetMapping("/review/update")
+	@GetMapping("/review/list/update")
 	public String update(Integer reviewNo, Model model) {
+		System.out.println("너냐");
 		reviewDTO dto = mapper.read(reviewNo);
-
 		model.addAttribute("dto", dto);
 
 		return "/review/update";
 	}
 
-	@GetMapping("/review/delete")
+	@GetMapping("/review/list/delete")
 	public String delete(int reviewNo) {
 		 mapper.delete(reviewNo);
 

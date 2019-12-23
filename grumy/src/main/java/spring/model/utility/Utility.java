@@ -286,7 +286,46 @@ public class Utility {
 		str.append("</div>");
 		return str.toString();
 	}
-	
+	public static String mypaging2(int totalRecord, int nowPager, int recordPerPage, String colr, String wordr) {
+		int pagePerBlock = 5; // ���� ������ ��
+		int totalPage = (int) (Math.ceil((double) totalRecord / recordPerPage));
+		int totalGrp = (int) (Math.ceil((double) totalPage / pagePerBlock));
+		int nowGrp = (int) (Math.ceil((double) nowPager / pagePerBlock));
+		int startPage = ((nowGrp - 1) * pagePerBlock) + 1;
+		int endPage = (nowGrp * pagePerBlock);
+		
+		StringBuffer str = new StringBuffer();
+		
+		str.append("<div class=\"xans-element- xans-board xans-board-paging-1002 xans-board-paging xans-board-1002 ec-base-paginate\">");
+		int _nowPager = (nowGrp - 1) * pagePerBlock; // 10�� ���� �������� �̵�
+		if (nowGrp >= 2) {
+			str.append("<a href='./mylist?colr=" + colr + "&wordr=" + wordr + "&nowPager=" + _nowPager + "'><img src=\"/grumy/images/page_prev.gif\" alt=\"이전 페이지\"></A>");
+		}
+		str.append("<ol>");
+		
+		
+		for (int i = startPage; i <= endPage; i++) {
+			if (i > totalPage) {
+				break;
+			}
+			
+			if (nowPager == i) {
+				str.append("<li class='active'><a href=# class=\"this\">" + i + "</a></li>");
+			} else {
+				str.append("<li class=\"xans-record-\"><a href='./mylist?colr=" + colr + "&wordr=" + wordr + "&nowPager=" + i + "' class=\"other\">" + i
+						+ "</A></li>");
+			}
+		}
+		str.append("</ol>");
+		_nowPager = (nowGrp * pagePerBlock) + 1; // 10�� ���� �������� �̵�
+		if (nowGrp < totalGrp) {
+			str.append(
+					"<A href='./mylist?colr=" + colr + "&wordr=" + wordr + "&nowPager=" + _nowPager + "'><img src=\"/grumy/images/page_next.gif\" alt=\"다음 페이지\"></A>");
+		}
+		
+		str.append("</div>");
+		return str.toString();
+	}
 	public static List<String> getDay(){
 		List<String> list = new ArrayList<String>();
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
