@@ -109,21 +109,12 @@ type="password" placeholder="PASSWORD"></label>
 <a href="#" class="yg_btn" id="login"
 onclick="document.getElementById('member_form_3274124755').submit();" 
 alt="로그인" style="background:#a18266">로그인</a>
-
-<a href="${nurl}">
-<img width="150" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
-</a>
-
-
- 
 <ul class="find">
-
 <li>
 <a href="${pageContext.request.contextPath }/member/findid" class="yg_btn yg_btn4">
 아이디 찾기
 </a>
 </li>
-
 <li>
 <a href="${pageContext.request.contextPath }/member/findpw" class="yg_btn yg_btn4">
 비밀번호 찾기

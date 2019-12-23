@@ -81,7 +81,12 @@ public class MemberController {
 		if (flag == 1) {
 			map.put("str", id + "는 중복되어 사용할 수 없습니다.");
 		} else {
-			map.put("str", id + "는 사용가능 합니다.");
+			if(id.length()==0)
+				map.put("str", "아이디를 입력해주세요.");
+			else if(id.length()<8||id.length()>17)
+				map.put("str", "아이디를 8자 이상 16자 이하 입력해주세요");
+			else
+				map.put("str", id + "는 사용가능 합니다.");
 		}
 		return map;
 	}// end idcheck
@@ -230,7 +235,7 @@ public class MemberController {
 
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('요청하신 정보로 가입하신 아이디가 존재하지 않습니다.'); " + "history.go(-1);</script>");
+			out.println("<script>alert('요청하신 정보로 가입하신 아이디가 존재하지 않습니다.');</script>");
 			out.flush();
 
 			return "/findid";

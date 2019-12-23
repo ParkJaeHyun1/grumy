@@ -87,6 +87,17 @@ function sample6_execDaumPostcode() {
 <!-- 필수 입력창 확인  -->
 
 <script language="javascript">
+   function onblur_event(id){
+	   
+	   	 var url = "idcheck";
+	     var param = "id=" + id;
+	     $.get(url, param, function(data, textStatus){
+	        
+	        $("#idcheck").html(data.str);
+	     });
+	   
+	   
+   }
    
    function validate() {
        
@@ -238,42 +249,6 @@ function sample6_execDaumPostcode() {
 </script>
 
 
-<script type="text/javascript">
-function idCheck(id){
-    if(id== ''){
-     alert("아이디를 입력하세요");
-       document.joinForm.id.focus();
-    }else{
-     var url = "idcheck";
-     var param = "id=" + id;
-     $.get(url, param, function(data, textStatus){
-        
-        $("#idcheck").text(data.str);
-     });
-     
-    }
- } 
-
-</script>
-
-<script type="text/javascript">
-function emailCheck(email){
-    if(email== ''){
-     alert("이메일을 입력하세요");
-       document.joinForm.email.focus();
-    }else{
-     var url = "emailcheck";
-     var param = "email=" + email;
-     $.get(url, param, function(data, textStatus){
-        
-        $("#emailcheck").text(data.str);
-     });
-     
-    }
- } 
-
-</script>
-
 <title>grumy</title>
 		
 </head>
@@ -331,13 +306,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<th scope="row">아이디 
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
 		<td>
-		<input id="id" name="id"
-			fw-filter="isFill&isFill&isMin[4]&isMax[16]&isIdentity"
-			fw-label="아이디" fw-msg="" maxlength="16" class="inputTypeText" placeholder=""
-			value="" type="text" />
+		<input id="id" name="id" type="text" onblur="onblur_event(this.value)"/>
 			(영문 대소문자/숫자,8~16자)
-			<button type="button" class="yg_btn_140 yg_btn3"
-				 onclick="idCheck(document.joinForm.id.value)">ID 중복확인</button>
 			<div id="idcheck"></div>
 		</td>
 	</tr>
@@ -405,7 +375,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<option value="017">017</option>
 		<option value="019">019</option>
 		</select>
-		-
+		
 		<input id="phone2" name="phone2" maxlength="4" style="width:60px;"
 		pattern="[0-9]{3,4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
 		fw-msg="" type="text" />-
@@ -422,6 +392,7 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 		</th>
 		<td>
+		
 		<input id="email" name="email" fw-filter="isFill" 
 		fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
 		type="text" />
