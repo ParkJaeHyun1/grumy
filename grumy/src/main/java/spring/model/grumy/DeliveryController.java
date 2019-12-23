@@ -90,34 +90,6 @@ public class DeliveryController {
 		
 	}
 	
-	@GetMapping("/delivery/read_reply")
-	public String read_reply(int board_no,HttpSession session,Model model){
-		String id = (String)session.getAttribute("id"); 
-		String grade = (String)session.getAttribute("grade");
-
-		if( id ==null) {
-			id =  "";
-			grade="";
-		}
-	
-		BoardDTO dto = mapper.read(board_no);
-		
-		if(grade.equals("A")||id.equals(dto.getCheck_read())) {
-			
-		
-		String content = dto.getContent().replaceAll("\r\n", "<br>");
-		
-		dto.setContent(content);
-		
-
-		model.addAttribute("dto",dto);
-		
-		return "/delivery/read_reply";
-		}else {
-			return "/delivery/error";
-		}
-	}
-	
 	
 	@GetMapping("/delivery/read")
 		public String read(int board_no, Model model,HttpSession session) {
@@ -142,16 +114,7 @@ public class DeliveryController {
 			dto.setContent(content);
 			
 
-			Map map = mapper.noread(board_no);
-			BigDecimal [] noArr = {(BigDecimal)map.get("PRE_NO"),
-									(BigDecimal)map.get("NEXT_NO")
-									};
 			
-			String [] subjectArr= {(String)map.get("PRE_SUBJECT"),
-									(String)map.get("NEXT_SUBJECT")
-									};
-			model.addAttribute("noArr",noArr);
-			model.addAttribute("subjectArr",subjectArr);			
 			model.addAttribute("dto",dto);
 			
 			return "/delivery/read";
@@ -187,6 +150,8 @@ public class DeliveryController {
 	public String list(HttpServletRequest request) {
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
+		String category = Utility.checkNull(request.getParameter("category"));
+		System.out.println(category);
 
 		
 		//페이징 관련
@@ -207,12 +172,16 @@ public class DeliveryController {
 		map.put("word", word);
 		map.put("sno",sno);
 		map.put("eno",eno);
+		map.put("category",category);
 		
 		
 		
 		List<BoardDTO> list = mapper.list(map); 
-		List<BoardDTO> list_ = mapper.list_(); 
 		
+		if(category == "") {
+		List<BoardDTO> list_ = mapper.list_(); 
+		request.setAttribute("list_", list_);
+		}
 				
 		int total = mapper.total(map);
 		
@@ -224,7 +193,6 @@ public class DeliveryController {
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("list", list);
-		request.setAttribute("list_", list_);
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		

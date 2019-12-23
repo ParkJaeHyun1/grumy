@@ -13,13 +13,6 @@
 		location.href = url;
 	}
 
-	function read_reply(no) {
-		var url = "read_reply";
-		url += "?board_no=" + no;
-
-		location.href = url;
-	}
-	
 	
 	function create(){
 		if(${sessionScope.id!=null}){

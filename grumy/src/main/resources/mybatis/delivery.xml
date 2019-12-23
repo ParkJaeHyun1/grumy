@@ -89,6 +89,9 @@ select count(*) from board
          		and type = '기타'
          		</otherwise>
          	</choose>
+         	<if test="category != ''">
+				and category = #{category}
+			</if>
          </where>
 </select>
 
@@ -136,7 +139,11 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,cont
 						and type = '기타'
 						</otherwise>
 					</choose>
+					<if test="category != ''">
+						and category = #{category}
+					</if>
 				</where>
+						
 				order by ref desc,board_no asc
 				)
 		)
