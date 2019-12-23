@@ -9,12 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.model.board.BoardDTO;
+import spring.model.item.ItemDTO;
 import spring.model.mapper.AdminMapper;
 import spring.model.member.MemberDTO;
 import spring.model.notice.NoticeDTO;
@@ -35,6 +35,9 @@ public class AdminController {
 		int sReady = mapper.total("배송준비");	//배송준비
 		int sIng = mapper.total("배송중");	//배송중
 		int sFin = mapper.total("배송완료");	//배송완료
+		int change = mapper.cstotal("교환");   //교환요청
+	    int cancel = mapper.cstotal("취소");   //취소요청
+        int ret = mapper.cstotal("반품");   //반품요청 
 		
 		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		NoticeDTO noticetr = noticet.get(0);
@@ -43,7 +46,7 @@ public class AdminController {
 		ArrayList<BoardDTO> deliveryl = mapper.deliveryl(5);
 		ArrayList<BoardDTO> communityl = mapper.communityl(5);
 		ArrayList<OrderDTO> chartl = mapper.chartl();
-		String[] abc = {"a", "b"};
+		
 		request.setAttribute("noticetr", noticetr);
 		request.setAttribute("noticel", noticel);
 		request.setAttribute("deliveryl", deliveryl);
@@ -54,9 +57,17 @@ public class AdminController {
 		request.setAttribute("sReady", sReady);
 		request.setAttribute("sIng", sIng);
 		request.setAttribute("sFin", sFin);
-		request.setAttribute("abc", abc);
+		request.setAttribute("change", change);
+	    request.setAttribute("cancel", cancel);
+	    request.setAttribute("ret", ret);
 		
 		return "/admin/main";
+	}
+	@RequestMapping("/admin/itemManage/list")
+	public String itemManage(HttpServletRequest request) {		
+		ArrayList<ItemDTO> iteml = mapper.iteml();
+		request.setAttribute("iteml", iteml);
+		return "/admin/itemManage/list";
 	}
 	
 	@RequestMapping("/admin/update")
@@ -183,4 +194,5 @@ public class AdminController {
 		
 		return map;
 	}
+
 }

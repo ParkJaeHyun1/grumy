@@ -4,6 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="spring.model.mapper.AdminMapper">
+	<select id="cstotal" parameterType="String" resultType="int">
+       select count(ref)
+        from(
+           select ref, count(ref)
+          from board
+           where type='기타' and lev='A' and category=#{category}
+           group by ref
+           <![CDATA[
+            having count(ref)<2
+            ]]>
+              )
+   </select>
 	<select id="total" parameterType="String" resultType="int">
 		select count(state) 
 		from norder  where
@@ -107,32 +119,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<select id="noticel" parameterType="int" resultType="NoticeDTO">
-		select no, subject,lev, wdate from (
-		select no, subject, lev, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)
-		<![CDATA[
-		where lev = 'A' and rownum <=#{rownum}
-		]]>
-	</select>
-
-	<select id="deliveryl" parameterType="int" resultType="BoardDTO">
-		select board_no, subject, wdate from (
-		select board_no, subject, to_char(wdate, 'mm.dd.') wdate, lev, type from board where indent = 0 order by board_no desc)
-		<![CDATA[
-		where rownum <=#{rownum} and type='기타'
-		]]>
-		and LEV = 'A'
-	</select>
-
-	<select id="communityl" parameterType="int" resultType="BoardDTO">
-		select board_no, content, wdate, subject, LEV from (
-		select board_no, content, to_char(wdate, 'mm.dd.') wdate, type, subject, LEV from board order by board_no desc)
-		<![CDATA[
-		where rownum <=#{rownum} and type='상품'
-		]]>
-		and LEV = 'A'
-	</select>
-	
 	<update id="updateState" parameterType="Map">
 		update norder
 		set state = #{state}
@@ -220,4 +206,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by datec asc
 	</select>
 	
+	<select id="noticel" parameterType="int" resultType="NoticeDTO">
+		select no, subject,lev, wdate from (
+		select no, subject, lev, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)
+		<![CDATA[
+		where lev = 'A' and rownum <=#{rownum}
+		]]>
+	</select>
+
+	<select id="deliveryl" parameterType="int" resultType="BoardDTO">
+		select board_no, subject, wdate from (
+		select board_no, subject, to_char(wdate, 'mm.dd.') wdate, lev, type from board where indent = 0 order by board_no desc)
+		<![CDATA[
+		where rownum <=#{rownum} and type='기타'
+		]]>
+		and LEV = 'A'
+	</select>
+
+	<select id="communityl" parameterType="int" resultType="BoardDTO">
+		select board_no, content, wdate, subject, LEV from (
+		select board_no, content, to_char(wdate, 'mm.dd.') wdate, type, subject, LEV from board order by board_no desc)
+		<![CDATA[
+		where rownum <=#{rownum} and type='상품'
+		]]>
+		and LEV = 'A'
+	</select>
+	<resultMap type="ItemDTO" id="ItemlistMap">		
+		<result property="itemNo" column="itemNo"/>
+		<result property="image" column="image"/>
+		<result property="title" column="title"/>
+		<result property="price" column="price"/>
+		<result property="type" column="type"/>
+		<collection property="itemOptionList" column="itemno"
+			javaType="List" ofType="ItemOptionDTO" resultMap="ItemOptionDTOMap" />
+	</resultMap>
+	<resultMap type="ItemOptionDTO" id="ItemOptionDTOMap">	
+		<result property="itemCount" column="itemCount"/>	
+		<result property="itemSize" column="itemSize"/>	
+		<result property="itemColor" column="itemColor"/>	
+
+	</resultMap>
+	<select id="iteml" resultMap="ItemlistMap">
+		select * from item a, itemoption b where a.itemno = b.itemno
+	</select>
 </mapper>

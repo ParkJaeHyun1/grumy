@@ -151,6 +151,14 @@ $(document).ready(function(){
 									style="border:1px solid">
 									
 									<ul class="panel-list" >
+										<li ><span class="info-title">
+										<a class="text-number"
+												href="${root }/admin/itemManage/list">
+										재고관리</a></span> <span
+											class="number-area aa">
+											
+										</span>										
+										</li>
 										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
 												<a class="text-number"
@@ -168,7 +176,7 @@ $(document).ready(function(){
 											<!---->
 												<span>건</span>
 										</span></li>
-										<span>&nbsp</span>
+										
 									</ul>
 								</div>
 								<!---->
@@ -219,7 +227,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="#/naverpay/claim/cancel?summaryInfoType=CANCEL_REQUEST">0</a>
+												href="${root }/delivery/list?category=취소">${cancel }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -227,7 +235,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="#/naverpay/claim/return?summaryInfoType=RETURN_REQUEST">0</a>
+												href="${root }/delivery/list?category=반품">${ret }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -235,7 +243,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="#/naverpay/claim/exchange?summaryInfoType=EXCHANGE_REQUEST">0</a>
+												href="${root }/delivery/list?category=교환">${change }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
