@@ -202,21 +202,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="list" parameterType="Map" resultMap="itemMap">
-		select i.itemNo,o.itemOptionNo,
-		image, title, description, content,
-		price,salePrice,
-		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
-		from
-		(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
-		i , itemOption o,itemType t
-
-		where i.type=t.type and i.itemNo = o.itemNo
+		select i.itemNo,o.itemOptionNo,image, title, description, content,price,salePrice,i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
+		from	(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]> )	i , itemOption o,itemType t,(select itemOptionNo,count(*) reviewCount from review group by(itemOptionNo)) r, (select itemOptionNo,count(*) orderCount from orderItem group by(itemOptionNo)) oi
+		where i.type=t.type and i.itemNo = o.itemNo and o.itemOptionNo = r.itemOptionNo(+) and o.itemOptionNo = oi.itemOptionNo(+)
 		and(t.type = #{type} or
 		t.parentType=#{type})
-
-		order by itemNo desc
+		order by #{orderby} desc;
 	</select>
-
 
 
 	<select id="search" parameterType="Map" resultMap="itemMap">
@@ -243,11 +235,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			<if test="price1 != null">
 		<![CDATA[
- 				and price >= #{price1} and price <= #{price2}
+ 				and price-salePrice >= #{price1} and price-salePrice <= #{price2}
  				]]>
-			</if>         
+			</if>
 		</where>
-		order by itemNo desc       
+		order by itemNo desc
 	</select>
 
 
@@ -269,6 +261,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
+
 
 	<select id="read" parameterType="int" resultMap="itemMap">
 		select i.itemNo,

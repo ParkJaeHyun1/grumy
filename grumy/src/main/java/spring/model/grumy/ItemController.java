@@ -111,6 +111,64 @@ public class ItemController {
 		return "/item/search";
 	}
 
+
+
+@RequestMapping("/item/list")
+	public String list(HttpServletRequest request) {
+
+		ItemDTO dto = new ItemDTO(); 
+		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
+		String col = ItemUtility.checkNull(request.getParameter("col"));
+		String type = request.getParameter("type");
+		String orderby = request.getParameter("orderby");
+		
+		if (col.equals("total"))
+			keyword = "";
+		//페이징 관련
+		int nowPage = 1;
+		if(request.getParameter("nowPage")!= null){
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		}
+
+		int recordPerPage = 40; //한페이지당 보여줄 레코드 갯수
+
+		//디비에서 가져올 순번
+		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+		int eno = nowPage * recordPerPage;
+
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("keyword", keyword);
+		map.put("sno",sno);
+		map.put("eno",eno);
+		map.put("type", type);
+		map.put("orderby", orderby);
+
+		System.out.println("orderby:"+orderby);
+		ArrayList<ItemDTO> list = mapper.list(map);
+		System.out.println("개수:"+list.size());
+		int total = mapper.total(map);     
+		
+		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
+
+        
+		request.setAttribute("typeList", mapper.selectTypeList(type));
+		request.setAttribute("parentType", mapper.selectParentType(type));
+		request.setAttribute("selectedType", type);
+		request.setAttribute("list", list);
+		request.setAttribute("col", col);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("nowPage", nowPage);
+		request.setAttribute("paging", paging);
+		request.setAttribute("total", total);
+		request.setAttribute("orderby", orderby);
+
+
+
+		return "/item/list";
+	}
+
+
 	@RequestMapping("/item/delete")
 	public String delete(int itemNo, String type) {
 		System.out.println("개새 꺄 아,아ㅏㅇ아");
@@ -224,53 +282,5 @@ public class ItemController {
 		return "/item/read";
 	}
 
-	@RequestMapping("/item/list")
-	public String list(HttpServletRequest request) {
-
-		ItemDTO dto = new ItemDTO(); 
-		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
-		String col = ItemUtility.checkNull(request.getParameter("col"));
-		String type = request.getParameter("type");
-
-		if (col.equals("total"))
-			keyword = "";
-		//페이징 관련
-		int nowPage = 1;
-		if(request.getParameter("nowPage")!= null){
-			nowPage = Integer.parseInt(request.getParameter("nowPage"));
-		}
-
-		int recordPerPage = 40; //한페이지당 보여줄 레코드 갯수
-
-		//디비에서 가져올 순번
-		int sno = ((nowPage-1) * recordPerPage) + 1 ;
-		int eno = nowPage * recordPerPage;
-
-		Map map = new HashMap();
-		map.put("col", col);
-		map.put("keyword", keyword);
-		map.put("sno",sno);
-		map.put("eno",eno);
-		map.put("type", type);
-
-		ArrayList<ItemDTO> list = mapper.list(map);
-		System.out.println("개수:"+list.size());
-		int total = mapper.total(map);
-
-		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
-
-
-		request.setAttribute("typeList", mapper.selectTypeList(type));
-		request.setAttribute("parentType", mapper.selectParentType(type));
-		request.setAttribute("selectedType", type);
-		request.setAttribute("list", list);
-		request.setAttribute("col", col);
-		request.setAttribute("keyword", keyword);
-		request.setAttribute("nowPage", nowPage);
-		request.setAttribute("paging", paging);
-
-
-
-		return "/item/list";
-	}
+	
 }

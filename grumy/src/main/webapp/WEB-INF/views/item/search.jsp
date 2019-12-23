@@ -370,7 +370,7 @@
 
 .xans-search-form .searchbox #col, .xans-search-form .searchbox #order_by
 	{
-	width: 365px;
+	width: 365px;         
 }
 
 .xans-search-form .searchbox #product_price1, .xans-search-form .searchbox #product_price2
@@ -460,6 +460,14 @@
 								</p>
 							</fieldset>
 						</div>
+				<c:if
+				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+				<p align="right">
+					<button class="yg_btn_28 yg_btn3" style="float: rigth"
+						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
+				</p> &nbsp;       
+			
+			</c:if>                                  
 						<div class="searchResult">
 							<p class="record">
 								TOTAL <strong>${SearchTotal}</strong> ITEMS               
@@ -469,7 +477,6 @@
 								<li rel="recent" style="" class="btn_order xans-record-">신상품</li>
 								<li rel="price" style="" class="btn_order xans-record-">높은가격</li>
 								<li rel="favor" style="" class="btn_order xans-record-">인기상품</li>
-								<li rel="review" style="" class="btn_order xans-record-">사용후기</li>
 							</ul>
 						</div>
 						<c:if test="${empty searchlist}">
@@ -490,15 +497,6 @@
 
 				<div
 					class="xans-element- xans-search xans-search-result ec-base-product">
-					<c:if
-				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-				<p align="right">
-					<button class="yg_btn_28 yg_btn3" style="float: rigth"
-						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
-					&nbsp;
-				</p>
-				<br></br>
-			</c:if>          
 					<ul class="prdList grid4">
 						<c:forEach var="dto" items="${searchlist}">
 							<li id="anchorBoxId_2065" class="xans-record-">

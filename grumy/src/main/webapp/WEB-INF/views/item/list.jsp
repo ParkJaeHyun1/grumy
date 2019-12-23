@@ -34,11 +34,11 @@ cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlE
 
 fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d883c5&t=1543392667" />
 
-<link rel="stylesheet" type="text/css"
-						href="//slowand.com//ind-script/optimizer.php?filename=tZVBbsMgEEX3drY9xyhppe676Kqr5ARjPLFJgHEYkJLbFyVulciqVBFYgua_gQ98YGRLsN54mDwPHi14Eo5eESgR2Ht2ARRby26VJl7gP_WkGmETg2bXdHzOFMYQcpsavJDPkwbsDP0hxWmC3cgTbO8Zn1dGqumjChlKIfRqvBOSaqOQF0DnaLN-f4UpdkardgzWgPTU9iR6cCBH7d6uJJuaG_pZxIxs9-xtPjeZyDFAh6LVtcniGjwLvE0UBKaDTANqoq4ADcwm6KkCeSRTA7u8ksXIOGiHgWq4jF0F6iJMioEf4q2gCaaGualK5WMv6IaDvuVmCq4ioMMpkr-surMY3T9kdj7zCwMXAe3QSZFcng-EfdriB8qRguL4jINL9vzYt6TI1Xjyv1_qNw&type=css&k=b7aa17f270a2c64f536613864c4b4f7c08e8f416&t=1547093551" />
-					<link rel="stylesheet" type="text/css"
-						href="//slowand.com///ind-script/optimizer.php?filename=rY7BDQIxDAQLOL7UYR0gUQgVmMQkhsSO4gSU7jmODuA--9nd0UDUTEBu6kbVAEXoMJ-PUPo1sZtiywnM0-TJOAjYg-UEzgyy-p4IEg7tDXJPjS1quUQuhSXsls0etoE7lefyZ5XifucOlHDnFR8JPdVNFbFR0Do20buptn_0sBQDFmsYKuYX-0BtreZvfshv&type=css&k=a657dc189b9b8bbc03db761fe930ee0ea776ae32&t=1566806466" />
-					                            
+	<link rel="stylesheet" type="text/css"
+		href="//slowand.com//ind-script/optimizer.php?filename=tZVBbsMgEEX3drY9xyhppe676Kqr5ARjPLFJgHEYkJLbFyVulciqVBFYgua_gQ98YGRLsN54mDwPHi14Eo5eESgR2Ht2ARRby26VJl7gP_WkGmETg2bXdHzOFMYQcpsavJDPkwbsDP0hxWmC3cgTbO8Zn1dGqumjChlKIfRqvBOSaqOQF0DnaLN-f4UpdkardgzWgPTU9iR6cCBH7d6uJJuaG_pZxIxs9-xtPjeZyDFAh6LVtcniGjwLvE0UBKaDTANqoq4ADcwm6KkCeSRTA7u8ksXIOGiHgWq4jF0F6iJMioEf4q2gCaaGualK5WMv6IaDvuVmCq4ioMMpkr-surMY3T9kdj7zCwMXAe3QSZFcng-EfdriB8qRguL4jINL9vzYt6TI1Xjyv1_qNw&type=css&k=b7aa17f270a2c64f536613864c4b4f7c08e8f416&t=1547093551" />
+	<link rel="stylesheet" type="text/css"
+		href="//slowand.com///ind-script/optimizer.php?filename=rY7BDQIxDAQLOL7UYR0gUQgVmMQkhsSO4gSU7jmODuA--9nd0UDUTEBu6kbVAEXoMJ-PUPo1sZtiywnM0-TJOAjYg-UEzgyy-p4IEg7tDXJPjS1quUQuhSXsls0etoE7lefyZ5XifucOlHDnFR8JPdVNFbFR0Do20buptn_0sBQDFmsYKuYX-0BtreZvfshv&type=css&k=a657dc189b9b8bbc03db761fe930ee0ea776ae32&t=1566806466" />
+
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -169,7 +169,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
 				<div id="contents">
-         
+
 					<ul class="menuCategory">
 						<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
 						<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
@@ -179,43 +179,61 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 						<!-- //참고 -->
 					</ul>
-				</div>     
-<div class="xans-element- xans-product xans-product-normalmenu "><!--
-                $compare_page = /product/compare.html
-            -->
-<div class="function">
-                <p class="prdCount">TOTAL <strong>319</strong> ITEMS</p>
-                <ul id="type" class="xans-element- xans-product xans-product-orderby"><li class="xans-record-"><a href="?cate_no=25&amp;sort_method=5#Product_ListMenu">신상품</a></li>
-<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=4#Product_ListMenu">높은가격</a></li>
-<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=6#Product_ListMenu">인기상품</a></li>
-<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=7#Product_ListMenu">사용후기</a></li>
-</ul>
-<span class="compare displaynone"><a href="#none" onclick="EC_ListAction.setProductCompare();"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_compare.gif" alt="상품비교"></a></span>
-            </div>
-<fieldset class="condition displaynone">
-<legend>조건별 검색</legend>
-                <p>
-                    
-                    <select class="xans-element- xans-product xans-product-firstselect FirstSelect"><option value="">-조건선택-</option>
-<option value="" class=""></option>
-</select>
-<select class="xans-element- xans-product xans-product-secondselect SecondSelect"><option value="">-조건선택-</option>
-<option value="" class=""></option>
-</select>
-<a href="#SelectSearch" class="SelectSearch"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/common/btn_list_search.gif" alt="검색"></a>
-                </p>
-            </fieldset>
-</div> 
-				               
+				</div>
 				<c:if
 					test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 					<p align="right">
 						<button class="yg_btn_28 yg_btn3" style="float: rigth"
 							onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
-						&nbsp;
 					</p>
-					<br></br>
+
 				</c:if>
+				<div class="xans-element- xans-product xans-product-normalmenu ">
+					<!--
+                $compare_page = /product/compare.html
+            -->
+					<div class="function">
+						<p class="prdCount">
+							TOTAL <strong>${list.size()}</strong> ITEMS
+						</p>
+						<ul id="order_by"
+							class="xans-element- xans-product xans-product-orderby">
+							<li class="xans-record-"><a           
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo">신상품</a></li>
+							<li class="xans-record-"><a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price">높은가격</a></li>
+							<li class="xans-record-"><a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount">인기상품</a></li>
+							<li class="xans-record-"><a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount">사용후기</a></li>
+						</ul>
+
+						<span class="compare displaynone"><a href="#none"          
+							onclick="EC_ListAction.setProductCompare();"><img
+								src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_compare.gif"
+								alt="상품비교"></a></span>
+					</div>
+					<fieldset class="condition displaynone">
+						<legend>조건별 검색</legend>
+						<p>
+
+							<select
+								class="xans-element- xans-product xans-product-firstselect FirstSelect"><option
+									value="">-조건선택-</option>
+								<option value="" class=""></option>
+							</select> <select
+								class="xans-element- xans-product xans-product-secondselect SecondSelect"><option
+									value="">-조건선택-</option>
+								<option value="" class=""></option>
+							</select> <a href="#SelectSearch" class="SelectSearch"><img
+								src="//img.echosting.cafe24.com/skin/base_ko_KR/common/btn_list_search.gif"
+								alt="검색"></a>
+						</p>
+					</fieldset>
+				</div>
+				<br></br>
+
+
 				<ul class="prdList grid4">
 
 					<c:forEach var="dto" items="${list}">

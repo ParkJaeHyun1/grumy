@@ -17,7 +17,9 @@ public class ItemDTO {
 	private String type; //카테고리
 	private ArrayList<ItemOptionDTO> itemOptionList;
 	private MultipartFile filenameMF ;
-
+	private int orderCount;
+	private int reviewCount;
+	
 	public ItemDTO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -101,6 +103,22 @@ public class ItemDTO {
 
 	public void setFilenameMF(MultipartFile filenameMF) {
 		this.filenameMF = filenameMF;
+	}
+
+	public int getOrderCount() {
+		return orderCount;
+	}
+
+	public void setOrderCount(int orderCount) {
+		this.orderCount = orderCount;
+	}
+
+	public int getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
 	}
 
 	@Override
