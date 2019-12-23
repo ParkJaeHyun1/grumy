@@ -7,6 +7,7 @@ import spring.model.item.ItemOptionDTO;
 public class OrderDTO {
 	private String orderNo;
 	private String odate;
+	private String pdate;
 	private String id;
 	private int totalPrice;
 	private int salePrice;
@@ -35,7 +36,7 @@ public class OrderDTO {
 	public OrderDTO(String orderNo, String odate, String id, int totalPrice, int salePrice, String name, String rname,
 			String postcode, String address, String detailaddress, String rphone, String remail, String rmsg,
 			String paymentType, String imagineAccount, String imagineBank, String imagineDate,
-			ArrayList<OrderItemDTO> orderItemList,String state) {
+			ArrayList<OrderItemDTO> orderItemList,String state, String pdate) {
 		super();
 		this.orderNo = orderNo;
 		this.odate = odate;
@@ -56,6 +57,7 @@ public class OrderDTO {
 		this.imagineDate = imagineDate;
 		this.orderItemList = orderItemList;
 		this.state = state;
+		this.pdate = pdate;
 	}
 	public String getOrderNo() {
 		return orderNo;
@@ -68,6 +70,12 @@ public class OrderDTO {
 	}
 	public void setOdate(String odate) {
 		this.odate = odate;
+	}
+	public String getPdate() {
+		return pdate;
+	}
+	public void setPdate(String pdate) {
+		this.pdate = pdate;
 	}
 	public String getId() {
 		return id;
@@ -174,7 +182,7 @@ public class OrderDTO {
 	}
 	@Override
 	public String toString() {
-		return "OrderDTO [orderNo=" + orderNo + ", odate=" + odate + ", id=" + id + ", totalPrice=" + totalPrice
+		return "OrderDTO [orderNo=" + orderNo + ", odate=" + odate + ", pdate=" + pdate + ", id=" + id + ", totalPrice=" + totalPrice
 				+ ", salePrice=" + salePrice + ", rname=" + rname + ", postcode=" + postcode + ", address=" + address +", name=" + name
 				+ ", detailaddress=" + detailaddress + ", rphone=" + rphone + ", remail=" + remail + ", rmsg=" + rmsg
 				+ ", paymentType=" + paymentType + ", imagineAccount=" + imagineAccount + ", imagineBank=" + imagineBank

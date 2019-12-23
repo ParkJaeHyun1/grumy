@@ -122,6 +122,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateState" parameterType="Map">
 		update norder
 		set state = #{state}
+		<if test="state == '배송준비'">
+		,pdate = sysdate
+		</if>
 		where orderno = #{orderno}
 	</update>
 	

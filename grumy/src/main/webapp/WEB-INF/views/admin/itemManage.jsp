@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script>
+function create(){
+	location.href = "${pageContext.request.contextPath}/item/createForm";
+}
+</script>
 </head>
 <body>
 	<div id="container">
@@ -28,7 +33,8 @@
 					<span
 						class="xans-element- xans-board xans-board-replysort-1002 xans-board-replysort xans-board-1002 "></span>
 				</div>
-				
+				<div style="text-align:right;">
+				<input type="button" class="yg_btn_28 yg_btn3" value="상품등록" onclick="create()"></div>
 				<div class="ec-base-table typeList gBorder">
 					<table border="1" summary="">
 						<colgroup
