@@ -442,16 +442,18 @@
 										fw-label="상품명/제조사" fw-msg="" class="inputTypeText" size="15"
 										value="${param.keyword}" type="text" />
 								</div>
+         
 
-
-<!-- 								<div class="item"> -->
-<!-- 									<strong>판매가격대</strong> <input id="itemPrice1" name="price" -->
-<!-- 										fw-filter="isNumber" fw-label="최소판매가격" fw-msg="" -->
-<!-- 										class="input01" size="15" value="" type="text" /> ~ <input -->
-<!-- 										id="itemPrice2" name="price" fw-filter="isNumber" -->
-<!-- 										fw-label="최대판매가격" fw-msg="" class="input01" size="15" value="" -->
-<!-- 										type="text" /> -->
-<!-- 								</div> -->
+								<div class="item">
+									<strong>판매가격대</strong> 
+									<input id="itemPrice1" name="price1"
+										fw-filter="isNumber" fw-label="최소판매가격" fw-msg=""
+										class="input01" size="15" value="${param.price1}" type="text" /> ~ 
+									<input                
+										id="itemPrice2" name="price2" fw-filter="isNumber"
+										fw-label="최대판매가격" fw-msg="" class="input01" size="15" value="${param.price2}"
+										type="text" />
+								</div>
 
 								<p class="button">
 									<input type="submit" value="search" alt="검색" />
@@ -460,8 +462,8 @@
 						</div>
 						<div class="searchResult">
 							<p class="record">
-								TOTAL <strong>138</strong> ITEMS               
-							</p>
+								TOTAL <strong>${SearchTotal}</strong> ITEMS               
+							</p>         
 							<ul
 								class="xans-element- xans-search xans-search-orderby listType">
 								<li rel="recent" style="" class="btn_order xans-record-">신상품</li>
@@ -483,7 +485,7 @@
 						</c:if>
 					</div>
 
-				</form>
+				</form> 
 				<!-- //참고 -->
 
 				<div

@@ -39,44 +39,54 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 		<!-- // 로고 -->
 
 		<div class="myList">
-                                   
-	
+
+
 			<c:choose>
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='A' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/admin/main">ADMIN PAGE</a> 
-						<a href="${pageContext.request.contextPath}/member/list">LIST</a>
+						<a href="${pageContext.request.contextPath}/admin/main">ADMIN
+							PAGE</a> <a href="${pageContext.request.contextPath}/member/list">LIST</a>
 						<a href="${pageContext.request.contextPath}/member/logout">LOGOUT</a>
 					</div>
 				</c:when>
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='H' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> 
-							<a href="${pageContext.request.contextPath}/member/update">MODIFY</a>
-						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> 
-						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>  
-						<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
+						<a href="${pageContext.request.contextPath}/member/logout"
+							class="log">LOGOUT</a> <a
+							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
+						<a
+							href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a>
+						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>
+						<a class=" cart"
+							href="${pageContext.request.contextPath}/cart/list">CART</a>
 					</div>
 				</c:when>
 				<c:when
 					test="${not empty sessionScope.id && sessionScope.grade =='S' }">
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/logout" class="log">LOGOUT</a> <a
+						<a href="${pageContext.request.contextPath}/member/logout"
+							class="log">LOGOUT</a> <a
 							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
-						<a href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a> 
-						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a> 
-						<a class=" cart" href="${pageContext.request.contextPath}/cart/list">CART</a>
+						<a
+							href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a>
+						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>
+						<a class=" cart"
+							href="${pageContext.request.contextPath}/cart/list">CART</a>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<div class="xans-element- xans-layout xans-layout-statelogoff ">
-						<a href="${pageContext.request.contextPath}/member/login" class="log">LOGIN</a> 
-						<a href="${pageContext.request.contextPath}/member/create">JOIN</a>
-						<a href="${pageContext.request.contextPath}/member/login" class="log">ORDER</a> 
-						<a href="${pageContext.request.contextPath}/member/login" class="log">MYPAGE</a> 
-						<a class=" cart" href="${pageContext.request.contextPath}/member/login" class="log">CART</a>
+						<a href="${pageContext.request.contextPath}/member/login"
+							class="log">LOGIN</a> <a
+							href="${pageContext.request.contextPath}/member/create">JOIN</a>
+						<a href="${pageContext.request.contextPath}/member/login"
+							class="log">ORDER</a> <a
+							href="${pageContext.request.contextPath}/member/login"
+							class="log">MYPAGE</a> <a class=" cart"
+							href="${pageContext.request.contextPath}/member/login"
+							class="log">CART</a>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -98,13 +108,14 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/notice/list">NOTICE<span></span></a></li>
 									<li class="xans-record-"><a
-										href="${pageContext.request.contextPath}/community/list">상품 문의<span></span>
+										href="${pageContext.request.contextPath}/community/list">상품
+											문의<span></span>
 									</a></li>
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/service/list">고객센터<span></span></a></li>
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/review/list/">REVIEW<span></span></a></li>
-									
+
 								</ul>
 							</div></li>
 					</ul>
@@ -112,39 +123,38 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			</div>
 
 
-			<form id="searchBarForm" name="search" action="${pageContext.request.contextPath}/item/search"
+			<form id="searchBarForm" name="search"
+				action="${pageContext.request.contextPath}/item/search"
 				onsubmit="return check()" method="get" target="_self"
 				enctype="multipart/form-data">
-<!-- 			<input id="banner_action" name="banner_action" value="" type="hidden" /> -->
-			<div class="xans-element- xans-layout xans-layout-searchheader ">
-					<fieldset>          
+				<!-- 			<input id="banner_action" name="banner_action" value="" type="hidden" /> -->
+				<div class="xans-element- xans-layout xans-layout-searchheader ">
+					<fieldset>
 						<legend>검색</legend>
-						<input type ="hidden" name="type" value="header"/>
-						<input type ="hidden" name="search_type" value="title"/>       
-						<input id="keyword" name="keyword" fw-filter="" fw-label="검색어"
-							fw-msg="" class="inputTypeText" placeholder="" value="${keyword}" type="text" /> 
-						<input type="image" src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png" alt="검색"
-						onclick="document.getElementById('search').submit();"/>
+						<input type="hidden" name="type" value="SearchTotal" /> <input
+							type="hidden" name="search_type" value="title" /> <input
+							id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg=""
+							class="inputTypeText" placeholder="" value="${keyword}"
+							type="text" /> <input type="image"
+							src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png"
+							alt="검색" onclick="document.getElementById('search').submit();" />
 					</fieldset>
 				</div>
-			</form>  
-     
+			</form>
 
-       
+
+
 		</div>
 		<script>
+			function check() {
+				if (document.search.keyword.value == "") {
+					alert("검색어를 입력하세요.");
+					document.search.keyword.focus();
+					return false;
+				}
 
-		function check() {
-		        if (document.search.keyword.value == "") {
-		            alert("검색어를 입력하세요.");
-		            document.search.keyword.focus();
-		            return false;
-		        }
+			}
 
-		    }
-
-
-		
 			// 메인메뉴에 마우스오버시 하위메뉴 나타남
 			$(".gnb > li").mouseenter(function() {
 				//$(this).find(".gnb_sub").stop().slideDown(200);
@@ -178,8 +188,8 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 					<ul>
 						<li class="xans-record-"><a
 							href="${pageContext.request.contextPath}/item/list/?type=BEST20">BEST20</a></li>
-              
-                                    
+
+
 						<li class="xans-record-"><a
 							href="${pageContext.request.contextPath}/item/list/?type=OUTER"
 							onmouseenter="blockSubMenu('OUTER')"

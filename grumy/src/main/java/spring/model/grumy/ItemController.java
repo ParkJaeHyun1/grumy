@@ -46,16 +46,15 @@ public class ItemController {
 		String id = (String) session.getAttribute("id"); // session 저장된 값이 잇는지 없는지 확인하려고 정의
 		String grade = (String) session.getAttribute("grade");
 		
+		
 		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));//검색되는 단어
 		String search_type = ItemUtility.checkNull(request.getParameter("search_type")); //
 		String type = request.getParameter("type");	//상품 카테고리 ex)outer,top,bottom	
-
-		if (type.equals("SearchTotal"))
-			keyword = request.getParameter("keyword");
-//		ItemTypeDTO dto = new ItemTypeDTO();
-//		if (type.equals(dto.getParentType()))
-//			type = request.getParameter(dto.getParentType());
+		String price1 =request.getParameter("price1");
+		String price2 =request.getParameter("price2");
 		
+		
+	
 		if(type.equals("") || type == null )
 			keyword = "";         
 		
@@ -77,21 +76,24 @@ public class ItemController {
 		Map map = new HashMap();
 		map.put("search_type", search_type);
 		map.put("keyword", keyword);
+		map.put("price1", price1);
+		map.put("price2", price2);
 		map.put("sno",sno);
 		map.put("eno",eno);
 		map.put("type", type);
-		map.put("id", session.getAttribute("id"));
+		map.put("id", session.getAttribute("id"));           	
 		map.put("grade", grade);
 
 		System.out.println("keyword(검색한 단어):"+keyword);
 		System.out.println("search_type(title/itemNo):"+search_type);
 		System.out.println("type(outer,top):"+type);
+		
 			
 		ArrayList<ItemDTO> searchlist = mapper.search(map);
 		System.out.println("상품 개수:"+searchlist.size());
 		
 		int SearchTotal = mapper.SearchTotal(map);
-
+		
 		String paging = ItemUtility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword,type);
 		
 		request.setAttribute("AlltypeList", mapper.AllParentType());
@@ -100,6 +102,8 @@ public class ItemController {
 		request.setAttribute("search_type",search_type);
 		request.setAttribute("keyword",keyword);
 		request.setAttribute("type",type);
+		request.setAttribute("price1",price1);
+		request.setAttribute("price2",price2);
 		request.setAttribute("nowPage",nowPage);
 		request.setAttribute("paging",paging);   
 		request.setAttribute("SearchTotal",SearchTotal);

@@ -33,6 +33,13 @@ UU0ulOHvobLSHahP5t0M_PCcNBTB9xC33DKNvDBIE9DpO2N5QPSlOld11x8&type=css&k=dda47177a
 cl6nw2jzgSEbTFKBk6EzqfbBWLpA2M75jmAeWo9GQ8CNrFcYXEyvBjQDB4u66EOR9gIdU7sf2gVZvUlEAS3aMmgyVO6O5sooxbJe9ox1Yj5SUhb4J_WO2P8XiFsaqCmLijt-
 
 fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d883c5&t=1543392667" />
+
+<link rel="stylesheet" type="text/css"
+						href="//slowand.com//ind-script/optimizer.php?filename=tZVBbsMgEEX3drY9xyhppe676Kqr5ARjPLFJgHEYkJLbFyVulciqVBFYgua_gQ98YGRLsN54mDwPHi14Eo5eESgR2Ht2ARRby26VJl7gP_WkGmETg2bXdHzOFMYQcpsavJDPkwbsDP0hxWmC3cgTbO8Zn1dGqumjChlKIfRqvBOSaqOQF0DnaLN-f4UpdkardgzWgPTU9iR6cCBH7d6uJJuaG_pZxIxs9-xtPjeZyDFAh6LVtcniGjwLvE0UBKaDTANqoq4ADcwm6KkCeSRTA7u8ksXIOGiHgWq4jF0F6iJMioEf4q2gCaaGualK5WMv6IaDvuVmCq4ioMMpkr-surMY3T9kdj7zCwMXAe3QSZFcng-EfdriB8qRguL4jINL9vzYt6TI1Xjyv1_qNw&type=css&k=b7aa17f270a2c64f536613864c4b4f7c08e8f416&t=1547093551" />
+					<link rel="stylesheet" type="text/css"
+						href="//slowand.com///ind-script/optimizer.php?filename=rY7BDQIxDAQLOL7UYR0gUQgVmMQkhsSO4gSU7jmODuA--9nd0UDUTEBu6kbVAEXoMJ-PUPo1sZtiywnM0-TJOAjYg-UEzgyy-p4IEg7tDXJPjS1quUQuhSXsls0etoE7lefyZ5XifucOlHDnFR8JPdVNFbFR0Do20buptn_0sBQDFmsYKuYX-0BtreZvfshv&type=css&k=a657dc189b9b8bbc03db761fe930ee0ea776ae32&t=1566806466" />
+					                            
+
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 		crossorigin="anonymous"></script>
@@ -44,10 +51,12 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
 		integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
 		crossorigin="anonymous"></script>
-	<script src="./jquery-3.4.1.min.js"></script>  
-	<link rel="stylesheet" href="https://www.slowand.com/bootstrapt/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="https://www.slowand.com/bootstrapt/css/bootstrap.css" />  
-	<script src="https://www.slowand.com//bootstrapt/js/bootstrap.min.js"></script>       
+	<script src="./jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet"
+		href="https://www.slowand.com/bootstrapt/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://www.slowand.com/bootstrapt/css/bootstrap.css" />
+	<script src="https://www.slowand.com//bootstrapt/js/bootstrap.min.js"></script>
 	<script>
 		function itemCountUp(itemOptionNo) {
 			updateItemCount(itemOptionNo, count + 1);
@@ -116,155 +125,184 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 		</p>
 	</div>
 	<div id="contents_wide">
-	<div id="contents">
-		<!-- 상단카테고리 -->
-				<div class="xans-element- xans-product xans-product-menupackage ">
-					<div
-						class="xans-element- xans-product xans-product-headcategory title ">
-						<h2>
-							<span>${parentType}</span>  
-						</h2>
-						<span class="likeButton displaynone"><button type="button">
-								<strong></strong>
-							</button></span>
-					</div>
-					<ul class="menuCategory">
-						<c:forEach var="typeDTO" items="${typeList}">
-							<c:choose>
+		<div id="contents">
+			<!-- 상단카테고리 -->
+			<div class="xans-element- xans-product xans-product-menupackage ">
+				<div
+					class="xans-element- xans-product xans-product-headcategory title ">
+					<h2>
+						<span>${parentType}</span>
+					</h2>
+					<span class="likeButton displaynone"><button type="button">
+							<strong></strong>
+						</button></span>
+				</div>
+				<ul class="menuCategory">
+					<c:forEach var="typeDTO" items="${typeList}">
+						<c:choose>
 							<c:when test="${selectedType==typeDTO.type }">
 								<li style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type} <span class="count displaynone">()</span></a>
-								</li>
+									class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
+									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}
+										<span class="count displaynone">()</span>
+								</a></li>
 							</c:when>
 							<c:otherwise>
-							<li style="display:;"
-								class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}<span class="count displaynone">()</span></a>
-								</li>
-							</c:otherwise>  
-							</c:choose>
-						</c:forEach>
-						<!-- //참고 -->
-					</ul>
-				</div>  
-	
+								<li style="display:;"
+									class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
+									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}<span
+										class="count displaynone">()</span></a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<!-- //참고 -->
+				</ul>
+			</div>
 
-		<!-- 카테고리 별 상품 list -->
-		<div
-			class="xans-element- xans-product xans-product-listmain-3 xans-product-listmain xans-product-3 ec-base-product">
-			<!--
+
+			<!-- 카테고리 별 상품 list -->
+			<div
+				class="xans-element- xans-product xans-product-listmain-3 xans-product-listmain xans-product-3 ec-base-product">
+				<!--
         $count = 48
             ※ 노출시킬 상품의 갯수를 숫자로 설정할 수 있으며, 설정하지 않을경우, 최대 200개로 자동제한됩니다.
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
-			<div id="contents">
+				<div id="contents">
+         
+					<ul class="menuCategory">
+						<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
+						<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
+						<%-- <a href=""><span class="count displaynone">${subType}</span></a> --%>
+						<!-- </li> -->
+						<%-- </c:forEach> --%>
 
-				<ul class="menuCategory">
-					<%-- <c:forEach var="subType" items="${dto.typeList}"> --%>
-					<!-- <li style="display:;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"> -->
-					<%-- <a href=""><span class="count displaynone">${subType}</span></a> --%>
-					<!-- </li> -->
-					<%-- </c:forEach> --%>
+						<!-- //참고 -->
+					</ul>
+				</div>     
+<div class="xans-element- xans-product xans-product-normalmenu "><!--
+                $compare_page = /product/compare.html
+            -->
+<div class="function">
+                <p class="prdCount">TOTAL <strong>319</strong> ITEMS</p>
+                <ul id="type" class="xans-element- xans-product xans-product-orderby"><li class="xans-record-"><a href="?cate_no=25&amp;sort_method=5#Product_ListMenu">신상품</a></li>
+<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=4#Product_ListMenu">높은가격</a></li>
+<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=6#Product_ListMenu">인기상품</a></li>
+<li class="xans-record-"><a href="?cate_no=25&amp;sort_method=7#Product_ListMenu">사용후기</a></li>
+</ul>
+<span class="compare displaynone"><a href="#none" onclick="EC_ListAction.setProductCompare();"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_compare.gif" alt="상품비교"></a></span>
+            </div>
+<fieldset class="condition displaynone">
+<legend>조건별 검색</legend>
+                <p>
+                    
+                    <select class="xans-element- xans-product xans-product-firstselect FirstSelect"><option value="">-조건선택-</option>
+<option value="" class=""></option>
+</select>
+<select class="xans-element- xans-product xans-product-secondselect SecondSelect"><option value="">-조건선택-</option>
+<option value="" class=""></option>
+</select>
+<a href="#SelectSearch" class="SelectSearch"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/common/btn_list_search.gif" alt="검색"></a>
+                </p>
+            </fieldset>
+</div> 
+				               
+				<c:if
+					test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+					<p align="right">
+						<button class="yg_btn_28 yg_btn3" style="float: rigth"
+							onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
+						&nbsp;
+					</p>
+					<br></br>
+				</c:if>
+				<ul class="prdList grid4">
 
-					<!-- //참고 -->
+					<c:forEach var="dto" items="${list}">
+						<li id="anchorBoxId_2065" class="xans-record-">
+							<div class="thumbnail">
+								<a
+									href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
+									name="anchorBoxName_2065"><img
+									src="${pageContext.request.contextPath}/images/${dto.image}"
+									id="eListPrdImage2065_4"
+									alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
+							</div>
+							<div class="description">
+								<strong class="name"> <a
+									href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
+									class=""><span class="title displaynone"></span> <span
+										style="font-size: 12px; color: #555555;">${dto.title}</span></a>
+								</strong>
+								<c:if
+									test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+									<p align="center">
+
+										<button class="yg_btn_28 yg_btn3"
+											onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
+										&nbsp;
+										<button class="yg_btn_28 yg_btn3"
+											onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+
+									</p>
+								</c:if>
+
+
+
+								<div class="colorchip">
+									<div
+										class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
+
+									</div>
+								</div>
+								<ul
+									class="xans-element- xans-product xans-product-listitem-3 xans-product-listitem xans-product-3 spec">
+
+
+									<c:if test="${dto.salePrice > 0}">
+										<li class=" xans-record-"><strong
+											class="title displaynone"><span
+												style="font-size: 12px; color: #999999;">소비자가</span> :</strong> <span
+											style="font-size: 12px; color: #999999; text-decoration: line-through;">${dto.price}</span></li>
+									</c:if>
+									<c:if test="${dto.salePrice > 0}">
+										<li class=" xans-record-"><strong
+											class="title displaynone"><span
+												style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
+												:</strong> <span
+											style="font-size: 12px; color: #555555; font-weight: bold;">
+
+												${dto.price-dto.salePrice}</span><span
+											id="span_product_tax_type_text" style=""> </span></li>
+									</c:if>
+
+									<c:if test="${dto.salePrice == 0}">
+										<li class=" xans-record-"><strong
+											class="title displaynone"><span
+												style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
+												:</strong> <span
+											style="font-size: 12px; color: #555555; font-weight: bold;">
+
+												${dto.price}</span><span id="span_product_tax_type_text" style="">
+										</span></li>
+									</c:if>
+
+									<li class=" xans-record-"><strong
+										class="title displaynone"><span
+											style="font-size: 12px; color: #555555;"></span> :</strong> <span
+										style="font-size: 12px; color: #555555;">${dto.description}</span></li>
+								</ul>
+							</div>
+						</li>
+
+
+					</c:forEach>
+
 				</ul>
 			</div>
-			<c:if
-				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-				<p align="right">
-					<button class="yg_btn_28 yg_btn3" style="float: rigth"
-						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
-					&nbsp;
-				</p>
-				<br></br>
-			</c:if>
-			<ul class="prdList grid4">
-
-				<c:forEach var="dto" items="${list}">
-					<li id="anchorBoxId_2065" class="xans-record-">
-						<div class="thumbnail">
-							<a
-								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
-								name="anchorBoxName_2065"><img
-								src="${pageContext.request.contextPath}/images/${dto.image}"
-								id="eListPrdImage2065_4"
-								alt="[1만장돌파] #SLOWMADE. 여리핏 터틀넥티셔츠 - 7 color" /></a>
-						</div>
-						<div class="description">
-							<strong class="name"> <a
-								href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
-								class=""><span class="title displaynone"></span> <span
-									style="font-size: 12px; color: #555555;">${dto.title}</span></a>
-							</strong>
-							<c:if
-								test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-								<p align="center">
-
-									<button class="yg_btn_28 yg_btn3"
-										onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
-									&nbsp;
-									<button class="yg_btn_28 yg_btn3"
-										onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>     
-
-								</p>
-							</c:if>
-
-
-
-							<div class="colorchip">
-								<div
-									class="xans-element- xans-product xans-product-colorchip-3 xans-product-colorchip xans-product-3">
-
-								</div>
-							</div>
-							<ul
-								class="xans-element- xans-product xans-product-listitem-3 xans-product-listitem xans-product-3 spec">
-
-
-								<c:if test="${dto.salePrice > 0}">
-									<li class=" xans-record-"><strong
-										class="title displaynone"><span
-											style="font-size: 12px; color: #999999;">소비자가</span> :</strong> <span
-										style="font-size: 12px; color: #999999; text-decoration: line-through;">${dto.price}</span></li>
-								</c:if>
-								<c:if test="${dto.salePrice > 0}">
-									<li class=" xans-record-"><strong
-										class="title displaynone"><span
-											style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
-											:</strong> <span
-										style="font-size: 12px; color: #555555; font-weight: bold;">
-
-											${dto.price-dto.salePrice}</span><span
-										id="span_product_tax_type_text" style=""> </span></li>
-								</c:if>
-
-								<c:if test="${dto.salePrice == 0}">
-									<li class=" xans-record-"><strong
-										class="title displaynone"><span
-											style="font-size: 12px; color: #555555; font-weight: bold;">판매가</span>
-											:</strong> <span
-										style="font-size: 12px; color: #555555; font-weight: bold;">
-
-											${dto.price}</span><span id="span_product_tax_type_text" style="">
-									</span></li>
-								</c:if>
-
-								<li class=" xans-record-"><strong class="title displaynone"><span
-										style="font-size: 12px; color: #555555;"></span> :</strong> <span
-									style="font-size: 12px; color: #555555;">${dto.description}</span></li>
-							</ul>
-						</div>
-					</li>
-
-
-				</c:forEach>
-
-			</ul>
 		</div>
-	</div>
 
-</div>
+	</div>
 
 	<script>
 		$('.ec-base-product .prdList > li')

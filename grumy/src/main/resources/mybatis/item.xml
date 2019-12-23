@@ -218,7 +218,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	
+
 	<select id="search" parameterType="Map" resultMap="itemMap">
 		select
 		i.itemNo,o.itemOptionNo,
@@ -232,19 +232,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			i.type =t.type and i.itemNo = o.itemNo and
 			<choose>
 				<when test="search_type == 'title'">
-					title like '%'||#{keyword}||'%' 
+					title like '%'||#{keyword}||'%'
 				</when>
 				<when test="search_type == 'itemNo'">
-					i.itemNo like #{keyword} 
-				</when>
-				<when test="type == 'type'">
-					i.type like #{type}
+					i.itemNo = #{keyword}
 				</when>
 			</choose>
+			<if test="type != 'SearchTotal'">
+				and i.type = #{type}
+			</if>
+			<if test="price1 != null">
+		<![CDATA[
+ 				and price >= #{price1} and price <= #{price2}
+ 				]]>
+			</if>         
 		</where>
-		order by itemNo desc
+		order by itemNo desc       
 	</select>
-       
+
 
 	<select id="SearchTotal" parameterType="Map" resultType="int">
 		select count(*) from item
