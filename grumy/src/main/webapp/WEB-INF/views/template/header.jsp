@@ -101,7 +101,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 										href="${pageContext.request.contextPath}/community/list">상품 문의<span></span>
 									</a></li>
 									<li class="xans-record-"><a
-										href="${pageContext.request.contextPath}/delivery/list">고객센터<span></span></a></li>
+										href="${pageContext.request.contextPath}/service/list">고객센터<span></span></a></li>
 									<li class="xans-record-"><a
 										href="${pageContext.request.contextPath}/review/list/">REVIEW<span></span></a></li>
 									

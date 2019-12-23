@@ -30,7 +30,7 @@
 				<value>/WEB-INF/spring/member.xml</value>
 				<value>/WEB-INF/spring/cart.xml</value>
 				<value>/WEB-INF/spring/community.xml</value>
-				<value>/WEB-INF/spring/delivery.xml</value>
+				<value>/WEB-INF/spring/service.xml</value>
 				<value>/WEB-INF/spring/order.xml</value>
 				<value>/WEB-INF/spring/mypage.xml</value>
 			</list>

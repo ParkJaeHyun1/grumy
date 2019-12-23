@@ -74,7 +74,7 @@ select count(*) from notice
          </where>
 </select>
 
-<select id="list_" resultType="DeliveryDTO">
+<select id="list_" resultType="NoticeDTO">
 select no,subject,writer,to_char(wdate,'YYYY-MM-DD HH24:MI:SS')wdate
 	from(
 		select no,subject,writer,wdate,rownum r
