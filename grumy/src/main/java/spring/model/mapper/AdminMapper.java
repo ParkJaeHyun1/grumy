@@ -20,8 +20,9 @@ public interface AdminMapper {
 	int updateState(Map<String,String> map);							//주문상태변경	norder테이블
 	int updateStateP(Map<String,String> map);							//주문상태변경	orderitem테이블
 	int cstotal(String category);
+	int itemC(Map map);
 	
-	ArrayList<ItemDTO> iteml();
+	ArrayList<ItemDTO> iteml(Map map);
 	ArrayList<OrderDTO> chartl();
 	ArrayList<OrderItemDTO> readPList(String orderno);	//read페이지 목록에서의 리스트
 	MemberDTO read(String id);							//read페이지

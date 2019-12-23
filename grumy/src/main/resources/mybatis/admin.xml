@@ -246,7 +246,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="itemColor" column="itemColor"/>	
 
 	</resultMap>
-	<select id="iteml" resultMap="ItemlistMap">
-		select * from item a, itemoption b where a.itemno = b.itemno
+	<select id="iteml" parameterType="map" resultMap="ItemlistMap">
+		select * from
+		(select itemNo, image, title, price, type, itemCount, itemSize, itemColor, rownum r 
+		from (select a.itemno itemNo, a.image image, a.title title, a.price price, a.type type, b. itemcount itemCount, 
+		b.itemsize itemSize, b.itemcolor itemColor 
+		from item a, itemoption b where a.itemno = b.itemno
+		<choose>
+			<when test="col == 'onum'">
+				and a.itemno like '%'||#{word}||'%'
+			</when>
+			<when test="col == 'otitle'">
+				and a.title like '%'||#{word}||'%'
+			</when>
+			<when test="col == 'type'">
+				and a.type like '%'||#{word}||'%'
+			</when>
+		</choose>
+		))
+		<![CDATA[
+		where r >=#{sno} and r <=#{eno}
+		]]>
+	</select>
+	<select id="itemC" parameterType="Map" resultType="int">
+		select count(a.itemno) from item a, itemoption b where a.itemno = b.itemno
+			<choose>
+				<when test="col == 'onum'">
+					and a.itemno like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'otitle'">
+					and a.title like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'type'">
+					and a.type like '%'||#{word}||'%'
+				</when>
+			</choose>
 	</select>
 </mapper>

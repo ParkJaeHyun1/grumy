@@ -17,7 +17,7 @@
 					class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 					<div class="title" style="text-align: center;">
 						<h2>
-							<font color="#555555">배송완료</font>                  
+							<font color="#555555">재고관리</font>                  
 						</h2>
 						<br>
 						<br>
@@ -40,7 +40,7 @@
 							<col style="width: 70px;">
 							<col style="width: 60px;">
 							<col style="width: 100px;">
-							<col style="width: 70px;">
+							
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
@@ -52,7 +52,7 @@
 								<th scope="col">사이즈</th>
 								<th scope="col">수량</th>
 								<th scope="col">종류</th>
-								<th scope="col">공백</th>
+								
 							</tr>
 						</thead>
 						<tbody
@@ -63,7 +63,7 @@
 	                    $deny_access_url = /index.html
 	                -->
 							<c:choose>
-								<c:when test="${empty list }">
+								<c:when test="${empty iteml }">
 									<tr>
 										<td></td>
 										<td></td>
@@ -72,7 +72,7 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
+										
 								</c:when>
 								<c:otherwise>
 									<c:set var="aa"/>
@@ -82,29 +82,27 @@
 											class="xans-record-">
 											<c:choose>										
 												<c:when test="${aa != dto.itemNo }">
-												<td rowspan="${dto.getitemOptionList().size() }">
-													<a class="text-number"
-													href="${root }/admin/read?orderno=${dto.orderNo}">
-													<u>[${dto.orderNo}]</u></a>
+												<td rowspan="${dto.getItemOptionList().size() }">
+													<u>[${dto.itemNo}]</u>
 													</td>
-												</c:when>
-											</c:choose>
-											<td><a
-											href="${pageContext.request.contextPath }/item/read?itemNo=${dto2.itemNo}">
+											<td rowspan="${dto.getItemOptionList().size() }"><a
+											href="${pageContext.request.contextPath }/item/read?itemNo=${dto.itemNo}">
 											<img
 												style="width: 80px; height: 106px;"
-												src="${pageContext.request.contextPath}/images/${dto2.itemImage }"></a></td>
-											<td>${dto2.itemTitle}</td>
+												src="${pageContext.request.contextPath}/images/${dto.image }"></a></td>
+												</c:when>
+											</c:choose>
+											<td>
+											<a
+											href="${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}">
+												${dto.title}</a></td>
 											<td>${dto2.itemColor}</td>
 											<td>${dto2.itemSize}</td>
-											<td>${dto2.count}</td>
-											<td>${dto2.itemPrice }</td>
-											<td>${dto.id}</td>
-											<td>${dto2.deliveryNo}</td>
+											<td>${dto2.itemCount}</td>
+											<td>${dto.type}</td>
 											<c:choose>										
-												<c:when test="${aa != dto.orderNo }">
-													<c:set var="aa" value="${dto.orderNo }"/>
-													<td>${dto2.state }</td>
+												<c:when test="${aa != dto.itemNo }">
+													<c:set var="aa" value="${dto.itemNo }"/>											
 												</c:when>
 												<c:otherwise>
 													<td></td>
@@ -128,13 +126,11 @@
 							<p>
 								<select id="col" name="col" fw-filter="" fw-label="" fw-msg="">
 									<option value="onum"
-										<c:if test="${col == 'onum' }">selected</c:if>>주문번호</option>
-									<option value="odate"
-										<c:if test="${col == 'odate' }">selected</c:if>>주문일시</option>
+										<c:if test="${col == 'onum' }">selected</c:if>>아이템번호</option>
 									<option value="otitle"
 										<c:if test="${col == 'otitle' }">selected</c:if>>아이템명</option>
-									<option value="buyer"
-										<c:if test="${col == 'buyer' }">selected</c:if>>구매자</option>
+									<option value="type"
+										<c:if test="${col == 'type' }">selected</c:if>>type</option>
 								</select> 
 								<input id="word" name="word" type="text">
 								<button class="yg_btn_28 yg_btn3">SEARCH</button>
