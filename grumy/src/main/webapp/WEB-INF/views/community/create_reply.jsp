@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 
@@ -12,14 +11,14 @@
 				class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 				<div class="title" style="text-align: center">
 					<h2>
-						<font color="#555555">상품문의</font>
+						<font color="#555555">상품 문의</font>
 					</h2>
 					<!--h3>배송문의 Q&A 입니다 :)</h3-->
 				</div>
 			</div>
 			<form id="boardWriteForm" name="frm"
 				action="create_reply" method="post" 
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return input(this)">
  				<input type="hidden" name="writer" value="${name}">
  				<input type="hidden" name="id" value="${sessionScope.id}">
  				<input type="hidden" name="check_read" value="${dto.id}">
@@ -40,13 +39,9 @@
 								</select></td>
 							</tr>
 							<tr>
-								<td colspan="2"><textarea rows="20" cols="190"
+								<td colspan="2"><textarea rows="20" cols="170"
 										name="content" id="content">${dto.content}
-									</textarea><script type="text/javascript">
-											CKEDITOR.replace('content', {
-												height : 500
-											});
-										</script></td>
+									</textarea></td>
 							</tr>
 						</tbody>
 						<tbody class="">
@@ -80,6 +75,16 @@
 
 	</div>
 	<script type="text/javascript">
+	
+	var oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+     oAppRef: oEditors,
+     elPlaceHolder: "content",
+     sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+     fCreator: "createSEditor2",
+     htParams: { fOnBeforeUnload : function(){}}
+
+    });
 
 	function input(f){
 		
@@ -89,14 +94,13 @@
 			return false;
 		} */
 		
-		if (CKEDITOR.instances['content'].getData() == '') {
+/* 		if (CKEDITOR.instances['content'].getData() == '') {
 			window.alert('내용을 입력해 주세요.');
 			CKEDITOR.instances['content'].focus();
 			return false;
-		}
-
+		} */
+	    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	}
-
 	</script>
 
 </div>

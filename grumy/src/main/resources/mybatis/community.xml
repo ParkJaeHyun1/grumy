@@ -5,6 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="spring.model.mapper.communityMapper">
 
+<select id="refcount" parameterType="int" resultType="int">
+	    select count(ref)
+        from board 
+        where ref = #{ref}
+</select>
+
+
 <insert id="create_reply" parameterType="BoardDTO">
 insert into board(board_no,subject,writer,content,wdate,ref,indent,id,check_read,category,type)
 values((select nvl(max(board_no),0)+1 from board),#{subject},#{writer},#{content},sysdate,#{ref},1,#{id},#{check_read},#{category},#{type})

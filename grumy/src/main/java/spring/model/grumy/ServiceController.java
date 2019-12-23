@@ -18,25 +18,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.model.board.BoardDTO;
-import spring.model.mapper.deliveryMapper;
+import spring.model.mapper.serviceMapper;
 import spring.model.notice.NoticeDTO;
 import spring.model.utility.Utility;
 
 @Controller
-public class DeliveryController {
+public class ServiceController {
 	
 	@Autowired
-	deliveryMapper mapper;
+	serviceMapper mapper;
 	
-	@PostMapping("/delivery/create_reply")
+	@PostMapping("/service/create_reply")
 	public String create_reply(BoardDTO dto) {
 		mapper.create_reply(dto);
 
 		
-		return "redirect:/delivery/list";
+		return "redirect:/service/list";
 	}
 	
-	@GetMapping("/delivery/create_reply")
+	@GetMapping("/service/create_reply")
 	public String create_reply(int board_no,HttpServletRequest request,HttpSession session) {
 		BoardDTO dto = mapper.read(board_no);
 		String id = (String) session.getAttribute("id");
@@ -45,53 +45,53 @@ public class DeliveryController {
 		request.setAttribute("name", mapper.getname(id));
 		request.setAttribute("dto", dto);
 		
-		return "/delivery/create_reply";
+		return "/service/create_reply";
 	}
 	
-	@PostMapping("/delivery/update")
+	@PostMapping("/service/update")
 	public String update(BoardDTO dto,HttpServletRequest request) {
 		
 		int flag = mapper.update(dto);
 		
 		if(flag ==1)
-			return "redirect:/delivery/list";
+			return "redirect:/service/list";
 		else
 			return null;
 		
 	}
 	
-	@GetMapping("/delivery/update")
+	@GetMapping("/service/update")
 	public String update(Integer board_no,Model model) {
 		BoardDTO dto = mapper.read(board_no);
 		
 		model.addAttribute("dto",dto);
 		
-		return "/delivery/update";
+		return "/service/update";
 	}
 	
-	@GetMapping("/delivery/delete")
+	@GetMapping("/service/delete")
 	public String delete(int ref) {
 		mapper.delete(ref);
 		
 
 		
-			return "redirect:/delivery/list";
+			return "redirect:/service/list";
 		
 		
 	}
-	@GetMapping("/delivery/indelete")
+	@GetMapping("/service/indelete")
 	public String indelete(int board_no) {
 		mapper.indelete(board_no);
 		
 		
 		
-		return "redirect:/delivery/list";
+		return "redirect:/service/list";
 		
 		
 	}
 	
 	
-	@GetMapping("/delivery/read")
+	@GetMapping("/service/read")
 		public String read(int board_no, Model model,HttpSession session) {
 			String id = (String)session.getAttribute("id");
 			String grade = (String) session.getAttribute("grade");
@@ -105,8 +105,10 @@ public class DeliveryController {
 		
 			BoardDTO dto = mapper.read(board_no);
 			
+			int refcount = mapper.refcount(dto.getRef());
+			System.out.println(refcount);
 			
-			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev()=='S') {
+			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev()=="S") {
 				 
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");
@@ -114,17 +116,18 @@ public class DeliveryController {
 			dto.setContent(content);
 			
 
-			
+			model.addAttribute("refcount",refcount);
 			model.addAttribute("dto",dto);
 			
-			return "/delivery/read";
+			return "/service/read";
+			
 			}else {
-				return "/delivery/error";
+				return "/service/error";
 			}
 		}
 	
 	
-	@PostMapping("/delivery/create")
+	@PostMapping("/service/create")
 	public String create(BoardDTO dto,HttpServletRequest request) {
 
 		int flag = mapper.create(dto);
@@ -137,16 +140,16 @@ public class DeliveryController {
 		}
 	}
 	
-	@GetMapping("/delivery/create")
+	@GetMapping("/service/create")
 	public String create(HttpSession session,HttpServletRequest request) {
 		String id = (String) session.getAttribute("id");
 		
 		request.setAttribute("name", mapper.getname(id));
 		
-		return "/delivery/create";
+		return "/service/create";
 	}
 	
-	@RequestMapping("/delivery/list")
+	@RequestMapping("/service/list")
 	public String list(HttpServletRequest request) {
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
@@ -196,7 +199,7 @@ public class DeliveryController {
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		
-		return "/delivery/list";
+		return "/service/list";
 	}
 
 }

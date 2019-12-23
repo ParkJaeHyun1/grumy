@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
    <div id="contents">
 
@@ -19,7 +18,7 @@
          </div>
          <form id="boardWriteForm" name="frm"
             action="create_reply" method="post" 
-            enctype="multipart/form-data">
+            enctype="multipart/form-data" onsubmit="return input(this)">
             
             <input type="hidden" name="ref" value="${dto.ref }">
             <input type="hidden" name="lev" value="A">
@@ -43,20 +42,16 @@
                         </select></td>
                      </tr>
                      <tr>
-                        <td colspan="2"><textarea rows="20" cols="190"
+                        <td colspan="2"><textarea rows="20" cols="170"
                               name="content" id="content">
-                        <br><br><br><br><br>   ${dto.content }   </textarea><script type="text/javascript">
-											CKEDITOR.replace('content', {
-												height : 500
-											});
-										</script></td>
+                           ${dto.content }   </textarea></td>
                      </tr>
                   </tbody>
                   <tbody class="">
                   </tbody>
                   <tbody>
                      <tr class="">
-                        <th scope="row">SECRET${name }</th>
+                        <th scope="row">SECRET</th>
                         <td><input id="secure0" name="secure" fw-filter="isFill"
                            fw-label="비밀글설정" fw-msg="" value="F" type="radio" onclick="return(false);"><label
                            for="secure0">공개글</label> <input id="secure1" name="secure"
@@ -82,25 +77,34 @@
 
    </div>
    <script type="text/javascript">
+   var oEditors = [];
+   nhn.husky.EZCreator.createInIFrame({
+    oAppRef: oEditors,
+    elPlaceHolder: "content",
+    sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+    fCreator: "createSEditor2",
+    htParams: { fOnBeforeUnload : function(){}}
 
+   });
    
    function input(f){
-      if(f.subject.value==''){
-         alert("제목을 입력하세요");
+      if(f.subject.value==''){       
+         alert("제목을 입력하세요");       
          f.subject.focus();
          return false;
       }
-/*       if(f.content.value==''){
+      /*       if(f.content.value==''){
          alert("내용을 입력하세요");
          f.content.focus();
          return false;
       } */
-      if (CKEDITOR.instances['content'].getData() == '') {
+/*       if (CKEDITOR.instances['content'].getData() == '') {
 			window.alert('내용을 입력해 주세요.');
 			CKEDITOR.instances['content'].focus();
 			return false;
-		}
-
+		} */
+	    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		
    }
 
    </script>

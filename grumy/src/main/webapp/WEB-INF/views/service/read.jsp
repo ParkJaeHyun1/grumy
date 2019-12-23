@@ -70,7 +70,7 @@
                   <tr>
                      <td colspan="2">
                         <ul class="etcArea">
-                           <li class="displaynone">
+                           
                            <li class="" style="text-align: right"><span>DATE</span> <span
                               class="txtNum">${dto.wdate }</span></li>
 
@@ -85,7 +85,7 @@
                             <a href="list"   class="yg_btn_30 yg_btn4" alt="목록">LIST</a>
                            </span>
                             <span class="gRight">
-                            <c:if test="${sessionScope.grade=='A' }">
+                            <c:if test="${sessionScope.grade=='A' && dto.indent==0 && refcount==1 && dto.lev=='A'}">
                             <a href="javascript:create_reply(${param.board_no })" class="yg_btn_30 yg_btn4" alt="답변">REPLY</a>
                             </c:if>
                             <a href="javascript:update(${param.board_no })" class="yg_btn_30 yg_btn4" alt="수정">MODIFY</a>

@@ -68,11 +68,7 @@
 					</thead>
 					<tbody
 						class="xans-element- xans-board xans-board-notice-1002 xans-board-notice xans-board-1002 center">
-						<!--
-                    $count = 
-                    $login_page_url = /member/login.html
-                    $deny_access_url = /index.html
-                -->
+
 						<c:if test="${nowPage==1 }">
 							<c:forEach var="dto" items="${list_ }">
 								<tr style="background-color: #FAFAFA; color: #555555;"

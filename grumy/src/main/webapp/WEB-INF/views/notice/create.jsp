@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,12 +40,7 @@
 							</tr>
 							<tr>
 								<td colspan="2" style="align: center"><textarea rows="20"
-										cols="190" name="content" id="content"></textarea> <script
-										type="text/javascript">
-											CKEDITOR.replace('content', {
-												height : 500
-											});
-										</script></td>
+										cols="170"  name="content" id="content"></textarea> </td>
 							</tr>
 							<tr>
 								<th scope="row">LEV.</th>
@@ -84,10 +78,23 @@
 			return false;
 		}
 	} */
-	 if (CKEDITOR.instances['content'].getData() == '') {
+/* 	 if (CKEDITOR.instances['content'].getData() == '') {
 	      window.alert('내용을 입력해 주세요.');
 	      CKEDITOR.instances['content'].focus();
 	      return false;
-	    }
+	    } */
+	    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 	}
+	    var oEditors = [];
+	    nhn.husky.EZCreator.createInIFrame({
+	     oAppRef: oEditors,
+	     elPlaceHolder: "content",
+	     sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+	     fCreator: "createSEditor2",
+	     htParams: { fOnBeforeUnload : function(){}}
+
+	    });
+	    
+
+	    
 </script>

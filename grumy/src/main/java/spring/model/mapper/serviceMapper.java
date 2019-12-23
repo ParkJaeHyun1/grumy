@@ -7,7 +7,7 @@ import java.util.Map;
 import spring.model.board.BoardDTO;
 import spring.model.order.OrderDTO;
 
-public interface deliveryMapper {
+public interface serviceMapper {
 	List<BoardDTO> list(Map map);
 	int total(Map map);
 	int create(BoardDTO dto);
@@ -19,6 +19,7 @@ public interface deliveryMapper {
 	String getname(String id);
 	List<BoardDTO> list_();
 	int indelete(int board_no);
+	int refcount(int ref);
 
 
 }

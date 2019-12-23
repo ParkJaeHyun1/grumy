@@ -9,32 +9,32 @@
 		<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
 	</definition>
  
- 	<definition name="/delivery/list" extends="main">
+ 	<definition name="/service/list" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/list.jsp" />
 	</definition>
 
- 	<definition name="/delivery/create" extends="main">
+ 	<definition name="/service/create" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/create.jsp" />
 	</definition>
- 	<definition name="/delivery/read" extends="main">
+ 	<definition name="/service/read" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/read.jsp" />
 	</definition>
- 	<definition name="/delivery/update" extends="main">
+ 	<definition name="/service/update" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/update.jsp" />
 	</definition>
- 	<definition name="/delivery/create_reply" extends="main">
+ 	<definition name="/service/create_reply" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/create_reply.jsp" />
 	</definition>
- 	<definition name="/delivery/read_reply" extends="main">
+ 	<definition name="/service/read_reply" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/read_reply.jsp" />
 	</definition>
- 	<definition name="/delivery/error" extends="main">
+ 	<definition name="/service/error" extends="main">
 		<put-attribute name="title"	value="그루미"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/error.jsp" />
 	</definition>

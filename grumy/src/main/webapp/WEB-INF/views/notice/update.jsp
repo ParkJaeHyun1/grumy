@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 
@@ -40,13 +39,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" style="text-align: center">
-								<textarea rows="20" cols="190" name="content" id="content">${dto.content}</textarea>
-								 <script
-										type="text/javascript">
-											CKEDITOR.replace('content', {
-												height : 500
-											});
-										</script>
+								<textarea rows="20" cols="170" name="content" id="content">${dto.content}</textarea>
+
 							</td>
 						</tr>
 
@@ -78,16 +72,23 @@ function input(f){
 		f.content.focus();
 		return false;
 	} */
-	 if (CKEDITOR.instances['content'].getData() == '') {
+/* 	 if (CKEDITOR.instances['content'].getData() == '') {
 	      window.alert('내용을 입력해 주세요.');
 	      CKEDITOR.instances['content'].focus();
 	      return false;
-	    }
-	if(f.passwd.value==''){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
-		return false;
-	}
+	    } */
+	    
+	oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+
 }
+var oEditors = [];
+nhn.husky.EZCreator.createInIFrame({
+ oAppRef: oEditors,
+ elPlaceHolder: "content",
+ sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+ fCreator: "createSEditor2",
+ htParams: { fOnBeforeUnload : function(){}}
+
+});
 
 </script>

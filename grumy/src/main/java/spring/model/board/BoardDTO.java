@@ -10,7 +10,7 @@ public class BoardDTO {
 	private String wdate;
 	private int ref;
 	private int indent;
-	private char lev;
+	private String lev;
 	private String subject;
 	private String writer;
 	private String check_read;
@@ -23,7 +23,7 @@ public class BoardDTO {
 		// TODO Auto-generated constructor stub
 	}
 	public BoardDTO(int board_no, String id, String content, String itemno, String wdate, int ref, int indent,
-			char lev, String subject, String writer, String check_read, String category, String type,
+			String lev, String subject, String writer, String check_read, String category, String type,
 			String itemPicture, String itemTitle) {
 		super();
 		this.board_no = board_no;
@@ -91,10 +91,10 @@ public class BoardDTO {
 	public void setIndent(int indent) {
 		this.indent = indent;
 	}
-	public char getLev() {
+	public String getLev() {
 		return lev;
 	}
-	public void setLev(char lev) {
+	public void setLev(String lev) {
 		this.lev = lev;
 	}
 	public String getSubject() {

@@ -16,4 +16,5 @@ public interface communityMapper {
 	int total(Map map);
 	List<BoardDTO> list_();
 	int indelete(int board_no);
+	int refcount(int ref);
 }

@@ -21,7 +21,7 @@ import spring.model.utility.Utility;
 
 @Controller
 public class CommunityController {
-	 
+	
 	@Autowired
 	private communityMapper mapper;
 	
@@ -100,11 +100,13 @@ public class CommunityController {
 			grade="";
 		}
 		BoardDTO dto = mapper.read(board_no);
+		int refcount = mapper.refcount(dto.getRef());
 		
-		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev()=='S') {
+		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev()=="S") {
 		String content = dto.getContent().replaceAll("\r\n", "<br>");	
 		dto.setContent(content);
 		
+		request.setAttribute("refcount", refcount);
 		request.setAttribute("dto", dto);
 		return "/community/read";
 		}else {

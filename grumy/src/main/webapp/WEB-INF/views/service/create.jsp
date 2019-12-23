@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <div id="container">
 	<div id="contents">
 
@@ -69,19 +68,14 @@
 							</tr>
 							</c:if>
 							<tr>
-								<td colspan="2"><textarea rows="20" cols="190"
+								<td colspan="2"><textarea rows="20" cols="170"
 										name="content" id="content">배송전 상품 변경/취소/환불 처리는 '배송전 변경/취소' 게시판에 꼭 남겨주세요!<br><br>
 																	*원단공장&거래처에서 겨울원단 시즌오프로 갑작스러운 지연/품절이 불가피하게<br> 
 																	생길 수 있는점 너그럽게 양해부탁드리겠습니다ㅠ.ㅠ!<br>
 																	---------------------------------------------<br>
 																	주문번호:
 										</textarea>
-										 <script
-										type="text/javascript">
-											CKEDITOR.replace('content', {
-												height : 500
-											});
-										</script></td>
+										 </td>
 							</tr>
 							<tr class="">
 								<th scope="row">SECRET</th>
@@ -122,13 +116,25 @@
 				f.content.focus();
 				return false;
 			} */
-			 if (CKEDITOR.instances['content'].getData() == '') {
+/* 			 if (CKEDITOR.instances['content'].getData() == '') {
 			      window.alert('내용을 입력해 주세요.');
 			      CKEDITOR.instances['content'].focus();
 			      return false;
 			    }
-
+ */
+ 
+		    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 		}
+		
+		var oEditors = [];
+	    nhn.husky.EZCreator.createInIFrame({
+	     oAppRef: oEditors,
+	     elPlaceHolder: "content",
+	     sSkinURI: "${pageContext.request.contextPath}/smarteditor/SmartEditor2Skin.html",
+	     fCreator: "createSEditor2",
+	     htParams: { fOnBeforeUnload : function(){}}
+
+	    });
 	</script>
 
 </div>

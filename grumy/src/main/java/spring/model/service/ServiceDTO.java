@@ -1,8 +1,8 @@
-package spring.model.delivery;
+package spring.model.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class DeliveryDTO {
+public class ServiceDTO {
 	private int no;
 	private String subject;
 	private String writer;
@@ -15,11 +15,11 @@ public class DeliveryDTO {
 	private String id;
 	private char lev;
 	private String check_read;
-	public DeliveryDTO() {
+	public ServiceDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public DeliveryDTO(int no, String subject, String writer, String content, String wdate, String passwd,
+	public ServiceDTO(int no, String subject, String writer, String content, String wdate, String passwd,
 			String category, int ref, int indent, String id, char lev, String check_read) {
 		super();
 		this.no = no;
