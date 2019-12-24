@@ -33,11 +33,7 @@
 						<col style="width: auto;">
 					</colgroup>
 					<tbody>
-						<tr>
-							<th scope="row">상품명itemOptionNo</th>
-							
-							<td><input type="text" id="itemOptionNo" name="itemOptionNo" value="${dto.itemOptionNo }"></td>
-						</tr>
+						
 						<tr>
 							<th scope="row">id</th>
 							<td><span name="writer">grumy</span></td>

@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="rlist" resultType="reviewDTO">
 		select reviewNo, id, content,
-		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
+		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent, rnum
 		from(
 		select rownum rnum,reviewNo, id, content,
 		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 		itemNo=#{itemNo}
 		)
-		<![CDATA[ where rnum>=#{sno} and rnum<=#{eno}]]>
+		<![CDATA[ where rnum>=#{snor} and rnum<=#{enor}]]>
 	</select>
 
 	<select id="rtotal" parameterType="Map" resultType="int">

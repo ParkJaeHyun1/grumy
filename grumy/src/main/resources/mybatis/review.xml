@@ -15,7 +15,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		height = #{height},
 		weight = #{weight},
 		mySize = #{mySize},
-		itemOptionNo=#{itemOptionNo},
 		star = #{star}
 		where reviewNo = #{reviewNo}
 	</update>

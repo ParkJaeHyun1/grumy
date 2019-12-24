@@ -264,13 +264,13 @@ var x = document.getElementById("myDIV");
       var url = "update";
       url += "?reviewNo="+reviewNo;
      
-      location.href = url;
+      location.href = "${pageContext.request.contextPath}/review/list/" + url;
    }
    function delete1(reviewNo) {
 	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
  	var url = "delete";
          url += "?reviewNo="+reviewNo;
-          location.href=url;
+          location.href="${pageContext.request.contextPath}/review/list/" + url;
  }else{   //취소
    return false;
   }

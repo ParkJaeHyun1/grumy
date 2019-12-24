@@ -141,8 +141,6 @@ public class MypageController {
 		int total = mapper.mytotal(map);
 		int totalr = mapper.mytotal(map);
 		
-
-		
 		String paging = Utility.mypaging(total, nowPage, recordPerPage, col, word);
 		String paging2 = Utility.mypaging2(totalr, nowPager, recordPerPager, colr, wordr);
 		

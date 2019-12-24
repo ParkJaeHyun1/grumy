@@ -250,21 +250,31 @@ public class ItemController {
 		ItemDTO dto = mapper.read(itemNo);
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 
+		int nowPager = 1;
+		if(request.getParameter("nowPager")!= null){
+			nowPager = Integer.parseInt(request.getParameter("nowPager"));
+		} 
+		
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		}
 
 		int recordPerPage = 5; //한페이지당 보여줄 레코드 갯수
+		int recordPerPager = 5; //한페이지당 보여줄 레코드 갯수
 
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;
-
+		int snor = ((nowPager-1) * recordPerPager) + 1 ;
+		int enor= nowPager * recordPerPager;
+	
 		Map map = new HashMap();
 		map.put("itemNo", itemNo);
 		map.put("sno",sno);
 		map.put("eno",eno);
+		map.put("snor",snor);
+		map.put("enor",enor);
 
 		List<BoardDTO> qlist = mapper.Qlist(map);
 		ArrayList<reviewDTO> rlist = mapper.rlist(map);
@@ -274,12 +284,16 @@ public class ItemController {
 		System.out.println("리뷰갯수:"+rtotal);
 
 		String qpaging = Utility.paging2(qtotal, nowPage, recordPerPage,itemNo);
-
+		String paging = Utility.mypaging3(rtotal, nowPager, recordPerPager, itemNo);
+		
 		request.setAttribute("qpaging", qpaging);
+		request.setAttribute("paging", paging);
 		request.setAttribute("qtotal", qtotal);
 		request.setAttribute("rtotal", rtotal);
 		request.setAttribute("qlist", qlist);
 		request.setAttribute("rlist", rlist);
+		request.setAttribute("nowPager", nowPager);
+		request.setAttribute("recordPerPager", recordPerPager);
 
 		request.setAttribute("dto",dto);
 		return "/item/read";

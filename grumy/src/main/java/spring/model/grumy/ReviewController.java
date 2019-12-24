@@ -84,7 +84,6 @@ public class ReviewController {
 	public String delete(int reviewNo) {
 		 mapper.delete(reviewNo);
 
-		
 			return "redirect:/review/list";
 		
 	}

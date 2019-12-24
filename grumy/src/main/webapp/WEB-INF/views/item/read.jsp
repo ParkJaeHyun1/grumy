@@ -241,7 +241,7 @@
 
                 }//end showList
             	function read(no){
-            		var url = "read";
+            		var url = "../community/read";
             		url += "?board_no="+no;
             		
             		location.href= url;
@@ -251,7 +251,7 @@
             			location.href="../community/create?itemNo=${dto.itemNo}";
             		}else{
             			if(confirm("로그인을 해야 이용할 수 있습니다. 로그인창으로 이동하시겠습니까?")){
-            				$('#loginForm2').submit;
+            				$('#loginForm2').submit();
             			}else{
             				return false;
             			}
@@ -784,8 +784,8 @@
 									>${rtotal }</span></a></li>
 							<li><a href="#prdQnA">Q&amp;A <span class="cnt">${qtotal}</span></a></li>
 						</ul>
-						<div class="board">
-							<h3 style="margin: 0px;">REVIEW</h3>
+						<div class="board" style=" padding:0px;">
+							<h3 style="margin: 0px; ">REVIEW</h3>
 
 						</div>
 					</div>
@@ -1199,18 +1199,16 @@ console.log(listp);
          //<![CDATA[
          //]]>
       </script>
-      <form id="form-upload-image" class="hidden" data-type="json"
+	<form id="form-upload-image" class="hidden" data-type="json"
 		enctype="multipart/form-data"
 		action="/slowand.com/preview_images/upload?secure_username=V2e70545df531ffd1464fc16b6c22db761&amp;widget_env=100"
 		accept-charset="UTF-8" data-remote="true" method="post">
-		<input type="hidden" name="url"
+	<input type="hidden" name="url"
 										value="/item/read?itemNo=${dto.itemNo }#prdQnA"></input>
 		<input name="utf8" type="hidden" value="✓">
 		<div id="upload-fields-container"></div>
 	</form>
-	
 	</body>
-	
 				</html>
 			</div>
 
