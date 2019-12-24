@@ -187,7 +187,7 @@
 									~ <input id="price2" name="price2" fw-filter="isNumber"
 										fw-label="최대판매가격" fw-msg="" class="input01" size="15"
 										value="${param.price2}" type="text" />
-
+										 <input type="hidden" name="orderby" id="orderby" />
 
 								</div>
 
@@ -216,16 +216,17 @@
 								</p>
 								  </c:otherwise>
 							</c:choose>
-							             
+	             
 							<ul
 								class="xans-element- xans-search xans-search-orderby listType">
-								<li rel="recent" style="" class="btn_order xans-record-">신상품</li>
-								<li rel="price" style="" class="btn_order xans-record-">높은가격</li>
-								<li rel="favor" style="" class="btn_order xans-record-">인기상품</li>
+								<li class="xans-record-" onclick="setOrderBy('itemNo')">신상품</li>
+							<li class="xans-record-" onclick="setOrderBy('price')">높은가격</li>
+							<li class="xans-record-" onclick="setOrderBy('orderCount')">인기상품</li>
+							<li class="xans-record-" onclick="setOrderBy('reviewCount')">리뷰</li>
 							</ul>
-						</div>
-						<c:if test="${empty searchlist}">
-							<div class="noData">
+						</div>        
+						<c:if test="${empty searchlist}">                      
+							<div class="noData">           
 								<strong class="warning">검색결과가 없습니다.</strong> <strong>정확한
 									검색어 인지 확인하시고 다시 검색해 주세요.</strong>
 								<ul>
@@ -425,79 +426,10 @@
 	<script type="text/javascript"
 		src="/ind-script/optimizer.php?filename=rZTBTgMhEIYfYHv1OUiriWetiR62sWlNPE9h3J0uMMhAm317t2sPvQpeCAmZj_8f_kH17FAtV1GFyF0EpyAEtQEPHaodCueoUR1FgYxe_66L92gwap8WR7lTJYBnkAFTPSFE0ljJ2EY2WZcrWXMO7Gu8bMjidF5c_4KBhcrv_yTpW5I6gOZc0YKIGivKd3P5Byew6yodc7LLA4Uev6g21C2MFRpeI5jyKD3lxA4S6Rmz7_lcnupsE2055FCOGFsa8DqgdQ_b0gkt-YF9XTbepjnhOJaKCZD6yBabE1gyMKHKHTGYPxWHgo9OzgsN1t7mEXWTBeMkxntcLR_vVcgHS7rpk7NKDDYGhTqvZCD_cIG46V6LysLIOSkNCbuphcXEK-cAQvqCnzc1-jQ7d5uLWoffmfTQnAjP_8d0l2mSnsO-pxDId5WGRexE-AE&type=js&k=e07740b161a7307da8dfa3f8b8d98779b103f95f&t=1573420409"></script>
 	<script type="text/javascript">
-		var EC_MOBILE = false;
-		var EC_MOBILE_DEVICE = false;
-		var EC_MOBILE_USE = true;
-		var mobileWeb = false;
-		var sSearchBannerUseFlag = 'F';
-		var SHOP_CURRENCY_INFO = {
-			"1" : {
-				"aShopCurrencyInfo" : {
-					"currency_code" : "KRW",
-					"currency_no" : "410",
-					"currency_symbol" : "\uffe6",
-					"currency_name" : "South Korean won",
-					"currency_desc" : "\uffe6 \uc6d0 (\ud55c\uad6d)",
-					"decimal_place" : 0,
-					"round_method_type" : "F"
-				},
-				"aShopSubCurrencyInfo" : null,
-				"aBaseCurrencyInfo" : {
-					"currency_code" : "KRW",
-					"currency_no" : "410",
-					"currency_symbol" : "\uffe6",
-					"currency_name" : "South Korean won",
-					"currency_desc" : "\uffe6 \uc6d0 (\ud55c\uad6d)",
-					"decimal_place" : 0,
-					"round_method_type" : "F"
-				},
-				"fExchangeRate" : 1,
-				"fExchangeSubRate" : null,
-				"aFrontCurrencyFormat" : {
-					"head" : "",
-					"tail" : "\uc6d0"
-				},
-				"aFrontSubCurrencyFormat" : {
-					"head" : "",
-					"tail" : ""
-				}
-			}
-		};
-		EC_SHOP_FRONT_NEW_OPTION_COMMON.initObject();
-		EC_SHOP_FRONT_NEW_OPTION_BIND.initChooseBox();
-		EC_SHOP_FRONT_NEW_OPTION_DATA.initData();
-		EC_SHOP_FRONT_NEW_LIKE_COMMON.init({
-			"bIsUseLikeProduct" : false,
-			"bIsUseLikeCategory" : false
-		});
-		EC_SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';
-		var basket_result = '/product/add_basket.html';
-		var basket_option = '/product/basket_option.html';
-		var aLogData = {
-			"log_server1" : "eclog2-186.cafe24.com",
-			"log_server2" : "eclog2-186.cafe24.com",
-			"mid" : "anne2173",
-			"stype" : "e",
-			"domain" : "",
-			"shop_no" : 1,
-			"etc" : ""
-		};
-		var sMileageName = '적립금';
-		var sMileageUnit = '[:PRICE:]원';
-		var sDepositName = '예치금';
-		var sDepositUnit = '원';
-		var EC_ASYNC_LIVELINKON_ID = '';
-		var EC_FRONT_JS_CONFIG_MANAGE = {
-			"sSmartBannerScriptUrl" : "https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206",
-			"sMallId" : "anne2173",
-			"sDefaultAppDomain" : "https:\/\/app4you.cafe24.com",
-			"sWebLogEventFlag" : "F",
-			"FW_MANIFEST_CACHE_REVISION" : 1912131093,
-			"IS_WEB_VIEW" : "F"
-		};
-		var EC_FRONT_JS_CONFIG_MEMBER = {
-			"sAuthUrl" : "https:\/\/i-pin.cafe24.com\/certify\/1.0\/?action=auth"
-		};
+		function setOrderBy(val){
+			$('#orderby').val(val);
+			$('#searchForm').submit();
+		}
 	</script>
 </body>
 </html>

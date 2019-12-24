@@ -52,6 +52,7 @@ public class ItemController {
 		String type = request.getParameter("type");	//상품 카테고리 ex)outer,top,bottom	
 		String price1 =request.getParameter("price1");
 		String price2 =request.getParameter("price2");
+		String orderby = request.getParameter("orderby");
 		
 		if(type.equals("") || type == null )
 			keyword = "";         
@@ -81,13 +82,14 @@ public class ItemController {
 		map.put("type", type);
 		map.put("id", session.getAttribute("id"));           	
 		map.put("grade", grade);
+		map.put("orderby", orderby); 
 
 		System.out.println("keyword(검색한 단어):"+keyword);
 		System.out.println("search_type(title/itemNo):"+search_type);
 		System.out.println("type(outer,top):"+type);
 		System.out.println("price1:"+price1);
 		System.out.println("price2:"+price2);
-		
+		System.out.println("order:"+orderby);
 			
 		ArrayList<ItemDTO> searchlist = mapper.search(map);
 		System.out.println("상품 개수:"+searchlist.size());
@@ -107,6 +109,7 @@ public class ItemController {
 		request.setAttribute("nowPage",nowPage);
 		request.setAttribute("paging",paging);   
 		request.setAttribute("SearchTotal",SearchTotal);
+		request.setAttribute("orderby", orderby);
 
 		return "/item/search";
 	}

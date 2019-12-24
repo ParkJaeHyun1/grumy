@@ -232,12 +232,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		i.itemNo,o.itemOptionNo,
 		image, title, description, content,
 		price,salePrice,
-		i.type,itemOptionNo,itemColor,itemSize,itemCount,t.parentType
+		i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
 		from
 		(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
-		i , itemOption o,itemType t
+		i , itemOption o,itemType t,(select itemNo, count(*) reviewCount from review r ,itemOption o where r.itemOptionNo = o.itemOptionNo group by(itemNo)) r, (select o.itemNo , count(*) orderCount from orderItem oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo group by(itemNo)) oi
 		<where>
-			i.type =t.type and i.itemNo = o.itemNo and
+			i.type=t.type and i.itemNo = o.itemNo and o.itemNo = r.itemNo(+) and o.itemNo = oi.itemNo(+) and
 			<choose>
 				<when test="search_type == 'title'">
 					title like '%'||#{keyword}||'%'
@@ -256,7 +256,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  				]]>
 			</if>
 		</where>
-		order by itemNo desc
+		order by 
+		<choose>
+			<when test="orderby == 'price'">
+				(price-salePrice) desc
+			</when>
+			<when test="orderby == 'reviewCount'">          
+				reviewCount desc nulls last
+			</when>
+			<when test="orderby == 'orderCount'">
+				orderCount  desc nulls last
+			</when>
+			<otherwise>itemNo desc</otherwise>
+		</choose>
 	</select>
 
 

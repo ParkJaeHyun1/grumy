@@ -199,13 +199,13 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 						<ul id="order_by"
 							class="xans-element- xans-product xans-product-orderby">
 							<li class="xans-record-"><a           
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo">신상품</a></li>
-							<li class="xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price">높은가격</a></li>
-							<li class="xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount">인기상품</a></li>
-							<li class="xans-record-"><a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount">사용후기</a></li>
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo">신상품</a> &nbsp;&nbsp;
+							<a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price">높은가격</a> &nbsp;&nbsp;
+							<a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount">인기상품</a> &nbsp;&nbsp;
+							<a
+								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount">리뷰</a></li>          
 						</ul>
 
 						<span class="compare displaynone"><a href="#none"          
@@ -233,7 +233,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				</div>
 				<br></br>
 
-
+ 
 				<ul class="prdList grid4">
 
 					<c:forEach var="dto" items="${list}">
