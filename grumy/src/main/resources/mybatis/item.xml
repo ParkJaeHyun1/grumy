@@ -207,7 +207,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where i.type=t.type and i.itemNo = o.itemNo and o.itemOptionNo = r.itemOptionNo(+) and o.itemOptionNo = oi.itemOptionNo(+)
 		and(t.type = #{type} or
 		t.parentType=#{type})
-		order by #{orderby} desc;
+		order by #{orderby} desc
 	</select>
 
 
