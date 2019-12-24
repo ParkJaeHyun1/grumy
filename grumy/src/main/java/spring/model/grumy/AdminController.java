@@ -39,7 +39,9 @@ public class AdminController {
 		int change = mapper.cstotal("교환");   	//교환요청
 	    int cancel = mapper.cstotal("취소");   	//취소요청
         int ret = mapper.cstotal("반품");   		//반품요청 
-		
+		int priceToday = mapper.priceTotal("t");	//오늘정산
+		int priceDelay = mapper.priceTotal("d");	//정산예정
+        
 		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		NoticeDTO noticetr = noticet.get(0);
 		
@@ -47,12 +49,14 @@ public class AdminController {
 		ArrayList<BoardDTO> deliveryl = mapper.deliveryl(5);
 		ArrayList<BoardDTO> communityl = mapper.communityl(5);
 		ArrayList<OrderDTO> chartl = mapper.chartl();
+		ArrayList<OrderDTO> chartlp = mapper.chartlp();
 		
 		request.setAttribute("noticetr", noticetr);
 		request.setAttribute("noticel", noticel);
 		request.setAttribute("deliveryl", deliveryl);
 		request.setAttribute("communityl", communityl);
 		request.setAttribute("chartl", chartl);
+		request.setAttribute("chartlp", chartlp);
 		request.setAttribute("wait", wait);
 		request.setAttribute("newOrder", newOrder);
 		request.setAttribute("sReady", sReady);
@@ -61,6 +65,8 @@ public class AdminController {
 		request.setAttribute("change", change);
 	    request.setAttribute("cancel", cancel);
 	    request.setAttribute("ret", ret);
+	    request.setAttribute("priceToday", priceToday);
+	    request.setAttribute("priceDelay", priceDelay);
 		
 		return "/admin/main";
 	}

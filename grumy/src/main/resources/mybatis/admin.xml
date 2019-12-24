@@ -56,7 +56,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
-	
+	<select id="priceTotal" parameterType="String" resultType="int">
+		select sum(b.price - a.saleprice) from norder a,
+			(select a.orderno, sum(b.itemprice * b.count) price 
+				from norder a, orderitem b where a.orderno = b.orderno and 
+				<choose>
+					<when test= '_parameter.equals("t")'>
+						to_char(a.pdate, 'yyyy/mm/dd') = to_char(sysdate, 'yyyy/mm/dd')
+					</when>
+					<when test= '_parameter.equals("d")'>
+						a.state = '입금대기'
+					</when>					
+				</choose>
+				group by a.orderno) b
+		where a.orderno = b.orderno
+	</select>
+
 	<resultMap type="orderDTO" id="orderMap">
 		<result property="id" column="id"/>
 		<result property="orderNo" column="orderno"/>
@@ -208,6 +223,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on a.odate = b.datec
 		order by datec asc
 	</select>
+	<select id="chartlp" resultType="OrderDTO">
+		select nvl(price,0) totalPrice, b.datec odate from
+		    (select sum(b.price - a.saleprice) price, to_char(a.odate, 'yy/mm/dd') odate 
+		    	from norder a, 
+		    	(select a.orderno, sum(b.itemprice * b.count) price  
+		    	from norder a, orderitem b where a.orderno = b.orderno group by a.orderno) b
+		    where a.orderno = b.orderno
+		    group by to_char(a.odate, 'yy/mm/dd')) a right outer join
+		    (SELECT
+		        TO_CHAR(TO_DATE(sysdate-9, 'yy.mm.dd') + LEVEL - 1, 'yy/mm/dd') datec
+		    FROM dual
+		    CONNECT BY
+		    <![CDATA[
+		        TO_DATE(sysdate-9, 'yy/mm/dd') + LEVEL - 1 <= TO_char(sysdate, 'yy/mm/dd')) b
+		    ]]>
+		on a.odate = b.datec
+		order by datec asc
+	</select>
+	
+	
 	
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
 		select no, subject,lev, wdate from (

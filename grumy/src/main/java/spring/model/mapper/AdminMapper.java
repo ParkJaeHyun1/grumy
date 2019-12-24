@@ -17,13 +17,16 @@ public interface AdminMapper {
 	ArrayList<NoticeDTO> noticel(int rownum);			//공지목록띄우기
 	ArrayList<BoardDTO> deliveryl(int rownum);			//배송문의
 	ArrayList<BoardDTO> communityl(int rownum);			//상품문의
-	int updateState(Map<String,String> map);							//주문상태변경	norder테이블
-	int updateStateP(Map<String,String> map);							//주문상태변경	orderitem테이블
-	int cstotal(String category);
-	int itemC(Map map);
+	int updateState(Map<String,String> map);			//주문상태변경	norder테이블
+	int updateStateP(Map<String,String> map);			//주문상태변경	orderitem테이블
+	int cstotal(String category);						//고객요청 건 갯수
+	int priceTotal(String state);						//정산예정, 정산예정금
 	
-	ArrayList<ItemDTO> iteml(Map map);
-	ArrayList<OrderDTO> chartl();
+	ArrayList<ItemDTO> iteml(Map map);					//재고관리리스트
+	int itemC(Map map);									//재고관리 페이징처리
+
+	ArrayList<OrderDTO> chartl();						//차트리스트
+	ArrayList<OrderDTO> chartlp();						//차트리스트 결제금액별도
 	ArrayList<OrderItemDTO> readPList(String orderno);	//read페이지 목록에서의 리스트
 	MemberDTO read(String id);							//read페이지
 	OrderDTO readP(Map map);							//로그인 아이디 가져오기

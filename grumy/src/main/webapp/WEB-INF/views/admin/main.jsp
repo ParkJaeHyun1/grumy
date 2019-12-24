@@ -50,17 +50,20 @@ $(function () {
 
 $(document).ready(function(){
 	var chartdate = new Array;
-	var chartc = new Array;
-	var chartp = new Array;
-	
+	var chartc = new Array;		//결제건수
+	var chartp = new Array;		//결제자수
+	var chartm = new Array;		//결제금액
 	<c:forEach var="dto" items="${chartl}">
 		chartdate.push("${dto.odate}");
 		chartc.push("${dto.orderNo}");
 		chartp.push("${dto.id}");	
 	</c:forEach>	
 	
+	<c:forEach var="dto" items="${chartlp}">
+		chartm.push("${dto.totalPrice}");	
+	</c:forEach>	
+	
 	var gchange = "";
-	var a = ${wait};
 	var pos = "결제건수";
 	var gdata = chartc;
 		
@@ -68,7 +71,6 @@ $(document).ready(function(){
 		gchange = $(this).val();
 
 		$.get('main', function(){
-			glabels = chartdate;
 			
 			if(gchange == "payb1"){
 				pos="결제건수";
@@ -80,7 +82,7 @@ $(document).ready(function(){
 				chart1();
 			}else if(gchange == "payb3"){
 				pos="결제금액";
-				gdata = [a,2,35,4,5,6,7,20,15,30];
+				gdata = chartm;
 				chart1();
 			}
 			
@@ -266,7 +268,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleToday">0</a>
+												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleToday">${priceToday }</a>
 											<!----> <!---->
 												<span>원</span>
 										</span></li>
@@ -274,7 +276,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleExpect">0</a>
+												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleExpect">${priceDelay }</a>
 											<!----> 
 												<span>원</span>
 										</span></li>
