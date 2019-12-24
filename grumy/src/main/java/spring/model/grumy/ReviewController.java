@@ -28,7 +28,7 @@ public class ReviewController {
 	@Autowired
 	private reviewMapper mapper;
 
-	@PostMapping("/review/create_reply")
+	@PostMapping("/review/list/create_reply")
 	public String create_reply(int reviewNo, String replyContent) {
 		Map map = new HashMap();
 		map.put("reviewNo", reviewNo);
@@ -38,7 +38,7 @@ public class ReviewController {
 		return "redirect:/review/list";
 	}
 
-	@GetMapping("/review/create_reply")
+	@GetMapping("/review/list/create_reply")
 	public String create_reply(int reviewNo,String content, HttpServletRequest request, Model model) {
 		
 		

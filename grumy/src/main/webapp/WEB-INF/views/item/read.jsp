@@ -837,18 +837,18 @@ console.log(listp);
 	   var url = "create_reply";
       url += "?reviewNo="+reviewNo;
       
-      location.href = url;
-   }
+      location.href = "${pageContext.request.contextPath}/review/list/" + url;
+        }
    function update(reviewNo){
 	   var url = "update";
       url += "?reviewNo="+reviewNo;
-      location.href = url;
-   }
+      location.href = "${pageContext.request.contextPath}/review/list/" + url;
+       }
    function delete1(reviewNo) {
 	 if (confirm("정말 삭제하시겠습니까??") == true){    //확인
  	var url = "delete";
          url += "?reviewNo="+reviewNo;
-          location.href=url;
+         location.href="${pageContext.request.contextPath}/review/list/" + url;
  }else{   //취소
    return false;
   }
@@ -1177,9 +1177,6 @@ console.log(listp);
 		<div class="arrow"></div>
 		<span class="text"></span>
 	</div>
-	<!--       더보기기능 -->
-	<script
-		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
 	<!--[if IE 7]>
       <script src="//assets5.cre.ma/m/widgets/javascripts/ie7.js"></script>
     <![endif]-->
@@ -1568,8 +1565,12 @@ fbq('track', 'ViewContent', {
 
 </body>
 </html>
+<!--       더보기기능 -->
+	<script
+		src="https://assets5.cre.ma/latte/assets/pc/application-1401d5144e9cd5ca5ebcbe7c38cd911898a823b3c451956ac54c315d1a9e704a.js"></script>
 
 <script
 	src="https://cdn.megadata.co.kr/js/en_script/3.5/enliple_min3.5.js"
 	defer="defer" onload="mobRf()"></script>
+
 

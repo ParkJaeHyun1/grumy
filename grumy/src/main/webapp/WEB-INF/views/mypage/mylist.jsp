@@ -258,8 +258,8 @@ var x = document.getElementById("myDIV");
 	   var url = "create_reply";
       url += "?reviewNo="+reviewNo;
       
-      location.href = url;
-   }
+      location.href = "${pageContext.request.contextPath}/review/list/" + url;
+         }
    function update(reviewNo){
       var url = "update";
       url += "?reviewNo="+reviewNo;
@@ -299,6 +299,12 @@ var x = document.getElementById("myDIV");
 					<div class="reviews_index__title">
 						<strong>REVIEW</strong><span class="divider">|</span>내가 작성한 리뷰
 					</div>
+						<p align="right">
+					<button  style="float: rigth" display:"none;
+						onclick="location.href='${pageContext.request.contextPath}/review/list/'">
+						<img src="${pageContext.request.contextPath}/images/rimg.PNG"></img></button>
+					&nbsp;
+				</p>
 				</div>
 				<script
 					src="//assets.cre.ma/m/widgets/javascripts/tui-editor.min.js"></script>

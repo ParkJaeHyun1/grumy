@@ -246,6 +246,24 @@ function sample6_execDaumPostcode() {
        //return false;
     }
    
+   function emailCheck(email){
+	    if(email == ''){
+	     alert("이메일을 입력하세요");
+	       document.joinForm.email.focus();
+	    }else{
+	     var url = "emailcheck";
+	     var param = "email=" + email;
+	     $.get(url, param, function(data, textStatus){
+
+	        //var result = eval("(" + data + ")");
+	        //var result = JSON.parse(data);
+	        
+	        $("#emailcheck").text(data.str);
+	     });
+	     
+	    }
+	 } 
+   
 </script>
 
 
@@ -290,8 +308,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		</div>
 
 	<h3>기본정보</h3>
-	<p class="required ">
-	<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
+	<p class="required " align="right" margin-bottom="20px";>
+	<img style="float: rigth" ; src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
 	필수입력사항
 	</p>
 <div class="ec-base-table typeWrite" style="margin-top: -11px;">
