@@ -53,289 +53,24 @@
 					<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
 
 					<script type='text/javascript'>
-                var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {"common_member_id_crypt":""};
-            </script>
+						var EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA = {
+							"common_member_id_crypt" : ""
+						};
+					</script>
 
-					<script type="text/javascript">var EC_SDE_SHOP_NUM = 1;var SHOP = {getLanguage : function() { return "ko_KR"; },getCurrency : function() { return "KRW"; },getFlagCode : function() { return "KR"; },getTimezone: function() { return "Asia/Seoul" },isMultiShop : function() { return false; },isDefaultShop : function() { return true; },isDefaultLanguageShop : function(sLanguageCode) { return SHOP.isDefaultShop() && SHOP.isLanguageShop(sLanguageCode); },isKR : function() { return true; },isUS : function() { return false; },isJP : function() { return false; },isCN : function() { return false; },isTW : function() { return false; },isES : function() { return false; },isPT : function() { return false; },isVN : function() { return false; },isLanguageShop : function(sLanguageCode) { return sLanguageCode === "ko_KR"; },getDefaultShopNo : function() { return 1; },getProductVer : function() { return 2; },isSDE : function() { return true; },isMode : function() {return false; },isExperienceMall : function() { return false; },getAdminID : function() {return ''},getMallID : function() {return 'anne2173'}};var EC_COMMON_UTIL = {convertSslForString : function(sString) { return sString.replace(/http:/gi, '');},convertSslForHtml : function(sHtml) { return sHtml.replace(/((?:src|href)\s*=\s*['"])http:(\/\/(?:[a-z0-9\-_\.]+)\/)/ig, '$1$2');},getProtocol : function() { return 'https'; },moveSsl : function() { if (EC_COMMON_UTIL.getProtocol() === 'http') { var oLocation = jQuery(window.location); var sUrl = 'https://' + oLocation.attr('host') + oLocation.attr('pathname') + oLocation.attr('search'); window.location.replace(sUrl); } }};var EC_SHOP_LIB_INFO = {getBankInfo : function() { 
-            var oBankInfo = "";
-            $.ajax({
-                type: "GET",
-                url: "/exec/front/Shop/Bankinfo",
-                dataType: "json",
-                async: false,
-                success: function(oResponse) {
-                    oBankInfo = oResponse;
-                }
-             });
-             return oBankInfo; }};</script>
-					<script type="text/javascript">            var EC_ROOT_DOMAIN = "cafe24.com";
-            var EC_TRANSLATE_LOG_STATUS = "F";
-            var EC_GLOBAL_INFO = (function() {
-                var oData = {"base_domain":"anne2173.cafe24.com","root_domain":"cafe24.com","is_global":false,"country_code":"KR","language_code":"ko_KR","admin_language_code":"ko_KR"};
-                
-                return {
-                    getBaseDomain: function() {
-                        return oData['base_domain'];
-                    },
+					<script type="text/javascript">
+						function delete1(itemNo, type) {
 
-                    getRootDomain: function() {
-                        return oData['root_domain'];
-                    },
+							if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-                    isGlobal: function() {
-                        return oData['is_global'];
-                    },
+								var url = "${pageContext.request.contextPath}/item/delete";
+								url += "?itemNo=" + itemNo;
+								url += "&type=" + type;
+								location.href = url;
 
-                    getCountryCode: function() {
-                        return oData['country_code'];
-                    },
-
-                    getLanguageCode: function() {
-                        return oData['language_code'];
-                    },
-                    
-                    getAdminLanguageCode: function() {
-                        return oData['admin_language_code'];
-                    }
-                };
-            })();</script>
-					<script type="text/javascript"
-						src="//slowand.com/ind-script/moment.php?convert=T"></script>
-					<script type="text/javascript">            var EC_GLOBAL_DATETIME = (function() {
-                var oConstants = {"STANDARD_DATE_REGEX":"\/([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))\/","IN_ZONE":"inZone","OUT_ZONE":"outZone","IN_FORMAT":"inFormat","OUT_FORMAT":"outFormat","IN_DATE_FORMAT":"inDateFormat","IN_TIME_FORMAT":"inTimeFormat","OUT_DATE_FORMAT":"outDateFormat","OUT_TIME_FORMAT":"outTimeFormat","IN_FORMAT_DATE_ONLY":1,"IN_FORMAT_TIME_ONLY":2,"IN_FORMAT_ALL":3,"OUT_FORMAT_DATE_ONLY":1,"OUT_FORMAT_TIME_ONLY":2,"OUT_FORMAT_ALL":3,"DATE_ONLY":"YYYY-MM-DD","TIME_ONLY":"HH:mm:ss","FULL_TIME":"YYYY-MM-DD HH:mm:ss","ISO_8601":"YYYY-MM-DD[T]HH:mm:ssZ","YEAR_ONLY":"YYYY","MONTH_ONLY":"MM","DAY_ONLY":"DD","WEEK_ONLY":"e","TIME_H_I_ONLY":"HH:mm","TIME_HOUR_ONLY":"HH","TIME_MINUTE_ONLY":"mm","POSTGRE_FULL_TIME":"YYYY-MM-DD HH24:MI:SS","POSTGRE_TIME_ONLY":" HH24:MI:SS","MICRO_SECOND_ONLY":"u","SEOUL":"Asia\/Seoul","TOKYO":"Asia\/Tokyo","SHANGHAI":"Asia\/Shanghai","TAIPEI":"Asia\/Taipei","HANOI":"Asia\/Bangkok","LOS_ANGELES":"America\/Los_Angeles","LISBON":"Europe\/Lisbon","MADRID":"Europe\/Madrid","UTC":"Etc\/UTC","MAX_DATETIME":"9999-12-31 23:59:59"};
-                var oOptions = {"inZone":"Asia\/Seoul","inFormat":"YYYY-MM-DD HH:mm:ss","inDateFormat":"YYYY-MM-DD","inTimeFormat":"HH:mm:ss","outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"};
-                var oPolicies = {"shop":{"outZone":"Asia\/Seoul","outFormat":"YYYY-MM-DD HH:mm:ss","outDateFormat":"YYYY-MM-DD","outTimeFormat":"HH:mm:ss"}};
-                var sOverrideTimezone = '';
-                var sMomentNamespace = 'EC_GLOBAL_MOMENT';
-                
-                var fMomentLoaded = function() {
-                    var bMomentLoaded = !!window[sMomentNamespace];
-                    var bMomentTZLoaded = false;
-                    if (bMomentLoaded) {
-                        bMomentTZLoaded = !!window[sMomentNamespace].tz;
-                    }
-                    
-                    return bMomentLoaded && bMomentTZLoaded;
-                };
-                
-                var fMomentWrapper = function() {
-                    return window[sMomentNamespace];
-                };
-                
-                var fShallowMerge = function(oTarget, oSource) {
-                    oSource = oSource || {};
-                    for (var sKey in oSource) {
-                        if (oSource.hasOwnProperty(sKey)) {
-                            oTarget[sKey] = oSource[sKey];
-                        }
-                    }
-                    
-                    return oTarget;
-                };
-                
-                var getFormatFromFlag = function(oOptions, iFlag, bOpposite) {
-                    if (bOpposite) {
-                        switch (iFlag) {
-                            case 1:
-                                return oOptions[oConstants.IN_DATE_FORMAT];
-                            case 2:
-                                return oOptions[oConstants.IN_TIME_FORMAT];
-                            default:
-                                return oOptions[oConstants.IN_FORMAT];    
-                        }
-                    }
-                    
-                    switch (iFlag) {
-                        case 1:
-                            return oOptions[oConstants.OUT_DATE_FORMAT];
-                        case 2:
-                            return oOptions[oConstants.OUT_TIME_FORMAT];
-                        default:
-                            return oOptions[oConstants.OUT_FORMAT];
-                    }
-                };
-                              
-                return {
-                    const: oConstants,
-                    init: function(fCallback) {
-                        if (fMomentLoaded()) {
-                            if (typeof fCallback === 'function') {
-                                fCallback();
-                            }
-                            
-                            return;
-                        }
-                        
-                        var oScript = document.createElement('script');
-                        oScript.type = 'text/javascript';
-                        oScript.async = true;
-                        oScript.src = '/ind-script/moment.php?convert=T';
-                        oScript.onload = oScript.onreadystatechange = function () {
-                            fMomentWrapper().defaultFormat = oOptions[oConstants.OUT_FORMAT];
-                            fMomentWrapper().tz.setDefault(oOptions[oConstants.IN_ZONE]);
-                            
-                            if (typeof fCallback === 'function') {
-                                fCallback();
-                            }
-                        };
-                        
-                        var oFirstScript = document.getElementsByTagName('script')[0];
-                        oFirstScript.parentNode.insertBefore(oScript, oFirstScript);
-                    },
-                    
-                    initPromise: function() {
-                        if (!window.Promise) {
-                            return;
-                        }
-                        
-                        return new Promise(function(resolve) {
-                            this.init(resolve);
-                        }.bind(this));
-                    },
-                    
-                    isLoaded: function() {
-                        return fMomentLoaded();
-                    },
-                                    
-                    setOptions: function(oNewOptions) {
-                         if (typeof oNewOptions === 'object') {
-                             for (var sKey in oNewOptions) {
-                                 if (oNewOptions.hasOwnProperty(sKey) && oOptions.hasOwnProperty(sKey)) {
-                                     oOptions[sKey] = oNewOptions[sKey];
-                                 }
-                             }
-                         }
-                         
-                         return this;
-                    },
-                    
-                    now: function(mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return Math.floor(new Date().getTime() / 1000);
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()()
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    format: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oFormatOptions = this.getOptions(mOptions);
-                        return fMomentWrapper()
-                            .tz(sTime, oFormatOptions.inZone)
-                            .tz(oFormatOptions.outZone)
-                            .format(getFormatFromFlag(oFormatOptions, iFlag));
-                    },
-                    
-                    parse: function(sTime, mOptions) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        var oParseOptions = this.getOptions(mOptions);
-                        return fMomentWrapper().tz((sTime || new Date()), oParseOptions.inZone).tz(oParseOptions.outZone);
-                    },
-                    
-                    getOptions: function(mOptions, iFlag) {
-                        mOptions = mOptions || {};
-                      
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        if (typeof mOptions === 'string' && oPolicies[mOptions]) {
-                            oMergedOptions = fShallowMerge(oMergedOptions, oPolicies[mOptions]);
-                        } else if (typeof mOptions === 'object') {
-                            oMergedOptions = fShallowMerge(oMergedOptions, mOptions);
-                        }
-                        
-                        if (sOverrideTimezone) {
-                            if ((typeof mOptions === 'string' && mOptions === 'shop') || (typeof mOptions === 'object' && !mOptions[oConstants.OUT_ZONE])) {
-                                oMergedOptions[oConstants.OUT_ZONE] = sOverrideTimezone;
-                            }
-                        }
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    getRevertOptions: function(mOptions) {
-                        var oCurrentOptions = this.getOptions(mOptions);
-                        var oMergedOptions = fShallowMerge({}, oOptions);
-                        oMergedOptions[oConstants.IN_ZONE] = oCurrentOptions[oConstants.OUT_ZONE];
-                        oMergedOptions[oConstants.IN_FORMAT] = oCurrentOptions[oConstants.OUT_FORMAT];
-                        oMergedOptions[oConstants.IN_DATE_FORMAT] = oCurrentOptions[oConstants.OUT_DATE_FORMAT];
-                        oMergedOptions[oConstants.IN_TIME_FORMAT] = oCurrentOptions[oConstants.OUT_TIME_FORMAT];
-                        
-                        return oMergedOptions;
-                    },
-                    
-                    today: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            throw new Error('MomentJS didnt initialize');
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        var oRevertOptions = this.getRevertOptions(mOptions);
-                        var oToday;
-                        if (!sTime || sTime === 'now') {
-                            oToday = this.parse('', mOptions);
-                        } else {
-                            iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                            oToday = fMomentWrapper().tz(sTime, getFormatFromFlag(oRevertOptions, iFlag, true), oRevertOptions[oConstants.IN_ZONE]);
-                            if (oToday.isValid() === false) {
-                                var oStandardDateRegex = new RegExp(oConstants.STANDARD_DATE_REGEX.replace(/\//g, ''));
-                                if (oStandardDateRegex.test(sTime) === true) {
-                                    oToday = fMomentWrapper().tz(sTime, oRevertOptions[oConstants.IN_ZONE]);
-                                } else {
-                                    oToday = fMomentWrapper()();
-                                }
-                            }
-                        }
-                        
-                        var oStartOfDay = oToday.clone().startOf('day');
-                        var oEndOfDay = oToday.clone().endOf('day');
-                        
-                        var sStartOfDayInSeoul = oStartOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        var sEndOfDayInSeoul = oEndOfDay.tz(oConstants.SEOUL).format(oConstants.FULL_TIME);
-                        
-                        return [sStartOfDayInSeoul, sEndOfDayInSeoul];
-                    },
-                    
-                    parseFromFormat: function(sTime, mOptions, iFlag) {
-                        if (fMomentLoaded() === false) {
-                            return sTime;
-                        }
-                        
-                        mOptions = mOptions || 'shop';
-                        iFlag = iFlag || oConstants.IN_FORMAT_ALL || 3;
-                        
-                        var oRevertOptions = {};
-                        if (typeof mOptions === 'string') {
-                            oRevertOptions = this.getRevertOptions(mOptions);
-                        } else {
-                            oRevertOptions = this.getOptions(mOptions);
-                        }
-                        
-                        return fMomentWrapper()(sTime, getFormatFromFlag(oRevertOptions, iFlag, true));
-                    }
-                };
-            })();
-					
-					function delete1(itemNo, type) {
-
-						if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
-
-							var url = "${pageContext.request.contextPath}/item/delete";
-							url += "?itemNo=" + itemNo;
-							url += "&type=" + type;
-							location.href = url;
+							}
 
 						}
-
-					}
-					
 					</script>
 
 					<link rel="stylesheet" type="text/css"
@@ -370,7 +105,7 @@
 
 .xans-search-form .searchbox #col, .xans-search-form .searchbox #order_by
 	{
-	width: 365px;         
+	width: 365px;
 }
 
 .xans-search-form .searchbox #product_price1, .xans-search-form .searchbox #product_price2
@@ -397,7 +132,7 @@
 
 		<div id="container">
 			<div id="contents">
-			
+
 
 				<div class="titleArea">
 					<h2>SEARCH</h2>
@@ -405,54 +140,55 @@
 				</div>
 
 				<!-- 참고 : 뉴상품관리 전용 변수가 포함되어 있습니다. 뉴상품관리 이외의 곳에서 사용하면 일부 변수가 정상동작하지 않을 수 있습니다. -->
-				<form id="searchForm" name="search" action="${pageContext.request.contextPath}/item/search"
+				<form id="searchForm" name="search"
+					action="${pageContext.request.contextPath}/item/search"
 					method="get" target="_self" enctype="multipart/form-data">
-  
+
 					<div class="xans-element- xans-search xans-search-form ">
 						<div class="ec-base-box searchbox">
 							<fieldset>
 								<legend>상품 검색</legend>
 								<div class="item">
-									<strong>상품분류</strong> 
-									<select id="type"
-										name="type" fw-filter="" fw-label="" fw-msg="" style="width:364px">
+									<strong>상품분류</strong> <select id="type" name="type"
+										fw-filter="" fw-label="" fw-msg="" style="width: 364px">
 										<option value="SearchTotal"
-										<c:if test="${type=='SearchTotal'}">selected</c:if>>전체 카테고리</option>
+											<c:if test="${type=='SearchTotal'}">selected</c:if>>전체
+											카테고리</option>
 										<c:forEach var="dto" items="${AlltypeList}">
 											<option value="${dto.parentType}"
 												<c:if test="${type == dto.parentType}">
 												selected
-												</c:if>> ${dto.parentType}
-											</option>                             
-										</c:forEach>         
-									</select>             
+												</c:if>>
+												${dto.parentType}</option>
+										</c:forEach>
+									</select>
 								</div>
 								<div class="item">
-									<strong>검색조건</strong> 
-									<select id="search_type"
+									<strong>검색조건</strong> <select id="search_type"
 										name="search_type" fw-filter="" fw-label="상품검색" fw-msg="">
-										<option value="title" 
+										<option value="title"
 											<c:if test="${search_type =='title'}">selected</c:if>>상품명</option>
-											<c:if test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-										<option value="itemNo"
-											<c:if test="${search_type =='itemNo'}">selected</c:if>>상품 번호</option>
+										<c:if
+											test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+											<option value="itemNo"
+												<c:if test="${search_type =='itemNo'}">selected</c:if>>상품
+												번호</option>
 										</c:if>
-									</select> 
-									<input id="keyword" name="keyword" fw-filter=""
+									</select> <input id="keyword" name="keyword" fw-filter=""
 										fw-label="상품명/제조사" fw-msg="" class="inputTypeText" size="15"
 										value="${param.keyword}" type="text" />
 								</div>
-         
+
 
 								<div class="item">
-									<strong>판매가격대</strong> 
-									<input id="itemPrice1" name="price1"
+									<strong>판매가격대</strong> <input id="price1" name="price1"
 										fw-filter="isNumber" fw-label="최소판매가격" fw-msg=""
-										class="input01" size="15" value="${param.price1}" type="text" /> ~ 
-									<input                
-										id="itemPrice2" name="price2" fw-filter="isNumber"
-										fw-label="최대판매가격" fw-msg="" class="input01" size="15" value="${param.price2}"
-										type="text" />
+										class="input01" size="15" value="${param.price1}" type="text" />
+									~ <input id="price2" name="price2" fw-filter="isNumber"
+										fw-label="최대판매가격" fw-msg="" class="input01" size="15"
+										value="${param.price2}" type="text" />
+
+
 								</div>
 
 								<p class="button">
@@ -460,18 +196,27 @@
 								</p>
 							</fieldset>
 						</div>
-				<c:if
-				test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-				<p align="right">
-					<button class="yg_btn_28 yg_btn3" style="float: rigth"
-						onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
-				</p> &nbsp;       
+						<c:if
+							test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
+							<p align="right">
+								<button class="yg_btn_28 yg_btn3" style="float: rigth"
+									onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
+							</p> &nbsp;       
 			
-			</c:if>                                  
+			</c:if>
 						<div class="searchResult">
-							<p class="record">
-								TOTAL <strong>${SearchTotal}</strong> ITEMS               
-							</p>         
+
+							<c:choose>
+								<c:when test="${empty searchlist}">
+							        
+							    </c:when>
+								<c:otherwise>
+								<p class="record">
+									TOTAL <strong>${SearchTotal}</strong> ITEMS
+								</p>
+								  </c:otherwise>
+							</c:choose>
+							             
 							<ul
 								class="xans-element- xans-search xans-search-orderby listType">
 								<li rel="recent" style="" class="btn_order xans-record-">신상품</li>
@@ -492,7 +237,7 @@
 						</c:if>
 					</div>
 
-				</form> 
+				</form>
 				<!-- //참고 -->
 
 				<div
@@ -566,7 +311,7 @@
 													${dto.price}</span><span id="span_product_tax_type_text" style="">
 											</span></li>
 										</c:if>
-          
+
 										<li class=" xans-record-"><strong
 											class="title displaynone"><span
 												style="font-size: 12px; color: #555555;"></span> :</strong> <span
@@ -584,16 +329,20 @@
 
 				${paging }
 				<script>
-          
-    $( '.ec-base-product .prdList > li').each(function(){
-        var sub = $(this).find('.description .name a').text().length;
-        var sub_count = 31;
-        if (sub >= sub_count ){
-            var jbExcerpt = $(this).find('.description .name a').text().substring( 0, sub_count );
-            $(this).find('.description .name a').text(jbExcerpt+'...');
-        }
-    });
-</script>
+					$('.ec-base-product .prdList > li').each(
+							function() {
+								var sub = $(this).find('.description .name a')
+										.text().length;
+								var sub_count = 31;
+								if (sub >= sub_count) {
+									var jbExcerpt = $(this).find(
+											'.description .name a').text()
+											.substring(0, sub_count);
+									$(this).find('.description .name a').text(
+											jbExcerpt + '...');
+								}
+							});
+				</script>
 			</div>
 			<hr class="layout" />
 		</div>
@@ -629,17 +378,30 @@
 	<div id="fbe_common_top_script" style="display: none;">
 		<!-- Facebook Pixel Code -->
 		<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.agent='plcafe24_kr';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '183242402324052');
-  fbq('track', 'PageView');
-</script>
+			!function(f, b, e, v, n, t, s) {
+				if (f.fbq)
+					return;
+				n = f.fbq = function() {
+					n.callMethod ? n.callMethod.apply(n, arguments) : n.queue
+							.push(arguments)
+				};
+				if (!f._fbq)
+					f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = '2.0';
+				n.agent = 'plcafe24_kr';
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s)
+			}(window, document, 'script',
+					'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '183242402324052');
+			fbq('track', 'PageView');
+		</script>
 		<noscript>
 			<img height="1" width="1" style="display: none"
 				src="https://www.facebook.com/tr?id=183242402324052&ev=PageView&noscript=1" />
@@ -663,39 +425,91 @@
 	<script type="text/javascript"
 		src="/ind-script/optimizer.php?filename=rZTBTgMhEIYfYHv1OUiriWetiR62sWlNPE9h3J0uMMhAm317t2sPvQpeCAmZj_8f_kH17FAtV1GFyF0EpyAEtQEPHaodCueoUR1FgYxe_66L92gwap8WR7lTJYBnkAFTPSFE0ljJ2EY2WZcrWXMO7Gu8bMjidF5c_4KBhcrv_yTpW5I6gOZc0YKIGivKd3P5Byew6yodc7LLA4Uev6g21C2MFRpeI5jyKD3lxA4S6Rmz7_lcnupsE2055FCOGFsa8DqgdQ_b0gkt-YF9XTbepjnhOJaKCZD6yBabE1gyMKHKHTGYPxWHgo9OzgsN1t7mEXWTBeMkxntcLR_vVcgHS7rpk7NKDDYGhTqvZCD_cIG46V6LysLIOSkNCbuphcXEK-cAQvqCnzc1-jQ7d5uLWoffmfTQnAjP_8d0l2mSnsO-pxDId5WGRexE-AE&type=js&k=e07740b161a7307da8dfa3f8b8d98779b103f95f&t=1573420409"></script>
 	<script type="text/javascript">
-var EC_MOBILE = false;
-var EC_MOBILE_DEVICE = false;
-var EC_MOBILE_USE = true;
-var mobileWeb = false;
-var sSearchBannerUseFlag = 'F';
-var SHOP_CURRENCY_INFO = {"1":{"aShopCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"aShopSubCurrencyInfo":null,"aBaseCurrencyInfo":{"currency_code":"KRW","currency_no":"410","currency_symbol":"\uffe6","currency_name":"South Korean won","currency_desc":"\uffe6 \uc6d0 (\ud55c\uad6d)","decimal_place":0,"round_method_type":"F"},"fExchangeRate":1,"fExchangeSubRate":null,"aFrontCurrencyFormat":{"head":"","tail":"\uc6d0"},"aFrontSubCurrencyFormat":{"head":"","tail":""}}};
-EC_SHOP_FRONT_NEW_OPTION_COMMON.initObject();
-EC_SHOP_FRONT_NEW_OPTION_BIND.initChooseBox();
-EC_SHOP_FRONT_NEW_OPTION_DATA.initData();
-EC_SHOP_FRONT_NEW_LIKE_COMMON.init({"bIsUseLikeProduct":false,"bIsUseLikeCategory":false});
-EC_SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';
-var basket_result = '/product/add_basket.html';
-var basket_option = '/product/basket_option.html';
-var aLogData = {"log_server1":"eclog2-186.cafe24.com","log_server2":"eclog2-186.cafe24.com","mid":"anne2173","stype":"e","domain":"","shop_no":1,"etc":""};
-var sMileageName = '적립금';
-var sMileageUnit = '[:PRICE:]원';
-var sDepositName = '예치금';
-var sDepositUnit = '원';
-var EC_ASYNC_LIVELINKON_ID = '';
-var EC_FRONT_JS_CONFIG_MANAGE = {"sSmartBannerScriptUrl":"https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206","sMallId":"anne2173","sDefaultAppDomain":"https:\/\/app4you.cafe24.com","sWebLogEventFlag":"F","FW_MANIFEST_CACHE_REVISION":1912131093,"IS_WEB_VIEW":"F"};
-var EC_FRONT_JS_CONFIG_MEMBER = {"sAuthUrl":"https:\/\/i-pin.cafe24.com\/certify\/1.0\/?action=auth"};
-</script>
+		var EC_MOBILE = false;
+		var EC_MOBILE_DEVICE = false;
+		var EC_MOBILE_USE = true;
+		var mobileWeb = false;
+		var sSearchBannerUseFlag = 'F';
+		var SHOP_CURRENCY_INFO = {
+			"1" : {
+				"aShopCurrencyInfo" : {
+					"currency_code" : "KRW",
+					"currency_no" : "410",
+					"currency_symbol" : "\uffe6",
+					"currency_name" : "South Korean won",
+					"currency_desc" : "\uffe6 \uc6d0 (\ud55c\uad6d)",
+					"decimal_place" : 0,
+					"round_method_type" : "F"
+				},
+				"aShopSubCurrencyInfo" : null,
+				"aBaseCurrencyInfo" : {
+					"currency_code" : "KRW",
+					"currency_no" : "410",
+					"currency_symbol" : "\uffe6",
+					"currency_name" : "South Korean won",
+					"currency_desc" : "\uffe6 \uc6d0 (\ud55c\uad6d)",
+					"decimal_place" : 0,
+					"round_method_type" : "F"
+				},
+				"fExchangeRate" : 1,
+				"fExchangeSubRate" : null,
+				"aFrontCurrencyFormat" : {
+					"head" : "",
+					"tail" : "\uc6d0"
+				},
+				"aFrontSubCurrencyFormat" : {
+					"head" : "",
+					"tail" : ""
+				}
+			}
+		};
+		EC_SHOP_FRONT_NEW_OPTION_COMMON.initObject();
+		EC_SHOP_FRONT_NEW_OPTION_BIND.initChooseBox();
+		EC_SHOP_FRONT_NEW_OPTION_DATA.initData();
+		EC_SHOP_FRONT_NEW_LIKE_COMMON.init({
+			"bIsUseLikeProduct" : false,
+			"bIsUseLikeCategory" : false
+		});
+		EC_SHOP_FRONT_REVIEW_TALK_REVIEW_COUNT.bIsReviewTalk = 'F';
+		var basket_result = '/product/add_basket.html';
+		var basket_option = '/product/basket_option.html';
+		var aLogData = {
+			"log_server1" : "eclog2-186.cafe24.com",
+			"log_server2" : "eclog2-186.cafe24.com",
+			"mid" : "anne2173",
+			"stype" : "e",
+			"domain" : "",
+			"shop_no" : 1,
+			"etc" : ""
+		};
+		var sMileageName = '적립금';
+		var sMileageUnit = '[:PRICE:]원';
+		var sDepositName = '예치금';
+		var sDepositUnit = '원';
+		var EC_ASYNC_LIVELINKON_ID = '';
+		var EC_FRONT_JS_CONFIG_MANAGE = {
+			"sSmartBannerScriptUrl" : "https:\/\/app4you.cafe24.com\/SmartBanner\/tunnel\/scriptTags?vs=1563164396689206",
+			"sMallId" : "anne2173",
+			"sDefaultAppDomain" : "https:\/\/app4you.cafe24.com",
+			"sWebLogEventFlag" : "F",
+			"FW_MANIFEST_CACHE_REVISION" : 1912131093,
+			"IS_WEB_VIEW" : "F"
+		};
+		var EC_FRONT_JS_CONFIG_MEMBER = {
+			"sAuthUrl" : "https:\/\/i-pin.cafe24.com\/certify\/1.0\/?action=auth"
+		};
+	</script>
 </body>
 </html>
 <!-- Enliple Common Tracker v3.5 [공용] start -->
 <script type="text/javascript">
 <!--
-   function mobRf(){
-        var rf = new EN();
-      rf.setData("userid", "slowand");
-        rf.setSSL(true);
-        rf.sendRf();
-    }
+	function mobRf() {
+		var rf = new EN();
+		rf.setData("userid", "slowand");
+		rf.setSSL(true);
+		rf.sendRf();
+	}
 //-->
 </script>
 <script

@@ -249,7 +249,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="type != 'SearchTotal'">
 				and i.type = #{type}
 			</if>
-			<if test="price1 != null">
+			
+			<if test="price1 != null and price1 != ''">
 		<![CDATA[
  				and price-salePrice >= #{price1} and price-salePrice <= #{price2}
  				]]>
@@ -267,15 +268,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					and title like '%'||#{keyword}||'%'
 				</when>
 				<when test="search_type == 'itemNo'">
-					and itemNo like #{keyword}
+					and itemNo = #{keyword}
 				</when>
 				<when test="type == 'type'">
-					i.type like #{type}
+					and i.type = #{type}
 				</when>
-				<!-- price1,2 조건문 넣어주기 -->
-
 			</choose>
 		</where>
+
 	</select>
 
 

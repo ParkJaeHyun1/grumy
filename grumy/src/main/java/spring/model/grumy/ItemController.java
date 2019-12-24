@@ -53,8 +53,6 @@ public class ItemController {
 		String price1 =request.getParameter("price1");
 		String price2 =request.getParameter("price2");
 		
-		
-	
 		if(type.equals("") || type == null )
 			keyword = "";         
 		
@@ -87,6 +85,8 @@ public class ItemController {
 		System.out.println("keyword(검색한 단어):"+keyword);
 		System.out.println("search_type(title/itemNo):"+search_type);
 		System.out.println("type(outer,top):"+type);
+		System.out.println("price1:"+price1);
+		System.out.println("price2:"+price2);
 		
 			
 		ArrayList<ItemDTO> searchlist = mapper.search(map);
