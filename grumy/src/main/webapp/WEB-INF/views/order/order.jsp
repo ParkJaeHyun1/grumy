@@ -572,7 +572,7 @@ function setPriceView(){
 														onerror="this.src='//img.echosting.cafe24.com/thumb/img_product_small.gif';"
 														alt="" /></a></td>
 												<td class="left gClearLine"><a
-													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemOptionNo }${dto.itemTitle }</a>
+													href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}">${dto.itemTitle }</a>
 													<div class="option ">[옵션:
 														${dto.itemColor}/${dto.itemSize} } }]</div>
 													<p class="gBlank5 displaynone">무이자할부 상품</p>

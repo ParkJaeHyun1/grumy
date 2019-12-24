@@ -162,7 +162,7 @@ function update(orderno,ostates, deliveryno){
 						<div class="ec-base-table">
 							<table border="1" summary="">
 								<caption>결제정보</caption>
-								<colgroup>
+								<colgroup> 
 									<col style="width: 160px">
 									<col style="width: auto">
 								</colgroup>
@@ -273,13 +273,13 @@ function update(orderno,ostates, deliveryno){
 											<p class="txtEm">${dto.state }</p>
 											<p class="">
 												<a href="#none" class="line"
-													onclick="window.open('/common/delivery_trace.php?is12RFront=T&amp;order_id=20191121-0030184&amp;invoice_no=6066250534047&amp;product_no=3643&amp;opt_id=000B&amp;is_second_delivery=F', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a>
-											</p> <a href="#none"
+													onclick="window.open('${pageContext.request.contextPath}/order/delivery', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a>
+											</p> <a href="#none"      
 											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('C','20191121-0030184|3643|000B|2824514','', 'F')"
+											onclick="OrderHistory.withdraw('C','20191121-0030184|3643|000B|2824514','', 'F')"     
 											alt="취소철회">취소철회</a> <a href="#none"
 											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
-											onclick="OrderHistory.withdraw('E','20191121-0030184|3643|000B|2824514','', 'F')"
+											onclick="OrderHistory.withdraw('E','20191121-0030184|3643|000B|2824514','', 'F')"   
 											alt="교환철회">교환철회</a> <a href="#none"
 											class="displaynone yg_btn_100 yg_btn3 yg_btn_hover_333"
 											onclick="OrderHistory.withdraw('R','20191121-0030184|3643|000B|2824514','', 'F')"

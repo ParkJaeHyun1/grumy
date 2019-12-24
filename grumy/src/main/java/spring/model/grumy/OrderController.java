@@ -70,4 +70,8 @@ public class OrderController {
 	
 		return "/order/insert";
 	}
+	@RequestMapping("/order/delivery")			//itemOptionNo,count,cartNo
+	public String delivery(HttpServletRequest request, HttpSession session) {
+		return "/order/delivery";
+	}        
 }
