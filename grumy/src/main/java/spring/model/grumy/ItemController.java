@@ -142,15 +142,17 @@ public class ItemController {
 		map.put("sno",sno);
 		map.put("eno",eno);
 		map.put("type", type);
-		map.put("orderby", orderby);
+		map.put("orderby", orderby); 
+		
 
 		System.out.println("orderby:"+orderby);
 		ArrayList<ItemDTO> list = mapper.list(map);
+
 		System.out.println("개수:"+list.size());
 		int total = mapper.total(map);     
 		
 		String paging = ItemUtility.paging(total, nowPage, recordPerPage, col, keyword,type);
-
+		int rtotal = mapper.rtotal(map);
         
 		request.setAttribute("typeList", mapper.selectTypeList(type));
 		request.setAttribute("parentType", mapper.selectParentType(type));
@@ -162,6 +164,7 @@ public class ItemController {
 		request.setAttribute("paging", paging);
 		request.setAttribute("total", total);
 		request.setAttribute("orderby", orderby);
+		request.setAttribute("rtotal", rtotal);
 
 
 

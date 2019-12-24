@@ -188,6 +188,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="salePrice" column="salePrice" />
 		<result property="type" column="type" />
 		<result property="image" column="image" />
+
 		<collection property="itemOptionList" column="itemNo"
 			javaType="List" ofType="ItemOptionDTO"
 			resultMap="itemOptionDTOListMap" />
@@ -202,12 +203,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="list" parameterType="Map" resultMap="itemMap">
-		select i.itemNo,o.itemOptionNo,image, title, description, content,price,salePrice,i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
-		from	(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]> )	i , itemOption o,itemType t,(select itemOptionNo,count(*) reviewCount from review group by(itemOptionNo)) r, (select itemOptionNo,count(*) orderCount from orderItem group by(itemOptionNo)) oi
-		where i.type=t.type and i.itemNo = o.itemNo and o.itemOptionNo = r.itemOptionNo(+) and o.itemOptionNo = oi.itemOptionNo(+)
-		and(t.type = #{type} or
-		t.parentType=#{type})
-		order by #{orderby} desc
+		select i.itemNo,o.itemOptionNo,image, title, description,
+		content,price,salePrice,i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
+		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>
+		) i , itemOption o,itemType t,(select itemNo, count(*) reviewCount from review r ,itemOption o where r.itemOptionNo = o.itemOptionNo group by(itemNo)) r, (select o.itemNo , count(*) orderCount from orderItem oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo group by(itemNo)) oi
+		where i.type=t.type and i.itemNo = o.itemNo and o.itemNo = r.itemNo(+) and o.itemNo = oi.itemNo(+)
+		and(t.type = #{type} or t.parentType=#{type})
+		order by
+		<choose>
+			<when test="orderby == 'itemNo'">
+				itemNo desc
+			</when>
+			<when test="orderby == 'price'">
+				price desc
+			</when>
+			<when test="orderby == 'reviewCount'">
+				reviewCount desc nulls last
+			</when>
+			<when test="orderby == 'orderCount'">
+				orderCount  desc nulls last
+			</when>
+		</choose>
 	</select>
 
 

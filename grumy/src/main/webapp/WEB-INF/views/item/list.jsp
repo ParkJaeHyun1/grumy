@@ -143,14 +143,14 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 							<c:when test="${selectedType==typeDTO.type }">
 								<li style="display:;"
 									class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
-									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}
+									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}&orderby=itemNo">${typeDTO.type}
 										<span class="count displaynone">()</span>
 								</a></li>
 							</c:when>
 							<c:otherwise>
 								<li style="display:;"
 									class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
-									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}">${typeDTO.type}<span
+									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}&orderby=itemNo">${typeDTO.type}<span
 										class="count displaynone">()</span></a></li>
 							</c:otherwise>
 						</c:choose>
