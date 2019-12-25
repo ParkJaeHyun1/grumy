@@ -57,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<select id="priceTotal" parameterType="String" resultType="int">
-		select sum(b.price - a.saleprice) from norder a,
+		select nvl(sum(b.price - a.saleprice),0) from norder a,
 			(select a.orderno, sum(b.itemprice * b.count) price 
 				from norder a, orderitem b where a.orderno = b.orderno and 
 				<choose>

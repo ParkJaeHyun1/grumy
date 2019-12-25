@@ -23,6 +23,6 @@
 			value="/WEB-INF/views/order/insertResult.jsp" />
 	</definition>
 	<definition name="/order/delivery"
-		template="/WEB-INF/views/order/delivery.jsp">
+		template="/WEB-INF/views/order/sweetTrackerAPI.jsp">
 	</definition>
 </tiles-definitions>
