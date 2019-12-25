@@ -100,7 +100,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				}
 			});
 		}
-
+               
 		function delete1(itemNo, type) {
 
 			if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
@@ -111,8 +111,10 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				location.href = url;
 
 			}
-
+                       	
 		}
+		
+		
 	</script>
 </head>
 <body id="main">
@@ -193,47 +195,53 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
                 $compare_page = /product/compare.html
             -->
 					<div class="function">
-						<p class="prdCount">
+		<script>
+
+		window.onload = pageLoad;
+	    function pageLoad(){
+	        changeColor();
+	        
+	    };
+	    function changeColor(){
+	    	$('#new').css("font-weight","bold");     
+	       
+	    }
+	            
+         
+		function change(val) {
+		     if(val=='itemNo'){   
+				location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo";    
+		                               
+		     }
+		     if(val=='price'){   
+					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price";                                      	              
+			     }
+		     if(val=='orderCount'){   
+					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount";                                      	              
+			     }
+		     if(val=='reviewCount'){          
+					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount";                                      	              
+			     }             
+		}                                  	                                               
+        		</script>			
+				                          
+						<p class="prdCount">           
 							TOTAL <strong>${list.size()}</strong> ITEMS
-						</p>
-						<ul id="order_by"
-							class="xans-element- xans-product xans-product-orderby">
-							<li class="xans-record-"><a           
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo">신상품</a> &nbsp;&nbsp;
-							<a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price">높은가격</a> &nbsp;&nbsp;
-							<a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount">인기상품</a> &nbsp;&nbsp;
-							<a
-								href="${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount">리뷰</a></li>          
-						</ul>
-
-						<span class="compare displaynone"><a href="#none"          
-							onclick="EC_ListAction.setProductCompare();"><img
-								src="//img.echosting.cafe24.com/skin/base_ko_KR/product/btn_compare.gif"
-								alt="상품비교"></a></span>
+						</p>                       
+						<ul class="xans-element- xans-product xans-product-orderby" style="float:right">           
+							<li id="new" style="float:left; margin-right:10px; cursor:pointer" onclick="change('itemNo')">신상품</li>  
+							<li id="price" style="float:left; margin-right:10px; cursor:pointer" onclick="change('price')">높은가격</li>
+							<li id="best" style="float:left; margin-right:10px; cursor:pointer" onclick="change('orderCount')">인기상품</li>
+							<li id="review" style="float:left; cursor:pointer" onclick="change('reviewCount')">리뷰</li>             
+						</ul>                       
+           
+               
 					</div>
-					<fieldset class="condition displaynone">
-						<legend>조건별 검색</legend>
-						<p>
 
-							<select
-								class="xans-element- xans-product xans-product-firstselect FirstSelect"><option
-									value="">-조건선택-</option>
-								<option value="" class=""></option>
-							</select> <select
-								class="xans-element- xans-product xans-product-secondselect SecondSelect"><option
-									value="">-조건선택-</option>
-								<option value="" class=""></option>
-							</select> <a href="#SelectSearch" class="SelectSearch"><img
-								src="//img.echosting.cafe24.com/skin/base_ko_KR/common/btn_list_search.gif"
-								alt="검색"></a>
-						</p>
-					</fieldset>
 				</div>
 				<br></br>
+             
 
- 
 				<ul class="prdList grid4">
 
 					<c:forEach var="dto" items="${list}">
