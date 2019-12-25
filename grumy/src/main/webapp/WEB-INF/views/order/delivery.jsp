@@ -177,34 +177,6 @@ function popupSetting() {
 }
 
 $(document).ready(function () {
-	$(".detail_off").css({'visibility':'hidden','position':'absolute','left':'0'});
-	$(".masking div").css('visibility','hidden');
-	//마스킹 제한 표시에 대한 근거
-	$("#btn_masking").click(function(){
-		 window.open('/iservice/usr/trace/usrtrc002p02.jsp','details','width=360,height=200,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no');
-         return false;
-	});
-
-	
-
-	//배송진행상황 프로세스
-	$('.shipping_process li').each(function(index){
-//		var myClass = $('.here').index();
-		var myClass = $("#prgsHere").val();
-		var myIndex = $(this).index();
-		var liIndex = myIndex + 1;
-		if (myIndex < myClass)
-		{
-			 $(this).removeClass("m"+liIndex);
-			 $(this).addClass("n"+liIndex);
-		}
-	});
-
-		$(".detail_on").css({'visibility':'hidden','position':'absolute','left':'0'});
-		$(".detail_off").css({'visibility':'visible','position':'relative'});
-		$(".btnSetC").css({'display':'table'});
-		$("#sbody_layout").css({'overflow':'visible'});
-
 
 	
 	//국제우편 배달정보 프린트

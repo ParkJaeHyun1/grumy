@@ -76,11 +76,11 @@ tr:nth-child(even) {
 <script>
 
 $(document).ready(function(){
-	var myKey = "JUI5lF7RHlbZHdNPCjhfYw"; // sweet tracker에서 발급받은 자신의 키 넣는다.
+	var myKey = "yba8zUaWizS64noI7PA0bw"; // sweet tracker에서 발급받은 자신의 키 넣는다.
 	
 		// 택배사 목록 조회 company-api
         $.ajax({
-            type:"GET",
+            type:"GET",  
             dataType : "json",
             url:"http://info.sweettracker.co.kr/api/v1/companylist?t_key="+myKey,
             success:function(data){
@@ -105,7 +105,7 @@ $(document).ready(function(){
         $("#myButton1").click(function() {
         	var t_code = $('#tekbeCompnayList option:selected').attr('value');
         	var t_invoice = $('#invoiceNumberText').val();
-        	alert(t_code+','+t_invoice+);
+        	alert(t_code+','+t_invoice);
             $.ajax({
                 type:"GET",
                 dataType : "json",
@@ -168,7 +168,7 @@ $(document).ready(function(){
 
 
 </script>
-<body>
+<body style="margin-top: 300px">   
 <span id="tekbeCompnayName">택배회사명: </span>
 <select id="tekbeCompnayList" name="tekbeCompnayList"></select><br/><br/>
 
