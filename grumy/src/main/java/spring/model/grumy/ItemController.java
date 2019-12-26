@@ -34,12 +34,6 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
-
-	
-	
-	
-	
-	
 	@GetMapping("/item/search")          
 	public String search(HttpServletRequest request, HttpSession session) {
 		
@@ -116,6 +110,25 @@ public class ItemController {
 
 
 
+	@RequestMapping("/item/best")
+	public String listBest(HttpServletRequest request) {
+		
+		ItemDTO dto = new ItemDTO(); 
+		
+		Map map = new HashMap();
+
+		ArrayList<ItemDTO> best = mapper.listBest(map);
+		
+		
+		System.out.println("개수:"+best.size());
+	
+		request.setAttribute("best", best);
+		
+		return "/item/best";
+	}
+	
+	
+	
 @RequestMapping("/item/list")
 	public String list(HttpServletRequest request) {
 
@@ -124,7 +137,7 @@ public class ItemController {
 		String col = ItemUtility.checkNull(request.getParameter("col"));
 		String type = request.getParameter("type");
 		String orderby = request.getParameter("orderby");
-		
+
 		if (col.equals("total"))
 			keyword = "";
 		//페이징 관련
@@ -151,6 +164,7 @@ public class ItemController {
 		System.out.println("orderby:"+orderby);
 		ArrayList<ItemDTO> list = mapper.list(map);
 
+		
 		System.out.println("개수:"+list.size());
 		int total = mapper.total(map);     
 		
@@ -168,7 +182,6 @@ public class ItemController {
 		request.setAttribute("total", total);
 		request.setAttribute("orderby", orderby);
 		request.setAttribute("rtotal", rtotal);
-
 
 
 		return "/item/list";

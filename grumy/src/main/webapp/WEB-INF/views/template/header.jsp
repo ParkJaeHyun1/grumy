@@ -131,15 +131,15 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				<div class="xans-element- xans-layout xans-layout-searchheader ">
 					<fieldset>
 						<legend>검색</legend>
-						<input type="hidden" name="orderby" value="itemNo" />
-						<input type="hidden" name="type" value="SearchTotal" /> <input
+						<input type="hidden" name="orderby" value="itemNo" /> <input
+							type="hidden" name="type" value="SearchTotal" /> <input
 							type="hidden" name="search_type" value="title" /> <input
 							id="keyword" name="keyword" fw-filter="" fw-label="검색어" fw-msg=""
 							class="inputTypeText" placeholder="" value="${keyword}"
 							type="text" /> <input type="image"
 							src="https://www.slowand.com/web/upload/yangji_pc_crumb/btn_search.png"
 							alt="검색" onclick="document.getElementById('search').submit();" />
-							
+
 					</fieldset>
 				</div>
 			</form>
@@ -183,21 +183,16 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 		</script>
 		<!-- 메인 메뉴 -->
 		<ul class="gnb grid5">
-			<!--li><a href="/shopinfo/company.html">BRAND</a></li>
-            <li><a href="/yangji/lookbook.html?cate_no=50">LOOKBOOK</a></li-->
 			<div class="xans-element- xans-layout xans-layout-category main_cate">
 				<div class="position">
-					<ul>
-						<li class="xans-record-"><a
-							href="${pageContext.request.contextPath}/item/list/?type=BEST20&orderby=itemNo">BEST20</a></li>
-
-
+					<ul> 
+						<li class="xans-record-"><a  style="font-weight: bold"             
+							href="${pageContext.request.contextPath}/item/best">BEST20</a></li>
+                                          
 						<li class="xans-record-"><a
 							href="${pageContext.request.contextPath}/item/list/?type=OUTER&orderby=itemNo"
 							onmouseenter="blockSubMenu('OUTER')"
-							onmouseleave="noneSubMenu
-
-('OUTER')">OUTER</a>
+							onmouseleave="noneSubMenu('OUTER')">OUTER</a>
 							<div class="sub-category" id="sub_menu_OUTER"
 								style="display: none" onmouseenter="blockSubMenu('OUTER')"
 								onmouseleave="noneSubMenu('OUTER')">

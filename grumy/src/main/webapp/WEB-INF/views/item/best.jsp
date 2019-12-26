@@ -101,13 +101,12 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 			});
 		}
                
-		function delete1(itemNo, type) {
+		function delete1(itemNo) {
 
 			if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
 				var url = "${pageContext.request.contextPath}/item/delete";
 				url += "?itemNo=" + itemNo;
-				url += "&type=" + type;
 				location.href = url;
 
 			}
@@ -133,32 +132,13 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				<div
 					class="xans-element- xans-product xans-product-headcategory title ">
 					<h2>
-						<span>${parentType}</span>
-					</h2>
+						<span>BEST20</span>
+					</h2>         
 					<span class="likeButton displaynone"><button type="button">
 							<strong></strong>
 						</button></span>
 				</div>
-				<ul class="menuCategory">
-					<c:forEach var="typeDTO" items="${typeList}">
-						<c:choose>
-							<c:when test="${selectedType==typeDTO.type }">
-								<li style="display:;"
-									class="xans-element- xans-product xans-product-displaycategory selected xans-record-"><a
-									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}&orderby=itemNo">${typeDTO.type}
-										<span class="count displaynone">()</span>
-								</a></li>
-							</c:when>
-							<c:otherwise>
-								<li style="display:;"
-									class="xans-element- xans-product xans-product-displaycategory xans-record-"><a
-									href="${pageContext.request.contextPath}/item/list?type=${typeDTO.type}&orderby=itemNo">${typeDTO.type}<span
-										class="count displaynone">()</span></a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<!-- //참고 -->
-				</ul>
+				
 			</div>
 
 
@@ -171,63 +151,22 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
             ※ 상품 노출갯수가 많으면 쇼핑몰에 부하가 발생할 수 있습니다.
     -->
 				<div id="contents">
-
-				</div>
-				<c:if
-					test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
-					<p align="right">
-						<button class="yg_btn_28 yg_btn3" style="float: rigth"
-							onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
-					</p>
-
-				</c:if>
 				<div class="xans-element- xans-product xans-product-normalmenu ">
-					<!--
-                $compare_page = /product/compare.html
-            -->
-					<div class="function">
-		<script>
-
-
-	            
-         
-		function change(val) {
-		     if(val=='itemNo'){   
-				location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=itemNo";          
-		     }
-		     if(val=='price'){   
-					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=price";                                      	              
-			     }
-		     if(val=='orderCount'){   
-					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=orderCount";                                      	              
-			     }
-		     if(val=='reviewCount'){          
-					location.href = "${pageContext.request.contextPath}/item/list/?type=${param.type}&orderby=reviewCount";                                      	              
-			     }             
-		}                                  	                                               
-        		</script>			
-				                          
-						<p class="prdCount">           
-							TOTAL <strong>${list.size()}</strong> ITEMS
-						</p>                        
-						<ul class="xans-element- xans-product xans-product-orderby" style="float:right">           
-							<li id="new" style="float:left; margin-right:10px; cursor:pointer<c:if test="${orderby=='itemNo' }"> ;font-weight:bold</c:if>"  onclick="change('itemNo')">신상품</li>  
-							<li id="price" style="float:left; margin-right:10px; cursor:pointer<c:if test="${orderby=='price' }"> ;font-weight:bold</c:if>" onclick="change('price')">높은가격</li>
-							<li id="best" style="float:left; margin-right:10px; cursor:pointer<c:if test="${orderby=='orderCount' }"> ;font-weight:bold</c:if>" onclick="change('orderCount')">인기상품</li>
-							<li id="review" style="float:left; cursor:pointer<c:if test="${orderby=='reviewCount' }"> ;font-weight:bold</c:if>" onclick="change('reviewCount')">리뷰</li>                     
-						</ul>                       
-           
-               
-					</div>
+					<p class="prdCount">           
+							TOTAL <strong>${best.size()}</strong> ITEMS
+						</p>         
+				
+				</div>
 
 				</div>
+
 				<br></br>
              
 
 				<ul class="prdList grid4">
 
-					<c:forEach var="dto" items="${list}">
-						<li id="anchorBoxId_2065" class="xans-record-">      
+					<c:forEach var="dto" items="${best}">
+						<li id="anchorBoxId_2065" class="xans-record-">
 							<div class="thumbnail">
 								<a
 									href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
@@ -250,7 +189,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 											onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
 										&nbsp;
 										<button class="yg_btn_28 yg_btn3"
-											onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+											onclick="javascript:delete1('${dto.itemNo}')">상품삭제</button>
 
 									</p>
 								</c:if>
@@ -312,24 +251,6 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 
 	</div>
 
-	<script>
-		$('.ec-base-product .prdList > li')
-				.each(
-						function() {
-							var sub = $(this).find('.description .name a')
-									.text().length;
-							var sub_count = 31;
-							if (sub >= sub_count) {
-								var jbExcerpt = $(this).find(
-										'.description .name a').text()
-										.substring(0, sub_count);
-								$(this).find('.description .name a').text(
-										jbExcerpt + '...');
-							}
-						});
-	</script>
-
-	${paging }
 </body>
 </html>
 

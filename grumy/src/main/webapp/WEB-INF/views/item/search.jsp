@@ -219,11 +219,11 @@
 	             
 							<ul
 								class="xans-element- xans-search xans-search-orderby listType">
-								<li class="xans-record-" onclick="setOrderBy('itemNo')">신상품</li>
-							<li class="xans-record-" onclick="setOrderBy('price')">높은가격</li>
-							<li class="xans-record-" onclick="setOrderBy('orderCount')">인기상품</li>
-							<li class="xans-record-" onclick="setOrderBy('reviewCount')">리뷰</li>
-							</ul>
+								<li class="xans-record-" onclick="setOrderBy('itemNo')" <c:if test="${orderby=='itemNo' }"> style="font-weight:bold"</c:if>>신상품</li>
+							<li class="xans-record-" onclick="setOrderBy('price')"<c:if test="${orderby=='price' }"> style="font-weight:bold"</c:if>>높은가격</li>
+							<li class="xans-record-" onclick="setOrderBy('orderCount')"<c:if test="${orderby=='orderCount' }"> style="font-weight:bold"</c:if>>인기상품</li>
+							<li class="xans-record-" onclick="setOrderBy('reviewCount')"<c:if test="${orderby=='reviewCount' }"> style="font-weight:bold"</c:if>>리뷰</li>
+							</ul>              
 						</div>        
 						<c:if test="${empty searchlist}">                      
 							<div class="noData">           

@@ -15,7 +15,9 @@ import spring.model.review.reviewDTO;
 public interface itemMapper {
 	ArrayList<ItemDTO> list(Map<String, String> map);
 	ArrayList<ItemDTO> search(Map<String, String> map);
-
+	ArrayList<ItemDTO> listBest(Map<String, String> map);
+	ArrayList<ItemDTO> listNew(Map<String, String> map);
+	
 	ItemDTO read(int no);
 	ArrayList<String> color(Map<String, String> map);
 	ArrayList<String> subtype(Map<String, String> map);
@@ -41,6 +43,7 @@ public interface itemMapper {
 	ArrayList<reviewDTO> rlist(Map map);
 	int rtotal(Map map);
 	int SearchTotal(Map map);
+	
 	
 	
 

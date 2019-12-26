@@ -47,7 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="rlist" resultType="reviewDTO">
 		select reviewNo, id, content,
-		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent, rnum
+		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent,
+		rnum
 		from(
 		select rownum rnum,reviewNo, id, content,
 		picture,itemPicture,itemTitle,height,weight,mySize,star,itemColor,itemSize,itemNo,replyContent
@@ -133,11 +134,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
-	<select id="total" parameterType="Map" resultType="int">
-		select
-		count(*) from item
-		where type = #{type}
-	</select>
+
 
 	<delete id="delete" parameterType="int">
 		delete from item
@@ -204,11 +201,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="list" parameterType="Map" resultMap="itemMap">
 		select i.itemNo,o.itemOptionNo,image, title, description,
-		content,price,salePrice,i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
+		price,salePrice,i.type,t.parentType,reviewCount,orderCount
 		from (select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>
-		) i , itemOption o,itemType t,(select itemNo, count(*) reviewCount from review r ,itemOption o where r.itemOptionNo = o.itemOptionNo group by(itemNo)) r, (select o.itemNo , count(*) orderCount from orderItem oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo group by(itemNo)) oi
-		where i.type=t.type and i.itemNo = o.itemNo and o.itemNo = r.itemNo(+) and o.itemNo = oi.itemNo(+)
-		and(t.type = #{type} or t.parentType=#{type})
+		) i , itemOption o,itemType t,(select itemNo, count(*) reviewCount
+		from review r ,itemOption o where r.itemOptionNo = o.itemOptionNo
+		group by(itemNo)) r, (select o.itemNo , count(*) orderCount from
+		orderItem oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo
+		group by(itemNo)) oi
+		where i.type=t.type and i.itemNo = o.itemNo and
+		o.itemNo = r.itemNo(+) and o.itemNo = oi.itemNo(+)
+		and(t.type = #{type}
+		or t.parentType=#{type})
 		order by
 		<choose>
 			<when test="orderby == 'itemNo'">
@@ -221,10 +224,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				reviewCount desc nulls last
 			</when>
 			<when test="orderby == 'orderCount'">
-				orderCount  desc nulls last
+				orderCount desc nulls last
 			</when>
 		</choose>
 	</select>
+	
+	<select id="listBest" parameterType="Map" resultType="itemDTO">
+        select i.itemNo,orderCount,image, title, description,price,salePrice,i.type
+		from item i ,
+			(select itemNo,orderCount
+			from
+				(select o.itemNo , count(*) orderCount 
+				from orderItem oi ,itemOption o
+				where oi.itemOptionNo = o.itemOptionNo
+				group by(itemNo)
+				order by(orderCount) desc)
+			<![CDATA[where rownum<=20	
+			) oi
+		where i.itemNo = oi.itemNo(+) and rownum<=20]]>
+	</select>
+
+		<select id="listNew" parameterType="Map" resultType="itemDTO">
+        select i.itemNo,image, title, description,price,salePrice,i.type
+			from item i,
+        (select distinct(i.itemNo) 
+				from item i ,itemOption o
+				where i.itemNo = o.itemNo 
+				order by(itemNo) desc) oi
+        where i.itemNo = oi.itemNo(+) and <![CDATA[ rownum<=20 ]]>
+        </select>
+        
+        
+	<select id="total" parameterType="Map" resultType="int">
+		select
+		count(*) from item
+		where type = #{type}      
+	</select>
+
 
 
 	<select id="search" parameterType="Map" resultMap="itemMap">
@@ -235,9 +271,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		i.type,itemColor,itemSize,itemCount,t.parentType,reviewCount,orderCount
 		from
 		(select * from item <![CDATA[ where rownum>=#{sno} and rownum<=#{eno}]]>)
-		i , itemOption o,itemType t,(select itemNo, count(*) reviewCount from review r ,itemOption o where r.itemOptionNo = o.itemOptionNo group by(itemNo)) r, (select o.itemNo , count(*) orderCount from orderItem oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo group by(itemNo)) oi
+		i , itemOption o,itemType t,(select itemNo, count(*) reviewCount from
+		review r ,itemOption o where r.itemOptionNo = o.itemOptionNo group
+		by(itemNo)) r, (select o.itemNo , count(*) orderCount from orderItem
+		oi ,itemOption o where oi.itemOptionNo = o.itemOptionNo group
+		by(itemNo)) oi
 		<where>
-			i.type=t.type and i.itemNo = o.itemNo and o.itemNo = r.itemNo(+) and o.itemNo = oi.itemNo(+) and
+			i.type=t.type and i.itemNo = o.itemNo and o.itemNo = r.itemNo(+) and
+			o.itemNo = oi.itemNo(+) and
 			<choose>
 				<when test="search_type == 'title'">
 					title like '%'||#{keyword}||'%'
@@ -249,27 +290,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="type != 'SearchTotal'">
 				and i.type = #{type}
 			</if>
-			
+
 			<if test="price1 != null and price1 != ''">
 		<![CDATA[
  				and price-salePrice >= #{price1} and price-salePrice <= #{price2}
  				]]>
 			</if>
 		</where>
-		order by 
+		order by
 		<choose>
 			<when test="orderby == 'price'">
 				(price-salePrice) desc
 			</when>
-			<when test="orderby == 'reviewCount'">          
+			<when test="orderby == 'reviewCount'">
 				reviewCount desc nulls last
 			</when>
 			<when test="orderby == 'orderCount'">
-				orderCount  desc nulls last
+				orderCount desc nulls last
 			</when>
 			<otherwise>itemNo desc</otherwise>
 		</choose>
 	</select>
+
 
 
 	<select id="SearchTotal" parameterType="Map" resultType="int">
@@ -285,6 +327,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<when test="type == 'type'">
 					and i.type = #{type}
 				</when>
+
 			</choose>
 		</where>
 
