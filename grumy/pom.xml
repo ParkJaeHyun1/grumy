@@ -15,6 +15,19 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- bootpay 결제시 요청보낼때 쓸듯 -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<!-- bootpay에서 rest api사용시 데이터를 json형태로 주고받을때씀 밑에 gson인가 jackson인가 써서 충돌날수도 -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
 		<!-- 문자 보내기 -->
 		<dependency>
 			<groupId>net.nurigo</groupId>

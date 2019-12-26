@@ -65,44 +65,40 @@ public class OrderRestController {
 	}
 	@PutMapping("/order/insert")
 	public ResponseEntity<String> insert(@RequestBody OrderDTO order) {
-		int cnt = orderMapper.insert(order);
-		int cnt2 = 0;
 
-		for(OrderItemDTO orderItem : order.getOrderItemList()) {
-			orderItem.setOrderNo(order.getOrderNo());
-			cnt2 += orderMapper.insertItem(orderItem);
-		}
-
-		return cnt+cnt2==order.getOrderItemList().size()+1?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+		return orderService.insert(order)?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 	@PutMapping("/order/delete")
 	public ResponseEntity<String> delete(@RequestBody OrderDTO order) {
-
-		int cnt2 = orderMapper.deleteItem(order.getOrderNo());
-		int cnt = orderMapper.delete(order.getOrderNo());
-
-		return cnt+cnt2>0?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+		return orderService.delete(order.getOrderNo())?new ResponseEntity<String>(order.getOrderNo(), HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 	@PutMapping("/order/update")
 	public ResponseEntity<String> update(@RequestBody OrderDTO order) {
-		Map map = new HashMap();
-		map.put("state", order.getState());
-		map.put("orderNo", order.getOrderNo());
-
-		int cnt = orderMapper.update(order);
-		int cnt2= orderMapper.updateItemState(map);
-
-		return cnt+cnt2==order.getOrderItemList().size()+1?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+		return orderService.update(order)?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 	@PutMapping("/order/decreasePoint")
 	public ResponseEntity<String> decreasePoint(@RequestBody Map map) {
 		int cnt = memberMapper.decreasePoint(map);
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
 	@PutMapping("/order/increasePoint")
 	public ResponseEntity<String> increasePoint(@RequestBody Map map) {
 		int cnt = memberMapper.increasePoint(map);
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@PutMapping("/order/bootpayResponse")
+	public String bootpayResponse(@RequestBody Map map) {
+		System.out.println("상태:"+map.get("status"));
+		System.out.println("주문번호:"+map.get("order_id"));
+	
+		if(map.get("method_name").equals("가상계좌") && (int)map.get("status") == 1)
+			orderMapper.updateState(map);
+		return "OK";
 	}
 
 }
