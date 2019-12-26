@@ -22,30 +22,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/main.jsp" />
 	</definition>
- 	<definition name="/admin/mwait/list" extends="main">
+ 	<definition name="/admin/order/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/moneyWait.jsp" />
-	</definition>
- 	<definition name="/admin/newOrder/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/newOrder.jsp" />
-	</definition>
- 	<definition name="/admin/sendReady/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/sendReady.jsp" />
-	</definition>
- 	<definition name="/admin/sending/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/sending.jsp" />
-	</definition>
- 	<definition name="/admin/sendFin/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
-		<put-attribute name="body"
-			value="/WEB-INF/views/admin/sendFin.jsp" />
+			value="/WEB-INF/views/admin/order.jsp" />
 	</definition>
  	<definition name="/admin/read" extends="mypage">
 		<put-attribute name="title"	value="그루미"></put-attribute>

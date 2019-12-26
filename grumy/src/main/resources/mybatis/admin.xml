@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<when test= '_parameter.equals("신규주문")'>
 			<![CDATA[
 			state = '배송준비' 
-			and to_char(odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
+			and to_char(odate,'yy/MM/dd') > to_char(sysdate-4,'yy/MM/dd')
 			]]>
 			</when>
 			<otherwise>
@@ -37,21 +37,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(
 			select a.id, a.orderno, i.title, b.orderitemno, a.odate 
 			from norder a, orderitem b, itemoption o, item i
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo and b.state = #{state}
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
+			<choose>
+				<when test= 'state.equals("신규주문")'>
+				<![CDATA[
+				and a.state = '배송준비' 
+				and to_char(a.odate,'yy/MM/dd') > to_char(sysdate-4,'yy/MM/dd')
+				]]>
+				</when>
+				<otherwise>
+				and a.state = #{state}
+				</otherwise>
+			</choose>
 			)
 		<where>
 			<choose>
 				<when test="col == 'onum'">
-					and orderno like '%'||#{word}||'%'
+					orderno like '%'||#{word}||'%'
 				</when>
 				<when test="col == 'otitle'">
-					and title like '%'||#{word}||'%'
+					title like '%'||#{word}||'%'
 				</when>
 				<when test="col == 'buyer'">
-					and id like '%'||#{word}||'%'
+					id like '%'||#{word}||'%'
 				</when>
 				<when test="col == 'odate'">
-					and to_char(odate,'yyyy-MM-dd') like '%'||#{word}||'%'
+					to_char(odate,'yyyy-MM-dd') like '%'||#{word}||'%'
 				</when>
 			</choose>
 		</where>
@@ -153,7 +164,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<when test= 'state.equals("신규주문")'>
 					<![CDATA[
 					and a.state = '배송준비' 
-					and to_char(a.odate,'yyyyMMdd') >= to_char(sysdate-3,'yyyyMMdd')
+					and to_char(a.odate,'yy/MM/dd') > to_char(sysdate-4,'yy/MM/dd')
 					]]>
 					</when>
 					<otherwise>

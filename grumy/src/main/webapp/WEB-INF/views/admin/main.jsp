@@ -170,7 +170,7 @@ $(document).ready(function(){
 										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
 												<a class="text-number"
-												href="${root }/admin/mwait/list">${wait}</a>
+												href="${root }/admin/order/list?orderstate=입금대기">${wait}</a>
 											
 												<span>건</span>
 										</span>
@@ -180,7 +180,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="${root }/admin/newOrder/list">${newOrder}</a>
+												href="${root }/admin/order/list?orderstate=신규주문">${newOrder}</a>
 											<!---->
 												<span>건</span>
 										</span></li>
@@ -200,7 +200,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="${root }/admin/sendReady/list">${sReady}</a>
+												href="${root }/admin/order/list?orderstate=배송준비">${sReady}</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -208,7 +208,7 @@ $(document).ready(function(){
 											class="number-area" >
 												<!---->
 												<a class="text-number" 
-												href="${root }/admin/sending/list">${sIng}</a>
+												href="${root }/admin/order/list?orderstate=배송중">${sIng}</a>
 											<!---->
 												<span>건</span>
 										</span></li>
@@ -216,7 +216,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="${root }/admin/sendFin/list">${sFin}</a>
+												href="${root }/admin/order/list?orderstate=배송완료">${sFin}</a>
 											<!---->
 												<span>건</span>
 										</span></li>

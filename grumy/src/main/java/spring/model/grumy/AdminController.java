@@ -127,11 +127,10 @@ public class AdminController {
 		map.put("sno",sno);
 		map.put("eno",eno);
 		map.put("datec",datec);		
-		
+			
 		ArrayList<OrderDTO> moneyl = mapper.moneyl(map);	
 		int total = mapper.moneyP(map);
-		System.out.println(total + "  abc  " + nowPage + " abv2 " + datec);
-		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+		String paging = Utility.pagingMv(total, nowPage, recordPerPage, col, word, datec);
 		
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
@@ -156,36 +155,15 @@ public class AdminController {
 		return "success1";          
 	}
 	
-	@RequestMapping(value = {"/admin/mwait/list", "/admin/newOrder/list",
-					"/admin/sendReady/list", "/admin/sending/list","/admin/sendFin/list"})
+	@RequestMapping("/admin/order/list")
 	public String nOrder(HttpServletRequest request) {
-		String path = request.getServletPath();
-		String state = "";
-		switch(path) {
-			case "/admin/mwait/list":
-				state = "입금대기";				
-				break;
-			case "/admin/newOrder/list":
-				state = "신규주문";				
-				break;
-			case "/admin/sendReady/list":
-				state = "배송준비";				
-				break;
-			case "/admin/sending/list":
-				state = "배송중";				
-				break;
-			case "/admin/sendFin/list":
-				state = "배송완료";				
-				break;
-			default : 
-				System.out.println("error");
-				break;
-		}
+		String orderstate = request.getParameter("orderstate");
+		String state = orderstate;
 		
 		String word = request.getParameter("word");
 		String col = request.getParameter("col");
 		String nowPageS = request.getParameter("nowPage");
-		Map map = paging(word, col, nowPageS, state);
+		Map map = paging(word, col, nowPageS, state, orderstate);
 	
 		int nowPage = (int) map.get("nowPage");
 		String paging = (String)map.get("paging");
@@ -196,7 +174,7 @@ public class AdminController {
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
-		return path;
+		return "/admin/order/list";
 	}
 	
 	@RequestMapping("/admin/read")
@@ -236,7 +214,7 @@ public class AdminController {
 	}
 	
 	//페이징 처리 통합
-	public Map paging(String word, String col, String nowPageS, String state) {
+	public Map paging(String word, String col, String nowPageS, String state, String orderstate) {
 		word = Utility.checkNull(word);
 		col = Utility.checkNull(col);
 		
@@ -260,7 +238,7 @@ public class AdminController {
 		
 		ArrayList<OrderDTO> list = mapper.list(map);		
 		int totalP = mapper.totalP(map);	
-		String paging = Utility.paging(totalP, nowPage, recordPerPage, col, word);
+		String paging = Utility.pagingO(totalP, nowPage, recordPerPage, col, word, orderstate);
 		
 		map.put("nowPage", nowPage);
 		map.put("paging", paging);
