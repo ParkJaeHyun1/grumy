@@ -72,6 +72,7 @@ public class OrderController {
 	}
 	@RequestMapping("/order/delivery")			//itemOptionNo,count,cartNo
 	public String delivery(HttpServletRequest request, HttpSession session) {
+		request.setAttribute("deliveryNo","6066251769412");
 		return "/order/delivery";
 	}        
 }
