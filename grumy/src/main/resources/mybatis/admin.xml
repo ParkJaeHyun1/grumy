@@ -76,6 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="id" column="id"/>
 		<result property="orderNo" column="orderno"/>
 		<result property="odate" column="odate"/>
+		<result property="pdate" column="pdate"/>
 		<collection property="orderItemList" column="orderno"
 			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListMap" />
 	</resultMap>
@@ -100,8 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			b.count count,  b.state state, b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, 
 			o.itemColor itemColor, i.image itemImage, i.itemno itemno, b.deliveryNo deliveryNo
 			from norder a, orderitem b ,item i, itemOption o
-			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 
-			
+			where a.orderno = b.orderno and b.itemOptionNo = o.itemOptionNo and i.itemNo = o.itemNo 		
 				<choose>
 					<when test="col == 'onum'">
 						and a.orderno like '%'||#{word}||'%'
@@ -132,6 +132,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 		where r >=#{sno} and r<=#{eno}
 		]]>
+	</select>
+	<select id="moneyl" parameterType="map" resultType="orderDTO">
+		select a.orderno orderno, a.odate odate, decode(a.pdate,null,'입금대기',a.pdate) pdate, 
+				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r 
+			from norder a,
+		    (select a.orderno, sum(b.itemprice * b.count) price from norder a, orderitem b 
+		    where a.orderno = b.orderno 
+		    <choose>
+				<when test= "datec == 'today'">
+					and to_char(a.pdate, 'yyyy/mm/dd') = to_char(sysdate, 'yyyy/mm/dd')
+				</when>
+				<when test= "datec == 'delay'">
+					and a.state = '입금대기'
+				</when>					
+			</choose>
+		    <choose>
+				<when test="col == 'onum'">
+					and a.orderno like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'otitle'">
+					and i.title like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'buyer'">
+					and a.id like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'odate'">
+					and to_char(a.odate,'yyyy-MM-dd') like '%'||#{word}||'%'
+				</when>
+			</choose>
+		    group by a.orderno) b
+		where a.orderno = b.orderno
 	</select>
 	
 	<update id="updateState" parameterType="Map">
@@ -241,9 +272,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on a.odate = b.datec
 		order by datec asc
 	</select>
-	
-	
-	
+		
 	<select id="noticel" parameterType="int" resultType="NoticeDTO">
 		select no, subject,lev, wdate from (
 		select no, subject, lev, to_char(wdate, 'mm.dd.') wdate from notice order by no desc)

@@ -158,8 +158,14 @@ $(document).ready(function(){
 												href="${root }/admin/itemManage/list">
 										재고관리</a></span> <span
 											class="number-area aa">
-											
-										</span>										
+										</span>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span class="info-title">
+										<a class="text-number"
+												href="${root }/admin/memberManage/list">
+										회원관리</a></span> <span
+											class="number-area aa">
+										</span>				
 										</li>
 										<li ><span class="info-title">입금대기</span> <span
 											class="number-area aa">
@@ -229,7 +235,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="${root }/delivery/list?category=취소">${cancel }</a>
+												href="${root }/service/list?category=취소">${cancel }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -237,7 +243,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="${root }/delivery/list?category=반품">${ret }</a>
+												href="${root }/service/list?category=반품">${ret }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -245,7 +251,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="${root }/delivery/list?category=교환">${change }</a>
+												href="${root }/service/list?category=교환">${change }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -268,7 +274,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleToday">${priceToday }</a>
+												href="${root }/admin/moneyView/list">${priceToday }</a>
 											<!----> <!---->
 												<span>원</span>
 										</span></li>
@@ -276,7 +282,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="#/naverpay/settlemgt/sellerdailysettle?searchType=settleExpect">${priceDelay }</a>
+												href="${root }/admin/moneyView/list">${priceDelay }</a>
 											<!----> 
 												<span>원</span>
 										</span></li>

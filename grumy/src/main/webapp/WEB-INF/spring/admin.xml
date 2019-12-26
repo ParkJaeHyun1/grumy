@@ -57,5 +57,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/itemManage.jsp" />
 	</definition>
+ 	<definition name="/admin/memberManage/list" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/memberManage.jsp" />
+	</definition>
+ 	<definition name="/admin/moneyView/list" extends="main">
+		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/admin/moneyView.jsp" />
+	</definition>
 
 </tiles-definitions>
