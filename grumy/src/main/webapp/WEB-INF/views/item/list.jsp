@@ -108,6 +108,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				var url = "${pageContext.request.contextPath}/item/delete";
 				url += "?itemNo=" + itemNo;
 				url += "&type=" + type;
+// 				url +="&url=list";
 				location.href = url;
 
 			}

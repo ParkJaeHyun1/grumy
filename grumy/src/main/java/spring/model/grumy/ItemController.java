@@ -187,14 +187,26 @@ public class ItemController {
 		return "/item/list";
 	}
 
-
-	@RequestMapping("/item/delete")
-	public String delete(int itemNo, String type) {
+	//검색페이지에서 삭제
+	@RequestMapping("/item/deleteSearch")
+	public String deleteSearch(int itemNo, String type, String search_type, String keyword, String orderby) {
+		
+		System.out.println("type:");
+		System.out.println("type:");
+		if(itemService.delete(itemNo))
+			return "redirect:/item/list?type="+type+"&search_type="+search_type+"&keyword="+keyword+"&orderby="+orderby;
+		return "/item/error";
+	}             
+	
+	//리스트페이지에서 삭제
+	@RequestMapping("/item/deleteList")
+	public String deleteList(int itemNo, String type) {
 		System.out.println("개새 꺄 아,아ㅏㅇ아");
 		if(itemService.delete(itemNo))
 			return "redirect:/item/list?type="+type;
 		return "/item/error";
 	}
+
 
 
 

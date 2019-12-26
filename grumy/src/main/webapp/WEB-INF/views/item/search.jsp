@@ -63,9 +63,13 @@
 
 							if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-								var url = "${pageContext.request.contextPath}/item/delete";
+								var url = "${pageContext.request.contextPath}/item/deleteSearch";
 								url += "?itemNo=" + itemNo;
-								url += "&type=" + type;
+								url += "&type=" + type;       
+								url += "&search_type=" + search_type;       
+								url += "&keyword=" + keyword;       
+								url += "&orderby=" + orderby;       
+								           
 								location.href = url;
 
 							}
@@ -199,11 +203,12 @@
 						<c:if
 							test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 							<p align="right">
-								<button class="yg_btn_28 yg_btn3" style="float: rigth"
+								<button class="yg_btn_28 yg_btn3" style="float: rigth" type="button"  
 									onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
 							</p> &nbsp;       
+							
 			
-			</c:if>
+						</c:if>
 						<div class="searchResult">
 
 							<c:choose>
@@ -264,14 +269,14 @@
 										test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 										<p align="center">
 
-											<button class="yg_btn_28 yg_btn3"
-												onclick="Flocation.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
+											<button class="yg_btn_28 yg_btn3" type="button"
+												onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
 											&nbsp;
-											<button class="yg_btn_28 yg_btn3"
-												onclick="javascript:delete1('${dto.itemNo}', '${parentType}')">상품삭제</button>
+											<button class="yg_btn_28 yg_btn3" type="button"
+												onclick="javascript:delete1('${dto.itemNo}', '${type}')">상품삭제</button>
 
 										</p>
-									</c:if>
+									</c:if>        
 
 
 

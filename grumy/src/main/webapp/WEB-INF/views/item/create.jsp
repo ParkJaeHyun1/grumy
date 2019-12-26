@@ -405,7 +405,7 @@ nhn.husky.EZCreator.createInIFrame({
 			   alert('상품 할인가격을 입력해주세요.');
 			   $('#salePrice').focus();
 			   return false;
-		   }else if($('#salePrice').val() > $('#price').val()){    
+		   }else if(Number($('#salePrice2').val()) > Number($('#price2').val())){      
 			   alert('싱픔 할인가격이 상품 가격보다 높을 수 없습니다.');
 			   $('#salePrice').focus();
 			   return false;
