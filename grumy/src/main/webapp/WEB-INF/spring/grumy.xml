@@ -13,7 +13,7 @@
 	</definition>
  
  	<definition name="/home" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/main.jsp" />
 	</definition>

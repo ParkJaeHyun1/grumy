@@ -13,30 +13,30 @@
 	</definition>
  
  	<definition name="/review/create" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/create.jsp" />
 	</definition>
 	<definition name="/review/update" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/update.jsp" />
 	</definition>
 	 	<definition name="/review/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/list.jsp" />
 	</definition>
 	
 
 	 	<definition name="/review/read" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/read.jsp" />
 	</definition>
 	
 	<definition name="/review/create_reply" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/review/create_reply.jsp" />
 	</definition>

@@ -19,434 +19,445 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="/yangji/js/jquery.bxslider.min.js"></script>
 <link rel="stylesheet"
-href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-<link rel="shortcut icon"
-	href="/web/upload/favicon_20170717165926.ico" />
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+<link rel="shortcut icon" href="/web/upload/favicon_20170717165926.ico" />
 <script type="text/javascript"
 	src="/app/Eclog/js/cid.generate.js?vs=3d0b473968a0ec4ec41e3bf59df3aa51"></script>
 <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-<link rel="stylesheet" type="text/css" 
-href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
 <link rel="stylesheet" type="text/css"
-href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
+	href="/ind-script/optimizer.php?filename=tZWxcsMgDIZ3J2ufQ5e0d907d2qeALBqKwGJIriL3740ydA0S882Izr0gX6hHxglIOz2CWKSIZkACVVKcghOFT6TcAYnIQhva-AJ_rMfXafiSybhzsp5ZmLJee6h3kyY5qVmYz3-SkW3KYpJwTDjfvf6DLFYT24z5uBBe9z0qDQw6In45QIN0hePEDBYTHAU4vm8WomUDNYouQv8oRdLgdfAisCqZl1gV6gBNIv4TLEBeUTfAlufXV9cC32jGYhNxhYqG9uA-jDRq4HvPGZFEXwLcesuNx87GR6OdDWv6l2rgI5fBdO0tWf11N8Z53zmu8myCuhgWFfx41tDJNUS34yeMDspSxR8ZN-G_QMdcouR__uvLb5wKNVNdZR4GClG4uEH_g0&type=css&k=c8951a22d67e6928bfd2473018d48b09764ee7ce&t=1547093551" />
+<link rel="stylesheet" type="text/css"
+	href="/ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43cVOXxI7iBNTfU4r4AO1lL6sdzcKkiYBc14yKAYrQpb9fIbchsuummiKYp86TcRCwB8sNnBkk9S0SRFy0VXAqz3XPKtmd1voMO7mJ0kAFZmXpVvjIJf3PXVDCzBt-IvRUDlH8XcdKQctyiN6oWvfoYc4GLFYxFEwv9oHqVvXf_JDf&type=css&k=1e2335c9cbed207b4adaf5b11233170ae273ee5d&t=1566806466" />
 
 
 <!--  다음 주소 찾기  -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	function sample6_execDaumPostcode() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var addr = ''; // 주소 변수
+				var extraAddr = ''; // 참고항목 변수
 
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
+				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					addr = data.roadAddress;
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					addr = data.jibunAddress;
+				}
 
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                  //  document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                   // document.getElementById("sample6_extraAddress").value = '';
-                }
- 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postcode').value = data.zonecode;
-                document.getElementById("address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("detailaddress").focus();
-            }
-        }).open();
-    }
+				// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+				if (data.userSelectedType === 'R') {
+					// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+					// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+					if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+						extraAddr += data.bname;
+					}
+					// 건물명이 있고, 공동주택일 경우 추가한다.
+					if (data.buildingName !== '' && data.apartment === 'Y') {
+						extraAddr += (extraAddr !== '' ? ', '
+								+ data.buildingName : data.buildingName);
+					}
+					// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+					if (extraAddr !== '') {
+						extraAddr = ' (' + extraAddr + ')';
+					}
+					// 조합된 참고항목을 해당 필드에 넣는다.
+					//  document.getElementById("sample6_extraAddress").value = extraAddr;
+
+				} else {
+					// document.getElementById("sample6_extraAddress").value = '';
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('postcode').value = data.zonecode;
+				document.getElementById("address").value = addr;
+				// 커서를 상세주소 필드로 이동한다.
+				document.getElementById("detailaddress").focus();
+			}
+		}).open();
+	}
 </script>
 
 
 <!-- 필수 입력창 확인  -->
 
 <script language="javascript">
-   function onblur_event(id){
-	   
-	   	 var url = "idcheck";
-	     var param = "id=" + id;
-	     $.get(url, param, function(data, textStatus){
-	        
-	        $("#idcheck").html(data.str);
-	     });
-	   
-	   
-   }
-   
-   function validate() {
-       
-	   var re = /^[a-zA-Z0-9]{8,16}$/;
-	   var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	   var re3 =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
-	   var format1 = /^(19[0-9][0-9]|201[0-9])$/;
-	   var format2 = /^(0[0-9]|1[0-2])$/;
-	   var format3 = /^(0[1-9]|[1-2][0-9]|3[0-1])$/;
-	   
-	   var id = document.getElementById("id");
-	   var passwd = document.getElementById("passwd");
-	   var email = document.getElementById("email");
-	   var testbirth1 = document.getElementById("birth1");
-	   var testbirth2 = document.getElementById("birth2");
-	   var testbirth3 = document.getElementById("birth3");
+	function onblur_id(id) {
 
-       if(!check(re,id,"아이디는 8~16자의 영문 대소문자와 숫자로만 입력")) {
-           return false;
-       }
+		var url = "idcheck";
+		var param = "id=" + id;
+		$.get(url, param, function(data, textStatus) {
 
-       if(!check(re3,passwd,"패스워드는 8~16자의 영문,숫자,특수문자로 입력")) {
-           return false;
-       }
+			$("#idcheck").html(data.str);
+		});
 
-       if(user_passwd_confirm.value.length==0){
-   		alert("비밀번호을 입력하세요");
-   		user_passwd_confirm.focus();
-   		return false;
-   		}
+	}
+	function onblur_email(email) {
+		var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var email1 = document.getElementById("email");
 
-   	   if(passwd.value != user_passwd_confirm.value){
-   		alert("비밀번호가 일치하지 않습니다.");
-   		passwd.focus();
-   		return false;
-   	   }
 
-	   if(joinForm.name.value.length==0){
-         alert("이름을 입력해 주세요");
-         joinForm.name.focus();
-         return false;
-       }
-	   
-       if(joinForm.postcode.value.length==0){
-   		alert("주소를 입력하세요")
-   		joinForm.postcode.focus();
-   		return false;
-   	   }
-       
-   	   if(joinForm.address.value.length==0){
-   		alert("주소를 입력하세요")
-   		joinForm.address.focus();
-   		return false;
-   	   }
-   	   
-   	   if(joinForm.detailaddress.value.length==0){
-   		alert("주소를 입력하세요")
-   		joinForm.detailaddress.focus();
-   		return false;
-   	   }
-   	  
-   	   if(joinForm.phone1.value.length==0){
-   		alert("전화번호를 입력하세요");
-   		joinForm.phone1.focus();
-   		return false;
-   	   }
-   	   if(joinForm.phone2.value.length==0){
-   		alert("전화번호를 입력하세요");
-   		joinForm.phone2.focus();
-   		return false;
-   	   }
-   	   if(joinForm.phone3.value.length==0){
-   		alert("전화번호를 입력하세요");
-   		joinForm.phone3.focus();
-   		return false;
-   	   }
-   	   
-       if(email.value.length==0) {
-        alert("이메일을 입력해 주세요");
-        email.focus();
-        return false;
-       }
+		if (!check2(re2, email1, "적합하지 않은 이메일 형식입니다.")) {
+			return false;
+		} else {
+			var url = "emailcheck";
+			var param = "email=" + email;
+			$.get(url, param, function(data, textStatus) {
 
-       if(!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
-        return false;
-       }
-      
-       
-       if(joinForm.birth1.value.length==0){
-    	   alert("생년월일을 입력해 주세요")
-    	   joinForm.birth1.focus();
-    	   return false;
-       }
-       
-       if(!check(format1,testbirth1,"유효하지 않은 값입니다.")) {
-           return false;
-       }
-       
-       if(joinForm.birth2.value.length==0){
-    	   alert("생년월일을 입력해 주세요")
-    	   joinForm.birth2.focus();
-    	   return false;
-       }
-       
-       if(!check(format2,testbirth2,"유효하지 않은 값입니다.")) {
-           return false;
-       }
-       
-       if(joinForm.birth3.value.length==0){
-    	   alert("생년월일을 입력해 주세요")
-    	   joinForm.birth3.focus();
-    	   return false;
-       }
-       
-       if(!check(format3,testbirth3,"유효하지 않은 값입니다.")) {
-           return false;
-       }
-       
-	   if(agree.checked==false){
-		alert("약관 동의를 하셔야 가입이 완료 됩니다.")
-		return false;
-	   }  
-	   
-	   var phone1 = document.joinForm.phone1.value;
-	   var phone2 = document.joinForm.phone2.value;
-	   var phone3 = document.joinForm.phone3.value;
-	   var phone = phone1 + phone2 + phone3;
-	   document.getElementById("phone").value = phone;
-	   
-	    
-	   var birth1 = document.joinForm.birth1.value;
-	   var birth2 = document.joinForm.birth2.value;
-	   var birth3 = document.joinForm.birth3.value;
-	   var birth = birth1 + birth2 + birth3;
-	   document.getElementById("birth").value = birth;
+				$("#emailcheck").html(data.str);
+			});
+		}
+	}
 
-}
+	function onblur_pw() {
 
-   function check(re, what, message) {
-       if(re.test(what.value)) {
-           return true;
-       }
-       alert(message);
-       what.value = "";
-       what.focus();
-       //return false;
-    }
-   
-   function emailCheck(email){
-	    if(email == ''){
-	     alert("이메일을 입력하세요");
-	       document.joinForm.email.focus();
-	    }else{
-	     var url = "emailcheck";
-	     var param = "email=" + email;
-	     $.get(url, param, function(data, textStatus){
+		if (passwd.value != repasswd.value) {
 
-	        //var result = eval("(" + data + ")");
-	        //var result = JSON.parse(data);
-	        
-	        $("#emailcheck").text(data.str);
-	     });
-	     
-	    }
-	 } 
-   
+			document.getElementById("repwcheck").innerHTML = "비밀번호가 일치하지 않습니다.";
+		} else {
+
+			document.getElementById("repwcheck").innerHTML = "비밀번호가 일치합니다.";
+		}
+
+	}
+
+	function validate() {
+
+		var re = /^[a-zA-Z0-9]{8,16}$/;
+		var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		var re3 = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$/;
+		var format1 = /^(19[0-9][0-9]|201[0-9])$/;
+		var format2 = /^(0[0-9]|1[0-2])$/;
+		var format3 = /^(0[1-9]|[1-2][0-9]|3[0-1])$/;
+
+		var id = document.getElementById("id");
+		var passwd = document.getElementById("passwd");
+		var email = document.getElementById("email");
+		var testbirth1 = document.getElementById("birth1");
+		var testbirth2 = document.getElementById("birth2");
+		var testbirth3 = document.getElementById("birth3");
+
+		if (!check(re, id, "아이디는 8~16자의 영문 대소문자와 숫자로만 입력")) {
+			return false;
+		}
+
+		if (!check(re3, passwd, "패스워드는 8~16자의 영문,숫자,특수문자로 입력")) {
+			return false;
+		}
+
+		if (repasswd.value.length == 0) {
+			alert("비밀번호을 입력하세요");
+			user_passwd_confirm.focus();
+			return false;
+		}
+
+		if (passwd.value != repasswd.value) {
+			alert("비밀번호가 일치하지 않습니다.");
+			passwd.focus();
+			return false;
+		}
+
+		if (joinForm.name.value.length == 0) {
+			alert("이름을 입력해 주세요");
+			joinForm.name.focus();
+			return false;
+		}
+
+		if (joinForm.postcode.value.length == 0) {
+			alert("주소를 입력하세요")
+			joinForm.postcode.focus();
+			return false;
+		}
+
+		if (joinForm.address.value.length == 0) {
+			alert("주소를 입력하세요")
+			joinForm.address.focus();
+			return false;
+		}
+
+		if (joinForm.detailaddress.value.length == 0) {
+			alert("주소를 입력하세요")
+			joinForm.detailaddress.focus();
+			return false;
+		}
+
+		if (joinForm.phone1.value.length == 0) {
+			alert("전화번호를 입력하세요");
+			joinForm.phone1.focus();
+			return false;
+		}
+		if (joinForm.phone2.value.length == 0) {
+			alert("전화번호를 입력하세요");
+			joinForm.phone2.focus();
+			return false;
+		}
+		if (joinForm.phone3.value.length == 0) {
+			alert("전화번호를 입력하세요");
+			joinForm.phone3.focus();
+			return false;
+		}
+
+		if (email.value.length == 0) {
+			alert("이메일을 입력해 주세요");
+			email.focus();
+			return false;
+		}
+
+		if (!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+			return false;
+		}
+
+		if (joinForm.birth1.value.length == 0) {
+			alert("생년월일을 입력해 주세요")
+			joinForm.birth1.focus();
+			return false;
+		}
+
+		if (!check(format1, testbirth1, "유효하지 않은 값입니다.")) {
+			return false;
+		}
+
+		if (joinForm.birth2.value.length == 0) {
+			alert("생년월일을 입력해 주세요")
+			joinForm.birth2.focus();
+			return false;
+		}
+
+		if (!check(format2, testbirth2, "유효하지 않은 값입니다.")) {
+			return false;
+		}
+
+		if (joinForm.birth3.value.length == 0) {
+			alert("생년월일을 입력해 주세요")
+			joinForm.birth3.focus();
+			return false;
+		}
+
+		if (!check(format3, testbirth3, "유효하지 않은 값입니다.")) {
+			return false;
+		}
+
+		if (agree.checked == false) {
+			alert("약관 동의를 하셔야 가입이 완료 됩니다.")
+			return false;
+		}
+
+		var phone1 = document.joinForm.phone1.value;
+		var phone2 = document.joinForm.phone2.value;
+		var phone3 = document.joinForm.phone3.value;
+		var phone = phone1 + phone2 + phone3;
+		document.getElementById("phone").value = phone;
+
+		var birth1 = document.joinForm.birth1.value;
+		var birth2 = document.joinForm.birth2.value;
+		var birth3 = document.joinForm.birth3.value;
+		var birth = birth1 + birth2 + birth3;
+		document.getElementById("birth").value = birth;
+
+	}
+
+	function check(re, what, message) {
+		if (re.test(what.value)) {
+
+			return true;
+		}
+
+		alert(message);
+		what.value = "";
+		what.focus();
+		//return false;
+	}
+	
+	function check2(re, what, message) {
+		if (re.test(what.value)) {
+
+			return true;
+		}
+
+		document.getElementById("emailcheck").innerHTML = message;
+		
+		//return false;
+	}
+
 </script>
 
 
 <title>grumy</title>
-		
+
 </head>
 <body id="cmn">
 
-<!-- 메인 메뉴 -->
+	<!-- 메인 메뉴 -->
 
 
-<script>
-// 메인메뉴에 마우스오버시 하위메뉴 나타남
-$(".gnb > li").mouseenter(function(){
-    //$(this).find(".gnb_sub").stop().slideDown(200);
-    $(this).find(".gnb_sub").stop().css('display','block');
-});
-$(".gnb > li").mouseleave(function(){
-    $(this).find(".gnb_sub").css("display","none");
-});  
+	<script>
+		// 메인메뉴에 마우스오버시 하위메뉴 나타남
+		$(".gnb > li").mouseenter(function() {
+			//$(this).find(".gnb_sub").stop().slideDown(200);
+			$(this).find(".gnb_sub").stop().css('display', 'block');
+		});
+		$(".gnb > li").mouseleave(function() {
+			$(this).find(".gnb_sub").css("display", "none");
+		});
 
-// 메인메뉴에 마우스오버시 하위메뉴 나타남 *커뮤니티 이동 양지수정*
-$(".myList > .xans-layout-boardinfo").mouseenter(function(){
-    //$(this).find(".gnb_sub").stop().slideDown(200);
-    $(this).find(".gnb_sub").stop().css('display','block');
-});
-$(".myList > .xans-layout-boardinfo").mouseleave(function(){
-    $(this).find(".gnb_sub").css("display","none");
-}); 
-</script>
+		// 메인메뉴에 마우스오버시 하위메뉴 나타남 *커뮤니티 이동 양지수정*
+		$(".myList > .xans-layout-boardinfo").mouseenter(function() {
+			//$(this).find(".gnb_sub").stop().slideDown(200);
+			$(this).find(".gnb_sub").stop().css('display', 'block');
+		});
+		$(".myList > .xans-layout-boardinfo").mouseleave(function() {
+			$(this).find(".gnb_sub").css("display", "none");
+		});
+	</script>
 
 
-	
+
 	<!-- //상단카테고리 -->
-<form id="joinForm" name="joinForm" action="create"
-	onsubmit="return validate();" method="post" enctype="multipart/form-data">
-<div id="container">
-	<div id="contents">
-		<div class="titleArea">
-			<h2>JOIN</h2>
-			<h3>회원 가입</h3>
-		</div>
+	<form id="joinForm" name="joinForm" action="create"
+		onsubmit="return validate();" method="post"
+		enctype="multipart/form-data">
+		<div id="container">
+			<div id="contents">
+				<div class="titleArea">
+					<h2>JOIN</h2>
+					<h3>회원 가입</h3>
+				</div>
 
-	<h3>기본정보</h3>
-	<p class="required " align="right" margin-bottom="20px";>
-	<img style="float: rigth" ; src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-	필수입력사항
-	</p>
-<div class="ec-base-table typeWrite" style="margin-top: -11px;">
-<table border="1" summary="">
-	<caption>회원 기본정보</caption>
-	<colgroup>
-	<col style="width: 150px;" />
-	<col style="width: auto;" />
-	</colgroup>
-<tbody>
-	<tr>
-		<th scope="row">아이디 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td>
-		<input id="id" name="id" type="text" onblur="onblur_event(this.value)"/>
-			(영문 대소문자/숫자,8~16자)
-			<div id="idcheck"></div>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">비밀번호 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td>
-		<input id="passwd" name="passwd" 
-			fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
-			autocomplete="off" maxlength="16" 0="disabled" value=""
-			type="password" />
-		<div id="pwcheck"></div>
-		(영문 대소문자/숫자,8~16자, 영문,숫자,특수문자 조합)
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">비밀번호 확인 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td>
-		<input id="user_passwd_confirm"
-			name="user_passwd_confirm" fw-filter="isFill&isMatch[passwd]"
-			fw-label="비밀번호 확인" fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off"
-			maxlength="16" 0="disabled" value="" type="password" /> 
-		<span id="pwConfirmMsg"></span>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">이름 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" /></th>
-		<td>
-		<input id="name" name="name" fw-filter="isFill&isMax[30]" fw-label="이름"
-		fw-msg="" class="ec-member-name" placeholder="" maxlength="30"
-		value="" type="text" />
-		<span id="nameContents"></span> 
-		</td> 
-	</tr>
-	<tr class="">
-		<th scope="row">주소 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-		</th>
-		<td>
-		<input id="postcode" name="postcode" fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
-		class="inputTypeText" placeholder="" readonly="readonly" maxlength="14" value="" type="text" /> 
-		<button type="button" class="yg_btn_140 yg_btn3"
-				 onclick="sample6_execDaumPostcode()">주소 검색</button>
-		<br />
-		<input id="address" name="address" fw-filter="" fw-label="주소"
-		fw-msg="" class="inputTypeText" placeholder="" readonly="readonly" value="" type="text" /> 기본주소
-		<br />
-		<input style="width:300px;" id="detailaddress" name="detailaddress" fw-filter="" fw-label="주소" fw-msg=""
-		class="inputTypeText" placeholder="" value="" type="text" />
-	        나머지주소 (선택입력가능)
-	 	</td> 
-	 </tr>
-		
-	<tr class="">
-		<th scope="row">전화번호 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-		</th>
-		<td>
-		<select id="phone1">
-		<option value="010">010</option>
-		<option value="011">011</option>
-		<option value="016">016</option>
-		<option value="017">017</option>
-		<option value="019">019</option>
-		</select>
-		
-		<input id="phone2" name="phone2" maxlength="4" style="width:60px;"
-		pattern="[0-9]{3,4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" type="text" />-
-		<input id="phone3" name="phone3" maxlength="4" style="width:60px;"
-		pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N"
-		fw-msg="" type="text" />
-		</td>
-		</tr>
-		<input type="hidden" id="phone" name="phone"></input>		
+				<h3>기본정보</h3>
+				<p class="required ">
+					<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+						alt="필수" /> 필수입력사항
+				</p>
+				<div class="ec-base-table typeWrite" style="margin-top: -11px;">
+					<table border="1" summary="">
+						<caption>회원 기본정보</caption>
+						<colgroup>
+							<col style="width: 150px;" />
+							<col style="width: auto;" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">아이디 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" /></th>
+								<td><input id="id" name="id" type="text"
+									onblur="onblur_id(this.value)" /> (영문 대소문자/숫자,8~16자)
+									<div id="idcheck"></div></td>
+							</tr>
+							<tr>
+								<th scope="row">비밀번호 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" /></th>
+								<td><input id="passwd" name="passwd"
+									fw-filter="isFill&isMin[4]&isMax[16]" fw-label="비밀번호" fw-msg=""
+									autocomplete="off" maxlength="16" 0="disabled" value=""
+									type="password" />
+									<div id="pwcheck"></div> (영문 대소문자/숫자,8~16자, 영문,숫자,특수문자 조합)</td>
+							</tr>
+							<tr>
+								<th scope="row">비밀번호 확인 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" /></th>
+								<td><input id="repasswd" name="repasswd"
+									fw-filter="isFill&isMatch[passwd]" fw-label="비밀번호 확인"
+									fw-msg="비밀번호가 일치하지 않습니다." autocomplete="off" maxlength="16"
+									0="disabled" value="" type="password" onblur="onblur_pw()" />
+									<div id="repwcheck"></div></td>
+							</tr>
+							<tr>
+								<th scope="row">이름 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" /></th>
+								<td><input id="name" name="name"
+									fw-filter="isFill&isMax[30]" fw-label="이름" fw-msg=""
+									class="ec-member-name" placeholder="" maxlength="30" value=""
+									type="text" /> <span id="nameContents"></span></td>
+							</tr>
+							<tr class="">
+								<th scope="row">주소 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" />
+								</th>
+								<td><input id="postcode" name="postcode"
+									fw-filter="isLengthRange[1][14]" fw-label="우편번호1" fw-msg=""
+									class="inputTypeText" placeholder="" readonly="readonly"
+									maxlength="14" value="" type="text" />
+									<button type="button" class="yg_btn_140 yg_btn3"
+										onclick="sample6_execDaumPostcode()">주소 검색</button> <br /> <input
+									id="address" name="address" fw-filter="" fw-label="주소"
+									fw-msg="" class="inputTypeText" placeholder=""
+									readonly="readonly" value="" type="text" /> 기본주소 <br /> <input
+									style="width: 300px;" id="detailaddress" name="detailaddress"
+									fw-filter="" fw-label="주소" fw-msg="" class="inputTypeText"
+									placeholder="" value="" type="text" /> 나머지주소 (선택입력가능)</td>
+							</tr>
+
+							<tr class="">
+								<th scope="row">전화번호 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" />
+								</th>
+								<td><select id="phone1">
+										<option value="010">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="019">019</option>
+								</select> <input id="phone2" name="phone2" maxlength="4"
+									style="width: 60px;" pattern="[0-9]{3,4}" fw-filter="isNumber"
+									fw-label="휴대전화" fw-alone="N" fw-msg="" type="text" />- <input
+									id="phone3" name="phone3" maxlength="4" style="width: 60px;"
+									pattern="[0-9]{4}" fw-filter="isNumber" fw-label="휴대전화"
+									fw-alone="N" fw-msg="" type="text" /></td>
+							</tr>
+							<input type="hidden" id="phone" name="phone"></input>
 
 
-		<tr>
-		<th scope="row">이메일 
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-		</th>
-		<td>
-		
-		<input id="email" name="email" fw-filter="isFill" 
-		fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId" value=""
-		type="text" />
-		<button type="button" class="yg_btn_140 yg_btn3"
-		onclick="emailCheck(document.joinForm.email.value)">이메일 중복확인</button>
-		<div id="emailcheck"></div>
-		</td>
-		</tr>
-		<tr>
-		<th scope="row">생년월일
-		<img src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png" alt="필수" />
-		</th>
-		<td>
-		<input id="birth1" name="birth1" maxlength="4" style="width:70px;"
-		pattern="[0-9]{4}" fw-filter="isNumber" fw-alone="N"
-		fw-msg="" value="" type="text" placeholder="2012"/>년
-		<input id="birth2" name="birth2" maxlength="2" style="width:40px;"
-		pattern="[0-9]{2}"fw-filter="isNumber" fw-alone="N"
-		fw-msg="" value="" type="text" placeholder="02"/>월
-		<input id="birth3" name="birth3" maxlength="2" style="width:40px;"
-		pattern="[0-9]{2}"fw-filter="isNumber" fw-alone="N"
-		fw-msg="" value="" type="text" placeholder="03"/>일 
-		<strong>ex)2012년 2월 3일 ☞ 2012 02 03</strong>
-		</td>
-		<input type="hidden" id="birth" name="birth"></input>
-		</tbody>
-	</table>
-</div>
+							<tr>
+								<th scope="row">이메일 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" />
+								</th>
+								<td><input id="email" name="email" fw-filter="isFill"
+									fw-label="이메일" fw-alone="Y" fw-msg="" class="mailId"
+									onblur="onblur_email(this.value)" type="text" />
+									<div id="emailcheck"></div></td>
+							</tr>
+							<tr>
+								<th scope="row">생년월일 <img
+									src="//slowand.com//web/upload/yangji_pc_crumb/req_check.png"
+									alt="필수" />
+								</th>
+								<td><input id="birth1" name="birth1" maxlength="4"
+									style="width: 70px;" pattern="[0-9]{4}" fw-filter="isNumber"
+									fw-alone="N" fw-msg="" value="" type="text" placeholder="2012" />년
+									<input id="birth2" name="birth2" maxlength="2"
+									style="width: 40px;" pattern="[0-9]{2}" fw-filter="isNumber"
+									fw-alone="N" fw-msg="" value="" type="text" placeholder="02" />월
+									<input id="birth3" name="birth3" maxlength="2"
+									style="width: 40px;" pattern="[0-9]{2}" fw-filter="isNumber"
+									fw-alone="N" fw-msg="" value="" type="text" placeholder="03" />일
+									<strong>ex)2012년 2월 3일 ☞ 2012 02 03</strong></td>
+								<input type="hidden" id="birth" name="birth"></input>
+						</tbody>
+					</table>
+				</div>
 
 
-	
-	<div class ="container">
-	<div class="col-sm-8" style="margin-top: 80px; text-align: center;">
-		<h2>[필수] 이용약관 동의</h2>
-		<br/><br/><br/>
-	<textarea rows="20" cols="150" id="content" name="content" class="form-control">
+
+				<div class="container">
+					<div class="col-sm-8" style="margin-top: 80px; text-align: center;">
+						<h2>[필수] 이용약관 동의</h2>
+						<br />
+						<br />
+						<br />
+						<textarea rows="20" cols="150" id="content" name="content"
+							class="form-control">
    
 		
 제1조(목적)
@@ -566,7 +577,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 		제14조(환급)<br>“몰”은 이용자가 구매신청한 재화 등이 품절 등의 사유로 인도 또는 제공을 할 수
 			없을 때에는 지체 없이 그 사유를 이용자에게 통지하고 사전에 재화 등의 대금을 받은 경우에는 대금을 받은 날부터
 			3영업일 이내에 환급하거나 환급에 필요한 조치를 취합니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제15조(청약철회 등)<br>① “몰”과 재화등의 구매에 관한 계약을 체결한 이용자는 「전자상거래 등에서의
 			소비자보호에 관한 법률」 제13조 제2항에 따른 계약내용에 관한 서면을 받은 날(그 서면을 받은 때보다 재화 등의
@@ -584,7 +596,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 										이용자는 제1항 및 제2항의 규정에 불구하고 재화 등의 내용이 표시•광고 내용과 다르거나 계약내용과
 										다르게 이행된 때에는 당해 재화 등을 공급받은 날부터 3월 이내, 그 사실을 안 날 또는 알 수
 										있었던 날부터 30일 이내에 청약철회 등을 할 수 있습니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제16조(청약철회 등의 효과)<br>① “몰”은 이용자로부터 재화 등을 반환받은 경우 3영업일 이내에 이미
 			지급받은 재화 등의 대금을 환급합니다. 이 경우 “몰”이 이용자에게 재화등의 환급을 지연한때에는 그 지연기간에
@@ -597,7 +610,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 					청약철회 등을 하는 경우 재화 등의 반환에 필요한 비용은 “몰”이 부담합니다.<br>④ 이용자가 재화
 						등을 제공받을 때 발송비를 부담한 경우에 “몰”은 청약철회 시 그 비용을 누가 부담하는지를 이용자가 알기
 						쉽도록 명확하게 표시합니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제17조(개인정보보호)<br>① “몰”은 이용자의 개인정보 수집시 서비스제공을 위하여 필요한 범위에서
 			최소한의 개인정보를 수집합니다. <br>② “몰”은 회원가입시 구매계약이행에 필요한 정보를 미리 수집하지
@@ -622,7 +636,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 											이용자의 동의거절시 제한되는 서비스를 구체적으로 명시하고, 필수수집항목이 아닌 개인정보의
 											수집•이용•제공에 관한 이용자의 동의 거절을 이유로 회원가입 등 서비스 제공을 제한하거나 거절하지
 											않습니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제18조(“몰“의 의무)<br>① “몰”은 법령과 이 약관이 금지하거나 공서양속에 반하는 행위를 하지
 			않으며 이 약관이 정하는 바에 따라 지속적이고, 안정적으로 재화․용역을 제공하는데 최선을 다하여야 합니다.<br>②
@@ -630,13 +645,15 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 				시스템을 갖추어야 합니다.<br>③ “몰”이 상품이나 용역에 대하여 「표시․광고의 공정화에 관한 법률」
 					제3조 소정의 부당한 표시․광고행위를 함으로써 이용자가 손해를 입은 때에는 이를 배상할 책임을 집니다.<br>④
 						“몰”은 이용자가 원하지 않는 영리목적의 광고성 전자우편을 발송하지 않습니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제19조(회원의 ID 및 비밀번호에 대한 의무)<br>① 제17조의 경우를 제외한 ID와 비밀번호에 관한
 			관리책임은 회원에게 있습니다.<br>② 회원은 자신의 ID 및 비밀번호를 제3자에게 이용하게 해서는
 				안됩니다.<br>③ 회원이 자신의 ID 및 비밀번호를 도난당하거나 제3자가 사용하고 있음을 인지한
 					경우에는 바로 “몰”에 통보하고 “몰”의 안내가 있는 경우에는 그에 따라야 합니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제20조(이용자의 의무)<br>이용자는 다음 행위를 하여서는 안 됩니다.<br>1. 신청 또는
 				변경시 허위 내용의 등록<br>2. 타인의 정보 도용<br>3. “몰”에 게시된 정보의 변경<br>4.
@@ -644,21 +661,24 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 								제3자의 저작권 등 지적재산권에 대한 침해<br>6. “몰” 기타 제3자의 명예를 손상시키거나
 									업무를 방해하는 행위<br>7. 외설 또는 폭력적인 메시지, 화상, 음성, 기타 공서양속에
 										반하는 정보를 몰에 공개 또는 게시하는 행위
-	</p>
+	
+																																											</p>
 	<p>
 		제21조(연결“몰”과 피연결“몰” 간의 관계)<br>① 상위 “몰”과 하위 “몰”이 하이퍼링크(예:
 			하이퍼링크의 대상에는 문자, 그림 및 동화상 등이 포함됨)방식 등으로 연결된 경우, 전자를 연결 “몰”(웹
 			사이트)이라고 하고 후자를 피연결 “몰”(웹사이트)이라고 합니다.<br>② 연결“몰”은 피연결“몰”이
 				독자적으로 제공하는 재화 등에 의하여 이용자와 행하는 거래에 대해서 보증 책임을 지지 않는다는 뜻을 연결“몰”의
 				초기화면 또는 연결되는 시점의 팝업화면으로 명시한 경우에는 그 거래에 대한 보증 책임을 지지 않습니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제22조(저작권의 귀속 및 이용제한)<br>① “몰“이 작성한 저작물에 대한 저작권 기타 지적재산권은
 			”몰“에 귀속합니다.<br>② 이용자는 “몰”을 이용함으로써 얻은 정보 중 “몰”에게 지적재산권이 귀속된
 				정보를 “몰”의 사전 승낙 없이 복제, 송신, 출판, 배포, 방송 기타 방법에 의하여 영리목적으로 이용하거나
 				제3자에게 이용하게 하여서는 안됩니다.<br>③ “몰”은 약정에 따라 이용자에게 귀속된 저작권을
 					사용하는 경우 당해 이용자에게 통보하여야 합니다.
-	</p>
+	
+																																											</p>
 	<p>
 		제23조(분쟁해결)<br>① “몰”은 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해를
 			보상처리하기 위하여 피해보상처리기구를 설치․운영합니다.<br>② “몰”은 이용자로부터 제출되는 불만사항
@@ -666,7 +686,8 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 				처리일정을 즉시 통보해 드립니다.<br>③ “몰”과 이용자 간에 발생한 전자상거래 분쟁과 관련하여
 					이용자의 피해구제신청이 있는 경우에는 공정거래위원회 또는 시•도지사가 의뢰하는 분쟁조정기관의 조정에 따를 수
 					있습니다.
-	</p>
+	
+																																											</p>
 	
 제24조(재판권 및 준거법)
 ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소
@@ -675,78 +696,82 @@ $(".myList > .xans-layout-boardinfo").mouseleave(function(){
 	
 	부 칙(시행일) 이 약관은 년 월 일부터 시행합니다.
 	</textarea>
-	<p>
-	</p>
-	<div class="col-sm-offset-2 col-sm-5" style="margin-top:20px;">
-    <input id="agree" type="checkbox" name="agree" value="1" >
-    <label for="agree"><strong> 약관에 동의합니다 </strong></label>
+						<p></p>
+						<div class="col-sm-offset-2 col-sm-5" style="margin-top: 20px;">
+							<input id="agree" type="checkbox" name="agree" value="1">
+								<label for="agree"><strong> 약관에 동의합니다 </strong></label>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="ec-base-button">
+					<button type="submit" class="yg_btn_140">회원가입</button>
+					<button type="reset" class="yg_btn_140 yg_btn3"
+						onclick="history.back();">닫기</button>
+				</div>
+
+			</div>
+		</div>
+	</form>
+
+
+	<hr class="layout" />
+
+	<hr class="layout" />
+	<!-- 하단 -->
+	<div id="footer" class="xans-element- xans-layout xans-layout-footer">
+
+		<div id="footerTop">
+			<div>
+				<p class="pageMove">
+					<a class="pageTop" href="#header" title="화면 최상단으로 이동하기" alt="맨위로">
+						<i class="fa fa-angle-up fa-2x"></i>
+					</a> <a class="pageBottom" href="#copyright" title="화면 최하단으로 이동하기"
+						alt="맨아래로"> <i class="fa fa-angle-down fa-2x"></i>
+					</a>
+				</p>
+			</div>
+		</div>
 	</div>
-	
-	</div>
-	</div>
-	
-	<div class="ec-base-button">
-	<button type="submit" class="yg_btn_140">회원가입</button>
-	<button type="reset" class="yg_btn_140 yg_btn3" onclick="history.back();">닫기</button>
-	</div>
 
-</div>	
-</div>
-</form>
+	<script>
+		$(document).ready(function() {
+			$('.pageTop').click(function(event) {
+				event.preventDefault();
+				$('html, body').animate({
+					scrollTop : 0
+				}, 400);
+			});
+			$('.pageBottom').click(function(event) {
+				event.preventDefault();
+				$('html, body').animate({
+					scrollTop : $(document).height() + $(window).height()
+				}, 400);
+			});
+		});
 
+		$(".inner_b .address i.bizLink a").text("[Go Checking]");
+	</script>
 
-<hr class="layout" />
-
-<hr class="layout" />
-<!-- 하단 -->
-<div id="footer" class="xans-element- xans-layout xans-layout-footer">
-	
-<div id="footerTop">
-<div>
-<p class="pageMove">
-<a class="pageTop" href="#header" title="화면 최상단으로 이동하기" alt="맨위로">
-<i class="fa fa-angle-up fa-2x"></i>
-</a> 
-<a class="pageBottom" href="#copyright" title="화면 최하단으로 이동하기" alt="맨아래로">
-<i class="fa fa-angle-down fa-2x"></i>
-</a>
-</p>
-</div>
-</div>
-</div>
-
-<script>
-$(document).ready(function() {
-    $('.pageTop').click(function(event) {
-       event.preventDefault();                  
-       $('html, body').animate({scrollTop: 0}, 400);
-    });
-    $('.pageBottom').click(function(event) {
-       event.preventDefault();                  
-       $('html, body').animate({scrollTop: $(document).height() + $(window).height()},400);
-    });
-});
-
-$(".inner_b .address i.bizLink a").text("[Go Checking]");
-</script>
-
-<hr class="layout" />
-<!-- //참고 -->
-<script type="text/javascript">
-var sAuthSSLDomain = "login2.cafe24ssl.com";</script>
-<script type="text/javascript"
-	src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script>
-<script type="text/javascript"
-	src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.plugin.js"></script>
-<script type="text/javascript"
-	src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
-	charset="utf-8"></script>
-<script type="text/javascript"
-	src="/ind-script/optimizer.php?filename=tZXNbtswDMdfwNc9h5Bhh51boKcNAzb0AWiJtplQokpJbbOnH5N1Q7PNSQ0v8EEAwd-fEr_sJonoNu_VDQoRn0R3TrFIU49uWxxtPqZuW965c36NMvid2z401P3Lsek-2HdCZpXR4BP9kpVSHS47BvEtYqp3ovFWUlVhRr3MDWrO7hmSvSVV1KxYF3IVY2ao-G8IcnafpSdG9_UV7yVGSa5V4kVclNDMVJ4oLws4tOQrWUjzC83XLoquVDhzCabe3f8s-2sJhu97FgiLoNgqHOJ-6Qvq41xxZuAsvB-I-a0VDThA43pIQYmg9QZS-jPkxRbHZ-uhBFxeDF0_0hFaq-NFdrRaJZBNSrGMlrVKCIXSuFYlYoUAFea78UZAw0ldzdr1B-s89G2SfMLcHSt8e5y8-7ODN4MWBPXTov6rMAz2Qlq6JTO3kWy5PAKT5Ub0V7J-G1YLHuqQQvlb2BSyNQdeL8KEnPGKL5ggBb5mAFtDZHW9mr6trPof7s_iwbb4Ti6vv5m-estA2b9vFN1_olIN_gE&type=js&k=81cead6b99ffa3a78f6503851e2d2fd76af38afb&t=1571605827"></script>
-<script type="text/javascript"
-	src="/ind-script/optimizer.php?filename=rZXPTgIxEMbvwtXnaPQNFCGBCBqIHLyVMrs7bDtTp13J-vQui0QwwUjXy-yf9Pd1-nU6VQU7UDe3orxwLtopiyv1gl6bUs0hcCUG1CaoaTOOonLto--Q-ptwrZLoq4gOPpjgvIwcsVVE24b-u7a41pElCZr4S7DlARtp08Q6iR0wRWFr4UzG2ns1BbcCOXHLtb-WIJjVU16hhQR8wkgPGLzV9V0ViwSFOWg70y5l8gE7r6lOIQsw5YgFMKck23brbkVmaMou_HjdhX7edqGHTjd1lOgeUr4TGlPGaVvnmFLnHoZAiQu_5IQ1p-tHWWbNYNiylN9Ete9Dm7cKpFbeVjlSUDu0FTq8nE_3Fb3hNZzkmyGt4Q8NaHfmFovHX7zQpPNT7S2sLOcXNdZBJQJkahUK9j0vaKADb76-ehmL07FrJv8lc36Xjh0vorPN7YIRIVxkuw41mX1M5vZlnIw_SVNUhmKywL0OJcTuCocK-gQ&type=js&k=6fd4ecdec5e5a3dc0733f25e0c57d9fe69bc42b1&t=1569791188"></script>
-<script type="text/javascript"
-	src="/ind-script/optimizer.php?filename=rZRNbgMhDIUPMNn2HChppa6bVGoXEzVKKnXtMO6MM4AphkRz-5KfRbaFbhASeh_P5hk1sEU1XwTlA_cBrALv1Roc9Ki2KJyCRnUQBTI5fV1nS5AR4yZwl3ScHeRBlVBWnDw77coJazKYz4v1r-hZqPz-L5KhJakDaE4VLQiosUK-vcg_OYJZVfn4CB2GYvUSHX5XPMQ1kC1MFR7eAnTlUXpJkS1E0hfMbuBTeaqTibRhn3w5YmppxNuA1j1sS0c05EZ2ddl4z3PCYSo14yEOgQ02RzDUQUaVV8TQ_UnsCz46Oc00GHOfR9RNEgzZjHO4mD8_Kp_2hnQzRGuUdNh0KNQ7JSO5pzPE5nsNKgMTp6g0ROxzC4uJN84ehPQZf9nU-NNs7X0uaiv8SaTH5kh4-j-mPU-TDOx3A3lPrq8sWMRkwi8&type=js&k=f09bdba3622d97671bc67774963ab7360a5a1b93&t=1573420409"></script>
+	<hr class="layout" />
+	<!-- //참고 -->
+	<script type="text/javascript">
+		var sAuthSSLDomain = "login2.cafe24ssl.com";
+	</script>
+	<script type="text/javascript"
+		src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.js"></script>
+	<script type="text/javascript"
+		src="https://login2.cafe24ssl.com/crypt/AuthSSLManager.plugin.js"></script>
+	<script type="text/javascript"
+		src="//slowand.com/ind-script/i18n.php?lang=ko_KR&domain=front&v=1911061085"
+		charset="utf-8"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=tZXNbtswDMdfwNc9h5Bhh51boKcNAzb0AWiJtplQokpJbbOnH5N1Q7PNSQ0v8EEAwd-fEr_sJonoNu_VDQoRn0R3TrFIU49uWxxtPqZuW965c36NMvid2z401P3Lsek-2HdCZpXR4BP9kpVSHS47BvEtYqp3ovFWUlVhRr3MDWrO7hmSvSVV1KxYF3IVY2ao-G8IcnafpSdG9_UV7yVGSa5V4kVclNDMVJ4oLws4tOQrWUjzC83XLoquVDhzCabe3f8s-2sJhu97FgiLoNgqHOJ-6Qvq41xxZuAsvB-I-a0VDThA43pIQYmg9QZS-jPkxRbHZ-uhBFxeDF0_0hFaq-NFdrRaJZBNSrGMlrVKCIXSuFYlYoUAFea78UZAw0ldzdr1B-s89G2SfMLcHSt8e5y8-7ODN4MWBPXTov6rMAz2Qlq6JTO3kWy5PAKT5Ub0V7J-G1YLHuqQQvlb2BSyNQdeL8KEnPGKL5ggBb5mAFtDZHW9mr6trPof7s_iwbb4Ti6vv5m-estA2b9vFN1_olIN_gE&type=js&k=81cead6b99ffa3a78f6503851e2d2fd76af38afb&t=1571605827"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=rZXPTgIxEMbvwtXnaPQNFCGBCBqIHLyVMrs7bDtTp13J-vQui0QwwUjXy-yf9Pd1-nU6VQU7UDe3orxwLtopiyv1gl6bUs0hcCUG1CaoaTOOonLto--Q-ptwrZLoq4gOPpjgvIwcsVVE24b-u7a41pElCZr4S7DlARtp08Q6iR0wRWFr4UzG2ns1BbcCOXHLtb-WIJjVU16hhQR8wkgPGLzV9V0ViwSFOWg70y5l8gE7r6lOIQsw5YgFMKck23brbkVmaMou_HjdhX7edqGHTjd1lOgeUr4TGlPGaVvnmFLnHoZAiQu_5IQ1p-tHWWbNYNiylN9Ete9Dm7cKpFbeVjlSUDu0FTq8nE_3Fb3hNZzkmyGt4Q8NaHfmFovHX7zQpPNT7S2sLOcXNdZBJQJkahUK9j0vaKADb76-ehmL07FrJv8lc36Xjh0vorPN7YIRIVxkuw41mX1M5vZlnIw_SVNUhmKywL0OJcTuCocK-gQ&type=js&k=6fd4ecdec5e5a3dc0733f25e0c57d9fe69bc42b1&t=1569791188"></script>
+	<script type="text/javascript"
+		src="/ind-script/optimizer.php?filename=rZRNbgMhDIUPMNn2HChppa6bVGoXEzVKKnXtMO6MM4AphkRz-5KfRbaFbhASeh_P5hk1sEU1XwTlA_cBrALv1Roc9Ki2KJyCRnUQBTI5fV1nS5AR4yZwl3ScHeRBlVBWnDw77coJazKYz4v1r-hZqPz-L5KhJakDaE4VLQiosUK-vcg_OYJZVfn4CB2GYvUSHX5XPMQ1kC1MFR7eAnTlUXpJkS1E0hfMbuBTeaqTibRhn3w5YmppxNuA1j1sS0c05EZ2ddl4z3PCYSo14yEOgQ02RzDUQUaVV8TQ_UnsCz46Oc00GHOfR9RNEgzZjHO4mD8_Kp_2hnQzRGuUdNh0KNQ7JSO5pzPE5nsNKgMTp6g0ROxzC4uJN84ehPQZf9nU-NNs7X0uaiv8SaTH5kh4-j-mPU-TDOx3A3lPrq8sWMRkwi8&type=js&k=f09bdba3622d97671bc67774963ab7360a5a1b93&t=1573420409"></script>
 
 </body>
 </html>

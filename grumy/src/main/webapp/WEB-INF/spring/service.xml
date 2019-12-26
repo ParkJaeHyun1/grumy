@@ -10,20 +10,20 @@
 	</definition>
  
  	<definition name="/service/list" extends="main">
-		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="title"	value="grumy"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/list.jsp" />
 	</definition>
 
  	<definition name="/service/create" extends="main">
-		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="title"	value="grumy"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/create.jsp" />
 	</definition>
  	<definition name="/service/read" extends="main">
-		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="title"	value="grumy"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/read.jsp" />
 	</definition>
  	<definition name="/service/update" extends="main">
-		<put-attribute name="title"	value="그루미"/>
+		<put-attribute name="title"	value="grumy"/>
 		<put-attribute name="body" value="/WEB-INF/views/service/update.jsp" />
 	</definition>
  	<definition name="/service/create_reply" extends="main">

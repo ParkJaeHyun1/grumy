@@ -91,9 +91,12 @@ public class MemberController {
 		return map;
 	}// end idcheck
 	
+
+	
 	@ResponseBody
 	@GetMapping(value = "/member/emailcheck", produces = "application/json;charset=utf-8")
 	public Map<String, Object> emailcheck(String email) {
+
 
 		int flag = dao.duplicateEmail(email);
 		Map<String, Object> map = new HashMap<String, Object>();
