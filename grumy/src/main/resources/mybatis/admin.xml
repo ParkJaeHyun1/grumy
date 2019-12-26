@@ -56,6 +56,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
+	<select id="moneyP" parameterType="map" resultType="int">
+		select count(*) from (
+		select a.orderno orderno, a.odate odate, decode(a.pdate,null,'입금대기',a.pdate) pdate, 
+				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r 
+			from norder a,
+		    (select a.orderno, sum(b.itemprice * b.count) price from norder a, orderitem b 
+		    where a.orderno = b.orderno 
+		    <choose>
+				<when test= "datec == 'today'">
+					and to_char(a.pdate, 'yyyy/mm/dd') = to_char(sysdate, 'yyyy/mm/dd')
+				</when>
+				<when test= "datec == 'delay'">
+					and a.state = '입금대기'
+				</when>					
+			</choose>
+		    <choose>
+				<when test="col == 'onum'">
+					and a.orderno like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'otitle'">
+					and i.title like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'buyer'">
+					and a.id like '%'||#{word}||'%'
+				</when>
+				<when test="col == 'odate'">
+					and to_char(a.odate,'yyyy-MM-dd') like '%'||#{word}||'%'
+				</when>
+			</choose>
+		    group by a.orderno) b
+		where a.orderno = b.orderno
+		)
+	</select>
 	<select id="priceTotal" parameterType="String" resultType="int">
 		select nvl(sum(b.price - a.saleprice),0) from norder a,
 			(select a.orderno, sum(b.itemprice * b.count) price 
@@ -134,6 +167,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	<select id="moneyl" parameterType="map" resultType="orderDTO">
+		select * from (
 		select a.orderno orderno, a.odate odate, decode(a.pdate,null,'입금대기',a.pdate) pdate, 
 				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r 
 			from norder a,
@@ -163,6 +197,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		    group by a.orderno) b
 		where a.orderno = b.orderno
+		)
+		<![CDATA[
+		where r >=#{sno} and r<=#{eno}
+		]]>
 	</select>
 	
 	<update id="updateState" parameterType="Map">

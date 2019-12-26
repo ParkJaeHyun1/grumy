@@ -2,7 +2,6 @@ package spring.model.grumy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,7 +73,8 @@ public class AdminController {
 	public String itemManage(HttpServletRequest request) {		
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
-		
+		//String id = (String) session.getAttribute("id");
+		//session.setAttribute("sessionId", nickname);
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
@@ -108,13 +108,14 @@ public class AdminController {
 	public String moneyView(HttpServletRequest request) {		
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
-		
+		String datec = Utility.checkNull(request.getParameter("datec"));
+
 		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 	
-		int recordPerPage = 20; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
 		
 		//디비에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
@@ -125,16 +126,19 @@ public class AdminController {
 		map.put("word", word);
 		map.put("sno",sno);
 		map.put("eno",eno);
+		map.put("datec",datec);		
 		
-		ArrayList<ItemDTO> iteml = mapper.iteml(map);	
-		int total = mapper.itemC(map);
+		ArrayList<OrderDTO> moneyl = mapper.moneyl(map);	
+		int total = mapper.moneyP(map);
+		System.out.println(total + "  abc  " + nowPage + " abv2 " + datec);
 		String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
 		
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
-		request.setAttribute("iteml", iteml);
+		request.setAttribute("moneyl", moneyl);
+		request.setAttribute("datec", datec);
 		
 		return "/admin/moneyView/list";
 	}

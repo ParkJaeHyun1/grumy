@@ -274,7 +274,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number"
-												href="${root }/admin/moneyView/list">${priceToday }</a>
+												href="${root }/admin/moneyView/list?datec=today">${priceToday }</a>
 											<!----> <!---->
 												<span>원</span>
 										</span></li>
@@ -282,7 +282,7 @@ $(document).ready(function(){
 											class="number-area">
 												<!---->
 												<a class="text-number" 
-												href="${root }/admin/moneyView/list">${priceDelay }</a>
+												href="${root }/admin/moneyView/list?datec=delay">${priceDelay }</a>
 											<!----> 
 												<span>원</span>
 										</span></li>

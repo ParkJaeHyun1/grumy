@@ -26,9 +26,6 @@ function update(orderno){
 		}
 	});
 }
-function goread(orderno){
-	
-}
 </script>
 </head>
 <body>

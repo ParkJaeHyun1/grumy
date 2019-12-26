@@ -21,10 +21,12 @@ public interface AdminMapper {
 	int updateStateP(Map<String,String> map);			//주문상태변경	orderitem테이블
 	int cstotal(String category);						//고객요청 건 갯수
 	int priceTotal(String state);						//정산예정, 정산예정금
+	int moneyP(Map map);								//오늘, 예정 정산리스트를 위한 페이징처리
 	
 	ArrayList<ItemDTO> iteml(Map map);					//재고관리리스트
 	int itemC(Map map);									//재고관리 페이징처리
 
+	ArrayList<OrderDTO> moneyl(Map map);				//오늘, 예정 정산리스트
 	ArrayList<OrderDTO> chartl();						//차트리스트
 	ArrayList<OrderDTO> chartlp();						//차트리스트 결제금액별도
 	ArrayList<OrderItemDTO> readPList(String orderno);	//read페이지 목록에서의 리스트

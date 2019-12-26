@@ -26,9 +26,6 @@ function update(orderno){
 		}
 	});
 }
-function goread(orderno){
-	
-}
 </script>
 </head>
 <body>
@@ -40,7 +37,7 @@ function goread(orderno){
 					class="xans-element- xans-board xans-board-title-1002 xans-board-title xans-board-1002 ">
 					<div class="title" style="text-align: center;">
 						<h2>
-							<font color="#555555">입금대기</font>                  
+							<font color="#555555">결제금액</font>                  
 						</h2>
 						<br>
 						<br>
@@ -56,31 +53,22 @@ function goread(orderno){
 					<table border="1" summary="">
 						<colgroup
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
-							<col style="width: 120px;">
-							<col style="width: 120px;">
-							<col style="width: auto;">
+							<col style="width: 200px;">
+							<col style="width: 200px;">
+							<col style="width: 200px;">
 							<col style="width: 120px;">
 							<col style="width: 100px;">
-							<col style="width: 60px;">
 							<col style="width: 100px;">
-							<col style="width: 70px;">
-							<col style="width: 70px;">
-							<col style="width: 80px;">
-							<col style="width: 120px;">
 						</colgroup>
 						<thead
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<tr style="">
 								<th scope="col">주문번호</th>
-								<th scope="col">IMAGE</th>
-								<th scope="col">아이템명</th>
-								<th scope="col">색깔</th>
-								<th scope="col">사이즈</th>
-								<th scope="col">수량</th>
-								<th scope="col">가격</th>
-								<th scope="col">주문아이디</th>
+								<th scope="col">주문일</th>
+								<th scope="col">결제일</th>
+								<th scope="col">아아디</th>
 								<th scope="col">입금상태</th>
-								<th scope="col">확인</th>
+								<th scope="col">결제금액</th>
 							</tr>
 						</thead>
 						<tbody
@@ -91,7 +79,7 @@ function goread(orderno){
 	                    $deny_access_url = /index.html
 	                -->
 							<c:choose>
-								<c:when test="${empty list }">
+								<c:when test="${empty moneyl }">
 									<tr>
 										<td></td>
 										<td></td>
@@ -99,51 +87,28 @@ function goread(orderno){
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
 								</c:when>
 								<c:otherwise>
 									<c:set var="aa"/>
-									<c:forEach var="dto" items="${list}" varStatus="status">
-										<c:forEach var="dto2" items="${dto.orderItemList}" varStatus="status">
+									<c:forEach var="dto" items="${moneyl}" varStatus="status">
 										<tr style="background-color: #FFFFFF; color: #555555;"
 											class="xans-record-">
 											<c:choose>										
 												<c:when test="${aa != dto.orderNo }">
-												<td rowspan="${dto.getOrderItemList().size() }">
-													${dto.odate}<br>
+												<td>
 													<a class="text-number"
 													href="${root }/admin/read?orderno=${dto.orderNo}">
 													<u>[${dto.orderNo}]</u></a>
 													</td>
+													<c:set var="aa" value="${dto.orderNo }"/>
 												</c:when>
 											</c:choose>
-											<td><a
-											href="${pageContext.request.contextPath }/item/read?itemNo=${dto2.itemNo}">
-											<img
-												style="width: 80px; height: 106px;"
-												src="${pageContext.request.contextPath}/images/${dto2.itemImage }"></a></td>
-											<td>${dto2.itemTitle}</td>
-											<td>${dto2.itemColor}</td>
-											<td>${dto2.itemSize}</td>
-											<td>${dto2.count}</td>
-											<td>${dto2.itemPrice }</td>
+											<td>${dto.odate}</td>
+											<td>${dto.pdate}</td>
 											<td>${dto.id}</td>
-											<c:choose>										
-												<c:when test="${aa != dto.orderNo }">
-													<c:set var="aa" value="${dto.orderNo }"/>
-													<td>${dto2.state }</td>
-													<td><button type="button" class="yg_btn_28 yg_btn3" onclick="update('${dto.orderNo}')">확인버튼</button></td>
-												</c:when>
-												<c:otherwise>
-													<td></td>
-													<td></td>
-												</c:otherwise>
-											</c:choose>							
+											<td>${dto.state}</td>
+											<td>${dto.totalPrice}</td>				
 										</tr>
-										</c:forEach>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
@@ -169,7 +134,8 @@ function goread(orderno){
 										<c:if test="${col == 'buyer' }">selected</c:if>>구매자</option>
 								</select> 
 								<input id="word" name="word" type="text">
-								<button class="yg_btn_28 yg_btn3">SEARCH</button>
+								<input type="hidden" id="datec2" name="datec2" value="${datec }">
+								<button class="yg_btn_28 yg_btn3">SEARCH</button>${datec }
 							</p>
 						</fieldset>
 					</div>
