@@ -65,14 +65,15 @@
 
 								var url = "${pageContext.request.contextPath}/item/deleteSearch";
 								url += "?itemNo=" + itemNo;
-								url += "&type=" + type;       
-								url += "&search_type=" + search_type;       
-								url += "&keyword=" + keyword;       
-								url += "&orderby=" + orderby;       
-								           
-								location.href = url;
-
-							}
+				              	url += "&type=" + type;
+				              	url += "&search_type=${search_type}";
+				              	url += "&keyword=${param.keyword}";
+				              	url += "&price1=${price1}";
+				             	url += "&price2=${price2}";
+				              	url += "&orderby=" + 'itemNo';          
+								location.href = url;                        
+                      
+							}             
 
 						}
 					</script>
@@ -273,7 +274,7 @@
 												onclick="location.href='${pageContext.request.contextPath}/item/updateForm?itemNo=${dto.itemNo}'">상품수정</button>
 											&nbsp;
 											<button class="yg_btn_28 yg_btn3" type="button"
-												onclick="javascript:delete1('${dto.itemNo}', '${type}')">상품삭제</button>
+												onclick="javascript:delete1('${dto.itemNo}','${type}')">상품삭제</button>
 
 										</p>
 									</c:if>        

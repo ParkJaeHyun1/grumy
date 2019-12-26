@@ -100,15 +100,14 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 				}
 			});
 		}
-               
+                                          
 		function delete1(itemNo, type) {
 
 			if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-				var url = "${pageContext.request.contextPath}/item/delete";
+				var url = "${pageContext.request.contextPath}/item/deleteList";
 				url += "?itemNo=" + itemNo;
-				url += "&type=" + type;
-// 				url +="&url=list";
+				url += "&type=" + type;          
 				location.href = url;
 
 			}

@@ -288,7 +288,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 			<if test="type != 'SearchTotal'">
-				and i.type = #{type}
+				and t.parentType = #{type}
 			</if>
 
 			<if test="price1 != null and price1 != ''">

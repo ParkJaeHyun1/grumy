@@ -189,15 +189,35 @@ public class ItemController {
 
 	//검색페이지에서 삭제
 	@RequestMapping("/item/deleteSearch")
-	public String deleteSearch(int itemNo, String type, String search_type, String keyword, String orderby) {
+	public String deleteSearch(HttpServletRequest request, int itemNo) {
+			
 		
-		System.out.println("type:");
-		System.out.println("type:");
-		if(itemService.delete(itemNo))
-			return "redirect:/item/list?type="+type+"&search_type="+search_type+"&keyword="+keyword+"&orderby="+orderby;
-		return "/item/error";
-	}             
-	
+		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));//검색되는 단어
+		String search_type = ItemUtility.checkNull(request.getParameter("search_type")); //
+		String type = request.getParameter("type");	//상품 카테고리 ex)outer,top,bottom	
+		String price1 =request.getParameter("price1");
+		String price2 =request.getParameter("price2");
+		String orderby = request.getParameter("orderby");
+		
+		if(keyword.equals("") || keyword ==null)
+			keyword="";
+		
+
+			if(itemService.delete(itemNo)) {
+			
+				request.setAttribute("search_type",search_type);
+				request.setAttribute("keyword",keyword);
+				request.setAttribute("type",type);  
+				request.setAttribute("orderby",orderby);
+				request.setAttribute("price1",price1);
+				request.setAttribute("price2",price2);
+				
+				return "redirect:/item/search?type="+type+"&search_type="+search_type+"&keyword="+keyword+"&orderby="+orderby;
+			
+			}
+			return "/item/error";
+		}
+
 	//리스트페이지에서 삭제
 	@RequestMapping("/item/deleteList")
 	public String deleteList(int itemNo, String type) {
