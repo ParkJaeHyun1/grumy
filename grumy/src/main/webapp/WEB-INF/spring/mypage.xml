@@ -17,22 +17,22 @@
 			value="/WEB-INF/views/template/mypageheader.jsp" />
 	</definition>
 	<definition name="/mypage/index" extends="mypage">
-		<put-attribute name="title" value="그루미" />
+		<put-attribute name="title" value="grumy" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/index.jsp" />
 	</definition>
 	<definition name="/mypage/orderlist/list" extends="mypage">
-		<put-attribute name="title" value="그루미" />
+		<put-attribute name="title" value="grumy" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/orderlist.jsp" />
 	</definition>
 	<definition name="/mypage/cslist/list" extends="mypage">
-		<put-attribute name="title" value="그루미" />
+		<put-attribute name="title" value="grumy" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/cslist.jsp" />
 	</definition>
 	<definition name="/mypage/mylist" extends="mypage">
-		<put-attribute name="title" value="그루미" />
+		<put-attribute name="title" value="grumy" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/mylist.jsp" />
 	</definition>

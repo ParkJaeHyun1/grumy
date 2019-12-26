@@ -13,40 +13,40 @@
 	</definition>
  
  	<definition name="/community/list" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/list.jsp" />
 	</definition>
 	
 	<definition name="/community/create" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/create.jsp" />
 	</definition>
 	
 	<definition name="/community/read" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/read.jsp" />
 	</definition>
 	
 	<definition name="/community/update" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/update.jsp" />
 	</definition>
 	<definition name="/community/create_reply" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/create_reply.jsp" />
 	</definition>
 	<definition name="/community/read_reply" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/read_reply.jsp" />
 	</definition>
 	<definition name="/community/error" extends="main">
-		<put-attribute name="title"	value="그루미"></put-attribute>
+		<put-attribute name="title"	value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/community/error.jsp" />
 	</definition>

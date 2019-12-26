@@ -71,7 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	set point = ((select point from member where id =#{id}) + #{point})
 	where id = #{id}
 </update>
-<delete id="delete" parameterType="String">
+<delete id="delete" parameterType="Map">
 	delete from member
 	where id = #{id} and passwd = #{passwd} 
 </delete>

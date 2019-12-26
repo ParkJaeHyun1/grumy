@@ -13,47 +13,47 @@
 	</definition>
 
 	<definition name="/item/list" extends="main">
-		<put-attribute name="title" value="item 목록"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/list.jsp" />
 	</definition>
 
 	<definition name="/item/read" extends="main">
-		<put-attribute name="title" value="item 상세페이지"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/read.jsp" />
 	</definition>
 
 	<definition name="/item/create" extends="main">
-		<put-attribute name="title" value="item 등록 페이지"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/create.jsp" />
 	</definition>
 
 	<definition name="/item/search" extends="main">
-		<put-attribute name="title" value="item 검색 페이지"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/search.jsp" />
 	</definition>
 
 	<definition name="/item/reSearch" extends="main">
-		<put-attribute name="title" value="item 재검색"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/search.jsp" />
 	</definition>
 	
 	<definition name="/item/search" extends="main">
-		<put-attribute name="title" value="item 검색 페이지"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/search.jsp" />
 	</definition>
 	<definition name="/item/error" extends="main">
-		<put-attribute name="title" value="그루미" />
+		<put-attribute name="title" value="grumy" />
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/error.jsp" />
 	</definition>
 	<definition name="/item/updateForm" extends="main">
-		<put-attribute name="title" value="item 수정"></put-attribute>
+		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/update.jsp" />
 	</definition>
