@@ -85,9 +85,9 @@ deliveryInfo();
 	function deliveryInfo() {
 
 		var t_code = '01';
-		var t_invoice = '${deliveryNo}';
+		var t_invoice = '${deliveryNo}';         
 		var myKey = 'yba8zUaWizS64noI7PA0bw';
-		$.ajax({
+		$.ajax({  
 			type : "GET",
 			dataType : "json",
 			url : "http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key="
@@ -96,8 +96,9 @@ deliveryInfo();
 				console.log(data);
 				var myInvoiceData = "";
 				if (data.status == false) {
-					myInvoiceData += ('<p>' + data.msg + '<p>');
-				} else {
+					$('#contents').css('display','block');
+					$('#contents_layout').html(('<p>' + data.msg + '<p>'));
+				} else {       
 					$('#sender').html(data.senderName);
 					$('#sendDate').html(data.firstDetail.timeString.substring(1,10));
 					$('#receiver').html(data.receiverName);
@@ -117,11 +118,14 @@ deliveryInfo();
 					tracking += ('<td>' + value.timeString.substring(1,10) + '</td>');
 					tracking += ('<td>' + value.timeString.substring(12,16) + '</td>');
 					tracking += ('<td>' + value.where + '</td>');
-					tracking += ('<td>' + value.kind + '</td>');
+					if(value.kind=="배달완료")
+						tracking += ('<td>' + value.kind +'<br/>('+data.recipient +')</td>');
+					else
+						tracking += ('<td>' + value.kind + '</td>');   
 					tracking += ('</tr>');
 				});
 
-				$("#trackingList").html(tracking);
+				$("#trackingList").html(tracking);    
 
 			}
 		});
@@ -1257,22 +1261,13 @@ deliveryInfo();
 		<!-- 왼쪽메뉴 끝 -->
 		<!-- 컨텐츠 시작 -->
 		<div id="contents_layout" class="contents_wrap" style="width: 680px">
-			<a name="contents" id="contents"></a>
-			<div class="page_title" style="display: none">
-				<h3>국내우편(등기/택배)배송조회</h3>
-				<ul class="location">
-					<li class="icon">HOME</li>
-					<li>원클릭 배송조회</li>
-					<li class="last">국내우편(등기/택배) 배송조회</li>
-				</ul>
-			</div>
 			<div class="contents">
 				<p class="m_b_40" style="display: none">등기 및 택배 우편물의 배송정보를 조회할 수
 					있습니다.</p>
 				<div class="h4_wrap">
 					<div id="print">
 						<div class="title_wrap">
-							<h4>기본정보</h4>
+							<h4>기본정보</h4>   
 
 						</div>
 

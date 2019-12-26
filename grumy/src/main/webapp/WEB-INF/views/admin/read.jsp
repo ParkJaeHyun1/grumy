@@ -214,13 +214,12 @@ function update(orderno,ostates, deliveryno){
 							<table border="1" summary="" class="">
 								<caption>기본배송</caption>
 								<colgroup>
-									<col style="width: 92px">
+									<col style="width: 152px">
 									<col style="width: auto">
-									<col style="width: 60px">
-									<col style="width: 100px">
-									<col style="width: 95px">
+									<col style="width: 70px">
 									<col style="width: 110px">
-									<col style="width: 110px">
+									<col style="width: 115px">
+									<col style="width: 120px">   
 								</colgroup>
 								<thead>
 									<tr>
@@ -230,7 +229,6 @@ function update(orderno,ostates, deliveryno){
 										<th scope="col">판매가</th>
 										<th scope="col">배송구분</th>
 										<th scope="col">주문처리상태</th>
-										<th scope="col">취소/교환/반품</th>
 									</tr>
 								</thead>
 								<tfoot class="right">
@@ -285,14 +283,8 @@ function update(orderno,ostates, deliveryno){
 											onclick="OrderHistory.withdraw('R','20191121-0030184|3643|000B|2824514','', 'F')"
 											alt="반품철회">반품철회</a>
 										</td>
-										<td>
-											<p class="displaynone">
-												<a href="#none" class="line"
-													onclick="OrderLayer.getDetailInfo('?product_no=3643&amp;order_id=20191121-0030184&amp;ord_item_code=20191121-0030184-01');">[상세정보]</a>
-											</p>
-											<p class="">-</p>
-										</td>
-									</tr>
+
+									</tr>  
 									</c:forEach>
 									<!-- 리스트 -->
 									
