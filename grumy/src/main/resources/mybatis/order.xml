@@ -47,6 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update norder
 		set rname =
 		#{rname},
+		orderID = #{orderID},
 		postcode = #{postcode},
 		address = #{address},
 		detailaddress =

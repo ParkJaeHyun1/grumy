@@ -6,6 +6,7 @@ import spring.model.item.ItemOptionDTO;
 
 public class OrderDTO {
 	private String orderNo;
+	private String orderID;
 	private String odate;
 	private String pdate;
 	private String id;
@@ -58,6 +59,13 @@ public class OrderDTO {
 		this.orderItemList = orderItemList;
 		this.state = state;
 		this.pdate = pdate;
+	}
+	
+	public String getOrderID() {
+		return orderID;
+	}
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	public String getOrderNo() {
 		return orderNo;

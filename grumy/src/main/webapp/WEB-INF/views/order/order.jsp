@@ -210,9 +210,12 @@ function purchase(){
 	      deleteOrder();
 	      console.log(data);
 	   }).ready(function (data) {  
+	  		console.log('ready');
+		      console.log(data);       
 		  	orderInfo.imagineAccount=data.account;
 	      	orderInfo.imagineBank=data.bankname;
 	      	orderInfo.imagineDate=data.expiredate;
+	      	orderInfo.orderID = data.receipt_id;
 	      	orderInfo.paymentType = '가상계좌';
 	      	orderInfo.state = '입금대기';
 	  		
@@ -230,10 +233,11 @@ function purchase(){
 			   	  alert('결제상품의 정보가 변경되었습니다.\n이전페이지로 이동합니다.');
 	       	   	  $(location).attr('href', '${url}');	
 	  		}
-	      console.log(data);
+   
 	   }).confirm(function (data) {
 	      //결제가 실행되기 전에 수행되며, 주로 재고를 확인하는 로직이 들어갑니다.
 	      //주의 - 카드 수기결제일 경우 이 부분이 실행되지 않습니다.
+	      console.log('confirm');
 	      console.log(data);
 
 	      if (checkItem()&&decreasePoint()) {
@@ -248,17 +252,21 @@ function purchase(){
 	      }
 	   }).close(function (data) {
 		   
-		   if(isPurchased)
+		   	if(isPurchased)
 			location.href= "${pageContext.request.contextPath}/mypage/orderlist/list";    
-	       console.log(data);   
+	      console.log('close');
+			console.log(data);   
 	   }).done(function (data) {
+		   console.log('done');
 		   console.log(data);
+		   
 		   orderInfo.paymentType = data.method_name;                    
 		   orderInfo.state = '배송준비';
+		   orderInfo.orderID = data.receipt_id;
 		   updateOrder();
 		   deleteCartAjax(cartNoList);
-	       alert('결제가 완료되었습니다.');   
-			//location.href= "${pageContext.request.contextPath}/mypage/orderlist/list";                                     
+	       alert('결제가 완료되었습니다.');      
+                                
 	   });         
 }         
 function deleteCartAjax(cartNoList){      
@@ -276,7 +284,7 @@ function deleteCartAjax(cartNoList){
 function checkItem(){         
 	var enable;      
     $.ajax({
-        type : 'put',
+        type : 'put',     
         url : "../order/check",
         data :  JSON.stringify(orderInfo.orderItemList),
         contentType : "application/json; charset=utf-8",
