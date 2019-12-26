@@ -92,105 +92,120 @@
 			$(this).find(".gnb_sub").css("display", "none");
 		});
 	</script>
+
+	 <script>
+	 
+	 		function submitform(){
+	 			
+	 			if(confirm("수정하시겠습니까?")){
+	 				$('#frm').submit();	
+	 			}else{
+	 				return false;
+	 			}
+	 			
+	 		}
+	 </script>
+
+	
 	<!-- //상단카테고리 -->
 
 	<div id="container">
 		<div id="contents">
 
 
+			<form action="adminupdate" method="post" name="frm" id="frm">
+
+
+
+				<div class="titleArea">
+					<h2>PROFILE</h2>
+					<h3>회원 정보</h3>
+				</div>
+
+				<h3 class=" ">기본정보</h3>
+				<div class="ec-base-table typeWrite">
+					<table border="1" summary="">
+						<caption>회원 기본정보</caption>
+						<colgroup>
+							<col style="width: 150px;">
+								<col style="width: auto;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">아이디
+									<td><input type="text" id="id" name="id" value="${dto.id }"/></td>
+								</th>
+							</tr>
+							<tr>
+								<th scope="row" id="">비밀번호</th>
+								<td><input type="text" id="passwd" name="passwd" value="${dto.passwd }"/></td>
+							</tr>
+							<tr>
+								<th scope="row" id="">이름</th>
+								<td><input type="text" id="name" name="name" value="${dto.name }"/></td>
+							</tr>
+							<tr class="">
+								<th scope="row">우편번호</th>
+								<td>${dto.postcode }<br> ${dto.address }<br>
+											${dto.detailaddress } </td>
+							</tr>
+
+							<tr class="">
+								<th scope="row">휴대전화</th>
+								<td><input type="text" id="phone" name="phone" value="${dto.phone }"/></td>
+							</tr>
+
+							<tr>
+								<th scope="row">이메일</th>
+								<td><input type="text" id="email" name="email" value="${dto.email }"/></td>
+							</tr>
+
+							<tr>
+								<th scope="row">생년월일</th>
+								<td><input type="text" id="birth" name="birth" value="${dto.birth }"/></td>
+							</tr>
+
+							<tr>
+								<th scope="row">포인트</th>
+								<td><input type="text" id="point" name="point" value="${dto.point }"/></td>
+							</tr>
+
+							<tr>
+								<th scope="row">회원등급</th>
+								<td>
+								<select id="grade" name="grade">							
+									<option id="H" value="H" <c:if test="${dto.grade=='H' }">selected</c:if>>일반등급</option>
+									<option id="S" value="S" <c:if test="${dto.grade=='S' }">selected</c:if>>VIP</option>
+									<option id="A" value="A" <c:if test="${dto.grade=='A' }">selected</c:if>>관리자</option>
+								</select>
+								${dto.grade }
+								</td>
+							</tr>
 
 
 
 
-			<div class="titleArea">
-				<h2>PROFILE</h2>
-				<h3>회원 정보</h3>
-			</div>
-
-			<h3 class=" ">기본정보</h3>
-			<div class="ec-base-table typeWrite">
-				<table border="1" summary="">
-					<caption>회원 기본정보</caption>
-					<colgroup>
-						<col style="width: 150px;">
-							<col style="width: auto;">
-					</colgroup>
-					<tbody>
-						<tr>
-							<th scope="row">아이디
-								<td>${dto.id }</td>
-							</th>
-						</tr>
-						<tr>
-							<th scope="row" id="">비밀번호</th>
-							<td>${dto.passwd }</td>
-						</tr>
-						<tr>
-							<th scope="row" id="">이름</th>
-							<td>${dto.name }</td>
-						</tr>
-						<tr class="">
-							<th scope="row">우편번호</th>
-							<td>${dto.postcode }<br> ${dto.address }<br>
-										${dto.detailaddress } </td>
-						</tr>
-
-						<tr class="">
-							<th scope="row">휴대전화</th>
-							<td>0${dto.phone }</td>
-						</tr>
-
-						<tr>
-							<th scope="row">이메일</th>
-							<td>${dto.email }</td>
-						</tr>
-
-						<tr>
-							<th scope="row">생년월일</th>
-							<td>${dto.birth }</td>
-						</tr>
-
-						<tr>
-							<th scope="row">포인트</th>
-							<td>${dto.point }</td>
-						</tr>
-
-						<tr>
-							<th scope="row">회원등급</th>
-							<td><c:choose>
-									<c:when test="${dto.grade=='A'}">
-		관리자
-		</c:when>
-									<c:when test="${dto.grade=='H'}">
-		일반회원 
-		</c:when>
-									<c:when test="${dto.grade=='S'}">
-		VIP
-		</c:when>
-								</c:choose></td>
-						</tr>
-
-
-
-
-					</tbody>
-				</table>
-			</div>
+						</tbody>
+					</table>
+				</div>
 
 
 
 
 
 
-			<div class="ec-base-button">
-				<a href="${pageContext.request.contextPath}/member/delete"
-					id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원삭제</a> <a
-					href="javascript:history.back()" class="yg_btn_30 yg_btn3"
-					alt="이전페이지">이전페이지</a> <a href="${pageContext.request.contextPath}/"
-					class="yg_btn_30 yg_btn3" alt="홈으로">홈으로</a>
-			</div>
+				<div class="ec-base-button">
+					<a href="#" onclick="javascript:submitform();"
+						id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원수정</a> 
+					<a href="${pageContext.request.contextPath}/member/delete"
+						id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원삭제</a> <a
+						href="javascript:history.back()" class="yg_btn_30 yg_btn3"
+						alt="이전페이지">이전페이지</a> <a
+						href="${pageContext.request.contextPath}/"
+						class="yg_btn_30 yg_btn3" alt="홈으로">홈으로</a>
+				</div>
 
-
+			</form>
 		</div>
 	</div>
 

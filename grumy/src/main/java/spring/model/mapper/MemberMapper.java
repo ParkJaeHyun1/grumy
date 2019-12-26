@@ -22,5 +22,6 @@ public interface MemberMapper {
 	String findphone(String id);
 	int decreasePoint(Map map);
 	int increasePoint(Map map);
+	int adminupdate(MemberDTO dto);
 	
 }

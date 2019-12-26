@@ -302,6 +302,19 @@ public class MemberController {
 		}
 
 	}
+	@PostMapping("/member/adminupdate")
+	public String adminupdate(MemberDTO dto) {
+		int flag = dao.adminupdate(dto);
+		
+		if (flag == 1) {
+
+			return "redirect:/member/list";
+		} else {
+			
+			return "error";
+		}
+		
+	}
 
 	@GetMapping("/member/update")
 	public String update(Model model, HttpSession session) {
