@@ -108,7 +108,7 @@ public class ServiceController {
 			int refcount = mapper.refcount(dto.getRef());
 			System.out.println(refcount);
 			
-			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev()=="S") {
+			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev().equals("S")) {
 				 
 			
 			String content = dto.getContent().replaceAll("\r\n", "<br>");

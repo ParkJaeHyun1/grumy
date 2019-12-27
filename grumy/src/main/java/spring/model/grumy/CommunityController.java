@@ -101,8 +101,9 @@ public class CommunityController {
 		}
 		BoardDTO dto = mapper.read(board_no);
 		int refcount = mapper.refcount(dto.getRef());
+
 		
-		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev()=="S") {
+		if(grade.equals("A")||id.equals(dto.getCheck_read())||dto.getLev().equals("S")) {
 		String content = dto.getContent().replaceAll("\r\n", "<br>");	
 		dto.setContent(content);
 		
@@ -110,7 +111,7 @@ public class CommunityController {
 		request.setAttribute("dto", dto);
 		return "/community/read";
 		}else {
-			return "/delivery/error";
+			return "/community/error";
 		}
 		
 		
