@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	phone = #{phone}, email = #{email}, birth=#{birth}, point=#{point}, grade=#{grade}
 	where id = #{id}
 </update>
+
+<delete id="admindelete" parameterType="String">
+	delete from member
+	where id=#{id}
+</delete>
 	 
 <insert id="create" parameterType="MemberDTO">
 	insert into member(

@@ -70,6 +70,21 @@ public class MemberController {
 
 		return url;
 	}// end createproc
+	
+	@GetMapping("/member/admindelete")
+	public String admindelete(String id) {
+		
+		int flag = dao.admindelete(id);
+		
+		if(flag==1) {
+			return "redirect:/member/list";
+		}else{
+			return "";
+		}
+		
+		
+	}
+	
 
 	@ResponseBody
 	@GetMapping(value = "/member/idcheck", produces = "application/json;charset=utf-8")

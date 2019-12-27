@@ -178,7 +178,7 @@
 									<option id="S" value="S" <c:if test="${dto.grade=='S' }">selected</c:if>>VIP</option>
 									<option id="A" value="A" <c:if test="${dto.grade=='A' }">selected</c:if>>관리자</option>
 								</select>
-								${dto.grade }
+								
 								</td>
 							</tr>
 
@@ -195,9 +195,9 @@
 
 
 				<div class="ec-base-button">
-					<a href="#" onclick="javascript:submitform();"
+					<a href="#"  onclick="javascript:submitform();"
 						id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원수정</a> 
-					<a href="${pageContext.request.contextPath}/member/delete"
+					<a href="#"  onclick="javascript:delete1();"
 						id="eLeaveLayerBtn" class="yg_btn_30" alt="탈퇴">회원삭제</a> <a
 						href="javascript:history.back()" class="yg_btn_30 yg_btn3"
 						alt="이전페이지">이전페이지</a> <a
@@ -218,6 +218,20 @@
 			</a>
 		</p>
 	</div>
+
+	<script>
+		function delete1(){
+
+		if(confirm("정말 삭제하시겠습니까?")){
+			var url = "admindelete";
+			url += "?id=${dto.id}";
+			
+			location.href = url;
+		}else{
+			return false;
+		}
+		}
+	</script>
 
 
 	<script>

@@ -23,5 +23,6 @@ public interface MemberMapper {
 	int decreasePoint(Map map);
 	int increasePoint(Map map);
 	int adminupdate(MemberDTO dto);
+	int admindelete(String id);
 	
 }
