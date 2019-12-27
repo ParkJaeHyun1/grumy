@@ -24,10 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	</select>
-	<select id="AllParentType" resultType="ItemTypeDTO">
-		select distinct parentType
-		from itemType where parentType is not null
-	</select>
+
 
 	<select id="qtotal" parameterType="Map" resultType="int">
 		select
@@ -288,15 +285,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 			<if test="type != 'SearchTotal'">
-				and t.parentType = #{type}
-			</if>
+				and (t.type = #{type} or t.parentType = #{type})     
+			</if>    
 
 			<if test="price1 != null and price1 != ''">
 		<![CDATA[
  				and price-salePrice >= #{price1} and price-salePrice <= #{price2}
  				]]>
 			</if>
-		</where>
+		</where>         
 		order by
 		<choose>
 			<when test="orderby == 'price'">

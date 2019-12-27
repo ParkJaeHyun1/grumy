@@ -92,8 +92,7 @@ public class ItemController {
 		
 		String paging = ItemUtility.paging(SearchTotal, nowPage, recordPerPage, search_type, keyword,type);
 		
-		request.setAttribute("AlltypeList", mapper.AllParentType());
-		request.setAttribute("parentType",mapper.selectParentType(type));
+		request.setAttribute("typeList", mapper.selectTypeListAll());
 		request.setAttribute("searchlist",searchlist);
 		request.setAttribute("search_type",search_type);
 		request.setAttribute("keyword",keyword);
@@ -189,22 +188,18 @@ public class ItemController {
 
 	//검색페이지에서 삭제
 	@RequestMapping("/item/deleteSearch")
-	public String deleteSearch(HttpServletRequest request, int itemNo) {
+	public String deleteSearch(HttpServletRequest request, int itemNo) throws UnsupportedEncodingException {
 			
 		
-		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));//검색되는 단어
+		String keyword = request.getParameter("keyword");//검색되는 단어
 		String search_type = ItemUtility.checkNull(request.getParameter("search_type")); //
 		String type = request.getParameter("type");	//상품 카테고리 ex)outer,top,bottom	
 		String price1 =request.getParameter("price1");
 		String price2 =request.getParameter("price2");
 		String orderby = request.getParameter("orderby");
-		
-		if(keyword.equals("") || keyword ==null)
-			keyword="";
-		
-
+                     System.out.println(keyword);
 			if(itemService.delete(itemNo)) {
-			
+
 				request.setAttribute("search_type",search_type);
 				request.setAttribute("keyword",keyword);
 				request.setAttribute("type",type);  
@@ -212,8 +207,8 @@ public class ItemController {
 				request.setAttribute("price1",price1);
 				request.setAttribute("price2",price2);
 				
-				return "redirect:/item/search?type="+type+"&search_type="+search_type+"&keyword="+keyword+"&orderby="+orderby;
-			
+				return "redirect:/item/search?type="+type+"&search_type="+search_type+"&keyword="+ URLEncoder.encode(keyword, "UTF-8") +"&orderby="+orderby;
+			              
 			}
 			return "/item/error";
 		}

@@ -62,18 +62,17 @@
 						function delete1(itemNo, type) {
 
 							if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
-
 								var url = "${pageContext.request.contextPath}/item/deleteSearch";
 								url += "?itemNo=" + itemNo;
-				              	url += "&type=" + type;
-				              	url += "&search_type=${search_type}";
-				              	url += "&keyword=${param.keyword}";
-				              	url += "&price1=${price1}";
-				             	url += "&price2=${price2}";
-				              	url += "&orderby=" + 'itemNo';          
-								location.href = url;                        
-                      
-							}             
+								url += "&type=" + type;
+								url += "&search_type=${search_type}";
+								url += "&keyword=${keyword}";
+								url += "&price1=${price1}";         
+								url += "&price2=${price2}";           
+								url += "&orderby=" + 'itemNo';
+								location.href = url;
+
+							}
 
 						}
 					</script>
@@ -159,14 +158,17 @@
 										<option value="SearchTotal"
 											<c:if test="${type=='SearchTotal'}">selected</c:if>>전체
 											카테고리</option>
-										<c:forEach var="dto" items="${AlltypeList}">
-											<option value="${dto.parentType}"
-												<c:if test="${type == dto.parentType}">
-												selected
-												</c:if>>
-												${dto.parentType}</option>
+										<c:forEach var="dto" items="${typeList}">
+											<c:if test="${empty dto.parentType}">
+
+												<option value="${dto.type}"
+													<c:if test="${type== dto.type}">selected</c:if>>${dto.type}</option>
+											</c:if>        
 										</c:forEach>
+
+
 									</select>
+
 								</div>
 								<div class="item">
 									<strong>검색조건</strong> <select id="search_type"
@@ -191,8 +193,8 @@
 										class="input01" size="15" value="${param.price1}" type="text" />
 									~ <input id="price2" name="price2" fw-filter="isNumber"
 										fw-label="최대판매가격" fw-msg="" class="input01" size="15"
-										value="${param.price2}" type="text" />
-										 <input type="hidden" name="orderby" id="orderby" />
+										value="${param.price2}" type="text" /> <input type="hidden"
+										name="orderby" id="orderby" />
 
 								</div>
 
@@ -204,7 +206,8 @@
 						<c:if
 							test="${not empty sessionScope.id && sessionScope.grade == 'A' }">
 							<p align="right">
-								<button class="yg_btn_28 yg_btn3" style="float: rigth" type="button"  
+								<button class="yg_btn_28 yg_btn3" style="float: rigth"
+									type="button"
 									onclick="location.href='${pageContext.request.contextPath}/item/createForm'">상품등록</button>
 							</p> &nbsp;       
 							
@@ -214,25 +217,29 @@
 
 							<c:choose>
 								<c:when test="${empty searchlist}">
-							        
-							    </c:when>
+
+								</c:when>
 								<c:otherwise>
-								<p class="record">
-									TOTAL <strong>${SearchTotal}</strong> ITEMS
-								</p>
-								  </c:otherwise>
+									<p class="record">
+										TOTAL <strong>${SearchTotal}</strong> ITEMS
+									</p>
+								</c:otherwise>
 							</c:choose>
-	             
+
 							<ul
 								class="xans-element- xans-search xans-search-orderby listType">
-								<li class="xans-record-" onclick="setOrderBy('itemNo')" <c:if test="${orderby=='itemNo' }"> style="font-weight:bold"</c:if>>신상품</li>
-							<li class="xans-record-" onclick="setOrderBy('price')"<c:if test="${orderby=='price' }"> style="font-weight:bold"</c:if>>높은가격</li>
-							<li class="xans-record-" onclick="setOrderBy('orderCount')"<c:if test="${orderby=='orderCount' }"> style="font-weight:bold"</c:if>>인기상품</li>
-							<li class="xans-record-" onclick="setOrderBy('reviewCount')"<c:if test="${orderby=='reviewCount' }"> style="font-weight:bold"</c:if>>리뷰</li>
-							</ul>              
-						</div>        
-						<c:if test="${empty searchlist}">                      
-							<div class="noData">           
+								<li class="xans-record-" onclick="setOrderBy('itemNo')"
+									<c:if test="${orderby=='itemNo' }"> style="font-weight:bold"</c:if>>신상품</li>
+								<li class="xans-record-" onclick="setOrderBy('price')"
+									<c:if test="${orderby=='price' }"> style="font-weight:bold"</c:if>>높은가격</li>
+								<li class="xans-record-" onclick="setOrderBy('orderCount')"
+									<c:if test="${orderby=='orderCount' }"> style="font-weight:bold"</c:if>>인기상품</li>
+								<li class="xans-record-" onclick="setOrderBy('reviewCount')"
+									<c:if test="${orderby=='reviewCount' }"> style="font-weight:bold"</c:if>>리뷰</li>
+							</ul>
+						</div>
+						<c:if test="${empty searchlist}">
+							<div class="noData">
 								<strong class="warning">검색결과가 없습니다.</strong> <strong>정확한
 									검색어 인지 확인하시고 다시 검색해 주세요.</strong>
 								<ul>
@@ -277,7 +284,7 @@
 												onclick="javascript:delete1('${dto.itemNo}','${type}')">상품삭제</button>
 
 										</p>
-									</c:if>        
+									</c:if>
 
 
 
@@ -432,7 +439,7 @@
 	<script type="text/javascript"
 		src="/ind-script/optimizer.php?filename=rZTBTgMhEIYfYHv1OUiriWetiR62sWlNPE9h3J0uMMhAm317t2sPvQpeCAmZj_8f_kH17FAtV1GFyF0EpyAEtQEPHaodCueoUR1FgYxe_66L92gwap8WR7lTJYBnkAFTPSFE0ljJ2EY2WZcrWXMO7Gu8bMjidF5c_4KBhcrv_yTpW5I6gOZc0YKIGivKd3P5Byew6yodc7LLA4Uev6g21C2MFRpeI5jyKD3lxA4S6Rmz7_lcnupsE2055FCOGFsa8DqgdQ_b0gkt-YF9XTbepjnhOJaKCZD6yBabE1gyMKHKHTGYPxWHgo9OzgsN1t7mEXWTBeMkxntcLR_vVcgHS7rpk7NKDDYGhTqvZCD_cIG46V6LysLIOSkNCbuphcXEK-cAQvqCnzc1-jQ7d5uLWoffmfTQnAjP_8d0l2mSnsO-pxDId5WGRexE-AE&type=js&k=e07740b161a7307da8dfa3f8b8d98779b103f95f&t=1573420409"></script>
 	<script type="text/javascript">
-		function setOrderBy(val){
+		function setOrderBy(val) {
 			$('#orderby').val(val);
 			$('#searchForm').submit();
 		}
