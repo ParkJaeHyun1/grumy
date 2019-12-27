@@ -34,6 +34,8 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
+
+	
 	@GetMapping("/item/search")          
 	public String search(HttpServletRequest request, HttpSession session) {
 		
@@ -112,6 +114,7 @@ public class ItemController {
 	@RequestMapping("/item/best")
 	public String listBest(HttpServletRequest request) {
 		
+
 		ItemDTO dto = new ItemDTO(); 
 		
 		Map map = new HashMap();
@@ -229,6 +232,7 @@ public class ItemController {
 	   public String create(ItemDTO dto, HttpServletRequest request,String[] itemColorList,String[] itemSizeList,int[] itemCountList) throws UnsupportedEncodingException {
 	      ArrayList<ItemOptionDTO> itemOptionList = new ArrayList<ItemOptionDTO>();
 
+	      
 	      for(int i=0;i<itemColorList.length;i++) {
 	         itemOptionList.add(new ItemOptionDTO(0,0,itemCountList[i],itemSizeList[i],itemColorList[i]));
 	      }
@@ -246,6 +250,8 @@ public class ItemController {
 	
 		@RequestMapping("/item/update")
 		public String update(ItemDTO dto, HttpServletRequest request,String[] itemColorList,String[] itemSizeList,int[] itemCountList) throws UnsupportedEncodingException {
+			
+			
 			ArrayList<ItemOptionDTO> itemOptionList = new ArrayList<ItemOptionDTO>();
 
 			for(int i=0;i<itemColorList.length;i++) 
@@ -264,7 +270,13 @@ public class ItemController {
 
 	
 	@RequestMapping("/item/updateForm")
-	public String updateForm(HttpServletRequest request,int itemNo) {
+	public String updateForm(HttpServletRequest request,int itemNo, HttpSession session) {
+		
+		
+		if(session.getAttribute("id")==null|| session.getAttribute("grade")!="A") {
+			return "/item/urlError";
+		}           
+		
 		ArrayList<ItemTypeDTO> list = mapper.selectTypeListAll();
 		ItemDTO item = mapper.read(itemNo);
 		
@@ -280,10 +292,14 @@ public class ItemController {
 		return "/item/updateForm";
 	}
 	
-	@RequestMapping("/item/createForm")
-	public String create(HttpServletRequest request) {
+	@RequestMapping("/item/createForm")       
+	public String create(HttpServletRequest request, HttpSession session) {
+		if(session.getAttribute("id")==null || session.getAttribute("grade")!="A") {
+			return "/item/urlError";                 
+		}
+		
 		request.setAttribute("typeList", mapper.selectTypeListAll());
-		return "/item/create";
+		return "/item/create";       
 	}
 
 

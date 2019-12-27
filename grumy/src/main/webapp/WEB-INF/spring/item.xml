@@ -47,6 +47,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/item/error.jsp" />
 	</definition>
+	<definition name="/item/urlError" extends="main">
+		<put-attribute name="title" value="grumy" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/urlError.jsp" />
+	</definition>
 	<definition name="/item/updateForm" extends="main">
 		<put-attribute name="title" value="grumy"></put-attribute>
 		<put-attribute name="body"
