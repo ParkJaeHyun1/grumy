@@ -129,11 +129,13 @@
 											class="xans-record-">
 											<c:choose>										
 												<c:when test="${aa != dto.orderNo }">
-												<td rowspan="${dto.getOrderItemList().size() }">
-													${dto.odate}<br>
-													<a class="text-number"
-													href="${root }/admin/read?orderno=${dto.orderNo}">
-													<u>[${dto.orderNo}]</u></a>
+													<td rowspan="${dto.getOrderItemList().size() }">
+														${dto.odate}<br>
+														${dto.state }<br>
+														<a class="text-number"
+														href="${root }/admin/read?orderno=${dto.orderNo}">
+														<u>[${dto.orderNo}]</u></a>
+														<c:set var="aa" value="${dto.orderNo }"/>
 													</td>
 												</c:when>
 											</c:choose>
@@ -148,18 +150,7 @@
 											<td>${dto2.count}</td>
 											<td>${dto2.itemPrice }</td>
 											<td>${dto.id}</td>
-											<c:choose>										
-												<c:when test="${aa != dto.orderNo }">
-													<c:set var="aa" value="${dto.orderNo }"/>
-													<td>${dto2.state }</td>
-								<!--					<td><button type="button" class="yg_btn_28 yg_btn3" 
-															onclick="update('${dto.orderNo}','${param.orderstate }')">확인버튼</button></td>  -->
-												</c:when>
-												<c:otherwise>
-													<td></td>
-								<!-- 					<td></td>   -->
-												</c:otherwise>
-											</c:choose>							
+											<td>${dto2.state }</td>						
 										</tr>
 										</c:forEach>
 									</c:forEach>
@@ -187,6 +178,7 @@
 										<c:if test="${col == 'buyer' }">selected</c:if>>구매자</option>
 								</select> 
 								<input id="word" name="word" type="text">
+								<input id="orderstate" name="orderstate" type="hidden" value="${orderstate }">
 								<button class="yg_btn_28 yg_btn3">SEARCH</button>
 							</p>
 						</fieldset>

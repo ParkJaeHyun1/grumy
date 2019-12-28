@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="util"  uri="/ELFunctions" %>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html>
@@ -159,11 +158,18 @@ $(document).ready(function(){
 										재고관리</a></span> <span
 											class="number-area aa">
 										</span>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<span class="info-title">
 										<a class="text-number"
-												href="${root }/admin/memberManage/list">
+												href="${root }/member/list">
 										회원관리</a></span> <span
+											class="number-area aa">
+										</span>				
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span class="info-title">
+										<a class="text-number"
+												href="${root }/admin/order/list?orderstate=주문통합관리">
+										주문통합관리</a></span> <span
 											class="number-area aa">
 										</span>				
 										</li>
@@ -238,12 +244,31 @@ $(document).ready(function(){
 												href="${root }/service/list?category=취소">${cancel }</a>
 											<!----> 
 												<span>건</span>
-										</span></li>
+											</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<span class="info-title">변경요청</span> <span
+											class="number-area">
+												<!---->
+												<a class="text-number" 
+												href="${root }/service/list?category=변경">${modify }</a>
+											<!----> 
+												<span>건</span>
+											</span>
+										</li>
 										<li><span class="info-title">반품요청</span> <span
 											class="number-area">
 												<!---->
 												<a class="text-number" 
 												href="${root }/service/list?category=반품">${ret }</a>
+											<!----> 
+												<span>건</span>
+											</span>
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<span class="info-title">기타요청</span> <span
+											class="number-area">
+												<!---->
+												<a class="text-number" 
+												href="${root }/service/list?category=기타">${etc }</a>
 											<!----> 
 												<span>건</span>
 										</span></li>
@@ -380,7 +405,7 @@ $(document).ready(function(){
 														
 													</c:forEach>
 													<br>
-													<a href="${root }/delivery/list" style="text-align:right"><li>더보기</li></a>
+													<a href="${root }/service/list" style="text-align:right"><li>더보기</li></a>
 												</c:otherwise>
 											</c:choose>
 										</ul>

@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,8 @@ public class AdminController {
 		int change = mapper.cstotal("교환");   	//교환요청
 	    int cancel = mapper.cstotal("취소");   	//취소요청
         int ret = mapper.cstotal("반품");   		//반품요청 
+        int modify = mapper.cstotal("변경");   		//변경요청 
+        int etc = mapper.cstotal("기타");   		//기타요청 
 		int priceToday = mapper.priceTotal("t");	//오늘정산
 		int priceDelay = mapper.priceTotal("d");	//정산예정
         	
@@ -63,6 +66,8 @@ public class AdminController {
 		request.setAttribute("sFin", sFin);
 		request.setAttribute("change", change);
 	    request.setAttribute("cancel", cancel);
+	    request.setAttribute("modify", modify);
+	    request.setAttribute("etc", etc);
 	    request.setAttribute("ret", ret);
 	    request.setAttribute("priceToday", priceToday);
 	    request.setAttribute("priceDelay", priceDelay);
@@ -145,40 +150,92 @@ public class AdminController {
 	
 	@RequestMapping("/admin/update")
 	@ResponseBody
-	public String confirm(@RequestBody Map<String,String> map) {
-		System.out.println(map.get("orderno") + "/" + map.get("state") + " " + map.get("deliveryno") + " ");
-		System.out.println(mapper.updateState(map));
-		System.out.println(mapper.updateStateP(map));
-		if(mapper.updateState(map)>0 && mapper.updateStateP(map)>0) {
-			System.out.println("업뎃 성공");
+	public String confirm(@RequestBody Map<String, Object> map) {
+		System.out.println(map.get("orderno"));
+		System.out.println(map.get("state"));
+		System.out.println(map.get("deliveryno"));
+		System.out.println(map.get("orderItemNo"));
+		System.out.println(map.get("listSize"));
+		
+		String orderno = (String) map.get("orderno");
+		int listSize = Integer.parseInt(map.get("listSize").toString());
+		ArrayList state = (ArrayList)map.get("state");
+		ArrayList deliveryno = (ArrayList)map.get("deliveryno");
+		ArrayList orderItemNo = (ArrayList)map.get("orderItemNo");
+		
+		String norderState = (String)state.get(0);
+		Map mapU = new HashMap();
+		mapU.put("orderno", orderno);
+		mapU.put("state", norderState);
+		
+		if(norderState.equals("배송준비")) {
+			if(mapper.pdateCheck(orderno) == 0) {
+				if(mapper.updatePdate(orderno)>0) {
+					System.out.println("업뎃 성공 pdate");					
+				}
+			}
 		}
+		if(mapper.updateState(mapU)>0) {
+			System.out.println("업뎃 성공 norder");
+		}
+		for(int i = 0; i<listSize; i++) {
+			mapU.put("state",state.get(i+1));
+			mapU.put("deliveryno",deliveryno.get(i));
+			mapU.put("orderItemNo",orderItemNo.get(i));
+			if(mapper.updateStateP(mapU)>0) {
+				System.out.println("업뎃 성공 orderitem");
+			}
+		}
+		//System.out.println(mapper.updateState(map));
+		//System.out.println(mapper.updateStateP(map));
+		//if(mapper.updateState(map)>0 && mapper.updateStateP(map)>0) {
+		//	System.out.println("업뎃 성공");
+		//}
 		return "success1";          
 	}
 	
 	@RequestMapping("/admin/order/list")
 	public String nOrder(HttpServletRequest request) {
-		String orderstate = request.getParameter("orderstate");
-		String state = orderstate;
+		String word = Utility.checkNull(request.getParameter("word"));
+		String col = Utility.checkNull(request.getParameter("col"));
+		String orderstate = Utility.checkNull(request.getParameter("orderstate"));
 		
-		String word = request.getParameter("word");
-		String col = request.getParameter("col");
-		String nowPageS = request.getParameter("nowPage");
-		Map map = paging(word, col, nowPageS, state, orderstate);
-	
-		int nowPage = (int) map.get("nowPage");
-		String paging = (String)map.get("paging");
-		ArrayList<OrderDTO> list = (ArrayList<OrderDTO>) map.get("list");
-
+		System.out.println(word + " " + col + "/");
+		//페이징 관련
+		int nowPage = 1;
+		if(request.getParameter("nowPage")!= null){
+			nowPage = Integer.parseInt(request.getParameter("nowPage"));
+		} 		
+		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
+		
+		//디비에서 가져올 순번
+		int sno = ((nowPage-1) * recordPerPage) + 1 ;
+		int eno = nowPage * recordPerPage;
+		
+		Map map = new HashMap();
+		map.put("col", col);
+		map.put("word", word);
+		map.put("sno",sno);
+		map.put("eno",eno);
+		map.put("state", orderstate);
+		
+		ArrayList<OrderDTO> list = mapper.list(map);		
+		int totalP = mapper.totalP(map);	
+		String paging = Utility.pagingO(totalP, nowPage, recordPerPage, col, word, orderstate);
+		
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("nowPage", nowPage);
 		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
+		request.setAttribute("orderstate", orderstate);
 		return "/admin/order/list";
 	}
 	
-	@RequestMapping("/admin/read")
+	@RequestMapping(value = {"/admin/read", "/admin/read/update"})
 	public String read(HttpServletRequest request, HttpSession session, String orderno) {
+		String URL = request.getServletPath();
+		String path = URL;
 		String id = (String)session.getAttribute("id");
 		MemberDTO dto = mapper.read(id);
 		ArrayList<OrderItemDTO> itemList = mapper.orderCount(id);
@@ -187,7 +244,6 @@ public class AdminController {
 		for(OrderItemDTO item: itemList) { 
 			map.put(item.getState(), item.getCount());
 			
-			System.out.println(item.getState() + item.getCount());
 		}
 		//String orderno = (String)request.getAttribute("orderno");
 		map.put("id", id);
@@ -203,6 +259,7 @@ public class AdminController {
 			totalPay += 5000;
 		}
 		
+		request.setAttribute("id", id);
 		request.setAttribute("map", map);
 		request.setAttribute("dto", dto);
 		request.setAttribute("totalPay", totalPay);
@@ -210,41 +267,7 @@ public class AdminController {
 		request.setAttribute("readP", readP);
 		request.setAttribute("readPList", readPList);
 		
-		return "/admin/read";
-	}
-	
-	//페이징 처리 통합
-	public Map paging(String word, String col, String nowPageS, String state, String orderstate) {
-		word = Utility.checkNull(word);
-		col = Utility.checkNull(col);
-		
-		//페이징 관련
-		int nowPage = 1;
-		if(nowPageS!= null){
-			nowPage = Integer.parseInt(nowPageS);
-		} 	
-		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
-		
-		//디비에서 가져올 순번
-		int sno = ((nowPage-1) * recordPerPage) + 1 ;
-		int eno = nowPage * recordPerPage;
-		
-		Map map = new HashMap();
-		map.put("col", col);
-		map.put("word", word);
-		map.put("sno",sno);
-		map.put("eno",eno);
-		map.put("state",state);
-		
-		ArrayList<OrderDTO> list = mapper.list(map);		
-		int totalP = mapper.totalP(map);	
-		String paging = Utility.pagingO(totalP, nowPage, recordPerPage, col, word, orderstate);
-		
-		map.put("nowPage", nowPage);
-		map.put("paging", paging);
-		map.put("list", list);
-		
-		return map;
+		return path;
 	}
 
 }

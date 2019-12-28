@@ -116,7 +116,7 @@
 								</select> 
 								<input id="word" name="word" type="text">
 								<input id="datec" name="datec" type="hidden" value="${datec }">
-								<button class="yg_btn_28 yg_btn3">SEARCH</button>${datec }
+								<button class="yg_btn_28 yg_btn3">SEARCH</button>
 							</p>
 						</fieldset>
 					</div>
