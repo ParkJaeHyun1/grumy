@@ -194,7 +194,7 @@ function purchase(){
 	      },
 	      order_id: getOrderID(), //고유 주문번호로, 생성하신 값을 보내주셔야 합니다.
 	      params: {callback1: '111', callback2: '22222', customvar1234: '변수명도 마음대로'},
-	      account_expire_at: '2018-12-20', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )
+	      account_expire_at: '2019-12-30', // 가상계좌 입금기간 제한 ( yyyy-mm-dd 포멧으로 입력해주세요. 가상계좌만 적용됩니다. )      
 	      extra: {
 	          start_at: '2020-05-10', // 정기 결제 시작일 - 시작일을 지정하지 않으면 그 날 당일로부터 결제가 가능한 Billing key 지급
 	         end_at: '2022-05-10', // 정기결제 만료일 -  기간 없음 - 무제한

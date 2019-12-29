@@ -1,19 +1,9 @@
 package spring.model.grumy;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import spring.model.mapper.MemberMapper;
@@ -91,13 +82,24 @@ public class OrderRestController {
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PutMapping("/order/bootpayResponse")
+	@RequestMapping("/order/bootpayResponse")
 	public String bootpayResponse(@RequestBody Map map) {
+		System.out.println("11111111111111111111111111111111");
 		System.out.println("상태:"+map.get("status"));
 		System.out.println("주문번호:"+map.get("order_id"));
-	
-		if(map.get("method_name").equals("가상계좌") && (int)map.get("status") == 1)
+		System.out.println("pg:"+map.get("pg"));
+		System.out.println("method:"+map.get("method_name"));
+		System.out.println("11111111111111111111111111111111");
+		
+		if(map.get("method_name").equals("가상계좌") && (int)map.get("status") == 1) {
+			map.put("state", "배송준비");
 			orderMapper.updateState(map);
+		}
+		// 취소사유가 환불일수도있고 모르니까 이 상태변화는 관리자가 업데이트창에서 변경했을때 하면될듯?
+//		else if((int)map.get("status") == 20) {  			
+//			map.put("state", "주문취소");
+//			orderMapper.updateState(map);
+//		}
 		return "OK";
 	}
 
