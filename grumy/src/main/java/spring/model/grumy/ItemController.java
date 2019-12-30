@@ -307,6 +307,8 @@ public class ItemController {
 	public String read(int itemNo, Model model, HttpServletRequest request) {
 
 		ItemDTO dto = mapper.read(itemNo);
+		if(dto == null)
+			return "/error";
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 
 		int nowPager = 1;

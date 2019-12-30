@@ -153,11 +153,8 @@ public class MemberController {
 	@RequestMapping("/member/login")
 	public String login(HttpSession session, Model model, HttpServletRequest request,
 			@RequestParam(value = "url", required = false) String url) {
-		
-		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-			
-		model.addAttribute("nurl", naverAuthUrl);
-
+		if(session.getAttribute("id") != null)
+			return "/error";
 		request.setAttribute("url", url);
 		
 		return "/login";
