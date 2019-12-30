@@ -66,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where orderno = #{orderNo}
 	</update>
 	<update id="updateState" parameterType="Map">
-		update norder set state = #{state} and pdate = sysdate where orderNo = #{order_id}
+		update norder set state = #{state}, pdate = sysdate where orderNo = #{order_id}
 	</update>
 	<update id="updateItem" parameterType="OrderItemDTO">
 		update orderItem
