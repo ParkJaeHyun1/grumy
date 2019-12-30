@@ -133,7 +133,7 @@
 														${dto.odate}<br>
 														${dto.state }<br>
 														<a class="text-number"
-														href="${root }/admin/read?orderno=${dto.orderNo}">
+														href="${root }/mypage/order/read?orderno=${dto.orderNo}">
 														<u>[${dto.orderNo}]</u></a>
 														<c:set var="aa" value="${dto.orderNo }"/>
 													</td>

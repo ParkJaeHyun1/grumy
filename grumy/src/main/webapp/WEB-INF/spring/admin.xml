@@ -27,10 +27,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/order.jsp" />
 	</definition>
- 	<definition name="/admin/read" extends="mypage">
+ 	<definition name="/mypage/order/read" extends="mypage">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
-			value="/WEB-INF/views/admin/read.jsp" />
+			value="/WEB-INF/views/mypage/read.jsp" />
 	</definition>
  	<definition name="/admin/itemManage/list" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>

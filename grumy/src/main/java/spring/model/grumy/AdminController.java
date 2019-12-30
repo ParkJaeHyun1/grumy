@@ -232,7 +232,7 @@ public class AdminController {
 		return "/admin/order/list";
 	}
 	
-	@RequestMapping(value = {"/admin/read", "/admin/read/update"})
+	@RequestMapping(value = {"/mypage/order/read", "/admin/read/update"})
 	public String read(HttpServletRequest request, HttpSession session, String orderno) {
 		String URL = request.getServletPath();
 		String path = URL;

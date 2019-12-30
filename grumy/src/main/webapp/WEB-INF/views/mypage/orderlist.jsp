@@ -86,7 +86,7 @@
 											<c:when test="${aa != list.orderNo }">
 												<td rowspan="${list.getOrderItemList().size() }">
 													${list.odate}<br> <a class="text-number"
-													href="${pageContext.request.contextPath }/admin/read?orderno=${list.orderNo}">
+													href="${pageContext.request.contextPath }/mypage/order/read?orderno=${list.orderNo}">
 														[${list.orderNo}]</a>
 												</td>
 											</c:when>

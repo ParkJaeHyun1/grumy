@@ -45,8 +45,10 @@ function read_update(){
 					<!-- 주문정보 -->
 					<div class="orderArea">
 						<div class="title">
+							<c:if test="${id == 'admin' }">
 							<input class="yg_btn_28 yg_btn3" style="float:right;" 
 								onclick="read_update()" value="주문정보수정"/>
+							</c:if>
 							<h3>주문정보</h3>
 						</div>
 
