@@ -104,9 +104,13 @@ public class ServiceController {
 			
 		
 			BoardDTO dto = mapper.read(board_no);
-			
+			if(dto==null) {
+				return "/error";
+			}
 			int refcount = mapper.refcount(dto.getRef());
 			System.out.println(refcount);
+			
+
 			
 			if(grade.equals("A")||id.equals(dto.getId())||dto.getLev().equals("S")) {
 				 

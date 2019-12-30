@@ -85,6 +85,9 @@ public class NoticeController {
 	public String read(int no, Model model) {
 		NoticeDTO dto = mapper.read(no);
 		
+		if(dto==null) {
+			return "/error";
+		}
 		String content = dto.getContent().replaceAll("\r\n", "<br>");
 		
 		dto.setContent(content);

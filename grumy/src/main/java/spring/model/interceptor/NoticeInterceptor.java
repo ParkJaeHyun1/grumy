@@ -10,7 +10,7 @@ public class NoticeInterceptor extends HandlerInterceptorAdapter{
 		String root = request.getContextPath();
 		try {
 			// grade 세션값이 널일경우
-			if (request.getSession().getAttribute("grade") == null) {
+			if (request.getSession().getAttribute("grade") != "A") {
 				// 로그인페이지로 redirect
 				response.sendRedirect(root+"/member/login");
 				return false;
