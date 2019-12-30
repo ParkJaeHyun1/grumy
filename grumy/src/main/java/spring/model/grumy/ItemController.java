@@ -274,7 +274,7 @@ public class ItemController {
 		
 		
 		if(session.getAttribute("id")==null|| session.getAttribute("grade")!="A") {
-			return "/item/urlError";
+			return "/error";
 		}           
 		
 		ArrayList<ItemTypeDTO> list = mapper.selectTypeListAll();
@@ -295,7 +295,7 @@ public class ItemController {
 	@RequestMapping("/item/createForm")       
 	public String create(HttpServletRequest request, HttpSession session) {
 		if(session.getAttribute("id")==null || session.getAttribute("grade")!="A") {
-			return "/item/urlError";                 
+			return "/error";                 
 		}
 		
 		request.setAttribute("typeList", mapper.selectTypeListAll());
@@ -307,8 +307,6 @@ public class ItemController {
 	public String read(int itemNo, Model model, HttpServletRequest request) {
 
 		ItemDTO dto = mapper.read(itemNo);
-		if(dto == null)
-			return "/error";
 		dto.setContent(dto.getContent().replaceAll("\r\n", "<br>"));
 
 		int nowPager = 1;
