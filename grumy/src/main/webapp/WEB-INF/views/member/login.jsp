@@ -9,7 +9,7 @@
 <!--PG크로스브라우징필수내용 시작-->
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache"> 
 <!--PG크로스브라우징필수내용 끝-->
 <!--해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
 <!--해당 CSS는 쇼핑몰 전체 슬라이드 배너에 영향을 줍니다. 삭제와 수정에 주의해주세요.-->
