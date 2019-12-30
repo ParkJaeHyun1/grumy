@@ -57,10 +57,10 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 							class="log">LOGOUT</a> <a
 							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
 						<a
-							href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a>
+							href="${pageContext.request.contextPath }/mypage/order/list">ORDER</a>
 						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>
 						<a class=" cart"
-							href="${pageContext.request.contextPath}/cart/list">CART</a>
+							href="${pageContext.request.contextPath}/cart/list">CART</a>          
 					</div>
 				</c:when>
 				<c:when
