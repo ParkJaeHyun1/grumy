@@ -227,7 +227,7 @@ public class ItemController {
 		return "/item/error";
 	}
 
-
+   
 
 
 	  @RequestMapping("/item/create")
@@ -293,9 +293,7 @@ public class ItemController {
 	
 	@RequestMapping("/item/createForm")       
 	public String create(HttpServletRequest request, HttpSession session) {
-//		if(session.getAttribute("id")==null) {
-//			return "/error";                 
-//		}                 
+              
 		
 		request.setAttribute("typeList", mapper.selectTypeListAll());
 		return "/item/create";       

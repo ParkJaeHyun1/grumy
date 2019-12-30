@@ -14,24 +14,24 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/service/**" />
-			<mvc:exclude-mapping path="/service/list"/>
-			<mvc:exclude-mapping path="/service/read"/>
+			<mvc:exclude-mapping path="/service/list" />
+			<mvc:exclude-mapping path="/service/read" />
 			<beans:bean
 				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/notice/**" />
-			<mvc:exclude-mapping path="/notice/list"/>
-			<mvc:exclude-mapping path="/notice/read"/>
+			<mvc:exclude-mapping path="/notice/list" />
+			<mvc:exclude-mapping path="/notice/read" />
 			<beans:bean
 				class="spring.model.interceptor.NoticeInterceptor" />
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/community/**" />
-			<mvc:exclude-mapping path="/community/list"/>
-			<mvc:exclude-mapping path="/community/read"/>
+			<mvc:exclude-mapping path="/community/list" />
+			<mvc:exclude-mapping path="/community/read" />
 			<beans:bean
 				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
@@ -41,22 +41,35 @@
 			<beans:bean
 				class="spring.model.interceptor.AdminInterceptor" />
 		</mvc:interceptor>
-		
+
+		<mvc:interceptor>
+			<mvc:mapping path="/item/createForm" />
+			<mvc:mapping path="/item/create" />
+			<mvc:mapping path="/item/updateForm" />
+			<mvc:mapping path="/item/update" />
+			<mvc:mapping path="/item/deleteList" />
+			<mvc:mapping path="/item/deleteSearch" />
+			<beans:bean
+				class="spring.model.interceptor.AdminInterceptor" />
+		</mvc:interceptor>
+
+
 		<mvc:interceptor>
 			<mvc:mapping path="/mypage/**" />
 			<beans:bean
 				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/cart/**" />
 			<beans:bean
 				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/order/**" />
-			<mvc:exclude-mapping path="/order/bootpayResponse"/>
+			<mvc:exclude-mapping
+				path="/order/bootpayResponse" />
 			<beans:bean
 				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
