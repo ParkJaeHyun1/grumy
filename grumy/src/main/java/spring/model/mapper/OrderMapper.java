@@ -16,5 +16,5 @@ public interface OrderMapper {
 	int updateItemState(Map map);
 	int insertItem(OrderItemDTO orderItem);
 	int deleteItem(String orderNo);
-	void updateState(Map map);
+	int updateState(Map map);
 }

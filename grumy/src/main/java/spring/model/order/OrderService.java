@@ -57,4 +57,11 @@ public class OrderService {
 
 		return cnt+cnt2==order.getOrderItemList().size()+1?true:false;
 	}
+	
+	public boolean updateState(Map map) {
+		int cnt = orderMapper.updateState(map);
+		int cnt2= orderMapper.updateItemState(map);
+
+		return true;
+	}
 }
