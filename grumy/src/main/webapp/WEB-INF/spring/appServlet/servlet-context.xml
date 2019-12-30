@@ -17,7 +17,7 @@
 			<mvc:exclude-mapping path="/service/list"/>
 			<mvc:exclude-mapping path="/service/read"/>
 			<beans:bean
-				class="spring.model.interceptor.ServiceInterceptor" />
+				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 		
 		<mvc:interceptor>
@@ -33,7 +33,7 @@
 			<mvc:exclude-mapping path="/community/list"/>
 			<mvc:exclude-mapping path="/community/read"/>
 			<beans:bean
-				class="spring.model.interceptor.CommunityInterceptor" />
+				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 
 		<mvc:interceptor>
@@ -45,7 +45,19 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/mypage/**" />
 			<beans:bean
-				class="spring.model.interceptor.MypageInterceptor" />
+				class="spring.model.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/cart/**" />
+			<beans:bean
+				class="spring.model.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/order/**" />
+			<beans:bean
+				class="spring.model.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
