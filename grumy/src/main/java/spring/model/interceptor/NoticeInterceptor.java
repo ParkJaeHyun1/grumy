@@ -10,13 +10,13 @@ public class NoticeInterceptor extends HandlerInterceptorAdapter{
 		String root = request.getContextPath();
 		try {
 			// grade 세션값이 널일경우
-			if (request.getSession().getAttribute("grade") != "A") {
+			if (request.getSession().getAttribute("grade")==null ||!request.getSession().getAttribute("grade").equals("A") ) {
 				// 로그인페이지로 redirect
 				response.sendRedirect(root+"/member/login");
 				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace();        
 		}
 		// 널이 아니면 정상적으로 컨트롤러 호출
 		return true;

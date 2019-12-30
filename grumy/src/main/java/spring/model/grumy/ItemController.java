@@ -41,7 +41,7 @@ public class ItemController {
 		
 		String id = (String) session.getAttribute("id"); // session 저장된 값이 잇는지 없는지 확인하려고 정의
 		String grade = (String) session.getAttribute("grade");
-		
+		         
 		
 		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));//검색되는 단어
 		String search_type = ItemUtility.checkNull(request.getParameter("search_type")); //
@@ -132,14 +132,16 @@ public class ItemController {
 	
 	
 @RequestMapping("/item/list")
-	public String list(HttpServletRequest request) {
-
+	public String list(HttpServletRequest request,HttpSession session) {
+                
 		ItemDTO dto = new ItemDTO(); 
 		String keyword = ItemUtility.checkNull(request.getParameter("keyword"));
 		String col = ItemUtility.checkNull(request.getParameter("col"));
 		String type = request.getParameter("type");
 		String orderby = request.getParameter("orderby");
 
+		String grade = (String) session.getAttribute("grade");
+		System.out.println(grade);       
 		if (col.equals("total"))
 			keyword = "";
 		//페이징 관련
@@ -272,10 +274,7 @@ public class ItemController {
 	@RequestMapping("/item/updateForm")
 	public String updateForm(HttpServletRequest request,int itemNo, HttpSession session) {
 		
-		
-		if(session.getAttribute("id")==null|| session.getAttribute("grade")!="A") {
-			return "/error";
-		}           
+   
 		
 		ArrayList<ItemTypeDTO> list = mapper.selectTypeListAll();
 		ItemDTO item = mapper.read(itemNo);
@@ -294,9 +293,9 @@ public class ItemController {
 	
 	@RequestMapping("/item/createForm")       
 	public String create(HttpServletRequest request, HttpSession session) {
-		if(session.getAttribute("id")==null || session.getAttribute("grade")!="A") {
-			return "/error";                 
-		}
+//		if(session.getAttribute("id")==null) {
+//			return "/error";                 
+//		}                 
 		
 		request.setAttribute("typeList", mapper.selectTypeListAll());
 		return "/item/create";       

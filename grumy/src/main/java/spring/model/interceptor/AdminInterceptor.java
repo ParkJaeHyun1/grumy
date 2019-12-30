@@ -10,7 +10,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		String root = request.getContextPath();
 		try {
 			// grade 세션값이 널일경우
-			if (!request.getSession().getAttribute("grade").equals("A")) {
+			if (request.getSession().getAttribute("grade")==null ||!request.getSession().getAttribute("grade").equals("A")) {
 				// 로그인페이지로 redirect   
 				response.sendRedirect(root+"/");
 				return false;
