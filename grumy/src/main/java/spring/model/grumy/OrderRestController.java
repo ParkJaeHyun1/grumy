@@ -91,6 +91,7 @@ public class OrderRestController {
 		System.out.println("method:"+map.get("method_name"));
 		System.out.println("11111111111111111111111111111111");
 		
+		map.put("orderNo",map.get("order_id"));
 		if((int)map.get("status") == 1) {
 			map.put("state", "배송준비");
 			orderService.updateState(map);
