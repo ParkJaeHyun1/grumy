@@ -253,9 +253,9 @@ function purchase(){
 	   }).close(function (data) {
 		   
 		   	if(isPurchased)
-			location.href= "${pageContext.request.contextPath}/mypage/orderlist/list";    
-	      console.log('close');
-			console.log(data);   
+			location.href= "${pageContext.request.contextPath}/mypage/order/list";    
+	      	console.log('close');
+			console.log(data);         
 	   }).done(function (data) {
 		   console.log('done');
 		   console.log(data);
