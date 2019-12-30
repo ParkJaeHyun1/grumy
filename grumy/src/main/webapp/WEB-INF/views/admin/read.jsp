@@ -13,77 +13,6 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 <script>
-$(function(){
-	var temp = 1;
-	$('#pcodenobutton').click(function(){
-		var result;
-		if(temp==1){
-			result = confirm("송장번호를 입력/변경 하시겠습니까?");
-		}else{
-			result = true;
-		}
-		if(result){
-			if(temp==1)
-				alert("송장번호를 입력/변경 합니다");
-			var pno = $('#postcodeno').val();
-			var ono = $('#orderno').html();
-			var ostate = $('#ostate').text();
-			var ostates;
-			switch(ostate){
-				case "입금대기":
-					ostates = "배송준비";
-					break;
-				case "배송준비":
-					ostates = "배송중";
-					break;
-				case "배송중":
-					ostates = "배송중";
-					break;
-				case "배송완료":
-					ostates = "배송완료";
-					break;
-				default :
-					console.log("error");
-					break;
-			}
-			if(temp == 1){
-				$('#postcodeno').attr("readonly",false);
-				$('#nostate').text('송장번호를 작성중입니다. ');
-				$('#nostate').css('color','red');			
-				temp = 0;
-			}else{		
-				update(ono, ostates, pno);
-				$('#postcodeno').attr("readonly",true);
-				$('#nostate').text('송장번호 작성을 완료했습니다');
-				$('#nostate').css('color','blue');
-				$('#postcodeno').text(pno);
-				temp = 1;
-			}
-		}else{
-			alert("송장번호 입력/변경을 취소했습니다");
-		}
-	});
-	
-});
-function update(orderno,ostates, deliveryno){
-	alert("check: "+ deliveryno);
-	var aa = { "orderno" : orderno, "state" : ostates, "deliveryno" : deliveryno};
-	$.ajax({
-		url         :   "${pageContext.request.contextPath}/admin/update",
-        contentType :   "application/json; charset=utf-8",
-        type        :   "post",
-		data: JSON.stringify(aa),
-		success : function(retVal){
-			console.log("성공:"+retVal);
-			location.reload();
-		}, 
-		error : function(request, status, error){
-			console.log("에러1:"+request);
-			console.log("에러2:"+status);
-			console.log("에러3:"+error);
-		}
-	});
-}
 function read_update(){
 	location.href="${root }/admin/read/update?orderno=${readP.orderNo}";
 }
@@ -192,6 +121,20 @@ function read_update(){
 										<th scope="row">결제수단</th>
 										<td><strong><span>${readP.paymentType} </span></strong></td>
 									</tr>
+									<c:if test="${readP.paymentType == '가상계좌' }">
+										<tr class="">
+											<th scope="row">입금은행</th>
+											<td><strong><span>${readP.imagineBank} </span></strong></td>
+										</tr>
+										<tr class="">
+											<th scope="row">입금계좌</th>
+											<td><strong><span>${readP.imagineAccount} </span></strong></td>
+										</tr>
+										<tr class="">
+											<th scope="row">유효기간</th>
+											<td><strong><span>${readP.imagineDate} </span></strong></td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 						</div>

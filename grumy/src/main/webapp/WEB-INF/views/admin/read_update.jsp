@@ -220,6 +220,20 @@ function abc(){
 										<th scope="row">결제수단</th>
 										<td><strong><span>${readP.paymentType} </span></strong></td>
 									</tr>
+									<c:if test="${readP.paymentType == '가상계좌' }">
+										<tr class="">
+											<th scope="row">입금은행</th>
+											<td><strong><span>${readP.imagineBank} </span></strong></td>
+										</tr>
+										<tr class="">
+											<th scope="row">입금계좌</th>
+											<td><strong><span>${readP.imagineAccount} </span></strong></td>
+										</tr>
+										<tr class="">
+											<th scope="row">유효기간</th>
+											<td><strong><span>${readP.imagineDate} </span></strong></td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 						</div>

@@ -35,6 +35,12 @@
 			<beans:bean
 				class="spring.model.interceptor.CommunityInterceptor" />
 		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**" />
+			<beans:bean
+				class="spring.model.interceptor.AdminInterceptor" />
+		</mvc:interceptor>
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/mypage/**" />

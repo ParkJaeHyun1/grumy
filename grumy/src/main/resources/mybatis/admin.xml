@@ -259,6 +259,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="totalPrice" column="totalprice"/>
 		<result property="salePrice" column="saleprice"/>
 		<result property="paymentType" column="paymenttype"/>
+		<result property="imagineAccount" column="imagineAccount"/>
+		<result property="imagineBank" column="imagineBank"/>
+		<result property="imagineDate" column="imagineDate"/>
 		<collection property="orderItemList" column="orderno"
 			javaType="List" ofType="OrderItemDTO" resultMap="orderItemDTOListReadMap" />
 	</resultMap>
@@ -269,12 +272,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	<select id="readP" parameterType="map" resultMap="orderReadMap">
 	select distinct(orderno), odate, name, totalprice, saleprice, paymenttype, state, rname,
-	postcode, address, detailaddress, rphone, rmsg, deliveryNo, orderID
+	postcode, address, detailaddress, rphone, rmsg, deliveryNo, orderID, imagineDate, imagineBank, imagineAccount
 	
 	from(
 		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname, b.deliveryNo deliveryNo,
 			a.postcode postcode, a.address address, a.detailaddress detailaddress, a.rphone rphone, a.rmsg rmsg,
 			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, a.state state, a.orderid orderID,
+			a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate,
 			(select sum(itemprice * count) from orderitem where orderno = #{orderno}) totalprice
 		from norder a, orderitem b, member c 
 		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno})
@@ -282,7 +286,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="readPList" parameterType="String" resultType="OrderItemDTO">
 		select b.orderitemno orderItemNo, d.image itemImage, d.title itemTitle, d.itemno itemNo, b.deliveryno deliveryNo,
-			c.itemcolor itemColor, c.itemsize itemSize, b.count count, b.itemprice itemPrice, b.state state, a.orderID orderID
+			c.itemcolor itemColor, c.itemsize itemSize, b.count count, b.itemprice itemPrice, b.state state, a.orderID orderID,
+			a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate
         from norder a, orderitem b, itemoption c, item d
         where a.orderno = b.orderno and b.itemoptionno = c.itemoptionno 
         and c.itemno = d.itemno and a.orderno = #{orderno}
