@@ -25,7 +25,7 @@
 				class="xans-element- xans-myshop xans-myshop-orderhistorytab ec-base-tab tab_style ">
 				<ul class="menu">
 					<li class=""><a
-						href="${pageContext.request.contextPath}/mypage/orderlist/list ">주문내역조회
+						href="${pageContext.request.contextPath}/mypage/order/list ">주문내역조회
 							(${total} )</a></li>
 					<li class="selected"><a
 						href="${pageContext.request.contextPath}/mypage/cslist/list">취소/반품/교환

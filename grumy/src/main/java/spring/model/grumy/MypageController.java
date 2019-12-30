@@ -160,7 +160,7 @@ public class MypageController {
 		return "/mypage/mylist";
 	}
 	
-	@RequestMapping("/mypage/orderlist/list")
+	@RequestMapping("/mypage/order/list")
 	public String orderlist(HttpServletRequest request, HttpSession session) {
 		String id = (String)session.getAttribute("id");
 		
@@ -207,7 +207,7 @@ public class MypageController {
 		request.setAttribute("total", total);
 		request.setAttribute("cstotal", cstotal);
 		
-		return "/mypage/orderlist/list";
+		return "/mypage/order/list";
 	}
 
 }
