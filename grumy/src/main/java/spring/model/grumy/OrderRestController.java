@@ -82,7 +82,7 @@ public class OrderRestController {
 		return cnt>0?new ResponseEntity<String>("success", HttpStatus.OK):new ResponseEntity<String>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@RequestMapping("/order/bootpayResponse")
+	@RequestMapping("/bootpay/response")
 	public String bootpayResponse(@RequestBody Map map) {
 		System.out.println("11111111111111111111111111111111");
 		System.out.println("상태:"+map.get("status"));
