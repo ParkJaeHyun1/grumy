@@ -36,6 +36,7 @@
 							class="xans-element- xans-board xans-board-listheader-1002 xans-board-listheader xans-board-1002 ">
 							<col style="width: 200px;">
 							<col style="width: 200px;">
+							<col style="width: 120px;">
 							<col style="width: 200px;">
 							<col style="width: 120px;">
 							<col style="width: 100px;">
@@ -46,6 +47,7 @@
 							<tr style="">
 								<th scope="col">주문번호</th>
 								<th scope="col">주문일</th>
+								<th scope="col">결제수단</th>
 								<th scope="col">결제일</th>
 								<th scope="col">아아디</th>
 								<th scope="col">입금상태</th>
@@ -68,6 +70,7 @@
 										<td></td>
 										<td></td>
 										<td></td>
+										<td></td>
 								</c:when>
 								<c:otherwise>
 									<c:set var="aa"/>
@@ -78,13 +81,14 @@
 												<c:when test="${aa != dto.orderNo }">
 												<td>
 													<a class="text-number"
-													href="${root }/admin/read?orderno=${dto.orderNo}">
+													href="${root }/mypage/order/read?orderno=${dto.orderNo}">
 													<u>[${dto.orderNo}]</u></a>
 													</td>
 													<c:set var="aa" value="${dto.orderNo }"/>
 												</c:when>
 											</c:choose>
 											<td>${dto.odate}</td>
+											<td>${dto.paymentType}</td>
 											<td>${dto.pdate}</td>
 											<td>${dto.id}</td>
 											<td>${dto.state}</td>

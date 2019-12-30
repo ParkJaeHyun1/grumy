@@ -70,7 +70,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="moneyP" parameterType="map" resultType="int">
 		select count(*) from (
 		select a.orderno orderno, a.odate odate, decode(a.pdate,null,'입금대기',a.pdate) pdate, 
-				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r 
+				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r ,
+				a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate
 			from norder a,
 		    (select a.orderno, sum(b.itemprice * b.count) price from norder a, orderitem b 
 		    where a.orderno = b.orderno 
@@ -140,7 +141,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="list" parameterType="map" resultMap="orderMap">
 		select * from
-		(select orderno, id, odate, orderItemNo, count, state1, state2, itemPrice, itemTitle, itemSize, itemColor, itemImage, itemno, rownum r, deliveryNo 
+		(select orderno, id, odate, orderItemNo, count, state1, state2, itemPrice, 
+					itemTitle, itemSize, itemColor, itemImage, itemno, rownum r, deliveryNo 
 			 from
 		(select b.orderItemNo orderItemNo, a.orderno orderno, a.id id, to_char(a.odate, 'yyyy-MM-dd') odate, 
 			b.count count,  a.state state1, b.state state2, b.itemPrice itemPrice, i.title itemTitle, o.itemSize itemSize, 
@@ -181,7 +183,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="moneyl" parameterType="map" resultType="orderDTO">
 		select * from (
 		select a.orderno orderno, a.odate odate, decode(a.pdate,null,'입금대기',a.pdate) pdate, 
-				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r 
+				a.id id, a.state state, (b.price - a.saleprice) totalprice, rownum r , a.paymenttype paymenttype,
+				a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate
 			from norder a,
 		    (select a.orderno, sum(b.itemprice * b.count) price from norder a, orderitem b 
 		    where a.orderno = b.orderno 
