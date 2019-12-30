@@ -31,7 +31,9 @@ public class OrderController {
 	
 	@RequestMapping("/order/order")			//itemOptionNo,count,cartNo
 	public String list(HttpServletRequest request, HttpSession session, String[] orderInfoList,String url) {
-
+		if(orderInfoList == null || orderInfoList.length==0)
+			return "/error";
+		
 		int totalPrice = 0,deliveryCharge=0;
 		ArrayList<Integer> itemOptionNoList = new ArrayList<Integer>();
 		Map<String, String> map = new HashMap<String, String>(); 

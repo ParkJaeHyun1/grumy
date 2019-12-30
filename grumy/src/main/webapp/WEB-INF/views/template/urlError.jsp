@@ -23,13 +23,12 @@
 					<div class="secret">
 						<fieldset >
 							<p class="info">
-								<br> <strong class="txtEm">Grumy 접속에 실패하였습니다.</strong><br>
+								<br> <strong class="txtEm">유효하지 않은 요청입니다.</strong><br>
 								
 							</p>
 							<br><br>        
 							<br><br>          
 							<button class="yg_btn_80 yg_btn3" type="button" onclick="location.href='../'">MAIN</button>
-							<button class="yg_btn_80 yg_btn5" type="button" onclick="location.href='${pageContext.request.contextPath}/member/login'">LOGIN</button>		
 						</fieldset>
 					</div>
 				</div>

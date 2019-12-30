@@ -91,7 +91,7 @@ public class OrderRestController {
 		System.out.println("method:"+map.get("method_name"));
 		System.out.println("11111111111111111111111111111111");
 		
-		if(map.get("method_name").equals("가상계좌") && (int)map.get("status") == 1) {
+		if((int)map.get("status") == 1) {
 			map.put("state", "배송준비");
 			orderMapper.updateState(map);
 		}

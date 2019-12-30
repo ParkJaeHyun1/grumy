@@ -100,6 +100,9 @@ public class CommunityController {
 			grade="";
 		}
 		BoardDTO dto = mapper.read(board_no);
+		if(dto==null) {
+			return "/error";
+		}
 		int refcount = mapper.refcount(dto.getRef());
 
 		
