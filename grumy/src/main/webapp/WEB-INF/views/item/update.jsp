@@ -195,7 +195,7 @@
 
 									<tr>
 										<th scope="row">할인 가격</th>
-										<td><input onchange="getNumber(this);"
+										<td><input onchange="getNumber(this);" 
 											onkeyup="getNumber(this);" type="text" id="salePrice"
 											value="${dto.salePrice }"
 											style="text-align: right; width: 50px"> 원 <input

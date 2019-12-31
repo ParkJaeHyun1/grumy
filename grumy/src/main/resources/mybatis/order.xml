@@ -4,7 +4,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.model.mapper.OrderMapper">
 
-
+	<select id="Qlist" parameterType="Map" resultType="BoardDTO">
+		select board_no, subject, ref, writer, wdate, check_read, indent, r
+		from(
+		select board_no, subject, ref, writer, wdate, check_read, indent,
+		rownum r
+		from(
+		select board_no, subject, ref, writer, wdate, check_read,
+		indent
+		from board
+		where lev='A' and type='상품' and itemNo = #{itemNo}
+		order by ref desc,board_no asc
+		))
+		where
+    		<![CDATA[
+		r >=#{sno} and r<=#{eno}
+		]]>
+	</select>
 	<select id="checkItem" parameterType="List"
 		resultType="OrderItemDTO">
 		select itemOptionNo,itemCount as count,price as itemPrice,salePrice as

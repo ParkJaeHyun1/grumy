@@ -195,8 +195,8 @@ function read_update(){
 											<div class="option ">[옵션: ${dto.itemColor }/${dto.itemSize }]</div>
 										</td>
 										<td>${dto.count}</td>
-										<td class="right">
-											<div class="">
+										<td>  
+											<div >      
 												<strong>${dto.itemPrice}원 </strong>
 												<div class="displaynone"></div>
 											</div>
