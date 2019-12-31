@@ -389,11 +389,15 @@ public class MemberController {
 
 	@RequestMapping(value = "/member/sendmail")
 	public String sendmail(HttpServletRequest request, HttpServletResponse response) {
-
+		
+		MemberDTO member = dao.read(request.getParameter("id"));
 		String from = "kevinahn861125@gmail.com";
 		String to = request.getParameter("email");
-		String title = request.getParameter("id") + "님이 요청하신 비밀번호입니다.";
-		String content = request.getParameter("id") + "님이 요청하신 비밀번호는 " + request.getParameter("passwd") + "입니다.";
+		String title = "[Grumy] "+member.getId() + " 님의 비밀번호 정보입니다.";
+		String content = "안녕하세요. Grumy입니다.<br>";
+		content += "저희 쇼핑몰을 방문해 주셔서 감사드립니다.<br>";
+		content += member.getName()+"("+request.getParameter("id")+")"+" 고객님의 비밀번호는 "+member.getPasswd()+"입니다.";
+				
 
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
