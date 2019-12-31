@@ -283,7 +283,7 @@ function keyevent(){
 										<td>${dto.count}</td>
 										<td class="right">
 											<div class="">
-												<strong>${dto.itemPrice * dto.count}원 </strong>
+												<strong>${dto.itemPrice}원 </strong>
 												<div class="displaynone"></div>
 											</div>
 										</td>
