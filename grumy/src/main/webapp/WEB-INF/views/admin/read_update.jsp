@@ -117,13 +117,7 @@ function abc(){
      -->
 					<!-- 주문정보 -->
 					<div class="orderArea">
-						<div class="title">
-							<input class="yg_btn_28 yg_btn3" style="float:right;" 
-								onclick="update('${readP.orderNo}')" value="업뎃"/>
-							<input class="yg_btn_28 yg_btn3" style="float:right;" 
-								onclick="history.go(-1)" value="주문정보수정확인"/>
-							<h3>주문정보</h3>
-						</div>
+
 
 						<div class="ec-base-table">
 							<table border="1" summary="">
@@ -391,7 +385,18 @@ function abc(){
 							</table>
 						</div>
 					</div>
-
+					<div class="ec-base-button" style="float:right;">
+						 <span class="gRight"> 
+						 <c:if test="${id == 'admin' }">
+						 	<a
+							href="#" onClick="history.go(-1)"
+							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">뒤로가기</a>
+						</c:if>
+							<a
+							href="#" onClick="update('${readP.orderNo}')"
+							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">수정하기</a>     
+						</span>
+					</div>     
 				</div>
 			</form>
 		</div>

@@ -45,11 +45,7 @@ function read_update(){
 					<!-- 주문정보 -->
 					<div class="orderArea">
 						<div class="title">
-							<c:if test="${id == 'admin' }">
-							<input class="yg_btn_28 yg_btn3" style="float:right;" 
-								onclick="read_update()" value="주문정보수정"/>
-							</c:if>
-							<h3>주문정보</h3>
+							<h3>주문정보</h3>  
 						</div>
 
 						<div class="ec-base-table">
@@ -213,7 +209,7 @@ function read_update(){
 											<p class="">
 												<c:if test="${dto.deliveryNo } != null">
 												<a href="#none" class="line"
-													onclick="window.open('${pageContext.request.contextPath}/order/delivery', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a></c:if>
+													onclick="window.open('${pageContext.request.contextPath}/order/delivery?deliveryNo=${dto.deliveryNo }', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a></c:if>
 											</p>
 										</td>
 
@@ -270,9 +266,15 @@ function read_update(){
 
 					
 					<div class="ec-base-button" style="float:right;">
-						 <span class="gRight"> <a
+						 <span class="gRight"> 
+						 <c:if test="${id == 'admin' }">
+						 	<a
+							href="#" onClick="read_update()"
+							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">주문정보수정</a>
+						</c:if>
+							<a
 							href="#" onClick="history.go(-1)"
-							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">주문목록보기</a>
+							class="yg_btn_140 yg_btn1 yg_btn_border_444" alt="주문목록보기">주문목록보기</a>     
 						</span>
 					</div>
 					
