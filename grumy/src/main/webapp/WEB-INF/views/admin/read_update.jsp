@@ -13,40 +13,59 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 <script>
-$(function(){
-	$('#col0').change(function(){
-		var buttonId = "col0";
-		var sel = document.getElementById(buttonId).value;
-		//var sel1 = document.getElementById("col0");
-		//var selT = sel1.options[sel1.selectedIndex].text;
-		//alert(selT);
+$(document).ready(function(){
+	var buttonId = "col1";
+	var sel = document.getElementById(buttonId).value;
+	var listSize = "${readPList.size()}";
+	for(var i = 1; i<=listSize; i++){
+		var sel = $("#col"+i).val();
+		if(sel == "wait" || sel == "ready" || sel == "going" || sel == "finish"){
+			$("#cancelno"+i).hide();
+			$("#cancelno"+i).val("0");
+		}
+	}	
+});
+function changeS(no){
+	var sel = $("#col"+no).val();
+
+	if(no == '0'){
 		var listSize = "${readPList.size()}";
 		for(var i = 1; i<=listSize; i++){
-			var t1 = "col"+i;
-			document.getElementById(t1).value = sel;
-		}			
-	});
-});
+			$("#col"+i).val(sel);
+		}
+	}
+	if(sel == "wait" || sel == "ready" || sel == "going" || sel == "finish"){
+		$("#cancelno"+no).hide();
+		$("#cancelno"+no).val("0");
+	}else{
+		var tprice = $("#tPrice").val();
+		$("#cancelno"+no).val(tprice);
+		$("#cancelno"+no).show();		
+	}
+};
+
 
 function update(orderno){
 	var state = new Array;
 	var deliveryno = new Array;	
-	var orderItemNo = new Array;	
+	var orderItemNo = new Array;
+	var cancelno = new Array;
 	var listSize = "${readPList.size()}";
+	var orderid = $("#orderid").val();
 	for(var i = 0; i<=listSize; i++){
 		var stateId = "col"+i;
 		var sel = document.getElementById(stateId);
 		var selT = sel.options[sel.selectedIndex].text;
 		if(i != 0){
-			var orderId = "dno"+i;
-			var orderItemId = "orderItemNo"+i;
-			deliveryno.push(document.getElementById(orderId).value);		
-			orderItemNo.push(document.getElementById(orderItemId).value);		
+			deliveryno.push($("#dno"+i).val());		
+			orderItemNo.push($("#orderItemNo"+i).val());	
+			cancelno.push($("#cancelno"+i).val());		
 		}
 		state.push(selT);	
 		
 	}	
-	var aa = { "orderno" : orderno, "listSize" : listSize, "state" : state, "deliveryno" : deliveryno, "orderItemNo" :orderItemNo};
+	var aa = { "orderno" : orderno, "listSize" : listSize, "state" : state, "deliveryno" : deliveryno, 
+				"orderItemNo" :orderItemNo, "orderid" : orderid, "cancelno" : cancelno};
 	$.ajax({
 		url         :   "${pageContext.request.contextPath}/admin/update",
         contentType :   "application/json; charset=utf-8",
@@ -68,10 +87,10 @@ function keyevent(){
 	var keyval = $("#dno0").val();
 	var listSize = "${readPList.size()}";
 	for(var i = 1; i<=listSize; i++){
-		var t1 = "dno"+i;
-		document.getElementById(t1).value = keyval;
+		$("#dno"+i).val(keyval);
 	}
 }
+
 </script>
 
 </head>
@@ -88,6 +107,7 @@ function keyevent(){
 				enctype="multipart/form-data">
 				<input id="order_id" name="order_id" fw-filter="isFill"
 					fw-label="주문번호" fw-msg="" value="20191121-0030184" type="hidden">
+				<input type="hidden" id="orderid" value="${readP.orderID }"/>
 				<div
 					class="xans-element- xans-myshop xans-myshop-orderhistorydetail xans-record-">
 					<!--
@@ -126,7 +146,7 @@ function keyevent(){
 										<th scope="row">주문처리일괄변경</th>
 										<td id="ostate">
 											<input type="text" id="dno0" placeholder="송장번호를 입력하세요" onkeyup="keyevent(this);"/>
-											<select id="col0" name="col0">
+											<select id="col0" name="col0" onchange="changeS(0)">
 												<option value="wait"
 													<c:if test="${col == 'wait' }">selected</c:if>
 													<c:if test="${readP.state == '입금대기' }">selected</c:if>>입금대기</option>
@@ -240,8 +260,8 @@ function keyevent(){
 									<col style="width: 70px">
 									<col style="width: 110px">
 									<col style="width: 115px">
-									<col style="width: 120px">   
-									 
+									<col style="width: 150px">   
+									<col style="width: 120px">   									 
 								</colgroup>
 								<thead>
 									<tr>
@@ -251,7 +271,7 @@ function keyevent(){
 										<th scope="col">판매가</th>
 										<th scope="col">배송구분</th>
 										<th scope="col">주문처리상태</th>
-										
+										<th scope="col">송장번호</th>										
 									</tr>
 								</thead>
 								<tfoot class="right">
@@ -290,7 +310,7 @@ function keyevent(){
 										<td><div class="txtInfo">기본배송</div>
 										</td>
 										<td><div>
-											<select id="col${fno.count }" name="col${fno.count }">
+											<select id="col${fno.count }" name="col${fno.count }" onchange="changeS(${fno.count })">
 												<option value="wait"
 													<c:if test="${col == 'wait' }">selected</c:if>
 													<c:if test="${dto.state == '입금대기' }">selected</c:if>>입금대기</option>
@@ -316,10 +336,16 @@ function keyevent(){
 													<c:if test="${col == 'change' }">selected</c:if>
 													<c:if test="${dto.state == '교환요청' }">selected</c:if>>교환요청</option>
 											</select></div>
+											<div>
+											<input type="text" id="cancelno${fno.count }" value="${dto.itemPrice * dto.count }"/>
+											<input type="hidden" id="tPrice" value="${dto.itemPrice * dto.count }"/>
+											</div>
+										</td>
+										<td>
 											<div class="">
 												<input type="text" id="dno${fno.count }" value="${dto.deliveryNo }"/>
 												<input type="hidden" id="orderItemNo${fno.count }" value="${dto.orderItemNo }"/>
-											</div>
+											</div>										
 										</td>
 
 									</tr>  

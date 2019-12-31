@@ -152,13 +152,17 @@ public class AdminController {
 	@ResponseBody
 	public String confirm(@RequestBody Map<String, Object> map) {
 		System.out.println(map.get("orderno"));
+		System.out.println(map.get("orderid"));
 		System.out.println(map.get("state"));
 		System.out.println(map.get("deliveryno"));
 		System.out.println(map.get("orderItemNo"));
 		System.out.println(map.get("listSize"));
+		System.out.println(map.get("cancelno"));
 		
+		String orderid = (String) map.get("orderid");
 		String orderno = (String) map.get("orderno");
 		int listSize = Integer.parseInt(map.get("listSize").toString());
+		ArrayList cancelno = (ArrayList)map.get("cancelno");
 		ArrayList state = (ArrayList)map.get("state");
 		ArrayList deliveryno = (ArrayList)map.get("deliveryno");
 		ArrayList orderItemNo = (ArrayList)map.get("orderItemNo");
