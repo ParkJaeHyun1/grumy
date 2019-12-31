@@ -432,9 +432,10 @@ function checkPoint(val){
 function setPriceView(){
 	$('#totalSalePrice').html(pointPrice);
 	$('#totalSalePrice2').html(pointPrice);
+	$('#totalSalePrice3').html(pointPrice);
 	$('#total_price').val((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	$('#total_price2').html((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-	$('#total_price3').html((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));      
+	$('#total_price3').html((totalPrice-pointPrice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));         
 }
    </script>
 
@@ -1087,28 +1088,10 @@ function setPriceView(){
 										<tbody>
 											<tr class="sum txt14">
 												<th scope="row"><strong>총 할인금액</strong></th>
-												<td><strong id="total_addsale_price_view">0</strong>원</td>
+												<td><strong id="totalSalePrice3">0</strong>원</td>
 											</tr>
-											<tr class=" mCouponSelect">
-												<th scope="row">쿠폰할인</th>
-												<td><a href="#none" id="btn_coupon_select"
-													class="yg_btn_24" alt="쿠폰적용">쿠폰적용</a></td>
-											</tr>
-											<!-- 참고 : 쿠폰적용 후 -->
-											<tr class="mCouponModify">
-												<th scope="row">쿠폰할인</th>
-												<td><span class="mTotalCouponDiscount">0원</span> <a
-													id="eCouponModify" href="#none" class="yg_btn_24" alt="수정">수정</a>
-													<div id="divCpnView" style="display: none" class="coupon">
-														<span id="txt_cpn_contents"></span> <span
-															id="txt_cpn_price"></span> <span id="txt_cpn_attr_D"></span>
-														<span id="txt_cpn_attr_M"></span> <span
-															id="txt_cpn_attr_C"></span>
-													</div>
-													<div id="divCpn" style="display: none" class="couponArea"></div>
-												</td>
-											</tr>
-											<!-- //참고 -->
+
+											<!-- //참고 -->   
 											<tr class="displaynone"
 												id="ec-shop-orderfom-total-benefit-view-id">
 												<th scope="row">추가할인금액</th>
