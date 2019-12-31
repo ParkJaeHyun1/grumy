@@ -13,33 +13,20 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 <script>
-function changeSelect(no){
-	var oid = "col"+no;
-	var sel = document.getElementById(oid);
-	var selT = sel.options[sel.selectedIndex].text;
-	//$("#nowState").attr("value",selT);
-	var sid = "nowState"+no;
-	document.getElementById(sid).value = selT;
-}
-function orderNoT(){
-	var buttonId = "dno1";
-	var pno = document.getElementById(buttonId).value;
-	var listSize = "${readPList.size()}";
-	for(var i = 1; i<=listSize; i++){
-		var t1 = "dno"+i;
-		document.getElementById(t1).value = pno;
-	}
-}
-function orderStateT(no){
-	var buttonId = "col"+no;
-	var sel = document.getElementById(buttonId);
-	var selT = sel.options[sel.selectedIndex].text;
-	var listSize = "${readPList.size()}";
-	for(var i = 1; i<=listSize; i++){
-		var t1 = "nowState"+i;
-		document.getElementById(t1).value = selT;
-	}
-}
+$(function(){
+	$('#col0').change(function(){
+		var buttonId = "col0";
+		var sel = document.getElementById(buttonId).value;
+		//var sel1 = document.getElementById("col0");
+		//var selT = sel1.options[sel1.selectedIndex].text;
+		//alert(selT);
+		var listSize = "${readPList.size()}";
+		for(var i = 1; i<=listSize; i++){
+			var t1 = "col"+i;
+			document.getElementById(t1).value = sel;
+		}			
+	});
+});
 
 function update(orderno){
 	var state = new Array;
@@ -47,16 +34,18 @@ function update(orderno){
 	var orderItemNo = new Array;	
 	var listSize = "${readPList.size()}";
 	for(var i = 0; i<=listSize; i++){
-		var stateId = "nowState"+i;
+		var stateId = "col"+i;
+		var sel = document.getElementById(stateId);
+		var selT = sel.options[sel.selectedIndex].text;
 		if(i != 0){
 			var orderId = "dno"+i;
 			var orderItemId = "orderItemNo"+i;
 			deliveryno.push(document.getElementById(orderId).value);		
 			orderItemNo.push(document.getElementById(orderItemId).value);		
 		}
-		state.push(document.getElementById(stateId).value);		
+		state.push(selT);	
+		
 	}	
-	
 	var aa = { "orderno" : orderno, "listSize" : listSize, "state" : state, "deliveryno" : deliveryno, "orderItemNo" :orderItemNo};
 	$.ajax({
 		url         :   "${pageContext.request.contextPath}/admin/update",
@@ -72,22 +61,16 @@ function update(orderno){
 			console.log("에러2:"+status);
 			console.log("에러3:"+error);
 		}
-	});
+	}); 
 }
-function abc(){
-	var b = 2;
-	var aa = "dno"+2;
-	var pno = document.getElementById(aa).value;		//처리
-	var pno2 = document.getElementById("col");			//셀렉트값
-	var pno3 = pno2.options[pno2.selectedIndex].text;	//option text 가져오기
+
+function keyevent(){
+	var keyval = $("#dno0").val();
 	var listSize = "${readPList.size()}";
-	var tt = new Array;
 	for(var i = 1; i<=listSize; i++){
 		var t1 = "dno"+i;
-		tt.push(document.getElementById(t1).value);
+		document.getElementById(t1).value = keyval;
 	}
-	alert(tt);
-	location.href="${root }/admin/read/update?orderno=${readP.orderNo}";
 }
 </script>
 
@@ -140,30 +123,36 @@ function abc(){
 										<td><span>${readP.name} </span></td>
 									</tr>
 									<tr>
-										<th scope="row">주문처리상태</th>
+										<th scope="row">주문처리일괄변경</th>
 										<td id="ostate">
-											<input type="text" id="nowState0" value="${readP.state }" readOnly/>
-											<select id="col0" name="col0" onchange="changeSelect(0)">
-												<option value="fir"
-													<c:if test="${col == 'fir' }">selected</c:if>></option>
+											<input type="text" id="dno0" placeholder="송장번호를 입력하세요" onkeyup="keyevent(this);"/>
+											<select id="col0" name="col0">
 												<option value="wait"
-													<c:if test="${col == 'wait' }">selected</c:if>>입금대기</option>
+													<c:if test="${col == 'wait' }">selected</c:if>
+													<c:if test="${readP.state == '입금대기' }">selected</c:if>>입금대기</option>
 												<option value="ready"
-													<c:if test="${col == 'ready' }">selected</c:if>>배송준비</option>
+													<c:if test="${col == 'ready' }">selected</c:if>
+													<c:if test="${readP.state == '배송준비' }">selected</c:if>>배송준비</option>
 												<option value="going"
-													<c:if test="${col == 'going' }">selected</c:if>>배송중</option>
+													<c:if test="${col == 'going' }">selected</c:if>
+													<c:if test="${readP.state == '배송중' }">selected</c:if>>배송중</option>
 												<option value="finish"
-													<c:if test="${col == 'finish' }">selected</c:if>>배송완료</option>
+													<c:if test="${col == 'finish' }">selected</c:if>
+													<c:if test="${readP.state == '배송완료' }">selected</c:if>>배송완료</option>
 												<option value="cancel"
-													<c:if test="${col == 'cancel' }">selected</c:if>>주문취소</option>
+													<c:if test="${col == 'cancel' }">selected</c:if>
+													<c:if test="${readP.state == '주문취소' }">selected</c:if>>주문취소</option>
 												<option value="modify"
-													<c:if test="${col == 'modify' }">selected</c:if>>주문변경</option>
+													<c:if test="${col == 'modify' }">selected</c:if>
+													<c:if test="${readP.state == '주문변경' }">selected</c:if>>주문변경</option>
 												<option value="return"
-													<c:if test="${col == 'return' }">selected</c:if>>반품요청</option>
+													<c:if test="${col == 'return' }">selected</c:if>
+													<c:if test="${readP.state == '반품요청' }">selected</c:if>>반품요청</option>
 												<option value="change"
-													<c:if test="${col == 'change' }">selected</c:if>>교환요청</option>
+													<c:if test="${col == 'change' }">selected</c:if>
+													<c:if test="${readP.state == '교환요청' }">selected</c:if>>교환요청</option>
 											</select> 
-											<input type="button" value="배송상태일괄변경" onclick="orderStateT(0)"/>
+											
 										</td>
 									</tr>
 									
@@ -252,7 +241,7 @@ function abc(){
 									<col style="width: 110px">
 									<col style="width: 115px">
 									<col style="width: 120px">   
-									<col style="width: 120px">   
+									 
 								</colgroup>
 								<thead>
 									<tr>
@@ -262,7 +251,7 @@ function abc(){
 										<th scope="col">판매가</th>
 										<th scope="col">배송구분</th>
 										<th scope="col">주문처리상태</th>
-										<th scope="col">주문처리상태변경</th>
+										
 									</tr>
 								</thead>
 								<tfoot class="right">
@@ -300,39 +289,37 @@ function abc(){
 										</td>
 										<td><div class="txtInfo">기본배송</div>
 										</td>
-										<td>
-											<input type="text" id="nowState${fno.count }" value="${dto.state }" readOnly/>
-											<p class="">
+										<td><div>
+											<select id="col${fno.count }" name="col${fno.count }">
+												<option value="wait"
+													<c:if test="${col == 'wait' }">selected</c:if>
+													<c:if test="${dto.state == '입금대기' }">selected</c:if>>입금대기</option>
+												<option value="ready"
+													<c:if test="${col == 'ready' }">selected</c:if>
+													<c:if test="${dto.state == '배송준비' }">selected</c:if>>배송준비</option>
+												<option value="going"
+													<c:if test="${col == 'going' }">selected</c:if>
+													<c:if test="${dto.state == '배송중' }">selected</c:if>>배송중</option>
+												<option value="finish"
+													<c:if test="${col == 'finish' }">selected</c:if>
+													<c:if test="${dto.state == '배송완료' }">selected</c:if>>배송완료</option>
+												<option value="cancel"
+													<c:if test="${col == 'cancel' }">selected</c:if>
+													<c:if test="${dto.state == '주문취소' }">selected</c:if>>주문취소</option>
+												<option value="modify"
+													<c:if test="${col == 'modify' }">selected</c:if>
+													<c:if test="${dto.state == '주문변경' }">selected</c:if>>주문변경</option>
+												<option value="return"
+													<c:if test="${col == 'return' }">selected</c:if>
+													<c:if test="${dto.state == '반품요청' }">selected</c:if>>반품요청</option>
+												<option value="change"
+													<c:if test="${col == 'change' }">selected</c:if>
+													<c:if test="${dto.state == '교환요청' }">selected</c:if>>교환요청</option>
+											</select></div>
+											<div class="">
 												<input type="text" id="dno${fno.count }" value="${dto.deliveryNo }"/>
 												<input type="hidden" id="orderItemNo${fno.count }" value="${dto.orderItemNo }"/>
-											</p>
-										</td>
-										<td>
-											<select id="col${fno.count }" name="col${fno.count }" onchange="changeSelect(${fno.count })">
-												<option value="fir"
-													<c:if test="${col == 'fir' }">selected</c:if>></option>
-												<option value="wait"
-													<c:if test="${col == 'wait' }">selected</c:if>>입금대기</option>
-												<option value="ready"
-													<c:if test="${col == 'ready' }">selected</c:if>>배송준비</option>
-												<option value="going"
-													<c:if test="${col == 'going' }">selected</c:if>>배송중</option>
-												<option value="finish"
-													<c:if test="${col == 'finish' }">selected</c:if>>배송완료</option>
-												<option value="cancel"
-													<c:if test="${col == 'cancel' }">selected</c:if>>주문취소</option>
-												<option value="modify"
-													<c:if test="${col == 'modify' }">selected</c:if>>주문변경</option>
-												<option value="return"
-													<c:if test="${col == 'return' }">selected</c:if>>반품요청</option>
-												<option value="change"
-													<c:if test="${col == 'change' }">selected</c:if>>교환요청</option>
-											</select>
-											<c:if test="${fno.count == 1 }">
-											<div>
-												<input type="button" value="송장번호일괄변경" onclick="orderNoT()"/>
 											</div>
-											</c:if>
 										</td>
 
 									</tr>  

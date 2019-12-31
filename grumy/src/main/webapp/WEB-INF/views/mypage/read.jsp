@@ -106,7 +106,7 @@ function read_update(){
 								<tbody class="">
 									<tr class="">
 										<th scope="row">적립금</th>
-										<td>00원</td>
+										<td>${readP.totalPrice/100 }원</td>
 									</tr>
 									
 									<tr class="sum">
@@ -197,7 +197,7 @@ function read_update(){
 										<td>${dto.count}</td>
 										<td class="right">
 											<div class="">
-												<strong>${dto.itemPrice * dto.count}원 </strong>
+												<strong>${dto.itemPrice}원 </strong>
 												<div class="displaynone"></div>
 											</div>
 										</td>
