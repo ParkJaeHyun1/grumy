@@ -39,18 +39,10 @@
 				<ul>
 
 
-					<li><strong class="title"> <a
-							href="/myshop/mileage/historyList.html">POINT</a>
-					</strong> <strong class="data"> <a
-							href="/myshop/mileage/historyList.html">${dto.point }원</a>
+					<li><strong class="data">POINT
+					</strong></li> <li><strong class="data">${dto.point }원
 					</strong></li>
 
-					<li class="etc "><strong class="title"> <a
-							href="/myshop/coupon/coupon.html">COUPON</a></strong> <strong class="data">
-							<a href="/myshop/coupon/coupon.html">5<span>개</span></a>
-					</strong> <a
-						href="${pageContext.request.contextPath}/myshop/coupon/coupon.html"></a>
-					</li>
 				</ul>
 			</div>
 		</div>
@@ -59,29 +51,8 @@
 			<div class="shopMain order">
 				<a href="${pageContext.request.contextPath }/mypage/orderlist/list">주문내역</a>
 			</div>
-			<div class="shopMain wishlist">
-				<a href="/myshop/wish_list.html">관심상품</a>
-			</div>
-			<div class="shopMain likeIt displaynone">
-				<a href="">좋아요</a>
-			</div>
-			<div class="shopMain mileage">
-				<a href="/myshop/mileage/historyList.html">적립금</a>
-			</div>
-			<div class="shopMain coupon  ">
-				<a href="/myshop/coupon/coupon.html">쿠폰</a>
-			</div>
-			<div class="shopMain view">
-				<a href="/product/recent_view_product.html">최근 본 상품</a>
-			</div>
-			<div class="shopMain deposits displaynone ">
-				<a href="/myshop/deposits/historyList.html">예치금</a>
-			</div>
 			<div class="shopMain board">
 				<a href="${pageContext.request.contextPath }/mypage/mylist">내가 쓴 게시글</a>
-			</div>
-			<div class="shopMain address">
-				<a href="/myshop/addr/list.html">배송 주소록 관리</a>
 			</div>
 			<div class="shopMain profile">
 				<a href="${pageContext.request.contextPath}/member/update">회원 정보
