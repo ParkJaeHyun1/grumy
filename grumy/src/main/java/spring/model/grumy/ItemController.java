@@ -226,8 +226,8 @@ public class ItemController {
 			return "redirect:/item/list?type="+type;
 		return "/item/error";
 	}
-
-   
+	
+	
 
 
 	  @RequestMapping("/item/create")

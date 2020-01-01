@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.model.item.ItemDTO;
+import spring.model.item.ItemService;
 import spring.model.mapper.itemMapper;
 import spring.model.utility.ItemUtility;
 
@@ -26,7 +27,9 @@ import spring.model.utility.ItemUtility;
 public class HomeController {
 	
 	@Autowired
-	private itemMapper mapper;      
+	private itemMapper mapper;   
+	@Autowired
+	private ItemService itemService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -53,4 +56,14 @@ public class HomeController {
 		return "/home";
 	}
 	
+	//main페이지에서 삭제
+			@RequestMapping("/item/deleteMain")
+			public String deleteMain(int itemNo) {
+		
+				if(itemService.delete(itemNo))
+					
+					return "redirect:/";
+				return "/item/error";
+			}
+	            
 }

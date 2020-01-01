@@ -117,7 +117,7 @@
 
 				if (confirm("해당 상품을 삭제하시겠습니까?") == true) { //확인
 
-					var url = "${pageContext.request.contextPath}/item/delete";
+					var url = "${pageContext.request.contextPath}/item/deleteMain";         
 					url += "?itemNo=" + itemNo;
 					location.href = url;
 
