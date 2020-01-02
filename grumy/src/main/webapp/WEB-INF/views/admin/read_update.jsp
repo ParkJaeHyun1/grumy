@@ -207,7 +207,7 @@ function update(orderno){
 								<tbody class="">
 									<tr class="">
 										<th scope="row">적립금</th>
-										<td>00원</td>
+										<td>${readP.point }원</td>
 									</tr>
 									
 									<tr class="sum">
