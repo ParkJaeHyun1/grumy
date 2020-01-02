@@ -12,7 +12,7 @@ public interface OrderMapper {
 	int insert(OrderDTO order);
 	int delete(String orderNo);
 	int update(OrderDTO order);
-	
+	OrderDTO selectOrder(String orderNo);
 	int updateItemState(Map map);
 	int insertItem(OrderItemDTO orderItem);
 	int deleteItem(String orderNo);

@@ -25,6 +25,8 @@ public class OrderDTO {
 	private String imagineBank;
 	private String imagineDate;
 	private String state;
+	private int deliveryCharge;
+	private int point;
 	private ArrayList<OrderItemDTO> orderItemList;
 	
 	
@@ -61,6 +63,18 @@ public class OrderDTO {
 		this.pdate = pdate;
 	}
 	
+	public int getDeliveryCharge() {
+		return deliveryCharge;
+	}
+	public void setDeliveryCharge(int deliveryCharge) {
+		this.deliveryCharge = deliveryCharge;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public String getOrderID() {
 		return orderID;
 	}

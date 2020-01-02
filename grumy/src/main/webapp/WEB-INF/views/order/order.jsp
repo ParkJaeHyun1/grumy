@@ -148,7 +148,7 @@ function getOrderID(){
 }
 function setOrderInfo(){
 	var today = new Date();
-	orderInfo.orderNo = today.getFullYear()+''+today.getMonth()+today.getDate();
+	orderInfo.orderNo = today.getFullYear()+''+(today.getMonth()+1)+today.getDate();
 	orderInfo.id = '${sessionScope.id}';
 	orderInfo.totalPrice =  ${totalPrice+deliveryCharge};
 	orderInfo.salePrice = $('#point').val();
@@ -160,6 +160,9 @@ function setOrderInfo(){
 	orderInfo.remail =$('#remail1').val()+'@'+$('#remail2').val();
 	orderInfo.rmsg =$('#rmsg').val();
 	orderInfo.state ='주문대기';
+	orderInfo.deliveryCharge = ${deliveryCharge};
+	orderInfo.point = (Number(${totalPrice}) - Number(orderInfo.salePrice))/100; 
+	alert(orderInfo.point);
 }
 function purchase(){    
 	if(!checkOrderInfo())

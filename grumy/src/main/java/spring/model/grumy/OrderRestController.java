@@ -93,10 +93,14 @@ public class OrderRestController {
 		
 		map.put("orderNo",map.get("order_id"));
 		if((int)map.get("status") == 1) {
+			OrderDTO order = orderMapper.selectOrder((String)map.get("order_id"));
+			map.put("id",order.getId());
+			map.put("point",order.getPoint());
 			map.put("state", "배송준비");
 			orderService.updateState(map);
+			memberMapper.increasePoint(map);
 		}
-		// 취소사유가 환불일수도있고 모르니까 이 상태변화는 관리자가 업데이트창에서 변경했을때 하면될듯?
+// 취소사유가 환불일수도있고 모르니까 이 상태변화는 관리자가 업데이트창에서 변경했을때 하면될듯?
 //		else if((int)map.get("status") == 20) {  			
 //			map.put("state", "주문취소");
 //			orderMapper.updateState(map);

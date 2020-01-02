@@ -4,22 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="spring.model.mapper.OrderMapper">
 
-	<select id="Qlist" parameterType="Map" resultType="BoardDTO">
-		select board_no, subject, ref, writer, wdate, check_read, indent, r
-		from(
-		select board_no, subject, ref, writer, wdate, check_read, indent,
-		rownum r
-		from(
-		select board_no, subject, ref, writer, wdate, check_read,
-		indent
-		from board
-		where lev='A' and type='상품' and itemNo = #{itemNo}
-		order by ref desc,board_no asc
-		))
-		where
-    		<![CDATA[
-		r >=#{sno} and r<=#{eno}
-		]]>
+	<select id="selectOrder" parameterType="String" resultType="orderDTO">
+		select orderNo,oderID,odate,pdate,id,totalPrice,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymentType,imagineAccount,imagineBank,imagineDate,state
+		from norder
+		where orderNo = #{orderNo}
 	</select>
 	<select id="checkItem" parameterType="List"
 		resultType="OrderItemDTO">
@@ -38,10 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="OrderDTO"
 		useGeneratedKeys="true" keyProperty="orderNo" keyColumn="orderNo">
 		insert into
-		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state)
+		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state,deliveryCharge)
 		values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
 		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR},
-		'YYYY-MM-DD HH24:MI:SS'),#{state})
+		'YYYY-MM-DD HH24:MI:SS'),#{state},#{deliveryCharge})
 	</insert>
 	<insert id="insertItem" parameterType="OrderItemDTO">
 		insert into
