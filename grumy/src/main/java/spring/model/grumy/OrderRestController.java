@@ -97,6 +97,8 @@ public class OrderRestController {
 			map.put("id",order.getId());
 			map.put("point",order.getPoint());
 			map.put("state", "배송준비");
+			System.out.println("아이디:"+map.get("id"));
+			System.out.println("포인트:"+map.get("point"));
 			orderService.updateState(map);
 			memberMapper.increasePoint(map);
 		}

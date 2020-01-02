@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </update>
 <update id="increasePoint" parameterType="Map">
 	update member
-	set point = ((select point from member where id =#{id}) + #{point})
+	set point = point + #{point}
 	where id = #{id}
 </update>
 <delete id="delete" parameterType="Map">
