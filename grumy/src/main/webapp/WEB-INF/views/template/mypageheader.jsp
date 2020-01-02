@@ -49,7 +49,7 @@
 		<div id="myshopMain"
 			class="xans-element- xans-myshop xans-myshop-main">
 			<div class="shopMain order">
-				<a href="${pageContext.request.contextPath }/mypage/orderlist/list">주문내역</a>
+				<a href="${pageContext.request.contextPath }/mypage/order/list">주문내역</a>
 			</div>
 			<div class="shopMain board">
 				<a href="${pageContext.request.contextPath }/mypage/mylist">내가 쓴 게시글</a>
