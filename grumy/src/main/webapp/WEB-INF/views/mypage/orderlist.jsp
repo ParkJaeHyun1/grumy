@@ -106,12 +106,14 @@
 										<td>${list2.count }</td>
 										<td>${list2.itemPrice }</td>
 										<td class="state">${list2.state }
+											<c:if test="${list2.state == '배송완료'}">
 											<div>
 												<a
 													href="${pageContext.request.contextPath }/review/create?itemOptionNo=${list2.itemOptionNo}"
 													class="yg_btn_80 yg_btn1 crema-new-review-link crema-applied"
 													alt="구매후기">구매후기</a>
 											</div>
+											</c:if>
 										</td>
 								</c:forEach>
 							</c:forEach>

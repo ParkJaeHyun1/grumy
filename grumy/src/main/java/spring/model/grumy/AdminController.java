@@ -190,11 +190,7 @@ public class AdminController {
 				System.out.println("업뎃 성공 orderitem");
 			}
 		}
-		//System.out.println(mapper.updateState(map));
-		//System.out.println(mapper.updateStateP(map));
-		//if(mapper.updateState(map)>0 && mapper.updateStateP(map)>0) {
-		//	System.out.println("업뎃 성공");
-		//}
+
 		return "success1";          
 	}
 	

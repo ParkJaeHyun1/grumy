@@ -7,46 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script>
-/* function update(orderno, orderstate){
-	var state = "";
-	switch(orderstate){
-		case "입금대기":
-			state = "배송준비";
-			break;
-		case "신규주문":
-			state = "배송준비";			
-			break;
-		case "배송준비":
-			state = "배송준비";						
-			break;
-		case "배송중":
-			state = "배송완료";
-			break;
-		default :
-			console.log("실패");
-			break;
-	}
-		
-	var aa = { "orderno" : orderno, "state" : state};
-	
-	$.ajax({
-		url         :   "${pageContext.request.contextPath}/admin/update",
-        contentType :   "application/json; charset=utf-8",
-        type        :   "post",
-		data: JSON.stringify(aa),
-		success : function(retVal){
-			alert("성공:"+retVal);
-			location.reload();
-		}, 
-		error : function(request, status, error){
-			alert("에러1:"+request);
-			alert("에러2:"+status);
-			alert("에러3:"+error);
-		}
-	});
-} */
-</script>
 </head>
 <body>
 	<div id="container">

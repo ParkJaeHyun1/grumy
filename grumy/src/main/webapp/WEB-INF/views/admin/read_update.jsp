@@ -43,7 +43,13 @@ function changeS(no){
 		$("#cancelno"+no).show();		
 	}
 };
-
+function keyevent(){
+	var keyval = $("#dno0").val();
+	var listSize = "${readPList.size()}";
+	for(var i = 1; i<=listSize; i++){
+		$("#dno"+i).val(keyval);
+	}
+};
 
 function update(orderno){
 	var state = new Array;
@@ -82,15 +88,6 @@ function update(orderno){
 		}
 	}); 
 }
-
-function keyevent(){
-	var keyval = $("#dno0").val();
-	var listSize = "${readPList.size()}";
-	for(var i = 1; i<=listSize; i++){
-		$("#dno"+i).val(keyval);
-	}
-}
-
 </script>
 
 </head>
