@@ -162,7 +162,6 @@ function setOrderInfo(){
 	orderInfo.state ='주문대기';
 	orderInfo.deliveryCharge = ${deliveryCharge};
 	orderInfo.point = (Number(${totalPrice}) - Number(orderInfo.salePrice))/100; 
-	alert(orderInfo.point);
 }
 function purchase(){    
 	if(!checkOrderInfo())
