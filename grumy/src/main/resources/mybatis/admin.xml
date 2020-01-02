@@ -247,6 +247,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<resultMap type="orderDTO" id="orderReadMap">		
+		<result property="deliveryCharge" column="deliveryCharge"/>
 		<result property="point" column="point"/>
 		<result property="postcode" column="postcode"/>
 		<result property="address" column="address"/>
@@ -274,14 +275,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="orderItemNo" column="orderItemNo"/>	
 	</resultMap>
 	<select id="readP" parameterType="map" resultMap="orderReadMap">
-	select distinct(orderno), odate, name, totalprice, saleprice, paymenttype, state, rname, point
+	select distinct(orderno), odate, name, totalprice, saleprice, paymenttype, state, rname, point, deliveryCharge,
 	postcode, address, detailaddress, rphone, rmsg, deliveryNo, orderID, imagineDate, imagineBank, imagineAccount
 	
 	from(
 		select b.orderitemno orderItemNo, a.orderno orderNo, a.odate odate, c.name name, a.rname rname, b.deliveryNo deliveryNo,
 			a.postcode postcode, a.address address, a.detailaddress detailaddress, a.rphone rphone, a.rmsg rmsg,
 			b.itemprice itemprice, a.saleprice saleprice, a.paymenttype paymenttype, a.state state, a.orderid orderID,
-			a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate, a.point point,
+			a.imagineaccount imagineAccount, a.imaginebank imagineBank, a.imaginedate imagineDate, a.point point, a.deliveryCharge deliveryCharge,
 			(select sum(itemprice * count) from orderitem where orderno = #{orderno}) totalprice
 		from norder a, orderitem b, member c 
 		where a.id = c.id and a.orderno = b.orderno and a.orderno = #{orderno})

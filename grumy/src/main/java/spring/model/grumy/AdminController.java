@@ -252,18 +252,9 @@ public class AdminController {
 		OrderDTO readP = mapper.readP(map);
 		ArrayList<OrderItemDTO> readPList = mapper.readPList(orderno);
 		
-		int deliveryPay = 0;
-		int totalPay = readP.getTotalPrice() - readP.getSalePrice();
-		if(totalPay <= 50000) {
-			deliveryPay = 5000;
-			totalPay += 5000;
-		}
-		
 		request.setAttribute("id", id);
 		request.setAttribute("map", map);
 		request.setAttribute("dto", dto);
-		request.setAttribute("totalPay", totalPay);
-		request.setAttribute("deliveryPay", deliveryPay);
 		request.setAttribute("readP", readP);
 		request.setAttribute("readPList", readPList);
 		

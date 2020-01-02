@@ -171,9 +171,9 @@ function read_update(){
 								<tfoot class="right">
 									<tr>
 										<td colspan="7"><span class="gLeft">[기본배송]</span> 상품구매금액
-											<strong>${readP.totalPrice}</strong> + 배송비 ${deliveryPay } <span class=""> - 상품할인금액
+											<strong>${readP.totalPrice}</strong> + 배송비 ${readP.deliveryCharge } <span class=""> - 상품할인금액
 												${readP.salePrice}</span> = 합계 : <strong class="txtEm gIndent10"><span
-												class="txt18">${totalPay }원</span></strong> <span class="displaynone"></span>
+												class="txt18">${readP.totalPrice - readP.deliveryCharge }원</span></strong> <span class="displaynone"></span>
 										</td>
 									</tr>
 								</tfoot>
