@@ -72,7 +72,7 @@ values((select nvl(max(board_no),0)+1 from board),#{subject},#{content},
 </insert>
 
 <select id="total" parameterType="Map" resultType="int">
-select count(*) from board
+select count(*) from board b
 		<where>
          	<choose>
          		<when test="col=='subject'">
@@ -97,6 +97,7 @@ select count(*) from board
          	</choose>
          	<if test="category != ''">
 				and category = #{category}
+				and  (select count(*) from board b2 where b2.ref = b.ref) =1
 			</if>
          </where>
 </select>
@@ -122,7 +123,7 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,cont
 			select board_no,subject,writer,wdate,content,indent,category,rownum r
 			from (
 				select board_no,subject,writer,wdate,content,category,indent
-				from board
+				from board b
 				<where>
 					<choose>
 						<when test="col == 'subject'">
@@ -147,6 +148,7 @@ select board_no,subject,writer,to_char(wdate, 'YYYY-MM-DD HH24:MI:SS')wdate,cont
 					</choose>
 					<if test="category != ''">
 						and category = #{category}
+						and  (select count(*) from board b2 where b2.ref = b.ref) =1
 					</if>
 				</where>
 						
