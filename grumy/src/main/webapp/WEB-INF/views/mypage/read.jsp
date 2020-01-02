@@ -106,7 +106,7 @@ function read_update(){
 								<tbody class="">
 									<tr class="">
 										<th scope="row">적립금</th>
-										<td>${readP.totalPrice/100 }원</td>
+										<td>${readP.point }원</td>
 									</tr>
 									
 									<tr class="sum">
