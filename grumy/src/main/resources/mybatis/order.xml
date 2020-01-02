@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="spring.model.mapper.OrderMapper">
 
 	<select id="selectOrder" parameterType="String" resultType="orderDTO">
-		select orderNo,oderID,odate,pdate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymentType,imagineAccount,imagineBank,imagineDate,state
+		select orderNo,orderID,odate,pdate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymentType,imagineAccount,imagineBank,imagineDate,state
 		from norder
 		where orderNo = #{orderNo}
 	</select>
