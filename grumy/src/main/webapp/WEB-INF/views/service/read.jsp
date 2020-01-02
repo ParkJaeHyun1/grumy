@@ -32,7 +32,15 @@
       }
 
    }
-   
+
+	$(document).ready(function(){
+		if(${sessionScope.grade == 'A'}){   
+			var orderNo = $('#orderNo').html().substring(5,$('#orderNo').html().length);                   
+			var str = '<a href ="${pageContext.request.contextPath}/mypage/order/read?orderno='+orderNo+'">주문번호:'+orderNo+'</a>';  
+			$('#orderNo').html(str);    
+		}    
+	});
+	     
 </script>
 
 <div id="container">
