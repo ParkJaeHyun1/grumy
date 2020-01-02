@@ -26,10 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="OrderDTO"
 		useGeneratedKeys="true" keyProperty="orderNo" keyColumn="orderNo">
 		insert into
-		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state,deliveryCharge)
+		norder(orderno,odate,id,salePrice,rname,postcode,address,detailaddress,rphone,remail,rmsg,paymenttype,imagineaccount,imaginebank,imaginedate,state,deliveryCharge,point)
 		values(#{orderNo}||'-'||lpad(orderNo_SEQ.nextval,8,'0'),sysdate,#{id},#{salePrice},#{rname},#{postcode},#{address},#{detailaddress},
 		#{rphone},#{remail,jdbcType=VARCHAR},#{rmsg,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},#{imagineAccount,jdbcType=VARCHAR},#{imagineBank,jdbcType=VARCHAR},TO_DATE(#{imagineDate,jdbcType=VARCHAR},
-		'YYYY-MM-DD HH24:MI:SS'),#{state},#{deliveryCharge})
+		'YYYY-MM-DD HH24:MI:SS'),#{state},#{deliveryCharge},#{point})
 	</insert>
 	<insert id="insertItem" parameterType="OrderItemDTO">
 		insert into
