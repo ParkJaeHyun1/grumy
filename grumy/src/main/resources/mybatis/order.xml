@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into
 		orderItem(orderitemNo,orderNo,itemOptionNo,count,deliveryNo,state,itemPrice)
 		values((SELECT NVL(MAX(orderItemNo), 0) + 1 as no FROM
-		orderItem),#{orderNo},#{itemOptionNo},#{count},#{deliveryNo,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{itemPrice})
+		orderItem),#{orderNo},#{itemOptionNo},#{count},#{deliveryNo,jdbcType=VARCHAR},#{state,jdbcType=VARCHAR},#{itemPrice}-#{itemSalePrice})
 	</insert>
 	<delete id="delete" parameterType="String">
 		delete from norder
@@ -71,16 +71,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<update id="updateState" parameterType="Map">
 		update norder set state = #{state}, pdate = sysdate where orderNo = #{order_id}
-	</update>
-	<update id="updateItem" parameterType="OrderItemDTO">
-		update orderItem
-		set orderNo = #{orderNo},
-		itemOptionNo = #{itemOptionNo},
-		count = #{count},
-		deliveryNo = #{deliveryNo,jdbcType=VARCHAR},
-		state = #{state},
-		itemPrice = #{itemPrice}
-		where orderItemNo = #{orderItemNo}
 	</update>
 	<update id="updateItemState" parameterType="Map">
 		update orderItem

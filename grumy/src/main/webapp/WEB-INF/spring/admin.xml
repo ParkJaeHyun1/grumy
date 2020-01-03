@@ -47,7 +47,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/moneyView.jsp" />
 	</definition>
- 	<definition name="/admin/read/update" extends="main">
+ 	<definition name="/admin/order/update" extends="main">
 		<put-attribute name="title"	value="그루미"></put-attribute>
 		<put-attribute name="body"
 			value="/WEB-INF/views/admin/read_update.jsp" />

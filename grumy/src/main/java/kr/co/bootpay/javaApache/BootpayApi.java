@@ -86,9 +86,10 @@ public class BootpayApi {
     }
 
     public void getAccessToken() throws Exception {
+  
         if(this.application_id == null || this.application_id.isEmpty()) throw new Exception("application_id 값이 비어있습니다.");
         if(this.private_key == null || this.private_key.isEmpty()) throw new Exception("private_key 값이 비어있습니다.");
-
+       
         Token token = new Token();
         token.application_id = this.application_id;
         token.private_key = this.private_key;
@@ -99,7 +100,7 @@ public class BootpayApi {
         HttpResponse res = client.execute(post);
         String str = IOUtils.toString(res.getEntity().getContent(), "UTF-8");
         ResToken resToken = new Gson().fromJson(str, ResToken.class);
-
+        System.out.println(resToken.status);
         if(resToken.status == 200)
             this.token = resToken.data.token;
     }

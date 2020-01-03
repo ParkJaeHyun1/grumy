@@ -360,7 +360,7 @@
 					enctype="application/x-www-form-urlencoded;charset=UTF-8"
 					style="display: none">
 					<input type="hidden" name="url"
-						value="/item/read?itemNo=${dto.itemNo}"></input>
+						value="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"></input>
 				</form>
 				<form action="${pageContext.request.contextPath}/member/login"
 					id="loginForm" class="form-horizontal" method="post"

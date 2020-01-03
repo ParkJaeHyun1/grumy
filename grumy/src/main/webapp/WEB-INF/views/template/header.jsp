@@ -70,7 +70,7 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 							class="log">LOGOUT</a> <a
 							href="${pageContext.request.contextPath}/member/update">MODIFY</a>
 						<a
-							href="${pageContext.request.contextPath }/mypage/orderlist/list">ORDER</a>
+							href="${pageContext.request.contextPath }/mypage/order/list">ORDER</a>
 						<a href="${pageContext.request.contextPath}/mypage/index">MYPAGE</a>
 						<a class=" cart"
 							href="${pageContext.request.contextPath}/cart/list">CART</a>
@@ -81,14 +81,14 @@ fBcQmYbNXYjx8gy7Imjyrv2WSXi6n4A&type=css&k=9cab3c762c992913864605f00b0a184752d88
 						<a href="${pageContext.request.contextPath}/member/login"
 							class="log">LOGIN</a> <a
 							href="${pageContext.request.contextPath}/member/create">JOIN</a>
-						<a href="${pageContext.request.contextPath}/member/login"
+						<a href="${pageContext.request.contextPath}/mypage/order/list"
 							class="log">ORDER</a> <a
-							href="${pageContext.request.contextPath}/member/login"
+							href="${pageContext.request.contextPath}/mypage/index"
 							class="log">MYPAGE</a> <a class=" cart"
-							href="${pageContext.request.contextPath}/member/login"
+							href="${pageContext.request.contextPath}/cart/list"
 							class="log">CART</a>
 					</div>
-				</c:otherwise>
+				</c:otherwise>       
 			</c:choose>
 
 			<!-- cre.ma / 로그인 회원 정보 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->

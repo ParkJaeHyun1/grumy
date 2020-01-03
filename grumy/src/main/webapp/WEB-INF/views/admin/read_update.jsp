@@ -13,18 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 <script>
-$(document).ready(function(){
-	var buttonId = "col1";
-	var sel = document.getElementById(buttonId).value;
-	var listSize = "${readPList.size()}";
-	for(var i = 1; i<=listSize; i++){
-		var sel = $("#col"+i).val();
-		if(sel == "wait" || sel == "ready" || sel == "going" || sel == "finish"){
-			$("#cancelno"+i).hide();
-			$("#cancelno"+i).val("0");
-		}
-	}	
-});
+
 function changeS(no){
 	var sel = $("#col"+no).val();
 
@@ -35,11 +24,15 @@ function changeS(no){
 		}
 	}
 	if(sel == "wait" || sel == "ready" || sel == "going" || sel == "finish"){
+		$("#itemCountIncrease"+no).hide();
+		$("#itemCountIncrease"+no).val(0);
 		$("#cancelno"+no).hide();
-		$("#cancelno"+no).val("0");
+		$("#cancelno"+no).val(0);     
 	}else{
 		var tprice = $("#tPrice").val();
-		$("#cancelno"+no).val(tprice);
+		$("#itemCountIncrease"+no).show();
+		$("#itemCountIncrease"+no).val('');
+		$("#cancelno"+no).val('');
 		$("#cancelno"+no).show();		
 	}
 };
@@ -52,10 +45,12 @@ function keyevent(){
 };
 
 function update(orderno){
-	var state = new Array;
-	var deliveryno = new Array;	
-	var orderItemNo = new Array;
-	var cancelno = new Array;
+	var state = new Array();
+	var deliveryno = new Array();	
+	var orderItemNo = new Array();
+	var itemCountIncrease = new Array();
+	var itemOptionNo = new Array();
+	var cancelno = 0;
 	var listSize = "${readPList.size()}";
 	var orderid = $("#orderid").val();
 	for(var i = 0; i<=listSize; i++){
@@ -64,22 +59,24 @@ function update(orderno){
 		var selT = sel.options[sel.selectedIndex].text;
 		if(i != 0){
 			deliveryno.push($("#dno"+i).val());		
-			orderItemNo.push($("#orderItemNo"+i).val());	
-			cancelno.push($("#cancelno"+i).val());		
+			orderItemNo.push($("#orderItemNo"+i).val());
+			itemCountIncrease.push($("#itemCountIncrease"+i).val());
+			itemOptionNo.push($("#itemOptionNo"+i).val());	
+			cancelno +=  Number($("#cancelno"+i).val());		
 		}
 		state.push(selT);	
 		
 	}	
 	var aa = { "orderno" : orderno, "listSize" : listSize, "state" : state, "deliveryno" : deliveryno, 
-				"orderItemNo" :orderItemNo, "orderid" : orderid, "cancelno" : cancelno};
+				"orderItemNo" :orderItemNo, "orderid" : orderid, "cancelno" : cancelno, "itemCountIncrease" : itemCountIncrease}; 
 	$.ajax({
-		url         :   "${pageContext.request.contextPath}/admin/update",
+		url         :   "${pageContext.request.contextPath}/admin/order/updateProc",
         contentType :   "application/json; charset=utf-8",
         type        :   "post",
 		data: JSON.stringify(aa),
 		success : function(retVal){
 			console.log("성공:"+retVal);
-			location.reload();
+			location.href="${pageContext.request.contextPath}/mypage/order/read?orderno="+orderno;   
 		}, 
 		error : function(request, status, error){
 			console.log("에러1:"+request);
@@ -95,7 +92,7 @@ function update(orderno){
 	<div id="container">
 		<div id="contents">
 			<div class="titleArea">
-				<h2>ORDER DETAIL 업데이트 페이지</h2>
+				<h2>ORDER UPDATE</h2>    
 				<h3>주문상세조회</h3>
 			</div>
 
@@ -116,7 +113,7 @@ function update(orderno){
         $select_gift_url = /order/gift_select.html
      -->
 					<!-- 주문정보 -->
-					<div class="orderArea">
+					<div class="orderArea">    
 
 
 						<div class="ec-base-table">
@@ -334,13 +331,15 @@ function update(orderno){
 													<c:if test="${dto.state == '교환요청' }">selected</c:if>>교환요청</option>
 											</select></div>
 											<div>
-											<input type="text" id="cancelno${fno.count }" value="${dto.itemPrice * dto.count }"/>
-											<input type="hidden" id="tPrice" value="${dto.itemPrice * dto.count }"/>
+											<input type="text" id="cancelno${fno.count }"  style="width:63px;text-align: right;display:none;margin-top: 5px" placeholder="환불 금액"/>
+											<input type="text" id="itemCountIncrease${fno.count}"  style="width:63px;text-align: right;display:none;margin-top: 5px" placeholder="재고 증가량"/>
+											<input type="text" id="itemOptionNo${fno.count}"  style="display:none" value="${dto.itemOptionNo}"/>                                     
+											<input type="hidden" id="tPrice" value="${dto.itemPrice * dto.count }"/>    
 											</div>
 										</td>
 										<td>
 											<div class="">
-												<input type="text" id="dno${fno.count }" value="${dto.deliveryNo }"/>
+												<input type="text" id="dno${fno.count }" value="${dto.deliveryNo } "  name="refund"style="text-align: right"/>     
 												<input type="hidden" id="orderItemNo${fno.count }" value="${dto.orderItemNo }"/>
 											</div>										
 										</td>

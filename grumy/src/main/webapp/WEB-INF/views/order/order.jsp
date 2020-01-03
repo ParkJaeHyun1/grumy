@@ -30,11 +30,11 @@ $(document).ready(function(){
  });
 var orderInfo = {orderItemList:[]};  
 var cartNoList = [];
-<c:forEach items="${list}" var="item">
+<c:forEach items="${list}" var="item"> 
 	(orderInfo.orderItemList).push({itemOptionNo:${item.itemOptionNo},count:${item.count},itemPrice:${item.itemPrice},itemSalePrice:${item.itemSalePrice},state:'주문대기'});
-	cartNoList.push(${item.cartNo});
+	cartNoList.push(${item.cartNo}); 
 </c:forEach>       
-
+console.log(orderInfo);     
 function checkOrderInfo(){             
 	if($('#rname').val().length==0){  
 		alert('주문자 성명을 입력해주세요.');
@@ -258,7 +258,7 @@ function purchase(){
 			location.href= "${pageContext.request.contextPath}/mypage/order/list";    
 	      	console.log('close');
 			console.log(data);         
-	   }).done(function (data) {
+	   }).done(function (data) {  
 		   console.log('done');
 		   console.log(data);
 		   
@@ -284,7 +284,7 @@ function deleteCartAjax(cartNoList){
 	});
 }
 function checkItem(){         
-	var enable;      
+	var enable;         
     $.ajax({
         type : 'put',     
         url : "../order/check",
@@ -292,6 +292,7 @@ function checkItem(){
         contentType : "application/json; charset=utf-8",
         async:false,
         success : function(result, status, xhr) {
+        	alert(result);
         	if(result =='success'){
         		enable= true;
         	}else{
@@ -302,6 +303,7 @@ function checkItem(){
            enable= false;
         }  
    });
+    alert("checkItem:"+enable);
     return enable;
 }
 function deleteOrder(){         
@@ -351,7 +353,8 @@ function decreasePoint(){
         error : function(xhr, status, er) {
 			enable = false;        
         }  
-   });                   
+   });           
+    alert("decrease:"+enable);     
     return enable;
 }
 function increasePoint(){  

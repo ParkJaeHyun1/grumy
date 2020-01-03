@@ -176,7 +176,7 @@ function setView(){
 	$.each(list, function(index, item){
 		
 		$('#cart_item_count_'+item.cartNo).val(item.count);
-		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100*2)+'원');
+		$('#cart_item_point1_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
 		$('#cart_item_point2_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
 		$('#cart_item_point3_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
 		$('#cart_item_point4_'+item.cartNo).html((item.itemPrice*item.count/100)+'원');
@@ -425,7 +425,7 @@ function setView(){
 															name="product_mileage_cash" value="1060" type="hidden" />     
 														<img   
 															src="${pageContext.request.contextPath}/images/point_kakao.png" style="width:13px;height:13px" />    
-														<span id="cart_item_point1_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100*2}</fmt:formatNumber>원<br></span>
+														<span id="cart_item_point1_${dto.cartNo}"> <fmt:formatNumber>${dto.count*(dto.itemPrice-dto.itemSalePrice)/100}</fmt:formatNumber>원<br></span>
 													</div>
 													<div>
 														<input id="product_mileage_card_3615_000A"

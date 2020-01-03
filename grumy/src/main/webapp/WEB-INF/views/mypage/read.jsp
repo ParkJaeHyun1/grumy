@@ -14,14 +14,14 @@
 	href="https://www.slowand.com//ind-script/optimizer.php?filename=rY9BDsIwDAQfUK68wyog8R43MYlpYkdxCsrvKeXKCXrZy2pHsxA1E5AbFqNqgCJ0Gq9nKMuU2A2x5QTmafBkHARsZrmAM4OsfkkECbsuDZzKY92zSnGHtT7CL9yOEu684SOhp_o76osiNgpa-y56N9X2jx6WYsBiDUPF_GQfqG3V-MldjuduUQtMKPOkOu_JzMjy5r0A&type=css&k=73263e05083d6bf49dd063c0dd9c81dd389a26c9&t=1566806466" />
 <script>
 function read_update(){
-	location.href="${root }/admin/read/update?orderno=${readP.orderNo}";
+	location.href="${root }/admin/order/update?orderno=${readP.orderNo}";
 }
 </script>
 
 </head>
 <body>
 	<div id="container">
-		<div id="contents">
+		<div id="contents">   
 			<div class="titleArea">
 				<h2>ORDER DETAIL</h2>
 				<h3>주문상세조회</h3>

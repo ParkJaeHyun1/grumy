@@ -36,24 +36,28 @@ public class OrderRestController {
 		ArrayList<OrderItemDTO> orderItemList = orderMapper.checkItem(list); 
 		Map<Integer,OrderItemDTO> map =new HashMap();
 
-		if(orderItemList.size()!=list.size())								//援щℓ紐⑸줉由ъ뒪�듃�� �븘�씠�뀥�뿉�꽌 select�븳 �젣�뭹�쓽 媛쒖닔媛� �떎瑜대㈃ (利� 愿�由ъ옄媛� �뙋留ㅼ쨷�떒�빐�꽌 table�뿉�꽌 �궗�씪吏� 援щℓ紐⑸줉�씠 �엳�떎硫�)
+		if(orderItemList.size()!=list.size()) {								//援щℓ紐⑸줉由ъ뒪�듃�� �븘�씠�뀥�뿉�꽌 select�븳 �젣�뭹�쓽 媛쒖닔媛� �떎瑜대㈃ (利� 愿�由ъ옄媛� �뙋留ㅼ쨷�떒�빐�꽌 table�뿉�꽌 �궗�씪吏� 援щℓ紐⑸줉�씠 �엳�떎硫�)
+			System.out.println("1");
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
-
+		}
 		for(OrderItemDTO orderItem: orderItemList)
 			map.put(orderItem.getItemOptionNo(), orderItem);
 
-		for(OrderItemDTO orderItem : list) 									// 援щℓ紐⑸줉�뿉�엳�뒗 �젣�뭹�젙蹂댁� �떎�젣 �젣�뭹�젙蹂닿� �떎瑜쇨꼍�슦
+		for(OrderItemDTO orderItem : list) { 									// 援щℓ紐⑸줉�뿉�엳�뒗 �젣�뭹�젙蹂댁� �떎�젣 �젣�뭹�젙蹂닿� �떎瑜쇨꼍�슦
+			  
 			if(orderItem.getItemPrice() != map.get(orderItem.getItemOptionNo()).getItemPrice() || orderItem.getItemSalePrice()!=map.get(orderItem.getItemOptionNo()).getItemSalePrice()) {
+				System.out.println("2");
 				return new ResponseEntity<String>("fail", HttpStatus.OK);
 			}
-
-		boolean bool =orderService.decreaseItemCount(list);
-
-		if(!bool) 							//�닔�웾 媛먯냼�떆�궎�뒗 硫붿냼�뱶�씪 �씠議곌굔臾몄쓣 �쐞濡쒖삱由ш퀬 留뚯빟 洹� 諛묒뿉履쎌뿉�꽌 fail�뼚�꽌 嫄곕옒遺덇��떆�궎硫� �떎�떆 媛먯냼�떆�궓嫄� 利앷��떆耳쒖빞�릺�꽌 留⑤컩�뿉�꽔�쓬
+		}
+		
+		if(!orderService.decreaseItemCount(list)) { 							//�닔�웾 媛먯냼�떆�궎�뒗 硫붿냼�뱶�씪 �씠議곌굔臾몄쓣 �쐞濡쒖삱由ш퀬 留뚯빟 洹� 諛묒뿉履쎌뿉�꽌 fail�뼚�꽌 嫄곕옒遺덇��떆�궎硫� �떎�떆 媛먯냼�떆�궓嫄� 利앷��떆耳쒖빞�릺�꽌 留⑤컩�뿉�꽔�쓬
+			System.out.println(3);
 			return new ResponseEntity<String>("fail", HttpStatus.OK);
-
+		}
+		System.out.println(4);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
-	}
+	}   
 	@PutMapping("/order/insert")
 	public ResponseEntity<String> insert(@RequestBody OrderDTO order) {
 

@@ -128,6 +128,8 @@ public class MemberController {
 	public String login(Model model, @RequestParam Map<String, String> map, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "url", required = false) String url) throws Exception {
+		
+		url = url==null? (String) session.getAttribute("url"):url;
 		int flag = dao.loginCheck(map);
 		
 

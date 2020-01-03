@@ -13,6 +13,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			if (request.getSession().getAttribute("grade") == null) {
 				// 로그인페이지로 redirect
 				response.sendRedirect(root+"/member/login");
+				request.getSession().setAttribute("url", request.getServletPath());
 				return false;
 			}
 		} catch (Exception e) {
