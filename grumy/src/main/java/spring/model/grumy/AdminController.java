@@ -209,7 +209,7 @@ public class AdminController {
 
 				HttpResponse res = api.cancel(cancel);
 				String str = IOUtils.toString(res.getEntity().getContent(), "UTF-8");
-				System.out.println(str);
+				System.out.println("환불결과:"+str);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
