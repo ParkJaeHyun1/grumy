@@ -88,13 +88,7 @@ public class OrderRestController {
 	
 	@RequestMapping("/bootpay/response")
 	public String bootpayResponse(@RequestBody Map map) {
-		System.out.println("11111111111111111111111111111111");
-		System.out.println("상태:"+map.get("status"));
-		System.out.println("주문번호:"+map.get("order_id"));
-		System.out.println("pg:"+map.get("pg"));
-		System.out.println("method:"+map.get("method_name"));
-		System.out.println("11111111111111111111111111111111");
-		
+	
 		map.put("orderNo",map.get("order_id"));
 		if((int)map.get("status") == 1) {
 			OrderDTO order = orderMapper.selectOrder((String)map.get("order_id"));

@@ -21,6 +21,7 @@ import kr.co.bootpay.javaApache.model.request.Cancel;
 import spring.model.board.BoardDTO;
 import spring.model.item.ItemDTO;
 import spring.model.mapper.AdminMapper;
+import spring.model.mapper.itemMapper;
 import spring.model.member.MemberDTO;
 import spring.model.notice.NoticeDTO;
 import spring.model.order.OrderDTO;
@@ -33,7 +34,8 @@ public class AdminController {
 
 	@Autowired
 	private AdminMapper mapper;
-
+	@Autowired
+	private itemMapper itemMapper;
 	@Autowired
 	OrderService orderService;
 
@@ -42,18 +44,18 @@ public class AdminController {
 
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {		
-		int wait = mapper.total("입금대기");		//입금대기
-		int newOrder = mapper.total("신규주문");	//신규주문
-		int sReady = mapper.total("배송준비");	//배송준비
-		int sIng = mapper.total("배송중");		//배송중
-		int sFin = mapper.total("배송완료");		//배송완료
-		int change = mapper.cstotal("교환");   	//교환요청
-		int cancel = mapper.cstotal("취소");   	//취소요청
-		int ret = mapper.cstotal("반품");   		//반품요청 
-		int modify = mapper.cstotal("변경");   		//변경요청 
-		int etc = mapper.cstotal("기타");   		//기타요청 
-		int priceToday = mapper.priceTotal("t");	//오늘정산
-		int priceDelay = mapper.priceTotal("d");	//정산예정
+		int wait = mapper.total("�엯湲덈�湲�");		//�엯湲덈�湲�
+		int newOrder = mapper.total("�떊洹쒖＜臾�");	//�떊洹쒖＜臾�
+		int sReady = mapper.total("諛곗넚以�鍮�");	//諛곗넚以�鍮�
+		int sIng = mapper.total("諛곗넚以�");		//諛곗넚以�
+		int sFin = mapper.total("諛곗넚�셿猷�");		//諛곗넚�셿猷�
+		int change = mapper.cstotal("援먰솚");   	//援먰솚�슂泥�
+		int cancel = mapper.cstotal("痍⑥냼");   	//痍⑥냼�슂泥�
+		int ret = mapper.cstotal("諛섑뭹");   		//諛섑뭹�슂泥� 
+		int modify = mapper.cstotal("蹂�寃�");   		//蹂�寃쎌슂泥� 
+		int etc = mapper.cstotal("湲고�");   		//湲고��슂泥� 
+		int priceToday = mapper.priceTotal("t");	//�삤�뒛�젙�궛
+		int priceDelay = mapper.priceTotal("d");	//�젙�궛�삁�젙
 
 		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		NoticeDTO noticetr = noticet.get(0);
@@ -91,14 +93,14 @@ public class AdminController {
 		String col = Utility.checkNull(request.getParameter("col"));
 		//String id = (String) session.getAttribute("id");
 		//session.setAttribute("sessionId", nickname);
-		//페이징 관련
+		//�럹�씠吏� 愿��젴
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 	
-		int recordPerPage = 20; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 20; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
 
-		//디비에서 가져올 순번
+		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;		
 
@@ -126,14 +128,14 @@ public class AdminController {
 		String col = Utility.checkNull(request.getParameter("col"));
 		String datec = Utility.checkNull(request.getParameter("datec"));
 
-		//페이징 관련
+		//�럹�씠吏� 愿��젴
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 	
-		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 10; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
 
-		//디비에서 가져올 순번
+		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;		
 
@@ -178,7 +180,7 @@ public class AdminController {
 		mapU.put("orderno", orderno);
 		mapU.put("state", norderState);
 
-		if(norderState.equals("배송준비")) {
+		if(norderState.equals("諛곗넚以�鍮�")) {
 			mapper.pdateCheck(orderno);
 			mapper.updatePdate(orderno);
 		}
@@ -189,15 +191,17 @@ public class AdminController {
 			mapU.put("orderItemNo",orderItemNo.get(i));
 			mapper.updateStateP(mapU);
 			if((int)itemCountIncrease.get(i)>0) {
-				
+				mapU.put("count", itemCountIncrease.get(i));
+				mapU.put("itemOptionNo", itemOptionNo.get(i));
+				itemMapper.increaseItemCount(map);
 			}
 		}
 		
 		if(cancelPrice>0) {
 			Cancel cancel = new Cancel();
 			cancel.receipt_id = orderid;
-			cancel.name = "관리자 구르미";
-			cancel.reason = "취소요청";
+			cancel.name = "愿�由ъ옄 援щⅤ誘�";
+			cancel.reason = "痍⑥냼�슂泥�";
 			cancel.price = cancelPrice;
 			try { 
 				api = new BootpayApi("5dd76d0802f57e0021e217c4", "z8giuaYFj4yvrCmsO3IOVYXaid2+VDqIkn+oaFsLe0k=");    
@@ -220,14 +224,14 @@ public class AdminController {
 		String orderstate = Utility.checkNull(request.getParameter("orderstate"));
 
 		System.out.println(word + " " + col + "/");
-		//페이징 관련
+		//�럹�씠吏� 愿��젴
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 		
-		int recordPerPage = 10; //한페이지당 보여줄 레코드 갯수
+		int recordPerPage = 10; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
 
-		//디비에서 가져올 순번
+		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;
 

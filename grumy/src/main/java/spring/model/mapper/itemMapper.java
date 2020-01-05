@@ -33,7 +33,7 @@ public interface itemMapper {
 	ArrayList<ItemTypeDTO> selectTypeList(String type);
 	ArrayList<ItemTypeDTO> selectTypeListAll();
 	int decreaseItemCount(OrderItemDTO orderItem);
-	int increaseItemCount(OrderItemDTO orderItem);
+	int increaseItemCount(Map map);
 	List<BoardDTO> Qlist(Map map);
 	int qtotal(Map map);
 	int insertItem(ItemDTO dto);
