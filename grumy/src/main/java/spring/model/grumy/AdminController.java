@@ -44,18 +44,18 @@ public class AdminController {
 
 	@RequestMapping("/admin/main")
 	public String home(HttpServletRequest request) {		
-		int wait = mapper.total("�엯湲덈�湲�");		//�엯湲덈�湲�
-		int newOrder = mapper.total("�떊洹쒖＜臾�");	//�떊洹쒖＜臾�
-		int sReady = mapper.total("諛곗넚以�鍮�");	//諛곗넚以�鍮�
-		int sIng = mapper.total("諛곗넚以�");		//諛곗넚以�
-		int sFin = mapper.total("諛곗넚�셿猷�");		//諛곗넚�셿猷�
-		int change = mapper.cstotal("援먰솚");   	//援먰솚�슂泥�
-		int cancel = mapper.cstotal("痍⑥냼");   	//痍⑥냼�슂泥�
-		int ret = mapper.cstotal("諛섑뭹");   		//諛섑뭹�슂泥� 
-		int modify = mapper.cstotal("蹂�寃�");   		//蹂�寃쎌슂泥� 
-		int etc = mapper.cstotal("湲고�");   		//湲고��슂泥� 
-		int priceToday = mapper.priceTotal("t");	//�삤�뒛�젙�궛
-		int priceDelay = mapper.priceTotal("d");	//�젙�궛�삁�젙
+		int wait = mapper.total("입금대기");		
+		int newOrder = mapper.total("신규주문");	
+		int sReady = mapper.total("배송준비");	
+		int sIng = mapper.total("배송중");		
+		int sFin = mapper.total("배송완료");		
+		int change = mapper.cstotal("교환");   	
+		int cancel = mapper.cstotal("취소");   	
+		int ret = mapper.cstotal("반품");   		
+		int modify = mapper.cstotal("변경");   		
+		int etc = mapper.cstotal("기타");   		
+		int priceToday = mapper.priceTotal("t");	
+		int priceDelay = mapper.priceTotal("d");	
 
 		ArrayList<NoticeDTO> noticet = mapper.noticel(1);
 		NoticeDTO noticetr = noticet.get(0);
@@ -91,16 +91,15 @@ public class AdminController {
 	public String itemManage(HttpServletRequest request) {		
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
-		//String id = (String) session.getAttribute("id");
-		//session.setAttribute("sessionId", nickname);
-		//�럹�씠吏� 愿��젴
+		
+		//페이징 관련
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 	
-		int recordPerPage = 20; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
+		int recordPerPage = 20; //한페이지당 보여줄 레코드 수
 
-		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
+		//DB에서 가져올 순번
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;		
 
@@ -127,15 +126,13 @@ public class AdminController {
 		String word = Utility.checkNull(request.getParameter("word"));
 		String col = Utility.checkNull(request.getParameter("col"));
 		String datec = Utility.checkNull(request.getParameter("datec"));
-
-		//�럹�씠吏� 愿��젴
+	
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 	
-		int recordPerPage = 10; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
+		int recordPerPage = 10; 
 
-		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;		
 
@@ -224,14 +221,13 @@ public class AdminController {
 		String orderstate = Utility.checkNull(request.getParameter("orderstate"));
 
 		System.out.println(word + " " + col + "/");
-		//�럹�씠吏� 愿��젴
+		
 		int nowPage = 1;
 		if(request.getParameter("nowPage")!= null){
 			nowPage = Integer.parseInt(request.getParameter("nowPage"));
 		} 		
-		int recordPerPage = 10; //�븳�럹�씠吏��떦 蹂댁뿬以� �젅肄붾뱶 媛��닔
+		int recordPerPage = 10; 
 
-		//�뵒鍮꾩뿉�꽌 媛��졇�삱 �닚踰�
 		int sno = ((nowPage-1) * recordPerPage) + 1 ;
 		int eno = nowPage * recordPerPage;
 
@@ -266,9 +262,8 @@ public class AdminController {
 
 		for(OrderItemDTO item: itemList) { 
 			map.put(item.getState(), item.getCount());
-
 		}
-		//String orderno = (String)request.getAttribute("orderno");
+		
 		map.put("id", id);
 		map.put("orderno", orderno);
 
