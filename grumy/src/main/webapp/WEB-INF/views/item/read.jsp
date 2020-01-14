@@ -379,14 +379,10 @@
 							class="xans-element- xans-product xans-product-image imgArea ">
 							<div class="keyImg">
 								<div class="thumbnail">
-									<a
-										href="${pageContext.request.contextPath}/item/read?itemNo=${dto.itemNo}"
-										alt="P0000FII"
-										onclick="window.open(this.href, 'image_zoom2', 'toolbar=no,scrollbars=auto,resizable=yes,width=450,height=693,left=0,top=0', this);return false;">
-										<img
+									<img
 										src="${pageContext.request.contextPath}/images/${dto.image}"
 										alt="#SLOWMADE. 윈터즈 양기모 후드집업 - 5 color" class="BigImage" />
-									</a>
+									
 									<div id="zoom_wrap"></div>
 									<div class="color displaynone"></div>
 								</div>
