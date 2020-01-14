@@ -31,7 +31,7 @@ function readd(board_no){
 	var url = "read";
 	url += "?board_no="+board_no;
 	
-	location.href="../delivery/"+url;
+	location.href="../service/"+url;
 }
 function readd2(board_no){
 	var url = "read";
