@@ -156,6 +156,7 @@ function read_update(){
 									<col style="width: 70px">
 									<col style="width: 110px">
 									<col style="width: 115px">
+									<col style="width: 120px">
 									<col style="width: 120px">   
 								</colgroup>
 								<thead>
@@ -166,6 +167,7 @@ function read_update(){
 										<th scope="col">판매가</th>
 										<th scope="col">배송구분</th>
 										<th scope="col">주문처리상태</th>
+										<th scope="col">송장 번호</th>
 									</tr>
 								</thead>
 								<tfoot class="right">
@@ -206,13 +208,18 @@ function read_update(){
 											</div></td>
 										<td>
 											<p class="txtEm">${dto.state }</p>
-											<p class="">
-												<c:if test="${dto.deliveryNo } != null">
-												<a href="#none" class="line"
-													onclick="window.open('${pageContext.request.contextPath}/order/delivery?deliveryNo=${dto.deliveryNo }', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a></c:if>
+											<p class="">  
+												
 											</p>
 										</td>
-
+										<td>
+										<div class="txtInfo">                 
+								   
+												<c:if test="${ not empty dto.deliveryNo}">                                 
+												<a href="#none" class="line"
+													onclick="window.open('${pageContext.request.contextPath}/order/delivery?deliveryNo=${dto.deliveryNo }', '', 'scrollbars=yes, resizeable=0, status=0, directories=0, toolbar=0'); return false;">[${dto.deliveryNo }]</a></c:if>
+											</div>
+										</td>
 									</tr>  
 									</c:forEach>
 									<!-- 리스트 -->

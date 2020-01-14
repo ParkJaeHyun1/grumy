@@ -188,7 +188,7 @@ public class AdminController {
 			mapU.put("deliveryno",deliveryno.get(i));
 			mapU.put("orderItemNo",orderItemNo.get(i));
 			mapper.updateStateP(mapU);
-//			if(Integer.parseInt((String)itemCountIncrease.get(i))>0) {
+//			if(Integer.parseInt((String)itemCountIncrease.get(i))>0) {					//채고 증가 트랜잭션
 //				mapU.put("count", itemCountIncrease.get(i));
 //				mapU.put("itemOptionNo", itemOptionNo.get(i));
 //				itemMapper.increaseItemCount(map);
