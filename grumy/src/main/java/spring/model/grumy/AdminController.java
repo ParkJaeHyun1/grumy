@@ -182,16 +182,17 @@ public class AdminController {
 			mapper.updatePdate(orderno);
 		}
 		mapper.updateState(mapU);
+		
 		for(int i = 0; i<listSize; i++) {
 			mapU.put("state",state.get(i+1));
 			mapU.put("deliveryno",deliveryno.get(i));
 			mapU.put("orderItemNo",orderItemNo.get(i));
 			mapper.updateStateP(mapU);
-			if((int)itemCountIncrease.get(i)>0) {
-				mapU.put("count", itemCountIncrease.get(i));
-				mapU.put("itemOptionNo", itemOptionNo.get(i));
-				itemMapper.increaseItemCount(map);
-			}
+//			if(Integer.parseInt((String)itemCountIncrease.get(i))>0) {
+//				mapU.put("count", itemCountIncrease.get(i));
+//				mapU.put("itemOptionNo", itemOptionNo.get(i));
+//				itemMapper.increaseItemCount(map);
+//			}
 		}
 		
 		if(cancelPrice>0) {
